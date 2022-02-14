@@ -102,10 +102,12 @@ define "SDE Encounter Locations":
    where Global."GetLocation"(Encounter.location.location[0]).type in "CDC Location Codes" and exists("Initial Population")
 		
 define "SDE Encounter Discharge Dispositions":
-	[Encounter: "Discharge Disposition"] where exists("Initial Population")
+	[Encounter: "Discharge Disposition"] DischargeDispositions 
+	where exists("Initial Population")
 
 define "SDE Ethnicity":
-	SDE."SDE Ethnicity" where exists("Initial Population")
+	SDE."SDE Ethnicity" Ethnicity
+	where exists("Initial Population")
 
 define "SDE Gender Identity":
 	[Patient] Patient
@@ -116,28 +118,34 @@ define "SDE Locations":
     where Locations.type in "CDC Location Codes" and exists("Initial Population")
 
 define "SDE Medication Administration":
-	[MedicationAdministration] where exists("Initial Population")
+	[MedicationAdministration] MedicationAdministrations
+	where exists("Initial Population")
 
 define "SDE Medication Request":
-	[MedicationRequest] where exists("Initial Population")
+	[MedicationRequest] MedicationRequests
+	where exists("Initial Population")
 
 define "SDE Observation":
-	[Observation] Observations where exists("Initial Population")
+	[Observation] Observations 
+	where exists("Initial Population")
 
 define "SDE Patient Death Date": 
-     [Patient] Patient
-	 where Patient.deceased is FHIR.dateTime and exists("Initial Population")
-     return Patient.deceased as FHIR.dateTime  
+	[Patient] Patient
+	where Patient.deceased is FHIR.dateTime and exists("Initial Population")
+	return Patient.deceased as FHIR.dateTime  
 
 define "SDE Payer": 
-	SDE."SDE Payer" where exists("Initial Population")
+	SDE."SDE Payer" Payers
+	where exists("Initial Population")
 
 define "SDE Patient ID": 
-   [Patient] Patient where exists("Initial Population")
-     return Patient.identifier
+    [Patient] Patients
+	where exists("Initial Population")
+    return Patients.identifier
 
 define "SDE Race":
-	SDE."SDE Race" where exists("Initial Population")
+	SDE."SDE Race" Race 
+	where exists("Initial Population")
 
 define "SDE Service Request":
 	[ServiceRequest: "Blood Glucose Laboratory Tests"] ServiceRequest
@@ -146,8 +154,10 @@ define "SDE Service Request":
 		and exists("Initial Population")
 
 define "SDE Sex":
-	SDE."SDE Sex" where exists("Initial Population")
+	SDE."SDE Sex" Sex
+	where exists("Initial Population")
 
 define "SDE Zip Code": 
-	[Patient] Patient where exists("Initial Population")
-    return Patient.address.postalCode
+	[Patient] Patients 
+	where exists("Initial Population")
+    return Patients.address.postalCode
