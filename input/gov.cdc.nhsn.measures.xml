@@ -30,7 +30,7 @@
   <fhirVersion value="4.0.1"/>
   <dependsOn id="cqf">
     <uri value="http://fhir.org/guides/cqf/common/ImplementationGuide/cqf.fhir.common"/>
-    <packageId value="cqf.fhir.common"/>
+    <packageId value="fhir.cqf.common"/>
     <version value="dev"/>
   </dependsOn>
   <definition>
