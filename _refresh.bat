@@ -1,5 +1,4 @@
 @ECHO OFF
-
 REM SET tooling_jar=tooling-1.3.1-SNAPSHOT-jar-with-dependencies.jar
 SET tooling_jar=tooling-1.4.0-jar-with-dependencies.jar
 SET input_cache_path=%~dp0input-cache
