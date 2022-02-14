@@ -71,7 +71,7 @@ define "First Severe Hypoglycemic Event":
     	with "Antidiabetic Drugs Administered or Ordered" ADDMeds
     	such that Global."Normalize Interval"(ADDMeds.effective)starts 24 
 			hours or less on or before start of Global."Normalize Interval"(BloodGlucoseLab.effective)
-        and(
+        and (
             BloodGlucoseLab.status = 'final'
             or BloodGlucoseLab.status = 'amended'
         )
@@ -95,11 +95,13 @@ define "SDE Condition":
 
 define "SDE Chief Complaint":
 	[Encounter] TheEncounter
-    where TheEncounter.diagnosis.use in "Chief Complaint" and exists("Initial Population")
+    where TheEncounter.diagnosis.use in "Chief Complaint" 
+		and exists("Initial Population")
 
 define "SDE Encounter Locations":
 	[Encounter] Encounter
-   where Global."GetLocation"(Encounter.location.location[0]).type in "CDC Location Codes" and exists("Initial Population")
+   	where Global."GetLocation"(Encounter.location.location[0]).type in "CDC Location Codes" 
+   		and exists("Initial Population")
 		
 define "SDE Encounter Discharge Dispositions":
 	[Encounter: "Discharge Disposition"] DischargeDispositions 
@@ -111,11 +113,13 @@ define "SDE Ethnicity":
 
 define "SDE Gender Identity":
 	[Patient] Patient
-    where Patient.gender in "Gender Identity" and exists("Initial Population")
+    where Patient.gender in "Gender Identity" 
+		and exists("Initial Population")
 
 define "SDE Locations":
 	[Location] Locations
-    where Locations.type in "CDC Location Codes" and exists("Initial Population")
+    where Locations.type in "CDC Location Codes" 
+		and exists("Initial Population")
 
 define "SDE Medication Administration":
 	[MedicationAdministration] MedicationAdministrations
@@ -131,7 +135,8 @@ define "SDE Observation":
 
 define "SDE Patient Death Date": 
 	[Patient] Patient
-	where Patient.deceased is FHIR.dateTime and exists("Initial Population")
+	where Patient.deceased is FHIR.dateTime 
+		and exists("Initial Population")
 	return Patient.deceased as FHIR.dateTime  
 
 define "SDE Payer": 
