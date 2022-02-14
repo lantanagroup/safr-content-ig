@@ -1,0 +1,263 @@
+<ValueSet>
+    <id value="2.16.840.1.113762.1.4.1046.266"/>
+    <meta>
+        <versionId value="4"/>
+        <lastUpdated value="2021-12-08T20:12:33.000-05:00"/>
+    </meta>
+    <url value="https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.266"/>
+    <version value="Draft"/>
+    <name value="Antidiabetic Drugs (ADD Ingredient)"/>
+    <status value="draft"/>
+    <date value="2021-12-08T20:12:33-05:00"/>
+    <publisher value="Lantana"/>
+    <compose>
+        <include>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="01012022"/>
+            <concept>
+                <code value="1008501"/>
+                <display value="insulin isophane / insulin, regular, human"/>
+            </concept>
+            <concept>
+                <code value="1043562"/>
+                <display value="metformin / saxagliptin"/>
+            </concept>
+            <concept>
+                <code value="10633"/>
+                <display value="tolazamide"/>
+            </concept>
+            <concept>
+                <code value="10635"/>
+                <display value="tolbutamide"/>
+            </concept>
+            <concept>
+                <code value="1100699"/>
+                <display value="linagliptin"/>
+            </concept>
+            <concept>
+                <code value="1243019"/>
+                <display value="linagliptin / metformin"/>
+            </concept>
+            <concept>
+                <code value="1368001"/>
+                <display value="alogliptin"/>
+            </concept>
+            <concept>
+                <code value="1368384"/>
+                <display value="alogliptin / metformin"/>
+            </concept>
+            <concept>
+                <code value="1368402"/>
+                <display value="alogliptin / pioglitazone"/>
+            </concept>
+            <concept>
+                <code value="1373458"/>
+                <display value="canagliflozin"/>
+            </concept>
+            <concept>
+                <code value="139825"/>
+                <display value="insulin detemir"/>
+            </concept>
+            <concept>
+                <code value="139953"/>
+                <display value="pramlintide"/>
+            </concept>
+            <concept>
+                <code value="1440051"/>
+                <display value="lixisenatide"/>
+            </concept>
+            <concept>
+                <code value="1486436"/>
+                <display value="dapagliflozin / metformin"/>
+            </concept>
+            <concept>
+                <code value="1488564"/>
+                <display value="dapagliflozin"/>
+            </concept>
+            <concept>
+                <code value="1534763"/>
+                <display value="albiglutide"/>
+            </concept>
+            <concept>
+                <code value="1545149"/>
+                <display value="canagliflozin / metformin"/>
+            </concept>
+            <concept>
+                <code value="1545653"/>
+                <display value="empagliflozin"/>
+            </concept>
+            <concept>
+                <code value="1551291"/>
+                <display value="dulaglutide"/>
+            </concept>
+            <concept>
+                <code value="1598392"/>
+                <display value="empagliflozin / linagliptin"/>
+            </concept>
+            <concept>
+                <code value="1605101"/>
+                <display value="insulin isophane"/>
+            </concept>
+            <concept>
+                <code value="1664314"/>
+                <display value="empagliflozin / metformin"/>
+            </concept>
+            <concept>
+                <code value="16681"/>
+                <display value="acarbose"/>
+            </concept>
+            <concept>
+                <code value="1670007"/>
+                <display value="insulin degludec"/>
+            </concept>
+            <concept>
+                <code value="1727493"/>
+                <display value="insulin degludec / liraglutide"/>
+            </concept>
+            <concept>
+                <code value="1727500"/>
+                <display value="dapagliflozin / saxagliptin"/>
+            </concept>
+            <concept>
+                <code value="1858994"/>
+                <display value="insulin glargine / lixisenatide"/>
+            </concept>
+            <concept>
+                <code value="1991302"/>
+                <display value="semaglutide"/>
+            </concept>
+            <concept>
+                <code value="1992672"/>
+                <display value="ertugliflozin"/>
+            </concept>
+            <concept>
+                <code value="1992825"/>
+                <display value="ertugliflozin / sitagliptin"/>
+            </concept>
+            <concept>
+                <code value="1994310"/>
+                <display value="insulin aspart, human / insulin degludec"/>
+            </concept>
+            <concept>
+                <code value="2117292"/>
+                <display value="dapagliflozin / metformin / saxagliptin"/>
+            </concept>
+            <concept>
+                <code value="2281864"/>
+                <display value="empagliflozin / linagliptin / metformin"/>
+            </concept>
+            <concept>
+                <code value="2404"/>
+                <display value="chlorpropamide"/>
+            </concept>
+            <concept>
+                <code value="253182"/>
+                <display value="insulin, regular, human"/>
+            </concept>
+            <concept>
+                <code value="25789"/>
+                <display value="glimepiride"/>
+            </concept>
+            <concept>
+                <code value="274332"/>
+                <display value="nateglinide"/>
+            </concept>
+            <concept>
+                <code value="274783"/>
+                <display value="insulin glargine"/>
+            </concept>
+            <concept>
+                <code value="285129"/>
+                <display value="glyburide / metformin"/>
+            </concept>
+            <concept>
+                <code value="30009"/>
+                <display value="miglitol"/>
+            </concept>
+            <concept>
+                <code value="33738"/>
+                <display value="pioglitazone"/>
+            </concept>
+            <concept>
+                <code value="352381"/>
+                <display value="glipizide / metformin"/>
+            </concept>
+            <concept>
+                <code value="400008"/>
+                <display value="insulin glulisine, human"/>
+            </concept>
+            <concept>
+                <code value="475968"/>
+                <display value="liraglutide"/>
+            </concept>
+            <concept>
+                <code value="4815"/>
+                <display value="glyburide"/>
+            </concept>
+            <concept>
+                <code value="4821"/>
+                <display value="glipizide"/>
+            </concept>
+            <concept>
+                <code value="51428"/>
+                <display value="insulin aspart, human"/>
+            </concept>
+            <concept>
+                <code value="593411"/>
+                <display value="sitagliptin"/>
+            </concept>
+            <concept>
+                <code value="60548"/>
+                <display value="exenatide"/>
+            </concept>
+            <concept>
+                <code value="606253"/>
+                <display value="glimepiride / rosiglitazone"/>
+            </concept>
+            <concept>
+                <code value="607999"/>
+                <display value="metformin / pioglitazone"/>
+            </concept>
+            <concept>
+                <code value="614348"/>
+                <display value="metformin / rosiglitazone"/>
+            </concept>
+            <concept>
+                <code value="647235"/>
+                <display value="glimepiride / pioglitazone"/>
+            </concept>
+            <concept>
+                <code value="6809"/>
+                <display value="metformin"/>
+            </concept>
+            <concept>
+                <code value="729717"/>
+                <display value="metformin / sitagliptin"/>
+            </concept>
+            <concept>
+                <code value="73044"/>
+                <display value="repaglinide"/>
+            </concept>
+            <concept>
+                <code value="802646"/>
+                <display value="metformin / repaglinide"/>
+            </concept>
+            <concept>
+                <code value="816726"/>
+                <display value="insulin lispro / insulin lispro protamine, human"/>
+            </concept>
+            <concept>
+                <code value="84108"/>
+                <display value="rosiglitazone"/>
+            </concept>
+            <concept>
+                <code value="857974"/>
+                <display value="saxagliptin"/>
+            </concept>
+            <concept>
+                <code value="86009"/>
+                <display value="insulin lispro"/>
+            </concept>
+        </include>
+    </compose>
+</ValueSet>

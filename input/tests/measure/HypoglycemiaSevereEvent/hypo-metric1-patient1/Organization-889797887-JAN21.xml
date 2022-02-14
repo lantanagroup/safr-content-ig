@@ -1,0 +1,62 @@
+<Organization xmlns="http://hl7.org/fhir">
+  <id value="889797887-JAN21"/>
+  <meta>
+    <profile
+      value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization"/>
+  </meta>
+  <extension url="http://cdc.org/fhir/us/impact/StructureDefinition/all-hospital-beds">
+    <valueInteger value="99"/>
+  </extension>
+  <extension url="http://cdc.org/fhir/us/impact/StructureDefinition/all-adult-hospital-beds">
+    <valueInteger value="85"/>
+  </extension>
+  <extension url="http://cdc.org/fhir/us/impact/StructureDefinition/all-inpatient-beds">
+    <valueInteger value="90"/>
+  </extension>
+  <extension url="http://cdc.org/fhir/us/impact/StructureDefinition/all-adult-inpatient-beds">
+    <valueInteger value="89"/>
+  </extension>
+  <extension url="http://cdc.org/fhir/us/impact/StructureDefinition/all-inpatient-bed-occupancy">
+    <valueInteger value="78"/>
+  </extension>
+  <extension url="http://cdc.org/fhir/us/impact/StructureDefinition/all-adult-inpatient-bed-occupancy">
+    <valueInteger value="75"/>
+  </extension>
+  <extension url="http://cdc.org/fhir/us/impact/StructureDefinition/icu-beds">
+    <valueInteger value="12"/>
+  </extension>
+  <extension url="http://cdc.org/fhir/us/impact/StructureDefinition/icu-adult-beds">
+    <valueInteger value="8"/>
+  </extension>
+  <extension url="http://cdc.org/fhir/us/impact/StructureDefinition/icu-bed-occupancy">
+    <valueInteger value="9"/>
+  </extension>
+  <extension url="http://cdc.org/fhir/us/impact/StructureDefinition/icu-adult-bed-occupancy">
+    <valueInteger value="7"/>
+  </extension>
+  <!-- TODO Need NHSN Org Identifier clarification -->
+  <identifier>
+    <system value=""/>
+    <value value=""/>
+  </identifier>
+  <active value="true"/>
+  <type>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/organization-type"/>
+      <code value="pay"/>
+      <display value="Payer"/>
+    </coding>
+  </type>
+  <name value="Payer Org A"/>
+  <telecom>
+    <system value="phone"/>
+    <value value="(+1) 734-677-7777"/>
+  </telecom>
+  <address>
+    <line value="3300 Washtenaw Avenue, Suite 227"/>
+    <city value="Amherst"/>
+    <state value="MA"/>
+    <postalCode value="01002"/>
+    <country value="USA"/>
+  </address>
+</Organization>

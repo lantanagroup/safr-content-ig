@@ -56,7 +56,8 @@
         or Encounters.class ~ &quot;inpatient acute&quot;
         or Encounters.class ~ &quot;inpatient non-acute&quot;
     )
-	and Encounters.period during &quot;Measurement Period&quot;"></valueString>
+	// &quot;starts during&quot; for encounters that haven't been completed yet (have no Encounter.period.end)
+	and Encounters.period starts during &quot;Measurement Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="0"></valueInteger>
@@ -170,16 +171,16 @@
                <code value="module-definition"></code>
             </coding>
          </type>
-         <date value="2022-02-14T10:17:17-08:00"></date>
+         <date value="2022-02-14T11:30:08-08:00"></date>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library FHIRHelpers"></display>
-            <resource value="http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"></resource>
+            <resource value="http://ecqi.healthit.gov/ecqms/Library/FHIRHelpers|4.0.1"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library Global"></display>
-            <resource value="Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
+            <resource value="http://ecqi.healthit.gov/ecqms/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -225,6 +226,18 @@
             <type value="Encounter"></type>
          </parameter>
          <dataRequirement>
+            <type value="Observation"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
+            <mustSupport value="effective"></mustSupport>
+            <mustSupport value="code"></mustSupport>
+            <mustSupport value="value"></mustSupport>
+            <mustSupport value="status"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
             <type value="Encounter"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
             <mustSupport value="period"></mustSupport>
@@ -250,18 +263,6 @@
             </codeFilter>
          </dataRequirement>
          <dataRequirement>
-            <type value="Observation"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
-            <mustSupport value="effective"></mustSupport>
-            <mustSupport value="code"></mustSupport>
-            <mustSupport value="value"></mustSupport>
-            <mustSupport value="status"></mustSupport>
-            <codeFilter>
-               <path value="code"></path>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"></valueSet>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
             <type value="Patient"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Patient"></profile>
          </dataRequirement>
@@ -283,9 +284,9 @@
       <value value="hypoglycemiaSevereEvent"></value>
    </identifier>
    <version value="0.000.01"></version>
-   <name value="NHSN Glycemic Control, Hypoglycemia Severe Event"></name>
+   <name value="HypoglycemiaSevereEvent"></name>
    <title value="NHSN Glycemic Control, Hypoglycemia Severe Events"></title>
-   <date value="2022-02-14T10:17:17-08:00"></date>
+   <date value="2022-02-14T11:30:08-08:00"></date>
    <description value="Metric 1: The proportion of inpatient encounters of adult patients who were administered or have completed orders for at least one antidiabetic drug (ADD) that preceded a severe hypoglycemic event during the encounter."></description>
    <effectivePeriod>
       <start value="2021-01-01"></start>
@@ -294,12 +295,12 @@
    <relatedArtifact>
       <type value="depends-on"></type>
       <display value="Library FHIRHelpers"></display>
-      <resource value="http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"></resource>
+      <resource value="http://ecqi.healthit.gov/ecqms/Library/FHIRHelpers|4.0.1"></resource>
    </relatedArtifact>
    <relatedArtifact>
       <type value="depends-on"></type>
       <display value="Library Global"></display>
-      <resource value="Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
+      <resource value="http://ecqi.healthit.gov/ecqms/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
    </relatedArtifact>
    <relatedArtifact>
       <type value="depends-on"></type>
@@ -341,7 +342,7 @@
    <definition value="Mild hypoglycemia: Blood glucose 54 mg/dL to 69 mg/dL as identified on central laboratory device (CLD) or prescription point-of-care (POC) device. "></definition>
    <definition value="Moderate hypoglycemia: Blood glucose 40 mg/dL to 53 mg/dL as identified on CLD or prescription POC device. "></definition>
    <definition value="Severe hypoglycemia: Blood glucose &lt; 40 mg/dL as identified on central laboratory device (CLD) or prescription POC device."></definition>
-   <guidance value="• Only the first qualifying severe hypoglycemic event is counted in the numerator, and only one severe hypoglycemic event is counted per encounter. A single patient may contribute to &gt;1 admission if admitted &gt;1 time during the measurement period. • The 24-hour and 5-minute timeframes are based on the time the blood glucose was drawn, as this reflects the time the patient was experiencing that specific blood glucose level. "></guidance>
+   <guidance value="Only the first qualifying severe hypoglycemic event is counted in the numerator, and only one severe hypoglycemic event is counted per encounter. A single patient may contribute to &gt;1 admission if admitted &gt;1 time during the measurement period. • The 24-hour and 5-minute timeframes are based on the time the blood glucose was drawn, as this reflects the time the patient was experiencing that specific blood glucose level."></guidance>
    <group>
       <population>
          <code>

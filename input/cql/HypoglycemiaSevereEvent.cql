@@ -21,7 +21,7 @@ code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
 code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
 
-parameter "Measurement Period" Interval<DateTime>
+parameter "Measurement Period" default Interval(@2020-12-31, @2021-01-02)
 
 context Patient
 
@@ -58,7 +58,8 @@ define "Initial Population":
         or Encounters.class ~ "inpatient acute"
         or Encounters.class ~ "inpatient non-acute"
     )
-	and Encounters.period during "Measurement Period"
+	// "starts during" for encounters that haven't been completed yet (have no Encounter.period.end)
+	and Encounters.period starts during "Measurement Period"
 
 define "Numerator":
 	"Denominator" QualifyingEncounter
