@@ -1,89 +1,389 @@
-<Measure>
-    <id value="HypoglycemiaSevereEvent"/>
-    <url value="http://ecqi.healthi.gov/ecqms/Measure/HypoglycemiaSevereEvent"/>
-    <identifier>
-        <system value="https://nhsnlink.org"/>
-        <value value="hypoglycemiaSevereEvent"/>
-    </identifier>
-    <version value="0.000.01"/>
-    <name value="NHSN Glycemic Control, Hypoglycemia Severe Event"/>
-    <title value="NHSN Glycemic Control, Hypoglycemia Severe Events"/>
-    <description value="Metric 1: The proportion of inpatient encounters of adult patients who were administered or have completed orders for at least one antidiabetic drug (ADD) that preceded a severe hypoglycemic event during the encounter."/>
-    <effectivePeriod>
-        <start value="2021-01-01"/>
-        <end value="2021-12-31"/>
-    </effectivePeriod>
-    <library value="http://ecqi.healthi.gov/ecqms/Library/HypoglycemiaSevereEvent"/>
-    <library value="http://ecqi.healthit.gov/ecqms/Library/MATGlobalCommonFunctionsFHIR4"/>
-    <library value="http://ecqi.healthit.gov/ecqms/Library/FHIRHelpers"/>
-    <library value="http://ecqi.healthit.gov/ecqms/Library/SupplementalDataElementsFHIR4"/>
-    <scoring>
-        <coding>
-            <system value="http://terminology.hl7.org/CodeSystem/measure-scoring"/>
-            <code value="proportion"/>
-            <display value="Proportion"/>
-        </coding>
-    </scoring>
-    <type>
-        <coding>
-            <system value="http://terminology.hl7.org/CodeSystem/measure-type"/>
-            <code value="outcome"/>
-            <display value="Outcome"/>
-        </coding>
-    </type>
-    <rationale value="Inpatient hypoglycemia can be severe and life-threatening and is associated with longer hospital stays and increased medical costs (1-7). The prevalence of inpatient hypoglycemia varies with patient severity, hospital unit, time of episodes, and glycemic threshold. Severe hypoglycemia (&lt;40 mg/dL) occurs in 2%-5% of hospitalized patients with diabetes mellitus (DM) while hypoglycemia &lt;70 mg/dL has been reported in up to 10% of patients in the intensive care unit (8). Patients with DM comprise more than 25% of all U.S. inpatient stays and medication-related hypoglycemic events are common causes of adverse drug events (ADEs) occurring in inpatient settings (9,10). Rates of severe hypoglycemia vary across hospitals, suggesting opportunities for improvement in quality of care of glycemic control. Measurement of medication-related hypoglycemia in a meaningful and standardized way may improve glycemic management (11,12)."/>
-    <definition value="Antidiabetic Drug Days (ADD): Aggregate number of inpatient encounter days within the facility in which at least one injectable or oral ADD was received. All patients who received ADDs during the hospitalization contribute to the denominator regardless of whether the patient experienced a hypoglycemic event. "/>
-    <definition value="Emergency Department (ED) Visit or Observation Status (OBS): ED visit or observation status that ended within an hour of the inpatient admission are included when calculating the start and stop times of the hospitalization. Only Metric 1 includes ED visits and OBS. "/>
-    <definition value="Hypoglycemia Day: An inpatient day with at least one documented hypoglycemia event. "/>
-    <definition value="Hypoglycemia Event includes the following during an inpatient hospitalization: A hypoglycemic blood glucose (BG) result during the encounter and ADD administered within 24 hours prior to the start of the hypoglycemic BG result and no subsequent test for blood glucose with a result > 80 mg/dL within five minutes of the start of the initial low blood glucose test."/>
-    <definition value="Inpatient Encounter: A hospitalization in any inpatient facility that meets the criteria for reporting to the NHSN Glycemic Control Hypoglycemia Module (refer to CDC Locations and Descriptions manual). "/>
-    <definition value="Measurement Period: Encounters start on the first day of each calendar month through the last day of the calendar month. "/>
-    <definition value="Mild hypoglycemia: Blood glucose 54 mg/dL to 69 mg/dL as identified on central laboratory device (CLD) or prescription point-of-care (POC) device. "/>
-    <definition value="Moderate hypoglycemia: Blood glucose 40 mg/dL to 53 mg/dL as identified on CLD or prescription POC device. "/>
-    <definition value="Severe hypoglycemia: Blood glucose < 40 mg/dL as identified on central laboratory device (CLD) or prescription POC device."/>
-    <guidance value="•	Only the first qualifying severe hypoglycemic event is counted in the numerator, and only one severe hypoglycemic event is counted per encounter. A single patient may contribute to &gt;1 admission if admitted &gt;1 time during the measurement period.&#xA;•	The 24-hour and 5-minute timeframes are based on the time the blood glucose was drawn, as this reflects the time the patient was experiencing that specific blood glucose level.&#xA;"/>
-    <group>
-        <population>
-            <code>
-                <coding>
-                    <system value="http://terminology.hl7.org/CodeSystem/measure-population"/>
-                    <code value="initial-population"/>
-                    <display value="Initial Population"/>
-                </coding>
-            </code>
-            <description value="Adult Inpatient Encounters"/>
-            <criteria>
-                <language value="text/cql.identifier"/>
-                <expression value="Initial Population"/>
-            </criteria>
-        </population>
-        <population>
-            <code>
-                <coding>
-                    <system value="http://terminology.hl7.org/CodeSystem/measure-population"/>
-                    <code value="numerator"/>
-                    <display value="Numerator"/>
-                </coding>
-            </code>
-            <description value="Inpatient encounters with a severe hypoglycemic event during the encounter"/>
-            <criteria>
-                <language value="text/cql.identifier"/>
-                <expression value="Numerator"/>
-            </criteria>
-        </population>
-        <population>
-            <code>
-                <coding>
-                    <system value="http://terminology.hl7.org/CodeSystem/measure-population"/>
-                    <code value="denominator"/>
-                    <display value="Denominator"/>
-                </coding>
-            </code>
-            <description value="Inpatient encounters where the patient is ≥18 years of age or older at the start of the encounter, and at least one ADD was administered during the encounter. The measure includes instances of administration of hypoglycemic medications in the emergency department or in observation status at the start of an inpatient hospitalization when assessing inclusion of encounters in the measure denominator"/>
-            <criteria>
-                <language value="text/cql.identifier"/>
-                <expression value="Denominator"/>
-            </criteria>
-        </population>
-    </group>
+<Measure xmlns="http://hl7.org/fhir">
+   <id value="HypoglycemiaSevereEvent"></id>
+   <meta>
+      <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm"></profile>
+   </meta>
+   <contained>
+      <Library xmlns="http://hl7.org/fhir">
+         <id value="effective-data-requirements"></id>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+               <code value="IMP"></code>
+               <display value="inpatient encounter"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+               <code value="ACUTE"></code>
+               <display value="inpatient acute"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+               <code value="NONAC"></code>
+               <display value="inpatient non-acute"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+               <code value="OBSENC"></code>
+               <display value="observation encounter"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+               <code value="EMER"></code>
+               <display value="emergency"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HypoglycemiaSevereEvent"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Initial Population&quot;:
+	[Encounter] Encounters
+    where (
+    	Encounters.class ~ &quot;inpatient encounter&quot;
+        or Encounters.class ~ &quot;inpatient acute&quot;
+        or Encounters.class ~ &quot;inpatient non-acute&quot;
+    )
+	and Encounters.period during &quot;Measurement Period&quot;"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="0"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HypoglycemiaSevereEvent"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Antidiabetic Drugs Administered or Ordered"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Antidiabetic Drugs Administered or Ordered&quot;:
+	([MedicationAdministration: &quot;Antidiabetic Drugs&quot;] ADDMedAdmin
+    	where ADDMedAdmin.status ~ 'completed'
+	)
+	union [MedicationRequest: &quot;Antidiabetic Drugs&quot;] ADDMedRequest"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="1"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HypoglycemiaSevereEvent"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Denominator"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Denominator&quot;:
+	&quot;Initial Population&quot; InitialPopulation
+    with &quot;Antidiabetic Drugs Administered or Ordered&quot; ADD
+    	such that Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn)
+        	during &quot;HospitalizationWithObservation&quot;(InitialPopulation)
+		and &quot;AgeInYearsAt&quot;(start of InitialPopulation.period) &gt;= 18"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="2"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HypoglycemiaSevereEvent"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Blood Glucose Test Greater Than 80"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Blood Glucose Test Greater Than 80&quot;:
+	[Observation: &quot;Blood Glucose Laboratory Tests&quot;] FollowupBloodGlucoseLab
+    where ( FollowupBloodGlucoseLab.status = 'final'
+           or FollowupBloodGlucoseLab.status = 'amended'
+          )
+	and FollowupBloodGlucoseLab.value &gt; 80 'mg/dL'"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="3"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HypoglycemiaSevereEvent"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="First Severe Hypoglycemic Event"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;First Severe Hypoglycemic Event&quot;:
+	First([&quot;Observation&quot;: &quot;Blood Glucose Laboratory Tests&quot;] BloodGlucoseLab
+    	with &quot;Antidiabetic Drugs Administered or Ordered&quot; ADDMeds
+    	such that Global.&quot;Normalize Interval&quot;(ADDMeds.effective)starts 24 
+			hours or less on or before start of Global.&quot;Normalize Interval&quot;(BloodGlucoseLab.effective)
+        and(
+            BloodGlucoseLab.status = 'final'
+            or BloodGlucoseLab.status = 'amended'
+        )
+        and BloodGlucoseLab.status != 'cancelled'
+        and BloodGlucoseLab.value &lt; 40 'mg/dL'
+        and not exists &quot;Blood Glucose Test Greater Than 80&quot; FollowupBloodGlucoseLab
+            where Global.&quot;Normalize Interval&quot;(FollowupBloodGlucoseLab.effective) starts 
+            5 minutes or less after start of Global.&quot;Normalize Interval&quot;(BloodGlucoseLab.effective)
+	)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="4"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HypoglycemiaSevereEvent"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Numerator"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Numerator&quot;:
+	&quot;Denominator&quot; QualifyingEncounter
+    with &quot;First Severe Hypoglycemic Event&quot; FirstSevereEvent
+    such thatFirstSevereEvent.effective during QualifyingEncounter.period"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="5"></valueInteger>
+            </extension>
+         </extension>
+         <status value="active"></status>
+         <type>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/library-type"></system>
+               <code value="module-definition"></code>
+            </coding>
+         </type>
+         <date value="2022-02-14T10:17:17-08:00"></date>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Library FHIRHelpers"></display>
+            <resource value="http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Library Global"></display>
+            <resource value="Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Code system ActCode"></display>
+            <resource value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Antidiabetic Drugs"></display>
+            <resource value="https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.266"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Blood Glucose Laboratory Tests"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"></resource>
+         </relatedArtifact>
+         <parameter>
+            <name value="Measurement Period"></name>
+            <use value="in"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="Period"></type>
+         </parameter>
+         <parameter>
+            <name value="Numerator"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Encounter"></type>
+         </parameter>
+         <parameter>
+            <name value="Denominator"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Encounter"></type>
+         </parameter>
+         <parameter>
+            <name value="Initial Population"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Encounter"></type>
+         </parameter>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="period"></mustSupport>
+            <mustSupport value="class"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="MedicationAdministration"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationAdministration"></profile>
+            <mustSupport value="medication"></mustSupport>
+            <mustSupport value="status"></mustSupport>
+            <codeFilter>
+               <path value="medication"></path>
+               <valueSet value="https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.266"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="MedicationRequest"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"></profile>
+            <mustSupport value="medication"></mustSupport>
+            <codeFilter>
+               <path value="medication"></path>
+               <valueSet value="https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.266"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Observation"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
+            <mustSupport value="effective"></mustSupport>
+            <mustSupport value="code"></mustSupport>
+            <mustSupport value="value"></mustSupport>
+            <mustSupport value="status"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Patient"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Patient"></profile>
+         </dataRequirement>
+      </Library>
+   </contained>
+   <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem">
+      <valueReference>
+         <reference value="Device/cqf-tooling"></reference>
+      </valueReference>
+   </extension>
+   <extension id="effective-data-requirements" url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-effectiveDataRequirements">
+      <valueReference>
+         <reference value="#effective-data-requirements"></reference>
+      </valueReference>
+   </extension>
+   <url value="http://ecqi.healthit.gov/ecqms/Measure/HypoglycemiaSevereEvent"></url>
+   <identifier>
+      <system value="https://nhsnlink.org"></system>
+      <value value="hypoglycemiaSevereEvent"></value>
+   </identifier>
+   <version value="0.000.01"></version>
+   <name value="NHSN Glycemic Control, Hypoglycemia Severe Event"></name>
+   <title value="NHSN Glycemic Control, Hypoglycemia Severe Events"></title>
+   <date value="2022-02-14T10:17:17-08:00"></date>
+   <description value="Metric 1: The proportion of inpatient encounters of adult patients who were administered or have completed orders for at least one antidiabetic drug (ADD) that preceded a severe hypoglycemic event during the encounter."></description>
+   <effectivePeriod>
+      <start value="2021-01-01"></start>
+      <end value="2021-12-31"></end>
+   </effectivePeriod>
+   <relatedArtifact>
+      <type value="depends-on"></type>
+      <display value="Library FHIRHelpers"></display>
+      <resource value="http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"></resource>
+   </relatedArtifact>
+   <relatedArtifact>
+      <type value="depends-on"></type>
+      <display value="Library Global"></display>
+      <resource value="Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
+   </relatedArtifact>
+   <relatedArtifact>
+      <type value="depends-on"></type>
+      <display value="Code system ActCode"></display>
+      <resource value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></resource>
+   </relatedArtifact>
+   <relatedArtifact>
+      <type value="depends-on"></type>
+      <display value="Value set Antidiabetic Drugs"></display>
+      <resource value="https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.266"></resource>
+   </relatedArtifact>
+   <relatedArtifact>
+      <type value="depends-on"></type>
+      <display value="Value set Blood Glucose Laboratory Tests"></display>
+      <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"></resource>
+   </relatedArtifact>
+   <library value="http://ecqi.healthit.gov/ecqms/Library/HypoglycemiaSevereEvent"></library>
+   <scoring>
+      <coding>
+         <system value="http://terminology.hl7.org/CodeSystem/measure-scoring"></system>
+         <code value="proportion"></code>
+         <display value="Proportion"></display>
+      </coding>
+   </scoring>
+   <type>
+      <coding>
+         <system value="http://terminology.hl7.org/CodeSystem/measure-type"></system>
+         <code value="outcome"></code>
+         <display value="Outcome"></display>
+      </coding>
+   </type>
+   <rationale value="Inpatient hypoglycemia can be severe and life-threatening and is associated with longer hospital stays and increased medical costs (1-7). The prevalence of inpatient hypoglycemia varies with patient severity, hospital unit, time of episodes, and glycemic threshold. Severe hypoglycemia (&lt;40 mg/dL) occurs in 2%-5% of hospitalized patients with diabetes mellitus (DM) while hypoglycemia &lt;70 mg/dL has been reported in up to 10% of patients in the intensive care unit (8). Patients with DM comprise more than 25% of all U.S. inpatient stays and medication-related hypoglycemic events are common causes of adverse drug events (ADEs) occurring in inpatient settings (9,10). Rates of severe hypoglycemia vary across hospitals, suggesting opportunities for improvement in quality of care of glycemic control. Measurement of medication-related hypoglycemia in a meaningful and standardized way may improve glycemic management (11,12)."></rationale>
+   <definition value="Antidiabetic Drug Days (ADD): Aggregate number of inpatient encounter days within the facility in which at least one injectable or oral ADD was received. All patients who received ADDs during the hospitalization contribute to the denominator regardless of whether the patient experienced a hypoglycemic event. "></definition>
+   <definition value="Emergency Department (ED) Visit or Observation Status (OBS): ED visit or observation status that ended within an hour of the inpatient admission are included when calculating the start and stop times of the hospitalization. Only Metric 1 includes ED visits and OBS. "></definition>
+   <definition value="Hypoglycemia Day: An inpatient day with at least one documented hypoglycemia event. "></definition>
+   <definition value="Hypoglycemia Event includes the following during an inpatient hospitalization: A hypoglycemic blood glucose (BG) result during the encounter and ADD administered within 24 hours prior to the start of the hypoglycemic BG result and no subsequent test for blood glucose with a result &gt; 80 mg/dL within five minutes of the start of the initial low blood glucose test."></definition>
+   <definition value="Inpatient Encounter: A hospitalization in any inpatient facility that meets the criteria for reporting to the NHSN Glycemic Control Hypoglycemia Module (refer to CDC Locations and Descriptions manual). "></definition>
+   <definition value="Measurement Period: Encounters start on the first day of each calendar month through the last day of the calendar month. "></definition>
+   <definition value="Mild hypoglycemia: Blood glucose 54 mg/dL to 69 mg/dL as identified on central laboratory device (CLD) or prescription point-of-care (POC) device. "></definition>
+   <definition value="Moderate hypoglycemia: Blood glucose 40 mg/dL to 53 mg/dL as identified on CLD or prescription POC device. "></definition>
+   <definition value="Severe hypoglycemia: Blood glucose &lt; 40 mg/dL as identified on central laboratory device (CLD) or prescription POC device."></definition>
+   <guidance value="• Only the first qualifying severe hypoglycemic event is counted in the numerator, and only one severe hypoglycemic event is counted per encounter. A single patient may contribute to &gt;1 admission if admitted &gt;1 time during the measurement period. • The 24-hour and 5-minute timeframes are based on the time the blood glucose was drawn, as this reflects the time the patient was experiencing that specific blood glucose level. "></guidance>
+   <group>
+      <population>
+         <code>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/measure-population"></system>
+               <code value="initial-population"></code>
+               <display value="Initial Population"></display>
+            </coding>
+         </code>
+         <description value="Adult Inpatient Encounters"></description>
+         <criteria>
+            <language value="text/cql.identifier"></language>
+            <expression value="Initial Population"></expression>
+         </criteria>
+      </population>
+      <population>
+         <code>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/measure-population"></system>
+               <code value="numerator"></code>
+               <display value="Numerator"></display>
+            </coding>
+         </code>
+         <description value="Inpatient encounters with a severe hypoglycemic event during the encounter"></description>
+         <criteria>
+            <language value="text/cql.identifier"></language>
+            <expression value="Numerator"></expression>
+         </criteria>
+      </population>
+      <population>
+         <code>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/measure-population"></system>
+               <code value="denominator"></code>
+               <display value="Denominator"></display>
+            </coding>
+         </code>
+         <description value="Inpatient encounters where the patient is ≥18 years of age or older at the start of the encounter, and at least one ADD was administered during the encounter. The measure includes instances of administration of hypoglycemic medications in the emergency department or in observation status at the start of an inpatient hospitalization when assessing inclusion of encounters in the measure denominator"></description>
+         <criteria>
+            <language value="text/cql.identifier"></language>
+            <expression value="Denominator"></expression>
+         </criteria>
+      </population>
+   </group>
 </Measure>

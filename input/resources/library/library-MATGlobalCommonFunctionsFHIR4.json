@@ -1,6 +1,6 @@
 {
   "resourceType": "Library",
-  "id": "library-MATGlobalCommonFunctionsFHIR4",
+  "id": "MATGlobalCommonFunctionsFHIR4",
   "extension": [ {
     "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem",
     "valueReference": {
@@ -87,21 +87,6 @@
     "type": "Encounter"
   } ],
   "dataRequirement": [ {
-    "type": "Condition",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "id" ]
-  }, {
-    "type": "Provenance",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Provenance" ],
-    "mustSupport": [ "target" ],
-    "codeFilter": [ {
-      "path": "target"
-    } ]
-  }, {
-    "type": "Location",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
-    "mustSupport": [ "id" ]
-  }, {
     "type": "Encounter",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
     "mustSupport": [ "period", "type", "status" ],
@@ -128,6 +113,21 @@
   }, {
     "type": "Patient",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ]
+  }, {
+    "type": "Location",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
+    "mustSupport": [ "id" ]
+  }, {
+    "type": "Condition",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
+    "mustSupport": [ "id" ]
+  }, {
+    "type": "Provenance",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Provenance" ],
+    "mustSupport": [ "target" ],
+    "codeFilter": [ {
+      "path": "target"
+    } ]
   } ],
   "content": [ {
     "contentType": "text/cql",

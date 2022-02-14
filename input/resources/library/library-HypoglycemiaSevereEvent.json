@@ -1,13 +1,13 @@
 {
   "resourceType": "Library",
-  "id": "library-HypoglycemiaSevereEvent",
+  "id": "HypoglycemiaSevereEvent",
   "extension": [ {
     "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem",
     "valueReference": {
       "reference": "Device/cqf-tooling"
     }
   } ],
-  "url": "http://fhir.org/guides/cqf/ccc/Library/HypoglycemiaSevereEvent",
+  "url": "http://ecqi.healthit.gov/ecqms/Library/HypoglycemiaSevereEvent",
   "version": "1.0.0",
   "name": "HypoglycemiaSevereEvent",
   "relatedArtifact": [ {
@@ -215,27 +215,8 @@
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ],
     "mustSupport": [ "identifier", "extension", "address", "deceased", "gender", "value", "url" ]
   }, {
-    "type": "MedicationRequest",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationRequest" ]
-  }, {
-    "type": "MedicationRequest",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationRequest" ],
-    "mustSupport": [ "medication" ],
-    "codeFilter": [ {
-      "path": "medication",
-      "valueSet": "https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.266"
-    } ]
-  }, {
-    "type": "MedicationAdministration",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationAdministration" ]
-  }, {
-    "type": "MedicationAdministration",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationAdministration" ],
-    "mustSupport": [ "medication", "status" ],
-    "codeFilter": [ {
-      "path": "medication",
-      "valueSet": "https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.266"
-    } ]
+    "type": "Observation",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Observation" ]
   }, {
     "type": "Observation",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Observation" ],
@@ -245,8 +226,42 @@
       "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"
     } ]
   }, {
-    "type": "Observation",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Observation" ]
+    "type": "Condition",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ]
+  }, {
+    "type": "Encounter",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
+    "mustSupport": [ "type" ],
+    "codeFilter": [ {
+      "path": "type",
+      "valueSet": "http://terminology.hl7.org/ValueSet/encounter-discharge-disposition"
+    } ]
+  }, {
+    "type": "Encounter",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
+    "mustSupport": [ "period", "diagnosis", "location", "class" ]
+  }, {
+    "type": "MedicationAdministration",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationAdministration" ],
+    "mustSupport": [ "medication", "status" ],
+    "codeFilter": [ {
+      "path": "medication",
+      "valueSet": "https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.266"
+    } ]
+  }, {
+    "type": "MedicationAdministration",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationAdministration" ]
+  }, {
+    "type": "MedicationRequest",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationRequest" ],
+    "mustSupport": [ "medication" ],
+    "codeFilter": [ {
+      "path": "medication",
+      "valueSet": "https://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.266"
+    } ]
+  }, {
+    "type": "MedicationRequest",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationRequest" ]
   }, {
     "type": "Location",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
@@ -258,21 +273,6 @@
     "codeFilter": [ {
       "path": "type",
       "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"
-    } ]
-  }, {
-    "type": "Condition",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ]
-  }, {
-    "type": "Encounter",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
-    "mustSupport": [ "period", "diagnosis", "location", "class" ]
-  }, {
-    "type": "Encounter",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
-    "mustSupport": [ "type" ],
-    "codeFilter": [ {
-      "path": "type",
-      "valueSet": "http://terminology.hl7.org/ValueSet/encounter-discharge-disposition"
     } ]
   }, {
     "type": "ServiceRequest",
