@@ -20,10 +20,10 @@
     <code>
       <coding>
         <system value="http://loinc.org"/>
-        <code value="94764-8"/>
-        <display value="SARS coronavirus 2 whole genome [Nucleotide sequence] in Isolate by Sequencing"/>
+        <code value="10449-7"/>
+        <display value="Glucose [Mass/volume] in Serum or Plasma --1 hour post meal"/>
       </coding>
-      <text value="SARS coronavirus 2 whole genome [Nucleotide sequence] in Isolate by Sequencing"/>
+      <text value="Glucose [Mass/volume] in Serum or Plasma --1 hour post meal"/>
     </code>
     <subject>
       <reference value="Patient/hypo-metric1-patient1"/>
@@ -35,12 +35,8 @@
     </encounter>
     <effectiveDateTime value="2021-01-03"/>
     <issued value="2021-01-03"/>
-    <valueCodeableConcept>
-      <coding>
-        <system value="http://snomed.info/sct"/>
-        <code value="10828004"/>
-        <display value="(Positive)"/>
-      </coding>
-      <text value="(SARS-CoV-2 Detected)"/>
-    </valueCodeableConcept>
+    <valueQuantity>
+      <value value="35"/>
+      <unit value="mg/dL"/>
+    </valueQuantity>
 </Observation>

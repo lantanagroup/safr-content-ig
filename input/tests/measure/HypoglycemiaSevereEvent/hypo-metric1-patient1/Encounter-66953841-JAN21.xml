@@ -98,7 +98,7 @@
       <text value="Admitting Physician" />
     </type>
     <period>
-      <start value="2021-01-03T05:00:00.000Z" />
+      <start value="2021-01-03" />
     </period>
     <!--<individual>
                         <reference value="Practitioner/11817978-JAN21"/>

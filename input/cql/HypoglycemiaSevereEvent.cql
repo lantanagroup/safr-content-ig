@@ -64,12 +64,12 @@ define "Initial Population":
 define "Numerator":
 	"Denominator" QualifyingEncounter
     with "First Severe Hypoglycemic Event" FirstSevereEvent
-    such thatFirstSevereEvent.effective during QualifyingEncounter.period 
+    such that Global."Normalize Interval"(FirstSevereEvent.effective) during QualifyingEncounter.period 
 
 define "First Severe Hypoglycemic Event":
 	First(["Observation": "Blood Glucose Laboratory Tests"] BloodGlucoseLab
     	with "Antidiabetic Drugs Administered or Ordered" ADDMeds
-    	such that Global."Normalize Interval"(ADDMeds.effective)starts 24 
+    	such that Coalesce(start of Global."Normalize Interval"(ADDMeds.effective), ADDMeds.authoredOn) 24 
 			hours or less on or before start of Global."Normalize Interval"(BloodGlucoseLab.effective)
         and (
             BloodGlucoseLab.status = 'final'
