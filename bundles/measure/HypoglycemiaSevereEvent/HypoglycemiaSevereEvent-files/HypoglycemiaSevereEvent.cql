@@ -21,7 +21,7 @@ code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
 code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
 
-parameter "Measurement Period" default Interval(@2022-01-01, @2022-12-31)
+parameter "Measurement Period" default Interval(@2020-12-31, @2021-01-02)
 
 context Patient
 
@@ -64,14 +64,14 @@ define "Initial Population":
 define "Numerator":
 	"Denominator" QualifyingEncounter
     with "First Severe Hypoglycemic Event" FirstSevereEvent
-    such that Global."Normalize Interval"(FirstSevereEvent.effective) during QualifyingEncounter.period 
+    such thatFirstSevereEvent.effective during QualifyingEncounter.period 
 
 define "First Severe Hypoglycemic Event":
 	First(["Observation": "Blood Glucose Laboratory Tests"] BloodGlucoseLab
     	with "Antidiabetic Drugs Administered or Ordered" ADDMeds
-    	such that Coalesce(start of Global."Normalize Interval"(ADDMeds.effective), ADDMeds.authoredOn) 24 
+    	such that Global."Normalize Interval"(ADDMeds.effective)starts 24 
 			hours or less on or before start of Global."Normalize Interval"(BloodGlucoseLab.effective)
-        and (
+        and(
             BloodGlucoseLab.status = 'final'
             or BloodGlucoseLab.status = 'amended'
         )
@@ -91,78 +91,62 @@ define "Blood Glucose Test Greater Than 80":
     
 // Supplemental Data Definitions
 define "SDE Condition":
-	[Condition] Conditions where exists("Initial Population")
+	[Condition]
 
 define "SDE Chief Complaint":
 	[Encounter] TheEncounter
-    where TheEncounter.diagnosis.use in "Chief Complaint" 
-		and exists("Initial Population")
+    where TheEncounter.diagnosis.use in "Chief Complaint"
 
 define "SDE Encounter Locations":
 	[Encounter] Encounter
-   	where Global."GetLocation"(Encounter.location.location[0]).type in "CDC Location Codes" 
-   		and exists("Initial Population")
+   where Global."GetLocation"(Encounter.location.location[0]).type in "CDC Location Codes"
 		
 define "SDE Encounter Discharge Dispositions":
-	[Encounter: "Discharge Disposition"] DischargeDispositions 
-	where exists("Initial Population")
+	[Encounter: "Discharge Disposition"]
 
 define "SDE Ethnicity":
-	SDE."SDE Ethnicity" Ethnicity
-	where exists("Initial Population")
+	SDE."SDE Ethnicity"
 
 define "SDE Gender Identity":
 	[Patient] Patient
-    where Patient.gender in "Gender Identity" 
-		and exists("Initial Population")
+    where Patient.gender in "Gender Identity"
 
 define "SDE Locations":
 	[Location] Locations
-    where Locations.type in "CDC Location Codes" 
-		and exists("Initial Population")
+    where Locations.type in "CDC Location Codes"
 
 define "SDE Medication Administration":
-	[MedicationAdministration] MedicationAdministrations
-	where exists("Initial Population")
+	[MedicationAdministration]
 
 define "SDE Medication Request":
-	[MedicationRequest] MedicationRequests
-	where exists("Initial Population")
+	[MedicationRequest]
 
 define "SDE Observation":
-	[Observation] Observations 
-	where exists("Initial Population")
+	[Observation]
 
 define "SDE Patient Death Date": 
-	[Patient] Patient
-	where Patient.deceased is FHIR.dateTime 
-		and exists("Initial Population")
-	return Patient.deceased as FHIR.dateTime  
+     [Patient] Patient
+	 where Patient.deceased is FHIR.dateTime
+     return Patient.deceased as FHIR.dateTime  
 
 define "SDE Payer": 
-	SDE."SDE Payer" Payers
-	where exists("Initial Population")
+	SDE."SDE Payer"
 
 define "SDE Patient ID": 
-    [Patient] Patients
-	where exists("Initial Population")
-    return Patients.identifier
+   [Patient] Patient
+     return Patient.identifier
 
 define "SDE Race":
-	SDE."SDE Race" Race 
-	where exists("Initial Population")
+	SDE."SDE Race" 
 
 define "SDE Service Request":
 	[ServiceRequest: "Blood Glucose Laboratory Tests"] ServiceRequest
       where ServiceRequest.intent ~ 'order'
 		and ServiceRequest.status ~ 'completed'
-		and exists("Initial Population")
 
 define "SDE Sex":
-	SDE."SDE Sex" Sex
-	where exists("Initial Population")
+	SDE."SDE Sex"
 
-define "SDE Zip Code": 
-	[Patient] Patients 
-	where exists("Initial Population")
-    return Patients.address.postalCode
+define "Zip Code": 
+	[Patient] Patient
+    return Patient.address.postalCode

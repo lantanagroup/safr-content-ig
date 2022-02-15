@@ -1,6 +1,0 @@
-Running tests.
-No tests found at /workspaces/nhsn-measures/input/tests. Evaluation may fail if data is required.
-No terminology found at /workspaces/nhsn-measures/input/vocabulary/valueset. Evaluation may fail if terminology is required.
-
-elapsed: -0.522 seconds
-
