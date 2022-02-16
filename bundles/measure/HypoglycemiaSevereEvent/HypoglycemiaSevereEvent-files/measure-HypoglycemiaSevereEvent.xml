@@ -130,9 +130,9 @@
                <valueString value="define &quot;First Severe Hypoglycemic Event&quot;:
 	First([&quot;Observation&quot;: &quot;Blood Glucose Laboratory Tests&quot;] BloodGlucoseLab
     	with &quot;Antidiabetic Drugs Administered or Ordered&quot; ADDMeds
-    	such that Global.&quot;Normalize Interval&quot;(ADDMeds.effective)starts 24 
+    	such that Coalesce(start of Global.&quot;Normalize Interval&quot;(ADDMeds.effective), ADDMeds.authoredOn) 24 
 			hours or less on or before start of Global.&quot;Normalize Interval&quot;(BloodGlucoseLab.effective)
-        and(
+        and (
             BloodGlucoseLab.status = 'final'
             or BloodGlucoseLab.status = 'amended'
         )
@@ -158,7 +158,7 @@
                <valueString value="define &quot;Numerator&quot;:
 	&quot;Denominator&quot; QualifyingEncounter
     with &quot;First Severe Hypoglycemic Event&quot; FirstSevereEvent
-    such thatFirstSevereEvent.effective during QualifyingEncounter.period"></valueString>
+    such that Global.&quot;Normalize Interval&quot;(FirstSevereEvent.effective) during QualifyingEncounter.period"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="5"></valueInteger>
@@ -171,7 +171,7 @@
                <code value="module-definition"></code>
             </coding>
          </type>
-         <date value="2022-02-14T14:18:10-08:00"></date>
+         <date value="2022-02-15T22:57:06-05:00"></date>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library FHIRHelpers"></display>
@@ -245,16 +245,6 @@
             </codeFilter>
          </dataRequirement>
          <dataRequirement>
-            <type value="Encounter"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
-            <mustSupport value="period"></mustSupport>
-            <mustSupport value="class"></mustSupport>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Patient"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Patient"></profile>
-         </dataRequirement>
-         <dataRequirement>
             <type value="Observation"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
             <mustSupport value="effective"></mustSupport>
@@ -265,6 +255,16 @@
                <path value="code"></path>
                <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"></valueSet>
             </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="period"></mustSupport>
+            <mustSupport value="class"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Patient"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Patient"></profile>
          </dataRequirement>
       </Library>
    </contained>
@@ -286,7 +286,7 @@
    <version value="0.000.01"></version>
    <name value="HypoglycemiaSevereEvent"></name>
    <title value="NHSN Glycemic Control, Hypoglycemia Severe Events"></title>
-   <date value="2022-02-14T14:18:10-08:00"></date>
+   <date value="2022-02-15T19:57:06-08:00"></date>
    <description value="Metric 1: The proportion of inpatient encounters of adult patients who were administered or have completed orders for at least one antidiabetic drug (ADD) that preceded a severe hypoglycemic event during the encounter."></description>
    <effectivePeriod>
       <start value="2021-01-01"></start>

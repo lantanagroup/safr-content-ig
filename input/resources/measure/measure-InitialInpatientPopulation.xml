@@ -1,5 +1,5 @@
 <Measure xmlns="http://hl7.org/fhir">
-   <id value="HypoglycemiaSevereEvent"></id>
+   <id value="InitialInpatientPopluation"></id>
    <meta>
       <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm"></profile>
    </meta>
@@ -27,37 +27,18 @@
                <display value="inpatient non-acute"></display>
             </valueCoding>
          </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
-            <valueCoding>
-               <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-               <code value="OBSENC"></code>
-               <display value="observation encounter"></display>
-            </valueCoding>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
-            <valueCoding>
-               <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-               <code value="EMER"></code>
-               <display value="emergency"></display>
-            </valueCoding>
-         </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="HypoglycemiaSevereEvent"></valueString>
+               <valueString value="InitialInpatientPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="Initial Population"></valueString>
+               <valueString value="Antidiabetic Drugs Administered or Ordered"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Initial Population&quot;:
-	[Encounter] Encounters
-    where (
-    	Encounters.class ~ &quot;inpatient encounter&quot;
-        or Encounters.class ~ &quot;inpatient acute&quot;
-        or Encounters.class ~ &quot;inpatient non-acute&quot;
-    )
-	// &quot;starts during&quot; for encounters that haven't been completed yet (have no Encounter.period.end)
-	and Encounters.period starts during &quot;Measurement Period&quot;"></valueString>
+               <valueString value="define &quot;Antidiabetic Drugs Administered or Ordered&quot;:
+  ([MedicationAdministration: &quot;NHSN Hypoglycemia Drugs&quot;] ADDMedAdmin
+    where ADDMedAdmin.status ~ 'completed')
+  union [MedicationRequest: &quot;NHSN Hypoglycemia Drugs&quot;]"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="0"></valueInteger>
@@ -65,103 +46,24 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="HypoglycemiaSevereEvent"></valueString>
+               <valueString value="InitialInpatientPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="Antidiabetic Drugs Administered or Ordered"></valueString>
+               <valueString value="Initial Inpatient Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Antidiabetic Drugs Administered or Ordered&quot;:
-	([MedicationAdministration: &quot;NHSN Hypoglycemia Drugs&quot;] ADDMedAdmin
-    	where ADDMedAdmin.status ~ 'completed'
-	)
-	union [MedicationRequest: &quot;NHSN Hypoglycemia Drugs&quot;] ADDMedRequest"></valueString>
+               <valueString value="define &quot;Initial Inpatient Population&quot;:
+  [Encounter] Encounters
+  with &quot;Antidiabetic Drugs Administered or Ordered&quot; ADD
+  such that Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn)
+    during &quot;HospitalizationWithObservation&quot;(Encounters)
+    and Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn) during &quot;Measurement Period&quot;
+  where (Encounters.class ~ &quot;inpatient encounter&quot;
+    or Encounters.class ~ &quot;inpatient acute&quot;
+    or Encounters.class ~ &quot;inpatient non-acute&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="1"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="HypoglycemiaSevereEvent"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="Denominator"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;Denominator&quot;:
-	&quot;Initial Population&quot; InitialPopulation
-    with &quot;Antidiabetic Drugs Administered or Ordered&quot; ADD
-    	such that Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn)
-        	during &quot;HospitalizationWithObservation&quot;(InitialPopulation)
-		and &quot;AgeInYearsAt&quot;(start of InitialPopulation.period) &gt;= 18"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="2"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="HypoglycemiaSevereEvent"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="Blood Glucose Test Greater Than 80"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;Blood Glucose Test Greater Than 80&quot;:
-	[Observation: &quot;Blood Glucose Laboratory Tests&quot;] FollowupBloodGlucoseLab
-    where ( FollowupBloodGlucoseLab.status = 'final'
-           or FollowupBloodGlucoseLab.status = 'amended'
-          )
-	and FollowupBloodGlucoseLab.value &gt; 80 'mg/dL'"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="3"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="HypoglycemiaSevereEvent"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="First Severe Hypoglycemic Event"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;First Severe Hypoglycemic Event&quot;:
-	First([&quot;Observation&quot;: &quot;Blood Glucose Laboratory Tests&quot;] BloodGlucoseLab
-    	with &quot;Antidiabetic Drugs Administered or Ordered&quot; ADDMeds
-    	such that Coalesce(start of Global.&quot;Normalize Interval&quot;(ADDMeds.effective), ADDMeds.authoredOn) 24 
-			hours or less on or before start of Global.&quot;Normalize Interval&quot;(BloodGlucoseLab.effective)
-        and (
-            BloodGlucoseLab.status = 'final'
-            or BloodGlucoseLab.status = 'amended'
-        )
-        and BloodGlucoseLab.status != 'cancelled'
-        and BloodGlucoseLab.value &lt; 40 'mg/dL'
-        and not exists &quot;Blood Glucose Test Greater Than 80&quot; FollowupBloodGlucoseLab
-            where Global.&quot;Normalize Interval&quot;(FollowupBloodGlucoseLab.effective) starts 
-            5 minutes or less after start of Global.&quot;Normalize Interval&quot;(BloodGlucoseLab.effective)
-	)"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="4"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="HypoglycemiaSevereEvent"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="Numerator"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;Numerator&quot;:
-	&quot;Denominator&quot; QualifyingEncounter
-    with &quot;First Severe Hypoglycemic Event&quot; FirstSevereEvent
-    such that Global.&quot;Normalize Interval&quot;(FirstSevereEvent.effective) during QualifyingEncounter.period"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="5"></valueInteger>
             </extension>
          </extension>
          <status value="active"></status>
@@ -192,11 +94,6 @@
             <display value="Value set NHSN Hypoglycemia Drugs"></display>
             <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58"></resource>
          </relatedArtifact>
-         <relatedArtifact>
-            <type value="depends-on"></type>
-            <display value="Value set Blood Glucose Laboratory Tests"></display>
-            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"></resource>
-         </relatedArtifact>
          <parameter>
             <name value="Measurement Period"></name>
             <use value="in"></use>
@@ -205,21 +102,7 @@
             <type value="Period"></type>
          </parameter>
          <parameter>
-            <name value="Numerator"></name>
-            <use value="out"></use>
-            <min value="0"></min>
-            <max value="*"></max>
-            <type value="Encounter"></type>
-         </parameter>
-         <parameter>
-            <name value="Denominator"></name>
-            <use value="out"></use>
-            <min value="0"></min>
-            <max value="*"></max>
-            <type value="Encounter"></type>
-         </parameter>
-         <parameter>
-            <name value="Initial Population"></name>
+            <name value="Initial Inpatient Population"></name>
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
@@ -245,15 +128,12 @@
             </codeFilter>
          </dataRequirement>
          <dataRequirement>
-            <type value="Observation"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
-            <mustSupport value="effective"></mustSupport>
-            <mustSupport value="code"></mustSupport>
-            <mustSupport value="value"></mustSupport>
-            <mustSupport value="status"></mustSupport>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="period"></mustSupport>
+            <mustSupport value="class"></mustSupport>
             <codeFilter>
-               <path value="code"></path>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"></valueSet>
+               <path value="class"></path>
             </codeFilter>
          </dataRequirement>
          <dataRequirement>
@@ -261,10 +141,14 @@
             <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
             <mustSupport value="period"></mustSupport>
             <mustSupport value="class"></mustSupport>
+            <codeFilter>
+               <path value="class"></path>
+            </codeFilter>
          </dataRequirement>
          <dataRequirement>
-            <type value="Patient"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Patient"></profile>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="class"></mustSupport>
          </dataRequirement>
       </Library>
    </contained>
@@ -278,16 +162,16 @@
          <reference value="#effective-data-requirements"></reference>
       </valueReference>
    </extension>
-   <url value="http://ecqi.healthit.gov/ecqms/Measure/HypoglycemiaSevereEvent"></url>
+   <url value="http://ecqi.healthit.gov/ecqms/Measure/InitialInpatientPopulation"></url>
    <identifier>
       <system value="https://nhsnlink.org"></system>
-      <value value="hypoglycemiaSevereEvent"></value>
+      <value value="initialinpatientpopulation"></value>
    </identifier>
    <version value="0.000.01"></version>
-   <name value="HypoglycemiaSevereEvent"></name>
-   <title value="NHSN Glycemic Control, Hypoglycemia Severe Events"></title>
+   <name value="Initial Inpatient Population"></name>
+   <title value="NHSN Glycemic Control, Initial Inpatient Population"></title>
    <date value="2022-02-15T19:57:06-08:00"></date>
-   <description value="Metric 1: The proportion of inpatient encounters of adult patients who were administered or have completed orders for at least one antidiabetic drug (ADD) that preceded a severe hypoglycemic event during the encounter."></description>
+   <description value="Metric 0: Initial Inpatient Population"></description>
    <effectivePeriod>
       <start value="2021-01-01"></start>
       <end value="2021-12-31"></end>
@@ -312,17 +196,12 @@
       <display value="Value set NHSN Hypoglycemia Drugs"></display>
       <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58"></resource>
    </relatedArtifact>
-   <relatedArtifact>
-      <type value="depends-on"></type>
-      <display value="Value set Blood Glucose Laboratory Tests"></display>
-      <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"></resource>
-   </relatedArtifact>
-   <library value="http://ecqi.healthit.gov/ecqms/Library/HypoglycemiaSevereEvent"></library>
+   <library value="http://ecqi.healthit.gov/ecqms/Library/InitialInpatientPopulation"></library>
    <scoring>
       <coding>
          <system value="http://terminology.hl7.org/CodeSystem/measure-scoring"></system>
-         <code value="proportion"></code>
-         <display value="Proportion"></display>
+         <code value="cohort"></code>
+         <display value="Cohort"></display>
       </coding>
    </scoring>
    <type>
@@ -355,35 +234,7 @@
          <description value="Adult Inpatient Encounters"></description>
          <criteria>
             <language value="text/cql.identifier"></language>
-            <expression value="Initial Population"></expression>
-         </criteria>
-      </population>
-      <population>
-         <code>
-            <coding>
-               <system value="http://terminology.hl7.org/CodeSystem/measure-population"></system>
-               <code value="numerator"></code>
-               <display value="Numerator"></display>
-            </coding>
-         </code>
-         <description value="Inpatient encounters with a severe hypoglycemic event during the encounter"></description>
-         <criteria>
-            <language value="text/cql.identifier"></language>
-            <expression value="Numerator"></expression>
-         </criteria>
-      </population>
-      <population>
-         <code>
-            <coding>
-               <system value="http://terminology.hl7.org/CodeSystem/measure-population"></system>
-               <code value="denominator"></code>
-               <display value="Denominator"></display>
-            </coding>
-         </code>
-         <description value="Inpatient encounters where the patient is ≥18 years of age or older at the start of the encounter, and at least one ADD was administered during the encounter. The measure includes instances of administration of hypoglycemic medications in the emergency department or in observation status at the start of an inpatient hospitalization when assessing inclusion of encounters in the measure denominator"></description>
-         <criteria>
-            <language value="text/cql.identifier"></language>
-            <expression value="Denominator"></expression>
+            <expression value="Initial Inpatient Population"></expression>
          </criteria>
       </population>
    </group>
