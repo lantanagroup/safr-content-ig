@@ -23,6 +23,7 @@ code "observation encounter": 'OBSENC' from "ActCode" display 'observation encou
 
 parameter "Measurement Period" default Interval(@2022-01-01, @2022-12-31)
 
+
 context Patient
 
 define "Denominator":
