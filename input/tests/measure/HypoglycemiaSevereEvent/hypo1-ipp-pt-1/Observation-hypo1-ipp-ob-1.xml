@@ -37,7 +37,7 @@
   </subject>
   <effectiveDateTime value="2022-01-07"/>
   <valueQuantity>
-    <value value="82.0"/>
+    <value value="38.0"/>
     <unit value="mg/dL"/>
     <system value="http://unitsofmeasure.org"/>
   </valueQuantity>
