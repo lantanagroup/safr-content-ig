@@ -21,7 +21,7 @@ code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
 code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
 
-parameter "Measurement Period" default Interval(@2020-12-31, @2021-01-02)
+parameter "Measurement Period" default Interval(@2022-01-01, @2022-12-31)
 
 context Patient
 
