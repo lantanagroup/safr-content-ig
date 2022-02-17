@@ -27,6 +27,38 @@
                <display value="inpatient non-acute"></display>
             </valueCoding>
          </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+               <code value="OBSENC"></code>
+               <display value="observation encounter"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+               <code value="EMER"></code>
+               <display value="emergency"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Inpatient Encounter"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Inpatient Encounter&quot;:
+  [Encounter] Encounters
+  where (Encounters.class ~ &quot;inpatient encounter&quot;
+    or Encounters.class ~ &quot;inpatient acute&quot;
+    or Encounters.class ~ &quot;inpatient non-acute&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="0"></valueInteger>
+            </extension>
+         </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
                <valueString value="InitialInpatientPopulation"></valueString>
@@ -41,7 +73,7 @@
   union [MedicationRequest: &quot;NHSN Hypoglycemia Drugs&quot;]"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="0"></valueInteger>
+               <valueInteger value="1"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -53,17 +85,14 @@
             </extension>
             <extension url="statement">
                <valueString value="define &quot;Initial Inpatient Population&quot;:
-  [Encounter] Encounters
+  &quot;Inpatient Encounter&quot; Encounters
   with &quot;Antidiabetic Drugs Administered or Ordered&quot; ADD
   such that Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn)
     during &quot;HospitalizationWithObservation&quot;(Encounters)
-    and Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn) during &quot;Measurement Period&quot;
-  where (Encounters.class ~ &quot;inpatient encounter&quot;
-    or Encounters.class ~ &quot;inpatient acute&quot;
-    or Encounters.class ~ &quot;inpatient non-acute&quot;)"></valueString>
+    and Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn) during &quot;Measurement Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="1"></valueInteger>
+               <valueInteger value="2"></valueInteger>
             </extension>
          </extension>
          <status value="active"></status>
@@ -73,7 +102,7 @@
                <code value="module-definition"></code>
             </coding>
          </type>
-         <date value="2022-02-15T22:57:06-05:00"></date>
+         <date value="2022-02-17T11:04:29-05:00"></date>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library FHIRHelpers"></display>
@@ -132,23 +161,6 @@
             <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
             <mustSupport value="period"></mustSupport>
             <mustSupport value="class"></mustSupport>
-            <codeFilter>
-               <path value="class"></path>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Encounter"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
-            <mustSupport value="period"></mustSupport>
-            <mustSupport value="class"></mustSupport>
-            <codeFilter>
-               <path value="class"></path>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Encounter"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
-            <mustSupport value="class"></mustSupport>
          </dataRequirement>
       </Library>
    </contained>
@@ -170,7 +182,7 @@
    <version value="0.000.01"></version>
    <name value="Initial Inpatient Population"></name>
    <title value="NHSN Glycemic Control, Initial Inpatient Population"></title>
-   <date value="2022-02-15T19:57:06-08:00"></date>
+   <date value="2022-02-17T08:04:29-08:00"></date>
    <description value="Metric 0: Initial Inpatient Population"></description>
    <effectivePeriod>
       <start value="2021-01-01"></start>
