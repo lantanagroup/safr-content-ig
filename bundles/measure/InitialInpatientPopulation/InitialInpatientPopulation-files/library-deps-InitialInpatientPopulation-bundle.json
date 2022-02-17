@@ -93,20 +93,9 @@
         "type": "Encounter"
       } ],
       "dataRequirement": [ {
-        "type": "Provenance",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/Provenance" ],
-        "mustSupport": [ "target" ],
-        "codeFilter": [ {
-          "path": "target"
-        } ]
-      }, {
-        "type": "Encounter",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
-        "mustSupport": [ "period", "type", "status" ],
-        "codeFilter": [ {
-          "path": "type",
-          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"
-        } ]
+        "type": "Condition",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
+        "mustSupport": [ "id" ]
       }, {
         "type": "Encounter",
         "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
@@ -124,6 +113,14 @@
           "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"
         } ]
       }, {
+        "type": "Encounter",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
+        "mustSupport": [ "period", "type", "status" ],
+        "codeFilter": [ {
+          "path": "type",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"
+        } ]
+      }, {
         "type": "Patient",
         "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ]
       }, {
@@ -131,9 +128,12 @@
         "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
         "mustSupport": [ "id" ]
       }, {
-        "type": "Condition",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-        "mustSupport": [ "id" ]
+        "type": "Provenance",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/Provenance" ],
+        "mustSupport": [ "target" ],
+        "codeFilter": [ {
+          "path": "target"
+        } ]
       } ],
       "content": [ {
         "contentType": "text/cql",

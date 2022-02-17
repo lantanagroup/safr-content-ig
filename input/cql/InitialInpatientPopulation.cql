@@ -14,7 +14,6 @@ valueset "Chief Complaint": 'http://terminology.hl7.org/ValueSet/diagnosis-role'
 valueset "Discharge Disposition": 'http://terminology.hl7.org/ValueSet/encounter-discharge-disposition'
 valueset "Gender Identity": 'http://hl7.org/fhir/ValueSet/gender-identity'
 valueset "NHSN Hypoglycemia Drugs": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58'
-valueset "ONC Administrative Sex": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1'
 
 
 code "emergency": 'EMER' from "ActCode" display 'emergency'
