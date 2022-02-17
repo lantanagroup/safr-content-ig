@@ -617,8 +617,8 @@
    <date value="2022-02-17T09:59:43-08:00"></date>
    <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the performance period."></description>
    <effectivePeriod>
-      <start value="2021-01-01"></start>
-      <end value="2021-12-31"></end>
+      <start value="2022-01-01"></start>
+      <end value="2022-12-31T23:59:59+00:00"></end>
    </effectivePeriod>
    <relatedArtifact>
       <type value="depends-on"></type>
