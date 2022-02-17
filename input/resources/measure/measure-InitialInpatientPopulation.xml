@@ -238,4 +238,10 @@
          </criteria>
       </population>
    </group>
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier" />
+         <expression value="SDE Condition" />
+      </criteria>
+   </supplementalData>
 </Measure>
