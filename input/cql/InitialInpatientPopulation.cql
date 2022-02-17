@@ -21,16 +21,19 @@ code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
 code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
 
-parameter "Measurement Period" Interval<DateTime>
+parameter "Measurement Period" default Interval(@2022-01-01, @2022-12-31)
 
 context Patient
 
 define "Initial Inpatient Population":
-  [Encounter] Encounters
+  "Inpatient Encounter" Encounters
   with "Antidiabetic Drugs Administered or Ordered" ADD
   such that Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn)
     during "HospitalizationWithObservation"(Encounters)
     and Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn) during "Measurement Period"
+
+define "Inpatient Encounter":
+  [Encounter] Encounters
   where (Encounters.class ~ "inpatient encounter"
     or Encounters.class ~ "inpatient acute"
     or Encounters.class ~ "inpatient non-acute")
@@ -42,12 +45,18 @@ define "Antidiabetic Drugs Administered or Ordered":
 
 define function "HospitalizationWithObservation"(TheEncounter FHIR.Encounter ):
   TheEncounter Visit
-  let ObsVisit: Last([Encounter: class in {'OBSENC', 'EMER'}] LastObs
-    where LastObs.period ends 1 hour or less on or before start of Visit.period
-    sort by end of period)
-  return Interval[Coalesce(start of ObsVisit.period, start of Visit.period), end of Visit.period]
+  let ObsVisit: Last([Encounter] LastObs
+      where LastObs.class = "observation encounter"
+              and LastObs.period ends 1 hour or less on or before start of Visit.period
+      sort by end of period),
+      VisitStart: Coalesce(start of ObsVisit.period, start of Visit.period),
+      EDVisit: Last([Encounter] LastED
+        where LastED.class = "emergency"
+            and LastED.period ends 1 hour or less on or before VisitStart
+            sort by end of period)
+  return Interval[Coalesce(start of EDVisit.period, VisitStart), end of Visit.period]
 
-define "SDE Condition":
+/*define "SDE Condition":
 	[Condition] Conditions where exists("Initial Inpatient Population")
 
 define "SDE Chief Complaint":
@@ -122,4 +131,4 @@ define "SDE Sex":
 define "SDE Zip Code": 
 	[Patient] Patients 
 	where exists("Initial Inpatient Population")
-    return Patients.address.postalCode
+    return Patients.address.postalCode*/
