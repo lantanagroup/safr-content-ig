@@ -171,7 +171,7 @@
                <code value="module-definition"></code>
             </coding>
          </type>
-         <date value="2022-02-17T11:35:34-05:00"></date>
+         <date value="2022-02-17T11:18:56-06:00"></date>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library FHIRHelpers"></display>
@@ -232,18 +232,6 @@
             <mustSupport value="class"></mustSupport>
          </dataRequirement>
          <dataRequirement>
-            <type value="Observation"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
-            <mustSupport value="effective"></mustSupport>
-            <mustSupport value="code"></mustSupport>
-            <mustSupport value="value"></mustSupport>
-            <mustSupport value="status"></mustSupport>
-            <codeFilter>
-               <path value="code"></path>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"></valueSet>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
             <type value="MedicationAdministration"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/MedicationAdministration"></profile>
             <mustSupport value="medication"></mustSupport>
@@ -260,6 +248,18 @@
             <codeFilter>
                <path value="medication"></path>
                <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Observation"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
+            <mustSupport value="effective"></mustSupport>
+            <mustSupport value="code"></mustSupport>
+            <mustSupport value="value"></mustSupport>
+            <mustSupport value="status"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"></valueSet>
             </codeFilter>
          </dataRequirement>
          <dataRequirement>
@@ -286,7 +286,7 @@
    <version value="0.000.01"></version>
    <name value="HypoglycemiaSevereEvent"></name>
    <title value="NHSN Glycemic Control, Hypoglycemia Severe Events"></title>
-   <date value="2022-02-17T08:35:34-08:00"></date>
+   <date value="2022-02-17T09:18:56-08:00"></date>
    <description value="Metric 1: The proportion of inpatient encounters of adult patients who were administered or have completed orders for at least one antidiabetic drug (ADD) that preceded a severe hypoglycemic event during the encounter."></description>
    <effectivePeriod>
       <start value="2021-01-01"></start>

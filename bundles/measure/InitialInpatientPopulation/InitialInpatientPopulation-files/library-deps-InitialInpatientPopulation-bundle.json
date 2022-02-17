@@ -93,13 +93,20 @@
         "type": "Encounter"
       } ],
       "dataRequirement": [ {
-        "type": "Location",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
-        "mustSupport": [ "id" ]
+        "type": "Provenance",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/Provenance" ],
+        "mustSupport": [ "target" ],
+        "codeFilter": [ {
+          "path": "target"
+        } ]
       }, {
-        "type": "Condition",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-        "mustSupport": [ "id" ]
+        "type": "Encounter",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
+        "mustSupport": [ "period", "type", "status" ],
+        "codeFilter": [ {
+          "path": "type",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"
+        } ]
       }, {
         "type": "Encounter",
         "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
@@ -117,23 +124,16 @@
           "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"
         } ]
       }, {
-        "type": "Encounter",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
-        "mustSupport": [ "period", "type", "status" ],
-        "codeFilter": [ {
-          "path": "type",
-          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"
-        } ]
-      }, {
         "type": "Patient",
         "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ]
       }, {
-        "type": "Provenance",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/Provenance" ],
-        "mustSupport": [ "target" ],
-        "codeFilter": [ {
-          "path": "target"
-        } ]
+        "type": "Location",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
+        "mustSupport": [ "id" ]
+      }, {
+        "type": "Condition",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
+        "mustSupport": [ "id" ]
       } ],
       "content": [ {
         "contentType": "text/cql",
@@ -221,6 +221,10 @@
         "type": "Coding"
       } ],
       "dataRequirement": [ {
+        "type": "Patient",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ],
+        "mustSupport": [ "extension", "value", "url" ]
+      }, {
         "type": "Coverage",
         "profile": [ "http://hl7.org/fhir/StructureDefinition/Coverage" ],
         "mustSupport": [ "period", "type" ],
@@ -228,10 +232,6 @@
           "path": "type",
           "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"
         } ]
-      }, {
-        "type": "Patient",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ],
-        "mustSupport": [ "extension", "value", "url" ]
       } ],
       "content": [ {
         "contentType": "text/cql",

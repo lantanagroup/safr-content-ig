@@ -15,6 +15,7 @@
       "url": "http://ecqi.healthit.gov/ecqms/Library/MATGlobalCommonFunctionsFHIR4",
       "version": "6.1.000",
       "name": "MATGlobalCommonFunctionsFHIR4",
+      "title": "MATGlobalCommonFunctionsFHIR4",
       "relatedArtifact": [ {
         "type": "depends-on",
         "display": "FHIR model information",
@@ -92,9 +93,20 @@
         "type": "Encounter"
       } ],
       "dataRequirement": [ {
-        "type": "Condition",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-        "mustSupport": [ "id" ]
+        "type": "Provenance",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/Provenance" ],
+        "mustSupport": [ "target" ],
+        "codeFilter": [ {
+          "path": "target"
+        } ]
+      }, {
+        "type": "Encounter",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
+        "mustSupport": [ "period", "type", "status" ],
+        "codeFilter": [ {
+          "path": "type",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"
+        } ]
       }, {
         "type": "Encounter",
         "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
@@ -112,14 +124,6 @@
           "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"
         } ]
       }, {
-        "type": "Encounter",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
-        "mustSupport": [ "period", "type", "status" ],
-        "codeFilter": [ {
-          "path": "type",
-          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"
-        } ]
-      }, {
         "type": "Patient",
         "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ]
       }, {
@@ -127,12 +131,9 @@
         "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
         "mustSupport": [ "id" ]
       }, {
-        "type": "Provenance",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/Provenance" ],
-        "mustSupport": [ "target" ],
-        "codeFilter": [ {
-          "path": "target"
-        } ]
+        "type": "Condition",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
+        "mustSupport": [ "id" ]
       } ],
       "content": [ {
         "contentType": "text/cql",
@@ -162,6 +163,7 @@
       "url": "http://ecqi.healthit.gov/ecqms/Library/SupplementalDataElementsFHIR4",
       "version": "2.0.000",
       "name": "SupplementalDataElementsFHIR4",
+      "title": "SupplementalDataElementsFHIR4",
       "relatedArtifact": [ {
         "type": "depends-on",
         "display": "FHIR model information",
@@ -259,6 +261,7 @@
       "url": "http://hl7.org/fhir/Library/FHIRHelpers",
       "version": "4.0.1",
       "name": "FHIRHelpers",
+      "title": "FHIRHelpers",
       "relatedArtifact": [ {
         "type": "depends-on",
         "display": "FHIR model information",
