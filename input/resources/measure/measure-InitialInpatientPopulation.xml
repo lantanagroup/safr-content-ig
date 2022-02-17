@@ -615,7 +615,7 @@
    <name value="Initial Inpatient Population"></name>
    <title value="NHSN Glycemic Control, Initial Inpatient Population"></title>
    <date value="2022-02-17T09:59:43-08:00"></date>
-   <description value="Metric 0: Initial Inpatient Population"></description>
+   <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the performance period."></description>
    <effectivePeriod>
       <start value="2021-01-01"></start>
       <end value="2021-12-31"></end>
@@ -681,8 +681,8 @@
    <type>
       <coding>
          <system value="http://terminology.hl7.org/CodeSystem/measure-type"></system>
-         <code value="outcome"></code>
-         <display value="Outcome"></display>
+         <code value="Process"></code>
+         <display value="Process"></display>
       </coding>
    </type>
    <rationale value="Inpatient hypoglycemia can be severe and life-threatening and is associated with longer hospital stays and increased medical costs (1-7). The prevalence of inpatient hypoglycemia varies with patient severity, hospital unit, time of episodes, and glycemic threshold. Severe hypoglycemia (&lt;40 mg/dL) occurs in 2%-5% of hospitalized patients with diabetes mellitus (DM) while hypoglycemia &lt;70 mg/dL has been reported in up to 10% of patients in the intensive care unit (8). Patients with DM comprise more than 25% of all U.S. inpatient stays and medication-related hypoglycemic events are common causes of adverse drug events (ADEs) occurring in inpatient settings (9,10). Rates of severe hypoglycemia vary across hospitals, suggesting opportunities for improvement in quality of care of glycemic control. Measurement of medication-related hypoglycemia in a meaningful and standardized way may improve glycemic management (11,12)."></rationale>
