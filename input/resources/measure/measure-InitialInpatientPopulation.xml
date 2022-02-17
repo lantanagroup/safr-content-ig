@@ -237,11 +237,107 @@
             <expression value="Initial Inpatient Population"></expression>
          </criteria>
       </population>
-   </group>
+   </group>   
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier" />
+         <expression value="SDE Chief Complaint" />
+      </criteria>
+   </supplementalData>   
    <supplementalData>
       <criteria>
          <language value="text/cql.identifier" />
          <expression value="SDE Condition" />
       </criteria>
+   </supplementalData>   
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier" />
+         <expression value="SDE Encounter Discharge Dispositions" />
+      </criteria>
+   </supplementalData>   
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier" />
+         <expression value="SDE Encounter Locations" />
+      </criteria>
+   </supplementalData>   
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier" />
+         <expression value="SDE Ethnicity" />
+      </criteria>
+   </supplementalData>   
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier" />
+         <expression value="SDE Gender Identity" />
+      </criteria>
+   </supplementalData>   
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier" />
+         <expression value="SDE Locations" />
+      </criteria>
+   </supplementalData>   
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier" />
+         <expression value="SDE Medication Administration" />
+      </criteria>
+   </supplementalData>   
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier" />
+         <expression value="SDE Medication Request" />
+      </criteria>
+   </supplementalData>   
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier" />
+         <expression value="SDE Observation" />
+      </criteria>
+   </supplementalData>   
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier" />
+         <expression value="SDE Patient Death Date" />
+      </criteria>
+   </supplementalData>   
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier" />
+         <expression value="SDE Patient ID" />
+      </criteria>
+   </supplementalData>   
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier" />
+         <expression value="SDE Payer" />
+      </criteria>
+   </supplementalData>   
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier" />
+         <expression value="SDE Race" />
+      </criteria>
+   </supplementalData>   
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier" />
+         <expression value="SDE Service Request" />
+      </criteria>
+   </supplementalData>   
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier" />
+         <expression value="SDE Sex" />
+      </criteria>
    </supplementalData>
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier" />
+         <expression value="SDE Zip Code" />
+      </criteria>
+   </supplementalData>   
 </Measure>
