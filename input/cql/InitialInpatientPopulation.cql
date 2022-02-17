@@ -77,6 +77,15 @@ define "SDE Encounter Locations":
 	[Encounter] Encounter
    	where Global."GetLocation"(Encounter.location.location[0]).type in "CDC Location Codes" 
    		and exists("Initial Population")
+
+define "SDE Ethnicity":
+	SDE."SDE Ethnicity" Ethnicity
+	where exists("Initial Population")
+
+define "SDE Gender Identity":
+	[Patient] Patient
+    where Patient.gender in "Gender Identity"
+		and exists("Initial Population")
  	
   define "SDE Locations":
 	[Location] Locations
@@ -128,4 +137,3 @@ define "SDE Zip Code":
 	[Patient] ThePatient 
 	where exists("Initial Population")
     return ThePatient.address.postalCode
-

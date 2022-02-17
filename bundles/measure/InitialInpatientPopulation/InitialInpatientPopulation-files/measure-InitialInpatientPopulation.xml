@@ -49,11 +49,7 @@
                <valueString value="Inpatient Encounter"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Inpatient Encounter&quot;:
-  [Encounter] Encounters
-  where (Encounters.class ~ &quot;inpatient encounter&quot;
-    or Encounters.class ~ &quot;inpatient acute&quot;
-    or Encounters.class ~ &quot;inpatient non-acute&quot;)"></valueString>
+               <valueString value="define &quot;Inpatient Encounter&quot;:   [Encounter] Encounters   where (Encounters.class ~ &quot;inpatient encounter&quot;     or Encounters.class ~ &quot;inpatient acute&quot;     or Encounters.class ~ &quot;inpatient non-acute&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="0"></valueInteger>
@@ -67,10 +63,7 @@
                <valueString value="Antidiabetic Drugs Administered and Ordered"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Antidiabetic Drugs Administered and Ordered&quot;:
-  ([MedicationAdministration: &quot;NHSN Hypoglycemia Drugs&quot;] ADDMedAdmin
-    where ADDMedAdmin.status ~ 'completed')
-  union [MedicationRequest: &quot;NHSN Hypoglycemia Drugs&quot;]"></valueString>
+               <valueString value="define &quot;Antidiabetic Drugs Administered and Ordered&quot;:   ([MedicationAdministration: &quot;NHSN Hypoglycemia Drugs&quot;] ADDMedAdmin     where ADDMedAdmin.status ~ 'completed')   union [MedicationRequest: &quot;NHSN Hypoglycemia Drugs&quot;]"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="1"></valueInteger>
@@ -84,12 +77,7 @@
                <valueString value="Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Initial Population&quot;:
-  &quot;Inpatient Encounter&quot; InpatientEncounters
-  with &quot;Antidiabetic Drugs Administered and Ordered&quot; ADD
-  such that Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn)
-    during &quot;HospitalizationWithObservationOrEmergency&quot;(InpatientEncounters)
-    and Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn) during &quot;Performance Period&quot;"></valueString>
+               <valueString value="define &quot;Initial Population&quot;:   &quot;Inpatient Encounter&quot; InpatientEncounters   with &quot;Antidiabetic Drugs Administered and Ordered&quot; ADD   such that Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn)     during &quot;HospitalizationWithObservationOrEmergency&quot;(InpatientEncounters)     and Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn) during &quot;Performance Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="2"></valueInteger>
@@ -103,9 +91,7 @@
                <valueString value="SDE Medication Request"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Medication Request&quot;:
-	[MedicationRequest] MedicationRequests
-	where exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Medication Request&quot;:  [MedicationRequest] MedicationRequests  where exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="3"></valueInteger>
@@ -119,10 +105,7 @@
                <valueString value="SDE Patient ID"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Patient ID&quot;: 
-    [Patient] ThePatient
-	where exists(&quot;Initial Population&quot;)
-    return ThePatient.identifier"></valueString>
+               <valueString value="define &quot;SDE Patient ID&quot;:      [Patient] ThePatient  where exists(&quot;Initial Population&quot;)     return ThePatient.identifier"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="4"></valueInteger>
@@ -136,10 +119,7 @@
                <valueString value="SDE Locations"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Locations&quot;:
-	[Location] Locations
-    where Locations.type in &quot;CDC Location Codes&quot; 
-		and exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Locations&quot;:  [Location] Locations     where Locations.type in &quot;CDC Location Codes&quot;    and exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="5"></valueInteger>
@@ -153,10 +133,7 @@
                <valueString value="SDE Encounter Locations"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Encounter Locations&quot;:
-	[Encounter] Encounter
-   	where Global.&quot;GetLocation&quot;(Encounter.location.location[0]).type in &quot;CDC Location Codes&quot; 
-   		and exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Encounter Locations&quot;:  [Encounter] Encounter     where Global.&quot;GetLocation&quot;(Encounter.location.location[0]).type in &quot;CDC Location Codes&quot;       and exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="6"></valueInteger>
@@ -170,9 +147,7 @@
                <valueString value="SDE Observation"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Observation&quot;:
-	[Observation] Observations 
-	where exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Observation&quot;:  [Observation] Observations   where exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="7"></valueInteger>
@@ -186,15 +161,7 @@
                <valueString value="SDE Race"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Race&quot;:
-  (flatten (
-      Patient.extension Extension
-        where Extension.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
-          return Extension.extension
-    )) E
-      where E.url = 'ombCategory'
-        or E.url = 'detailed'
-      return E.value as Coding"></valueString>
+               <valueString value="define &quot;SDE Race&quot;:   (flatten (       Patient.extension Extension         where Extension.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'           return Extension.extension     )) E       where E.url = 'ombCategory'         or E.url = 'detailed'       return E.value as Coding"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="8"></valueInteger>
@@ -208,9 +175,7 @@
                <valueString value="SDE Race"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Race&quot;:
-	SDE.&quot;SDE Race&quot; Race 
-	where exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Race&quot;:  SDE.&quot;SDE Race&quot; Race   where exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="9"></valueInteger>
@@ -224,9 +189,7 @@
                <valueString value="SDE Medication Administration"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Medication Administration&quot;:
-	[MedicationAdministration] MedicationAdministrations
-    where exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Medication Administration&quot;:  [MedicationAdministration] MedicationAdministrations     where exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="10"></valueInteger>
@@ -240,12 +203,7 @@
                <valueString value="SDE Sex"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Sex&quot;:
-  case
-      when Patient.gender = 'male' then Code { code: 'M', system: 'http://hl7.org/fhir/v3/AdministrativeGender', display: 'Male' }
-      when Patient.gender = 'female' then Code { code: 'F', system: 'http://hl7.org/fhir/v3/AdministrativeGender', display: 'Female' }
-      else null
-    end"></valueString>
+               <valueString value="define &quot;SDE Sex&quot;:   case       when Patient.gender = 'male' then Code { code: 'M', system: 'http://hl7.org/fhir/v3/AdministrativeGender', display: 'Male' }       when Patient.gender = 'female' then Code { code: 'F', system: 'http://hl7.org/fhir/v3/AdministrativeGender', display: 'Female' }       else null     end"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="11"></valueInteger>
@@ -259,9 +217,7 @@
                <valueString value="SDE Sex"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Sex&quot;:
-	SDE.&quot;SDE Sex&quot; Sex
-	where exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Sex&quot;:  SDE.&quot;SDE Sex&quot; Sex  where exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="12"></valueInteger>
@@ -275,10 +231,7 @@
                <valueString value="SDE Zip Code"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Zip Code&quot;: 
-	[Patient] ThePatient 
-	where exists(&quot;Initial Population&quot;)
-    return ThePatient.address.postalCode"></valueString>
+               <valueString value="define &quot;SDE Zip Code&quot;:   [Patient] ThePatient   where exists(&quot;Initial Population&quot;)     return ThePatient.address.postalCode"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="13"></valueInteger>
@@ -292,11 +245,7 @@
                <valueString value="SDE Patient Death Date"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Patient Death Date&quot;: 
-	[Patient] Patient
-	where Patient.deceased is FHIR.dateTime 
-		and exists(&quot;Initial Population&quot;)
-	return Patient.deceased as FHIR.dateTime"></valueString>
+               <valueString value="define &quot;SDE Patient Death Date&quot;:   [Patient] Patient  where Patient.deceased is FHIR.dateTime    and exists(&quot;Initial Population&quot;)  return Patient.deceased as FHIR.dateTime"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="14"></valueInteger>
@@ -310,8 +259,7 @@
                <valueString value="SDE Condition"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Condition&quot;:
-	[Condition] Conditions where exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Condition&quot;:  [Condition] Conditions where exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="15"></valueInteger>
@@ -325,12 +273,7 @@
                <valueString value="SDE Payer"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Payer&quot;:
-  [Coverage: type in &quot;Payer&quot;] Payer
-        return {
-          code: Payer.type,
-          period: Payer.period
-        }"></valueString>
+               <valueString value="define &quot;SDE Payer&quot;:   [Coverage: type in &quot;Payer&quot;] Payer         return {           code: Payer.type,           period: Payer.period         }"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="16"></valueInteger>
@@ -344,9 +287,7 @@
                <valueString value="SDE Payer"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Payer&quot;: 
-	SDE.&quot;SDE Payer&quot; Payers
-	where exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Payer&quot;:   SDE.&quot;SDE Payer&quot; Payers  where exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="17"></valueInteger>
@@ -360,9 +301,7 @@
                <valueString value="SDE Encounter Discharge Dispositions"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Encounter Discharge Dispositions&quot;:
-	[Encounter: &quot;Discharge Disposition&quot;] DischargeDispositions 
-	where exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Encounter Discharge Dispositions&quot;:  [Encounter: &quot;Discharge Disposition&quot;] DischargeDispositions   where exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="18"></valueInteger>
@@ -376,11 +315,7 @@
                <valueString value="SDE Service Request"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Service Request&quot;:
-	[ServiceRequest: &quot;Blood Glucose Laboratory and Point of Care Tests&quot;] LabTest
-      where (LabTest.intent ~ 'order'
-		and LabTest.status ~ 'completed')
-		and exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Service Request&quot;:  [ServiceRequest: &quot;Blood Glucose Laboratory and Point of Care Tests&quot;] LabTest       where (LabTest.intent ~ 'order'   and LabTest.status ~ 'completed')   and exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="19"></valueInteger>
@@ -394,11 +329,7 @@
                <valueString value="SDE Chief Complaint"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//Supplement Data Elements
-define &quot;SDE Chief Complaint&quot;:
-	[Encounter] InpatientEncounter
-    where InpatientEncounter.diagnosis.use in &quot;Chief Complaint&quot; 
-		and exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="//Supplement Data Elements define &quot;SDE Chief Complaint&quot;:  [Encounter] InpatientEncounter     where InpatientEncounter.diagnosis.use in &quot;Chief Complaint&quot;    and exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="20"></valueInteger>
