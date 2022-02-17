@@ -14,7 +14,7 @@
     <text value="insulin aspart protamine"/>
   </medicationCodeableConcept>
   <subject>
-    <reference value="Patient/hypo-metric1-patient1" />
+    <reference value="Patient/hypo-metric0-patient1" />
     <display value="Allison COVID" />
   </subject>
   <authoredOn value="2022-01-03" />
