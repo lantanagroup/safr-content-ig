@@ -10,6 +10,7 @@
   "url": "http://ecqi.healthit.gov/ecqms/Library/InitialInpatientPopulation",
   "version": "0.0.001",
   "name": "InitialInpatientPopulation",
+  "title": "Initial Inpatient Population",
   "relatedArtifact": [ {
     "type": "depends-on",
     "display": "FHIR model information",

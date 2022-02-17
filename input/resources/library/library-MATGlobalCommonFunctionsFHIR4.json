@@ -10,6 +10,7 @@
   "url": "http://ecqi.healthit.gov/ecqms/Library/MATGlobalCommonFunctionsFHIR4",
   "version": "6.1.000",
   "name": "MATGlobalCommonFunctionsFHIR4",
+  "title": "MATGlobalCommonFunctionsFHIR4",
   "relatedArtifact": [ {
     "type": "depends-on",
     "display": "FHIR model information",
