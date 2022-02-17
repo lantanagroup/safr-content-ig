@@ -25,24 +25,6 @@
 				</td>
 {% endunless %}
 			</tr>
-			<tr>
-				<th>Examples</th>
-{% unless excludexml == 'y' %}
-				<td>
-					<a href="examples.xml.zip">XML</a>
-				</td>
-{% endunless %}
-{% unless excludejson == 'y' %}
-				<td>
-					<a href="examples.json.zip">JSON</a>
-				</td>
-{% endunless %}
-{% unless excludettl == 'y' %}
-				<td>
-					<a href="examples.ttl.zip">Turtle</a>
-				</td>
-{% endunless %}
-			</tr>
 		</tbody>
 	</table>
 </div>
