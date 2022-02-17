@@ -1,4 +1,4 @@
-<ValueSet>
+<ValueSet xmlns="http://hl7.org/fhir">
     <id value="diagnosis-role"/>
     <meta>
         <lastUpdated value="2020-02-23T18:41:39.109-07:00"/>
