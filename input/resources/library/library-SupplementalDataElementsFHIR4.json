@@ -10,6 +10,7 @@
   "url": "http://ecqi.healthit.gov/ecqms/Library/SupplementalDataElementsFHIR4",
   "version": "2.0.000",
   "name": "SupplementalDataElementsFHIR4",
+  "title": "SupplementalDataElementsFHIR4",
   "relatedArtifact": [ {
     "type": "depends-on",
     "display": "FHIR model information",
