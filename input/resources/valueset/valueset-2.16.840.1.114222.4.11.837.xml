@@ -39,9 +39,11 @@
    <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.837"/>
    <version value="20121025"/>
    <name value="Ethnicity"/>
+    <title value="Ethnicity"/>
    <status value="active"/>
    <date value="2012-10-25T12:28:31-04:00"/>
    <publisher value="CDC NCHS"/>
+   <description value=" The ethnicity of a person used for administrative purposes."/>
    <expansion>
       <identifier value="urn:uuid:34eb4fd9-718d-4b3d-9048-ed0cc636292e"/>
       <timestamp value="2022-02-14T15:54:40-05:00"/>

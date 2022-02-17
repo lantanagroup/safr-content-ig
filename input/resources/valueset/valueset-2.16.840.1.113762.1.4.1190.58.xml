@@ -6027,9 +6027,11 @@
    <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58"/>
    <version value="Draft"/>
    <name value="NHSN Hypoglycemia Drugs"/>
+   <title value="NHSN Hypoglycemia Drugs"/>
    <status value="draft"/>
    <date value="2022-01-25T08:40:39-05:00"/>
    <publisher value="CDC NHSN"/>
+   <description value="List of anti-diabetic drugs"/>
    <expansion>
       <identifier value="urn:uuid:8ed7f4ea-ab6f-4cfa-9a94-6798626a42d9"/>
       <timestamp value="2022-02-14T17:03:35-05:00"/>

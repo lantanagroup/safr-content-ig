@@ -63,9 +63,11 @@
    <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.836"/>
    <version value="20121025"/>
    <name value="Race"/>
+   <title value="Race"/>
    <status value="active"/>
    <date value="2012-10-25T12:28:31-04:00"/>
    <publisher value="CDC NCHS"/>
+   <description value=" The race of a person used for administrative purposes."/>
    <expansion>
       <identifier value="urn:uuid:f4542d76-1dee-4865-93e3-f683e040d6c3"/>
       <timestamp value="2022-02-14T15:53:19-05:00"/>

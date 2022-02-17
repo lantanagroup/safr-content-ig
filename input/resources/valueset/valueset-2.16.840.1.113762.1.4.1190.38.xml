@@ -223,9 +223,11 @@
    <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"/>
    <version value="20220210"/>
    <name value="Blood Glucose Laboratory and Point of Care Tests"/>
+   <title value="Blood Glucose Laboratory and Point of Care Tests"/> 
    <status value="active"/>
    <date value="2022-02-10T01:02:28-05:00"/>
    <publisher value="HL7 Terminology"/>
+   <description value="Blood Glucose LOINC Terms for the NHSN ADE – Hypoglycemia Module. Excludes any terms with the unit moles/volume."/>
    <expansion>
       <identifier value="urn:uuid:abcf2c55-b560-4a63-9927-d6cf9c907e9d"/>
       <timestamp value="2022-02-15T11:20:01-05:00"/>

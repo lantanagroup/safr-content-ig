@@ -19,6 +19,7 @@
     </identifier>
     <version value="0.1.0"/>
     <name value="DiagnosisRole"/>
+    <title value="DiagnosisRole"/>
     <status value="draft"/>
     <experimental value="false"/>
     <date value="2021-12-02T19:54:18-07:00"/>
