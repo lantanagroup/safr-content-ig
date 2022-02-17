@@ -56,7 +56,7 @@ define function "HospitalizationWithObservation"(TheEncounter FHIR.Encounter ):
             sort by end of period)
   return Interval[Coalesce(start of EDVisit.period, VisitStart), end of Visit.period]
 
-/*define "SDE Condition":
+define "SDE Condition":
 	[Condition] Conditions where exists("Initial Inpatient Population")
 
 define "SDE Chief Complaint":
@@ -131,4 +131,4 @@ define "SDE Sex":
 define "SDE Zip Code": 
 	[Patient] Patients 
 	where exists("Initial Inpatient Population")
-    return Patients.address.postalCode*/
+    return Patients.address.postalCode
