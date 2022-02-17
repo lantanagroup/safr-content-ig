@@ -95,6 +95,369 @@
                <valueInteger value="2"></valueInteger>
             </extension>
          </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Medication Request"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Medication Request&quot;:
+	[MedicationRequest] MedicationRequests
+	where exists(&quot;Initial Inpatient Population&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="3"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Patient ID"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Patient ID&quot;: 
+    [Patient] Patients
+	where exists(&quot;Initial Inpatient Population&quot;)
+    return Patients.identifier"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="4"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Locations"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Locations&quot;:
+	[Location] Locations
+    where Locations.type in &quot;CDC Location Codes&quot; 
+		and exists(&quot;Initial Inpatient Population&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="5"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Encounter Locations"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Encounter Locations&quot;:
+	[Encounter] Encounter
+   	where Global.&quot;GetLocation&quot;(Encounter.location.location[0]).type in &quot;CDC Location Codes&quot; 
+   		and exists(&quot;Initial Inpatient Population&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="6"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Observation"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Observation&quot;:
+	[Observation] Observations 
+	where exists(&quot;Initial Inpatient Population&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="7"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SupplementalDataElementsFHIR4"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Race"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Race&quot;:
+  (flatten (
+      Patient.extension Extension
+        where Extension.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
+          return Extension.extension
+    )) E
+      where E.url = 'ombCategory'
+        or E.url = 'detailed'
+      return E.value as Coding"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="8"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Race"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Race&quot;:
+	SDE.&quot;SDE Race&quot; Race 
+	where exists(&quot;Initial Inpatient Population&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="9"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Medication Administration"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Medication Administration&quot;:
+	[MedicationAdministration] MedicationAdministrations
+	where exists(&quot;Initial Inpatient Population&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="10"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SupplementalDataElementsFHIR4"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Sex"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Sex&quot;:
+  case
+      when Patient.gender = 'male' then Code { code: 'M', system: 'http://hl7.org/fhir/v3/AdministrativeGender', display: 'Male' }
+      when Patient.gender = 'female' then Code { code: 'F', system: 'http://hl7.org/fhir/v3/AdministrativeGender', display: 'Female' }
+      else null
+    end"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="11"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Sex"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Sex&quot;:
+	SDE.&quot;SDE Sex&quot; Sex
+	where exists(&quot;Initial Inpatient Population&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="12"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Zip Code"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Zip Code&quot;: 
+	[Patient] Patients 
+	where exists(&quot;Initial Inpatient Population&quot;)
+    return Patients.address.postalCode"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="13"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Patient Death Date"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Patient Death Date&quot;: 
+	[Patient] Patient
+	where Patient.deceased is FHIR.dateTime 
+		and exists(&quot;Initial Inpatient Population&quot;)
+	return Patient.deceased as FHIR.dateTime"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="14"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Condition"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Condition&quot;:
+	[Condition] Conditions where exists(&quot;Initial Inpatient Population&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="15"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SupplementalDataElementsFHIR4"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Payer"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Payer&quot;:
+  [Coverage: type in &quot;Payer&quot;] Payer
+        return {
+          code: Payer.type,
+          period: Payer.period
+        }"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="16"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Payer"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Payer&quot;: 
+	SDE.&quot;SDE Payer&quot; Payers
+	where exists(&quot;Initial Inpatient Population&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="17"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SupplementalDataElementsFHIR4"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Ethnicity"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Ethnicity&quot;:
+  (flatten (
+      Patient.extension Extension
+        where Extension.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
+          return Extension.extension
+    )) E
+      where E.url = 'ombCategory'
+        or E.url = 'detailed'
+      return E.value as Coding"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="18"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Ethnicity"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Ethnicity&quot;:
+	SDE.&quot;SDE Ethnicity&quot; Ethnicity
+	where exists(&quot;Initial Inpatient Population&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="19"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Encounter Discharge Dispositions"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Encounter Discharge Dispositions&quot;:
+	[Encounter: &quot;Discharge Disposition&quot;] DischargeDispositions 
+	where exists(&quot;Initial Inpatient Population&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="20"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Service Request"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Service Request&quot;:
+	[ServiceRequest: &quot;Blood Glucose Laboratory Tests&quot;] ServiceRequest
+      where ServiceRequest.intent ~ 'order'
+		and ServiceRequest.status ~ 'completed'
+		and exists(&quot;Initial Inpatient Population&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="21"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Chief Complaint"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Chief Complaint&quot;:
+	[Encounter] TheEncounter
+    where TheEncounter.diagnosis.use in &quot;Chief Complaint&quot; 
+		and exists(&quot;Initial Inpatient Population&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="22"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Gender Identity"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Gender Identity&quot;:
+	[Patient] Patient
+    where Patient.gender in &quot;Gender Identity&quot; 
+		and exists(&quot;Initial Inpatient Population&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="23"></valueInteger>
+            </extension>
+         </extension>
          <status value="active"></status>
          <type>
             <coding>
@@ -102,7 +465,7 @@
                <code value="module-definition"></code>
             </coding>
          </type>
-         <date value="2022-02-17T11:04:29-05:00"></date>
+         <date value="2022-02-17T11:35:34-05:00"></date>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library FHIRHelpers"></display>
@@ -115,6 +478,11 @@
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
+            <display value="Library SDE"></display>
+            <resource value="http://ecqi.healthit.gov/ecqms/Library/SupplementalDataElementsFHIR4|2.0.000"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
             <display value="Code system ActCode"></display>
             <resource value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></resource>
          </relatedArtifact>
@@ -122,6 +490,36 @@
             <type value="depends-on"></type>
             <display value="Value set NHSN Hypoglycemia Drugs"></display>
             <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set CDC Location Codes"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Payer"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Discharge Disposition"></display>
+            <resource value="http://terminology.hl7.org/ValueSet/encounter-discharge-disposition"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Blood Glucose Laboratory Tests"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Chief Complaint"></display>
+            <resource value="http://terminology.hl7.org/ValueSet/diagnosis-role"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Gender Identity"></display>
+            <resource value="http://hl7.org/fhir/ValueSet/gender-identity"></resource>
          </relatedArtifact>
          <parameter>
             <name value="Measurement Period"></name>
@@ -131,12 +529,148 @@
             <type value="Period"></type>
          </parameter>
          <parameter>
+            <name value="SDE Medication Request"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="MedicationRequest"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Patient ID"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Any"></type>
+         </parameter>
+         <parameter>
             <name value="Initial Inpatient Population"></name>
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
             <type value="Encounter"></type>
          </parameter>
+         <parameter>
+            <name value="SDE Locations"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Location"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Encounter Locations"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Encounter"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Observation"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Observation"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Race"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Coding"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Medication Administration"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="MedicationAdministration"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Sex"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="Coding"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Zip Code"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Any"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Patient Death Date"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="dateTime"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Condition"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Condition"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Payer"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Any"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Ethnicity"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Coding"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Encounter Discharge Dispositions"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Encounter"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Service Request"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="ServiceRequest"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Chief Complaint"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Encounter"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Gender Identity"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Patient"></type>
+         </parameter>
+         <dataRequirement>
+            <type value="Location"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
+            <mustSupport value="id"></mustSupport>
+            <mustSupport value="type"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Patient"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Patient"></profile>
+            <mustSupport value="identifier"></mustSupport>
+            <mustSupport value="extension"></mustSupport>
+            <mustSupport value="deceased"></mustSupport>
+            <mustSupport value="address"></mustSupport>
+            <mustSupport value="gender"></mustSupport>
+            <mustSupport value="value"></mustSupport>
+            <mustSupport value="url"></mustSupport>
+         </dataRequirement>
          <dataRequirement>
             <type value="MedicationAdministration"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/MedicationAdministration"></profile>
@@ -148,6 +682,10 @@
             </codeFilter>
          </dataRequirement>
          <dataRequirement>
+            <type value="MedicationAdministration"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationAdministration"></profile>
+         </dataRequirement>
+         <dataRequirement>
             <type value="MedicationRequest"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"></profile>
             <mustSupport value="medication"></mustSupport>
@@ -157,10 +695,54 @@
             </codeFilter>
          </dataRequirement>
          <dataRequirement>
+            <type value="MedicationRequest"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"></profile>
+         </dataRequirement>
+         <dataRequirement>
             <type value="Encounter"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
             <mustSupport value="period"></mustSupport>
+            <mustSupport value="diagnosis"></mustSupport>
+            <mustSupport value="location"></mustSupport>
             <mustSupport value="class"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="type"></mustSupport>
+            <codeFilter>
+               <path value="type"></path>
+               <valueSet value="http://terminology.hl7.org/ValueSet/encounter-discharge-disposition"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Condition"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Condition"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Coverage"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Coverage"></profile>
+            <mustSupport value="period"></mustSupport>
+            <mustSupport value="type"></mustSupport>
+            <codeFilter>
+               <path value="type"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="ServiceRequest"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/ServiceRequest"></profile>
+            <mustSupport value="code"></mustSupport>
+            <mustSupport value="intent"></mustSupport>
+            <mustSupport value="status"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Observation"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
          </dataRequirement>
       </Library>
    </contained>
@@ -182,7 +764,7 @@
    <version value="0.000.01"></version>
    <name value="Initial Inpatient Population"></name>
    <title value="NHSN Glycemic Control, Initial Inpatient Population"></title>
-   <date value="2022-02-17T08:04:29-08:00"></date>
+   <date value="2022-02-17T08:35:34-08:00"></date>
    <description value="Metric 0: Initial Inpatient Population"></description>
    <effectivePeriod>
       <start value="2021-01-01"></start>
@@ -200,6 +782,11 @@
    </relatedArtifact>
    <relatedArtifact>
       <type value="depends-on"></type>
+      <display value="Library SDE"></display>
+      <resource value="http://ecqi.healthit.gov/ecqms/Library/SupplementalDataElementsFHIR4|2.0.000"></resource>
+   </relatedArtifact>
+   <relatedArtifact>
+      <type value="depends-on"></type>
       <display value="Code system ActCode"></display>
       <resource value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></resource>
    </relatedArtifact>
@@ -207,6 +794,36 @@
       <type value="depends-on"></type>
       <display value="Value set NHSN Hypoglycemia Drugs"></display>
       <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58"></resource>
+   </relatedArtifact>
+   <relatedArtifact>
+      <type value="depends-on"></type>
+      <display value="Value set CDC Location Codes"></display>
+      <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265"></resource>
+   </relatedArtifact>
+   <relatedArtifact>
+      <type value="depends-on"></type>
+      <display value="Value set Payer"></display>
+      <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"></resource>
+   </relatedArtifact>
+   <relatedArtifact>
+      <type value="depends-on"></type>
+      <display value="Value set Discharge Disposition"></display>
+      <resource value="http://terminology.hl7.org/ValueSet/encounter-discharge-disposition"></resource>
+   </relatedArtifact>
+   <relatedArtifact>
+      <type value="depends-on"></type>
+      <display value="Value set Blood Glucose Laboratory Tests"></display>
+      <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"></resource>
+   </relatedArtifact>
+   <relatedArtifact>
+      <type value="depends-on"></type>
+      <display value="Value set Chief Complaint"></display>
+      <resource value="http://terminology.hl7.org/ValueSet/diagnosis-role"></resource>
+   </relatedArtifact>
+   <relatedArtifact>
+      <type value="depends-on"></type>
+      <display value="Value set Gender Identity"></display>
+      <resource value="http://hl7.org/fhir/ValueSet/gender-identity"></resource>
    </relatedArtifact>
    <library value="http://ecqi.healthit.gov/ecqms/Library/InitialInpatientPopulation"></library>
    <scoring>
@@ -250,4 +867,106 @@
          </criteria>
       </population>
    </group>
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Chief Complaint"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Condition"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Encounter Discharge Dispositions"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Encounter Locations"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Ethnicity"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Gender Identity"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Locations"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Medication Administration"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Medication Request"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Observation"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Patient Death Date"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Patient ID"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Payer"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Race"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Service Request"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Sex"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Zip Code"></expression>
+      </criteria>
+   </supplementalData>
 </Measure>
