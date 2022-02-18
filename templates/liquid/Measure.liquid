@@ -220,6 +220,30 @@
             <td style="padding-left: 4px;">{{Measure.description.escape('html')}}</td>
         </tr>
         {% endif %}
+        {% if Measure.rationale.exists() %}
+        <tr>
+            <th scope="row"><b>Background and Rationale: </b></th>
+            <td style="padding-left: 4px;">{{Measure.rationale.escape('html')}}</td>
+        </tr>
+        {% endif %}
+        {% if Measure.definition.exists() %}
+        <tr>
+          <th scope="row"><b>Definition: </b></th>
+          <td style="padding-left: 4px;">        
+            <ul>
+              {% for definition in Measure.definition %}
+                <li>{{definition.escape('html')}}</li>
+              {% endfor %}
+            </ul>       
+          </td>
+        </tr>
+        {% endif %}
+         {% if Measure.guidance.exists() %}
+        <tr>
+            <th scope="row"><b>Guidance: </b></th>
+            <td style="padding-left: 4px;">{{Measure.guidance.escape('html')}}</td>
+        </tr>
+        {% endif %}
         {% if Measure.extension.where(url = 'http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability').exists() %}
         <tr>
           <th scope="row"><b>Knowledge Capability: </b></th>
@@ -228,6 +252,7 @@
           </td>
         </tr>
         {% endif %}
+       
         {% if Measure.extension.where(url = 'http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeRepresentationLevel').exists() %}
         <tr>
           <th scope="row"><b>Knowledge Representation Level: </b></th>
