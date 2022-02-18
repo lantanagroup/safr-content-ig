@@ -1,0 +1,10 @@
+bundles/
+temp/
+input/
+temp/
+template/
+templates/
+bundles/
+.vscode
+.git
+.gitignore
