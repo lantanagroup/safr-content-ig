@@ -30,7 +30,7 @@ context Patient
 define "Initial Population":
   from
     "Inpatient Encounter" InpatientEncounters,
-    "Antidiabetic Drugs Administered and Ordered" ADD
+    "Antidiabetic Drugs Administered or Ordered" ADD
   where Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn)
     during "HospitalizationWithObservationOrEmergency"(InpatientEncounters)
   and Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn) during "Performance Period"
