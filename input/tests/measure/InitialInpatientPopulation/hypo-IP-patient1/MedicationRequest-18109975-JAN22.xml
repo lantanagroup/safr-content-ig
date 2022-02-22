@@ -17,7 +17,7 @@
     <reference value="Patient/hypo-IP-patient1" />
     <display value="Allison COVID" />
   </subject>
-  <authoredOn value="2022-01-03" />
+  <authoredOn value="2022-01-03T10:30:10+01:00" />
   <requester>
     <reference value="Practitioner/1180299"/>
     <display value="abc xyz, MD"/>
