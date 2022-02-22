@@ -46,7 +46,7 @@ define "Inpatient Encounter":
     or Encounters.class ~ "inpatient acute"
     or Encounters.class ~ "inpatient non-acute")
 
-define "Antidiabetic Drugs Administered and Ordered":
+define "Antidiabetic Drugs Administered or Ordered":
   ([MedicationAdministration: "NHSN Hypoglycemia Drugs"] ADDMedAdmin
     where ADDMedAdmin.status ~ 'completed')
   union [MedicationRequest: "NHSN Hypoglycemia Drugs"]

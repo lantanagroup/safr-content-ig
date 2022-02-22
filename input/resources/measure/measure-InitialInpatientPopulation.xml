@@ -754,14 +754,14 @@ define &quot;SDE Chief Complaint&quot;:
          <reference value="#effective-data-requirements"></reference>
       </valueReference>
    </extension>
-   <url value="http://ecqi.healthit.gov/ecqms/Measure/InitialInpatientPopulation"></url>
+   <url value="http://nhsnlink.org/fhir/Measure/InitialInpatientPopulation"></url>
    <identifier>
       <system value="https://nhsnlink.org"></system>
       <value value="initialinpatientpopulation"></value>
    </identifier>
    <version value="0.000.01"></version>
    <name value="Initial Inpatient Population"></name>
-   <title value="NHSN Glycemic Control, Initial Inpatient Population"></title>
+   <title value="NHSN Glycemic Control, Initial Inpatient Population (Hypoglycemia)"></title>
    <date value="2022-02-22T10:55:30-08:00"></date>
    <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the performance period."></description>
    <effectivePeriod>
@@ -834,8 +834,8 @@ define &quot;SDE Chief Complaint&quot;:
    <type>
       <coding>
          <system value="http://terminology.hl7.org/CodeSystem/measure-type"></system>
-         <code value="Process"></code>
-         <display value="Process"></display>
+         <code value="Outcome"></code>
+         <display value="Outcome"></display>
       </coding>
    </type>
    <rationale value="Inpatient hypoglycemia can be severe and life-threatening and is associated with longer hospital stays and increased medical costs (1-7). The prevalence of inpatient hypoglycemia varies with patient severity, hospital unit, time of episodes, and glycemic threshold. Severe hypoglycemia (&lt;40 mg/dL) occurs in 2%-5% of hospitalized patients with diabetes mellitus (DM) while hypoglycemia &lt;70 mg/dL has been reported in up to 10% of patients in the intensive care unit (8). Patients with DM comprise more than 25% of all U.S. inpatient stays and medication-related hypoglycemic events are common causes of adverse drug events (ADEs) occurring in inpatient settings (9,10). Rates of severe hypoglycemia vary across hospitals, suggesting opportunities for improvement in quality of care of glycemic control. Measurement of medication-related hypoglycemia in a meaningful and standardized way may improve glycemic management (11,12)."></rationale>
@@ -848,7 +848,6 @@ define &quot;SDE Chief Complaint&quot;:
    <definition value="Mild hypoglycemia: Blood glucose 54 mg/dL to 69 mg/dL as identified on central laboratory device (CLD) or prescription point-of-care (POC) device. "></definition>
    <definition value="Moderate hypoglycemia: Blood glucose 40 mg/dL to 53 mg/dL as identified on CLD or prescription POC device. "></definition>
    <definition value="Severe hypoglycemia: Blood glucose &lt; 40 mg/dL as identified on central laboratory device (CLD) or prescription POC device."></definition>
-   <guidance value="Only the first qualifying severe hypoglycemic event is counted in the numerator, and only one severe hypoglycemic event is counted per encounter. A single patient may contribute to &gt;1 admission if admitted &gt;1 time during the measurement period. • The 24-hour and 5-minute timeframes are based on the time the blood glucose was drawn, as this reflects the time the patient was experiencing that specific blood glucose level."></guidance>
    <group>
       <population>
          <code>
