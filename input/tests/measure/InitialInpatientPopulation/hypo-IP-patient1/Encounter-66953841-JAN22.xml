@@ -262,7 +262,7 @@
     </period>
   </participant>
   <period>
-    <start value="2022-01-03" />
+    <start value="2022-01-03T10:00:10+01:00" />
   </period>
   <reasonCode>
     <text value="Covid-19 rule out" />
