@@ -10,6 +10,7 @@
   "url": "http://hl7.org/fhir/Library/FHIRHelpers",
   "version": "4.0.1",
   "name": "FHIRHelpers",
+  "title": "FHIRHelpers",
   "relatedArtifact": [ {
     "type": "depends-on",
     "display": "FHIR model information",

@@ -10,6 +10,7 @@
   "url": "http://fhir.org/guides/cqf/Library/FHIRCommon",
   "version": "4.0.1",
   "name": "FHIRCommon",
+  "title": "FHIRCommon",
   "relatedArtifact": [ {
     "type": "depends-on",
     "display": "FHIR model information",
