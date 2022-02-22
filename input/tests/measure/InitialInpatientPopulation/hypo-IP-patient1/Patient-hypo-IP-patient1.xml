@@ -1,5 +1,5 @@
 <Patient xmlns="http://hl7.org/fhir">
-    <id value="hypo-metric0-patient1"/>
+    <id value="hypo-IP-patient1"/>
     <meta>
         <versionId value="1"/>
         <lastUpdated value="2020-12-08T22:19:02.480+00:00"/>
@@ -34,7 +34,7 @@
             <valueString value="Not Hispanic, Latino, or Spanish Origin"/>
         </extension>
     </extension>
-    <identifier id="82742748-JAN21">
+    <identifier id="82742748-JAN22">
         <use value="usual"/>
         <type>
             <coding>

@@ -1,5 +1,5 @@
 <MedicationRequest xmlns="http://hl7.org/fhir">
-  <id value="18109975-JAN21" />
+  <id value="18109975-JAN22" />
   <meta>
     <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest" />
   </meta>
@@ -14,7 +14,7 @@
     <text value="insulin aspart protamine"/>
   </medicationCodeableConcept>
   <subject>
-    <reference value="Patient/hypo-metric0-patient1" />
+    <reference value="Patient/hypo-IP-patient1" />
     <display value="Allison COVID" />
   </subject>
   <authoredOn value="2022-01-03" />
