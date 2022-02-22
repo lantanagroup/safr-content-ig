@@ -49,7 +49,11 @@
                <valueString value="Inpatient Encounter"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Inpatient Encounter&quot;:   [Encounter] Encounters   where (Encounters.class ~ &quot;inpatient encounter&quot;     or Encounters.class ~ &quot;inpatient acute&quot;     or Encounters.class ~ &quot;inpatient non-acute&quot;)"></valueString>
+               <valueString value="define &quot;Inpatient Encounter&quot;:
+  [Encounter] Encounters
+  where (Encounters.class ~ &quot;inpatient encounter&quot;
+    or Encounters.class ~ &quot;inpatient acute&quot;
+    or Encounters.class ~ &quot;inpatient non-acute&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="0"></valueInteger>
@@ -63,7 +67,10 @@
                <valueString value="Antidiabetic Drugs Administered and Ordered"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Antidiabetic Drugs Administered and Ordered&quot;:   ([MedicationAdministration: &quot;NHSN Hypoglycemia Drugs&quot;] ADDMedAdmin     where ADDMedAdmin.status ~ 'completed')   union [MedicationRequest: &quot;NHSN Hypoglycemia Drugs&quot;]"></valueString>
+               <valueString value="define &quot;Antidiabetic Drugs Administered and Ordered&quot;:
+  ([MedicationAdministration: &quot;NHSN Hypoglycemia Drugs&quot;] ADDMedAdmin
+    where ADDMedAdmin.status ~ 'completed')
+  union [MedicationRequest: &quot;NHSN Hypoglycemia Drugs&quot;]"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="1"></valueInteger>
@@ -77,7 +84,18 @@
                <valueString value="Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Initial Population&quot;:   &quot;Inpatient Encounter&quot; InpatientEncounters   with &quot;Antidiabetic Drugs Administered and Ordered&quot; ADD   such that Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn)     during &quot;HospitalizationWithObservationOrEmergency&quot;(InpatientEncounters)     and Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn) during &quot;Performance Period&quot;"></valueString>
+               <valueString value="define &quot;Initial Population&quot;:
+  from
+    &quot;Inpatient Encounter&quot; InpatientEncounters,
+    &quot;Antidiabetic Drugs Administered and Ordered&quot; ADD
+  where Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn)
+    during &quot;HospitalizationWithObservationOrEmergency&quot;(InpatientEncounters)
+  and Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn) during &quot;Performance Period&quot;
+  return Tuple{
+    encounters: InpatientEncounters,
+    drug: ADD.medication,
+    drugDateTime: Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn)
+  }"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="2"></valueInteger>
@@ -91,7 +109,9 @@
                <valueString value="SDE Medication Request"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Medication Request&quot;:  [MedicationRequest] MedicationRequests  where exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Medication Request&quot;:
+	[MedicationRequest] MedicationRequests
+	where exists(&quot;Initial Population&quot;.encounters)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="3"></valueInteger>
@@ -105,7 +125,10 @@
                <valueString value="SDE Patient ID"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Patient ID&quot;:      [Patient] ThePatient  where exists(&quot;Initial Population&quot;)     return ThePatient.identifier"></valueString>
+               <valueString value="define &quot;SDE Patient ID&quot;: 
+    [Patient] ThePatient
+	where exists(&quot;Initial Population&quot;.encounters)
+    return ThePatient.identifier"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="4"></valueInteger>
@@ -119,7 +142,9 @@
                <valueString value="SDE Locations"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Locations&quot;:  [Location] Locations     where Locations.type in &quot;CDC Location Codes&quot;    and exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Locations&quot;:
+	[Location] Locations
+    where exists(&quot;Initial Population&quot;.encounters)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="5"></valueInteger>
@@ -133,7 +158,10 @@
                <valueString value="SDE Encounter Locations"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Encounter Locations&quot;:  [Encounter] Encounter     where Global.&quot;GetLocation&quot;(Encounter.location.location[0]).type in &quot;CDC Location Codes&quot;       and exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Encounter Locations&quot;:
+	[Encounter] Encounter
+   	where Global.&quot;GetLocation&quot;(Encounter.location.location[0]).type in &quot;CDC Location Codes&quot; 
+   		and exists(&quot;Initial Population&quot;.encounters)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="6"></valueInteger>
@@ -147,7 +175,9 @@
                <valueString value="SDE Observation"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Observation&quot;:  [Observation] Observations   where exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Observation&quot;:
+	[Observation] Observations 
+	where exists(&quot;Initial Population&quot;.encounters)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="7"></valueInteger>
@@ -161,7 +191,15 @@
                <valueString value="SDE Race"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Race&quot;:   (flatten (       Patient.extension Extension         where Extension.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'           return Extension.extension     )) E       where E.url = 'ombCategory'         or E.url = 'detailed'       return E.value as Coding"></valueString>
+               <valueString value="define &quot;SDE Race&quot;:
+  (flatten (
+      Patient.extension Extension
+        where Extension.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
+          return Extension.extension
+    )) E
+      where E.url = 'ombCategory'
+        or E.url = 'detailed'
+      return E.value as Coding"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="8"></valueInteger>
@@ -175,7 +213,9 @@
                <valueString value="SDE Race"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Race&quot;:  SDE.&quot;SDE Race&quot; Race   where exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Race&quot;:
+	SDE.&quot;SDE Race&quot; Race 
+	where exists(&quot;Initial Population&quot;.encounters)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="9"></valueInteger>
@@ -189,7 +229,9 @@
                <valueString value="SDE Medication Administration"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Medication Administration&quot;:  [MedicationAdministration] MedicationAdministrations     where exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Medication Administration&quot;:
+	[MedicationAdministration] MedicationAdministrations
+    where exists(&quot;Initial Population&quot;.encounters)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="10"></valueInteger>
@@ -203,7 +245,12 @@
                <valueString value="SDE Sex"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Sex&quot;:   case       when Patient.gender = 'male' then Code { code: 'M', system: 'http://hl7.org/fhir/v3/AdministrativeGender', display: 'Male' }       when Patient.gender = 'female' then Code { code: 'F', system: 'http://hl7.org/fhir/v3/AdministrativeGender', display: 'Female' }       else null     end"></valueString>
+               <valueString value="define &quot;SDE Sex&quot;:
+  case
+      when Patient.gender = 'male' then Code { code: 'M', system: 'http://hl7.org/fhir/v3/AdministrativeGender', display: 'Male' }
+      when Patient.gender = 'female' then Code { code: 'F', system: 'http://hl7.org/fhir/v3/AdministrativeGender', display: 'Female' }
+      else null
+    end"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="11"></valueInteger>
@@ -217,7 +264,9 @@
                <valueString value="SDE Sex"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Sex&quot;:  SDE.&quot;SDE Sex&quot; Sex  where exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Sex&quot;:
+	SDE.&quot;SDE Sex&quot; Sex
+	where exists(&quot;Initial Population&quot;.encounters)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="12"></valueInteger>
@@ -231,7 +280,10 @@
                <valueString value="SDE Zip Code"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Zip Code&quot;:   [Patient] ThePatient   where exists(&quot;Initial Population&quot;)     return ThePatient.address.postalCode"></valueString>
+               <valueString value="define &quot;SDE Zip Code&quot;: 
+	[Patient] ThePatient 
+	where exists(&quot;Initial Population&quot;.encounters)
+    return ThePatient.address.postalCode"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="13"></valueInteger>
@@ -245,7 +297,11 @@
                <valueString value="SDE Patient Death Date"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Patient Death Date&quot;:   [Patient] Patient  where Patient.deceased is FHIR.dateTime    and exists(&quot;Initial Population&quot;)  return Patient.deceased as FHIR.dateTime"></valueString>
+               <valueString value="define &quot;SDE Patient Death Date&quot;: 
+	[Patient] Patient
+	where Patient.deceased is FHIR.dateTime 
+		and exists(&quot;Initial Population&quot;.encounters)
+	return Patient.deceased as FHIR.dateTime"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="14"></valueInteger>
@@ -259,7 +315,8 @@
                <valueString value="SDE Condition"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Condition&quot;:  [Condition] Conditions where exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Condition&quot;:
+	[Condition] Conditions where exists(&quot;Initial Population&quot;.encounters)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="15"></valueInteger>
@@ -273,7 +330,12 @@
                <valueString value="SDE Payer"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Payer&quot;:   [Coverage: type in &quot;Payer&quot;] Payer         return {           code: Payer.type,           period: Payer.period         }"></valueString>
+               <valueString value="define &quot;SDE Payer&quot;:
+  [Coverage: type in &quot;Payer&quot;] Payer
+        return {
+          code: Payer.type,
+          period: Payer.period
+        }"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="16"></valueInteger>
@@ -287,7 +349,9 @@
                <valueString value="SDE Payer"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Payer&quot;:   SDE.&quot;SDE Payer&quot; Payers  where exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Payer&quot;: 
+	SDE.&quot;SDE Payer&quot; Payers
+	where exists(&quot;Initial Population&quot;.encounters)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="17"></valueInteger>
@@ -295,13 +359,21 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="InitialInpatientPopulation"></valueString>
+               <valueString value="SupplementalDataElementsFHIR4"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="SDE Encounter Discharge Dispositions"></valueString>
+               <valueString value="SDE Ethnicity"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Encounter Discharge Dispositions&quot;:  [Encounter: &quot;Discharge Disposition&quot;] DischargeDispositions   where exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Ethnicity&quot;:
+  (flatten (
+      Patient.extension Extension
+        where Extension.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
+          return Extension.extension
+    )) E
+      where E.url = 'ombCategory'
+        or E.url = 'detailed'
+      return E.value as Coding"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="18"></valueInteger>
@@ -312,10 +384,12 @@
                <valueString value="InitialInpatientPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="SDE Service Request"></valueString>
+               <valueString value="SDE Ethnicity"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Service Request&quot;:  [ServiceRequest: &quot;Blood Glucose Laboratory and Point of Care Tests&quot;] LabTest       where (LabTest.intent ~ 'order'   and LabTest.status ~ 'completed')   and exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Ethnicity&quot;:
+	SDE.&quot;SDE Ethnicity&quot; Ethnicity
+	where exists(&quot;Initial Population&quot;.encounters)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="19"></valueInteger>
@@ -326,13 +400,68 @@
                <valueString value="InitialInpatientPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="SDE Chief Complaint"></valueString>
+               <valueString value="SDE Encounter Discharge Dispositions"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//Supplement Data Elements define &quot;SDE Chief Complaint&quot;:  [Encounter] InpatientEncounter     where InpatientEncounter.diagnosis.use in &quot;Chief Complaint&quot;    and exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Encounter Discharge Dispositions&quot;:
+	[Encounter: &quot;Discharge Disposition&quot;] DischargeDispositions 
+	where exists(&quot;Initial Population&quot;.encounters)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="20"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Service Request"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Service Request&quot;:
+	[ServiceRequest: &quot;Blood Glucose Laboratory and Point of Care Tests&quot;] LabTest
+      where (LabTest.intent ~ 'order'
+		and LabTest.status ~ 'completed')
+		and exists(&quot;Initial Population&quot;.encounters)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="21"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Chief Complaint"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//Supplement Data Elements
+define &quot;SDE Chief Complaint&quot;:
+	[Encounter] InpatientEncounter
+    where InpatientEncounter.diagnosis.use in &quot;Chief Complaint&quot; 
+		and exists(&quot;Initial Population&quot;.encounters)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="22"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Gender Identity"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Gender Identity&quot;:
+	[Patient] Patient
+    where Patient.gender in &quot;Gender Identity&quot;
+		and exists(&quot;Initial Population&quot;.encounters)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="23"></valueInteger>
             </extension>
          </extension>
          <status value="active"></status>
@@ -342,21 +471,21 @@
                <code value="module-definition"></code>
             </coding>
          </type>
-         <date value="2022-02-17T12:59:43-05:00"></date>
+         <date value="2022-02-22T13:55:30-05:00"></date>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library FHIRHelpers"></display>
-            <resource value="http://ecqi.healthit.gov/ecqms/Library/FHIRHelpers|4.0.1"></resource>
+            <resource value="http://fhir.org/guides/cqf/Library/FHIRHelpers|4.0.1"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library Global"></display>
-            <resource value="http://ecqi.healthit.gov/ecqms/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
+            <resource value="http://fhir.org/guides/cqf/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library SDE"></display>
-            <resource value="http://ecqi.healthit.gov/ecqms/Library/SupplementalDataElementsFHIR4|2.0.000"></resource>
+            <resource value="http://fhir.org/guides/cqf/Library/SupplementalDataElementsFHIR4|2.0.000"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -392,6 +521,11 @@
             <type value="depends-on"></type>
             <display value="Value set Chief Complaint"></display>
             <resource value="http://terminology.hl7.org/ValueSet/diagnosis-role"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Gender Identity"></display>
+            <resource value="http://hl7.org/fhir/ValueSet/gender-identity"></resource>
          </relatedArtifact>
          <parameter>
             <name value="Performance Period"></name>
@@ -485,6 +619,13 @@
             <type value="Any"></type>
          </parameter>
          <parameter>
+            <name value="SDE Ethnicity"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Coding"></type>
+         </parameter>
+         <parameter>
             <name value="SDE Encounter Discharge Dispositions"></name>
             <use value="out"></use>
             <min value="0"></min>
@@ -505,15 +646,21 @@
             <max value="*"></max>
             <type value="Encounter"></type>
          </parameter>
+         <parameter>
+            <name value="SDE Gender Identity"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Patient"></type>
+         </parameter>
          <dataRequirement>
-            <type value="Coverage"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Coverage"></profile>
-            <mustSupport value="period"></mustSupport>
-            <mustSupport value="type"></mustSupport>
-            <codeFilter>
-               <path value="type"></path>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"></valueSet>
-            </codeFilter>
+            <type value="Location"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
+            <mustSupport value="id"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="MedicationAdministration"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationAdministration"></profile>
          </dataRequirement>
          <dataRequirement>
             <type value="MedicationAdministration"></type>
@@ -526,10 +673,6 @@
             </codeFilter>
          </dataRequirement>
          <dataRequirement>
-            <type value="MedicationAdministration"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationAdministration"></profile>
-         </dataRequirement>
-         <dataRequirement>
             <type value="MedicationRequest"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"></profile>
             <mustSupport value="medication"></mustSupport>
@@ -541,22 +684,6 @@
          <dataRequirement>
             <type value="MedicationRequest"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"></profile>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
-            <mustSupport value="id"></mustSupport>
-            <mustSupport value="type"></mustSupport>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Patient"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Patient"></profile>
-            <mustSupport value="identifier"></mustSupport>
-            <mustSupport value="extension"></mustSupport>
-            <mustSupport value="address"></mustSupport>
-            <mustSupport value="deceased"></mustSupport>
-            <mustSupport value="value"></mustSupport>
-            <mustSupport value="url"></mustSupport>
          </dataRequirement>
          <dataRequirement>
             <type value="Encounter"></type>
@@ -578,6 +705,27 @@
          <dataRequirement>
             <type value="Observation"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Patient"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Patient"></profile>
+            <mustSupport value="identifier"></mustSupport>
+            <mustSupport value="extension"></mustSupport>
+            <mustSupport value="deceased"></mustSupport>
+            <mustSupport value="address"></mustSupport>
+            <mustSupport value="gender"></mustSupport>
+            <mustSupport value="value"></mustSupport>
+            <mustSupport value="url"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Coverage"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Coverage"></profile>
+            <mustSupport value="period"></mustSupport>
+            <mustSupport value="type"></mustSupport>
+            <codeFilter>
+               <path value="type"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"></valueSet>
+            </codeFilter>
          </dataRequirement>
          <dataRequirement>
             <type value="Condition"></type>
@@ -614,7 +762,7 @@
    <version value="0.000.01"></version>
    <name value="Initial Inpatient Population"></name>
    <title value="NHSN Glycemic Control, Initial Inpatient Population"></title>
-   <date value="2022-02-17T09:59:43-08:00"></date>
+   <date value="2022-02-22T10:55:30-08:00"></date>
    <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the performance period."></description>
    <effectivePeriod>
       <start value="2022-01-01"></start>
@@ -623,17 +771,17 @@
    <relatedArtifact>
       <type value="depends-on"></type>
       <display value="Library FHIRHelpers"></display>
-      <resource value="http://ecqi.healthit.gov/ecqms/Library/FHIRHelpers|4.0.1"></resource>
+      <resource value="http://fhir.org/guides/cqf/Library/FHIRHelpers|4.0.1"></resource>
    </relatedArtifact>
    <relatedArtifact>
       <type value="depends-on"></type>
       <display value="Library Global"></display>
-      <resource value="http://ecqi.healthit.gov/ecqms/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
+      <resource value="http://fhir.org/guides/cqf/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
    </relatedArtifact>
    <relatedArtifact>
       <type value="depends-on"></type>
       <display value="Library SDE"></display>
-      <resource value="http://ecqi.healthit.gov/ecqms/Library/SupplementalDataElementsFHIR4|2.0.000"></resource>
+      <resource value="http://fhir.org/guides/cqf/Library/SupplementalDataElementsFHIR4|2.0.000"></resource>
    </relatedArtifact>
    <relatedArtifact>
       <type value="depends-on"></type>
@@ -670,7 +818,12 @@
       <display value="Value set Chief Complaint"></display>
       <resource value="http://terminology.hl7.org/ValueSet/diagnosis-role"></resource>
    </relatedArtifact>
-   <library value="http://ecqi.healthit.gov/ecqms/Library/InitialInpatientPopulation"></library>
+   <relatedArtifact>
+      <type value="depends-on"></type>
+      <display value="Value set Gender Identity"></display>
+      <resource value="http://hl7.org/fhir/ValueSet/gender-identity"></resource>
+   </relatedArtifact>
+   <library value="http://fhir.org/guides/cqf/Library/InitialInpatientPopulation"></library>
    <scoring>
       <coding>
          <system value="http://terminology.hl7.org/CodeSystem/measure-scoring"></system>
