@@ -130,7 +130,7 @@
             </coding>
             <text value="Emergency Contact"/>
         </relationship>
-        <name id="CI-12742541-0">
+        <name>
             <use value="official"/>
             <text value="HARRIS, DANA"/>
             <family value="HARRIS"/>
@@ -168,7 +168,7 @@
             </coding>
             <text value="Guardian"/>
         </relationship>
-        <name id="CI-12742541-0">
+        <name>
             <use value="official"/>
             <text value="HARRIS, DANA"/>
             <family value="HARRIS"/>
