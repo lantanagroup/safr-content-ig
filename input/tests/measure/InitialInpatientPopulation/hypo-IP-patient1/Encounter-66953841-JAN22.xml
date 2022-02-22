@@ -1,6 +1,4 @@
-<Encounter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://hl7.org/fhir ../../../../OneDrive%20-%20Lantana%20Consulting%20Group/Desktop/SourceControl/Git/fhir-all-xsd/bundle.xsd"
- xmlns="http://hl7.org/fhir">
+<Encounter xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://hl7.org/fhir">
   <id value="66953841-JAN22" />
   <meta>
     <versionId value="2" />
