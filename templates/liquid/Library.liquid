@@ -305,9 +305,14 @@
           <th scope="row"><b>Parameters: </b></th>
           <td style="padding-left: 4px;">
             <table class="grid-dict">
-              <tr><th><b>Name</b></th><th><b>Type</b></th><th><b>Min</b></th><th><b>Max</b></th><th><b>In/Out</b></th></tr>
+              <tr><th><b>Name</b></th><th><b>Type</b></th><th><b>Multiple?</b></th><th><b>In/Out</b></th></tr>
               {% for param in Library.parameter %}
-                <tr><th>{{param.name}}</th><th>{{param.type}}</th><th>{{param.min}}</th><th>{{param.max}}</th><th>{{param.use}}</th></tr>
+                <tr>
+                  <th>{{param.name}}</th>
+                  <th>{{param.type}}</th>
+                  <th>{{param.max}}</th>
+                  <th>{{param.use}}</th>
+                </tr>
               {% endfor %}
             </table>
           </td>
