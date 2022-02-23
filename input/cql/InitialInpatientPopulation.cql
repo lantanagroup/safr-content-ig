@@ -23,7 +23,7 @@ code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
 
 parameter "Performance Period" Interval<DateTime>
- default Interval[@2022-01-01T00:00:00.0, @2023-01-01T00:00:00.0)
+ default Interval[@2022-01-01T00:00:00.0, @2022-01-31T00:00:00.0)
 
 context Patient
 
@@ -45,6 +45,7 @@ define "Inpatient Encounter":
   where (Encounters.class ~ "inpatient encounter"
     or Encounters.class ~ "inpatient acute"
     or Encounters.class ~ "inpatient non-acute")
+  and Encounters.period during "Performance Period"
 
 define "Antidiabetic Drugs Administered or Ordered":
   ([MedicationAdministration: "NHSN Hypoglycemia Drugs"] ADDMedAdmin
