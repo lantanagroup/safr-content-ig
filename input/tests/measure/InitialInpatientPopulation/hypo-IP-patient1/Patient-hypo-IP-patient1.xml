@@ -87,6 +87,7 @@
     </telecom>
     <gender value="female"/>
     <birthDate value="1939-09-16"/>
+    <deceasedDateTime value="2022-01-31T10:00:10+01:00" />"
     <address id="CI-24327194-0">
         <use value="home"/>
         <text value="2801 ANY &#xA;ANY, MO 64117&#xA;US"/>

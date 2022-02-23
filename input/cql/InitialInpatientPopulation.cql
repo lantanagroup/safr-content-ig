@@ -111,10 +111,12 @@ define "SDE Observation":
 	where exists("Initial Population".encounters)
 
 define "SDE Patient Death Date": 
-	[Patient] Patient
-	where Patient.deceased is FHIR.dateTime 
-		and exists("Initial Population".encounters)
-	return Patient.deceased as FHIR.dateTime  
+  singleton from(
+    [Patient] Patient
+    where Patient.deceased is FHIR.dateTime 
+      and exists("Initial Population".encounters)
+    return Patient.deceased
+  )
 
 define "SDE Payer": 
 	SDE."SDE Payer" Payers
