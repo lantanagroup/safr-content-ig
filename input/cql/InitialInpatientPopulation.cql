@@ -45,7 +45,7 @@ define "Inpatient Encounter":
   where (Encounters.class ~ "inpatient encounter"
     or Encounters.class ~ "inpatient acute"
     or Encounters.class ~ "inpatient non-acute")
-  and Encounters.period overlaps "Performance Period"
+  and Encounters.period during "Performance Period"
 
 define "Antidiabetic Drugs Administered or Ordered":
   ([MedicationAdministration: "NHSN Hypoglycemia Drugs"] ADDMedAdmin
