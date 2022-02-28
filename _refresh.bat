@@ -13,7 +13,7 @@ GOTO igpublish
 
 :isonline
 ECHO We're online, setting publish to local sandbox FHIR server
-SET fsoption=-fs http://localhost:8080/cqf-ruler-r4/fhir/
+SET fsoption=-fs https://cqf-ruler.nhsnlink.org/fhir
 
 :igpublish
 
