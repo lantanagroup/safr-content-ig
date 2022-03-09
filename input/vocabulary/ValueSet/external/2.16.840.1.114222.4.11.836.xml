@@ -1,16 +1,16 @@
 <ValueSet xmlns="http://hl7.org/fhir">
-   <id value="2.16.840.1.114222.4.11.836"/>
+   <id value="2.16.840.1.113883.3.666.5.307"/>
    <meta>
-      <versionId value="1"/>
-      <lastUpdated value="2012-10-25T12:28:31.000-04:00"/>
+      <versionId value="33"/>
+      <lastUpdated value="2021-01-19T09:34:06.000-05:00"/>
    </meta>
    <text>
       <status value="generated"/>
       <div xmlns="http://www.w3.org/1999/xhtml">
          <h3>Value Set Contents</h3>
-         <p>This value set contains 6 concepts</p>
+         <p>This value set contains 3 concepts</p>
          <p>All codes from system 
-            <code>urn:oid:2.16.840.1.113883.6.238</code>
+            <code>http://snomed.info/sct</code>
          </p>
          <table class="codes">
             <tr>
@@ -23,53 +23,38 @@
             </tr>
             <tr>
                <td style="white-space:nowrap">
-                  <a name="urn-oid-2.16.840.1.113883.6.238-1002-5"> </a>1002-5
+                  <a name="http---snomed.info-sct-183452005"> </a>
+                  <a href="http://browser.ihtsdotools.org/?perspective=full&amp;conceptId1=183452005">183452005</a>
                </td>
-               <td>American Indian or Alaska Native</td>
+               <td>Emergency hospital admission (procedure)</td>
             </tr>
             <tr>
                <td style="white-space:nowrap">
-                  <a name="urn-oid-2.16.840.1.113883.6.238-2028-9"> </a>2028-9
+                  <a name="http---snomed.info-sct-32485007"> </a>
+                  <a href="http://browser.ihtsdotools.org/?perspective=full&amp;conceptId1=32485007">32485007</a>
                </td>
-               <td>Asian</td>
+               <td>Hospital admission (procedure)</td>
             </tr>
             <tr>
                <td style="white-space:nowrap">
-                  <a name="urn-oid-2.16.840.1.113883.6.238-2054-5"> </a>2054-5
+                  <a name="http---snomed.info-sct-8715000"> </a>
+                  <a href="http://browser.ihtsdotools.org/?perspective=full&amp;conceptId1=8715000">8715000</a>
                </td>
-               <td>Black or African American</td>
-            </tr>
-            <tr>
-               <td style="white-space:nowrap">
-                  <a name="urn-oid-2.16.840.1.113883.6.238-2076-8"> </a>2076-8
-               </td>
-               <td>Native Hawaiian or Other Pacific Islander</td>
-            </tr>
-            <tr>
-               <td style="white-space:nowrap">
-                  <a name="urn-oid-2.16.840.1.113883.6.238-2106-3"> </a>2106-3
-               </td>
-               <td>White</td>
-            </tr>
-            <tr>
-               <td style="white-space:nowrap">
-                  <a name="urn-oid-2.16.840.1.113883.6.238-2131-1"> </a>2131-1
-               </td>
-               <td>Other Race</td>
+               <td>Hospital admission, elective (procedure)</td>
             </tr>
          </table>
       </div>
    </text>
-   <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.836"/>
-   <version value="20121025"/>
-   <name value="Race"/>
+   <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"/>
+   <version value="20200307"/>
+   <name value="Encounter Inpatient"/>
    <status value="active"/>
-   <date value="2012-10-25T12:28:31-04:00"/>
-   <publisher value="CDC NCHS"/>
+   <date value="2020-03-07T01:00:21-05:00"/>
+   <publisher value="Lantana EH Steward"/>
    <expansion>
-      <identifier value="urn:uuid:f4542d76-1dee-4865-93e3-f683e040d6c3"/>
-      <timestamp value="2022-02-14T15:53:19-05:00"/>
-      <total value="6"/>
+      <identifier value="urn:uuid:b1561d23-7da0-4382-b765-08d32dbf48c2"/>
+      <timestamp value="2022-03-09T10:11:35-05:00"/>
+      <total value="3"/>
       <offset value="0"/>
       <parameter>
          <name value="count"/>
@@ -80,40 +65,22 @@
          <valueInteger value="0"/>
       </parameter>
       <contains>
-         <system value="urn:oid:2.16.840.1.113883.6.238"/>
-         <version value="1.2"/>
-         <code value="1002-5"/>
-         <display value="American Indian or Alaska Native"/>
+         <system value="http://snomed.info/sct"/>
+         <version value="http://snomed.info/sct/731000124108/version/20210901"/>
+         <code value="183452005"/>
+         <display value="Emergency hospital admission (procedure)"/>
       </contains>
       <contains>
-         <system value="urn:oid:2.16.840.1.113883.6.238"/>
-         <version value="1.2"/>
-         <code value="2028-9"/>
-         <display value="Asian"/>
+         <system value="http://snomed.info/sct"/>
+         <version value="http://snomed.info/sct/731000124108/version/20210901"/>
+         <code value="32485007"/>
+         <display value="Hospital admission (procedure)"/>
       </contains>
       <contains>
-         <system value="urn:oid:2.16.840.1.113883.6.238"/>
-         <version value="1.2"/>
-         <code value="2054-5"/>
-         <display value="Black or African American"/>
-      </contains>
-      <contains>
-         <system value="urn:oid:2.16.840.1.113883.6.238"/>
-         <version value="1.2"/>
-         <code value="2076-8"/>
-         <display value="Native Hawaiian or Other Pacific Islander"/>
-      </contains>
-      <contains>
-         <system value="urn:oid:2.16.840.1.113883.6.238"/>
-         <version value="1.2"/>
-         <code value="2106-3"/>
-         <display value="White"/>
-      </contains>
-      <contains>
-         <system value="urn:oid:2.16.840.1.113883.6.238"/>
-         <version value="1.2"/>
-         <code value="2131-1"/>
-         <display value="Other Race"/>
+         <system value="http://snomed.info/sct"/>
+         <version value="http://snomed.info/sct/731000124108/version/20210901"/>
+         <code value="8715000"/>
+         <display value="Hospital admission, elective (procedure)"/>
       </contains>
    </expansion>
 </ValueSet>
