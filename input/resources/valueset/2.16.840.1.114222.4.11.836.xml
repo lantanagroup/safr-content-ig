@@ -1,0 +1,86 @@
+<ValueSet xmlns="http://hl7.org/fhir">
+   <id value="2.16.840.1.113883.3.666.5.307"/>
+   <meta>
+      <versionId value="33"/>
+      <lastUpdated value="2021-01-19T09:34:06.000-05:00"/>
+   </meta>
+   <text>
+      <status value="generated"/>
+      <div xmlns="http://www.w3.org/1999/xhtml">
+         <h3>Value Set Contents</h3>
+         <p>This value set contains 3 concepts</p>
+         <p>All codes from system 
+            <code>http://snomed.info/sct</code>
+         </p>
+         <table class="codes">
+            <tr>
+               <td style="white-space:nowrap">
+                  <b>Code</b>
+               </td>
+               <td>
+                  <b>Display</b>
+               </td>
+            </tr>
+            <tr>
+               <td style="white-space:nowrap">
+                  <a name="http---snomed.info-sct-183452005"> </a>
+                  <a href="http://browser.ihtsdotools.org/?perspective=full&amp;conceptId1=183452005">183452005</a>
+               </td>
+               <td>Emergency hospital admission (procedure)</td>
+            </tr>
+            <tr>
+               <td style="white-space:nowrap">
+                  <a name="http---snomed.info-sct-32485007"> </a>
+                  <a href="http://browser.ihtsdotools.org/?perspective=full&amp;conceptId1=32485007">32485007</a>
+               </td>
+               <td>Hospital admission (procedure)</td>
+            </tr>
+            <tr>
+               <td style="white-space:nowrap">
+                  <a name="http---snomed.info-sct-8715000"> </a>
+                  <a href="http://browser.ihtsdotools.org/?perspective=full&amp;conceptId1=8715000">8715000</a>
+               </td>
+               <td>Hospital admission, elective (procedure)</td>
+            </tr>
+         </table>
+      </div>
+   </text>
+   <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"/>
+   <version value="20200307"/>
+   <name value="Encounter Inpatient"/>
+   <status value="active"/>
+   <date value="2020-03-07T01:00:21-05:00"/>
+   <publisher value="Lantana EH Steward"/>
+   <expansion>
+      <identifier value="urn:uuid:b1561d23-7da0-4382-b765-08d32dbf48c2"/>
+      <timestamp value="2022-03-09T10:11:35-05:00"/>
+      <total value="3"/>
+      <offset value="0"/>
+      <parameter>
+         <name value="count"/>
+         <valueInteger value="1000"/>
+      </parameter>
+      <parameter>
+         <name value="offset"/>
+         <valueInteger value="0"/>
+      </parameter>
+      <contains>
+         <system value="http://snomed.info/sct"/>
+         <version value="http://snomed.info/sct/731000124108/version/20210901"/>
+         <code value="183452005"/>
+         <display value="Emergency hospital admission (procedure)"/>
+      </contains>
+      <contains>
+         <system value="http://snomed.info/sct"/>
+         <version value="http://snomed.info/sct/731000124108/version/20210901"/>
+         <code value="32485007"/>
+         <display value="Hospital admission (procedure)"/>
+      </contains>
+      <contains>
+         <system value="http://snomed.info/sct"/>
+         <version value="http://snomed.info/sct/731000124108/version/20210901"/>
+         <code value="8715000"/>
+         <display value="Hospital admission, elective (procedure)"/>
+      </contains>
+   </expansion>
+</ValueSet>

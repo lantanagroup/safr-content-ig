@@ -225,6 +225,21 @@
     "type": "MedicationRequest",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationRequest" ]
   }, {
+    "type": "Condition",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ]
+  }, {
+    "type": "Coverage",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Coverage" ],
+    "mustSupport": [ "period", "type" ],
+    "codeFilter": [ {
+      "path": "type",
+      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"
+    } ]
+  }, {
+    "type": "Location",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
+    "mustSupport": [ "id" ]
+  }, {
     "type": "Encounter",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
     "mustSupport": [ "type" ],
@@ -237,6 +252,9 @@
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
     "mustSupport": [ "period", "diagnosis", "location", "class" ]
   }, {
+    "type": "Procedure",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Procedure" ]
+  }, {
     "type": "ServiceRequest",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/ServiceRequest" ],
     "mustSupport": [ "code", "intent", "status" ],
@@ -245,26 +263,8 @@
       "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"
     } ]
   }, {
-    "type": "Condition",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ]
-  }, {
-    "type": "Location",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
-    "mustSupport": [ "id" ]
-  }, {
-    "type": "Coverage",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Coverage" ],
-    "mustSupport": [ "period", "type" ],
-    "codeFilter": [ {
-      "path": "type",
-      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"
-    } ]
-  }, {
     "type": "Observation",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Observation" ]
-  }, {
-    "type": "Procedure",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Procedure" ]
   } ],
   "content": [ {
     "contentType": "text/cql",
