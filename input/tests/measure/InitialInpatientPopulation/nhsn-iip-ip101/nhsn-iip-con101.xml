@@ -42,6 +42,6 @@
   <encounter>
     <reference value="Encounter/nhsn-iip-en101"/>
     <display value="inpatient encounter"/>
-  </subject>
+  </encounter>
   <onsetDateTime value="2022-01-01T10:00:00.0"/>
 </Condition>

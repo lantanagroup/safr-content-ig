@@ -31,17 +31,13 @@
     <coding>
       <system value="http://snomed.info/sct"/>
       <code value="44054006"/>
-      <display value="Dyspnea (finding)"/>
+      <display value="Diabetes mellitus type 2 (disorder)"/>
     </coding>
-    <text value="Shortness of breath"/>
+    <text value="Type 2 diabetes mellitus"/>
   </code>
   <subject>
     <reference value="Patient/nhsn-iip-ip101"/>
     <display value="Amy V. Shaw"/>
   </subject>
-  <encounter>
-    <reference value="Encounter/nhsn-iip-en101"/>
-    <display value="inpatient encounter"/>
-  </subject>
-  <onsetDateTime value="2022-01-01T10:00:00.0"/>
+  <onsetDateTime value="2020"/>
 </Condition>
