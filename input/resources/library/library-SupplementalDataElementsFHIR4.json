@@ -68,10 +68,6 @@
     "type": "Coding"
   } ],
   "dataRequirement": [ {
-    "type": "Patient",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ],
-    "mustSupport": [ "extension", "value", "url" ]
-  }, {
     "type": "Coverage",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Coverage" ],
     "mustSupport": [ "period", "type" ],
@@ -79,6 +75,10 @@
       "path": "type",
       "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"
     } ]
+  }, {
+    "type": "Patient",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ],
+    "mustSupport": [ "extension", "value", "url" ]
   } ],
   "content": [ {
     "contentType": "text/cql",
