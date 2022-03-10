@@ -1,11 +1,11 @@
 <Patient xmlns="http://hl7.org/fhir">
-    <id value="nhsn-iip-ip102"/>
+    <id value="nhsn-iip-ip101"/>
     <meta>
         <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"/>
     </meta>
   <identifier>
         <system value="http://www.acme.com/identifiers/patient"/>
-        <value value="102"/>
+        <value value="101"/>
     </identifier>
     <active value="true"/>
     <name>
@@ -14,5 +14,5 @@
         <given value="V."/>
     </name>
     <gender value="female"/>
-    <birthDate value="1987-02-20"/>
+    <birthDate value="1997-02-20"/>
 </Patient>
