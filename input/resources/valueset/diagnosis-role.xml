@@ -1,5 +1,5 @@
-<ValueSet xmlns="http://hl7.org/fhir">
-    <id value="encounter-discharge-disposition"/>
+<ValueSet>
+    <id value="diagnosis-role"/>
     <meta>
         <lastUpdated value="2020-02-23T18:41:39.109-07:00"/>
         <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
@@ -14,30 +14,24 @@
                     
                     
                     
-                    <a href="CodeSystem-discharge-disposition.html">
-                        <code>http://terminology.hl7.org/CodeSystem/discharge-disposition</code>
+                    <a href="CodeSystem-diagnosis-role.html">
+                        <code>http://terminology.hl7.org/CodeSystem/diagnosis-role</code>
                     </a>
                 </li>
             </ul>
         </div>
     </text>
     <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
-        <valueCode value="pa"/>
+        <valueCode value="vocab"/>
     </extension>
-    <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
-        <valueCode value="draft"/>
-    </extension>
-    <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
-        <valueInteger value="1"/>
-    </extension>
-    <url value="http://terminology.hl7.org/ValueSet/encounter-discharge-disposition"/>
+    <url value="http://terminology.hl7.org/ValueSet/diagnosis-role"/>
     <identifier>
         <system value="urn:ietf:rfc:3986"/>
-        <value value="urn:oid:2.16.840.1.113883.4.642.3.259"/>
+        <value value="urn:oid:2.16.840.1.113883.4.642.3.49"/>
     </identifier>
-    <version value="0.3.0"/>
-    <name value="DischargeDisposition"/>
-    <title value="Discharge disposition"/>
+    <version value="0.2.0"/>
+    <name value="DiagnosisRole"/>
+    <title value="DiagnosisRole"/>
     <status value="draft"/>
     <experimental value="false"/>
     <date value="2020-02-24T12:41:39+11:00"/>
@@ -48,11 +42,11 @@
             <value value="http://hl7.org/fhir"/>
         </telecom>
     </contact>
-    <description value="This value set defines a set of codes that can be used to where the patient left the hospital."/>
+    <description value="This value set defines a set of codes that can be used to express the role of a diagnosis on the Encounter or EpisodeOfCare record."/>
     <immutable value="true"/>
     <compose>
         <include>
-            <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+            <system value="http://terminology.hl7.org/CodeSystem/diagnosis-role"/>
         </include>
     </compose>
 </ValueSet>

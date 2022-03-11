@@ -34,14 +34,12 @@
    <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"/>
    <version value="20210611"/>
    <name value="Emergency Department Visit"/>
-   <title value="Emergency Department Visit"/>
    <status value="active"/>
    <date value="2021-06-11T01:02:23-04:00"/>
    <publisher value="TJC EH Steward"/>
-   <description value="The purpose of this value set is to represent concepts for encounters in the emergency department (ED)."/>
    <expansion>
-      <identifier value="urn:uuid:c359204e-9541-4119-91b1-c0a6cb9b9442"/>
-      <timestamp value="2022-02-14T15:00:41-05:00"/>
+      <identifier value="urn:uuid:8a4ca8c5-3324-49c6-b9f3-61b45192e630"/>
+      <timestamp value="2022-03-09T10:10:51-05:00"/>
       <total value="1"/>
       <offset value="0"/>
       <parameter>
