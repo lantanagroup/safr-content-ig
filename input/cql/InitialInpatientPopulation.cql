@@ -32,8 +32,8 @@ define "Initial Population":
     "Inpatient Encounter" InpatientEncounters,
     "Antidiabetic Drugs Administered or Ordered" ADD
   where Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn)
-    during "HospitalizationWithObservationOrEmergency"(InpatientEncounters)
-  and Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn) during "Performance Period"
+      during "HospitalizationWithObservationOrEmergency"(InpatientEncounters)
+    and Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn) during "Performance Period"
   return Tuple{
     encounters: InpatientEncounters,
     drug: ADD.medication,
@@ -41,11 +41,8 @@ define "Initial Population":
   }
 
 define "Inpatient Encounter":
-  [Encounter] Encounters
-  where (Encounters.class ~ "inpatient encounter"
-    or Encounters.class ~ "inpatient acute"
-    or Encounters.class ~ "inpatient non-acute")
-  and Encounters.period during "Performance Period"
+  [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute"}] Encounters
+  where Encounters.period during "Performance Period"
 
 define "Antidiabetic Drugs Administered or Ordered":
   ([MedicationAdministration: "NHSN Hypoglycemia Drugs"] ADDMedAdmin
@@ -83,17 +80,19 @@ define "SDE Encounter Discharge Dispositions":
 
 define "SDE Encounter Locations":
 	[Encounter] Encounter
-   	where Global."GetLocation"(Encounter.location.location[0]).type in "CDC Location Codes" 
+    with Encounter.location EncounterLocation
+   	such that (Global."GetLocation"(EncounterLocation.location).type in "CDC Location Codes" 
+     or Global."GetLocation"(EncounterLocation.location).physicalType in "CDC Location Codes")
    		and exists("Initial Population".encounters)
-
+      
 define "SDE Ethnicity":
 	SDE."SDE Ethnicity" Ethnicity
 	where exists("Initial Population".encounters)
 
 define "SDE Gender Identity":
 	[Patient] Patient
-    where Patient.gender in "Gender Identity"
-		and exists("Initial Population".encounters)
+    where Global."GetExtension"(Patient, 'patient-genderIdentity').value in "Gender Identity"
+		  and exists("Initial Population".encounters)
  	
   define "SDE Locations":
 	[Location] Locations
