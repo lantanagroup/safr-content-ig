@@ -1,6 +1,22 @@
 #!/bin/bash
 #DO NOT EDIT WITH WINDOWS
 #exit 1
+# Usage:
+# _updateCQFTooling.sh <skipPrompts[-y|--yes]>
+################################################
+
+skipPrompts=false
+FORCE=false
+
+# Check for true in parameters <skipPrompts>
+while [ "$#" -gt 0 ]; do
+    case $1 in
+    -f|--force)  FORCE=true ;;
+    -y|--yes)  skipPrompts=true ; FORCE=true ;;
+    *)  echo "Unknown parameter passed: $1.  Exiting"; exit 1 ;;
+    esac
+    shift
+done
 
 r=snapshots
 g=org.opencds.cqf
@@ -46,13 +62,14 @@ fi
 if $upgrade ; then
 	message="Overwrite $jarlocation? [Y/N] "
 else
-	#echo Will place tooling jar here: $input_cache_path$tooling_jar
-	echo Will place tooling jar here: $jarlocation
-	message="Ok? [Y/N]"
+	if [ $FORCE != true ]; then
+		#echo Will place tooling jar here: $input_cache_path$tooling_jar
+		echo Will place tooling jar here: $jarlocation
+		message="Ok? [Y/N]"
+	fi
 fi
 
-read -r -p "$message" response
-if [[ "$response" =~ ^([yY])$ ]]; then
+if [[ $FORCE == true ]] || [[ "$response" =~ ^[yY].*$ ]]; then
 	echo "Downloading most recent tooling to $jarlocationname - it's ~170 MB, so this may take a bit"
 #	wget "https://oss.sonatype.org/service/local/repositories/snapshots/content/org/opencds/cqf/tooling/1.0-SNAPSHOT/tooling-1.0-20200107.163002-6-jar-with-dependencies.jar" -O "$jarlocation"
 	curl $dlurl -L -o "$jarlocation" --create-dirs
