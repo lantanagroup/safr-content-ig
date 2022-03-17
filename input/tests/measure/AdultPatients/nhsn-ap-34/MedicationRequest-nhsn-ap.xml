@@ -1,0 +1,25 @@
+<MedicationRequest xmlns="http://hl7.org/fhir">
+    <id value="nhsn-ap-add102"/>
+    <meta>
+        <profile
+            value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest"/>
+    </meta>
+    <status value="active"/>
+    <intent value="proposal"/>
+    <medicationCodeableConcept>
+        <coding>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <code value="1161609"/>
+            <display value="metFORMIN Oral Liquid Product"/>
+        </coding>
+        <text value="metFORMIN Oral Liquid Product"/>
+    </medicationCodeableConcept>
+    <subject>
+        <reference value="Patient/nhsn-ap-34"/>
+        <display value="Amy Shaw"/>
+    </subject>
+    <encounter>
+        <reference value="Encounter/nhsn-iip-en102"/>
+    </encounter>
+    <authoredOn value="2021-12-31T20:00:00.0"/>
+</MedicationRequest>

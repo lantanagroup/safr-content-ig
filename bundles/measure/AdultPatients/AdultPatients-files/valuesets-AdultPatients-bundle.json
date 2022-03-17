@@ -1,0 +1,142 @@
+{
+  "resourceType": "Bundle",
+  "id": "valuesets-AdultPatients-bundle",
+  "type": "transaction",
+  "entry": [ {
+    "resource": {
+      "resourceType": "ValueSet",
+      "id": "2.16.840.1.113883.3.117.1.7.1.292",
+      "meta": {
+        "versionId": "34",
+        "lastUpdated": "2021-06-11T01:02:23.000-04:00"
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n         <h3>Value Set Contents</h3>\n         <p>This value set contains 1 concepts</p>\n         <p>All codes from system \n            <code>http://snomed.info/sct</code>\n         </p>\n         <table class=\"codes\">\n            <tr>\n               <td style=\"white-space:nowrap\">\n                  <b>Code</b>\n               </td>\n               <td>\n                  <b>Display</b>\n               </td>\n            </tr>\n            <tr>\n               <td style=\"white-space:nowrap\">\n                  <a name=\"http---snomed.info-sct-4525004\"> </a>\n                  <a href=\"http://browser.ihtsdotools.org/?perspective=full&amp;conceptId1=4525004\">4525004</a>\n               </td>\n               <td>Emergency department patient visit (procedure)</td>\n            </tr>\n         </table>\n      </div>"
+      },
+      "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292",
+      "version": "20210611",
+      "name": "Emergency Department Visit",
+      "status": "active",
+      "date": "2021-06-11T01:02:23-04:00",
+      "publisher": "TJC EH Steward",
+      "expansion": {
+        "identifier": "urn:uuid:8a4ca8c5-3324-49c6-b9f3-61b45192e630",
+        "timestamp": "2022-03-09T10:10:51-05:00",
+        "total": 1,
+        "offset": 0,
+        "parameter": [ {
+          "name": "count",
+          "valueInteger": 1000
+        }, {
+          "name": "offset",
+          "valueInteger": 0
+        } ],
+        "contains": [ {
+          "system": "http://snomed.info/sct",
+          "version": "http://snomed.info/sct/731000124108/version/20210901",
+          "code": "4525004",
+          "display": "Emergency department patient visit (procedure)"
+        } ]
+      }
+    },
+    "request": {
+      "method": "PUT",
+      "url": "ValueSet/2.16.840.1.113883.3.117.1.7.1.292/_history/34"
+    }
+  }, {
+    "resource": {
+      "resourceType": "ValueSet",
+      "id": "2.16.840.1.113762.1.4.1111.143",
+      "meta": {
+        "versionId": "26",
+        "lastUpdated": "2021-06-11T01:02:23.000-04:00"
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n         <h3>Value Set Contents</h3>\n         <p>This value set contains 1 concepts</p>\n         <p>All codes from system \n            <code>http://snomed.info/sct</code>\n         </p>\n         <table class=\"codes\">\n            <tr>\n               <td style=\"white-space:nowrap\">\n                  <b>Code</b>\n               </td>\n               <td>\n                  <b>Display</b>\n               </td>\n            </tr>\n            <tr>\n               <td style=\"white-space:nowrap\">\n                  <a name=\"http---snomed.info-sct-448951000124107\"> </a>\n                  <a href=\"http://browser.ihtsdotools.org/?perspective=full&amp;conceptId1=448951000124107\">448951000124107</a>\n               </td>\n               <td>Admission to observation unit (procedure)</td>\n            </tr>\n         </table>\n      </div>"
+      },
+      "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143",
+      "version": "20210611",
+      "name": "Observation Services",
+      "status": "active",
+      "date": "2021-06-11T01:02:23-04:00",
+      "publisher": "TJC EH Steward",
+      "expansion": {
+        "identifier": "urn:uuid:779caa62-0502-433f-86b6-7e36281233b0",
+        "timestamp": "2022-03-09T09:26:12-05:00",
+        "total": 1,
+        "offset": 0,
+        "parameter": [ {
+          "name": "count",
+          "valueInteger": 1000
+        }, {
+          "name": "offset",
+          "valueInteger": 0
+        } ],
+        "contains": [ {
+          "system": "http://snomed.info/sct",
+          "version": "http://snomed.info/sct/731000124108/version/20210901",
+          "code": "448951000124107",
+          "display": "Admission to observation unit (procedure)"
+        } ]
+      }
+    },
+    "request": {
+      "method": "PUT",
+      "url": "ValueSet/2.16.840.1.113762.1.4.1111.143/_history/26"
+    }
+  }, {
+    "resource": {
+      "resourceType": "ValueSet",
+      "id": "2.16.840.1.113883.3.666.5.307",
+      "meta": {
+        "versionId": "33",
+        "lastUpdated": "2021-01-19T09:34:06.000-05:00"
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n         <h3>Value Set Contents</h3>\n         <p>This value set contains 3 concepts</p>\n         <p>All codes from system \n            <code>http://snomed.info/sct</code>\n         </p>\n         <table class=\"codes\">\n            <tr>\n               <td style=\"white-space:nowrap\">\n                  <b>Code</b>\n               </td>\n               <td>\n                  <b>Display</b>\n               </td>\n            </tr>\n            <tr>\n               <td style=\"white-space:nowrap\">\n                  <a name=\"http---snomed.info-sct-183452005\"> </a>\n                  <a href=\"http://browser.ihtsdotools.org/?perspective=full&amp;conceptId1=183452005\">183452005</a>\n               </td>\n               <td>Emergency hospital admission (procedure)</td>\n            </tr>\n            <tr>\n               <td style=\"white-space:nowrap\">\n                  <a name=\"http---snomed.info-sct-32485007\"> </a>\n                  <a href=\"http://browser.ihtsdotools.org/?perspective=full&amp;conceptId1=32485007\">32485007</a>\n               </td>\n               <td>Hospital admission (procedure)</td>\n            </tr>\n            <tr>\n               <td style=\"white-space:nowrap\">\n                  <a name=\"http---snomed.info-sct-8715000\"> </a>\n                  <a href=\"http://browser.ihtsdotools.org/?perspective=full&amp;conceptId1=8715000\">8715000</a>\n               </td>\n               <td>Hospital admission, elective (procedure)</td>\n            </tr>\n         </table>\n      </div>"
+      },
+      "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307",
+      "version": "20200307",
+      "name": "Encounter Inpatient",
+      "status": "active",
+      "date": "2020-03-07T01:00:21-05:00",
+      "publisher": "Lantana EH Steward",
+      "expansion": {
+        "identifier": "urn:uuid:b1561d23-7da0-4382-b765-08d32dbf48c2",
+        "timestamp": "2022-03-09T10:11:35-05:00",
+        "total": 3,
+        "offset": 0,
+        "parameter": [ {
+          "name": "count",
+          "valueInteger": 1000
+        }, {
+          "name": "offset",
+          "valueInteger": 0
+        } ],
+        "contains": [ {
+          "system": "http://snomed.info/sct",
+          "version": "http://snomed.info/sct/731000124108/version/20210901",
+          "code": "183452005",
+          "display": "Emergency hospital admission (procedure)"
+        }, {
+          "system": "http://snomed.info/sct",
+          "version": "http://snomed.info/sct/731000124108/version/20210901",
+          "code": "32485007",
+          "display": "Hospital admission (procedure)"
+        }, {
+          "system": "http://snomed.info/sct",
+          "version": "http://snomed.info/sct/731000124108/version/20210901",
+          "code": "8715000",
+          "display": "Hospital admission, elective (procedure)"
+        } ]
+      }
+    },
+    "request": {
+      "method": "PUT",
+      "url": "ValueSet/2.16.840.1.113883.3.666.5.307/_history/33"
+    }
+  } ]
+}
