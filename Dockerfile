@@ -1,4 +1,4 @@
-FROM lantanagroup.azurecr.io/measure-builder AS build
+FROM lantanagroup/measure-builder AS build
 #FROM ubuntu AS build
 #RUN apt-get update && apt-get install -y --no-install-recommends ruby-full build-essential zlib1g-dev git python3 bash curl openjdk-11-jdk
 #RUN gem install jekyll bundler
