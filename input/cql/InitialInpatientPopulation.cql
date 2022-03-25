@@ -42,7 +42,7 @@ define "Initial Population":
 
 define "Inpatient Encounter":
   [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute"}] Encounters
-  where Encounters.period during "Performance Period"
+  where Encounters.period overlaps "Performance Period"
 
 define "Antidiabetic Drugs Administered or Ordered":
   ([MedicationAdministration: "NHSN Hypoglycemia Drugs"] ADDMedAdmin
