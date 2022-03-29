@@ -999,6 +999,7 @@
    <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"/>
    <version value="20180718"/>
    <name value="Payer"/>
+   <title value="Payer"/>
    <status value="active"/>
    <date value="2018-07-18T01:00:04-04:00"/>
    <publisher value="HL7 Terminology"/>

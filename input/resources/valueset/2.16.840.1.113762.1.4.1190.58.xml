@@ -6027,6 +6027,7 @@
    <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58"/>
    <version value="20220304"/>
    <name value="Antidiabetic Medications"/>
+   <title value="Antidiabetic Medications"/>
    <status value="active"/>
    <date value="2022-03-04T01:02:16-05:00"/>
    <publisher value="CDC NHSN"/>

@@ -687,6 +687,7 @@
    <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265"/>
    <version value="Draft"/>
    <name value="NHSN CDC Inpatient Location Codes"/>
+   <title value="NHSN CDC Inpatient Location Codes"/>
    <status value="draft"/>
    <date value="2022-01-24T17:16:19-05:00"/>
    <publisher value="CDC NHSN"/>

@@ -48,6 +48,7 @@
    <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"/>
    <version value="20200307"/>
    <name value="Encounter Inpatient"/>
+   <title value="Encounter Inpatient"/>
    <status value="active"/>
    <date value="2020-03-07T01:00:21-05:00"/>
    <publisher value="Lantana EH Steward"/>
