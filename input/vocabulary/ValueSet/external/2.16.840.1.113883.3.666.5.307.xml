@@ -51,6 +51,7 @@
    <status value="active"/>
    <date value="2020-03-07T01:00:21-05:00"/>
    <publisher value="Lantana EH Steward"/>
+   <description value="The purpose of this value set is to represent concepts of inpatient hospitalization encounters."/>
    <expansion>
       <identifier value="urn:uuid:b1561d23-7da0-4382-b765-08d32dbf48c2"/>
       <timestamp value="2022-03-09T10:11:35-05:00"/>

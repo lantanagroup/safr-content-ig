@@ -6030,6 +6030,7 @@
    <status value="active"/>
    <date value="2022-03-04T01:02:16-05:00"/>
    <publisher value="CDC NHSN"/>
+   <description value="The purpose of this value set is to represent concepts for antidiabetic medications used for the treatment of Type 1 or Type 2 diabetes mellitus."/>
    <expansion>
       <identifier value="urn:uuid:19b37668-294a-4c11-9192-d2a6da696c84"/>
       <timestamp value="2022-03-09T10:10:18-05:00"/>

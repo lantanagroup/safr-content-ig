@@ -42,6 +42,7 @@
    <status value="active"/>
    <date value="2015-03-31T01:00:01-04:00"/>
    <publisher value="ONC"/>
+   <description value="Gender identity restricted to only Male and Female used in administrative situations requiring a restriction to these two categories"/> 
    <expansion>
       <identifier value="urn:uuid:7c494f5c-d0b0-48b6-9612-99bc4ce6969c"/>
       <timestamp value="2022-03-09T09:21:02-05:00"/>

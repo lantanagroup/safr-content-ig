@@ -41,14 +41,29 @@
                <valueString value="AdultPatients"></valueString>
             </extension>
             <extension url="name">
+               <valueString value="Age"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Age&quot;:
+    &quot;AgeInYearsAt&quot;(start of &quot;Performance Period&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="2"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="AdultPatients"></valueString>
+            </extension>
+            <extension url="name">
                <valueString value="Initial Population"></valueString>
             </extension>
             <extension url="statement">
                <valueString value="define &quot;Initial Population&quot;:
-    &quot;AgeInYearsAt&quot;(start of &quot;Performance Period&quot;) &gt;= 18"></valueString>
+    &quot;Age&quot; &gt;= 18"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="2"></valueInteger>
+               <valueInteger value="3"></valueInteger>
             </extension>
          </extension>
          <status value="active"></status>
@@ -58,7 +73,7 @@
                <code value="module-definition"></code>
             </coding>
          </type>
-         <date value="2022-03-17T14:38:20-04:00"></date>
+         <date value="2022-03-30T15:26:32-04:00"></date>
          <parameter>
             <name value="Performance Period"></name>
             <use value="in"></use>
@@ -92,12 +107,12 @@
             <profile value="http://hl7.org/fhir/StructureDefinition/Patient"></profile>
          </dataRequirement>
          <dataRequirement>
-            <type value="MedicationRequest"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"></profile>
-         </dataRequirement>
-         <dataRequirement>
             <type value="Condition"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Condition"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="MedicationRequest"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"></profile>
          </dataRequirement>
       </Library>
    </contained>
@@ -119,7 +134,7 @@
    <version value="0.0.001"></version>
    <name value="Adult Patients"></name>
    <title value="Adult Patients"></title>
-   <date value="2022-03-17T14:38:20-04:00"></date>
+   <date value="2022-03-30T15:26:32-04:00"></date>
    <description value="Bare bones measure to pull all patients whose age is &gt;= 18 into the initial population."></description>
    <purpose value="Measure for testing"></purpose>
    <library value="http://nhsnlink.org/fhir/Library/AdultPatients"></library>

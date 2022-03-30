@@ -11,7 +11,10 @@ parameter "Performance Period" Interval<DateTime>
 context Patient
 
 define "Initial Population":
-    "AgeInYearsAt"(start of "Performance Period") >= 18
+    "Age" >= 18
+
+define "Age":
+    "AgeInYearsAt"(start of "Performance Period")
 
 define "SDE Conditions":
     [Condition]

@@ -138,9 +138,11 @@
       "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58",
       "version": "20220304",
       "name": "Antidiabetic Medications",
+      "title": "Antidiabetic Medications",
       "status": "active",
       "date": "2022-03-04T01:02:16-05:00",
       "publisher": "CDC NHSN",
+      "description": "The purpose of this value set is to represent concepts for antidiabetic medications used for the treatment of Type 1 or Type 2 diabetes mellitus.",
       "expansion": {
         "identifier": "urn:uuid:19b37668-294a-4c11-9192-d2a6da696c84",
         "timestamp": "2022-03-09T10:10:18-05:00",
@@ -5175,9 +5177,11 @@
       "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38",
       "version": "20220210",
       "name": "Blood Glucose Laboratory and Point of Care Tests",
+      "title": "Blood Glucose Laboratory and Point of Care Tests",
       "status": "active",
       "date": "2022-02-10T01:02:28-05:00",
       "publisher": "HL7 Terminology",
+      "description": "Blood Glucose LOINC Terms for the NHSN ADE – Hypoglycemia Module",
       "expansion": {
         "identifier": "urn:uuid:62c58d8b-7617-482a-96cd-e84fb703d2ed",
         "timestamp": "2022-03-09T10:16:01-05:00",
@@ -5352,9 +5356,11 @@
       "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265",
       "version": "Draft",
       "name": "NHSN CDC Inpatient Location Codes",
+      "title": "NHSN CDC Inpatient Location Codes",
       "status": "draft",
       "date": "2022-01-24T17:16:19-05:00",
       "publisher": "CDC NHSN",
+      "description": "This value set contains concepts that represent NHSN inpatient location codes, chronic care units (non-acute, long term care) and acute care facilities. ",
       "expansion": {
         "identifier": "urn:uuid:c62df809-9c24-4939-a856-c49f9df3cf3d",
         "timestamp": "2022-03-09T09:24:28-05:00",
@@ -5986,7 +5992,7 @@
             "valueString": "Inpatient Encounter"
           }, {
             "url": "statement",
-            "valueString": "define \"Inpatient Encounter\":   [Encounter: class in {\"inpatient encounter\", \"inpatient acute\", \"inpatient non-acute\"}] Encounters   where Encounters.period during \"Performance Period\""
+            "valueString": "define \"Inpatient Encounter\":   [Encounter: class in {\"inpatient encounter\", \"inpatient acute\", \"inpatient non-acute\"}] Encounters   where Encounters.period overlaps \"Performance Period\""
           }, {
             "url": "displaySequence",
             "valueInteger": 0
@@ -6344,7 +6350,7 @@
             "code": "module-definition"
           } ]
         },
-        "date": "2022-03-11T15:22:21-08:00",
+        "date": "2022-03-25T08:22:09-04:00",
         "relatedArtifact": [ {
           "type": "depends-on",
           "display": "Library FHIRHelpers",
@@ -6506,9 +6512,17 @@
           "type": "Patient"
         } ],
         "dataRequirement": [ {
-          "type": "Patient",
-          "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ],
-          "mustSupport": [ "identifier", "extension", "deceased", "address", "value", "url" ]
+          "type": "Location",
+          "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
+          "mustSupport": [ "id" ]
+        }, {
+          "type": "ServiceRequest",
+          "profile": [ "http://hl7.org/fhir/StructureDefinition/ServiceRequest" ],
+          "mustSupport": [ "code", "intent", "status" ],
+          "codeFilter": [ {
+            "path": "code",
+            "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"
+          } ]
         }, {
           "type": "MedicationAdministration",
           "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationAdministration" ],
@@ -6532,25 +6546,9 @@
           "type": "MedicationRequest",
           "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationRequest" ]
         }, {
-          "type": "Encounter",
-          "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
-          "mustSupport": [ "period", "class" ],
-          "codeFilter": [ {
-            "path": "class",
-            "code": [ {
-              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-              "code": "IMP",
-              "display": "inpatient encounter"
-            }, {
-              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-              "code": "ACUTE",
-              "display": "inpatient acute"
-            }, {
-              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-              "code": "NONAC",
-              "display": "inpatient non-acute"
-            } ]
-          } ]
+          "type": "Patient",
+          "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ],
+          "mustSupport": [ "identifier", "extension", "deceased", "address", "value", "url" ]
         }, {
           "type": "Encounter",
           "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
@@ -6582,7 +6580,33 @@
         }, {
           "type": "Encounter",
           "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
+          "mustSupport": [ "period", "class" ],
+          "codeFilter": [ {
+            "path": "class",
+            "code": [ {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "IMP",
+              "display": "inpatient encounter"
+            }, {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ACUTE",
+              "display": "inpatient acute"
+            }, {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "NONAC",
+              "display": "inpatient non-acute"
+            } ]
+          } ]
+        }, {
+          "type": "Encounter",
+          "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
           "mustSupport": [ "period", "diagnosis", "location", "class" ]
+        }, {
+          "type": "Condition",
+          "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ]
+        }, {
+          "type": "Observation",
+          "profile": [ "http://hl7.org/fhir/StructureDefinition/Observation" ]
         }, {
           "type": "Coverage",
           "profile": [ "http://hl7.org/fhir/StructureDefinition/Coverage" ],
@@ -6591,24 +6615,6 @@
             "path": "type",
             "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"
           } ]
-        }, {
-          "type": "ServiceRequest",
-          "profile": [ "http://hl7.org/fhir/StructureDefinition/ServiceRequest" ],
-          "mustSupport": [ "code", "intent", "status" ],
-          "codeFilter": [ {
-            "path": "code",
-            "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"
-          } ]
-        }, {
-          "type": "Observation",
-          "profile": [ "http://hl7.org/fhir/StructureDefinition/Observation" ]
-        }, {
-          "type": "Location",
-          "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
-          "mustSupport": [ "id" ]
-        }, {
-          "type": "Condition",
-          "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ]
         } ]
       } ],
       "extension": [ {
@@ -6631,7 +6637,7 @@
       "version": "0.000.01",
       "name": "Initial Inpatient Population",
       "title": "NHSN Glycemic Control, Initial Inpatient Population (Hypoglycemia)",
-      "date": "2022-03-11T15:22:21-08:00",
+      "date": "2022-03-25T04:22:09-08:00",
       "description": "All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the performance period.",
       "relatedArtifact": [ {
         "type": "depends-on",
@@ -6815,6 +6821,7 @@
       "url": "http://fhir.org/guides/cqf/Library/InitialInpatientPopulation",
       "version": "0.0.001",
       "name": "InitialInpatientPopulation",
+      "title": "InitialInpatientPopulation",
       "relatedArtifact": [ {
         "type": "depends-on",
         "display": "FHIR model information",
@@ -7004,47 +7011,6 @@
         "type": "Any"
       } ],
       "dataRequirement": [ {
-        "type": "Location",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
-        "mustSupport": [ "id" ]
-      }, {
-        "type": "Procedure",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/Procedure" ]
-      }, {
-        "type": "MedicationAdministration",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationAdministration" ],
-        "mustSupport": [ "medication", "status" ],
-        "codeFilter": [ {
-          "path": "medication",
-          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58"
-        } ]
-      }, {
-        "type": "MedicationAdministration",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationAdministration" ]
-      }, {
-        "type": "MedicationRequest",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationRequest" ],
-        "mustSupport": [ "medication" ],
-        "codeFilter": [ {
-          "path": "medication",
-          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58"
-        } ]
-      }, {
-        "type": "MedicationRequest",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationRequest" ]
-      }, {
-        "type": "ServiceRequest",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/ServiceRequest" ],
-        "mustSupport": [ "code", "intent", "status" ],
-        "codeFilter": [ {
-          "path": "code",
-          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"
-        } ]
-      }, {
-        "type": "Patient",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ],
-        "mustSupport": [ "identifier", "extension", "deceased", "address", "value", "url" ]
-      }, {
         "type": "Encounter",
         "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
         "mustSupport": [ "type" ],
@@ -7097,8 +7063,38 @@
         "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
         "mustSupport": [ "period", "diagnosis", "location", "class" ]
       }, {
+        "type": "MedicationAdministration",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationAdministration" ],
+        "mustSupport": [ "medication", "status" ],
+        "codeFilter": [ {
+          "path": "medication",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58"
+        } ]
+      }, {
+        "type": "MedicationAdministration",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationAdministration" ]
+      }, {
+        "type": "MedicationRequest",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationRequest" ],
+        "mustSupport": [ "medication" ],
+        "codeFilter": [ {
+          "path": "medication",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58"
+        } ]
+      }, {
+        "type": "MedicationRequest",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationRequest" ]
+      }, {
         "type": "Condition",
         "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ]
+      }, {
+        "type": "Location",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
+        "mustSupport": [ "id" ]
+      }, {
+        "type": "Patient",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ],
+        "mustSupport": [ "identifier", "extension", "deceased", "address", "value", "url" ]
       }, {
         "type": "Observation",
         "profile": [ "http://hl7.org/fhir/StructureDefinition/Observation" ]
@@ -7110,6 +7106,17 @@
           "path": "type",
           "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"
         } ]
+      }, {
+        "type": "ServiceRequest",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/ServiceRequest" ],
+        "mustSupport": [ "code", "intent", "status" ],
+        "codeFilter": [ {
+          "path": "code",
+          "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"
+        } ]
+      }, {
+        "type": "Procedure",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/Procedure" ]
       } ],
       "content": [ {
         "contentType": "text/cql",
