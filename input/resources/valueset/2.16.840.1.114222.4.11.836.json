@@ -16,6 +16,7 @@
     "status": "active",
     "date": "2012-10-25T12:28:31-04:00",
     "publisher": "CDC NCHS",
+    "description": "The purpose of this value set is to represent CDC concepts for Race.",
     "expansion": {
         "identifier": "urn:uuid:55002dc9-9101-423c-9850-a8b376412366",
         "timestamp": "2022-03-15T14:18:47-04:00",

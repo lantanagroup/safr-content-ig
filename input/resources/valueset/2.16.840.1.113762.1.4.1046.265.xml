@@ -691,6 +691,8 @@
    <status value="draft"/>
    <date value="2022-01-24T17:16:19-05:00"/>
    <publisher value="CDC NHSN"/>
+   <description value="This value set contains concepts that represent NHSN inpatient location codes, chronic care units (non-acute, long term care) and acute care facilities.
+"/>
    <expansion>
       <identifier value="urn:uuid:c62df809-9c24-4939-a856-c49f9df3cf3d"/>
       <timestamp value="2022-03-09T09:24:28-05:00"/>
