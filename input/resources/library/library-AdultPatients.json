@@ -10,6 +10,7 @@
   "url": "http://nhsnlink.org/fhir/Library/AdultPatients",
   "version": "0.0.001",
   "name": "AdultPatients",
+  "title": "AdultPatients",
   "relatedArtifact": [ {
     "type": "depends-on",
     "display": "FHIR model information",

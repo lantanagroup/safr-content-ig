@@ -10,6 +10,7 @@
   "url": "http://fhir.org/guides/cqf/Library/InitialInpatientPopulation",
   "version": "0.0.001",
   "name": "InitialInpatientPopulation",
+  "title": "InitialInpatientPopulation",
   "relatedArtifact": [ {
     "type": "depends-on",
     "display": "FHIR model information",
