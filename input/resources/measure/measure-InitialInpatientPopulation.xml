@@ -73,9 +73,13 @@
             </extension>
             <extension url="statement">
                <valueString value="define &quot;Antidiabetic Drugs Administered or Ordered&quot;:
-  ([MedicationAdministration: &quot;NHSN Hypoglycemia Drugs&quot;] ADDMedAdmin
-    where ADDMedAdmin.status ~ 'completed')
-  union [MedicationRequest: &quot;NHSN Hypoglycemia Drugs&quot;]"></valueString>
+  ([MedicationAdministration] ADDMedAdmin
+    where CheckMedication(ADDMedAdmin.medication)
+      and ADDMedAdmin.status ~ 'completed')
+  union (
+    [MedicationRequest] MedicationRequests
+      where CheckMedication(MedicationRequests.medication)
+  )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="1"></valueInteger>
@@ -166,8 +170,8 @@
                <valueString value="define &quot;SDE Encounter Locations&quot;:
 	[Encounter] Encounter
     with Encounter.location EncounterLocation
-   	such that (Global.&quot;GetLocation&quot;(EncounterLocation.location).type in &quot;CDC Location Codes&quot; 
-     or Global.&quot;GetLocation&quot;(EncounterLocation.location).physicalType in &quot;CDC Location Codes&quot;)
+   	such that (Global.GetLocation(EncounterLocation.location).type in &quot;CDC Location Codes&quot; 
+     or Global.GetLocation(EncounterLocation.location).physicalType in &quot;CDC Location Codes&quot;)
    		and exists(&quot;Initial Population&quot;.encounters)"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -481,7 +485,7 @@ define &quot;SDE Chief Complaint&quot;:
                <code value="module-definition"></code>
             </coding>
          </type>
-         <date value="2022-03-30T15:26:32-04:00"></date>
+         <date value="2022-04-05T13:15:30-04:00"></date>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library FHIRHelpers"></display>
@@ -671,6 +675,27 @@ define &quot;SDE Chief Complaint&quot;:
             <type value="Patient"></type>
          </parameter>
          <dataRequirement>
+            <type value="MedicationAdministration"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationAdministration"></profile>
+            <mustSupport value="medication"></mustSupport>
+            <mustSupport value="status"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="MedicationRequest"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"></profile>
+            <mustSupport value="medication"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Location"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
+            <mustSupport value="id"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Medication"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Medication"></profile>
+            <mustSupport value="id"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
             <type value="Encounter"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
             <mustSupport value="type"></mustSupport>
@@ -707,6 +732,14 @@ define &quot;SDE Chief Complaint&quot;:
             <type value="Encounter"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
             <mustSupport value="period"></mustSupport>
+            <mustSupport value="diagnosis"></mustSupport>
+            <mustSupport value="location"></mustSupport>
+            <mustSupport value="class"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="period"></mustSupport>
             <mustSupport value="class"></mustSupport>
             <codeFilter>
                <path value="class"></path>
@@ -728,48 +761,8 @@ define &quot;SDE Chief Complaint&quot;:
             </codeFilter>
          </dataRequirement>
          <dataRequirement>
-            <type value="Encounter"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
-            <mustSupport value="period"></mustSupport>
-            <mustSupport value="diagnosis"></mustSupport>
-            <mustSupport value="location"></mustSupport>
-            <mustSupport value="class"></mustSupport>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="MedicationAdministration"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationAdministration"></profile>
-            <mustSupport value="medication"></mustSupport>
-            <mustSupport value="status"></mustSupport>
-            <codeFilter>
-               <path value="medication"></path>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58"></valueSet>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="MedicationAdministration"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationAdministration"></profile>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="MedicationRequest"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"></profile>
-            <mustSupport value="medication"></mustSupport>
-            <codeFilter>
-               <path value="medication"></path>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58"></valueSet>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="MedicationRequest"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"></profile>
-         </dataRequirement>
-         <dataRequirement>
             <type value="Condition"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Condition"></profile>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
-            <mustSupport value="id"></mustSupport>
          </dataRequirement>
          <dataRequirement>
             <type value="Patient"></type>
@@ -780,6 +773,17 @@ define &quot;SDE Chief Complaint&quot;:
             <mustSupport value="address"></mustSupport>
             <mustSupport value="value"></mustSupport>
             <mustSupport value="url"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="ServiceRequest"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/ServiceRequest"></profile>
+            <mustSupport value="code"></mustSupport>
+            <mustSupport value="intent"></mustSupport>
+            <mustSupport value="status"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"></valueSet>
+            </codeFilter>
          </dataRequirement>
          <dataRequirement>
             <type value="Observation"></type>
@@ -793,17 +797,6 @@ define &quot;SDE Chief Complaint&quot;:
             <codeFilter>
                <path value="type"></path>
                <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"></valueSet>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="ServiceRequest"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/ServiceRequest"></profile>
-            <mustSupport value="code"></mustSupport>
-            <mustSupport value="intent"></mustSupport>
-            <mustSupport value="status"></mustSupport>
-            <codeFilter>
-               <path value="code"></path>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"></valueSet>
             </codeFilter>
          </dataRequirement>
       </Library>
@@ -826,7 +819,7 @@ define &quot;SDE Chief Complaint&quot;:
    <version value="0.000.01"></version>
    <name value="Initial Inpatient Population"></name>
    <title value="NHSN Glycemic Control, Initial Inpatient Population (Hypoglycemia)"></title>
-   <date value="2022-03-30T11:26:32-08:00"></date>
+   <date value="2022-04-05T09:15:30-08:00"></date>
    <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the performance period."></description>
    <relatedArtifact>
       <type value="depends-on"></type>

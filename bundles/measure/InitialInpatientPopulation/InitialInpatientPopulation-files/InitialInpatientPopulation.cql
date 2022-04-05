@@ -45,9 +45,28 @@ define "Inpatient Encounter":
   where Encounters.period overlaps "Performance Period"
 
 define "Antidiabetic Drugs Administered or Ordered":
-  ([MedicationAdministration: "NHSN Hypoglycemia Drugs"] ADDMedAdmin
-    where ADDMedAdmin.status ~ 'completed')
-  union [MedicationRequest: "NHSN Hypoglycemia Drugs"]
+  ([MedicationAdministration] ADDMedAdmin
+    where CheckMedication(ADDMedAdmin.medication)
+      and ADDMedAdmin.status ~ 'completed')
+  union (
+    [MedicationRequest] MedicationRequests
+      where CheckMedication(MedicationRequests.medication)
+  )
+
+define function "CheckMedication"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):
+  case
+    when choice is FHIR.CodeableConcept then
+      (choice as FHIR.CodeableConcept) in "NHSN Hypoglycemia Drugs"
+    when choice is FHIR.Reference then
+      GetMedication(choice as FHIR.Reference).code in "NHSN Hypoglycemia Drugs"
+    else
+      false
+  end
+
+define function "GetMedication"(reference Reference ):
+  singleton from (
+    [Medication] M where M.id = Global.GetId(reference.reference)
+  )
 
 define function "HospitalizationWithObservationOrEmergency"(TheEncounter FHIR.Encounter ):
   TheEncounter Visit
@@ -81,8 +100,8 @@ define "SDE Encounter Discharge Dispositions":
 define "SDE Encounter Locations":
 	[Encounter] Encounter
     with Encounter.location EncounterLocation
-   	such that (Global."GetLocation"(EncounterLocation.location).type in "CDC Location Codes" 
-     or Global."GetLocation"(EncounterLocation.location).physicalType in "CDC Location Codes")
+   	such that (Global.GetLocation(EncounterLocation.location).type in "CDC Location Codes" 
+     or Global.GetLocation(EncounterLocation.location).physicalType in "CDC Location Codes")
    		and exists("Initial Population".encounters)
       
 define "SDE Ethnicity":
