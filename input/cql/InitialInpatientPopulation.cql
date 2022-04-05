@@ -23,7 +23,7 @@ code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
 
 parameter "Performance Period" Interval<DateTime>
- default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
+ //default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
 
 context Patient
 
@@ -46,21 +46,21 @@ define "Inpatient Encounter":
 
 define "Antidiabetic Drugs Administered or Ordered":
   ([MedicationAdministration] ADDMedAdmin
-    where CheckMedication(ADDMedAdmin.medication)
+    where GetMedicationCode(ADDMedAdmin.medication) in "NHSN Hypoglycemia Drugs"
       and ADDMedAdmin.status ~ 'completed')
   union (
     [MedicationRequest] MedicationRequests
-      where CheckMedication(MedicationRequests.medication)
+      where GetMedicationCode(MedicationRequests.medication) in "NHSN Hypoglycemia Drugs"
   )
 
-define function "CheckMedication"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):
+define function "GetMedicationCode"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):
   case
     when choice is FHIR.CodeableConcept then
-      (choice as FHIR.CodeableConcept) in "NHSN Hypoglycemia Drugs"
+      choice as FHIR.CodeableConcept
     when choice is FHIR.Reference then
-      GetMedication(choice as FHIR.Reference).code in "NHSN Hypoglycemia Drugs"
+      GetMedication(choice as FHIR.Reference).code
     else
-      false
+      null as FHIR.CodeableConcept
   end
 
 define function "GetMedication"(reference Reference ):
