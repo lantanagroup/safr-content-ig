@@ -1,0 +1,29 @@
+<Encounter xmlns="http://hl7.org/fhir">
+   <id value="nhsn-iip-en138"/>
+   <meta>
+      <versionId value="1"/>
+      <lastUpdated value="2022-03-11T18:16:00.000+00:00"/>
+      <source value="#25b169079613b1dc"/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter"/>
+   </meta>
+   <status value="finished"/>
+   <class>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="IMP"/>
+      <display value="inpatient encounter"/>
+   </class>
+   <type>
+      <coding>
+         <system value="http://www.ama-assn.org/go/cpt"/>
+         <code value="53923005"/>
+      </coding>
+      <text value="Medical consultation on inpatient"/>
+   </type>
+   <subject>
+      <reference value="Patient/nhsn-iip-ip138"/>
+   </subject>
+   <period>
+      <start value="2022-01-01T08:00:00.000Z"/>
+      <end value="2022-01-05T08:00:00.000Z"/>
+   </period>
+</Encounter>

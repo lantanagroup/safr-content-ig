@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure xmlns="http://hl7.org/fhir">
+    <id value="nhsn-iip-pro-sde-2" />
+    <meta>
+        <versionId value="1" />
+        <lastUpdated value="2022-03-15T19:04:34.000+00:00" />
+        <source value="#726c0be76a08761c" />
+        <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure" />
+    </meta>
+    <status value="completed" />
+    <code>
+        <coding>
+            <system value="http://www.ama-assn.org/go/cpt" />
+            <code value="33533" />
+            <display value="Coronary Artery Bypass (CABG) (CPT)" />
+        </coding>
+    </code>
+    <subject>
+        <reference value="Patient/nhsn-iip-ipsde" />
+        <display value="Amy Shaw" />
+    </subject>
+    <encounter>
+        <reference value="Encounter/nhsn-iip-ensde-2" />
+    </encounter>
+    <performedDateTime value="2020-05-23" />
+</Procedure>

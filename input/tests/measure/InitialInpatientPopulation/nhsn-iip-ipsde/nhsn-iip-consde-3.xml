@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Condition xmlns="http://hl7.org/fhir">
+    <id value="nhsn-iip-consde-3" />
+    <meta>
+        <versionId value="1" />
+        <lastUpdated value="2022-03-15T18:39:15.000+00:00" />
+        <source value="#8a25658be3396bc1" />
+        <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition" />
+    </meta>
+    <clinicalStatus>
+        <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/condition-clinical" />
+            <code value="resolved" />
+            <display value="Resolved" />
+        </coding>
+        <text value="Resolved" />
+    </clinicalStatus>
+    <verificationStatus>
+        <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/condition-ver-status" />
+            <code value="confirmed" />
+            <display value="Confirmed" />
+        </coding>
+        <text value="Confirmed" />
+    </verificationStatus>
+    <category>
+        <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/condition-category" />
+            <code value="problem-list-item" />
+            <display value="Problem List Item" />
+        </coding>
+        <text value="Problem" />
+    </category>
+    <code>
+        <coding>
+            <system value="http://snomed.info/sct" />
+            <code value="23406007" />
+            <display value="Fracture to upper limb (disorder)" />
+        </coding>
+        <text value="Fracture to upper limb (disorder)" />
+    </code>
+    <subject>
+        <reference value="Patient/nhsn-iip-ipsde" />
+        <display value="Amy V. Shaw" />
+    </subject>
+    <onsetDateTime value="2020-12-10" />
+</Condition>
