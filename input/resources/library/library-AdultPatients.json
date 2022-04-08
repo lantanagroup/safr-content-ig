@@ -65,11 +65,11 @@
     "type": "Patient",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ]
   }, {
-    "type": "Condition",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ]
-  }, {
     "type": "MedicationRequest",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationRequest" ]
+  }, {
+    "type": "Condition",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ]
   } ],
   "content": [ {
     "contentType": "text/cql",

@@ -5992,7 +5992,7 @@
             "valueString": "Inpatient Encounter"
           }, {
             "url": "statement",
-            "valueString": "define \"Inpatient Encounter\":   [Encounter: class in {\"inpatient encounter\", \"inpatient acute\", \"inpatient non-acute\"}] Encounters   where Encounters.period overlaps \"Performance Period\""
+            "valueString": "define \"Inpatient Encounter\":   [Encounter: class in {\"inpatient encounter\", \"inpatient acute\", \"inpatient non-acute\"}] Encounters   where Encounters.period overlaps \"Measurement Period\""
           }, {
             "url": "displaySequence",
             "valueInteger": 0
@@ -6022,7 +6022,7 @@
             "valueString": "Initial Population"
           }, {
             "url": "statement",
-            "valueString": "define \"Initial Population\":   from     \"Inpatient Encounter\" InpatientEncounters,     \"Antidiabetic Drugs Administered or Ordered\" ADD   where Coalesce(start of Global.\"Normalize Interval\"(ADD.effective), ADD.authoredOn)       during \"HospitalizationWithObservationOrEmergency\"(InpatientEncounters)     and Coalesce(start of Global.\"Normalize Interval\"(ADD.effective), ADD.authoredOn) during \"Performance Period\"   return Tuple{     encounters: InpatientEncounters,     drug: ADD.medication,     drugDateTime: Coalesce(start of Global.\"Normalize Interval\"(ADD.effective), ADD.authoredOn)   }"
+            "valueString": "define \"Initial Population\":   from     \"Inpatient Encounter\" InpatientEncounters,     \"Antidiabetic Drugs Administered or Ordered\" ADD   where Coalesce(start of Global.\"Normalize Interval\"(ADD.effective), ADD.authoredOn)       during \"HospitalizationWithObservationOrEmergency\"(InpatientEncounters)     and Coalesce(start of Global.\"Normalize Interval\"(ADD.effective), ADD.authoredOn) during \"Measurement Period\"   return Tuple{     encounters: InpatientEncounters,     drug: ADD.medication,     drugDateTime: Coalesce(start of Global.\"Normalize Interval\"(ADD.effective), ADD.authoredOn)   }"
           }, {
             "url": "displaySequence",
             "valueInteger": 2
@@ -6350,7 +6350,7 @@
             "code": "module-definition"
           } ]
         },
-        "date": "2022-04-05T13:36:22-04:00",
+        "date": "2022-04-08T11:17:26-07:00",
         "relatedArtifact": [ {
           "type": "depends-on",
           "display": "Library FHIRHelpers",
@@ -6397,7 +6397,7 @@
           "resource": "http://hl7.org/fhir/ValueSet/gender-identity"
         } ],
         "parameter": [ {
-          "name": "Performance Period",
+          "name": "Measurement Period",
           "use": "in",
           "min": 0,
           "max": "1",
@@ -6520,17 +6520,25 @@
           "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationRequest" ],
           "mustSupport": [ "medication" ]
         }, {
+          "type": "Location",
+          "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
+          "mustSupport": [ "id" ]
+        }, {
+          "type": "Coverage",
+          "profile": [ "http://hl7.org/fhir/StructureDefinition/Coverage" ],
+          "mustSupport": [ "period", "type" ],
+          "codeFilter": [ {
+            "path": "type",
+            "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"
+          } ]
+        }, {
+          "type": "Medication",
+          "profile": [ "http://hl7.org/fhir/StructureDefinition/Medication" ],
+          "mustSupport": [ "id" ]
+        }, {
           "type": "Patient",
           "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ],
           "mustSupport": [ "identifier", "extension", "deceased", "address", "value", "url" ]
-        }, {
-          "type": "ServiceRequest",
-          "profile": [ "http://hl7.org/fhir/StructureDefinition/ServiceRequest" ],
-          "mustSupport": [ "code", "intent", "status" ],
-          "codeFilter": [ {
-            "path": "code",
-            "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"
-          } ]
         }, {
           "type": "Encounter",
           "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
@@ -6542,69 +6550,61 @@
         }, {
           "type": "Encounter",
           "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
+          "mustSupport": [ "period", "class" ],
+          "codeFilter": [ {
+            "path": "class",
+            "code": [ {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "IMP",
+              "display": "inpatient encounter"
+            }, {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ACUTE",
+              "display": "inpatient acute"
+            }, {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "NONAC",
+              "display": "inpatient non-acute"
+            } ]
+          } ]
+        }, {
+          "type": "Encounter",
+          "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
+          "mustSupport": [ "period", "class" ],
+          "codeFilter": [ {
+            "path": "class",
+            "code": [ {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "IMP",
+              "display": "inpatient encounter"
+            }, {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "ACUTE",
+              "display": "inpatient acute"
+            }, {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+              "code": "NONAC",
+              "display": "inpatient non-acute"
+            } ]
+          } ]
+        }, {
+          "type": "Encounter",
+          "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
           "mustSupport": [ "period", "diagnosis", "location", "class" ]
-        }, {
-          "type": "Encounter",
-          "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
-          "mustSupport": [ "period", "class" ],
-          "codeFilter": [ {
-            "path": "class",
-            "code": [ {
-              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-              "code": "IMP",
-              "display": "inpatient encounter"
-            }, {
-              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-              "code": "ACUTE",
-              "display": "inpatient acute"
-            }, {
-              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-              "code": "NONAC",
-              "display": "inpatient non-acute"
-            } ]
-          } ]
-        }, {
-          "type": "Encounter",
-          "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
-          "mustSupport": [ "period", "class" ],
-          "codeFilter": [ {
-            "path": "class",
-            "code": [ {
-              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-              "code": "IMP",
-              "display": "inpatient encounter"
-            }, {
-              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-              "code": "ACUTE",
-              "display": "inpatient acute"
-            }, {
-              "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-              "code": "NONAC",
-              "display": "inpatient non-acute"
-            } ]
-          } ]
-        }, {
-          "type": "Medication",
-          "profile": [ "http://hl7.org/fhir/StructureDefinition/Medication" ],
-          "mustSupport": [ "id" ]
-        }, {
-          "type": "Coverage",
-          "profile": [ "http://hl7.org/fhir/StructureDefinition/Coverage" ],
-          "mustSupport": [ "period", "type" ],
-          "codeFilter": [ {
-            "path": "type",
-            "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"
-          } ]
-        }, {
-          "type": "Location",
-          "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
-          "mustSupport": [ "id" ]
-        }, {
-          "type": "Condition",
-          "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ]
         }, {
           "type": "Observation",
           "profile": [ "http://hl7.org/fhir/StructureDefinition/Observation" ]
+        }, {
+          "type": "ServiceRequest",
+          "profile": [ "http://hl7.org/fhir/StructureDefinition/ServiceRequest" ],
+          "mustSupport": [ "code", "intent", "status" ],
+          "codeFilter": [ {
+            "path": "code",
+            "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"
+          } ]
+        }, {
+          "type": "Condition",
+          "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ]
         } ]
       } ],
       "extension": [ {
@@ -6627,7 +6627,7 @@
       "version": "0.000.01",
       "name": "Initial Inpatient Population",
       "title": "NHSN Glycemic Control, Initial Inpatient Population (Hypoglycemia)",
-      "date": "2022-04-05T09:36:22-08:00",
+      "date": "2022-04-08T10:17:26-08:00",
       "description": "All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the performance period.",
       "relatedArtifact": [ {
         "type": "depends-on",
@@ -7001,6 +7001,10 @@
         "type": "Any"
       } ],
       "dataRequirement": [ {
+        "type": "Patient",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ],
+        "mustSupport": [ "identifier", "extension", "deceased", "address", "value", "url" ]
+      }, {
         "type": "MedicationAdministration",
         "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationAdministration" ],
         "mustSupport": [ "medication", "status" ]
@@ -7008,17 +7012,6 @@
         "type": "MedicationRequest",
         "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationRequest" ],
         "mustSupport": [ "medication" ]
-      }, {
-        "type": "Location",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
-        "mustSupport": [ "id" ]
-      }, {
-        "type": "Patient",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ],
-        "mustSupport": [ "identifier", "extension", "deceased", "address", "value", "url" ]
-      }, {
-        "type": "Procedure",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/Procedure" ]
       }, {
         "type": "Coverage",
         "profile": [ "http://hl7.org/fhir/StructureDefinition/Coverage" ],
@@ -7028,9 +7021,25 @@
           "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"
         } ]
       }, {
-        "type": "Medication",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/Medication" ],
-        "mustSupport": [ "id" ]
+        "type": "Encounter",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
+        "mustSupport": [ "period", "class" ],
+        "codeFilter": [ {
+          "path": "class",
+          "code": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+            "code": "IMP",
+            "display": "inpatient encounter"
+          }, {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+            "code": "ACUTE",
+            "display": "inpatient acute"
+          }, {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+            "code": "NONAC",
+            "display": "inpatient non-acute"
+          } ]
+        } ]
       }, {
         "type": "Encounter",
         "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
@@ -7062,30 +7071,24 @@
       }, {
         "type": "Encounter",
         "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
-        "mustSupport": [ "period", "class" ],
-        "codeFilter": [ {
-          "path": "class",
-          "code": [ {
-            "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-            "code": "IMP",
-            "display": "inpatient encounter"
-          }, {
-            "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-            "code": "ACUTE",
-            "display": "inpatient acute"
-          }, {
-            "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-            "code": "NONAC",
-            "display": "inpatient non-acute"
-          } ]
-        } ]
-      }, {
-        "type": "Encounter",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
         "mustSupport": [ "period", "diagnosis", "location", "class" ]
+      }, {
+        "type": "Condition",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ]
+      }, {
+        "type": "Procedure",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/Procedure" ]
+      }, {
+        "type": "Location",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
+        "mustSupport": [ "id" ]
       }, {
         "type": "Observation",
         "profile": [ "http://hl7.org/fhir/StructureDefinition/Observation" ]
+      }, {
+        "type": "Medication",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/Medication" ],
+        "mustSupport": [ "id" ]
       }, {
         "type": "ServiceRequest",
         "profile": [ "http://hl7.org/fhir/StructureDefinition/ServiceRequest" ],
@@ -7094,9 +7097,6 @@
           "path": "code",
           "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"
         } ]
-      }, {
-        "type": "Condition",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ]
       } ],
       "content": [ {
         "contentType": "text/cql",

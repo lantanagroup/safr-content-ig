@@ -80,7 +80,7 @@
             "code": "module-definition"
           } ]
         },
-        "date": "2022-03-30T15:26:32-04:00",
+        "date": "2022-04-08T11:17:26-07:00",
         "parameter": [ {
           "name": "Performance Period",
           "use": "in",
@@ -137,7 +137,7 @@
       "version": "0.0.001",
       "name": "Adult Patients",
       "title": "Adult Patients",
-      "date": "2022-03-30T15:26:32-04:00",
+      "date": "2022-04-08T14:17:26-04:00",
       "description": "Bare bones measure to pull all patients whose age is >= 18 into the initial population.",
       "purpose": "Measure for testing",
       "library": [ "http://nhsnlink.org/fhir/Library/AdultPatients" ],
@@ -260,11 +260,11 @@
         "type": "Patient",
         "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ]
       }, {
-        "type": "Condition",
-        "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ]
-      }, {
         "type": "MedicationRequest",
         "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationRequest" ]
+      }, {
+        "type": "Condition",
+        "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ]
       } ],
       "content": [ {
         "contentType": "text/cql",
