@@ -22,7 +22,7 @@ code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
 code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
 
-parameter "Performance Period" Interval<DateTime>
+parameter "Measurement Period" Interval<DateTime>
  //default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
 
 context Patient
@@ -33,7 +33,7 @@ define "Initial Population":
     "Antidiabetic Drugs Administered or Ordered" ADD
   where Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn)
       during "HospitalizationWithObservationOrEmergency"(InpatientEncounters)
-    and Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn) during "Performance Period"
+    and Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn) during "Measurement Period"
   return Tuple{
     encounters: InpatientEncounters,
     drug: ADD.medication,
@@ -42,7 +42,7 @@ define "Initial Population":
 
 define "Inpatient Encounter":
   [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute"}] Encounters
-  where Encounters.period overlaps "Performance Period"
+  where Encounters.period overlaps "Measurement Period"
 
 define "Antidiabetic Drugs Administered or Ordered":
   ([MedicationAdministration] ADDMedAdmin

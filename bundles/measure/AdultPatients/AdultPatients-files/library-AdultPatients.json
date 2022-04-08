@@ -1,6 +1,6 @@
 {
   "resourceType": "Library",
-  "id": "AdultPatients",
+  "id": "library-AdultPatients",
   "extension": [ {
     "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem",
     "valueReference": {

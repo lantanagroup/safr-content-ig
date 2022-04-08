@@ -88,6 +88,17 @@
     "type": "Encounter"
   } ],
   "dataRequirement": [ {
+    "type": "Location",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
+    "mustSupport": [ "id" ]
+  }, {
+    "type": "Condition",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
+    "mustSupport": [ "id" ]
+  }, {
+    "type": "Patient",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ]
+  }, {
     "type": "Encounter",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
     "mustSupport": [ "period", "type", "status" ],
@@ -111,17 +122,6 @@
       "path": "type",
       "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"
     } ]
-  }, {
-    "type": "Location",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
-    "mustSupport": [ "id" ]
-  }, {
-    "type": "Patient",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ]
-  }, {
-    "type": "Condition",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "id" ]
   }, {
     "type": "Provenance",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Provenance" ],
