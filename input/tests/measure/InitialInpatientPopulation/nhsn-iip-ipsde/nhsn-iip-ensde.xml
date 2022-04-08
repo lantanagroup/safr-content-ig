@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Encounter xmlns="http://hl7.org/fhir">
+    <id value="nhsn-iip-ensde" />
+    <meta>
+        <versionId value="3" />
+        <lastUpdated value="2022-04-07T21:04:04.000+00:00" />
+        <source value="#83cda147bfffd380" />
+        <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter" />
+    </meta>
+    <status value="finished" />
+    <class>
+        <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode" />
+        <code value="IMP" />
+        <display value="inpatient encounter" />
+    </class>
+    <type>
+        <coding>
+            <system value="http://www.ama-assn.org/go/cpt" />
+            <code value="101" />
+        </coding>
+        <text value="Medical consultation on inpatient" />
+    </type>
+    <subject>
+        <reference value="Patient/nhsn-iip-ipsde" />
+    </subject>
+    <period>
+        <start value="2022-01-01T08:00:00.000Z" />
+        <end value="2022-01-31T08:00:00.000Z" />
+    </period>
+    <diagnosis>
+        <use>
+            <coding>
+                <system value="http://terminology.hl7.org/CodeSystem/diagnosis-role" />
+                <code value="CC" />
+            </coding>
+        </use>
+    </diagnosis>
+    <hospitalization>
+        <dischargeDisposition>
+            <coding>
+                <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition" />
+                <code value="home" />
+                <display value="home" />
+            </coding>
+        </dischargeDisposition>
+    </hospitalization>
+</Encounter>

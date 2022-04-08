@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Procedure xmlns="http://hl7.org/fhir">
+    <id value="nhsn-iip-pro-sde" />
+    <meta>
+        <versionId value="1" />
+        <lastUpdated value="2022-03-15T19:04:26.000+00:00" />
+        <source value="#4e9b7e89b4746e30" />
+        <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure" />
+    </meta>
+    <status value="completed" />
+    <code>
+        <coding>
+            <system value="http://snomed.info/sct" />
+            <code value="239279000" />
+            <display value="Fixation of fracture (procedure)" />
+        </coding>
+    </code>
+    <subject>
+        <reference value="Patient/nhsn-iip-ipsde" />
+        <display value="Amy Shaw" />
+    </subject>
+</Procedure>

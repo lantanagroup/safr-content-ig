@@ -1,0 +1,44 @@
+<Patient xmlns="http://hl7.org/fhir">
+   <id value="nhsn-iip-ip107"/>
+   <meta>
+      <versionId value="2"/>
+      <lastUpdated value="2022-03-15T18:41:50.000+00:00"/>
+      <source value="#7b84e18d62246860"/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"/>
+   </meta>
+   <text>
+      <status value="generated"/>
+      <div xmlns="http://www.w3.org/1999/xhtml"> 
+         <div class="hapiHeaderText">Amy V. 
+            <b>SHAW </b> 
+         </div> 
+         <table class="hapiPropertyTable"> 
+            <tbody> 
+               <tr> 
+                  <td>Identifier</td> 
+                  <td>1032702</td> 
+               </tr> 
+               <tr> 
+                  <td>Date of birth</td> 
+                  <td> 
+                     <span>20 February 1987</span> 
+                  </td> 
+               </tr> 
+            </tbody> 
+         </table> 
+      </div>
+   </text>
+   <identifier>
+      <system value="http://hospital.smarthealthit.org"/>
+      <value value="5635352"/>
+   </identifier>
+   <active value="true"/>
+   <name>
+      <family value="Shaw"/>
+      <given value="Amy"/>
+      <given value="V."/>
+   </name>
+   <gender value="female"/>
+   <birthDate value="1987-02-20"/>
+   <deceasedDateTime value="2022-01-25T08:00:00.0"/>
+</Patient>
