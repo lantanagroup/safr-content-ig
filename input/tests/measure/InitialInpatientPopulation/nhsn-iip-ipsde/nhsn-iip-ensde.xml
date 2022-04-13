@@ -28,12 +28,20 @@
         <end value="2022-01-31T08:00:00.000Z" />
     </period>
     <diagnosis>
+        <condition>
+            <reference value="nhsn-iip-consde"/>
+        </condition>
         <use>
             <coding>
                 <system value="http://terminology.hl7.org/CodeSystem/diagnosis-role" />
                 <code value="CC" />
             </coding>
         </use>
+    </diagnosis>
+    <diagnosis>
+        <condition>
+            <reference value="nhsn-iip-consde-2"/>
+        </condition>
     </diagnosis>
     <hospitalization>
         <dischargeDisposition>

@@ -21,15 +21,6 @@
             </ul>
         </div>
     </text>
-    <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
-        <valueCode value="pa"/>
-    </extension>
-    <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status">
-        <valueCode value="draft"/>
-    </extension>
-    <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
-        <valueInteger value="1"/>
-    </extension>
     <url value="http://terminology.hl7.org/ValueSet/encounter-discharge-disposition"/>
     <identifier>
         <system value="urn:ietf:rfc:3986"/>
@@ -49,10 +40,53 @@
         </telecom>
     </contact>
     <description value="This value set defines a set of codes that can be used to where the patient left the hospital."/>
-    <immutable value="true"/>
     <compose>
         <include>
             <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+            <concept>
+                <code value="home"/>
+                <display value="Home"/>
+            </concept>
+            <concept>
+                <code value="alt-home"/>
+                <display value="Alternative home"/>
+            </concept>
+            <concept>
+                <code value="other-hcf"/>
+                <display value="Other healthcare facility"/>
+            </concept>
+            <concept>
+                <code value="hosp"/>
+                <display value="Hospice"/>
+            </concept>
+            <concept>
+                <code value="long"/>
+                <display value="Long-term care"/>
+            </concept>
+            <concept>
+                <code value="aadvice"/>
+                <display value="Left against advice"/>
+            </concept>
+            <concept>
+                <code value="exp"/>
+                <display value="Expired"/>
+            </concept>
+            <concept>
+                <code value="psy"/>
+                <display value="Psychiatric hospital"/>
+            </concept>
+            <concept>
+                <code value="rehab"/>
+                <display value="Rehabilitation"/>
+            </concept>
+            <concept>
+                <code value="snf"/>
+                <display value="Skilled nursing facility"/>
+            </concept>
+            <concept>
+                <code value="oth"/>
+                <display value="Other"/>
+            </concept>
         </include>
     </compose>
 </ValueSet>

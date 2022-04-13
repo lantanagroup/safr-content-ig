@@ -1,26 +1,28 @@
 <Encounter xmlns="http://hl7.org/fhir">
-    <id value="nhsn-iip-en103"/>
-    <meta>
-        <profile
-            value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter"/>
-    </meta>
-    <status value="finished"/>
-    <class>
-        <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
-        <code value="IMP"/>
-        <display value="inpatient encounter"/>
-    </class>
-    <type>
-        <coding>
-            <system value="http://www.ama-assn.org/go/cpt"/>
-            <code value="53923005"/>
-        </coding>
-        <text value="Medical consultation on inpatient"/>
-    </type>
-    <subject>
-        <reference value="Patient/nhsn-iip-ip103"/>
-    </subject>
-    <period>
-        <start value="2022-01-01T08:00:00.0"/>
-    </period>
+   <id value="nhsn-iip-en103"/>
+   <meta>
+      <versionId value="1"/>
+      <lastUpdated value="2022-03-10T15:58:23.000+00:00"/>
+      <source value="#0d8f92a4b0299a35"/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter"/>
+   </meta>
+   <status value="in-progress"/>
+   <class>
+      <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+      <code value="IMP"/>
+      <display value="inpatient encounter"/>
+   </class>
+   <type>
+      <coding>
+         <system value="http://www.ama-assn.org/go/cpt"/>
+         <code value="53923005"/>
+      </coding>
+      <text value="Medical consultation on inpatient"/>
+   </type>
+   <subject>
+      <reference value="Patient/nhsn-iip-ip103"/>
+   </subject>
+   <period>
+      <start value="2022-01-01T08:00:00.000Z"/>
+   </period>
 </Encounter>
