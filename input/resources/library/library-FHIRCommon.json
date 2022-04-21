@@ -11,6 +11,7 @@
   "version": "4.0.1",
   "name": "FHIRCommon",
   "title": "FHIRCommon",
+  "type": "logic-library",
   "relatedArtifact": [ {
     "type": "depends-on",
     "display": "FHIR model information",
