@@ -1,6 +1,6 @@
 {
   "resourceType": "Library",
-  "id": "FHIRHelpers",
+  "id": "library-FHIRHelpers",
   "extension": [ {
     "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem",
     "valueReference": {
@@ -10,8 +10,6 @@
   "url": "http://hl7.org/fhir/Library/FHIRHelpers",
   "version": "4.0.1",
   "name": "FHIRHelpers",
-  "title": "FHIRHelpers",
-  "type": "logic-library",
   "relatedArtifact": [ {
     "type": "depends-on",
     "display": "FHIR model information",

@@ -10,7 +10,6 @@
   "url": "http://nhsnlink.org/fhir/Library/AdultPatients",
   "version": "0.0.001",
   "name": "AdultPatients",
-  "title": "AdultPatients",
   "relatedArtifact": [ {
     "type": "depends-on",
     "display": "FHIR model information",
@@ -65,11 +64,11 @@
     "type": "Patient",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ]
   }, {
-    "type": "MedicationRequest",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationRequest" ]
-  }, {
     "type": "Condition",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ]
+  }, {
+    "type": "MedicationRequest",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationRequest" ]
   } ],
   "content": [ {
     "contentType": "text/cql",

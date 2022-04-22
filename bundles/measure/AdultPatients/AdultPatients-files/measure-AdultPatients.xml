@@ -73,7 +73,7 @@
                <code value="module-definition"></code>
             </coding>
          </type>
-         <date value="2022-04-08T11:18:13-07:00"></date>
+         <date value="2022-04-22T10:52:00-04:00"></date>
          <parameter>
             <name value="Performance Period"></name>
             <use value="in"></use>
@@ -103,16 +103,16 @@
             <type value="boolean"></type>
          </parameter>
          <dataRequirement>
+            <type value="Condition"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Condition"></profile>
+         </dataRequirement>
+         <dataRequirement>
             <type value="Patient"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Patient"></profile>
          </dataRequirement>
          <dataRequirement>
             <type value="MedicationRequest"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"></profile>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Condition"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Condition"></profile>
          </dataRequirement>
       </Library>
    </contained>
@@ -134,7 +134,7 @@
    <version value="0.0.001"></version>
    <name value="Adult Patients"></name>
    <title value="Adult Patients"></title>
-   <date value="2022-04-08T14:18:13-04:00"></date>
+   <date value="2022-04-22T10:52:00-04:00"></date>
    <description value="Bare bones measure to pull all patients whose age is &gt;= 18 into the initial population."></description>
    <purpose value="Measure for testing"></purpose>
    <library value="http://nhsnlink.org/fhir/Library/AdultPatients"></library>

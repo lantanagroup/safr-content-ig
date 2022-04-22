@@ -28,17 +28,11 @@ parameter "Measurement Period" Interval<DateTime>
 context Patient
 
 define "Initial Population":
-  from
-    "Inpatient Encounter" InpatientEncounters,
-    "Antidiabetic Drugs Administered or Ordered" ADD
-  where Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn)
+  "Inpatient Encounter" InpatientEncounters
+  with "Antidiabetic Drugs Administered or Ordered" ADD
+  such that Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn)
       during "HospitalizationWithObservationOrEmergency"(InpatientEncounters)
     and Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn) during "Measurement Period"
-  return Tuple{
-    encounters: InpatientEncounters,
-    drug: ADD.medication,
-    drugDateTime: Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn)
-  }
 
 define "Inpatient Encounter":
   [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute"}] Encounters
@@ -83,88 +77,173 @@ define function "HospitalizationWithObservationOrEmergency"(TheEncounter FHIR.En
     )
     return Interval[Coalesce(start of EDVisit.period, VisitStart), end of Visit.period]
 
+define function "GetCondition"(reference Reference):
+  singleton from (
+    [Condition] C where C.id = Global.GetId(reference.reference)
+  )
+
+define function "GetEncounterConditionData"(encounter Encounter):
+  encounter.diagnosis.condition References
+  return DisplayCondition(GetCondition(References))
+
+define function "DisplayCondition"(condition Condition):
+  condition Condition
+  return Tuple{
+    code: DisplayCodeableConcept(Condition.code),
+    onsetDate: Condition.onset,
+    abatementDate: Condition.abatement
+  }
+
+define function "GetLocation"(references List<Reference>):
+  references reference
+  return DisplayLocation(Global.GetLocation(reference))
+
+define function "DisplayLocation"(location Location):
+  location Location
+  return Tuple{
+    locationType: Location.type,
+    locationPhysicalType: Location.physicalType
+  }
+
+define function "DisplayProcedure"(procedure Procedure):
+  procedure Procedure
+  return Tuple{
+    procedureCode: Procedure.code,
+    procedureTime: Procedure.performed
+  }
+
+define function "DisplayCodeableConcept"(code CodeableConcept):
+  code.coding Coding
+  return DisplayCoding(Coding)
+
+define function "DisplayCoding"(coding Coding):
+  coding Coding
+  return Code{
+    code: Coding.code,
+    system: Coding.system,
+    display: Coding.display
+  }
+
 //Supplement Data Elements
 define "SDE Chief Complaint":
-  [Encounter] InpatientEncounter
-  with InpatientEncounter.diagnosis Diagnosis
-  such that Diagnosis.use ~ "Chief Complaint"
-  where exists("Initial Population".encounters)
+  [Encounter: diagnosis.use ~ "Chief Complaint"] EncounterWithDiagnosis
+  with "Initial Population" InitialPopulation
+  such that start of EncounterWithDiagnosis.period during InitialPopulation.period
+    and EncounterWithDiagnosis.period overlaps "Measurement Period"
+  return Tuple{
+    id: EncounterWithDiagnosis.id,
+    condition: GetEncounterConditionData(EncounterWithDiagnosis)
+  }
 
 define "SDE Condition":
-	[Condition] Conditions where exists("Initial Population".encounters)
-    
-define "SDE Encounter Discharge Dispositions":
-	[Encounter: "Discharge Disposition"] DischargeDispositions 
-	where exists("Initial Population".encounters)
+	[Condition] Conditions
+  with "Initial Population" InitialPopulation
+  such that start of Global."Normalize Interval"(Conditions.onset) during InitialPopulation.period
+  return DisplayCondition(Conditions)
 
+define "SDE Encounter Discharge Dispositions":
+	[Encounter: hospitalization.dischargeDisposition in "Discharge Disposition"] DischargeDispositions 
+  with "Initial Population" InitialPopulation
+	such that start of DischargeDispositions.period during InitialPopulation.period
+    and DischargeDispositions.period during "Measurement Period"
+  return DisplayCodeableConcept(DischargeDispositions.hospitalization.dischargeDisposition)
+  
 define "SDE Encounter Locations":
 	[Encounter] Encounter
-    with Encounter.location EncounterLocation
-   	such that (Global.GetLocation(EncounterLocation.location).type in "CDC Location Codes" 
-     or Global.GetLocation(EncounterLocation.location).physicalType in "CDC Location Codes")
-   		and exists("Initial Population".encounters)
+  with Encounter.location EncounterLocation
+  such that (Global.GetLocation(EncounterLocation.location).type in "CDC Location Codes" 
+      or Global.GetLocation(EncounterLocation.location).physicalType in "CDC Location Codes")
+  with "Initial Population" InitialPopulation
+  such that start of Encounter.period during InitialPopulation.period
+    and Encounter.period during "Measurement Period"
+  return 
+    Encounter E
+    let 
+      locations: E.location
+      return GetLocation(locations.location)
       
 define "SDE Ethnicity":
 	SDE."SDE Ethnicity" Ethnicity
-	where exists("Initial Population".encounters)
+	where exists("Initial Population")
+  return DisplayCoding(Ethnicity)
 
 define "SDE Gender Identity":
 	[Patient] Patient
-    where Global."GetExtension"(Patient, 'patient-genderIdentity').value in "Gender Identity"
-		  and exists("Initial Population".encounters)
+  where Global."GetExtension"(Patient, 'patient-genderIdentity').value in "Gender Identity"
+    and exists("Initial Population")
  	
-  define "SDE Locations":
-	[Location] Locations
-    where exists("Initial Population".encounters)
+define "SDE Locations":
+  [Location] Locations
+  where exists("Initial Population")
+    return DisplayLocation(Locations)
 
 define "SDE Medication Administration":
 	[MedicationAdministration] MedicationAdministrations
-    where exists("Initial Population".encounters)
+  with "Initial Population" InitialPopulation
+  such that start of Global."Normalize Interval"(MedicationAdministrations.effective) during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
+    and start of Global."Normalize Interval"(MedicationAdministrations.effective) during "Measurement Period"
+    return Tuple{
+      medication: DisplayCodeableConcept(GetMedicationCode(MedicationAdministrations.medication)),
+      effective: MedicationAdministrations.effective
+    }
 
 define "SDE Medication Request":
 	[MedicationRequest] MedicationRequests
-	where exists("Initial Population".encounters)
+  with "Initial Population" InitialPopulation
+	such that MedicationRequests.authoredOn during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
+    and MedicationRequests.authoredOn during "Measurement Period"
+  return Tuple{
+    medication: DisplayCodeableConcept(GetMedicationCode(MedicationRequests.medication)),
+    authoredOn: MedicationRequests.authoredOn
+  }
 
-define "SDE Observation":
+define "SDE Hospitalization Observation":
 	[Observation] Observations 
-	where exists("Initial Population".encounters)
+  with "Initial Population" InitialPopulation
+  such that start of Global."Normalize Interval"(Observations.effective) during InitialPopulation.period
+    and start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
 
 define "SDE Patient Death Date": 
   singleton from(
     [Patient] Patient
     where Patient.deceased is FHIR.dateTime 
-      and exists("Initial Population".encounters)
+      and exists("Initial Population")
     return Patient.deceased
   )
 
 define "SDE Payer": 
 	SDE."SDE Payer" Payers
-	where exists("Initial Population".encounters)
+	where exists("Initial Population")
 
 define "SDE Patient ID": 
-    [Patient] ThePatient
-	where exists("Initial Population".encounters)
+  [Patient] ThePatient
+	where exists("Initial Population")
     return ThePatient.identifier
 
-define "SDE Procedures":
+define "SDE Hospitalization Procedures":
   [Procedure] Procedures
-  where exists("Initial Population".encounters)
+  with "Initial Population" InitialPopulation
+  such that start of Global."Normalize Interval"(Procedures.performed) during InitialPopulation.period
+    and start of Global."Normalize Interval"(Procedures.performed) during "Measurement Period"
+  return DisplayProcedure(Procedures)
 
 define "SDE Race":
 	SDE."SDE Race" Race 
-	where exists("Initial Population".encounters)
+	where exists("Initial Population")
+  return DisplayCoding(Race)
 
 define "SDE Service Request":
 	[ServiceRequest: "Blood Glucose Laboratory and Point of Care Tests"] LabTest
-      where (LabTest.intent ~ 'order'
-		and LabTest.status ~ 'completed')
-		and exists("Initial Population".encounters)
+  with "Initial Population" InitialPopulation
+  such that (LabTest.intent ~ 'order'
+    and LabTest.status ~ 'completed')
+    and start of Global."Normalize Interval"(LabTest.occurrence) during InitialPopulation.period
 
 define "SDE Sex":
 	SDE."SDE Sex" Sex
-	where exists("Initial Population".encounters)
+	where exists("Initial Population")
    
 define "SDE Zip Code": 
 	[Patient] ThePatient 
-	where exists("Initial Population".encounters)
-    return ThePatient.address.postalCode
+	where exists("Initial Population")
+  return ThePatient.address.postalCode

@@ -1,6 +1,6 @@
 {
   "resourceType": "Library",
-  "id": "MATGlobalCommonFunctionsFHIR4",
+  "id": "library-MATGlobalCommonFunctionsFHIR4",
   "extension": [ {
     "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem",
     "valueReference": {
@@ -10,8 +10,6 @@
   "url": "http://fhir.org/guides/cqf/Library/MATGlobalCommonFunctionsFHIR4",
   "version": "6.1.000",
   "name": "MATGlobalCommonFunctionsFHIR4",
-  "title": "MATGlobalCommonFunctionsFHIR4",
-  "type": "logic-library",
   "relatedArtifact": [ {
     "type": "depends-on",
     "display": "FHIR model information",
@@ -93,20 +91,6 @@
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
     "mustSupport": [ "id" ]
   }, {
-    "type": "Provenance",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Provenance" ],
-    "mustSupport": [ "target" ],
-    "codeFilter": [ {
-      "path": "target"
-    } ]
-  }, {
-    "type": "Condition",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "id" ]
-  }, {
-    "type": "Patient",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ]
-  }, {
     "type": "Encounter",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
     "mustSupport": [ "period", "type" ],
@@ -120,7 +104,7 @@
     "mustSupport": [ "period", "type", "status" ],
     "codeFilter": [ {
       "path": "type",
-      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"
+      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"
     } ]
   }, {
     "type": "Encounter",
@@ -128,8 +112,22 @@
     "mustSupport": [ "period", "type", "status" ],
     "codeFilter": [ {
       "path": "type",
-      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"
+      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"
     } ]
+  }, {
+    "type": "Condition",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
+    "mustSupport": [ "id" ]
+  }, {
+    "type": "Provenance",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Provenance" ],
+    "mustSupport": [ "target" ],
+    "codeFilter": [ {
+      "path": "target"
+    } ]
+  }, {
+    "type": "Patient",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ]
   } ],
   "content": [ {
     "contentType": "text/cql",

@@ -94,17 +94,11 @@
             </extension>
             <extension url="statement">
                <valueString value="define &quot;Initial Population&quot;:
-  from
-    &quot;Inpatient Encounter&quot; InpatientEncounters,
-    &quot;Antidiabetic Drugs Administered or Ordered&quot; ADD
-  where Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn)
+  &quot;Inpatient Encounter&quot; InpatientEncounters
+  with &quot;Antidiabetic Drugs Administered or Ordered&quot; ADD
+  such that Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn)
       during &quot;HospitalizationWithObservationOrEmergency&quot;(InpatientEncounters)
-    and Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn) during &quot;Measurement Period&quot;
-  return Tuple{
-    encounters: InpatientEncounters,
-    drug: ADD.medication,
-    drugDateTime: Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn)
-  }"></valueString>
+    and Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn) during &quot;Measurement Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="2"></valueInteger>
@@ -120,7 +114,13 @@
             <extension url="statement">
                <valueString value="define &quot;SDE Medication Request&quot;:
 	[MedicationRequest] MedicationRequests
-	where exists(&quot;Initial Population&quot;.encounters)"></valueString>
+  with &quot;Initial Population&quot; InitialPopulation
+	such that MedicationRequests.authoredOn during &quot;HospitalizationWithObservationOrEmergency&quot;(InitialPopulation)
+    and MedicationRequests.authoredOn during &quot;Measurement Period&quot;
+  return Tuple{
+    medication: DisplayCodeableConcept(GetMedicationCode(MedicationRequests.medication)),
+    authoredOn: MedicationRequests.authoredOn
+  }"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="3"></valueInteger>
@@ -135,8 +135,8 @@
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Patient ID&quot;: 
-    [Patient] ThePatient
-	where exists(&quot;Initial Population&quot;.encounters)
+  [Patient] ThePatient
+	where exists(&quot;Initial Population&quot;)
     return ThePatient.identifier"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -152,8 +152,9 @@
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Locations&quot;:
-	[Location] Locations
-    where exists(&quot;Initial Population&quot;.encounters)"></valueString>
+  [Location] Locations
+  where exists(&quot;Initial Population&quot;)
+    return DisplayLocation(Locations)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="5"></valueInteger>
@@ -169,29 +170,20 @@
             <extension url="statement">
                <valueString value="define &quot;SDE Encounter Locations&quot;:
 	[Encounter] Encounter
-    with Encounter.location EncounterLocation
-   	such that (Global.GetLocation(EncounterLocation.location).type in &quot;CDC Location Codes&quot; 
-     or Global.GetLocation(EncounterLocation.location).physicalType in &quot;CDC Location Codes&quot;)
-   		and exists(&quot;Initial Population&quot;.encounters)"></valueString>
+  with Encounter.location EncounterLocation
+  such that (Global.GetLocation(EncounterLocation.location).type in &quot;CDC Location Codes&quot; 
+      or Global.GetLocation(EncounterLocation.location).physicalType in &quot;CDC Location Codes&quot;)
+  with &quot;Initial Population&quot; InitialPopulation
+  such that start of Encounter.period during InitialPopulation.period
+    and Encounter.period during &quot;Measurement Period&quot;
+  return 
+    Encounter E
+    let 
+      locations: E.location
+      return GetLocation(locations.location)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="6"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="InitialInpatientPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="SDE Observation"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;SDE Observation&quot;:
-	[Observation] Observations 
-	where exists(&quot;Initial Population&quot;.encounters)"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="7"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -213,7 +205,7 @@
       return E.value as Coding"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="8"></valueInteger>
+               <valueInteger value="7"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -226,10 +218,11 @@
             <extension url="statement">
                <valueString value="define &quot;SDE Race&quot;:
 	SDE.&quot;SDE Race&quot; Race 
-	where exists(&quot;Initial Population&quot;.encounters)"></valueString>
+	where exists(&quot;Initial Population&quot;)
+  return DisplayCoding(Race)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="9"></valueInteger>
+               <valueInteger value="8"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -242,10 +235,16 @@
             <extension url="statement">
                <valueString value="define &quot;SDE Medication Administration&quot;:
 	[MedicationAdministration] MedicationAdministrations
-    where exists(&quot;Initial Population&quot;.encounters)"></valueString>
+  with &quot;Initial Population&quot; InitialPopulation
+  such that start of Global.&quot;Normalize Interval&quot;(MedicationAdministrations.effective) during &quot;HospitalizationWithObservationOrEmergency&quot;(InitialPopulation)
+    and start of Global.&quot;Normalize Interval&quot;(MedicationAdministrations.effective) during &quot;Measurement Period&quot;
+    return Tuple{
+      medication: DisplayCodeableConcept(GetMedicationCode(MedicationAdministrations.medication)),
+      effective: MedicationAdministrations.effective
+    }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="10"></valueInteger>
+               <valueInteger value="9"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -264,7 +263,7 @@
     end"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="11"></valueInteger>
+               <valueInteger value="10"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -277,10 +276,10 @@
             <extension url="statement">
                <valueString value="define &quot;SDE Sex&quot;:
 	SDE.&quot;SDE Sex&quot; Sex
-	where exists(&quot;Initial Population&quot;.encounters)"></valueString>
+	where exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="12"></valueInteger>
+               <valueInteger value="11"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -293,11 +292,11 @@
             <extension url="statement">
                <valueString value="define &quot;SDE Zip Code&quot;: 
 	[Patient] ThePatient 
-	where exists(&quot;Initial Population&quot;.encounters)
-    return ThePatient.address.postalCode"></valueString>
+	where exists(&quot;Initial Population&quot;)
+  return ThePatient.address.postalCode"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="13"></valueInteger>
+               <valueInteger value="12"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -312,12 +311,12 @@
   singleton from(
     [Patient] Patient
     where Patient.deceased is FHIR.dateTime 
-      and exists(&quot;Initial Population&quot;.encounters)
+      and exists(&quot;Initial Population&quot;)
     return Patient.deceased
   )"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="14"></valueInteger>
+               <valueInteger value="13"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -329,10 +328,13 @@
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Condition&quot;:
-	[Condition] Conditions where exists(&quot;Initial Population&quot;.encounters)"></valueString>
+	[Condition] Conditions
+  with &quot;Initial Population&quot; InitialPopulation
+  such that start of Global.&quot;Normalize Interval&quot;(Conditions.onset) during InitialPopulation.period
+  return DisplayCondition(Conditions)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="15"></valueInteger>
+               <valueInteger value="14"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -351,7 +353,7 @@
         }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="16"></valueInteger>
+               <valueInteger value="15"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -364,10 +366,10 @@
             <extension url="statement">
                <valueString value="define &quot;SDE Payer&quot;: 
 	SDE.&quot;SDE Payer&quot; Payers
-	where exists(&quot;Initial Population&quot;.encounters)"></valueString>
+	where exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="17"></valueInteger>
+               <valueInteger value="16"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -389,7 +391,7 @@
       return E.value as Coding"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="18"></valueInteger>
+               <valueInteger value="17"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -402,10 +404,11 @@
             <extension url="statement">
                <valueString value="define &quot;SDE Ethnicity&quot;:
 	SDE.&quot;SDE Ethnicity&quot; Ethnicity
-	where exists(&quot;Initial Population&quot;.encounters)"></valueString>
+	where exists(&quot;Initial Population&quot;)
+  return DisplayCoding(Ethnicity)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="19"></valueInteger>
+               <valueInteger value="18"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -417,11 +420,14 @@
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Encounter Discharge Dispositions&quot;:
-	[Encounter: &quot;Discharge Disposition&quot;] DischargeDispositions 
-	where exists(&quot;Initial Population&quot;.encounters)"></valueString>
+	[Encounter: hospitalization.dischargeDisposition in &quot;Discharge Disposition&quot;] DischargeDispositions 
+  with &quot;Initial Population&quot; InitialPopulation
+	such that start of DischargeDispositions.period during InitialPopulation.period
+    and DischargeDispositions.period during &quot;Measurement Period&quot;
+  return DisplayCodeableConcept(DischargeDispositions.hospitalization.dischargeDisposition)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="20"></valueInteger>
+               <valueInteger value="19"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -434,9 +440,28 @@
             <extension url="statement">
                <valueString value="define &quot;SDE Service Request&quot;:
 	[ServiceRequest: &quot;Blood Glucose Laboratory and Point of Care Tests&quot;] LabTest
-      where (LabTest.intent ~ 'order'
-		and LabTest.status ~ 'completed')
-		and exists(&quot;Initial Population&quot;.encounters)"></valueString>
+  with &quot;Initial Population&quot; InitialPopulation
+  such that (LabTest.intent ~ 'order'
+    and LabTest.status ~ 'completed')
+    and start of Global.&quot;Normalize Interval&quot;(LabTest.occurrence) during InitialPopulation.period"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="20"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="InitialInpatientPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Hospitalization Observation"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Hospitalization Observation&quot;:
+	[Observation] Observations 
+  with &quot;Initial Population&quot; InitialPopulation
+  such that start of Global.&quot;Normalize Interval&quot;(Observations.effective) during InitialPopulation.period
+    and start of Global.&quot;Normalize Interval&quot;(Observations.effective) during &quot;Measurement Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="21"></valueInteger>
@@ -452,10 +477,14 @@
             <extension url="statement">
                <valueString value="//Supplement Data Elements
 define &quot;SDE Chief Complaint&quot;:
-  [Encounter] InpatientEncounter
-  with InpatientEncounter.diagnosis Diagnosis
-  such that Diagnosis.use ~ &quot;Chief Complaint&quot;
-  where exists(&quot;Initial Population&quot;.encounters)"></valueString>
+  [Encounter: diagnosis.use ~ &quot;Chief Complaint&quot;] EncounterWithDiagnosis
+  with &quot;Initial Population&quot; InitialPopulation
+  such that start of EncounterWithDiagnosis.period during InitialPopulation.period
+    and EncounterWithDiagnosis.period overlaps &quot;Measurement Period&quot;
+  return Tuple{
+    id: EncounterWithDiagnosis.id,
+    condition: GetEncounterConditionData(EncounterWithDiagnosis)
+  }"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="22"></valueInteger>
@@ -471,8 +500,8 @@ define &quot;SDE Chief Complaint&quot;:
             <extension url="statement">
                <valueString value="define &quot;SDE Gender Identity&quot;:
 	[Patient] Patient
-    where Global.&quot;GetExtension&quot;(Patient, 'patient-genderIdentity').value in &quot;Gender Identity&quot;
-		  and exists(&quot;Initial Population&quot;.encounters)"></valueString>
+  where Global.&quot;GetExtension&quot;(Patient, 'patient-genderIdentity').value in &quot;Gender Identity&quot;
+    and exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="23"></valueInteger>
@@ -485,7 +514,7 @@ define &quot;SDE Chief Complaint&quot;:
                <code value="module-definition"></code>
             </coding>
          </type>
-         <date value="2022-04-08T11:18:13-07:00"></date>
+         <date value="2022-04-22T10:52:00-04:00"></date>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library FHIRHelpers"></display>
@@ -553,7 +582,7 @@ define &quot;SDE Chief Complaint&quot;:
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
-            <type value="MedicationRequest"></type>
+            <type value="Any"></type>
          </parameter>
          <parameter>
             <name value="SDE Patient ID"></name>
@@ -567,21 +596,14 @@ define &quot;SDE Chief Complaint&quot;:
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
-            <type value="Location"></type>
+            <type value="Any"></type>
          </parameter>
          <parameter>
             <name value="SDE Encounter Locations"></name>
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
-            <type value="Encounter"></type>
-         </parameter>
-         <parameter>
-            <name value="SDE Observation"></name>
-            <use value="out"></use>
-            <min value="0"></min>
-            <max value="*"></max>
-            <type value="Observation"></type>
+            <type value="Any"></type>
          </parameter>
          <parameter>
             <name value="SDE Race"></name>
@@ -595,7 +617,7 @@ define &quot;SDE Chief Complaint&quot;:
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
-            <type value="MedicationAdministration"></type>
+            <type value="Any"></type>
          </parameter>
          <parameter>
             <name value="SDE Sex"></name>
@@ -623,7 +645,7 @@ define &quot;SDE Chief Complaint&quot;:
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
-            <type value="Condition"></type>
+            <type value="Any"></type>
          </parameter>
          <parameter>
             <name value="SDE Payer"></name>
@@ -637,7 +659,7 @@ define &quot;SDE Chief Complaint&quot;:
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
-            <type value="Any"></type>
+            <type value="Encounter"></type>
          </parameter>
          <parameter>
             <name value="SDE Ethnicity"></name>
@@ -651,7 +673,7 @@ define &quot;SDE Chief Complaint&quot;:
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
-            <type value="Encounter"></type>
+            <type value="Any"></type>
          </parameter>
          <parameter>
             <name value="SDE Service Request"></name>
@@ -661,11 +683,18 @@ define &quot;SDE Chief Complaint&quot;:
             <type value="ServiceRequest"></type>
          </parameter>
          <parameter>
+            <name value="SDE Hospitalization Observation"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Observation"></type>
+         </parameter>
+         <parameter>
             <name value="SDE Chief Complaint"></name>
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
-            <type value="Encounter"></type>
+            <type value="Any"></type>
          </parameter>
          <parameter>
             <name value="SDE Gender Identity"></name>
@@ -674,6 +703,11 @@ define &quot;SDE Chief Complaint&quot;:
             <max value="*"></max>
             <type value="Patient"></type>
          </parameter>
+         <dataRequirement>
+            <type value="Location"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
+            <mustSupport value="id"></mustSupport>
+         </dataRequirement>
          <dataRequirement>
             <type value="Patient"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Patient"></profile>
@@ -687,12 +721,14 @@ define &quot;SDE Chief Complaint&quot;:
          <dataRequirement>
             <type value="MedicationAdministration"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/MedicationAdministration"></profile>
+            <mustSupport value="effective"></mustSupport>
             <mustSupport value="medication"></mustSupport>
             <mustSupport value="status"></mustSupport>
          </dataRequirement>
          <dataRequirement>
             <type value="MedicationRequest"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"></profile>
+            <mustSupport value="authoredOn"></mustSupport>
             <mustSupport value="medication"></mustSupport>
          </dataRequirement>
          <dataRequirement>
@@ -709,32 +745,25 @@ define &quot;SDE Chief Complaint&quot;:
             <type value="Encounter"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
             <mustSupport value="period"></mustSupport>
-            <mustSupport value="class"></mustSupport>
+            <mustSupport value="diagnosis.use"></mustSupport>
+            <mustSupport value="id"></mustSupport>
             <codeFilter>
-               <path value="class"></path>
+               <path value="diagnosis.use"></path>
                <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="IMP"></code>
-                  <display value="inpatient encounter"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="ACUTE"></code>
-                  <display value="inpatient acute"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="NONAC"></code>
-                  <display value="inpatient non-acute"></display>
+                  <system value="http://terminology.hl7.org/CodeSystem/diagnosis-role"></system>
+                  <code value="CC"></code>
+                  <display value="Chief complaint"></display>
                </code>
             </codeFilter>
          </dataRequirement>
          <dataRequirement>
             <type value="Encounter"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
-            <mustSupport value="type"></mustSupport>
+            <mustSupport value="period"></mustSupport>
+            <mustSupport value="hospitalization"></mustSupport>
+            <mustSupport value="hospitalization.dischargeDisposition"></mustSupport>
             <codeFilter>
-               <path value="type"></path>
+               <path value="hospitalization.dischargeDisposition"></path>
                <valueSet value="http://terminology.hl7.org/ValueSet/encounter-discharge-disposition"></valueSet>
             </codeFilter>
          </dataRequirement>
@@ -766,38 +795,60 @@ define &quot;SDE Chief Complaint&quot;:
             <type value="Encounter"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
             <mustSupport value="period"></mustSupport>
-            <mustSupport value="diagnosis"></mustSupport>
+            <mustSupport value="class"></mustSupport>
+            <codeFilter>
+               <path value="class"></path>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="IMP"></code>
+                  <display value="inpatient encounter"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="ACUTE"></code>
+                  <display value="inpatient acute"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="NONAC"></code>
+                  <display value="inpatient non-acute"></display>
+               </code>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="period"></mustSupport>
             <mustSupport value="location"></mustSupport>
             <mustSupport value="class"></mustSupport>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Condition"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Condition"></profile>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
-            <mustSupport value="id"></mustSupport>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Observation"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Medication"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Medication"></profile>
-            <mustSupport value="id"></mustSupport>
          </dataRequirement>
          <dataRequirement>
             <type value="ServiceRequest"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/ServiceRequest"></profile>
             <mustSupport value="code"></mustSupport>
+            <mustSupport value="occurrence"></mustSupport>
             <mustSupport value="intent"></mustSupport>
             <mustSupport value="status"></mustSupport>
             <codeFilter>
                <path value="code"></path>
                <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"></valueSet>
             </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Observation"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
+            <mustSupport value="effective"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Condition"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Condition"></profile>
+            <mustSupport value="id"></mustSupport>
+            <mustSupport value="onset"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Medication"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Medication"></profile>
+            <mustSupport value="id"></mustSupport>
          </dataRequirement>
       </Library>
    </contained>
@@ -819,7 +870,7 @@ define &quot;SDE Chief Complaint&quot;:
    <version value="0.000.01"></version>
    <name value="Initial Inpatient Population"></name>
    <title value="NHSN Glycemic Control, Initial Inpatient Population (Hypoglycemia)"></title>
-   <date value="2022-04-08T10:18:13-08:00"></date>
+   <date value="2022-04-22T06:52:00-08:00"></date>
    <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the performance period."></description>
    <relatedArtifact>
       <type value="depends-on"></type>
@@ -974,7 +1025,7 @@ define &quot;SDE Chief Complaint&quot;:
    <supplementalData>
       <criteria>
          <language value="text/cql.identifier"></language>
-         <expression value="SDE Observation"></expression>
+         <expression value="SDE Hospitalization Observation"></expression>
       </criteria>
    </supplementalData>
    <supplementalData>

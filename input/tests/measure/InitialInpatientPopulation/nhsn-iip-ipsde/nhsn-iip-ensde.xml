@@ -52,4 +52,9 @@
             </coding>
         </dischargeDisposition>
     </hospitalization>
+    <location>
+        <location>
+            <reference value="Location/nhsn-iip-loc-sde"/>
+        </location>
+    </location>
 </Encounter>
