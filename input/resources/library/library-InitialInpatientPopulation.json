@@ -11,7 +11,13 @@
   "version": "0.0.001",
   "name": "InitialInpatientPopulation",
   "title": "InitialInpatientPopulation",
-  "type": "logic-library",
+  "type": {
+    "coding":[{
+      "system": "http://terminology.hl7.org/CodeSystem/library-type",
+      "code": "logic-library",
+      "display": "Logic Library"
+    }]
+  },
   "relatedArtifact": [ {
     "type": "depends-on",
     "display": "FHIR model information",
