@@ -3,7 +3,8 @@
       "EnableAnnotations",
       "EnableLocators",
       "DisableListDemotion",
-      "DisableListPromotion"
+      "DisableListPromotion",
+      "EnableDateRangeOptimization"
 ],
    "formats":[
      "XML",
