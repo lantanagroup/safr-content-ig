@@ -199,7 +199,6 @@ define "SDE Hospitalization Observation":
 	[Observation] Observations 
   with "Initial Population" InitialPopulation
   such that start of Global."Normalize Interval"(Observations.effective) during InitialPopulation.period
-    and start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
 
 define "SDE Patient Death Date": 
   singleton from(
@@ -222,7 +221,6 @@ define "SDE Hospitalization Procedures":
   [Procedure] Procedures
   with "Initial Population" InitialPopulation
   such that start of Global."Normalize Interval"(Procedures.performed) during InitialPopulation.period
-    and start of Global."Normalize Interval"(Procedures.performed) during "Measurement Period"
   return DisplayProcedure(Procedures)
 
 define "SDE Race":
