@@ -181,7 +181,6 @@ define "SDE Medication Administration":
 	[MedicationAdministration] MedicationAdministrations
   with "Initial Population" InitialPopulation
   such that start of Global."Normalize Interval"(MedicationAdministrations.effective) during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
-    and start of Global."Normalize Interval"(MedicationAdministrations.effective) during "Measurement Period"
     return Tuple{
       medication: DisplayCodeableConcept(GetMedicationCode(MedicationAdministrations.medication)),
       effective: MedicationAdministrations.effective
@@ -191,7 +190,6 @@ define "SDE Medication Request":
 	[MedicationRequest] MedicationRequests
   with "Initial Population" InitialPopulation
 	such that MedicationRequests.authoredOn during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
-    and MedicationRequests.authoredOn during "Measurement Period"
   return Tuple{
     medication: DisplayCodeableConcept(GetMedicationCode(MedicationRequests.medication)),
     authoredOn: MedicationRequests.authoredOn
