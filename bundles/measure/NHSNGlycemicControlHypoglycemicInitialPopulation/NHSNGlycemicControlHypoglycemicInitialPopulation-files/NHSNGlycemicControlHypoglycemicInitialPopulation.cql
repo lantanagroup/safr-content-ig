@@ -77,76 +77,21 @@ define function "HospitalizationWithObservationOrEmergency"(TheEncounter FHIR.En
     )
     return Interval[Coalesce(start of EDVisit.period, VisitStart), end of Visit.period]
 
-define function "GetCondition"(reference Reference):
-  singleton from (
-    [Condition] C where C.id = Global.GetId(reference.reference)
-  )
-
-define function "GetEncounterConditionData"(encounter Encounter):
-  encounter.diagnosis.condition References
-  return DisplayCondition(GetCondition(References))
-
-define function "DisplayCondition"(condition Condition):
-  condition Condition
-  return Tuple{
-    code: DisplayCodeableConcept(Condition.code),
-    onsetDate: Condition.onset,
-    abatementDate: Condition.abatement
-  }
-
-define function "GetLocation"(references List<Reference>):
-  references reference
-  return DisplayLocation(Global.GetLocation(reference))
-
-define function "DisplayLocation"(location Location):
-  location Location
-  return Tuple{
-    locationType: Location.type,
-    locationPhysicalType: Location.physicalType
-  }
-
-define function "DisplayProcedure"(procedure Procedure):
-  procedure Procedure
-  return Tuple{
-    procedureCode: Procedure.code,
-    procedureTime: Procedure.performed
-  }
-
-define function "DisplayCodeableConcept"(code CodeableConcept):
-  code.coding Coding
-  return DisplayCoding(Coding)
-
-define function "DisplayCoding"(coding Coding):
-  coding Coding
-  return Code{
-    code: Coding.code,
-    system: Coding.system,
-    display: Coding.display
-  }
-
 //Supplement Data Elements
 define "SDE Chief Complaint":
   [Encounter: diagnosis.use ~ "Chief Complaint"] EncounterWithDiagnosis
   with "Initial Population" InitialPopulation
   such that start of EncounterWithDiagnosis.period during InitialPopulation.period
-    and EncounterWithDiagnosis.period overlaps "Measurement Period"
-  return Tuple{
-    id: EncounterWithDiagnosis.id,
-    condition: GetEncounterConditionData(EncounterWithDiagnosis)
-  }
 
 define "SDE Condition":
 	[Condition] Conditions
   with "Initial Population" InitialPopulation
   such that start of Global."Normalize Interval"(Conditions.onset) during InitialPopulation.period
-  return DisplayCondition(Conditions)
 
 define "SDE Encounter Discharge Dispositions":
 	[Encounter: hospitalization.dischargeDisposition in "Discharge Disposition"] DischargeDispositions 
   with "Initial Population" InitialPopulation
 	such that start of DischargeDispositions.period during InitialPopulation.period
-    and DischargeDispositions.period during "Measurement Period"
-  return DisplayCodeableConcept(DischargeDispositions.hospitalization.dischargeDisposition)
   
 define "SDE Encounter Locations":
 	[Encounter] Encounter
@@ -155,35 +100,21 @@ define "SDE Encounter Locations":
       or Global.GetLocation(EncounterLocation.location).physicalType in "CDC Location Codes")
   with "Initial Population" InitialPopulation
   such that start of Encounter.period during InitialPopulation.period
-    and Encounter.period during "Measurement Period"
-  return 
-    Encounter E
-    let 
-      locations: E.location
-      return GetLocation(locations.location)
- 	
+
+//Location has no timing element so just checking for IP existence here
 define "SDE Locations":
   [Location] Locations
   where exists("Initial Population")
-    return DisplayLocation(Locations)
 
 define "SDE Medication Administration":
 	[MedicationAdministration] MedicationAdministrations
   with "Initial Population" InitialPopulation
   such that start of Global."Normalize Interval"(MedicationAdministrations.effective) during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
-    return Tuple{
-      medication: DisplayCodeableConcept(GetMedicationCode(MedicationAdministrations.medication)),
-      effective: MedicationAdministrations.effective
-    }
 
 define "SDE Medication Request":
 	[MedicationRequest] MedicationRequests
   with "Initial Population" InitialPopulation
 	such that MedicationRequests.authoredOn during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
-  return Tuple{
-    medication: DisplayCodeableConcept(GetMedicationCode(MedicationRequests.medication)),
-    authoredOn: MedicationRequests.authoredOn
-  }
 
 define "SDE Hospitalization Observation":
 	[Observation: "Blood Glucose Laboratory and Point of Care Tests"] Observations 
@@ -191,16 +122,19 @@ define "SDE Hospitalization Observation":
   such that start of Global."Normalize Interval"(Observations.effective) during InitialPopulation.period
 
 define "SDE Payer": 
-	SDE."SDE Payer" Payers
-	where exists("Initial Population")
+	SDE."SDE Payer" Payer
+  with "Initial Population" InitialPopulation
+  such that start of Payer.period during InitialPopulation.period
 
+//Assuming we're more interested in when the Specimen was collected versus when it was submitted for processing
 define "SDE Specimen":
   [Specimen] Specimens
   with Specimens.type.coding codes
   such that codes.code.value in {'BLDA', 'BLDV', 'PLAS', 'SER', 'WB'}
+  with "Initial Population" InitialPopulation
+  such that start of Global."Normalize Interval"(Specimens.collection.collected) during InitialPopulation.period
   where Specimens.status = 'available'
   
-
 define "SDE Service Request":
 	[ServiceRequest: "Blood Glucose Laboratory and Point of Care Tests"] LabTest
   with "Initial Population" InitialPopulation
