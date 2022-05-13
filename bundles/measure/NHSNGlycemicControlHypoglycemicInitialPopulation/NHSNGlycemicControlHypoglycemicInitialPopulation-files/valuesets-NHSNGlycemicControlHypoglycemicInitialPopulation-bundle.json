@@ -1,6 +1,6 @@
 {
   "resourceType": "Bundle",
-  "id": "valuesets-InitialInpatientPopulation-bundle",
+  "id": "valuesets-NHSNGlycemicControlHypoglycemicInitialPopulation-bundle",
   "type": "transaction",
   "entry": [ {
     "resource": {

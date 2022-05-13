@@ -1,4 +1,4 @@
-library InitialInpatientPopulation version '0.0.001'
+library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.001'
 
 using FHIR version '4.0.1'
 
