@@ -23,7 +23,7 @@ code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
 
 parameter "Measurement Period" Interval<DateTime>
- //default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
+ default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
 
 context Patient
 
@@ -161,16 +161,6 @@ define "SDE Encounter Locations":
     let 
       locations: E.location
       return GetLocation(locations.location)
-      
-define "SDE Ethnicity":
-	SDE."SDE Ethnicity" Ethnicity
-	where exists("Initial Population")
-  return DisplayCoding(Ethnicity)
-
-define "SDE Gender Identity":
-	[Patient] Patient
-  where Global."GetExtension"(Patient, 'patient-genderIdentity').value in "Gender Identity"
-    and exists("Initial Population")
  	
 define "SDE Locations":
   [Location] Locations
@@ -196,37 +186,20 @@ define "SDE Medication Request":
   }
 
 define "SDE Hospitalization Observation":
-	[Observation] Observations 
+	[Observation: "Blood Glucose Laboratory and Point of Care Tests"] Observations 
   with "Initial Population" InitialPopulation
   such that start of Global."Normalize Interval"(Observations.effective) during InitialPopulation.period
-
-define "SDE Patient Death Date": 
-  singleton from(
-    [Patient] Patient
-    where Patient.deceased is FHIR.dateTime 
-      and exists("Initial Population")
-    return Patient.deceased
-  )
 
 define "SDE Payer": 
 	SDE."SDE Payer" Payers
 	where exists("Initial Population")
 
-define "SDE Patient ID": 
-  [Patient] ThePatient
-	where exists("Initial Population")
-    return ThePatient.identifier
-
-define "SDE Hospitalization Procedures":
-  [Procedure] Procedures
-  with "Initial Population" InitialPopulation
-  such that start of Global."Normalize Interval"(Procedures.performed) during InitialPopulation.period
-  return DisplayProcedure(Procedures)
-
-define "SDE Race":
-	SDE."SDE Race" Race 
-	where exists("Initial Population")
-  return DisplayCoding(Race)
+define "SDE Specimen":
+  [Specimen] Specimens
+  with Specimens.type.coding codes
+  such that codes.code.value in {'BLDA', 'BLDV', 'PLAS', 'SER', 'WB'}
+  where Specimens.status = 'available'
+  
 
 define "SDE Service Request":
 	[ServiceRequest: "Blood Glucose Laboratory and Point of Care Tests"] LabTest
@@ -234,12 +207,3 @@ define "SDE Service Request":
   such that (LabTest.intent ~ 'order'
     and LabTest.status ~ 'completed')
     and start of Global."Normalize Interval"(LabTest.occurrence) during InitialPopulation.period
-
-define "SDE Sex":
-	SDE."SDE Sex" Sex
-	where exists("Initial Population")
-   
-define "SDE Zip Code": 
-	[Patient] ThePatient 
-	where exists("Initial Population")
-  return ThePatient.address.postalCode
