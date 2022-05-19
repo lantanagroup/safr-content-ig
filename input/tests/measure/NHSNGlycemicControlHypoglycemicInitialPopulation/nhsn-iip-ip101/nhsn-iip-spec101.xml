@@ -44,8 +44,8 @@
 
         Note that this practice is so widespread that it's pointless to try and stop it    -->
         <coding> 
-            <system value="http://snomed.info/sct"/> 
-            <code value="BLDA"/> 
+            <system value="http://terminology.hl7.org/CodeSystem/v2-0487"/> 
+            <code value="SER"/> 
         </coding> 
     </type> 
     <subject> 
@@ -63,7 +63,7 @@
         </collector> 
         <!--    the time of collection is usually required. Usually a point in time, but can be a period
         (collectedPeriod) if it's a timed collection (e.g. a 24 hour urine)    -->
-        <collectedDateTime value="2011-05-30T06:15:00Z"/> 
+        <collectedDateTime value="2022-01-15T06:15:00.0"/> 
         <quantity> 
         <value value="6"/> 
         <unit value="mL"/> 
