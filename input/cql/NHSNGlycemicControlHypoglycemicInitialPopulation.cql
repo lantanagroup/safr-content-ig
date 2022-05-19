@@ -27,7 +27,7 @@ code "SER": 'SER' from "Specimen Type" display 'SER'
 code "WB": 'WB' from "Specimen Type" display 'WB'
 
 parameter "Measurement Period" Interval<DateTime>
- default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
+ //default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
 
 context Patient
 
