@@ -1,4 +1,4 @@
-library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.001'
+library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.002'
 
 using FHIR version '4.0.1'
 
@@ -8,6 +8,7 @@ include MATGlobalCommonFunctionsFHIR4 version '6.1.000' called Global
 
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode' 
 codesystem "Diagnosis Role": 'http://terminology.hl7.org/CodeSystem/diagnosis-role'
+codesystem "Specimen Type": 'http://terminology.hl7.org/CodeSystem/v2-0487'
 
 valueset "Blood Glucose Laboratory and Point of Care Tests": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38'
 valueset "CDC Location Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
@@ -21,6 +22,9 @@ code "inpatient acute": 'ACUTE' from "ActCode" display 'inpatient acute'
 code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
 code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
+code "PLAS": 'PLAS' from "Specimen Type" display 'Plasma'
+code "SER": 'SER' from "Specimen Type" display 'Serum'
+code "WB": 'WB' from "Specimen Type" display 'Blood, whole'
 
 parameter "Measurement Period" Interval<DateTime>
  default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
@@ -36,7 +40,8 @@ define "Initial Population":
 
 define "Inpatient Encounter":
   [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute"}] Encounters
-  where Encounters.period overlaps "Measurement Period"
+  where Encounters.status in {'in-progress', 'finished'}
+  and Encounters.period overlaps "Measurement Period"
 
 define "Antidiabetic Drugs Administered or Ordered":
   ([MedicationAdministration] ADDMedAdmin
@@ -77,17 +82,21 @@ define function "HospitalizationWithObservationOrEmergency"(TheEncounter FHIR.En
     )
     return Interval[Coalesce(start of EDVisit.period, VisitStart), end of Visit.period]
 
+define function "GetSpecimen"(reference Reference):
+  singleton from (
+    [Specimen] S where S.id = Global.GetId(reference.reference)
+  )
+  
 //Supplement Data Elements
 define "SDE Chief Complaint":
-  [Encounter: diagnosis.use ~ "Chief Complaint"] EncounterWithDiagnosis
+  [Encounter: diagnosis.use ~ "Chief Complaint"] ChiefComplaint
   with "Initial Population" InitialPopulation
-  such that start of EncounterWithDiagnosis.period during InitialPopulation.period
+  such that start of ChiefComplaint.period during "Measurement Period"
 
 define "SDE Condition":
-	[Condition] Conditions
-  with "Initial Population" InitialPopulation
-  such that start of Global."Normalize Interval"(Conditions.onset) during InitialPopulation.period
-
+  "Initial Population" InitialPopulation
+	return Global.EncounterDiagnosis(InitialPopulation) except {null}
+    
 define "SDE Encounter Discharge Dispositions":
 	[Encounter: hospitalization.dischargeDisposition in "Discharge Disposition"] DischargeDispositions 
   with "Initial Population" InitialPopulation
@@ -100,6 +109,7 @@ define "SDE Encounter Locations":
       or Global.GetLocation(EncounterLocation.location).physicalType in "CDC Location Codes")
   with "Initial Population" InitialPopulation
   such that start of Encounter.period during InitialPopulation.period
+  where Encounter.period during "Measurement Period"
 
 //Location has no timing element so just checking for IP existence here
 define "SDE Locations":
@@ -110,34 +120,28 @@ define "SDE Medication Administration":
 	[MedicationAdministration] MedicationAdministrations
   with "Initial Population" InitialPopulation
   such that start of Global."Normalize Interval"(MedicationAdministrations.effective) during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
+    and start of Global."Normalize Interval"(MedicationAdministrations.effective) during "Measurement Period"
 
 define "SDE Medication Request":
 	[MedicationRequest] MedicationRequests
   with "Initial Population" InitialPopulation
 	such that MedicationRequests.authoredOn during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
+    and MedicationRequests.authoredOn during "Measurement Period"
 
-define "SDE Hospitalization Observation":
+define "SDE Blood Glucose Observation":
 	[Observation: "Blood Glucose Laboratory and Point of Care Tests"] Observations 
   with "Initial Population" InitialPopulation
   such that start of Global."Normalize Interval"(Observations.effective) during InitialPopulation.period
+    and Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during InitialPopulation.period
 
 define "SDE Payer": 
 	SDE."SDE Payer" Payer
   with "Initial Population" InitialPopulation
-  such that start of Payer.period during InitialPopulation.period
-
-//Assuming we're more interested in when the Specimen was collected versus when it was submitted for processing
-define "SDE Specimen":
-  [Specimen] Specimens
-  with Specimens.type.coding codes
-  such that codes.code.value in {'BLDA', 'BLDV', 'PLAS', 'SER', 'WB'}
-  with "Initial Population" InitialPopulation
-  such that start of Global."Normalize Interval"(Specimens.collection.collected) during InitialPopulation.period
-  where Specimens.status = 'available'
+  such that start of Payer.period before end of InitialPopulation.period
   
 define "SDE Service Request":
 	[ServiceRequest: "Blood Glucose Laboratory and Point of Care Tests"] LabTest
   with "Initial Population" InitialPopulation
-  such that (LabTest.intent ~ 'order'
-    and LabTest.status ~ 'completed')
-    and start of Global."Normalize Interval"(LabTest.occurrence) during InitialPopulation.period
+  such that LabTest.intent ~ 'order'
+    and LabTest.status ~ 'completed'
+    and LabTest.authoredOn during InitialPopulation.period
