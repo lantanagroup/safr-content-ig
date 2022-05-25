@@ -1,4 +1,4 @@
-library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.001'
+library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.002'
 
 using FHIR version '4.0.1'
 
@@ -22,9 +22,9 @@ code "inpatient acute": 'ACUTE' from "ActCode" display 'inpatient acute'
 code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
 code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
-code "PLAS": 'PLAS' from "Specimen Type" display 'PLAS'
-code "SER": 'SER' from "Specimen Type" display 'SER'
-code "WB": 'WB' from "Specimen Type" display 'WB'
+code "PLAS": 'PLAS' from "Specimen Type" display 'Plasma'
+code "SER": 'SER' from "Specimen Type" display 'Serum'
+code "WB": 'WB' from "Specimen Type" display 'Blood, whole'
 
 parameter "Measurement Period" Interval<DateTime>
  //default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
@@ -82,6 +82,10 @@ define function "HospitalizationWithObservationOrEmergency"(TheEncounter FHIR.En
     )
     return Interval[Coalesce(start of EDVisit.period, VisitStart), end of Visit.period]
 
+define "Encounter Diagnoses":
+  [Encounter] Encounters
+  return Global.EncounterDiagnosis(Encounters)
+
 //Supplement Data Elements
 define "SDE Chief Complaint":
   [Encounter: diagnosis.use ~ "Chief Complaint"] ChiefComplaint
@@ -89,11 +93,12 @@ define "SDE Chief Complaint":
   such that start of ChiefComplaint.period during "Measurement Period"
 
 define "SDE Condition":
-	[Condition: clinicalStatus ~ Global."active"] Conditions
-  with "Initial Population" InitialPopulation
-  such that Global."Normalize Interval"(Conditions.onset) starts on or before end of InitialPopulation.period
-    and Conditions.verificationStatus ~ Global."confirmed"
-
+	("Encounter Diagnoses" Conditions
+  return
+    Conditions C
+    with "Initial Population" InitialPopulation
+    such that Global."Prevalence Period"(C) overlaps InitialPopulation.period) except {null}
+    
 define "SDE Encounter Discharge Dispositions":
 	[Encounter: hospitalization.dischargeDisposition in "Discharge Disposition"] DischargeDispositions 
   with "Initial Population" InitialPopulation
