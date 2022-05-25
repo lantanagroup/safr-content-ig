@@ -27,7 +27,7 @@ code "SER": 'SER' from "Specimen Type" display 'Serum'
 code "WB": 'WB' from "Specimen Type" display 'Blood, whole'
 
 parameter "Measurement Period" Interval<DateTime>
- //default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
+ default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
 
 context Patient
 
@@ -82,10 +82,11 @@ define function "HospitalizationWithObservationOrEmergency"(TheEncounter FHIR.En
     )
     return Interval[Coalesce(start of EDVisit.period, VisitStart), end of Visit.period]
 
-define "Encounter Diagnoses":
-  [Encounter] Encounters
-  return Global.EncounterDiagnosis(Encounters)
-
+define function "GetSpecimen"(reference Reference):
+  singleton from (
+    [Specimen] S where S.id = Global.GetId(reference.reference)
+  )
+  
 //Supplement Data Elements
 define "SDE Chief Complaint":
   [Encounter: diagnosis.use ~ "Chief Complaint"] ChiefComplaint
@@ -93,11 +94,8 @@ define "SDE Chief Complaint":
   such that start of ChiefComplaint.period during "Measurement Period"
 
 define "SDE Condition":
-	("Encounter Diagnoses" Conditions
-  return
-    Conditions C
-    with "Initial Population" InitialPopulation
-    such that Global."Prevalence Period"(C) overlaps InitialPopulation.period) except {null}
+  "Initial Population" InitialPopulation
+	return Global.EncounterDiagnosis(InitialPopulation) except {null}
     
 define "SDE Encounter Discharge Dispositions":
 	[Encounter: hospitalization.dischargeDisposition in "Discharge Disposition"] DischargeDispositions 
@@ -111,6 +109,7 @@ define "SDE Encounter Locations":
       or Global.GetLocation(EncounterLocation.location).physicalType in "CDC Location Codes")
   with "Initial Population" InitialPopulation
   such that start of Encounter.period during InitialPopulation.period
+  where Encounter.period during "Measurement Period"
 
 //Location has no timing element so just checking for IP existence here
 define "SDE Locations":
@@ -118,7 +117,7 @@ define "SDE Locations":
   where exists("Initial Population")
 
 define "SDE Medication Administration":
-	[MedicationAdministration: status in {'in-progress', 'completed'}] MedicationAdministrations
+	[MedicationAdministration] MedicationAdministrations
   with "Initial Population" InitialPopulation
   such that start of Global."Normalize Interval"(MedicationAdministrations.effective) during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
     and start of Global."Normalize Interval"(MedicationAdministrations.effective) during "Measurement Period"
@@ -133,13 +132,13 @@ define "SDE Blood Glucose Observation":
 	[Observation: "Blood Glucose Laboratory and Point of Care Tests"] Observations 
   with "Initial Population" InitialPopulation
   such that start of Global."Normalize Interval"(Observations.effective) during InitialPopulation.period
+    and Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during InitialPopulation.period
 
 define "SDE Payer": 
 	SDE."SDE Payer" Payer
   with "Initial Population" InitialPopulation
   such that start of Payer.period before end of InitialPopulation.period
 
-//Assuming we're more interested in when the Specimen was collected versus when it was submitted for processing
 define "SDE Blood Glucose Specimen":
   [Specimen: type in {"SER", "PLAS", "WB"}] Specimens
   with "Initial Population" InitialPopulation
