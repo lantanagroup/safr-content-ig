@@ -138,12 +138,6 @@ define "SDE Payer":
 	SDE."SDE Payer" Payer
   with "Initial Population" InitialPopulation
   such that start of Payer.period before end of InitialPopulation.period
-
-define "SDE Blood Glucose Specimen":
-  [Specimen: type in {"SER", "PLAS", "WB"}] Specimens
-  with "Initial Population" InitialPopulation
-  such that start of Global."Normalize Interval"(Specimens.collection.collected) during InitialPopulation.period
-  where Specimens.status ~ 'available'
   
 define "SDE Service Request":
 	[ServiceRequest: "Blood Glucose Laboratory and Point of Care Tests"] LabTest
