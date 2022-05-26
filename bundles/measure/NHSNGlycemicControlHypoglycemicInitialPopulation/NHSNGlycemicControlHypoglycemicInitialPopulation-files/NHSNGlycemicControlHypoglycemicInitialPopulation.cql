@@ -13,7 +13,6 @@ codesystem "Specimen Type": 'http://terminology.hl7.org/CodeSystem/v2-0487'
 valueset "Blood Glucose Laboratory and Point of Care Tests": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38'
 valueset "CDC Location Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
 valueset "Discharge Disposition": 'http://terminology.hl7.org/ValueSet/encounter-discharge-disposition'
-valueset "Gender Identity": 'http://hl7.org/fhir/ValueSet/gender-identity'
 valueset "NHSN Hypoglycemia Drugs": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58'
 
 code "Chief Complaint": 'CC' from "Diagnosis Role" display 'Chief complaint'
@@ -27,7 +26,7 @@ code "SER": 'SER' from "Specimen Type" display 'Serum'
 code "WB": 'WB' from "Specimen Type" display 'Blood, whole'
 
 parameter "Measurement Period" Interval<DateTime>
- default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
+ //default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
 
 context Patient
 
