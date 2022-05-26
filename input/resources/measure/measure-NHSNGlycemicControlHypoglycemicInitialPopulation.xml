@@ -629,7 +629,7 @@ define &quot;SDE Chief Complaint&quot;:
    <version value="0.000.01"></version>
    <name value="NHSNGlycemicControlHypoglycemicInitialPopulation"></name>
    <title value="NHSN Glycemic Control, Hypoglycemic Inpatient Population"></title>
-   <date value="2022-05-26T06:52:44-08:00"></date>
+   <date value="2022-05-26T10:55:33-08:00"></date>
    <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the performance period."></description>
    <library value="http://fhir.org/guides/cqf/Library/NHSNGlycemicControlHypoglycemicInitialPopulation"></library>
    <scoring>
