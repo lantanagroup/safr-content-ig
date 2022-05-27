@@ -27,7 +27,7 @@ code "observation encounter": 'OBSENC' from "ActCode" display 'observation encou
 
 
 parameter "Measurement Period" 
-    default Interval[DateTime(2022, 1, 1, 0, 0, 0, 0), DateTime(2022, 2, 1, 0, 0, 0, 0))
+    default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
 
 context Patient 
 
@@ -58,6 +58,7 @@ define "Initial Population":
 //For CDI measure, we want to identify the function performed at the location, such as impatient location
 
 //This will pull the Location resource in 
+/*
 define "SDE Encounter Locations":
 	[Encounter] Encounter
   with Encounter.location EncounterLocation
@@ -71,15 +72,15 @@ define "SDE Encounter Locations":
     return Tuple{
       locationType: GetCodeConcepts(RefLoc.type),
       period: FHIRHelpers.ToInterval(EncLoc.period)
-    }
+    }*/
 
-//Not sure we need this the define above may pull the releated Locaion in anyway
+//we need this the define to filter the location for CDC Location Codes valueset
 define "SDE Location":
   [Location: type in "CDC Location Codes"] LocCdc
   where exists("Initial Population")
 
-
-define "SDE Encounter Locations No Return":
+//this restrain the Encounter which has the location with CDC Location Codes valueset
+define "SDE Encounter Locations":
 	[Encounter] Encounter
   with Encounter.location EncounterLocation
   such that (GetLocation(EncounterLocation.location).type in "CDC Location Codes") 
@@ -90,35 +91,38 @@ define "SDE Encounter Locations No Return":
   
 define "SDE Stool Lab":
   [Observation: code in CDiffLab] ObsLab
-    where ObsLab.status in {'final', 'amended', 'corrected', 'preliminory'}
-    and Global."Normalize Interval"(ObsLab.effective) during "Measurement Period"
-    and ObsLab.category.coding.code ~ {'laboratary'}
-    and exists("Initial Population")
+    with "Initial Population" IP
+    such that Global."Normalize Interval"(ObsLab.effective) during IP.period
+      and ObsLab.status in {'final', 'amended', 'corrected', 'preliminary'}
+      and ObsLab.category.coding.code ~ {'laboratary'}
 
 define "SDE Stool DiagnosticReport":
   [DiagnosticReport: code in CDiffLab] DiaRepLab
-    where DiaRepLab.status in {'final', 'amended', 'corrected', 'preliminory'}
-     and Global."Normalize Interval"(DiaRepLab.effective) during "Measurement Period"
-     and exists("Initial Population")
+    with "Initial Population" IP
+    such that Global."Normalize Interval"(DiaRepLab.effective) during IP.period
+      and DiaRepLab.status in {'final', 'amended', 'corrected', 'preliminary'}
 
 define "SDE Vital Signs":
-  [Observation] ObsVS 
-    where ObsVS.status in {'final', 'amended', 'corrected', 'preliminory'} 
-    and ObsVS.category.coding.code ~ {'vital-signs'}
-    and Global."Normalize Interval"(ObsVS.effective) during "Measurement Period"
-    and exists("Initial Population")
+  [Observation] ObsVS
+    with "Initial Population" IP 
+    such that Global."Normalize Interval"(ObsVS.effective) during IP.period
+      and ObsVS.status in {'final', 'amended', 'corrected', 'preliminary'} 
+      and ObsVS.category.coding.code ~ {'vital-signs'}
 
 //in the master map sheet did not say what type the Condition is needed
 //for now just for the encounter-diagnosis
-define "SDE Encounter Diagnosis":
+//data requirement only to category levle did filter down the code level 
+// need to check the run time it filter out the observation other than encounter-diagnosis or not?????
+define "SDE Condition for Encounter Diagnosis":
   [Condition] ConEncDia 
   where ConEncDia.category.coding.code ~ {'encounter-diagnosis'}
-  and exists("Initial Population")
+    and exists("Initial Population")
 
 define "SDE Lab With Spcimen":
   [Observation: code in CDiffLab] ObsSpc 
     let RefSpe: GetSpecimen(ObsSpc.specimen)
-    where Global."Normalize Interval"(RefSpe.collection.collected) during "Measurement Period"
+    with "Initial Population" IP 
+    such that Global."Normalize Interval"(RefSpe.collection.collected) during IP.period
     
 define "SDE Service Request":
 	[ServiceRequest: code in CDiffLab] SerLab
@@ -129,14 +133,17 @@ define "SDE Service Request":
     
 define "SDE MedicationAdministration":
 [MedicationAdministration: medication in TherapeuticAgensForCDI] MedAdm
-  where MedAdm.status in {'completed', 'inprogress'}
-    and Global."Normalize Interval"(MedAdm.effective) during "Measurement Period"
+  with "Initial Population" IP
+  such that Global."Normalize Interval"(MedAdm.effective) during IP.period
+    and MedAdm.status in {'completed', 'inprogress'}
+
 
 define "SDE MedicationRequest":
 [MedicationRequest: medication in TherapeuticAgensForCDI] MedReq 
-  where MedReq.status in {'active', 'completed'}
-  and Global."Normalize Interval"(MedReq.authoredOn) during "Measurement Period"
-
+  with "Initial Population" IP 
+  such that Global."Normalize Interval"(MedReq.authoredOn) during IP.period
+    and MedReq.status in {'active', 'completed'}
+  
 define "SDE Claim":
   [Claim] Cla 
   where exists("Initial Population")
