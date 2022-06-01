@@ -22,7 +22,7 @@ code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
 code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
 
-//code "vancomycin1": '1807513' from "RXNORM"
+code "vancomycin1": '239209' from "RXNORM"
 //code "vancomycin2": '2118449' from "RXNORM"
 
 
@@ -32,6 +32,8 @@ parameter "Measurement Period"
 context Patient 
 
 //CDI initial Patient Population: All inpatient, ED, and Observation encounters during the Measurement Period
+//Encounter.hospitalization.dischargeDisposition:CodeableConcept 0..1 no SDE need for this
+//Encounter.diagnosis.use:CodeableConcept 0..1 no SDE need for this
 define "Initial Population":
   [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "emergency", "observation encounter"}] Encounters
   where Encounters.period overlaps "Measurement Period"
@@ -50,7 +52,6 @@ define "Initial Population":
 //Patient aged one year old or less than one year old at the start of an admission/encounter will be excluded from HOT-CDI, COT-CDI, and CO-CDI
 //event numerators and denominators. Data from these patient will be collected and complemenarty metrics provided based on this data. 
 //make sure those data are made into data-requirment, need to find out to use SDE or just define will do it. 
-
 
 
 //Encounter.location.location:Reference(Location) Location.type indicate type of function performed at the location
@@ -74,12 +75,12 @@ define "SDE Encounter Locations":
       period: FHIRHelpers.ToInterval(EncLoc.period)
     }*/
 
-//we need this the define to filter the location for CDC Location Codes valueset
+/*we need this the define to filter the location for CDC Location Codes valueset
 define "SDE Location":
   [Location: type in "CDC Location Codes"] LocCdc
-  where exists("Initial Population")
+  where exists("Initial Population") */
 
-//this restrain the Encounter which has the location with CDC Location Codes valueset
+/*this restrain the Encounter which has the location with CDC Location Codes valueset
 define "SDE Encounter Locations":
 	[Encounter] Encounter
   with Encounter.location EncounterLocation
@@ -87,14 +88,31 @@ define "SDE Encounter Locations":
       //or GetLocation(EncounterLocation.location).physicalType in "CDC Location Codes")
   with "Initial Population" InitialPopulation
   such that start of Encounter.period during InitialPopulation.period
-    and Encounter.period during "Measurement Period"
-  
+    and Encounter.period during "Measurement Period" */
+
+
+define "SDE MedicationAdministrations":
+  [MedicationAdministration] MedAdm
+    with "Initial Population" IP
+    such that Global."Normalize Interval"(MedAdm.effective) during IP.period
+    and MedAdm.status in {'completed', 'in-progress'}
+    
+//Encounter.hospitalization.origin:Reference(Location) 0..1 patient came before admission
+//Encounter.hospitalization.destination:Reference(Location) 0..1 Location which patient discharged to
+//Encounter.location.location:Reference(Location) 1..1 Location the encounter taskes place
+define "SDE Locations":
+  [Location] Loc
+  where exists("Initial Population")
+
+
+//add Observation.category in the condition for meeting requirement for EHR
 define "SDE Stool Lab":
   [Observation: code in CDiffLab] ObsLab
     with "Initial Population" IP
     such that Global."Normalize Interval"(ObsLab.effective) during IP.period
       and ObsLab.status in {'final', 'amended', 'corrected', 'preliminary'}
-      and ObsLab.category.coding.code ~ {'laboratary'}
+      and ObsLab.category.coding.code ~ {'laboratory'}
+
 
 define "SDE Stool DiagnosticReport":
   [DiagnosticReport: code in CDiffLab] DiaRepLab
@@ -112,46 +130,69 @@ define "SDE Vital Signs":
 //in the master map sheet did not say what type the Condition is needed
 //for now just for the encounter-diagnosis
 //data requirement only to category levle did filter down the code level 
+//not sure we should check the Condtion.onset, it is clear what that means, an acute condition for a chronic condtion
 // need to check the run time it filter out the observation other than encounter-diagnosis or not?????
+
 define "SDE Condition for Encounter Diagnosis":
   [Condition] ConEncDia 
   where ConEncDia.category.coding.code ~ {'encounter-diagnosis'}
     and exists("Initial Population")
 
+//for the Observation has Specimen reference, this may not need if we have the Specimen Resource
 define "SDE Lab With Spcimen":
   [Observation: code in CDiffLab] ObsSpc 
     let RefSpe: GetSpecimen(ObsSpc.specimen)
     with "Initial Population" IP 
     such that Global."Normalize Interval"(RefSpe.collection.collected) during IP.period
-    
+    return RefSpe
+
+define "SDE Stool Specimen":
+  [Specimen] Spe
+    with "Initial Population" IP
+    such that Global."Normalize Interval"(Spe.collection.collected) during IP.period
+
+
 define "SDE Service Request":
 	[ServiceRequest: code in CDiffLab] SerLab
   with "Initial Population" InitialPopulation
   such that (SerLab.intent ~ 'order'
     and SerLab.status ~ 'completed')
     and start of Global."Normalize Interval"(SerLab.occurrence) during InitialPopulation.period
-    
+
+define "SDE MedicationRequest":
+  [MedicationRequest] MedReq
+    with "Initial Population" IP 
+    such that Global."Normalize Interval"(MedReq.authoredOn) during IP.period
+    and MedReq.status in {'active', 'completed'}
+
+/* do not filter medication    
 define "SDE MedicationAdministration":
 [MedicationAdministration: medication in TherapeuticAgensForCDI] MedAdm
   with "Initial Population" IP
   such that Global."Normalize Interval"(MedAdm.effective) during IP.period
-    and MedAdm.status in {'completed', 'inprogress'}
+    and MedAdm.status in {'completed', 'in-progress'}
+*/
 
-
+/*
 define "SDE MedicationRequest":
 [MedicationRequest: medication in TherapeuticAgensForCDI] MedReq 
   with "Initial Population" IP 
   such that Global."Normalize Interval"(MedReq.authoredOn) during IP.period
     and MedReq.status in {'active', 'completed'}
-  
+*/
+
 define "SDE Claim":
   [Claim] Cla 
   where exists("Initial Population")
 
+//Coverage as a stand alone resource??? or be part of ExplanationOfBenefit
 define "SDE Coverage":
   [Coverage] Cov 
   where exists("Initial Population")
 
+define "SDE ExplanationOfBenefit":
+  [ExplanationOfBenefit] Exp 
+    where exists("Initial Population")
 
 
 //-----------------------------------------------------------------
