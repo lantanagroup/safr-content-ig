@@ -9,6 +9,7 @@ include MATGlobalCommonFunctionsFHIR4 version '6.1.000' called Global
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode' 
 codesystem "Diagnosis Role": 'http://terminology.hl7.org/CodeSystem/diagnosis-role'
 codesystem "Specimen Type": 'http://terminology.hl7.org/CodeSystem/v2-0487'
+codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category'
 
 valueset "Blood Glucose Laboratory and Point of Care Tests": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38'
 valueset "CDC Location Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
@@ -21,6 +22,7 @@ code "inpatient acute": 'ACUTE' from "ActCode" display 'inpatient acute'
 code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
 code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
+code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 
 parameter "Measurement Period" Interval<DateTime>
  //default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
@@ -107,10 +109,8 @@ define "SDE Encounter Locations":
   such that start of Encounter.period during InitialPopulation.period
   where Encounter.period during "Measurement Period"
 
-//Location has no timing element so just checking for IP existence here
 define "SDE Locations":
   [Location] Locations
-  where exists("Initial Population")
 
 define "SDE Medication Administration":
 	[MedicationAdministration] MedicationAdministrations
@@ -129,6 +129,7 @@ define "SDE Blood Glucose Observation":
   with "Initial Population" InitialPopulation
   such that start of Global."Normalize Interval"(Observations.effective) during InitialPopulation.period
     and Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during InitialPopulation.period
+  where Observations.category ~ "laboratory"
 
 define "SDE Payer": 
 	SDE."SDE Payer" Payer
