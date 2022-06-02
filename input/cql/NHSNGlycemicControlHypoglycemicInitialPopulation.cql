@@ -109,10 +109,8 @@ define "SDE Encounter Locations":
   such that start of Encounter.period during InitialPopulation.period
   where Encounter.period during "Measurement Period"
 
-//Location has no timing element so just checking for IP existence here
 define "SDE Locations":
   [Location] Locations
-  where exists("Initial Population")
 
 define "SDE Medication Administration":
 	[MedicationAdministration] MedicationAdministrations
@@ -126,7 +124,6 @@ define "SDE Medication Request":
 	such that MedicationRequests.authoredOn during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
     and MedicationRequests.authoredOn during "Measurement Period"
 
-//Add category code of 'laboratory'
 define "SDE Blood Glucose Observation":
 	[Observation: "Blood Glucose Laboratory and Point of Care Tests"] Observations 
   with "Initial Population" InitialPopulation
