@@ -43,6 +43,13 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
             <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/observation-category"></system>
+               <code value="laboratory"></code>
+               <display value="Laboratory"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
                <system value="http://terminology.hl7.org/CodeSystem/diagnosis-role"></system>
                <code value="CC"></code>
                <display value="Chief complaint"></display>
@@ -56,7 +63,10 @@
                <valueString value="Inpatient Encounter"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Inpatient Encounter&quot;:   [Encounter: class in {&quot;inpatient encounter&quot;, &quot;inpatient acute&quot;, &quot;inpatient non-acute&quot;}] Encounters   where Encounters.status in {'in-progress', 'finished'}   and Encounters.period overlaps &quot;Measurement Period&quot;"></valueString>
+               <valueString value="define &quot;Inpatient Encounter&quot;:
+  [Encounter: class in {&quot;inpatient encounter&quot;, &quot;inpatient acute&quot;, &quot;inpatient non-acute&quot;}] Encounters
+  where Encounters.status in {'in-progress', 'finished'}
+  and Encounters.period overlaps &quot;Measurement Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="0"></valueInteger>
@@ -70,7 +80,14 @@
                <valueString value="Antidiabetic Drugs Administered or Ordered"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Antidiabetic Drugs Administered or Ordered&quot;:   ([MedicationAdministration] ADDMedAdmin     where GetMedicationCode(ADDMedAdmin.medication) in &quot;NHSN Hypoglycemia Drugs&quot;       and ADDMedAdmin.status ~ 'completed')   union (     [MedicationRequest] MedicationRequests       where GetMedicationCode(MedicationRequests.medication) in &quot;NHSN Hypoglycemia Drugs&quot;   )"></valueString>
+               <valueString value="define &quot;Antidiabetic Drugs Administered or Ordered&quot;:
+  ([MedicationAdministration] ADDMedAdmin
+    where GetMedicationCode(ADDMedAdmin.medication) in &quot;NHSN Hypoglycemia Drugs&quot;
+      and ADDMedAdmin.status ~ 'completed')
+  union (
+    [MedicationRequest] MedicationRequests
+      where GetMedicationCode(MedicationRequests.medication) in &quot;NHSN Hypoglycemia Drugs&quot;
+  )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="1"></valueInteger>
@@ -84,7 +101,12 @@
                <valueString value="Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Initial Population&quot;:   &quot;Inpatient Encounter&quot; InpatientEncounters   with &quot;Antidiabetic Drugs Administered or Ordered&quot; ADD   such that Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn)       during &quot;HospitalizationWithObservationOrEmergency&quot;(InpatientEncounters)     and Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn) during &quot;Measurement Period&quot;"></valueString>
+               <valueString value="define &quot;Initial Population&quot;:
+  &quot;Inpatient Encounter&quot; InpatientEncounters
+  with &quot;Antidiabetic Drugs Administered or Ordered&quot; ADD
+  such that Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn)
+      during &quot;HospitalizationWithObservationOrEmergency&quot;(InpatientEncounters)
+    and Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn) during &quot;Measurement Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="2"></valueInteger>
@@ -98,7 +120,11 @@
                <valueString value="SDE Medication Administration"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Medication Administration&quot;:  [MedicationAdministration] MedicationAdministrations   with &quot;Initial Population&quot; InitialPopulation   such that start of Global.&quot;Normalize Interval&quot;(MedicationAdministrations.effective) during &quot;HospitalizationWithObservationOrEmergency&quot;(InitialPopulation)     and start of Global.&quot;Normalize Interval&quot;(MedicationAdministrations.effective) during &quot;Measurement Period&quot;"></valueString>
+               <valueString value="define &quot;SDE Medication Administration&quot;:
+	[MedicationAdministration] MedicationAdministrations
+  with &quot;Initial Population&quot; InitialPopulation
+  such that start of Global.&quot;Normalize Interval&quot;(MedicationAdministrations.effective) during &quot;HospitalizationWithObservationOrEmergency&quot;(InitialPopulation)
+    and start of Global.&quot;Normalize Interval&quot;(MedicationAdministrations.effective) during &quot;Measurement Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="3"></valueInteger>
@@ -112,7 +138,11 @@
                <valueString value="SDE Medication Request"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Medication Request&quot;:  [MedicationRequest] MedicationRequests   with &quot;Initial Population&quot; InitialPopulation  such that MedicationRequests.authoredOn during &quot;HospitalizationWithObservationOrEmergency&quot;(InitialPopulation)     and MedicationRequests.authoredOn during &quot;Measurement Period&quot;"></valueString>
+               <valueString value="define &quot;SDE Medication Request&quot;:
+	[MedicationRequest] MedicationRequests
+  with &quot;Initial Population&quot; InitialPopulation
+	such that MedicationRequests.authoredOn during &quot;HospitalizationWithObservationOrEmergency&quot;(InitialPopulation)
+    and MedicationRequests.authoredOn during &quot;Measurement Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="4"></valueInteger>
@@ -126,7 +156,8 @@
                <valueString value="SDE Locations"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//Location has no timing element so just checking for IP existence here define &quot;SDE Locations&quot;:   [Location] Locations   where exists(&quot;Initial Population&quot;)"></valueString>
+               <valueString value="define &quot;SDE Locations&quot;:
+  [Location] Locations"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="5"></valueInteger>
@@ -140,7 +171,14 @@
                <valueString value="SDE Blood Glucose Observation"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Blood Glucose Observation&quot;:  [Observation: &quot;Blood Glucose Laboratory and Point of Care Tests&quot;] Observations    with &quot;Initial Population&quot; InitialPopulation   such that start of Global.&quot;Normalize Interval&quot;(Observations.effective) during InitialPopulation.period     and Global.&quot;Normalize Interval&quot;(GetSpecimen(Observations.specimen).collection.collected) during InitialPopulation.period"></valueString>
+               <valueString value="define &quot;SDE Blood Glucose Observation&quot;:
+	[Observation: &quot;Blood Glucose Laboratory and Point of Care Tests&quot;] Observations 
+  with &quot;Initial Population&quot; InitialPopulation
+  such that start of Global.&quot;Normalize Interval&quot;(Observations.effective) during InitialPopulation.period
+    or Global.&quot;Normalize Interval&quot;(GetSpecimen(Observations.specimen).collection.collected) during InitialPopulation.period
+  /*with &quot;Antidiabetic Drugs Administered or Ordered&quot; ADD
+  such that start of Global.&quot;Normalize Interval&quot;(Observations.effective) 24 hours before Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn)*/
+  where true in IsCategoryLaboratory(Observations.category)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="6"></valueInteger>
@@ -154,7 +192,14 @@
                <valueString value="SDE Encounter Locations"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Encounter Locations&quot;:  [Encounter] Encounter   with Encounter.location EncounterLocation   such that (Global.GetLocation(EncounterLocation.location).type in &quot;CDC Location Codes&quot;        or Global.GetLocation(EncounterLocation.location).physicalType in &quot;CDC Location Codes&quot;)   with &quot;Initial Population&quot; InitialPopulation   such that start of Encounter.period during InitialPopulation.period   where Encounter.period during &quot;Measurement Period&quot;"></valueString>
+               <valueString value="define &quot;SDE Encounter Locations&quot;:
+	[Encounter] Encounter
+  with Encounter.location EncounterLocation
+  such that (Global.GetLocation(EncounterLocation.location).type in &quot;CDC Location Codes&quot; 
+      or Global.GetLocation(EncounterLocation.location).physicalType in &quot;CDC Location Codes&quot;)
+  with &quot;Initial Population&quot; InitialPopulation
+  such that start of Encounter.period during InitialPopulation.period
+  where Encounter.period during &quot;Measurement Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="7"></valueInteger>
@@ -168,7 +213,10 @@
                <valueString value="SDE Condition"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Condition&quot;:   &quot;Initial Population&quot; InitialPopulation  return Global.EncounterDiagnosis(InitialPopulation) except {null}"></valueString>
+               <valueString value="define &quot;SDE Condition&quot;:
+  [Condition] Conditions
+  with &quot;Initial Population&quot; InitialPopulation
+  such that Global.&quot;Normalize Interval&quot;(Conditions.onset) overlaps InitialPopulation.period"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="8"></valueInteger>
@@ -182,7 +230,12 @@
                <valueString value="SDE Payer"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Payer&quot;:   [Coverage: type in &quot;Payer&quot;] Payer         return {           code: Payer.type,           period: Payer.period         }"></valueString>
+               <valueString value="define &quot;SDE Payer&quot;:
+  [Coverage: type in &quot;Payer&quot;] Payer
+        return {
+          code: Payer.type,
+          period: Payer.period
+        }"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="9"></valueInteger>
@@ -196,7 +249,12 @@
                <valueString value="SDE Payer"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Payer&quot;:   SDE.&quot;SDE Payer&quot; Payer   with &quot;Initial Population&quot; InitialPopulation   such that start of Payer.period before end of InitialPopulation.period"></valueString>
+               <valueString value="/*and Observations.value is not null
+    and Observations.value &lt; 70*/
+define &quot;SDE Payer&quot;: 
+	SDE.&quot;SDE Payer&quot; Payer
+  with &quot;Initial Population&quot; InitialPopulation
+  such that start of Payer.period before end of InitialPopulation.period"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="10"></valueInteger>
@@ -207,10 +265,12 @@
                <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="SDE Encounter Discharge Dispositions"></valueString>
+               <valueString value="SDE Encounter Diagnoses"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Encounter Discharge Dispositions&quot;:  [Encounter: hospitalization.dischargeDisposition in &quot;Discharge Disposition&quot;] DischargeDispositions    with &quot;Initial Population&quot; InitialPopulation  such that start of DischargeDispositions.period during InitialPopulation.period"></valueString>
+               <valueString value="define &quot;SDE Encounter Diagnoses&quot;:
+  &quot;Initial Population&quot; InitialPopulation
+	return Global.EncounterDiagnosis(InitialPopulation) except {null}"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="11"></valueInteger>
@@ -221,10 +281,13 @@
                <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="SDE Service Request"></valueString>
+               <valueString value="SDE Encounter Discharge Dispositions"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Service Request&quot;:  [ServiceRequest: &quot;Blood Glucose Laboratory and Point of Care Tests&quot;] LabTest   with &quot;Initial Population&quot; InitialPopulation   such that LabTest.intent ~ 'order'     and LabTest.status ~ 'completed'     and LabTest.authoredOn during InitialPopulation.period"></valueString>
+               <valueString value="define &quot;SDE Encounter Discharge Dispositions&quot;:
+	[Encounter: hospitalization.dischargeDisposition in &quot;Discharge Disposition&quot;] DischargeDispositions 
+  with &quot;Initial Population&quot; InitialPopulation
+	such that start of DischargeDispositions.period during InitialPopulation.period"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="12"></valueInteger>
@@ -235,13 +298,36 @@
                <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="SDE Chief Complaint"></valueString>
+               <valueString value="SDE Service Request"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//Supplement Data Elements define &quot;SDE Chief Complaint&quot;:   [Encounter: diagnosis.use ~ &quot;Chief Complaint&quot;] ChiefComplaint   with &quot;Initial Population&quot; InitialPopulation   such that start of ChiefComplaint.period during &quot;Measurement Period&quot;"></valueString>
+               <valueString value="define &quot;SDE Service Request&quot;:
+	[ServiceRequest: &quot;Blood Glucose Laboratory and Point of Care Tests&quot;] LabTest
+  with &quot;Initial Population&quot; InitialPopulation
+  such that LabTest.intent ~ 'order'
+    and LabTest.status ~ 'completed'
+    and LabTest.authoredOn during InitialPopulation.period"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="13"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Chief Complaint"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//Supplement Data Elements
+define &quot;SDE Chief Complaint&quot;:
+  [Encounter: diagnosis.use ~ &quot;Chief Complaint&quot;] ChiefComplaint
+  with &quot;Initial Population&quot; InitialPopulation
+  such that start of ChiefComplaint.period during &quot;Measurement Period&quot;"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="14"></valueInteger>
             </extension>
          </extension>
          <status value="active"></status>
@@ -270,6 +356,11 @@
             <type value="depends-on"></type>
             <display value="Code system ActCode"></display>
             <resource value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Code system Observation Category"></display>
+            <resource value="http://terminology.hl7.org/CodeSystem/observation-category"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -348,10 +439,17 @@
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
-            <type value="Any"></type>
+            <type value="Condition"></type>
          </parameter>
          <parameter>
             <name value="SDE Payer"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Any"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Encounter Diagnoses"></name>
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
@@ -518,6 +616,7 @@
             <mustSupport value="specimen"></mustSupport>
             <mustSupport value="specimen.collection"></mustSupport>
             <mustSupport value="specimen.collection.collected"></mustSupport>
+            <mustSupport value="category"></mustSupport>
             <codeFilter>
                <path value="code"></path>
                <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"></valueSet>
@@ -526,6 +625,7 @@
          <dataRequirement>
             <type value="Condition"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Condition"></profile>
+            <mustSupport value="onset"></mustSupport>
             <mustSupport value="id"></mustSupport>
          </dataRequirement>
          <dataRequirement>
@@ -570,7 +670,7 @@
    <version value="0.000.01"></version>
    <name value="NHSNGlycemicControlHypoglycemicInitialPopulation"></name>
    <title value="NHSN Glycemic Control, Hypoglycemic Inpatient Population"></title>
-   <date value="2022-05-26T10:55:33-08:00"></date>
+   <date value="2022-06-02T14:44:03-08:00"></date>
    <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the performance period."></description>
    <library value="http://fhir.org/guides/cqf/Library/NHSNGlycemicControlHypoglycemicInitialPopulation"></library>
    <scoring>
