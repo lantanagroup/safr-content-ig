@@ -616,6 +616,12 @@
    <supplementalData>
       <criteria>
          <language value="text/cql.identifier"></language>
+         <expression value="SDE Encounter Diagnoses"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <criteria>
+         <language value="text/cql.identifier"></language>
          <expression value="SDE Chief Complaint"></expression>
       </criteria>
    </supplementalData>

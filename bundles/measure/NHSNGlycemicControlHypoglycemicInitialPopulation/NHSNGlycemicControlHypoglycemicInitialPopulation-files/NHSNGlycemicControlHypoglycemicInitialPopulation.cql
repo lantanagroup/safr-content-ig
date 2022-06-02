@@ -92,6 +92,11 @@ define "SDE Chief Complaint":
   such that start of ChiefComplaint.period during "Measurement Period"
 
 define "SDE Condition":
+  [Condition] Conditions
+  with "Initial Population" InitialPopulation
+  such that Global."Normalize Interval"(Conditions.onset) overlaps InitialPopulation.period
+  
+define "SDE Encounter Diagnoses":
   "Initial Population" InitialPopulation
 	return Global.EncounterDiagnosis(InitialPopulation) except {null}
     
@@ -128,8 +133,12 @@ define "SDE Blood Glucose Observation":
 	[Observation: "Blood Glucose Laboratory and Point of Care Tests"] Observations 
   with "Initial Population" InitialPopulation
   such that start of Global."Normalize Interval"(Observations.effective) during InitialPopulation.period
-    and Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during InitialPopulation.period
+    or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during InitialPopulation.period
+  /*with "Antidiabetic Drugs Administered or Ordered" ADD
+  such that start of Global."Normalize Interval"(Observations.effective) 24 hours before Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn)*/
   where Observations.category ~ "laboratory"
+    /*and Observations.value is not null
+    and Observations.value < 70*/
 
 define "SDE Payer": 
 	SDE."SDE Payer" Payer

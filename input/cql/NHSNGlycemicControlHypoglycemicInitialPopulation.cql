@@ -92,6 +92,11 @@ define "SDE Chief Complaint":
   such that start of ChiefComplaint.period during "Measurement Period"
 
 define "SDE Condition":
+  [Condition] Conditions
+  with "Initial Population" InitialPopulation
+  such that Global."Normalize Interval"(Conditions.onset) overlaps InitialPopulation.period
+  
+define "SDE Encounter Diagnoses":
   "Initial Population" InitialPopulation
 	return Global.EncounterDiagnosis(InitialPopulation) except {null}
     
