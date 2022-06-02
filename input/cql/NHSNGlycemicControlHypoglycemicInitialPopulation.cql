@@ -9,6 +9,7 @@ include MATGlobalCommonFunctionsFHIR4 version '6.1.000' called Global
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode' 
 codesystem "Diagnosis Role": 'http://terminology.hl7.org/CodeSystem/diagnosis-role'
 codesystem "Specimen Type": 'http://terminology.hl7.org/CodeSystem/v2-0487'
+codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category'
 
 valueset "Blood Glucose Laboratory and Point of Care Tests": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38'
 valueset "CDC Location Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
@@ -21,6 +22,7 @@ code "inpatient acute": 'ACUTE' from "ActCode" display 'inpatient acute'
 code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
 code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
+code "laboratory": 'laboratory' from "Observation Category" display 'laboratory'
 
 parameter "Measurement Period" Interval<DateTime>
  //default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
@@ -124,11 +126,13 @@ define "SDE Medication Request":
 	such that MedicationRequests.authoredOn during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
     and MedicationRequests.authoredOn during "Measurement Period"
 
+//Add category code of 'laboratory'
 define "SDE Blood Glucose Observation":
 	[Observation: "Blood Glucose Laboratory and Point of Care Tests"] Observations 
   with "Initial Population" InitialPopulation
   such that start of Global."Normalize Interval"(Observations.effective) during InitialPopulation.period
     and Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during InitialPopulation.period
+  where Observations.category ~ "laboratory"
 
 define "SDE Payer": 
 	SDE."SDE Payer" Payer
