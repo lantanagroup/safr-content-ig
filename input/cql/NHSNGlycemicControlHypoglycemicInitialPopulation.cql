@@ -22,7 +22,7 @@ code "inpatient acute": 'ACUTE' from "ActCode" display 'inpatient acute'
 code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
 code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
-code "laboratory": 'laboratory' from "Observation Category" display 'laboratory'
+code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 
 parameter "Measurement Period" Interval<DateTime>
  //default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
