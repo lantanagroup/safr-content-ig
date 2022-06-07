@@ -178,7 +178,7 @@
     or Global.&quot;Normalize Interval&quot;(GetSpecimen(Observations.specimen).collection.collected) during InitialPopulation.period
   /*with &quot;Antidiabetic Drugs Administered or Ordered&quot; ADD
   such that start of Global.&quot;Normalize Interval&quot;(Observations.effective) 24 hours before Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn)*/
-  where true in IsCategoryLaboratory(Observations.category)"></valueString>
+  where true in HasCategoryLaboratory(Observations.category)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="6"></valueInteger>
@@ -670,7 +670,7 @@ define &quot;SDE Chief Complaint&quot;:
    <version value="0.000.01"></version>
    <name value="NHSNGlycemicControlHypoglycemicInitialPopulation"></name>
    <title value="NHSN Glycemic Control, Hypoglycemic Inpatient Population"></title>
-   <date value="2022-06-02T14:44:03-08:00"></date>
+   <date value="2022-06-07T05:33:11-08:00"></date>
    <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the performance period."></description>
    <library value="http://fhir.org/guides/cqf/Library/NHSNGlycemicControlHypoglycemicInitialPopulation"></library>
    <scoring>
