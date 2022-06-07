@@ -11,6 +11,13 @@
   "version": "0.0.002",
   "name": "NHSNGlycemicControlHypoglycemicInitialPopulation",
   "title": "NHSN Glycemic Control, Hypoglycemic Initial Population",
+  "type": {
+    "coding":[{
+      "system": "http://terminology.hl7.org/CodeSystem/library-type",
+      "code": "logic-library",
+      "display": "Logic Library"
+    }]
+  },
   "relatedArtifact": [ {
     "type": "depends-on",
     "display": "FHIR model information",
