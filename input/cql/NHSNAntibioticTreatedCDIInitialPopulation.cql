@@ -94,7 +94,7 @@ define "SDE Stool Lab":
       and GetCodeConcepts(ObsLab.category) ~  {"laboratory"}
 
 //for the Observation has Specimen reference, this may not need if we have the Specimen Resource
-define "SDE Lab With Spcimen":
+define "SDE Lab With Specimen":
   [Observation: code in "Lab Tests for Clostridioides difficile Infection"] ObsSpc 
     let RefSpe: GetSpecimen(ObsSpc.specimen)
     with "Initial Population" IP 
@@ -132,7 +132,7 @@ define "SDE Stool Specimen":
     such that Global."Normalize Interval"(Spe.collection.collected) during IP.period
 
 //Lab orders
-define "SDE Service Request":
+define "SDE ServiceRequest":
 	[ServiceRequest: code in "Lab Tests for Clostridioides difficile Infection"] SerLab
   with "Initial Population" InitialPopulation
   such that (SerLab.intent ~ 'order'
