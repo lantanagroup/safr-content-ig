@@ -29,8 +29,10 @@ code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 code "vital-signs": 'vital-signs'  from "Observation Category" display 'vital-signs'
 code "encounter-diagnosis": 'encounter-diagnosis' from ConditionCategoryCodes display'encounter-diagnosis'
 
-code "vancomycin1": '11124' from "RXNORM"
-//code "vancomycin2": '2118449' from "RXNORM"
+code "body weight": '29463-7' from "LOINC" display 'Body Weight'
+code "body height": '8302-2' from "LOINC" display 'Body Weight'
+
+
 
 
 parameter "Measurement Period" 
@@ -41,19 +43,10 @@ context Patient
 //CDI initial Patient Population: All inpatient, ED, and Observation encounters during the Measurement Period
 //Encounter.hospitalization.dischargeDisposition:CodeableConcept 0..1 no SDE need for this
 //Encounter.diagnosis.use:CodeableConcept 0..1 no SDE need for this
-define "EMR OBS Encounter":
-  [Encounter: class in {"emergency", "observation encounter"}] EmrObsEnc
-    where EmrObsEnc.period during "Measurement Period"
-    //with "IP Encounter" IPEnc
-    //such that EmrObsEnc.period ends 24 hours or less on or before start IPEnc.period
-
-  
-define "IP Encounter":
-  [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute"}] IPEnc
-    where IPEnc.period overlaps "Measurement Period"
 
 define "Initial Population":
-  "IP Encounter" union "EMR OBS Encounter"
+  [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "emergency", "observation encounter"}] IPEnc
+    where IPEnc.period overlaps "Measurement Period"
 
 //HOT-CDI: All encounters for patients who arrived at an inpatient location for at least one calendar day during the Measurement Period
 //COT-CDI: All encounters for patients who arrived at an inpatient location for at least one calendar day during the Measurement Period
@@ -77,6 +70,13 @@ define "SDE Encounter Locations":
     //  locationType: GetCodeConcepts(RefLoc.type),
     //  period: FHIRHelpers.ToInterval(EncLoc.period)
     //}
+
+define "SDE Encounter with Chief Complaint":
+  [Encounter] EncCC
+    with "Initial Population" IP
+    such that Global."Normalize Interval"(EncCC.period) during IP.period
+      and EncCC.diagnosis.use.coding.code ~ {'Chief Complaint'}
+
     
 //Encounter.hospitalization.origin:Reference(Location) 0..1 patient came before admission
 //Encounter.hospitalization.destination:Reference(Location) 0..1 Location which patient discharged to
@@ -92,14 +92,14 @@ define "SDE Stool Lab":
     such that Global."Normalize Interval"(ObsLab.effective) during IP.period
       and ObsLab.status in {'final', 'amended', 'corrected', 'preliminary'}
       and GetCodeConcepts(ObsLab.category) ~  {"laboratory"}
-      //and ObsLab.category.coding.code ~ {'laboratory'}
 
-define "SDE Encounter with Chief Complaint":
-  [Encounter] EncCC
-    with "Initial Population" IP
-    such that Global."Normalize Interval"(EncCC.period) during IP.period
-      and EncCC.diagnosis.use.coding.code ~ {'Chief Complaint'}
-
+//for the Observation has Specimen reference, this may not need if we have the Specimen Resource
+define "SDE Lab With Spcimen":
+  [Observation: code in "Lab Tests for Clostridioides difficile Infection"] ObsSpc 
+    let RefSpe: GetSpecimen(ObsSpc.specimen)
+    with "Initial Population" IP 
+    such that Global."Normalize Interval"(RefSpe.collection.collected) during IP.period
+    return RefSpe
 
 //DiagnosticReport.result:Reference(Observation) 0..* the result is in the Observation
 define "SDE Stool DiagnosticReport":
@@ -113,8 +113,8 @@ define "SDE Vital Signs":
     with "Initial Population" IP 
     such that Global."Normalize Interval"(ObsVS.effective) during IP.period
       and ObsVS.status in {'final', 'amended', 'corrected', 'preliminary'}
-      and GetCodeConcepts(ObsVS.category) ~  {"vital-signs"}
-      //and ObsVS.category.coding.code ~ {'vital-signs'}
+      and FHIRHelpers.ToConcept(ObsVS.code) in {"body weight", "body height"}
+      and GetCodeConcepts(ObsVS.category) ~ {"vital-signs"}
 
 //in the master map sheet did not say what type the Condition is needed
 //for now just for the encounter-diagnosis
@@ -125,14 +125,6 @@ define "SDE Condition for Encounter Diagnosis":
   [Condition] ConEncDia 
     where GetCodeConcepts(ConEncDia.category) ~  {"encounter-diagnosis"}
     and exists("Initial Population")
-
-//for the Observation has Specimen reference, this may not need if we have the Specimen Resource
-define "SDE Lab With Spcimen":
-  [Observation: code in "Lab Tests for Clostridioides difficile Infection"] ObsSpc 
-    let RefSpe: GetSpecimen(ObsSpc.specimen)
-    with "Initial Population" IP 
-    such that Global."Normalize Interval"(RefSpe.collection.collected) during IP.period
-    return RefSpe
 
 define "SDE Stool Specimen":
   [Specimen] Spe
