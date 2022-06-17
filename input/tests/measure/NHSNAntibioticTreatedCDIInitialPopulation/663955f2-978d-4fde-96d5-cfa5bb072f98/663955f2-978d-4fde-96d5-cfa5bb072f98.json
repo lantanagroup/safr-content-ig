@@ -630,10 +630,10 @@
       "medicationCodeableConcept": {
         "coding": [ {
           "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-          "code": "239209",
-          "display": "vancomycin 100 MG/ML Injectable Solution"
+          "code": "103866",
+          "display": "metronidazole benzoate"
         } ],
-        "text": "vancomycin 100 MG/ML Injectable Solution"
+        "text": "metronidazole benzoate"
       },
       "subject": {
         "reference": "Patient/663955f2-978d-4fde-96d5-cfa5bb072f98"
@@ -724,7 +724,35 @@
     "search": {
       "mode": "match"
     }
-  }, {
+  },  {
+    "fullUrl": "http://localhost:8014/fhir/Medication/d0a1c5a3-1534-41c5-8f78-ea39eaddce1f",
+    "resource": {
+      "resourceType": "Medication",
+      "id": "d0a1c5a3-1534-41c5-8f78-ea39eaddce1f",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T20:04:11.738+00:00",
+        "source": "#wcoIWplieWarvrJy",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\">vancomycin 100 MG/ML Injectable Solution</div></div>"
+      },
+      "code": {
+        "coding": [ {
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "code": "103866",
+          "display": "metronidazole benzoate"
+        } ],
+        "text": "metronidazole benzoate"
+      },
+      "status": "active"
+    },
+    "search": {
+      "mode": "match"
+    }
+  },{
     "fullUrl": "http://localhost:8014/fhir/MedicationRequest/8d00c37b-ded9-4d25-ba6e-9ba9e9372e8a",
     "resource": {
       "resourceType": "MedicationRequest",

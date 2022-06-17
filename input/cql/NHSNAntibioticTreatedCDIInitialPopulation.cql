@@ -10,14 +10,11 @@ codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
 codesystem "Diagnosis Role": 'http://terminology.hl7.org/CodeSystem/diagnosis-role'
 codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category'
 codesystem "LOINC": 'http://loinc.org'
-codesystem "RXNORM": 'http://www.nlm.nih.gov/research/umls/rxnorm'
 codesystem "ConditionCategoryCodes": 'http://hl7.org/fhir/2021Mar/codesystem-condition-category'
 
 valueset "CDC Location Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
 
-//pending valueSet for TherapeuticAtensForCDI
-valueset "Medications for Clostridioides difficile Infection": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.71'
-valueset "TherapeuticAgensForCDI": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58'
+valueset "Fidaxomicin, Vancomycin, and Metronidazole": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.72'
 valueset "Lab Tests for Clostridioides difficile Infection": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.62'
 
 code "emergency": 'EMER' from "ActCode" display 'emergency'
@@ -25,6 +22,7 @@ code "inpatient acute": 'ACUTE' from "ActCode" display 'inpatient acute'
 code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
 code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
+code "short stay": 'SS' from "ActCode" display 'short stay'
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 code "vital-signs": 'vital-signs'  from "Observation Category" display 'vital-signs'
 code "encounter-diagnosis": 'encounter-diagnosis' from ConditionCategoryCodes display'encounter-diagnosis'
@@ -32,25 +30,18 @@ code "encounter-diagnosis": 'encounter-diagnosis' from ConditionCategoryCodes di
 code "body weight": '29463-7' from "LOINC" display 'Body Weight'
 code "body height": '8302-2' from "LOINC" display 'Body Weight'
 
-
-
-
 parameter "Measurement Period" 
     default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
 
 context Patient 
 
-//CDI initial Patient Population: All inpatient, ED, and Observation encounters during the Measurement Period
+//CDI initial Patient Population: All inpatient, ED, and Observation encounters and short stay during the Measurement Period
 //Encounter.hospitalization.dischargeDisposition:CodeableConcept 0..1 no SDE need for this
 //Encounter.diagnosis.use:CodeableConcept 0..1 no SDE need for this
 
 define "Initial Population":
-  [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "emergency", "observation encounter"}] IPEnc
+  [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "emergency", "observation encounter", "short stay"}] IPEnc
     where IPEnc.period overlaps "Measurement Period"
-
-//HOT-CDI: All encounters for patients who arrived at an inpatient location for at least one calendar day during the Measurement Period
-//COT-CDI: All encounters for patients who arrived at an inpatient location for at least one calendar day during the Measurement Period
-//Outpatient CO-CDI: All patients with at least one ED or Observation encounter during the Measurement Period
 
 //Encounter.location.location:Reference(Location) Location.type indicate type of function performed at the location
 //Encounter.location.physicalType is the physical type of the location (usually the level in location hierachy)
@@ -77,16 +68,16 @@ define "SDE Encounter with Chief Complaint":
     such that Global."Normalize Interval"(EncCC.period) during IP.period
       and EncCC.diagnosis.use.coding.code ~ {'Chief Complaint'}
 
-    
+   
 //Encounter.hospitalization.origin:Reference(Location) 0..1 patient came before admission
 //Encounter.hospitalization.destination:Reference(Location) 0..1 Location which patient discharged to
 //Encounter.location.location:Reference(Location) 1..1 Location the encounter taskes place
-define "SDE Locations":
-  [Location] Loc
+define "SDE Location":
+  [Location] Location
   where exists("Initial Population")
 
 //add Observation.category in the condition for meeting requirement for EHR
-define "SDE Stool Lab":
+define "SDE Observation Stool Lab":
   [Observation: code in "Lab Tests for Clostridioides difficile Infection"] ObsLab
     with "Initial Population" IP
     such that Global."Normalize Interval"(ObsLab.effective) during IP.period
@@ -94,7 +85,7 @@ define "SDE Stool Lab":
       and GetCodeConcepts(ObsLab.category) ~  {"laboratory"}
 
 //for the Observation has Specimen reference, this may not need if we have the Specimen Resource
-define "SDE Lab With Specimen":
+define "SDE Observation Lab With Specimen":
   [Observation: code in "Lab Tests for Clostridioides difficile Infection"] ObsSpc 
     let RefSpe: GetSpecimen(ObsSpc.specimen)
     with "Initial Population" IP 
@@ -102,86 +93,85 @@ define "SDE Lab With Specimen":
     return RefSpe
 
 //DiagnosticReport.result:Reference(Observation) 0..* the result is in the Observation
-define "SDE Stool DiagnosticReport":
+define "SDE Diagnostic Report Stool":
   [DiagnosticReport: code in "Lab Tests for Clostridioides difficile Infection"] DiaRepLab
     with "Initial Population" IP
     such that Global."Normalize Interval"(DiaRepLab.effective) during IP.period
       and DiaRepLab.status in {'final', 'amended', 'corrected', 'preliminary'}
 
-define "SDE Vital Signs":
+define "SDE Observation Vital Signs":
   [Observation] ObsVS
     with "Initial Population" IP 
     such that Global."Normalize Interval"(ObsVS.effective) during IP.period
-      and ObsVS.status in {'final', 'amended', 'corrected', 'preliminary'}
+      //and ObsVS.status in {'final', 'amended', 'corrected', 'preliminary'}
       and FHIRHelpers.ToConcept(ObsVS.code) in {"body weight", "body height"}
       and GetCodeConcepts(ObsVS.category) ~ {"vital-signs"}
 
-//in the master map sheet did not say what type the Condition is needed
 //for now just for the encounter-diagnosis
-//data requirement only to category levle did filter down the code level 
-//not sure we should check the Condtion.onset, it is clear what that means, an acute condition for a chronic condtion
-//need to check the run time it filter out the observation other than encounter-diagnosis or not?????
-define "SDE Condition for Encounter Diagnosis":
+//data requirement constrain to category levle not to code level 
+//not sure we should check the Condtion.onset
+//need to check during evaluate-measure to see it filter out the observation other than encounter-diagnosis?????
+define "SDE Condition during Encounter Diagnosis":
   [Condition] ConEncDia 
     where GetCodeConcepts(ConEncDia.category) ~  {"encounter-diagnosis"}
     and exists("Initial Population")
 
-define "SDE Stool Specimen":
+define "SDE Specimen Stool":
   [Specimen] Spe
     with "Initial Population" IP
     such that Global."Normalize Interval"(Spe.collection.collected) during IP.period
 
 //Lab orders
-define "SDE ServiceRequest":
+define "SDE Service Request Clostridioides difficile Infection Lab":
 	[ServiceRequest: code in "Lab Tests for Clostridioides difficile Infection"] SerLab
   with "Initial Population" InitialPopulation
   such that (SerLab.intent ~ 'order'
     and SerLab.status ~ 'completed')
     and start of Global."Normalize Interval"(SerLab.occurrence) during InitialPopulation.period
 
-define "SDE MedicationRequest":
+define "SDE Medication Request":
   [MedicationRequest] MedReq
     with "Initial Population" IP 
     such that Global."Normalize Interval"(MedReq.authoredOn) during IP.period
     and MedReq.status in {'active', 'completed'}
 
-define "SDE MedicationRequest Filter With Code":
+define "SDE Medication Request Fidaxomicin Vancomycin Metronidazole":
 [MedicationRequest] MedReq 
   with "Initial Population" IP 
   such that Global."Normalize Interval"(MedReq.authoredOn) during IP.period
     and MedReq.status in {'active', 'completed'}
-    and GetMedicationCode(MedReq.medication) in "Medications for Clostridioides difficile Infection"
+    and GetMedicationCode(MedReq.medication) in "Fidaxomicin, Vancomycin, and Metronidazole"
 
-   
-define "SDE MedicationAdministration":
+
+define "SDE Medication Administration":
 [MedicationAdministration] MedAdm
   with "Initial Population" IP
   such that Global."Normalize Interval"(MedAdm.effective) during IP.period
     and MedAdm.status in {'completed', 'in-progress'}
 
-   
-define "SDE MedicationAdministration Filter With Code":
+
+define "SDE Medication Administration Fidaxomicin, Vancomycin, and Metronidazole":
 [MedicationAdministration] MedAdm
   with "Initial Population" IP
   such that Global."Normalize Interval"(MedAdm.effective) during IP.period
     and MedAdm.status in {'completed', 'in-progress'}
-    and GetMedicationCode(MedAdm.medication) in "Medications for Clostridioides difficile Infection"
+    and GetMedicationCode(MedAdm.medication) in "Fidaxomicin, Vancomycin, and Metronidazole"
    
 
-define "SDE Claim":
-  [Claim] Cla 
-  where exists("Initial Population")
+//define "SDE Claim":
+//[Claim] Cla 
+//where exists("Initial Population")
 
 //Claim.insurance.coverage:Reference(Coverage)
 //MedicationRequest.insurance:Reference(Coverage) 0..*
 //ServiceRequest.insurance:Reference(Coverage) 0..*
-define "SDE Coverage":
-  [Coverage] Cov 
-  where exists("Initial Population")
+//define "SDE Coverage":
+//[Coverage] Cov 
+//where exists("Initial Population")
 
-define "SDE ExplanationOfBenefit":
-  [ExplanationOfBenefit] Exp 
-    where exists("Initial Population")
+//define "SDE ExplanationOfBenefit":
+//[ExplanationOfBenefit] Exp 
+//where exists("Initial Population")
 
 
 //-----------------------------------------------------------------

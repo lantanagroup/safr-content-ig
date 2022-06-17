@@ -43,37 +43,9 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
             <valueCoding>
-               <system value="http://hl7.org/fhir/2021Mar/codesystem-condition-category"></system>
-               <code value="encounter-diagnosis"></code>
-               <display value="encounter-diagnosis"></display>
-            </valueCoding>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
-            <valueCoding>
-               <system value="http://loinc.org"></system>
-               <code value="29463-7"></code>
-               <display value="Body Weight"></display>
-            </valueCoding>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
-            <valueCoding>
-               <system value="http://loinc.org"></system>
-               <code value="8302-2"></code>
-               <display value="Body Weight"></display>
-            </valueCoding>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
-            <valueCoding>
-               <system value="http://terminology.hl7.org/CodeSystem/observation-category"></system>
-               <code value="vital-signs"></code>
-               <display value="vital-signs"></display>
-            </valueCoding>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
-            <valueCoding>
-               <system value="http://terminology.hl7.org/CodeSystem/observation-category"></system>
-               <code value="laboratory"></code>
-               <display value="Laboratory"></display>
+               <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+               <code value="SS"></code>
+               <display value="short stay"></display>
             </valueCoding>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -84,11 +56,11 @@
                <valueString value="Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//CDI initial Patient Population: All inpatient, ED, and Observation encounters during the Measurement Period
+               <valueString value="//CDI initial Patient Population: All inpatient, ED, and Observation encounters and short stay during the Measurement Period
 //Encounter.hospitalization.dischargeDisposition:CodeableConcept 0..1 no SDE need for this
 //Encounter.diagnosis.use:CodeableConcept 0..1 no SDE need for this
 define &quot;Initial Population&quot;:
-  [Encounter: class in {&quot;inpatient encounter&quot;, &quot;inpatient acute&quot;, &quot;inpatient non-acute&quot;, &quot;emergency&quot;, &quot;observation encounter&quot;}] IPEnc
+  [Encounter: class in {&quot;inpatient encounter&quot;, &quot;inpatient acute&quot;, &quot;inpatient non-acute&quot;, &quot;emergency&quot;, &quot;observation encounter&quot;, &quot;short stay&quot;}] IPEnc
     where IPEnc.period overlaps &quot;Measurement Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -100,52 +72,10 @@ define &quot;Initial Population&quot;:
                <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="SDE Coverage"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="//Claim.insurance.coverage:Reference(Coverage)
-//MedicationRequest.insurance:Reference(Coverage) 0..*
-//ServiceRequest.insurance:Reference(Coverage) 0..*
-define &quot;SDE Coverage&quot;:
-  [Coverage] Cov 
-  where exists(&quot;Initial Population&quot;)"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="1"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="SDE Locations"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="//Encounter.hospitalization.origin:Reference(Location) 0..1 patient came before admission
-//Encounter.hospitalization.destination:Reference(Location) 0..1 Location which patient discharged to
-//Encounter.location.location:Reference(Location) 1..1 Location the encounter taskes place
-define &quot;SDE Locations&quot;:
-  [Location] Loc
-  where exists(&quot;Initial Population&quot;)"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="2"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
                <valueString value="SDE Encounter Locations"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//HOT-CDI: All encounters for patients who arrived at an inpatient location for at least one calendar day during the Measurement Period
-//COT-CDI: All encounters for patients who arrived at an inpatient location for at least one calendar day during the Measurement Period
-//Outpatient CO-CDI: All patients with at least one ED or Observation encounter during the Measurement Period
-
-//Encounter.location.location:Reference(Location) Location.type indicate type of function performed at the location
+               <valueString value="//Encounter.location.location:Reference(Location) Location.type indicate type of function performed at the location
 //Encounter.location.physicalType is the physical type of the location (usually the level in location hierachy)
 //For CDI measure, we want to identify the function performed at the location, such as impatient location
 //Each facility may have a map between CDC Location type to facility location, need to see how this play out in CoLab
@@ -158,121 +88,7 @@ define &quot;SDE Encounter Locations&quot;:
   such that start of Encounter.period during InitialPopulation.period"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="3"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="SDE Stool DiagnosticReport"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="//DiagnosticReport.result:Reference(Observation) 0..* the result is in the Observation
-define &quot;SDE Stool DiagnosticReport&quot;:
-  [DiagnosticReport: code in &quot;Lab Tests for Clostridioides difficile Infection&quot;] DiaRepLab
-    with &quot;Initial Population&quot; IP
-    such that Global.&quot;Normalize Interval&quot;(DiaRepLab.effective) during IP.period
-      and DiaRepLab.status in {'final', 'amended', 'corrected', 'preliminary'}"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="4"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="SDE Condition for Encounter Diagnosis"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="//in the master map sheet did not say what type the Condition is needed
-//for now just for the encounter-diagnosis
-//data requirement only to category levle did filter down the code level 
-//not sure we should check the Condtion.onset, it is clear what that means, an acute condition for a chronic condtion
-//need to check the run time it filter out the observation other than encounter-diagnosis or not?????
-define &quot;SDE Condition for Encounter Diagnosis&quot;:
-  [Condition] ConEncDia 
-    where GetCodeConcepts(ConEncDia.category) ~  {&quot;encounter-diagnosis&quot;}
-    and exists(&quot;Initial Population&quot;)"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="5"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="SDE MedicationAdministration"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;SDE MedicationAdministration&quot;:
-[MedicationAdministration] MedAdm
-  with &quot;Initial Population&quot; IP
-  such that Global.&quot;Normalize Interval&quot;(MedAdm.effective) during IP.period
-    and MedAdm.status in {'completed', 'in-progress'}"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="6"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="SDE Lab With Specimen"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="//for the Observation has Specimen reference, this may not need if we have the Specimen Resource
-define &quot;SDE Lab With Specimen&quot;:
-  [Observation: code in &quot;Lab Tests for Clostridioides difficile Infection&quot;] ObsSpc 
-    let RefSpe: GetSpecimen(ObsSpc.specimen)
-    with &quot;Initial Population&quot; IP 
-    such that Global.&quot;Normalize Interval&quot;(RefSpe.collection.collected) during IP.period
-    return RefSpe"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="7"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="SDE Stool Specimen"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;SDE Stool Specimen&quot;:
-  [Specimen] Spe
-    with &quot;Initial Population&quot; IP
-    such that Global.&quot;Normalize Interval&quot;(Spe.collection.collected) during IP.period"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="8"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="SDE MedicationRequest"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;SDE MedicationRequest&quot;:
-  [MedicationRequest] MedReq
-    with &quot;Initial Population&quot; IP 
-    such that Global.&quot;Normalize Interval&quot;(MedReq.authoredOn) during IP.period
-    and MedReq.status in {'active', 'completed'}"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="9"></valueInteger>
+               <valueInteger value="1"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -297,118 +113,7 @@ define &quot;SDE Encounter with Chief Complaint&quot;:
       and EncCC.diagnosis.use.coding.code ~ {'Chief Complaint'}"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="10"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="SDE Vital Signs"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;SDE Vital Signs&quot;:
-  [Observation] ObsVS
-    with &quot;Initial Population&quot; IP 
-    such that Global.&quot;Normalize Interval&quot;(ObsVS.effective) during IP.period
-      and ObsVS.status in {'final', 'amended', 'corrected', 'preliminary'}
-      and FHIRHelpers.ToConcept(ObsVS.code) in {&quot;body weight&quot;, &quot;body height&quot;}
-      and GetCodeConcepts(ObsVS.category) ~ {&quot;vital-signs&quot;}"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="11"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="SDE ExplanationOfBenefit"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;SDE ExplanationOfBenefit&quot;:
-  [ExplanationOfBenefit] Exp 
-    where exists(&quot;Initial Population&quot;)"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="12"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="SDE MedicationAdministration Filter With Code"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;SDE MedicationAdministration Filter With Code&quot;:
-[MedicationAdministration] MedAdm
-  with &quot;Initial Population&quot; IP
-  such that Global.&quot;Normalize Interval&quot;(MedAdm.effective) during IP.period
-    and MedAdm.status in {'completed', 'in-progress'}
-    and GetMedicationCode(MedAdm.medication) in &quot;Medications for Clostridioides difficile Infection&quot;"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="13"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="SDE Stool Lab"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="//add Observation.category in the condition for meeting requirement for EHR
-define &quot;SDE Stool Lab&quot;:
-  [Observation: code in &quot;Lab Tests for Clostridioides difficile Infection&quot;] ObsLab
-    with &quot;Initial Population&quot; IP
-    such that Global.&quot;Normalize Interval&quot;(ObsLab.effective) during IP.period
-      and ObsLab.status in {'final', 'amended', 'corrected', 'preliminary'}
-      and GetCodeConcepts(ObsLab.category) ~  {&quot;laboratory&quot;}"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="14"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="SDE ServiceRequest"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="//Lab orders
-define &quot;SDE ServiceRequest&quot;:
-	[ServiceRequest: code in &quot;Lab Tests for Clostridioides difficile Infection&quot;] SerLab
-  with &quot;Initial Population&quot; InitialPopulation
-  such that (SerLab.intent ~ 'order'
-    and SerLab.status ~ 'completed')
-    and start of Global.&quot;Normalize Interval&quot;(SerLab.occurrence) during InitialPopulation.period"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="15"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="SDE Claim"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;SDE Claim&quot;:
-  [Claim] Cla 
-  where exists(&quot;Initial Population&quot;)"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="16"></valueInteger>
+               <valueInteger value="2"></valueInteger>
             </extension>
          </extension>
          <status value="active"></status>
@@ -421,12 +126,12 @@ define &quot;SDE ServiceRequest&quot;:
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library FHIRHelpers"></display>
-            <resource value="http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"></resource>
+            <resource value="http://fhir.org/guides/cqf/Library/FHIRHelpers|4.0.1"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library Global"></display>
-            <resource value="Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
+            <resource value="http://fhir.org/guides/cqf/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -435,33 +140,8 @@ define &quot;SDE ServiceRequest&quot;:
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
-            <display value="Code system ConditionCategoryCodes"></display>
-            <resource value="http://hl7.org/fhir/2021Mar/codesystem-condition-category"></resource>
-         </relatedArtifact>
-         <relatedArtifact>
-            <type value="depends-on"></type>
-            <display value="Code system LOINC"></display>
-            <resource value="http://loinc.org"></resource>
-         </relatedArtifact>
-         <relatedArtifact>
-            <type value="depends-on"></type>
-            <display value="Code system Observation Category"></display>
-            <resource value="http://terminology.hl7.org/CodeSystem/observation-category"></resource>
-         </relatedArtifact>
-         <relatedArtifact>
-            <type value="depends-on"></type>
             <display value="Value set CDC Location Codes"></display>
             <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265"></resource>
-         </relatedArtifact>
-         <relatedArtifact>
-            <type value="depends-on"></type>
-            <display value="Value set Lab Tests for Clostridioides difficile Infection"></display>
-            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.62"></resource>
-         </relatedArtifact>
-         <relatedArtifact>
-            <type value="depends-on"></type>
-            <display value="Value set Medications for Clostridioides difficile Infection"></display>
-            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.71"></resource>
          </relatedArtifact>
          <parameter>
             <name value="Measurement Period"></name>
@@ -471,67 +151,11 @@ define &quot;SDE ServiceRequest&quot;:
             <type value="Period"></type>
          </parameter>
          <parameter>
-            <name value="SDE Coverage"></name>
-            <use value="out"></use>
-            <min value="0"></min>
-            <max value="*"></max>
-            <type value="Coverage"></type>
-         </parameter>
-         <parameter>
-            <name value="SDE Locations"></name>
-            <use value="out"></use>
-            <min value="0"></min>
-            <max value="*"></max>
-            <type value="Location"></type>
-         </parameter>
-         <parameter>
             <name value="SDE Encounter Locations"></name>
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
             <type value="Encounter"></type>
-         </parameter>
-         <parameter>
-            <name value="SDE Stool DiagnosticReport"></name>
-            <use value="out"></use>
-            <min value="0"></min>
-            <max value="*"></max>
-            <type value="DiagnosticReport"></type>
-         </parameter>
-         <parameter>
-            <name value="SDE Condition for Encounter Diagnosis"></name>
-            <use value="out"></use>
-            <min value="0"></min>
-            <max value="*"></max>
-            <type value="Condition"></type>
-         </parameter>
-         <parameter>
-            <name value="SDE MedicationAdministration"></name>
-            <use value="out"></use>
-            <min value="0"></min>
-            <max value="*"></max>
-            <type value="MedicationAdministration"></type>
-         </parameter>
-         <parameter>
-            <name value="SDE Lab With Specimen"></name>
-            <use value="out"></use>
-            <min value="0"></min>
-            <max value="*"></max>
-            <type value="Specimen"></type>
-         </parameter>
-         <parameter>
-            <name value="SDE Stool Specimen"></name>
-            <use value="out"></use>
-            <min value="0"></min>
-            <max value="*"></max>
-            <type value="Specimen"></type>
-         </parameter>
-         <parameter>
-            <name value="SDE MedicationRequest"></name>
-            <use value="out"></use>
-            <min value="0"></min>
-            <max value="*"></max>
-            <type value="MedicationRequest"></type>
          </parameter>
          <parameter>
             <name value="SDE Encounter with Chief Complaint"></name>
@@ -541,47 +165,17 @@ define &quot;SDE ServiceRequest&quot;:
             <type value="Encounter"></type>
          </parameter>
          <parameter>
-            <name value="SDE Vital Signs"></name>
+            <name value="Initial Population"></name>
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
-            <type value="Observation"></type>
+            <type value="Encounter"></type>
          </parameter>
-         <parameter>
-            <name value="SDE ExplanationOfBenefit"></name>
-            <use value="out"></use>
-            <min value="0"></min>
-            <max value="*"></max>
-            <type value="ExplanationOfBenefit"></type>
-         </parameter>
-         <parameter>
-            <name value="SDE MedicationAdministration Filter With Code"></name>
-            <use value="out"></use>
-            <min value="0"></min>
-            <max value="*"></max>
-            <type value="MedicationAdministration"></type>
-         </parameter>
-         <parameter>
-            <name value="SDE Stool Lab"></name>
-            <use value="out"></use>
-            <min value="0"></min>
-            <max value="*"></max>
-            <type value="Observation"></type>
-         </parameter>
-         <parameter>
-            <name value="SDE ServiceRequest"></name>
-            <use value="out"></use>
-            <min value="0"></min>
-            <max value="*"></max>
-            <type value="ServiceRequest"></type>
-         </parameter>
-         <parameter>
-            <name value="SDE Claim"></name>
-            <use value="out"></use>
-            <min value="0"></min>
-            <max value="*"></max>
-            <type value="Claim"></type>
-         </parameter>
+         <dataRequirement>
+            <type value="Location"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
+            <mustSupport value="id"></mustSupport>
+         </dataRequirement>
          <dataRequirement>
             <type value="Encounter"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
@@ -613,6 +207,11 @@ define &quot;SDE ServiceRequest&quot;:
                   <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
                   <code value="OBSENC"></code>
                   <display value="observation encounter"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="SS"></code>
+                  <display value="short stay"></display>
                </code>
             </codeFilter>
          </dataRequirement>
@@ -648,175 +247,10 @@ define &quot;SDE ServiceRequest&quot;:
                   <code value="OBSENC"></code>
                   <display value="observation encounter"></display>
                </code>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Encounter"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
-            <mustSupport value="class"></mustSupport>
-            <mustSupport value="period"></mustSupport>
-            <codeFilter>
-               <path value="class"></path>
                <code>
                   <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="IMP"></code>
-                  <display value="inpatient encounter"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="ACUTE"></code>
-                  <display value="inpatient acute"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="NONAC"></code>
-                  <display value="inpatient non-acute"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="EMER"></code>
-                  <display value="emergency"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="OBSENC"></code>
-                  <display value="observation encounter"></display>
-               </code>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Encounter"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
-            <mustSupport value="class"></mustSupport>
-            <mustSupport value="period"></mustSupport>
-            <codeFilter>
-               <path value="class"></path>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="IMP"></code>
-                  <display value="inpatient encounter"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="ACUTE"></code>
-                  <display value="inpatient acute"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="NONAC"></code>
-                  <display value="inpatient non-acute"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="EMER"></code>
-                  <display value="emergency"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="OBSENC"></code>
-                  <display value="observation encounter"></display>
-               </code>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Encounter"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
-            <mustSupport value="class"></mustSupport>
-            <mustSupport value="period"></mustSupport>
-            <codeFilter>
-               <path value="class"></path>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="IMP"></code>
-                  <display value="inpatient encounter"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="ACUTE"></code>
-                  <display value="inpatient acute"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="NONAC"></code>
-                  <display value="inpatient non-acute"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="EMER"></code>
-                  <display value="emergency"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="OBSENC"></code>
-                  <display value="observation encounter"></display>
-               </code>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Encounter"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
-            <mustSupport value="class"></mustSupport>
-            <mustSupport value="period"></mustSupport>
-            <codeFilter>
-               <path value="class"></path>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="IMP"></code>
-                  <display value="inpatient encounter"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="ACUTE"></code>
-                  <display value="inpatient acute"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="NONAC"></code>
-                  <display value="inpatient non-acute"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="EMER"></code>
-                  <display value="emergency"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="OBSENC"></code>
-                  <display value="observation encounter"></display>
-               </code>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Encounter"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
-            <mustSupport value="class"></mustSupport>
-            <mustSupport value="period"></mustSupport>
-            <codeFilter>
-               <path value="class"></path>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="IMP"></code>
-                  <display value="inpatient encounter"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="ACUTE"></code>
-                  <display value="inpatient acute"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="NONAC"></code>
-                  <display value="inpatient non-acute"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="EMER"></code>
-                  <display value="emergency"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="OBSENC"></code>
-                  <display value="observation encounter"></display>
+                  <code value="SS"></code>
+                  <display value="short stay"></display>
                </code>
             </codeFilter>
          </dataRequirement>
@@ -859,238 +293,16 @@ define &quot;SDE ServiceRequest&quot;:
                   <code value="OBSENC"></code>
                   <display value="observation encounter"></display>
                </code>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Encounter"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
-            <mustSupport value="class"></mustSupport>
-            <mustSupport value="period"></mustSupport>
-            <codeFilter>
-               <path value="class"></path>
                <code>
                   <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="IMP"></code>
-                  <display value="inpatient encounter"></display>
+                  <code value="SS"></code>
+                  <display value="short stay"></display>
                </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="ACUTE"></code>
-                  <display value="inpatient acute"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="NONAC"></code>
-                  <display value="inpatient non-acute"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="EMER"></code>
-                  <display value="emergency"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="OBSENC"></code>
-                  <display value="observation encounter"></display>
-               </code>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Encounter"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
-            <mustSupport value="class"></mustSupport>
-            <mustSupport value="period"></mustSupport>
-            <codeFilter>
-               <path value="class"></path>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="IMP"></code>
-                  <display value="inpatient encounter"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="ACUTE"></code>
-                  <display value="inpatient acute"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="NONAC"></code>
-                  <display value="inpatient non-acute"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="EMER"></code>
-                  <display value="emergency"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="OBSENC"></code>
-                  <display value="observation encounter"></display>
-               </code>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Encounter"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
-            <mustSupport value="class"></mustSupport>
-            <mustSupport value="period"></mustSupport>
-            <codeFilter>
-               <path value="class"></path>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="IMP"></code>
-                  <display value="inpatient encounter"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="ACUTE"></code>
-                  <display value="inpatient acute"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="NONAC"></code>
-                  <display value="inpatient non-acute"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="EMER"></code>
-                  <display value="emergency"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="OBSENC"></code>
-                  <display value="observation encounter"></display>
-               </code>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Encounter"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
-            <mustSupport value="class"></mustSupport>
-            <mustSupport value="period"></mustSupport>
-            <codeFilter>
-               <path value="class"></path>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="IMP"></code>
-                  <display value="inpatient encounter"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="ACUTE"></code>
-                  <display value="inpatient acute"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="NONAC"></code>
-                  <display value="inpatient non-acute"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="EMER"></code>
-                  <display value="emergency"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="OBSENC"></code>
-                  <display value="observation encounter"></display>
-               </code>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Coverage"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Coverage"></profile>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
-            <mustSupport value="id"></mustSupport>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="DiagnosticReport"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/DiagnosticReport"></profile>
-            <mustSupport value="code"></mustSupport>
-            <mustSupport value="effective"></mustSupport>
-            <mustSupport value="status"></mustSupport>
-            <codeFilter>
-               <path value="code"></path>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.62"></valueSet>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Condition"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Condition"></profile>
-            <mustSupport value="category"></mustSupport>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="MedicationAdministration"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationAdministration"></profile>
-            <mustSupport value="effective"></mustSupport>
-            <mustSupport value="status"></mustSupport>
-            <mustSupport value="medication"></mustSupport>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Specimen"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Specimen"></profile>
-            <mustSupport value="id"></mustSupport>
-            <mustSupport value="collection"></mustSupport>
-            <mustSupport value="collection.collected"></mustSupport>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Observation"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
-            <mustSupport value="effective"></mustSupport>
-            <mustSupport value="status"></mustSupport>
-            <mustSupport value="code"></mustSupport>
-            <mustSupport value="category"></mustSupport>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Observation"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
-            <mustSupport value="code"></mustSupport>
-            <mustSupport value="specimen"></mustSupport>
-            <mustSupport value="effective"></mustSupport>
-            <mustSupport value="status"></mustSupport>
-            <mustSupport value="category"></mustSupport>
-            <codeFilter>
-               <path value="code"></path>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.62"></valueSet>
             </codeFilter>
          </dataRequirement>
          <dataRequirement>
             <type value="Patient"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Patient"></profile>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="MedicationRequest"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"></profile>
-            <mustSupport value="authoredOn"></mustSupport>
-            <mustSupport value="status"></mustSupport>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="ExplanationOfBenefit"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/ExplanationOfBenefit"></profile>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Medication"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Medication"></profile>
-            <mustSupport value="id"></mustSupport>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="ServiceRequest"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/ServiceRequest"></profile>
-            <mustSupport value="code"></mustSupport>
-            <mustSupport value="intent"></mustSupport>
-            <mustSupport value="status"></mustSupport>
-            <mustSupport value="occurrence"></mustSupport>
-            <codeFilter>
-               <path value="code"></path>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.62"></valueSet>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Claim"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Claim"></profile>
          </dataRequirement>
       </Library>
    </contained>
@@ -1112,9 +324,9 @@ define &quot;SDE ServiceRequest&quot;:
    <version value="0.000.01"></version>
    <name value="NHSNAntibioticTreatedCDIInitialPopulation"></name>
    <title value="Measure NHSN Antibiotic Treated CDI Initial Population"></title>
-   <date value="2022-06-14T12:45:39-04:00"></date>
+   <date value="2022-06-17T07:37:14-04:00"></date>
    <description value="Clostridioides difficile (C. difficile) is responsible for a spectrum of C. difficile infections (CDI), including uncomplicated diarrhea, pseudomembranous colitis, and toxic megacolon, which can, in some instances, lead to sepsis and even death. As outlined in the Healthcare Infection Control Practices Advisory Committee (HICPAC) guideline (1), C. difficile pathogens may require specialized monitoring to evaluate if intensified infection control efforts are required to reduce the occurrence of these organisms and related infections.  The goal of this module is to provide a mechanism for facilities to report and to analyze data that will inform infection prevention professionals of the impact of targeted prevention efforts. This protocol describes the electronic surveillance for Antibiotic-treated Healthcare Facility-onset CDI. "></description>
-   <library value="http://nhsnlink.org/fhir/Library/NHSNAntibioticTreatedCDIInitialPopulation"></library>
+   <library value="http://fhir.org/guides/cqf/Library/NHSNAntibioticTreatedCDIInitialPopulation"></library>
    <scoring>
       <coding>
          <system value="http://terminology.hl7.org/CodeSystem/measure-scoring"></system>
@@ -1149,7 +361,7 @@ define &quot;SDE ServiceRequest&quot;:
          </code>
          <criteria>
             <language value="text/cql.identifier"></language>
-            <expression value="TODO"></expression>
+            <expression value="Initial Population"></expression>
          </criteria>
       </population>
    </group>
@@ -1158,6 +370,7 @@ define &quot;SDE ServiceRequest&quot;:
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
          </coding>
       </usage>
       <criteria>
@@ -1170,6 +383,7 @@ define &quot;SDE ServiceRequest&quot;:
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
          </coding>
       </usage>
       <criteria>
@@ -1182,6 +396,7 @@ define &quot;SDE ServiceRequest&quot;:
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
          </coding>
       </usage>
       <criteria>
@@ -1194,6 +409,7 @@ define &quot;SDE ServiceRequest&quot;:
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
          </coding>
       </usage>
       <criteria>
@@ -1206,6 +422,7 @@ define &quot;SDE ServiceRequest&quot;:
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
          </coding>
       </usage>
       <criteria>
@@ -1218,6 +435,7 @@ define &quot;SDE ServiceRequest&quot;:
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
          </coding>
       </usage>
       <criteria>
@@ -1230,6 +448,7 @@ define &quot;SDE ServiceRequest&quot;:
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
          </coding>
       </usage>
       <criteria>
@@ -1242,6 +461,7 @@ define &quot;SDE ServiceRequest&quot;:
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
          </coding>
       </usage>
       <criteria>
@@ -1254,6 +474,7 @@ define &quot;SDE ServiceRequest&quot;:
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
          </coding>
       </usage>
       <criteria>
@@ -1266,6 +487,7 @@ define &quot;SDE ServiceRequest&quot;:
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
          </coding>
       </usage>
       <criteria>
@@ -1278,6 +500,7 @@ define &quot;SDE ServiceRequest&quot;:
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
          </coding>
       </usage>
       <criteria>
@@ -1290,6 +513,7 @@ define &quot;SDE ServiceRequest&quot;:
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
          </coding>
       </usage>
       <criteria>
@@ -1302,6 +526,7 @@ define &quot;SDE ServiceRequest&quot;:
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
          </coding>
       </usage>
       <criteria>
@@ -1314,6 +539,7 @@ define &quot;SDE ServiceRequest&quot;:
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
          </coding>
       </usage>
       <criteria>
@@ -1326,6 +552,7 @@ define &quot;SDE ServiceRequest&quot;:
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
          </coding>
       </usage>
       <criteria>
@@ -1338,6 +565,7 @@ define &quot;SDE ServiceRequest&quot;:
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
          </coding>
       </usage>
       <criteria>

@@ -295,12 +295,12 @@
                 "medicationCodeableConcept": {
                     "coding": [
                         {
-                            "code": "1547-9",
+                            "code": "103866",
                             "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-                            "display": "vancomycin 100 MG/ML Injectable Solution"
+                            "display": "metronidazole benzoate"
                         }
                     ],
-                    "text": "vancomycin 100 MG/ML Injectable Solution"
+                    "text": "metronidazole benzoate"
                 },
                 "effectiveDateTime": "2022-01-05T14:00:00-00:00",
                 "category": {
