@@ -10,7 +10,7 @@ codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
 codesystem "Diagnosis Role": 'http://terminology.hl7.org/CodeSystem/diagnosis-role'
 codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category'
 codesystem "LOINC": 'http://loinc.org'
-codesystem "ConditionCategoryCodes": 'http://hl7.org/fhir/2021Mar/codesystem-condition-category'
+codesystem "Condition Category": 'http://terminology.hl7.org/CodeSystem/condition-category'
 
 valueset "CDC Location Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
 
@@ -25,7 +25,7 @@ code "observation encounter": 'OBSENC' from "ActCode" display 'observation encou
 code "short stay": 'SS' from "ActCode" display 'short stay'
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 code "vital-signs": 'vital-signs'  from "Observation Category" display 'vital-signs'
-code "encounter-diagnosis": 'encounter-diagnosis' from ConditionCategoryCodes display'encounter-diagnosis'
+code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display'encounter-diagnosis'
 
 code "body weight": '29463-7' from "LOINC" display 'Body Weight'
 code "body height": '8302-2' from "LOINC" display 'Body Weight'
@@ -63,10 +63,10 @@ define "SDE Encounter Locations":
     //}
 
 define "SDE Encounter with Chief Complaint":
-  [Encounter] EncCC
+  [Encounter] EncounterCC
     with "Initial Population" IP
-    such that Global."Normalize Interval"(EncCC.period) during IP.period
-      and EncCC.diagnosis.use.coding.code ~ {'Chief Complaint'}
+    such that Global."Normalize Interval"(EncounterCC.period) during IP.period
+      and EncounterCC.diagnosis.use.coding.code ~ {'Chief Complaint'}
 
    
 //Encounter.hospitalization.origin:Reference(Location) 0..1 patient came before admission
@@ -78,84 +78,85 @@ define "SDE Location":
 
 //add Observation.category in the condition for meeting requirement for EHR
 define "SDE Observation Stool Lab":
-  [Observation: code in "Lab Tests for Clostridioides difficile Infection"] ObsLab
+  [Observation: code in "Lab Tests for Clostridioides difficile Infection"] ObservationLab
     with "Initial Population" IP
-    such that Global."Normalize Interval"(ObsLab.effective) during IP.period
-      and ObsLab.status in {'final', 'amended', 'corrected', 'preliminary'}
-      and GetCodeConcepts(ObsLab.category) ~  {"laboratory"}
+    such that Global."Normalize Interval"(ObservationLab.effective) during IP.period
+      and ObservationLab.status in {'final', 'amended', 'corrected', 'preliminary'}
+      and  true in HasCategoryLaboratory(ObservationLab.category)
 
 //for the Observation has Specimen reference, this may not need if we have the Specimen Resource
 define "SDE Observation Lab With Specimen":
-  [Observation: code in "Lab Tests for Clostridioides difficile Infection"] ObsSpc 
-    let RefSpe: GetSpecimen(ObsSpc.specimen)
+  [Observation: code in "Lab Tests for Clostridioides difficile Infection"] ObservationWithSpecimen
+    let ReferenceToSpecimen: GetSpecimen(ObservationWithSpecimen.specimen)
     with "Initial Population" IP 
-    such that Global."Normalize Interval"(RefSpe.collection.collected) during IP.period
-    return RefSpe
+    such that Global."Normalize Interval"(ReferenceToSpecimen.collection.collected) during IP.period
+    return ReferenceToSpecimen
 
 //DiagnosticReport.result:Reference(Observation) 0..* the result is in the Observation
 define "SDE Diagnostic Report Stool":
-  [DiagnosticReport: code in "Lab Tests for Clostridioides difficile Infection"] DiaRepLab
+  [DiagnosticReport: code in "Lab Tests for Clostridioides difficile Infection"] DiagnosticReportLab
     with "Initial Population" IP
-    such that Global."Normalize Interval"(DiaRepLab.effective) during IP.period
-      and DiaRepLab.status in {'final', 'amended', 'corrected', 'preliminary'}
+    such that Global."Normalize Interval"(DiagnosticReportLab.effective) during IP.period
+      and DiagnosticReportLab.status in {'final', 'amended', 'corrected', 'preliminary'}
 
 define "SDE Observation Vital Signs":
-  [Observation] ObsVS
+  [Observation] ObservationVS
     with "Initial Population" IP 
-    such that Global."Normalize Interval"(ObsVS.effective) during IP.period
-      //and ObsVS.status in {'final', 'amended', 'corrected', 'preliminary'}
-      and FHIRHelpers.ToConcept(ObsVS.code) in {"body weight", "body height"}
-      and GetCodeConcepts(ObsVS.category) ~ {"vital-signs"}
+    such that Global."Normalize Interval"(ObservationVS.effective) during IP.period
+      //and ObservationVS.status in {'final', 'amended', 'corrected', 'preliminary'}
+      and FHIRHelpers.ToConcept(ObservationVS.code) in {"body weight", "body height"}
+      //and GetCodeConcepts(ObservationVS.category) ~ {"vital-signs"}
+      and true in HasCategoryVitalSigns(ObservationVS.category)
 
 //for now just for the encounter-diagnosis
 //data requirement constrain to category levle not to code level 
 //not sure we should check the Condtion.onset
 //need to check during evaluate-measure to see it filter out the observation other than encounter-diagnosis?????
 define "SDE Condition during Encounter Diagnosis":
-  [Condition] ConEncDia 
-    where GetCodeConcepts(ConEncDia.category) ~  {"encounter-diagnosis"}
+  [Condition] ConditionEncounterDiagnosis
+    where true in HasCategoryEncounterDiagnosis(ConditionEncounterDiagnosis.category)
     and exists("Initial Population")
 
 define "SDE Specimen Stool":
-  [Specimen] Spe
+  [Specimen] Specimen
     with "Initial Population" IP
-    such that Global."Normalize Interval"(Spe.collection.collected) during IP.period
+    such that Global."Normalize Interval"(Specimen.collection.collected) during IP.period
 
 //Lab orders
 define "SDE Service Request Clostridioides difficile Infection Lab":
-	[ServiceRequest: code in "Lab Tests for Clostridioides difficile Infection"] SerLab
+	[ServiceRequest: code in "Lab Tests for Clostridioides difficile Infection"] ServiceRequestLab
   with "Initial Population" InitialPopulation
-  such that (SerLab.intent ~ 'order'
-    and SerLab.status ~ 'completed')
-    and start of Global."Normalize Interval"(SerLab.occurrence) during InitialPopulation.period
+  such that (ServiceRequestLab.intent ~ 'order'
+    and ServiceRequestLab.status ~ 'completed')
+    and start of Global."Normalize Interval"(ServiceRequestLab.occurrence) during InitialPopulation.period
 
 define "SDE Medication Request":
-  [MedicationRequest] MedReq
+  [MedicationRequest] MedicationRequest
     with "Initial Population" IP 
-    such that Global."Normalize Interval"(MedReq.authoredOn) during IP.period
-    and MedReq.status in {'active', 'completed'}
+    such that Global."Normalize Interval"(MedicationRequest.authoredOn) during IP.period
+    and MedicationRequest.status in {'active', 'completed'}
 
 define "SDE Medication Request Fidaxomicin Vancomycin Metronidazole":
-[MedicationRequest] MedReq 
+[MedicationRequest] MedicationRequestWithCode 
   with "Initial Population" IP 
-  such that Global."Normalize Interval"(MedReq.authoredOn) during IP.period
-    and MedReq.status in {'active', 'completed'}
-    and GetMedicationCode(MedReq.medication) in "Fidaxomicin, Vancomycin, and Metronidazole"
+  such that Global."Normalize Interval"(MedicationRequestWithCode.authoredOn) during IP.period
+    and MedicationRequestWithCode.status in {'active', 'completed'}
+    and GetMedicationCode(MedicationRequestWithCode.medication) in "Fidaxomicin, Vancomycin, and Metronidazole"
 
 
 define "SDE Medication Administration":
-[MedicationAdministration] MedAdm
+[MedicationAdministration] MedicationAdministration
   with "Initial Population" IP
-  such that Global."Normalize Interval"(MedAdm.effective) during IP.period
-    and MedAdm.status in {'completed', 'in-progress'}
+  such that Global."Normalize Interval"(MedicationAdministration.effective) during IP.period
+    and MedicationAdministration.status in {'completed', 'in-progress'}
 
 
 define "SDE Medication Administration Fidaxomicin, Vancomycin, and Metronidazole":
-[MedicationAdministration] MedAdm
+[MedicationAdministration] MedicationAdministrationWithCode
   with "Initial Population" IP
-  such that Global."Normalize Interval"(MedAdm.effective) during IP.period
-    and MedAdm.status in {'completed', 'in-progress'}
-    and GetMedicationCode(MedAdm.medication) in "Fidaxomicin, Vancomycin, and Metronidazole"
+  such that Global."Normalize Interval"(MedicationAdministrationWithCode.effective) during IP.period
+    and MedicationAdministrationWithCode.status in {'completed', 'in-progress'}
+    and GetMedicationCode(MedicationAdministrationWithCode.medication) in "Fidaxomicin, Vancomycin, and Metronidazole"
    
 
 //define "SDE Claim":
@@ -219,3 +220,15 @@ define function "GetMedicationCode"(choice Choice<FHIR.CodeableConcept, FHIR.Ref
     else 
       null as FHIR.CodeableConcept
   end
+
+define function "HasCategoryLaboratory"(categories List<FHIR.CodeableConcept>):
+  categories category
+  return category ~ "laboratory"
+
+define function "HasCategoryVitalSigns"(categories List<FHIR.CodeableConcept>):
+  categories category
+  return category ~ "vital-signs"
+
+define function "HasCategoryEncounterDiagnosis"(categories List<FHIR.CodeableConcept>):
+  categories category
+  return category ~ "encounter-diagnosis"
