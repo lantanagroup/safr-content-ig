@@ -84,10 +84,6 @@ define function "GetSpecimen"(reference Reference):
   singleton from (
     [Specimen] S where S.id = Global.GetId(reference.reference)
   )
-
-define function "HasCategoryLaboratory"(categories List<FHIR.CodeableConcept>):
-  categories category
-  return category ~ "laboratory"
   
 //Supplement Data Elements
 define "SDE Chief Complaint":
@@ -140,7 +136,9 @@ define "SDE Blood Glucose Observation":
     or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during InitialPopulation.period
   /*with "Antidiabetic Drugs Administered or Ordered" ADD
   such that start of Global."Normalize Interval"(Observations.effective) 24 hours before Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn)*/
-  //where true in HasCategoryLaboratory(Observations.category)
+  /*with Observations.category category
+  such that category ~ "laboratory"
+  */
     /*and Observations.value is not null
     and Observations.value < 70*/
 
