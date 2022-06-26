@@ -46,15 +46,6 @@ define "Initial Population":
   [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "emergency", "observation encounter", "short stay"}] IPEnc
     where IPEnc.period overlaps "Measurement Period"
 
-/*
-define "SDE Encounter Locations":
-	[Encounter] Encounter
-  with Encounter.location EncounterLocation
-  such that (Global.GetLocation(EncounterLocation.location).type in "CDC Location Codes"
-    or Global.GetLocation(EncounterLocation.location).physicalType in "CDC Location Codes")
-  with "Initial Population" InitialPopulation
-  such that start of Encounter.period during InitialPopulation.period */
-
 define "SDE Encounter Locations":
 	"Initial Population" InitialPopulation
   with InitialPopulation.location IntialPopulationLocation
