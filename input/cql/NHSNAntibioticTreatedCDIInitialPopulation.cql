@@ -14,10 +14,9 @@ codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observ
 codesystem "Specimen Type": 'http://terminology.hl7.org/CodeSystem/v2-0487'
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
 
-//codesystem "NHSN Healthcare Facility Patient Care Location": 'https://www.cdc.gov/nhsn/cdaportal/terminology/codesystem/hsloc.html'
-
 valueset "CDC Location Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
 valueset "Discharge Disposition": 'http://terminology.hl7.org/ValueSet/encounter-discharge-disposition'
+valueset "Admit Source": 'http://terminology.hl7.org/ValueSet/encounter-admit-source'
 valueset "Fidaxomicin, Vancomycin, and Metronidazole": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.72'
 valueset "Lab Tests for Clostridioides difficile Infection": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.62'
 
@@ -25,6 +24,7 @@ code "body weight": '29463-7' from "LOINC" display 'Body Weight'
 code "body height": '8302-2' from "LOINC" display 'Body Height'
 code "Chief Complaint": 'CC' from "Diagnosis Role" display 'Chief Complaint'
 code "Detected": '260373001' from "SNOMEDCT" display 'Detected'
+code "Discharge Diagnosis": 'DD' from "Diagnosis Role" display 'Discharge Diagnosis'
 code "emergency": 'EMER' from "ActCode" display 'emergency'
 code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display'encounter-diagnosis'
 code "inpatient acute": 'ACUTE' from "ActCode" display 'inpatient acute'
@@ -46,36 +46,45 @@ define "Initial Population":
   [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "emergency", "observation encounter", "short stay"}] IPEnc
     where IPEnc.period overlaps "Measurement Period"
 
-define "SDE Encounter Locations":
+define "SDE Encounter With Locations":
 	"Initial Population" InitialPopulation
   with InitialPopulation.location IntialPopulationLocation
   such that (Global.GetLocation(IntialPopulationLocation.location).type in "CDC Location Codes"
     or Global.GetLocation(IntialPopulationLocation.location).physicalType in "CDC Location Codes")
-    and start of IntialPopulationLocation.period during InitialPopulation.period
-  
+
+define "SDE Encounter With Locations Period":
+  "SDE Encounter With Locations" EncounterLocations
+  with EncounterLocations.location Locations
+  such that Locations.period during "Measurement Period" 
+
 define "SDE Encounter with Chief Complaint":
   "Initial Population" EncounterCC
-    with "Initial Population" InitialPopulation
-    such that Global."Normalize Interval"(EncounterCC.period) during InitialPopulation.period
-    and EncounterCC.diagnosis.use.coding.code ~ {'Chief Complaint'}
-
+    with EncounterCC.diagnosis diagnosis
+    such that diagnosis.use ~ "Chief Complaint"
+ 
 define "SDE Encounter with Discharge Diagnosis":
   "Initial Population" EncounterDD
-    with "Initial Population" InitialPopulation
-    such that EncounterDD.diagnosis.use.coding.code ~ {'Discharge Diagnosis'}
+    with EncounterDD.diagnosis diagnosis
+    such that diagnosis.use ~ "Discharge Diagnosis"
 
-//Encounter.hospitalization.admitSource ???
+define "SDE Encounter Admit Source":
+  "Initial Population" EncounterAdmitSource
+  where EncounterAdmitSource.hospitalization.admitSource in "Admit Source" 
 
 define "SDE Encounter Discharge Dispositions":
 	[Encounter: hospitalization.dischargeDisposition in "Discharge Disposition"] DischargeDispositions 
   with "Initial Population" InitialPopulation
 	such that start of DischargeDispositions.period during InitialPopulation.period
   
+define "SDE Encounter Discharge Dispositions1":
+	"Initial Population" DischargeDispositions 
+  where DischargeDispositions.hospitalization.dischargeDisposition in "Discharge Disposition"
+  
 define "SDE Location":
   [Location] Location
   where exists("Initial Population")
   
-define "SDE Observation Stool Lab":
+define "SDE Observation CDI Stool Lab":
   [Observation: code in "Lab Tests for Clostridioides difficile Infection"] CdiObservationLab
     with "Initial Population" InitialPopulation
     such that Global."Normalize Interval"(CdiObservationLab.effective) during InitialPopulation.period
@@ -83,20 +92,34 @@ define "SDE Observation Stool Lab":
     with CdiObservationLab.category category
     such that category ~ "laboratory"
 
+define "SDE Observation CDI Stool Lab Positive":
+  "SDE Observation CDI Stool Lab" CdiObservationLab
+  where FHIRHelpers.ToConcept(CdiObservationLab.value) ~ "Positive"
+
+define "SDE Observation CDI Stool Lab Detected":
+  "SDE Observation CDI Stool Lab" CdiObservationLab
+  where FHIRHelpers.ToConcept(CdiObservationLab.value) ~ "Detected"
+  
+define "SDE Observation CDI Stool Lab with Specimen":
+  "SDE Observation CDI Stool Lab" CdiObservationLab
+    let ReferenceToSpecimen: GetSpecimen(CdiObservationLab.specimen)
+    with "Initial Population" InitialPopulation 
+    such that Global."Normalize Interval"(ReferenceToSpecimen.collection.collected) during InitialPopulation.period
  
-define "SDE CDI Specimen":
+define "SDE Observation with CDI Specimen":
   [Observation: code in "Lab Tests for Clostridioides difficile Infection"] ObservationWithSpecimen
     let ReferenceToSpecimen: GetSpecimen(ObservationWithSpecimen.specimen)
     with "Initial Population" InitialPopulation 
     such that Global."Normalize Interval"(ReferenceToSpecimen.collection.collected) during InitialPopulation.period
-    and FHIRHelpers.ToConcept(ObservationWithSpecimen.value ) in {"Positive", "Detected"}
-    return ReferenceToSpecimen
-
-define "SDE Positive or Detected CDI Specimen":
-  "SDE CDI Specimen" CdiSpecimen
-  where CdiSpecimen.type ~ "stool"
-
    
+define "SDE Observation CDI Stool Lab Positive with Specimen":
+  "SDE Observation with CDI Specimen" CdiObservationLab
+  where FHIRHelpers.ToConcept(CdiObservationLab.value) ~ "Positive"
+
+define "SDE Observation CDI Stool Lab Detected with Specimen":
+  "SDE Observation with CDI Specimen" CdiObservationLab
+  where FHIRHelpers.ToConcept(CdiObservationLab.value) ~ "Detected"
+
 define "SDE Diagnostic Report Stool":
   [DiagnosticReport: code in "Lab Tests for Clostridioides difficile Infection"] CdiDiagnosticReportLab
     with "Initial Population" InitialPopulation
@@ -127,6 +150,13 @@ define "SDE Specimen Stool":
   [Specimen] Specimen
     with "Initial Population" InitialPopulation
     such that Global."Normalize Interval"(Specimen.collection.collected) during InitialPopulation.period
+
+define "SDE CDI Specimen ":
+  [Observation: code in "Lab Tests for Clostridioides difficile Infection"] ObservationWithSpecimen
+    let ReferenceToSpecimen: GetSpecimen(ObservationWithSpecimen.specimen)
+    with "Initial Population" InitialPopulation 
+    such that Global."Normalize Interval"(ReferenceToSpecimen.collection.collected) during InitialPopulation.period
+    return ReferenceToSpecimen
 
 define "SDE Service Request Clostridioides difficile Infection Lab":
 	[ServiceRequest: code in "Lab Tests for Clostridioides difficile Infection"] CdiServiceRequestLab
