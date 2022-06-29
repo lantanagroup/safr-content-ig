@@ -67,16 +67,16 @@ define "SDE Encounter with Discharge Diagnosis":
     with EncounterDD.diagnosis diagnosis
     such that diagnosis.use ~ "Discharge Diagnosis"
 
-define "SDE Encounter Admit Source":
+define "SDE Encounter with Admit Source":
   "Initial Population" EncounterAdmitSource
   where EncounterAdmitSource.hospitalization.admitSource in "Admit Source" 
 
-define "SDE Encounter Discharge Dispositions":
+define "SDE Encounter with Discharge Dispositions":
 	[Encounter: hospitalization.dischargeDisposition in "Discharge Disposition"] DischargeDispositions 
   with "Initial Population" InitialPopulation
 	such that start of DischargeDispositions.period during InitialPopulation.period
   
-define "SDE Encounter Discharge Dispositions1":
+define "SDE Encounter with Discharge Dispositions1":
 	"Initial Population" DischargeDispositions 
   where DischargeDispositions.hospitalization.dischargeDisposition in "Discharge Disposition"
   
