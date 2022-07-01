@@ -83,7 +83,11 @@ define "SDE Encounter with Discharge Dispositions1":
 define "SDE Location":
   [Location] Location
   where exists("Initial Population")
-  
+
+define "SDE CDC Locations":
+	[Location: type in "CDC Location Codes"] CDCLationLocation
+   where exists("Initial Population")
+ 
 define "SDE Observation CDI Stool Lab":
   [Observation: code in "Lab Tests for Clostridioides difficile Infection"] CdiObservationLab
     with "Initial Population" InitialPopulation
