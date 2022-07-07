@@ -50,33 +50,23 @@ define "Initial Population":
 define "SDE Encounter Locations":
 	"Initial Population" InitialPopulation
   with InitialPopulation.location IntialPopulationLocation
-  such that (Global.GetLocation(IntialPopulationLocation.location).type in "CDC Location Codes"
+  such that ((Global.GetLocation(IntialPopulationLocation.location).type in "CDC Location Codes"
     or Global.GetLocation(IntialPopulationLocation.location).physicalType in "CDC Location Codes")
+    and IntialPopulationLocation.period during "Measurement Period")
+ 
 
-/*
 define "SDE Encounter Locations Test":
 	"Initial Population" InitialPopulation
   with InitialPopulation.location IntialPopulationLocation
-  such that (Global.GetLocation(IntialPopulationLocation.location).type in "CDC Location Codes"
+  such that ((Global.GetLocation(IntialPopulationLocation.location).type in "CDC Location Codes"
     or Global.GetLocation(IntialPopulationLocation.location).physicalType in "CDC Location Codes")
+    and IntialPopulationLocation.period during "Measurement Period")
   return Tuple{
-    Location: InitialPopulation.location
-  } */
-
-define "SDE Encounter With Locations Period":
-  "SDE Encounter Locations" EncounterLocations
-  with EncounterLocations.location Locations
-  such that Locations.period during "Measurement Period" 
-/*
-define "SDE Encounter With Locations Period Test":
-   "SDE Encounter Locations" Encounters
-  with Encounters.location Locations
-  such that Locations.period during "Measurement Period" 
-  return Tuple{
-    encounter: Encounters,
-    locationPeriodStart: Encounters.location.period.start,
-    locationPeriodEnd: Encounters.location.period.end
-  } */
+    encounter: InitialPopulation,
+    locationPeriodStart: InitialPopulation.location.period.start,
+    locationPeriodEnd: InitialPopulation.location.period.end,
+    locationType: GetLocations(InitialPopulation.location.location).type.coding.display
+  } 
 
 define "SDE Encounter with Chief Complaint":
   "Initial Population" EncounterCC
@@ -92,14 +82,7 @@ define "SDE Encounter with Admit Source":
   "Initial Population" EncounterAdmitSource
   where EncounterAdmitSource.hospitalization.admitSource in "Admit Source" 
 
-
 define "SDE Encounter with Discharge Dispositions":
-	[Encounter: hospitalization.dischargeDisposition in "Discharge Disposition"] DischargeDispositions 
-  with "Initial Population" InitialPopulation
-	such that start of DischargeDispositions.period during InitialPopulation.period
-
-
-define "SDE Encounter with Discharge Dispositions1":
 	"Initial Population" DischargeDispositions 
   where DischargeDispositions.hospitalization.dischargeDisposition in "Discharge Disposition"
 
@@ -111,27 +94,22 @@ define "SDE CDC Locations":
 	[Location: type in "CDC Location Codes"] CDCLationLocation
    where exists("Initial Population")
 
- 
-define "SDE Observation CDI Stool Lab":
+define "SDE Observation CDI Stool":
+  [Observation: "Lab Tests for Clostridioides difficile Infection"] CdiObservationLab
+    with "Initial Population" InitialPopulation
+    such that Global."Normalize Interval"(CdiObservationLab.effective) during InitialPopulation.period
+      and CdiObservationLab.status ~ 'final'
+
+define "SDE Laboratory Observation CDI Stool":
   [Observation: "Lab Tests for Clostridioides difficile Infection"] CdiObservationLab
     with "Initial Population" InitialPopulation
     such that Global."Normalize Interval"(CdiObservationLab.effective) during InitialPopulation.period
       and CdiObservationLab.status ~ 'final'
     with CdiObservationLab.category category
     such that category ~ "laboratory"
-
-
-define "SDE Observation CDI Stool Lab Positive":
-  "SDE Observation CDI Stool Lab" CdiObservationLab
-  where FHIRHelpers.ToConcept(CdiObservationLab.value) ~ "Positive"
-
-define "SDE Observation CDI Stool Lab Detected":
-  "SDE Observation CDI Stool Lab" CdiObservationLab
-  where FHIRHelpers.ToConcept(CdiObservationLab.value) ~ "Detected"
-
   
-define "SDE Observation CDI Stool Lab with Specimen":
-  "SDE Observation CDI Stool Lab" CdiObservationLab
+define "SDE Laboratory Observation CDI Stool with Specimen":
+  "SDE Laboratory Observation CDI Stool" CdiObservationLab
     let ReferenceToSpecimen: GetSpecimen(CdiObservationLab.specimen)
     with "Initial Population" InitialPopulation 
     such that Global."Normalize Interval"(ReferenceToSpecimen.collection.collected) during InitialPopulation.period
@@ -142,14 +120,6 @@ define "SDE Observation with CDI Specimen":
     with "Initial Population" InitialPopulation 
     such that Global."Normalize Interval"(ReferenceToSpecimen.collection.collected) during InitialPopulation.period
    
-define "SDE Observation CDI Stool Lab Positive with Specimen":
-  "SDE Observation with CDI Specimen" CdiObservationLab
-  where FHIRHelpers.ToConcept(CdiObservationLab.value) ~ "Positive"
-
-define "SDE Observation CDI Stool Lab Detected with Specimen":
-  "SDE Observation with CDI Specimen" CdiObservationLab
-  where FHIRHelpers.ToConcept(CdiObservationLab.value) ~ "Detected"
-
 define "SDE Diagnostic Report Stool":
   [DiagnosticReport: "Lab Tests for Clostridioides difficile Infection"] CdiDiagnosticReportLab
     with "Initial Population" InitialPopulation
@@ -171,7 +141,7 @@ define "SDE Condition":
   such that Global."Normalize Interval"(Conditions.onset) overlaps InitialPopulation.period
   and Conditions.clinicalStatus ~ Global."active"
 
-define "SDE Condition during Encounter":
+define "SDE EncounterDiagnosis Condition":
   [Condition] ConditionEncounterDiagnosis
     where true in HasCategoryEncounterDiagnosis(ConditionEncounterDiagnosis.category)
     and exists("Initial Population")
