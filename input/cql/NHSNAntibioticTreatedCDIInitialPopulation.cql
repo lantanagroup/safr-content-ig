@@ -146,7 +146,7 @@ define "SDE EncounterDiagnosis Condition":
     where true in HasCategoryEncounterDiagnosis(ConditionEncounterDiagnosis.category)
     and exists("Initial Population")
 
-define "SDE Specimen Stool":
+define "SDE Specimen":
   [Specimen] Specimen
     with "Initial Population" InitialPopulation
     such that Global."Normalize Interval"(Specimen.collection.collected) during InitialPopulation.period
