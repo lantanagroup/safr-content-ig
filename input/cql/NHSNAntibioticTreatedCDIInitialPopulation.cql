@@ -20,10 +20,11 @@ valueset "Discharge Disposition": 'http://terminology.hl7.org/ValueSet/encounter
 valueset "Fidaxomicin, Vancomycin, and Metronidazole": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.72'
 valueset "Lab Tests for Clostridioides difficile Infection": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.62'
 
+
 code "body weight": '29463-7' from "LOINC" display 'Body Weight'
 code "body height": '8302-2' from "LOINC" display 'Body Height'
 code "Chief Complaint": 'CC' from "Diagnosis Role" display 'Chief Complaint'
-code "Detected": '260373001' from "SNOMEDCT" display 'Detected'
+//code "Detected": '260373001' from "SNOMEDCT" display 'Detected'
 code "Discharge Diagnosis": 'DD' from "Diagnosis Role" display 'Discharge Diagnosis'
 code "emergency": 'EMER' from "ActCode" display 'emergency'
 code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display'encounter-diagnosis'
@@ -32,7 +33,7 @@ code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
 code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
-code "Positive": '10828004' from "SNOMEDCT" display 'Positive'
+//code "Positive": '10828004' from "SNOMEDCT" display 'Positive'
 code "short stay": 'SS' from "ActCode" display 'short stay'
 code "stool": 'STL' from "Specimen Type" display 'stool'
 code "vital-signs": 'vital-signs'  from "Observation Category" display 'vital-signs'
@@ -54,7 +55,7 @@ define "SDE Encounter Locations":
     or Global.GetLocation(IntialPopulationLocation.location).physicalType in "CDC Location Codes")
     and IntialPopulationLocation.period during "Measurement Period")
  
-
+/*
 define "SDE Encounter Locations Test":
 	"Initial Population" InitialPopulation
   with InitialPopulation.location IntialPopulationLocation
@@ -66,7 +67,7 @@ define "SDE Encounter Locations Test":
     locationPeriodStart: InitialPopulation.location.period.start,
     locationPeriodEnd: InitialPopulation.location.period.end,
     locationType: GetLocations(InitialPopulation.location.location).type.coding.display
-  } 
+  }*/ 
 
 define "SDE Encounter with Chief Complaint":
   "Initial Population" EncounterCC
@@ -107,6 +108,12 @@ define "SDE Laboratory Observation CDI Stool":
       and CdiObservationLab.status ~ 'final'
     with CdiObservationLab.category category
     such that category ~ "laboratory"
+
+define "SDE Laboratory Observation CDI Stool 1":
+  [Observation: "Lab Tests for Clostridioides difficile Infection"] O
+    where (exists(O.category C where C ~ "laboratory"))
+    and Global."Normalize Interval"(O.effective) during "Measurement Period"
+    and O.status ~ 'final'
   
 define "SDE Laboratory Observation CDI Stool with Specimen":
   "SDE Laboratory Observation CDI Stool" CdiObservationLab
@@ -158,12 +165,19 @@ define "SDE CDI Specimen ":
     such that Global."Normalize Interval"(ReferenceToSpecimen.collection.collected) during InitialPopulation.period
     return ReferenceToSpecimen
 
+define "SDE Service Request":
+[ServiceRequest] CdiServiceRequestLab
+  with "Initial Population" InitialPopulation
+  such that (CdiServiceRequestLab.intent ~ 'order'
+    and CdiServiceRequestLab.status ~ 'completed')
+    and CdiServiceRequestLab.authoredOn during InitialPopulation.period
+
 define "SDE Service Request Clostridioides difficile Infection Lab":
 	[ServiceRequest: "Lab Tests for Clostridioides difficile Infection"] CdiServiceRequestLab
   with "Initial Population" InitialPopulation
   such that (CdiServiceRequestLab.intent ~ 'order'
     and CdiServiceRequestLab.status ~ 'completed')
-    and start of Global."Normalize Interval"(CdiServiceRequestLab.occurrence) during InitialPopulation.period
+    and CdiServiceRequestLab.authoredOn during InitialPopulation.period
 
 define "SDE Medication Request":
   [MedicationRequest] MedicationRequest
@@ -176,8 +190,7 @@ define "SDE Medication Request Fidaxomicin Vancomycin Metronidazole":
   with "Initial Population" InitialPopulation 
   such that Global."Normalize Interval"(MedicationRequestWithCode.authoredOn) during InitialPopulation.period
     and MedicationRequestWithCode.status in {'active', 'completed'}
-    and GetMedicationCode(MedicationRequestWithCode.medication) in "Fidaxomicin, Vancomycin, and Metronidazole"
-
+    and GetMedicationCode(MedicationRequestWithCode.medication) in "Fidaxomicin, Vancomycin, and Metronidazole" 
 
 define "SDE Medication Administration":
 [MedicationAdministration] MedicationAdministration
@@ -185,15 +198,12 @@ define "SDE Medication Administration":
   such that Global."Normalize Interval"(MedicationAdministration.effective) during InitialPopulation.period
     and MedicationAdministration.status in {'completed', 'in-progress'}
 
-
 define "SDE Medication Administration Fidaxomicin, Vancomycin, and Metronidazole":
-[MedicationAdministration] MedicationAdministrationWithCode
+[MedicationAdministration: "Fidaxomicin, Vancomycin, and Metronidazole"] MedicationAdministrationWithCode
   with "Initial Population" InitialPopulation
   such that Global."Normalize Interval"(MedicationAdministrationWithCode.effective) during InitialPopulation.period
     and MedicationAdministrationWithCode.status in {'completed', 'in-progress'}
-    and GetMedicationCode(MedicationAdministrationWithCode.medication) in "Fidaxomicin, Vancomycin, and Metronidazole"
    
-
 define "SDE Payer": 
 	SDE."SDE Payer" Payer
   with "Initial Population" InitialPopulation
