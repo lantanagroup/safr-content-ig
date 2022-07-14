@@ -15,7 +15,7 @@ codesystem "Condition Category": 'http://terminology.hl7.org/CodeSystem/conditio
 valueset "Blood Glucose Laboratory and Point of Care Tests": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38'
 valueset "Inpatient, Emergency, and Observation Locations": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
 valueset "Discharge Disposition": 'http://terminology.hl7.org/ValueSet/encounter-discharge-disposition'
-valueset "NHSN Hypoglycemia Drugs": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58'
+valueset "Antidiabetic Medications": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58'
 
 code "Chief Complaint": 'CC' from "Diagnosis Role" display 'Chief complaint'
 code "emergency": 'EMER' from "ActCode" display 'emergency'
@@ -46,11 +46,11 @@ define "Inpatient Encounter":
 
 define "Antidiabetic Drugs Administered or Ordered":
   ([MedicationAdministration] ADDMedAdmin
-    where GetMedicationCode(ADDMedAdmin.medication) in "NHSN Hypoglycemia Drugs"
+    where GetMedicationCode(ADDMedAdmin.medication) in "Antidiabetic Medications"
       and ADDMedAdmin.status ~ 'completed')
   union (
     [MedicationRequest] MedicationRequests
-      where GetMedicationCode(MedicationRequests.medication) in "NHSN Hypoglycemia Drugs"
+      where GetMedicationCode(MedicationRequests.medication) in "Antidiabetic Medications"
   )
 
 define function "GetMedicationCode"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):
