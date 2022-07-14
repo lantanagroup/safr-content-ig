@@ -10,9 +10,10 @@ codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
 codesystem "Diagnosis Role": 'http://terminology.hl7.org/CodeSystem/diagnosis-role'
 codesystem "Specimen Type": 'http://terminology.hl7.org/CodeSystem/v2-0487'
 codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category'
+codesystem "Condition Category": 'http://terminology.hl7.org/CodeSystem/condition-category' 
 
 valueset "Blood Glucose Laboratory and Point of Care Tests": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38'
-valueset "CDC Location Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
+valueset "Inpatient, Emergency, and Observation Locations": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
 valueset "Discharge Disposition": 'http://terminology.hl7.org/ValueSet/encounter-discharge-disposition'
 valueset "NHSN Hypoglycemia Drugs": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58'
 
@@ -22,7 +23,9 @@ code "inpatient acute": 'ACUTE' from "ActCode" display 'inpatient acute'
 code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
 code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
+code "short stay": 'SS' from "ActCode" display 'short stay'
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
+code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display'encounter-diagnosis'
 
 parameter "Measurement Period" Interval<DateTime>
  //default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
@@ -37,7 +40,7 @@ define "Initial Population":
     and Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn) during "Measurement Period"
 
 define "Inpatient Encounter":
-  [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute"}] Encounters
+  [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "short stay"}] Encounters
   where Encounters.status in {'in-progress', 'finished'}
   and Encounters.period overlaps "Measurement Period"
 
@@ -87,35 +90,33 @@ define function "GetSpecimen"(reference Reference):
   
 //Supplement Data Elements
 define "SDE Chief Complaint":
-  [Encounter: diagnosis.use ~ "Chief Complaint"] ChiefComplaint
-  with "Initial Population" InitialPopulation
-  such that start of ChiefComplaint.period during "Measurement Period"
+  "Initial Population" InitialPopulation
+  with InitialPopulation.diagnosis InitialPopulationDiagnosis
+  such that InitialPopulationDiagnosis.use ~ "Chief Complaint"
 
 define "SDE Condition":
   [Condition] Conditions
   with "Initial Population" InitialPopulation
   such that Global."Normalize Interval"(Conditions.onset) overlaps InitialPopulation.period
   
-define "SDE Encounter Diagnoses":
-  "Initial Population" InitialPopulation
-	return Global.EncounterDiagnosis(InitialPopulation) except {null}
+define "SDE Condition during Encounter":
+  [Condition] ConditionEncounterDiagnosis
+  with ConditionEncounterDiagnosis.category Category
+  such that Category ~ "encounter-diagnosis"
+    and exists("Initial Population")
     
 define "SDE Encounter Discharge Dispositions":
-	[Encounter: hospitalization.dischargeDisposition in "Discharge Disposition"] DischargeDispositions 
-  with "Initial Population" InitialPopulation
-	such that start of DischargeDispositions.period during InitialPopulation.period
+	"Initial Population" DischargeDispositions 
+  where DischargeDispositions.hospitalization.dischargeDisposition in "Discharge Disposition"
   
 define "SDE Encounter Locations":
-	[Encounter] Encounter
-  with Encounter.location EncounterLocation
-  such that (Global.GetLocation(EncounterLocation.location).type in "CDC Location Codes" 
-      or Global.GetLocation(EncounterLocation.location).physicalType in "CDC Location Codes")
-  with "Initial Population" InitialPopulation
-  such that start of Encounter.period during InitialPopulation.period
-  where Encounter.period during "Measurement Period"
-
-define "SDE Locations":
-  [Location] Locations
+  "Initial Population" InitialPopulation 
+  where exists ( 
+    InitialPopulation.location InitialPopulationLocation
+    where (Global.GetLocation(InitialPopulationLocation.location).type in "Inpatient, Emergency, and Observation Locations"   
+      or Global.GetLocation(InitialPopulationLocation.location).physicalType in "Inpatient, Emergency, and Observation Locations")
+      and InitialPopulationLocation.period during InitialPopulation.period
+  )
 
 define "SDE Medication Administration":
 	[MedicationAdministration] MedicationAdministrations
@@ -134,22 +135,15 @@ define "SDE Blood Glucose Observation":
   with "Initial Population" InitialPopulation
   such that start of Global."Normalize Interval"(Observations.effective) during InitialPopulation.period
     or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during InitialPopulation.period
-  /*with "Antidiabetic Drugs Administered or Ordered" ADD
-  such that start of Global."Normalize Interval"(Observations.effective) 24 hours before Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn)*/
-  /*with Observations.category category
+  with Observations.category category
   such that category ~ "laboratory"
-  */
-    /*and Observations.value is not null
-    and Observations.value < 70*/
 
 define "SDE Payer": 
 	SDE."SDE Payer" Payer
   with "Initial Population" InitialPopulation
   such that start of Payer.period before end of InitialPopulation.period
   
-define "SDE Service Request":
-	[ServiceRequest: "Blood Glucose Laboratory and Point of Care Tests"] LabTest
+define "SDE Specimen":
+  [Specimen] Specimen
   with "Initial Population" InitialPopulation
-  such that LabTest.intent ~ 'order'
-    and LabTest.status ~ 'completed'
-    and LabTest.authoredOn during InitialPopulation.period
+  such that Global."Normalize Interval"(Specimen.collection.collected) during InitialPopulation.period
