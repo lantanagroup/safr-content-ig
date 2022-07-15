@@ -1,7 +1,4 @@
 #!/bin/bash
-# Usage:
-# _updatePublisher.sh -y|--yes <skipPrompts> -f|--force <FORCE>
-#####################################
 pubsource=https://github.com/HL7/fhir-ig-publisher/releases/latest/download/
 publisher_jar=publisher.jar
 dlurl=$pubsource$publisher_jar
@@ -25,7 +22,7 @@ if ! type "curl" > /dev/null; then
 fi
 
 while [ "$#" -gt 0 ]; do
-    case "$1" in
+    case $1 in
     -f|--force)  FORCE=true ;;
     -y|--yes)  skipPrompts=true ; FORCE=true ;;
     *)  echo "Unknown parameter passed: $1.  Exiting"; exit 1 ;;
@@ -46,7 +43,7 @@ if [ ! -d "$input_cache_path" ] ; then
     echo "$input_cache_path does not exist"
     message="create it?"
     read -r -p "$message" response
-  else
+    else
     response=y
   fi
 fi
