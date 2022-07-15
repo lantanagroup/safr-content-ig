@@ -1,0 +1,576 @@
+<Measure xmlns="http://hl7.org/fhir">
+   <id value="NHSNAntibioticTreatedCDIInitialPopulation"></id>
+   <meta>
+      <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm"></profile>
+   </meta>
+   <contained>
+      <Library xmlns="http://hl7.org/fhir">
+         <id value="effective-data-requirements"></id>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+               <code value="IMP"></code>
+               <display value="inpatient encounter"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+               <code value="ACUTE"></code>
+               <display value="inpatient acute"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+               <code value="NONAC"></code>
+               <display value="inpatient non-acute"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+               <code value="EMER"></code>
+               <display value="emergency"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+               <code value="OBSENC"></code>
+               <display value="observation encounter"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+               <code value="SS"></code>
+               <display value="short stay"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//CDI initial Patient Population: All inpatient, ED, and Observation encounters and short stay during the Measurement Period
+//Encounter.hospitalization.dischargeDisposition:CodeableConcept 0..1 no SDE need for this
+//Encounter.diagnosis.use:CodeableConcept 0..1 no SDE need for this
+define &quot;Initial Population&quot;:
+  [Encounter: class in {&quot;inpatient encounter&quot;, &quot;inpatient acute&quot;, &quot;inpatient non-acute&quot;, &quot;emergency&quot;, &quot;observation encounter&quot;, &quot;short stay&quot;}] IPEnc
+    where IPEnc.period overlaps &quot;Measurement Period&quot;"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="0"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Encounter Locations"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//Encounter.location.location:Reference(Location) Location.type indicate type of function performed at the location
+//Encounter.location.physicalType is the physical type of the location (usually the level in location hierachy)
+//For CDI measure, we want to identify the function performed at the location, such as impatient location
+//Each facility may have a map between CDC Location type to facility location, need to see how this play out in CoLab
+define &quot;SDE Encounter Locations&quot;:
+	[Encounter] Encounter
+  with Encounter.location EncounterLocation
+  such that (GetLocation(EncounterLocation.location).type in &quot;CDC Location Codes&quot;) 
+      //or GetLocation(EncounterLocation.location).physicalType in &quot;CDC Location Codes&quot;)
+  with &quot;Initial Population&quot; InitialPopulation
+  such that start of Encounter.period during InitialPopulation.period"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="1"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Encounter with Chief Complaint"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//and Encounter.period during &quot;Measurement Period&quot;
+    //return Encounter.location EncLoc
+    //let RefLoc: GetLocation(EncLoc.location)
+    //return Tuple{
+    //  locationType: GetCodeConcepts(RefLoc.type),
+    //  period: FHIRHelpers.ToInterval(EncLoc.period)
+    //}
+define &quot;SDE Encounter with Chief Complaint&quot;:
+  [Encounter] EncCC
+    with &quot;Initial Population&quot; IP
+    such that Global.&quot;Normalize Interval&quot;(EncCC.period) during IP.period
+      and EncCC.diagnosis.use.coding.code ~ {'Chief Complaint'}"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="2"></valueInteger>
+            </extension>
+         </extension>
+         <status value="active"></status>
+         <type>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/library-type"></system>
+               <code value="module-definition"></code>
+            </coding>
+         </type>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Library FHIRHelpers"></display>
+            <resource value="http://fhir.org/guides/cqf/Library/FHIRHelpers|4.0.1"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Library Global"></display>
+            <resource value="http://fhir.org/guides/cqf/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Code system ActCode"></display>
+            <resource value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set CDC Location Codes"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265"></resource>
+         </relatedArtifact>
+         <parameter>
+            <name value="Measurement Period"></name>
+            <use value="in"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="Period"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Encounter Locations"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Encounter"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Encounter with Chief Complaint"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Encounter"></type>
+         </parameter>
+         <parameter>
+            <name value="Initial Population"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Encounter"></type>
+         </parameter>
+         <dataRequirement>
+            <type value="Location"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
+            <mustSupport value="id"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="class"></mustSupport>
+            <mustSupport value="period"></mustSupport>
+            <codeFilter>
+               <path value="class"></path>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="IMP"></code>
+                  <display value="inpatient encounter"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="ACUTE"></code>
+                  <display value="inpatient acute"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="NONAC"></code>
+                  <display value="inpatient non-acute"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="EMER"></code>
+                  <display value="emergency"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="OBSENC"></code>
+                  <display value="observation encounter"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="SS"></code>
+                  <display value="short stay"></display>
+               </code>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="class"></mustSupport>
+            <mustSupport value="period"></mustSupport>
+            <codeFilter>
+               <path value="class"></path>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="IMP"></code>
+                  <display value="inpatient encounter"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="ACUTE"></code>
+                  <display value="inpatient acute"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="NONAC"></code>
+                  <display value="inpatient non-acute"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="EMER"></code>
+                  <display value="emergency"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="OBSENC"></code>
+                  <display value="observation encounter"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="SS"></code>
+                  <display value="short stay"></display>
+               </code>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="location"></mustSupport>
+            <mustSupport value="period"></mustSupport>
+            <mustSupport value="diagnosis"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="class"></mustSupport>
+            <mustSupport value="period"></mustSupport>
+            <codeFilter>
+               <path value="class"></path>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="IMP"></code>
+                  <display value="inpatient encounter"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="ACUTE"></code>
+                  <display value="inpatient acute"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="NONAC"></code>
+                  <display value="inpatient non-acute"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="EMER"></code>
+                  <display value="emergency"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="OBSENC"></code>
+                  <display value="observation encounter"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="SS"></code>
+                  <display value="short stay"></display>
+               </code>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Patient"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Patient"></profile>
+         </dataRequirement>
+      </Library>
+   </contained>
+   <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem">
+      <valueReference>
+         <reference value="Device/cqf-tooling"></reference>
+      </valueReference>
+   </extension>
+   <extension id="effective-data-requirements" url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-effectiveDataRequirements">
+      <valueReference>
+         <reference value="#effective-data-requirements"></reference>
+      </valueReference>
+   </extension>
+   <url value="http://nhsnlink.org/fhir/Measure/NHSNAntibioticTreatedCDIInitialPopulation"></url>
+   <identifier>
+      <system value="https://nhsnlink.org"></system>
+      <value value="NHSNAntibioticTreatedCDIInitialPopulation"></value>
+   </identifier>
+   <version value="0.000.01"></version>
+   <name value="NHSNAntibioticTreatedCDIInitialPopulation"></name>
+   <title value="Measure NHSN Antibiotic Treated CDI Initial Population"></title>
+   <date value="2022-06-17T07:37:14-04:00"></date>
+   <description value="Clostridioides difficile (C. difficile) is responsible for a spectrum of C. difficile infections (CDI), including uncomplicated diarrhea, pseudomembranous colitis, and toxic megacolon, which can, in some instances, lead to sepsis and even death. As outlined in the Healthcare Infection Control Practices Advisory Committee (HICPAC) guideline (1), C. difficile pathogens may require specialized monitoring to evaluate if intensified infection control efforts are required to reduce the occurrence of these organisms and related infections.  The goal of this module is to provide a mechanism for facilities to report and to analyze data that will inform infection prevention professionals of the impact of targeted prevention efforts. This protocol describes the electronic surveillance for Antibiotic-treated Healthcare Facility-onset CDI. "></description>
+   <library value="http://fhir.org/guides/cqf/Library/NHSNAntibioticTreatedCDIInitialPopulation"></library>
+   <scoring>
+      <coding>
+         <system value="http://terminology.hl7.org/CodeSystem/measure-scoring"></system>
+         <code value="cohort"></code>
+         <display value="Cohort"></display>
+      </coding>
+   </scoring>
+   <type>
+      <coding>
+         <system value="http://terminology.hl7.org/CodeSystem/measure-type"></system>
+         <code value="outcome"></code>
+         <display value="Outcome"></display>
+      </coding>
+   </type>
+   <rationale value="The Antibiotic-treated CDI Event Module provides a mechanism for facilities to report and to analyze CDI events based on a combination of C. difficile positive laboratory results and therapeutic treatment, and to receive analytic reports based on these data to inform targeted healthcare-associated (HAI) prevention efforts and facility benchmarking. The IP dQM provides the initial population and FHIR line-level data necessary for calculating the module metrics. "></rationale>
+   <definition value="Inpatient admission: For NHSN reporting purposes, the date admitted to the facility is hospital day one. NHSN defines an inpatient as any patient cared for or housed on an inpatient location. Local status may differ from NHSN definition. All days spent in an inpatient unit, regardless of local admission status and/or billing status are included in the counts of admissions and inpatient days. For NHSN reporting purposes, the date admitted to the facility is the calendar date that the patient physically locates to an inpatient location."></definition>
+   <definition value="ED/Observation encounter: Any patient visits to an ED or Observation location. One patient visiting equals one encounter. ED/Observation are considered outpatient locations."></definition>
+   <definition value="Finalized encounter or admission: Discharged patients with finalized complete medical billing coding. "></definition>
+   <definition value="HOT-CDI:  Healthcare Facility-Onset Antibiotic-Treated C. difficile Infection Event"></definition>
+   <definition value="COT-CDI: Community-Onset Antibiotic-Treated C. difficile Infection Event"></definition>
+   <definition value="Outpatient CO-CDI: Outpatient Community-Onset C. difficile Infection Event"></definition>
+   <definition value="Qualifying C. difficile assays:   Qualifying C. difficile assays within the CDI Event Module include:       1. Positive laboratory test result for C. difficile toxin A and/or toxin B, OR      2. Any detection of toxin-producing C. difficile organisms by culture or other laboratory means on an unformed stool specimen that conforms to the container.   Testing methods include, but are not limited to:      1. Molecular assays (e.g., PCR, NAAT)      2. Toxin assays (e.g., EIA) "></definition>
+   <definition value="Qualifying Antimicrobial Therapy (QAT):  Qualifying Antimicrobial Therapy within the CDI Event includes administration of a new therapeutic agent for the indicated treatment duration within the appropriate window period the C. difficile positive testing result according to the following criteria: 1. The therapeutic agent is considered new for the purposes of this definition if it was not given to the patient on either of the 2 calendar days preceding the current start date.  2. Therapeutic agents for CDI are defined as follows: a. Enteral* vancomycin  b. Enteral* metronidazole c. Intravenous (IV) metronidazole d. Enteral* fidaxomicin *Enteral routes include any route that allows absorption via the gastrointestinal tract, and as examples include oral (PO), rectal (PR), and administration via nasogastric (NG), orogastric (OG), gastrostomy (G-tube), and gastrojejunostomy tube (G-J tube). Note: bezlotoxumab is not included as it is utilized primarily in outpatient settings.       3. Treatment Duration: A patient must have had at least 5 consecutive calendar days of appropriate    antimicrobials to meet QAT criteria. Furthermore: o If a patient is discharged, dies, transitions to hospice care, or is transferred to another facility before 5 QATs are met, then the QAT requirement is still met as long as the QATs are on consecutive days until the day of, or 1 calendar day prior to the discharge, death, transition to hospice care, or transfer to another facility. o Treatment will be considered consecutive if the therapeutic agents are administered daily with a gap of up to 1 calendar day       4. Window Period: The date the C. difficile positive stool specimen is collected is the center of a window period extending both 2 calendar days before and 2 calendar days after the stool specimen.  o The start date of at least one therapeutic agent must fall within the window period. The therapeutic agent or route of administration of agent can be changed as long as the start date of at least one therapeutic agent falls within the window period. o Therapeutic agents with start dates prior to the window period will not count toward QAT. "></definition>
+   <group>
+      <population>
+         <code>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/measure-population"></system>
+               <code value="initial-population"></code>
+               <display value="Initial Population"></display>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql.identifier"></language>
+            <expression value="Initial Population"></expression>
+         </criteria>
+      </population>
+   </group>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Encounter Locations"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Encounter with Chief Complaint"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Locations"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Stool Lab"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Lab With Specimen"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Stool DiagnosticReport"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Vital Signs"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Condition for Encounter Diagnosis"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Stool Specimen"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE ServiceRequest"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE MedicationRequest"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE MedicationAdministration"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE MedicationAdministration Filter With Code"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Claim"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Coverage"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE ExplanationOfBenefit"></expression>
+      </criteria>
+   </supplementalData>
+</Measure>
