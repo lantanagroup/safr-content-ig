@@ -133,15 +133,22 @@ define "SDE Diagnostic Report Stool":
     such that Global."Normalize Interval"(CdiDiagnosticReportLab.effective) during InitialPopulation.period
       and CdiDiagnosticReportLab.status in {'final'}
 
-define "SDE Vital Signs Observation":
-  [Observation] ObservationVS
+define "SDE Body Weight Observation":
+  [Observation: "body weight"] O
     with "Initial Population" InitialPopulation 
-    such that Global."Normalize Interval"(ObservationVS.effective) during InitialPopulation.period
-      and ObservationVS.status in {'final'}
-      and FHIRHelpers.ToConcept(ObservationVS.code) in {"body weight", "body height"}
-    with ObservationVS.category category
+    such that Global."Normalize Interval"(O.effective) during InitialPopulation.period
+      and O.status in {'final'}
+    with O.category category
     such that category ~"vital-signs"
 
+define "SDE Body Height Observation":
+  [Observation: "body height"] O
+    with "Initial Population" InitialPopulation 
+    such that Global."Normalize Interval"(O.effective) during InitialPopulation.period
+      and O.status in {'final'}
+    with O.category category
+    such that category ~"vital-signs"
+    
 define "SDE Condition":
   [Condition] Conditions 
   with "Initial Population" InitialPopulation
@@ -198,16 +205,23 @@ define "SDE Medication Administration":
   such that Global."Normalize Interval"(MedicationAdministration.effective) during InitialPopulation.period
     and MedicationAdministration.status in {'completed', 'in-progress'}
 
-define "SDE Medication Administration Fidaxomicin, Vancomycin, and Metronidazole":
+define "SDE Medication Administration Fidaxomicin, Vancomycin, and Metronidazole1":
 [MedicationAdministration: "Fidaxomicin, Vancomycin, and Metronidazole"] MedicationAdministrationWithCode
   with "Initial Population" InitialPopulation
   such that Global."Normalize Interval"(MedicationAdministrationWithCode.effective) during InitialPopulation.period
     and MedicationAdministrationWithCode.status in {'completed', 'in-progress'}
+
+define "SDE Medication Administration Fidaxomicin, Vancomycin, and Metronidazole":
+[MedicationAdministration] MedicationAdministrationWithCode
+  with "Initial Population" InitialPopulation
+  such that Global."Normalize Interval"(MedicationAdministrationWithCode.effective) during InitialPopulation.period
+    and MedicationAdministrationWithCode.status in {'completed', 'in-progress'}
+    and GetMedicationCode(MedicationAdministrationWithCode.medication) in "Fidaxomicin, Vancomycin, and Metronidazole" 
    
 define "SDE Payer": 
 	SDE."SDE Payer" Payer
-  with "Initial Population" InitialPopulation
-  such that start of Payer.period before end of InitialPopulation.period
+ with "Initial Population" InitialPopulation
+ such that start of Payer.period before end of InitialPopulation.period
 
 
 //-----------------------------------------------------------------
