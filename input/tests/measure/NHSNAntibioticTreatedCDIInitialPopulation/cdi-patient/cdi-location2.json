@@ -1,0 +1,67 @@
+{
+    "resourceType": "Location",
+    "id": "a71108b2-c882-41f8-be27-7552d4a119a8",
+    "meta": {
+      "versionId": "1",
+      "lastUpdated": "2022-07-16T20:26:12.991+00:00",
+      "source": "#oAZK3TV9ymrvMfue",
+      "profile": [
+        "http://hl7.org/fhir/us/core/StructureDefinition/us-core-location"
+      ]
+    },
+    "identifier": [
+      {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "0f1a75c6-3c02-3055-8852-0b64cc1565f5"
+      }
+    ],
+    "status": "active",
+    "name": "PCP66774",
+    "type": [
+        {
+			"coding": [
+				{
+					"system": "https://www.cdc.gov/nhsn/cdaportal/terminology/codesystem/hsloc.html",				
+                    "code": "1031-4",
+                    "display": "Neurosurgical Critical Care"
+				}
+			]
+		},
+        {
+			"coding": [
+				{
+					"system": "https://www.cdc.gov/nhsn/cdaportal/terminology/codesystem/hsloc.html",
+					"code": "1027-2",
+					"display": "Medical Critical Care"
+				}
+			]
+		}
+
+    ],
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "978-682-0955"
+      }
+    ],
+    "address": {
+      "line": [
+        "867 TURNPIKE ST"
+      ],
+      "city": "NORTH ANDOVER",
+      "state": "MA",
+      "postalCode": "01845-6142",
+      "country": "US"
+    },
+    "position": {
+      "longitude": -71.091334,
+      "latitude": 42.673909
+    },
+    "managingOrganization": {
+      "identifier": {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "7a4839dd-1728-3344-8a9f-40d4f1095053"
+      },
+      "display": "PCP66774"
+    }
+  }
