@@ -15,7 +15,7 @@ codesystem "Specimen Type": 'http://terminology.hl7.org/CodeSystem/v2-0487'
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
 
 valueset "Admit Source": 'http://terminology.hl7.org/ValueSet/encounter-admit-source'
-valueset "CDC Location Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
+valueset "Inpatient, Emergency, and Observation Locations": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
 valueset "Discharge Disposition": 'http://terminology.hl7.org/ValueSet/encounter-discharge-disposition'
 valueset "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292'
 valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
@@ -52,9 +52,9 @@ union [Encounter: "Observation Services"]) QualifyingEncounters
     and QualifyingEncounters.period ends during "Measurement Period"
 
 define "Qualifying Location During Measurement Period":
-  [Encounter] Encounter
-    with Encounter.location EncounterLocation
-    such that Global.GetLocation(EncounterLocation.location).type in "CDC Location Codes"
+  [Encounter] Encounters
+    with Encounters.location EncounterLocation
+    such that Global.GetLocation(EncounterLocation.location).type in "Inpatient, Emergency, and Observation Locations"
      and start of EncounterLocation.period during "Measurement Period"
  
 define "Initial Population":
@@ -71,8 +71,8 @@ define "Initial Population":
 define "SDE Encounter Locations":
 	"Initial Population" InitialPopulation
   with InitialPopulation.location IntialPopulationLocation
-  such that ((Global.GetLocation(IntialPopulationLocation.location).type in "CDC Location Codes"
-    or Global.GetLocation(IntialPopulationLocation.location).physicalType in "CDC Location Codes")
+  such that ((Global.GetLocation(IntialPopulationLocation.location).type in "Inpatient, Emergency, and Observation Locations"
+    or Global.GetLocation(IntialPopulationLocation.location).physicalType in "Inpatient, Emergency, and Observation Locations")
     and IntialPopulationLocation.period during "Measurement Period")
  
 /*
@@ -112,7 +112,7 @@ define "SDE Location":
   where exists("Initial Population")
 
 define "SDE CDC Locations":
-	[Location: type in "CDC Location Codes"] CDCLationLocation
+	[Location: type in "Inpatient, Emergency, and Observation Locations"] CDCLationLocation
    where exists("Initial Population")
 
 define "SDE Observation CDI Stool":
@@ -126,14 +126,14 @@ define "SDE Laboratory Observation CDI Stool":
     with "Initial Population" InitialPopulation
     such that Global."Normalize Interval"(CdiObservationLab.effective) during InitialPopulation.period
       and CdiObservationLab.status ~ 'final'
-    with CdiObservationLab.category category
-    such that category ~ "laboratory"
+    with CdiObservationLab.category Category
+    such that Category ~ "laboratory"
 
 define "SDE Laboratory Observation CDI Stool 1":
-  [Observation: "Lab Tests for Clostridioides difficile Infection"] O
-    where (exists(O.category C where C ~ "laboratory"))
-    and Global."Normalize Interval"(O.effective) during "Measurement Period"
-    and O.status ~ 'final'
+  [Observation: "Lab Tests for Clostridioides difficile Infection"] Observations
+    where (exists(Observations.category Category where Category ~ "laboratory"))
+    and Global."Normalize Interval"(Observations.effective) during "Measurement Period"
+    and Observations.status ~ 'final'
   
 define "SDE Laboratory Observation CDI Stool with Specimen":
   "SDE Laboratory Observation CDI Stool" CdiObservationLab
@@ -299,4 +299,4 @@ define function "HasCategoryEncounterDiagnosis"(categories List<FHIR.CodeableCon
 
 define function "HasCdcLocationType"(types List<FHIR.CodeableConcept>):
   types type
-  return  type in "CDC Location Codes"
+  return  type in "Inpatient, Emergency, and Observation Locations"
