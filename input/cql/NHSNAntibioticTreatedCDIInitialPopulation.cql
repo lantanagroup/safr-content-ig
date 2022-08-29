@@ -28,14 +28,9 @@ code "body weight": '29463-7' from "LOINC" display 'Body Weight'
 code "body height": '8302-2' from "LOINC" display 'Body Height'
 code "Chief Complaint": 'CC' from "Diagnosis Role" display 'Chief Complaint'
 code "Discharge Diagnosis": 'DD' from "Diagnosis Role" display 'Discharge Diagnosis'
-//code "emergency": 'EMER' from "ActCode" display 'emergency'
 code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display'encounter-diagnosis'
-//code "inpatient acute": 'ACUTE' from "ActCode" display 'inpatient acute'
-//code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
-//code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
-//code "short stay": 'SS' from "ActCode" display 'short stay'
 code "stool": 'STL' from "Specimen Type" display 'stool'
 code "vital-signs": 'vital-signs'  from "Observation Category" display 'vital-signs'
 
@@ -61,12 +56,9 @@ define "Initial Population":
   "Qualifying Encounter During Measurement Period"
   union "Qualifying Location During Measurement Period"
 
-//define "Initial Population2":
-//  [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "emergency", "observation encounter", "short stay"}] Encounters
-//    where Encounters.status in {'finished'}
-//    and  Encounters.period overlaps "Measurement Period"
-
+//============================
 //Supplemental Data Element
+//============================
 
 define "SDE Encounter Locations":
 	"Initial Population" InitialPopulation
@@ -74,20 +66,19 @@ define "SDE Encounter Locations":
   such that ((Global.GetLocation(IntialPopulationLocation.location).type in "Inpatient, Emergency, and Observation Locations"
     or Global.GetLocation(IntialPopulationLocation.location).physicalType in "Inpatient, Emergency, and Observation Locations")
     and IntialPopulationLocation.period during "Measurement Period")
- 
-/*
+
 define "SDE Encounter Locations Test":
 	"Initial Population" InitialPopulation
   with InitialPopulation.location IntialPopulationLocation
-  such that ((Global.GetLocation(IntialPopulationLocation.location).type in "CDC Location Codes"
-    or Global.GetLocation(IntialPopulationLocation.location).physicalType in "CDC Location Codes")
+  such that ((Global.GetLocation(IntialPopulationLocation.location).type in "Inpatient, Emergency, and Observation Locations"
+    or Global.GetLocation(IntialPopulationLocation.location).physicalType in "Inpatient, Emergency, and Observation Locations")
     and IntialPopulationLocation.period during "Measurement Period")
   return Tuple{
     encounter: InitialPopulation,
     locationPeriodStart: InitialPopulation.location.period.start,
     locationPeriodEnd: InitialPopulation.location.period.end,
     locationType: GetLocations(InitialPopulation.location.location).type.coding.display
-  }*/ 
+  } 
 
 define "SDE Chief Complaint":
   "Initial Population" EncounterCC
@@ -111,9 +102,11 @@ define "SDE Location":
   [Location] Location
   where exists("Initial Population")
 
+
 define "SDE CDC Locations":
 	[Location: type in "Inpatient, Emergency, and Observation Locations"] CDCLationLocation
    where exists("Initial Population")
+
 
 define "SDE Observation CDI Stool":
   [Observation: "Lab Tests for Clostridioides difficile Infection"] CdiObservationLab
