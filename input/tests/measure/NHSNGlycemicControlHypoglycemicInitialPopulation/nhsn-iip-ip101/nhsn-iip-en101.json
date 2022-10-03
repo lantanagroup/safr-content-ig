@@ -15,10 +15,10 @@
   },
   "type": [ {
     "coding": [ {
-      "system": "http://www.ama-assn.org/go/cpt",
-      "code": "101"
+      "system": "http://snomed.info/sct",
+      "code": "4525004"
     } ],
-    "text": "Medical consultation on inpatient"
+    "text": "Emergency department patient visit (procedure)"
   } ],
   "subject": {
     "reference": "Patient/nhsn-iip-ip101"
