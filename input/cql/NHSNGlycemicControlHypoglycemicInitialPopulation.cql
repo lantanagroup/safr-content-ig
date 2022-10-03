@@ -100,11 +100,33 @@ define function "GetSpecimen"(reference Reference):
   singleton from (
     [Specimen] S where S.id = Global.GetId(reference.reference)
   )
+
+define function "GetPatientExtensions"(domainResource DomainResource):
+  domainResource.extension E
+    where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
+      or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
+      or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
+      or E.url = 'https://hl7.org/fhir/us/core/StructureDefinition-us-core-genderIdentity'
+    return E
+
+define function "GetPatientAddress"(addresses List<FHIR.Address>):
+  addresses address
+  return FHIR.Address{
+    postalCode: address.postalCode
+  }
+
+define function "MedicationRequestResource"(medicationRequest MedicationRequest):
+  medicationRequest m
+  return MedicationRequest{
+    id: FHIR.id {value: 'new-' + m.id},
+    medication: GetMedicationCode(m.medication),
+    dosageInstruction: m.dosageInstruction
+  }
   
 //Supplement Data Elements
 define "SDE Chief Complaint":
-  "Initial Population" InitialPopulation
-  with InitialPopulation.diagnosis InitialPopulationDiagnosis
+  "Initial Population" IP
+  with IP.diagnosis InitialPopulationDiagnosis
   such that InitialPopulationDiagnosis.use ~ "Chief Complaint"
 
 define "SDE Condition":
@@ -159,3 +181,30 @@ define "SDE Specimen":
   [Specimen] Specimen
   with "Initial Population" InitialPopulation
   such that Global."Normalize Interval"(Specimen.collection.collected) during InitialPopulation.period
+
+//Change on CQF ruler happened on 8/12. Check to make sure CQF-Ruler version is dated at or after (version 2.0.0). 
+//Wait 2-3 days before the changes are actually applied to the CQF-Ruler.
+define "SDE Minimal Patient":
+  Patient{
+    id: Patient.id,
+    extension: GetPatientExtensions(Patient),
+    identifier: Patient.identifier,
+    gender: Patient.gender,
+    birthDate: Patient.birthDate,
+    deceased: Patient.deceased,
+    address: GetPatientAddress(Patient.address)
+  }
+  
+define "SDE Minimal Medication Requests":
+  [MedicationRequest] MedicationRequests
+  return MedicationRequestResource(MedicationRequests)
+
+/*define "SDE Resource Construction Test Inlib":
+  FHIR.Observation 
+  {
+    id: FHIR.id { value: 'observation-sdetestinlib-' + ToString(Now()) },
+    status: FHIR.ObservationStatus { value: 'final' },
+    code: FHIR.CodeableConcept { coding: { FHIR.Coding { code: FHIR.code { value: 'days-since-appointment' } } } },
+    subject: FHIR.Reference { reference: FHIR.string { value: Patient.id.value }}
+    //value: FHIR.integer { value: Abs(difference in days between end of SDE."Last Appointment".period and ToDateTime(Today())) }
+  }*/
