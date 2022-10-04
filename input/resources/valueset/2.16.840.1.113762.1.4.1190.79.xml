@@ -1,0 +1,1514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet xmlns="http://hl7.org/fhir">
+    <id value="2.16.840.1.113762.1.4.1190.79"/>
+    <meta>
+        <versionId value="5"/>
+        <lastUpdated value="2022-07-20T01:02:37.000-04:00"/>
+    </meta>
+    <text>
+        <status value="generated"/>
+        <div xmlns="http://www.w3.org/1999/xhtml">
+            <h3>
+                Value Set Contents
+            </h3>
+            <p>
+                This value set contains 97 concepts
+            </p>
+            <p>
+                All codes from system
+                <code>
+                    http://www.nlm.nih.gov/research/umls/rxnorm
+                </code>
+            </p>
+            <table class="codes">
+                <tr>
+                    <td style="white-space:nowrap">
+                        <b>
+                            Code
+                        </b>
+                    </td>
+                    <td>
+                        <b>
+                            Display
+                        </b>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-103866"/>
+                        103866
+                    </td>
+                    <td>
+                        metronidazole benzoate
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1111103"/>
+                        1111103
+                    </td>
+                    <td>
+                        fidaxomicin
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1111104"/>
+                        1111104
+                    </td>
+                    <td>
+                        fidaxomicin 200 MG
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1111105"/>
+                        1111105
+                    </td>
+                    <td>
+                        fidaxomicin Oral Tablet
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1111106"/>
+                        1111106
+                    </td>
+                    <td>
+                        fidaxomicin 200 MG Oral Tablet
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1111108"/>
+                        1111108
+                    </td>
+                    <td>
+                        fidaxomicin 200 MG [Dificid]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1111109"/>
+                        1111109
+                    </td>
+                    <td>
+                        fidaxomicin Oral Tablet [Dificid]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1111110"/>
+                        1111110
+                    </td>
+                    <td>
+                        fidaxomicin 200 MG Oral Tablet [Dificid]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-11124"/>
+                        11124
+                    </td>
+                    <td>
+                        vancomycin
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1160499"/>
+                        1160499
+                    </td>
+                    <td>
+                        vancomycin Injectable Product
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1160500"/>
+                        1160500
+                    </td>
+                    <td>
+                        vancomycin Oral Liquid Product
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1160501"/>
+                        1160501
+                    </td>
+                    <td>
+                        vancomycin Oral Product
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1160502"/>
+                        1160502
+                    </td>
+                    <td>
+                        vancomycin Pill
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1164081"/>
+                        1164081
+                    </td>
+                    <td>
+                        metronidazole Injectable Product
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1164083"/>
+                        1164083
+                    </td>
+                    <td>
+                        metronidazole Oral Product
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1164084"/>
+                        1164084
+                    </td>
+                    <td>
+                        metronidazole Pill
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1165014"/>
+                        1165014
+                    </td>
+                    <td>
+                        fidaxomicin Oral Product
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1165015"/>
+                        1165015
+                    </td>
+                    <td>
+                        fidaxomicin Pill
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1495038"/>
+                        1495038
+                    </td>
+                    <td>
+                        vancomycin 25 MG/ML
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1807507"/>
+                        1807507
+                    </td>
+                    <td>
+                        vancomycin Injection
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1807508"/>
+                        1807508
+                    </td>
+                    <td>
+                        200 ML vancomycin 5 MG/ML Injection
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1807510"/>
+                        1807510
+                    </td>
+                    <td>
+                        150 ML vancomycin 5 MG/ML Injection
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1807511"/>
+                        1807511
+                    </td>
+                    <td>
+                        100 ML vancomycin 5 MG/ML Injection
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1807512"/>
+                        1807512
+                    </td>
+                    <td>
+                        vancomycin 1000 MG
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1807513"/>
+                        1807513
+                    </td>
+                    <td>
+                        vancomycin 1000 MG Injection
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1807515"/>
+                        1807515
+                    </td>
+                    <td>
+                        vancomycin 500 MG
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1807516"/>
+                        1807516
+                    </td>
+                    <td>
+                        vancomycin 500 MG Injection
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1807517"/>
+                        1807517
+                    </td>
+                    <td>
+                        vancomycin 750 MG
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1807518"/>
+                        1807518
+                    </td>
+                    <td>
+                        vancomycin 750 MG Injection
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-1863330"/>
+                        1863330
+                    </td>
+                    <td>
+                        metronidazole Injection
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-199055"/>
+                        199055
+                    </td>
+                    <td>
+                        metronidazole 375 MG Oral Capsule
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2000127"/>
+                        2000127
+                    </td>
+                    <td>
+                        vancomycin 25 MG/ML Oral Solution
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2000129"/>
+                        2000129
+                    </td>
+                    <td>
+                        vancomycin 25 MG/ML [Firvanq]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2000130"/>
+                        2000130
+                    </td>
+                    <td>
+                        vancomycin Oral Solution [Firvanq]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2000133"/>
+                        2000133
+                    </td>
+                    <td>
+                        vancomycin 25 MG/ML Oral Solution [Firvanq]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2000134"/>
+                        2000134
+                    </td>
+                    <td>
+                        vancomycin 50 MG/ML Oral Solution
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2000135"/>
+                        2000135
+                    </td>
+                    <td>
+                        vancomycin 50 MG/ML [Firvanq]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2000136"/>
+                        2000136
+                    </td>
+                    <td>
+                        vancomycin 50 MG/ML Oral Solution [Firvanq]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-201848"/>
+                        201848
+                    </td>
+                    <td>
+                        vancomycin 125 MG Oral Capsule [Vancocin]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-201849"/>
+                        201849
+                    </td>
+                    <td>
+                        vancomycin 250 MG Oral Capsule [Vancocin]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2049887"/>
+                        2049887
+                    </td>
+                    <td>
+                        vancomycin 1250 MG
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2049888"/>
+                        2049888
+                    </td>
+                    <td>
+                        vancomycin 1250 MG Injection
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2049889"/>
+                        2049889
+                    </td>
+                    <td>
+                        vancomycin 1500 MG
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2049890"/>
+                        2049890
+                    </td>
+                    <td>
+                        vancomycin 1500 MG Injection
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2049891"/>
+                        2049891
+                    </td>
+                    <td>
+                        vancomycin 250 MG Injection
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-207287"/>
+                        207287
+                    </td>
+                    <td>
+                        metronidazole 250 MG Oral Tablet [Flagyl]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-207290"/>
+                        207290
+                    </td>
+                    <td>
+                        metronidazole 500 MG Oral Tablet [Flagyl]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2118448"/>
+                        2118448
+                    </td>
+                    <td>
+                        300 ML vancomycin 5 MG/ML Injection
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2118449"/>
+                        2118449
+                    </td>
+                    <td>
+                        400 ML vancomycin 5 MG/ML Injection
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2279840"/>
+                        2279840
+                    </td>
+                    <td>
+                        fidaxomicin 40 MG/ML
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2279841"/>
+                        2279841
+                    </td>
+                    <td>
+                        fidaxomicin Oral Liquid Product
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2279842"/>
+                        2279842
+                    </td>
+                    <td>
+                        fidaxomicin Oral Suspension
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2279843"/>
+                        2279843
+                    </td>
+                    <td>
+                        fidaxomicin 40 MG/ML Oral Suspension
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2279844"/>
+                        2279844
+                    </td>
+                    <td>
+                        fidaxomicin 40 MG/ML [Dificid]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2279845"/>
+                        2279845
+                    </td>
+                    <td>
+                        fidaxomicin Oral Suspension [Dificid]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2279847"/>
+                        2279847
+                    </td>
+                    <td>
+                        fidaxomicin 40 MG/ML Oral Suspension [Dificid]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2387078"/>
+                        2387078
+                    </td>
+                    <td>
+                        250 ML vancomycin 5 MG/ML Injection
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-2387079"/>
+                        2387079
+                    </td>
+                    <td>
+                        350 ML vancomycin 5 MG/ML Injection
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-239209"/>
+                        239209
+                    </td>
+                    <td>
+                        vancomycin 100 MG/ML Injectable Solution
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-311681"/>
+                        311681
+                    </td>
+                    <td>
+                        metronidazole 500 MG Oral Tablet
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-311683"/>
+                        311683
+                    </td>
+                    <td>
+                        100 ML metronidazole 5 MG/ML Injection
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-313570"/>
+                        313570
+                    </td>
+                    <td>
+                        vancomycin 125 MG Oral Capsule
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-313571"/>
+                        313571
+                    </td>
+                    <td>
+                        vancomycin 250 MG Oral Capsule
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-313572"/>
+                        313572
+                    </td>
+                    <td>
+                        vancomycin 50 MG/ML Injectable Solution
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-314106"/>
+                        314106
+                    </td>
+                    <td>
+                        metronidazole 250 MG Oral Tablet
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-316300"/>
+                        316300
+                    </td>
+                    <td>
+                        metronidazole 250 MG
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-316301"/>
+                        316301
+                    </td>
+                    <td>
+                        metronidazole 375 MG
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-316302"/>
+                        316302
+                    </td>
+                    <td>
+                        metronidazole 5 MG/ML
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-317428"/>
+                        317428
+                    </td>
+                    <td>
+                        metronidazole 500 MG
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-328783"/>
+                        328783
+                    </td>
+                    <td>
+                        vancomycin 125 MG
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-328784"/>
+                        328784
+                    </td>
+                    <td>
+                        vancomycin 250 MG
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-328858"/>
+                        328858
+                    </td>
+                    <td>
+                        vancomycin 50 MG/ML
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-330379"/>
+                        330379
+                    </td>
+                    <td>
+                        metronidazole 750 MG
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-330528"/>
+                        330528
+                    </td>
+                    <td>
+                        vancomycin 5 MG/ML
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-335218"/>
+                        335218
+                    </td>
+                    <td>
+                        metronidazole 125 MG
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-342893"/>
+                        342893
+                    </td>
+                    <td>
+                        vancomycin 100 MG/ML
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-372895"/>
+                        372895
+                    </td>
+                    <td>
+                        metronidazole Oral Capsule
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-372897"/>
+                        372897
+                    </td>
+                    <td>
+                        metronidazole Oral Tablet
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-372898"/>
+                        372898
+                    </td>
+                    <td>
+                        metronidazole Extended Release Oral Tablet
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-374281"/>
+                        374281
+                    </td>
+                    <td>
+                        vancomycin Oral Capsule
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-374282"/>
+                        374282
+                    </td>
+                    <td>
+                        vancomycin Oral Solution
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-375983"/>
+                        375983
+                    </td>
+                    <td>
+                        vancomycin Injectable Solution
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-402421"/>
+                        402421
+                    </td>
+                    <td>
+                        vancomycin Oral Capsule [Vancocin]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-565657"/>
+                        565657
+                    </td>
+                    <td>
+                        metronidazole 500 MG [Flagyl]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-566030"/>
+                        566030
+                    </td>
+                    <td>
+                        vancomycin 125 MG [Vancocin]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-566031"/>
+                        566031
+                    </td>
+                    <td>
+                        vancomycin 250 MG [Vancocin]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-568071"/>
+                        568071
+                    </td>
+                    <td>
+                        metronidazole 250 MG [Flagyl]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-636559"/>
+                        636559
+                    </td>
+                    <td>
+                        24 HR metronidazole 750 MG Extended Release Oral Tablet
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-66955"/>
+                        66955
+                    </td>
+                    <td>
+                        vancomycin hydrochloride
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-687202"/>
+                        687202
+                    </td>
+                    <td>
+                        metronidazole 750 MG [Flagyl]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-687203"/>
+                        687203
+                    </td>
+                    <td>
+                        metronidazole Extended Release Oral Tablet [Flagyl]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-687204"/>
+                        687204
+                    </td>
+                    <td>
+                        24 HR metronidazole 750 MG Extended Release Oral Tablet [Flagyl]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-687209"/>
+                        687209
+                    </td>
+                    <td>
+                        metronidazole 375 MG [Flagyl]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-687210"/>
+                        687210
+                    </td>
+                    <td>
+                        metronidazole Oral Capsule [Flagyl]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-687211"/>
+                        687211
+                    </td>
+                    <td>
+                        metronidazole 375 MG Oral Capsule [Flagyl]
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-6922"/>
+                        6922
+                    </td>
+                    <td>
+                        metronidazole
+                    </td>
+                </tr>
+                <tr>
+                    <td style="white-space:nowrap">
+                        <a name="http---www.nlm.nih.gov-research-umls-rxnorm-92719"/>
+                        92719
+                    </td>
+                    <td>
+                        metronidazole Oral Tablet [Flagyl]
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </text>
+    <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.79"/>
+    <version value="20220720"/>
+    <name value="Fidaxomicin, Vancomycin, and Metronidazole"/>
+    <status value="active"/>
+    <date value="2022-07-20T01:02:37-04:00"/>
+    <publisher value="CDC NHSN"/>
+    <expansion>
+        <identifier value="urn:uuid:ec8f7dfd-1d5f-4cfe-ae04-c3c3159e8851"/>
+        <timestamp value="2022-07-20T09:43:42-04:00"/>
+        <total value="97"/>
+        <offset value="0"/>
+        <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+        </parameter>
+        <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+        </parameter>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="103866"/>
+            <display value="metronidazole benzoate"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1111103"/>
+            <display value="fidaxomicin"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1111104"/>
+            <display value="fidaxomicin 200 MG"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1111105"/>
+            <display value="fidaxomicin Oral Tablet"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1111106"/>
+            <display value="fidaxomicin 200 MG Oral Tablet"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1111108"/>
+            <display value="fidaxomicin 200 MG [Dificid]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1111109"/>
+            <display value="fidaxomicin Oral Tablet [Dificid]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1111110"/>
+            <display value="fidaxomicin 200 MG Oral Tablet [Dificid]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="11124"/>
+            <display value="vancomycin"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1160499"/>
+            <display value="vancomycin Injectable Product"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1160500"/>
+            <display value="vancomycin Oral Liquid Product"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1160501"/>
+            <display value="vancomycin Oral Product"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1160502"/>
+            <display value="vancomycin Pill"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1164081"/>
+            <display value="metronidazole Injectable Product"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1164083"/>
+            <display value="metronidazole Oral Product"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1164084"/>
+            <display value="metronidazole Pill"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1165014"/>
+            <display value="fidaxomicin Oral Product"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1165015"/>
+            <display value="fidaxomicin Pill"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1495038"/>
+            <display value="vancomycin 25 MG/ML"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1807507"/>
+            <display value="vancomycin Injection"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1807508"/>
+            <display value="200 ML vancomycin 5 MG/ML Injection"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1807510"/>
+            <display value="150 ML vancomycin 5 MG/ML Injection"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1807511"/>
+            <display value="100 ML vancomycin 5 MG/ML Injection"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1807512"/>
+            <display value="vancomycin 1000 MG"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1807513"/>
+            <display value="vancomycin 1000 MG Injection"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1807515"/>
+            <display value="vancomycin 500 MG"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1807516"/>
+            <display value="vancomycin 500 MG Injection"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1807517"/>
+            <display value="vancomycin 750 MG"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1807518"/>
+            <display value="vancomycin 750 MG Injection"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="1863330"/>
+            <display value="metronidazole Injection"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="199055"/>
+            <display value="metronidazole 375 MG Oral Capsule"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2000127"/>
+            <display value="vancomycin 25 MG/ML Oral Solution"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2000129"/>
+            <display value="vancomycin 25 MG/ML [Firvanq]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2000130"/>
+            <display value="vancomycin Oral Solution [Firvanq]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2000133"/>
+            <display value="vancomycin 25 MG/ML Oral Solution [Firvanq]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2000134"/>
+            <display value="vancomycin 50 MG/ML Oral Solution"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2000135"/>
+            <display value="vancomycin 50 MG/ML [Firvanq]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2000136"/>
+            <display value="vancomycin 50 MG/ML Oral Solution [Firvanq]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="201848"/>
+            <display value="vancomycin 125 MG Oral Capsule [Vancocin]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="201849"/>
+            <display value="vancomycin 250 MG Oral Capsule [Vancocin]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2049887"/>
+            <display value="vancomycin 1250 MG"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2049888"/>
+            <display value="vancomycin 1250 MG Injection"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2049889"/>
+            <display value="vancomycin 1500 MG"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2049890"/>
+            <display value="vancomycin 1500 MG Injection"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2049891"/>
+            <display value="vancomycin 250 MG Injection"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="207287"/>
+            <display value="metronidazole 250 MG Oral Tablet [Flagyl]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="207290"/>
+            <display value="metronidazole 500 MG Oral Tablet [Flagyl]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2118448"/>
+            <display value="300 ML vancomycin 5 MG/ML Injection"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2118449"/>
+            <display value="400 ML vancomycin 5 MG/ML Injection"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2279840"/>
+            <display value="fidaxomicin 40 MG/ML"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2279841"/>
+            <display value="fidaxomicin Oral Liquid Product"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2279842"/>
+            <display value="fidaxomicin Oral Suspension"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2279843"/>
+            <display value="fidaxomicin 40 MG/ML Oral Suspension"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2279844"/>
+            <display value="fidaxomicin 40 MG/ML [Dificid]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2279845"/>
+            <display value="fidaxomicin Oral Suspension [Dificid]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2279847"/>
+            <display value="fidaxomicin 40 MG/ML Oral Suspension [Dificid]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2387078"/>
+            <display value="250 ML vancomycin 5 MG/ML Injection"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="2387079"/>
+            <display value="350 ML vancomycin 5 MG/ML Injection"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="239209"/>
+            <display value="vancomycin 100 MG/ML Injectable Solution"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="311681"/>
+            <display value="metronidazole 500 MG Oral Tablet"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="311683"/>
+            <display value="100 ML metronidazole 5 MG/ML Injection"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="313570"/>
+            <display value="vancomycin 125 MG Oral Capsule"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="313571"/>
+            <display value="vancomycin 250 MG Oral Capsule"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="313572"/>
+            <display value="vancomycin 50 MG/ML Injectable Solution"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="314106"/>
+            <display value="metronidazole 250 MG Oral Tablet"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="316300"/>
+            <display value="metronidazole 250 MG"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="316301"/>
+            <display value="metronidazole 375 MG"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="316302"/>
+            <display value="metronidazole 5 MG/ML"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="317428"/>
+            <display value="metronidazole 500 MG"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="328783"/>
+            <display value="vancomycin 125 MG"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="328784"/>
+            <display value="vancomycin 250 MG"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="328858"/>
+            <display value="vancomycin 50 MG/ML"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="330379"/>
+            <display value="metronidazole 750 MG"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="330528"/>
+            <display value="vancomycin 5 MG/ML"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="335218"/>
+            <display value="metronidazole 125 MG"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="342893"/>
+            <display value="vancomycin 100 MG/ML"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="372895"/>
+            <display value="metronidazole Oral Capsule"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="372897"/>
+            <display value="metronidazole Oral Tablet"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="372898"/>
+            <display value="metronidazole Extended Release Oral Tablet"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="374281"/>
+            <display value="vancomycin Oral Capsule"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="374282"/>
+            <display value="vancomycin Oral Solution"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="375983"/>
+            <display value="vancomycin Injectable Solution"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="402421"/>
+            <display value="vancomycin Oral Capsule [Vancocin]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="565657"/>
+            <display value="metronidazole 500 MG [Flagyl]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="566030"/>
+            <display value="vancomycin 125 MG [Vancocin]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="566031"/>
+            <display value="vancomycin 250 MG [Vancocin]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="568071"/>
+            <display value="metronidazole 250 MG [Flagyl]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="636559"/>
+            <display value="24 HR metronidazole 750 MG Extended Release Oral Tablet"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="66955"/>
+            <display value="vancomycin hydrochloride"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="687202"/>
+            <display value="metronidazole 750 MG [Flagyl]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="687203"/>
+            <display value="metronidazole Extended Release Oral Tablet [Flagyl]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="687204"/>
+            <display value="24 HR metronidazole 750 MG Extended Release Oral Tablet [Flagyl]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="687209"/>
+            <display value="metronidazole 375 MG [Flagyl]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="687210"/>
+            <display value="metronidazole Oral Capsule [Flagyl]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="687211"/>
+            <display value="metronidazole 375 MG Oral Capsule [Flagyl]"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="6922"/>
+            <display value="metronidazole"/>
+        </contains>
+        <contains>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <version value="07142022"/>
+            <code value="92719"/>
+            <display value="metronidazole Oral Tablet [Flagyl]"/>
+        </contains>
+    </expansion>
+</ValueSet>
