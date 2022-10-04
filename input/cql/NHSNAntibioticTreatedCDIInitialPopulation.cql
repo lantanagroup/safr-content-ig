@@ -28,9 +28,14 @@ code "body weight": '29463-7' from "LOINC" display 'Body Weight'
 code "body height": '8302-2' from "LOINC" display 'Body Height'
 code "Chief Complaint": 'CC' from "Diagnosis Role" display 'Chief Complaint'
 code "Discharge Diagnosis": 'DD' from "Diagnosis Role" display 'Discharge Diagnosis'
+code "emergency": 'EMER' from "ActCode" display 'emergency'
 code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display'encounter-diagnosis'
+code "inpatient acute": 'ACUTE' from "ActCode" display 'inpatient acute'
+code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
+code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
+code "short stay": 'SS' from "ActCode" display 'short stay'
 code "stool": 'STL' from "Specimen Type" display 'stool'
 code "vital-signs": 'vital-signs'  from "Observation Category" display 'vital-signs'
 
@@ -42,7 +47,8 @@ context Patient
 define "Qualifying Encounter During Measurement Period":
  ( [Encounter: "Encounter Inpatient"]
 union   [Encounter: "Emergency Department Visit"]
-union [Encounter: "Observation Services"]) QualifyingEncounters
+union [Encounter: "Observation Services"]
+union [Encounter: class in {"emergency", "inpatient acute", "inpatient encounter", "inpatient non-acute", "short stay"}]) QualifyingEncounters
   where QualifyingEncounters .status = 'finished'
     and QualifyingEncounters.period ends during "Measurement Period"
 
@@ -52,6 +58,12 @@ define "Qualifying Location During Measurement Period":
     such that Global.GetLocation(EncounterLocation.location).type in "Inpatient, Emergency, and Observation Locations"
      and start of EncounterLocation.period during "Measurement Period"
  
+define "Encounter Location During Measurement Period":
+  [Encounter] Encounters
+    with Encounters.location EncounterLocation
+    such that exists(Encounters.location)
+    and EncounterLocation.period during "Measurement Period"
+
 define "Initial Population":
   "Qualifying Encounter During Measurement Period"
   union "Qualifying Location During Measurement Period"
