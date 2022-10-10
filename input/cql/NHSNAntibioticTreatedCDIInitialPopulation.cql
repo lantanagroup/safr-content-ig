@@ -57,12 +57,14 @@ define "Qualifying Location During Measurement Period":
     with Encounters.location EncounterLocation
     such that Global.GetLocation(EncounterLocation.location).type in "Inpatient, Emergency, and Observation Locations"
      and start of EncounterLocation.period during "Measurement Period"
- 
+
+/* 
 define "Encounter Location During Measurement Period":
   [Encounter] Encounters
     with Encounters.location EncounterLocation
     such that exists(Encounters.location)
     and EncounterLocation.period during "Measurement Period"
+*/
 
 define "Initial Population":
   "Qualifying Encounter During Measurement Period"
@@ -79,6 +81,7 @@ define "SDE Encounter Locations":
     or Global.GetLocation(IntialPopulationLocation.location).physicalType in "Inpatient, Emergency, and Observation Locations")
     and IntialPopulationLocation.period during "Measurement Period")
 
+/*
 define "SDE Encounter Locations Test":
 	"Initial Population" InitialPopulation
   with InitialPopulation.location IntialPopulationLocation
@@ -90,7 +93,8 @@ define "SDE Encounter Locations Test":
     locationPeriodStart: InitialPopulation.location.period.start,
     locationPeriodEnd: InitialPopulation.location.period.end,
     locationType: GetLocations(InitialPopulation.location.location).type.coding.display
-  } 
+  }
+*/ 
 
 define "SDE Chief Complaint":
   "Initial Population" EncounterCC
@@ -190,7 +194,7 @@ define "SDE Specimen":
     with "Initial Population" InitialPopulation
     such that Global."Normalize Interval"(Specimen.collection.collected) during InitialPopulation.period
 
-define "SDE CDI Specimen ":
+define "SDE CDI Specimen":
   [Observation: "Lab Tests for Clostridioides difficile Infection"] ObservationWithSpecimen
     let ReferenceToSpecimen: GetSpecimen(ObservationWithSpecimen.specimen)
     with "Initial Population" InitialPopulation 
