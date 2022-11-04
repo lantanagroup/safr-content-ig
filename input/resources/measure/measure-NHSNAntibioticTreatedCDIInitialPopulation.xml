@@ -341,7 +341,7 @@ define &quot;SDE Encounter Locations&quot;:
       </usage>
       <criteria>
          <language value="text/cql.identifier"></language>
-         <expression value="SDE Encounter with Chief Complaint"></expression>
+         <expression value="SDE Chief Complaint"></expression>
       </criteria>
    </supplementalData>
    <supplementalData>
@@ -354,7 +354,7 @@ define &quot;SDE Encounter Locations&quot;:
       </usage>
       <criteria>
          <language value="text/cql.identifier"></language>
-         <expression value="SDE Locations"></expression>
+         <expression value="SDE Encounter with Discharge Diagnosis"></expression>
       </criteria>
    </supplementalData>
    <supplementalData>
@@ -367,7 +367,7 @@ define &quot;SDE Encounter Locations&quot;:
       </usage>
       <criteria>
          <language value="text/cql.identifier"></language>
-         <expression value="SDE Stool Lab"></expression>
+         <expression value="SDE Encounter with Admit Source"></expression>
       </criteria>
    </supplementalData>
    <supplementalData>
@@ -380,7 +380,7 @@ define &quot;SDE Encounter Locations&quot;:
       </usage>
       <criteria>
          <language value="text/cql.identifier"></language>
-         <expression value="SDE Lab With Specimen"></expression>
+         <expression value="SDE Encounter with Discharge Dispositions"></expression>
       </criteria>
    </supplementalData>
    <supplementalData>
@@ -393,7 +393,7 @@ define &quot;SDE Encounter Locations&quot;:
       </usage>
       <criteria>
          <language value="text/cql.identifier"></language>
-         <expression value="SDE Stool DiagnosticReport"></expression>
+         <expression value="SDE Location"></expression>
       </criteria>
    </supplementalData>
    <supplementalData>
@@ -406,7 +406,7 @@ define &quot;SDE Encounter Locations&quot;:
       </usage>
       <criteria>
          <language value="text/cql.identifier"></language>
-         <expression value="SDE Vital Signs"></expression>
+         <expression value="SDE CDC Locations"></expression>
       </criteria>
    </supplementalData>
    <supplementalData>
@@ -419,7 +419,7 @@ define &quot;SDE Encounter Locations&quot;:
       </usage>
       <criteria>
          <language value="text/cql.identifier"></language>
-         <expression value="SDE Condition for Encounter Diagnosis"></expression>
+         <expression value="SDE Observation CDI Stool"></expression>
       </criteria>
    </supplementalData>
    <supplementalData>
@@ -432,7 +432,7 @@ define &quot;SDE Encounter Locations&quot;:
       </usage>
       <criteria>
          <language value="text/cql.identifier"></language>
-         <expression value="SDE Stool Specimen"></expression>
+         <expression value="SDE Laboratory Observation CDI Stool"></expression>
       </criteria>
    </supplementalData>
    <supplementalData>
@@ -445,7 +445,7 @@ define &quot;SDE Encounter Locations&quot;:
       </usage>
       <criteria>
          <language value="text/cql.identifier"></language>
-         <expression value="SDE ServiceRequest"></expression>
+         <expression value="SDE Laboratory Observation CDI Stool 1"></expression>
       </criteria>
    </supplementalData>
    <supplementalData>
@@ -458,7 +458,7 @@ define &quot;SDE Encounter Locations&quot;:
       </usage>
       <criteria>
          <language value="text/cql.identifier"></language>
-         <expression value="SDE MedicationRequest"></expression>
+         <expression value="SDE Laboratory Observation CDI Stool with Specimen"></expression>
       </criteria>
    </supplementalData>
    <supplementalData>
@@ -471,7 +471,7 @@ define &quot;SDE Encounter Locations&quot;:
       </usage>
       <criteria>
          <language value="text/cql.identifier"></language>
-         <expression value="SDE MedicationAdministration"></expression>
+         <expression value="SDE Observation with CDI Specimen"></expression>
       </criteria>
    </supplementalData>
    <supplementalData>
@@ -484,7 +484,7 @@ define &quot;SDE Encounter Locations&quot;:
       </usage>
       <criteria>
          <language value="text/cql.identifier"></language>
-         <expression value="SDE MedicationAdministration Filter With Code"></expression>
+         <expression value="SDE Diagnostic Report Stool"></expression>
       </criteria>
    </supplementalData>
    <supplementalData>
@@ -497,7 +497,7 @@ define &quot;SDE Encounter Locations&quot;:
       </usage>
       <criteria>
          <language value="text/cql.identifier"></language>
-         <expression value="SDE Claim"></expression>
+         <expression value="SDE Body Weight Observation"></expression>
       </criteria>
    </supplementalData>
    <supplementalData>
@@ -510,7 +510,7 @@ define &quot;SDE Encounter Locations&quot;:
       </usage>
       <criteria>
          <language value="text/cql.identifier"></language>
-         <expression value="SDE Coverage"></expression>
+         <expression value="SDE Body Height Observation"></expression>
       </criteria>
    </supplementalData>
    <supplementalData>
@@ -523,7 +523,98 @@ define &quot;SDE Encounter Locations&quot;:
       </usage>
       <criteria>
          <language value="text/cql.identifier"></language>
-         <expression value="SDE ExplanationOfBenefit"></expression>
+         <expression value="SDE Condition"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE EncounterDiagnosis Condition"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Specimen"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE CDI Specimen"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Service Request Clostridioides difficile Infection Lab"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Medication Request"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Medication Administration"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Payer"></expression>
       </criteria>
    </supplementalData>
 </Measure>
