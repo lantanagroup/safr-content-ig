@@ -28,10 +28,6 @@ define "SDE Ethnicity":
 
 define "SDE Payer":
   [Coverage: type in "Payer"] Payer
-        return {
-          code: Payer.type,
-          period: Payer.period
-        }
 
 define "SDE Race":
   (flatten (

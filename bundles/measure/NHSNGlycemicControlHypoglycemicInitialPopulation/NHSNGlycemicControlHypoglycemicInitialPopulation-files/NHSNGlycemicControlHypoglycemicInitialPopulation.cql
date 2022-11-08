@@ -1,4 +1,4 @@
-library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.002'
+library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.003'
 
 using FHIR version '4.0.1'
 
@@ -19,6 +19,7 @@ valueset "Antidiabetic Medications": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.
 valueset "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292'
 valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
 valueset "Observation Services": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143'
+valueset "Payer": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591' 
 
 code "Chief Complaint": 'CC' from "Diagnosis Role" display 'Chief complaint'
 code "emergency": 'EMER' from "ActCode" display 'emergency'
@@ -30,11 +31,16 @@ code "short stay": 'SS' from "ActCode" display 'short stay'
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display'encounter-diagnosis'
 
+
+
 parameter "Measurement Period" Interval<DateTime>
  default Interval[@2022-01-01T00:00:00.0, @2022-01-31T00:00:00.0)
 
 context Patient
 
+/*
+@author Arvind Jagannathan
+*/
 define "Initial Population":
   ("Inpatient Encounter"
   union "Patient Hospital Locations") InpatientEncounters
@@ -106,7 +112,7 @@ define function "GetPatientExtensions"(domainResource DomainResource):
     where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
       or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
       or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
-      or E.url = 'https://hl7.org/fhir/us/core/StructureDefinition-us-core-genderIdentity'
+      or E.url = 'https://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity'
     return E
 
 define function "GetPatientAddress"(addresses List<FHIR.Address>):
@@ -118,51 +124,178 @@ define function "GetPatientAddress"(addresses List<FHIR.Address>):
 define function "MedicationRequestResource"(medicationRequest MedicationRequest):
   medicationRequest m
   return MedicationRequest{
-    id: FHIR.id {value: 'new-' + m.id},
+    id: FHIR.id {value: 'LCR-' + m.id},
     medication: GetMedicationCode(m.medication),
-    dosageInstruction: m.dosageInstruction
+    dosageInstruction: getDosage(m),
+    intent: m.intent
   }
-  
+
+define function "getDosage"(medicationRequest MedicationRequest):
+  medicationRequest m
+  let dosages: m.dosageInstruction
+  return 
+    dosages d
+    return Dosage{
+      timing: d.timing,
+      doseAndRate: d.doseAndRate,
+      route: d.route
+    }
+
+define function "MedicationAdministrationResource"(medicationAdministration MedicationAdministration):
+  medicationAdministration m
+  return MedicationAdministration{
+    id: FHIR.id {value: 'LCR-' + m.id},
+    medication: GetMedicationCode(m.medication),
+    dosage: m.dosage,
+    effective: m.effective
+  }
+
+define function "MedicationResource"(medication Medication):
+  medication m
+  return Medication{
+    id: FHIR.id {value: 'LCR-' + m.id},
+    form: m.form
+  }
+
+define function "ConditionResource"(condition Condition):
+  condition c
+  return Condition{
+    id: FHIR.id {value: 'LCR-' + c.id},
+    clinicalStatus: c.clinicalStatus
+  }
+
+/*define "Encounter Test":
+  [Encounter] Encounters
+  return Encounter{
+    id: Encounters.id,
+    diagnosis: getDiagnosisTest(Encounters)
+  }
+
+define function "getDiagnosisTest"(encounter Encounter):
+  encounter e
+  let diagnoses: e.diagnosis
+  return
+    diagnoses d
+    where d.use ~ "Chief Complaint"
+    return FHIR.Encounter.Diagnosis{
+      use: d.use
+    }*/
+
+define function "EncounterResource"(encounter Encounter):
+  encounter e
+  return Encounter{
+    id: FHIR.id{value: 'LCR-' + e.id},
+    identifier: e.identifier,
+    period: e.period,
+    diagnosis: getDiagnosis(e),
+    hospitalization: getDischargeDisposition(e),
+    location: getEncounterLocation(e)
+  }
+
+define function "PatientResource"(patient Patient):
+  patient p
+  return Patient{
+    id: FHIR.id{value: 'LCR-' + p.id},
+    extension: GetPatientExtensions(p),
+    identifier: p.identifier,
+    gender: p.gender,
+    birthDate: p.birthDate,
+    deceased: p.deceased,
+    address: GetPatientAddress(p.address)
+  }
+
+define function "getDiagnosis"(encounter Encounter):
+  encounter e
+  let diagnoses: e.diagnosis
+  return
+    diagnoses d
+    where d.use ~ "Chief Complaint"
+    return d
+    
+define function "getDischargeDisposition"(encounter Encounter):
+  encounter e
+  let dischargeDisposition: e.hospitalization.dischargeDisposition
+  return
+    dischargeDisposition d
+    where d in "Discharge Disposition"
+    return e.hospitalization
+    
+define function "getEncounterLocation"(encounter Encounter):
+  encounter e
+  let locations: e.location
+  return
+    locations l
+    where l.physicalType in "Inpatient, Emergency, and Observation Locations"
+    or Global.GetLocation(l.location).type in "Inpatient, Emergency, and Observation Locations"
+    return l
+
+define function "ObservationResource"(observation Observation):
+  observation o
+  return Observation{
+    id: FHIR.id {value: 'LCR-' + o.id},
+    code: o.code,
+    effective: o.effective,
+    value: o.value
+  }
+
+define function "SpecimenResource"(specimen Specimen):
+  specimen s
+  return Specimen{
+    id: FHIR.id {value: 'LCR-' + s.id},
+    collection: s.collection
+  }
+
 //Supplement Data Elements
 define "SDE Chief Complaint":
   "Initial Population" IP
   with IP.diagnosis InitialPopulationDiagnosis
   such that InitialPopulationDiagnosis.use ~ "Chief Complaint"
+  return EncounterResource(IP)
 
 define "SDE Condition":
   [Condition] Conditions
   with "Initial Population" InitialPopulation
   such that Global."Normalize Interval"(Conditions.onset) overlaps InitialPopulation.period
+  return ConditionResource(Conditions)
   
 define "SDE Condition during Encounter":
   [Condition] ConditionEncounterDiagnosis
   with ConditionEncounterDiagnosis.category Category
   such that Category ~ "encounter-diagnosis"
     and exists("Initial Population")
+  return ConditionResource(ConditionEncounterDiagnosis)
     
 define "SDE Encounter Discharge Dispositions":
 	"Initial Population" DischargeDispositions 
   where DischargeDispositions.hospitalization.dischargeDisposition in "Discharge Disposition"
+  return EncounterResource(DischargeDispositions)
   
 define "SDE Encounter Locations":
   "Initial Population" InitialPopulation 
   where exists ( 
     InitialPopulation.location InitialPopulationLocation
-    where (Global.GetLocation(InitialPopulationLocation.location).type in "Inpatient, Emergency, and Observation Locations"   
+    where (Global.GetLocation(InitialPopulationLocation.location).type in "Inpatient, Emergency, and Observation Locations"
       and InitialPopulationLocation.period during InitialPopulation.period)
   )
+  return EncounterResource(InitialPopulation)
+
+define "SDE Initial Population Encounters":
+  "Initial Population" IP
+  return EncounterResource(IP)
 
 define "SDE Medication Administration":
 	[MedicationAdministration] MedicationAdministrations
   with "Initial Population" InitialPopulation
   such that start of Global."Normalize Interval"(MedicationAdministrations.effective) during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
     and start of Global."Normalize Interval"(MedicationAdministrations.effective) during "Measurement Period"
+  return MedicationAdministrationResource(MedicationAdministrations)
 
 define "SDE Medication Request":
 	[MedicationRequest] MedicationRequests
   with "Initial Population" InitialPopulation
 	such that MedicationRequests.authoredOn during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
     and MedicationRequests.authoredOn during "Measurement Period"
+  return MedicationRequestResource(MedicationRequests)
 
 define "SDE Blood Glucose Observation":
 	[Observation: "Blood Glucose Laboratory and Point of Care Tests"] Observations 
@@ -171,40 +304,26 @@ define "SDE Blood Glucose Observation":
     or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during InitialPopulation.period
   with Observations.category category
   such that category ~ "laboratory"
+  return ObservationResource(Observations)
 
 define "SDE Payer": 
-	SDE."SDE Payer" Payer
+	[Coverage] Coverages
   with "Initial Population" InitialPopulation
-  such that start of Payer.period before end of InitialPopulation.period
+  such that start of Coverages.period before end of InitialPopulation.period
+  where Coverages.type in "Payer"
+  return Coverage{
+    id: FHIR.id{value: 'LCR-' + Coverages.id},
+    type: Coverages.type
+  }
   
 define "SDE Specimen":
   [Specimen] Specimen
   with "Initial Population" InitialPopulation
   such that Global."Normalize Interval"(Specimen.collection.collected) during InitialPopulation.period
+  return SpecimenResource(Specimen)
 
 //Change on CQF ruler happened on 8/12. Check to make sure CQF-Ruler version is dated at or after (version 2.0.0). 
 //Wait 2-3 days before the changes are actually applied to the CQF-Ruler.
 define "SDE Minimal Patient":
-  Patient{
-    id: Patient.id,
-    extension: GetPatientExtensions(Patient),
-    identifier: Patient.identifier,
-    gender: Patient.gender,
-    birthDate: Patient.birthDate,
-    deceased: Patient.deceased,
-    address: GetPatientAddress(Patient.address)
-  }
-  
-define "SDE Minimal Medication Requests":
-  [MedicationRequest] MedicationRequests
-  return MedicationRequestResource(MedicationRequests)
-
-/*define "SDE Resource Construction Test Inlib":
-  FHIR.Observation 
-  {
-    id: FHIR.id { value: 'observation-sdetestinlib-' + ToString(Now()) },
-    status: FHIR.ObservationStatus { value: 'final' },
-    code: FHIR.CodeableConcept { coding: { FHIR.Coding { code: FHIR.code { value: 'days-since-appointment' } } } },
-    subject: FHIR.Reference { reference: FHIR.string { value: Patient.id.value }}
-    //value: FHIR.integer { value: Abs(difference in days between end of SDE."Last Appointment".period and ToDateTime(Today())) }
-  }*/
+  Patient p
+  return PatientResource(p)

@@ -805,10 +805,10 @@ define &quot;SDE Chief Complaint&quot;:
       </criteria>
    </supplementalData>
    <supplementalData>
-      <id value="sde-minimal-medication-requests"/>
+      <id value="sde-initial-population-encounters"/>
       <criteria>
          <language value="text/cql.identifier"></language>
-         <expression value="SDE Minimal Medication Requests"></expression>
+         <expression value="SDE Initial Population Encounters"></expression>
       </criteria>
    </supplementalData>
 </Measure>
