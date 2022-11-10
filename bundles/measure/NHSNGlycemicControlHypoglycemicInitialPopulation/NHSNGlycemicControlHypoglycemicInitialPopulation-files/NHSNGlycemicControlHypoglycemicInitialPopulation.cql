@@ -112,7 +112,7 @@ define function "GetPatientExtensions"(domainResource DomainResource):
     where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
       or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
       or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
-      or E.url = 'https://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity'
+      or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity'
     return E
 
 define function "GetPatientAddress"(addresses List<FHIR.Address>):
@@ -125,12 +125,12 @@ define function "MedicationRequestResource"(medicationRequest MedicationRequest)
   medicationRequest m
   return MedicationRequest{
     id: FHIR.id {value: 'LCR-' + m.id},
-    medication: GetMedicationCode(m.medication),
-    dosageInstruction: getDosage(m),
+    medication: m.medication,
+    dosageInstruction: GetDosage(m),
     intent: m.intent
   }
 
-define function "getDosage"(medicationRequest MedicationRequest):
+define function "GetDosage"(medicationRequest MedicationRequest):
   medicationRequest m
   let dosages: m.dosageInstruction
   return 
@@ -145,7 +145,7 @@ define function "MedicationAdministrationResource"(medicationAdministration Medi
   medicationAdministration m
   return MedicationAdministration{
     id: FHIR.id {value: 'LCR-' + m.id},
-    medication: GetMedicationCode(m.medication),
+    medication: m.medication,
     dosage: m.dosage,
     effective: m.effective
   }
@@ -245,7 +245,31 @@ define function "SpecimenResource"(specimen Specimen):
     collection: s.collection
   }
 
+define function "CoverageResource"(coverage Coverage):
+  coverage c
+  return Coverage{
+    id: FHIR.id{value: 'LCR-' + c.id},
+    type: c.type
+  }
+
+define function "GetMedicationFrom"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):
+  case
+    when choice is FHIR.Reference then
+      GetMedication(choice as FHIR.Reference)
+    else
+      null
+  end
+
 //Supplement Data Elements
+define "SDE Blood Glucose Observation":
+	[Observation: "Blood Glucose Laboratory and Point of Care Tests"] Observations 
+  with "Initial Population" InitialPopulation
+  such that start of Global."Normalize Interval"(Observations.effective) during InitialPopulation.period
+    or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during InitialPopulation.period
+  with Observations.category category
+  such that category ~ "laboratory"
+  return ObservationResource(Observations)
+
 define "SDE Chief Complaint":
   "Initial Population" IP
   with IP.diagnosis InitialPopulationDiagnosis
@@ -283,6 +307,11 @@ define "SDE Initial Population Encounters":
   "Initial Population" IP
   return EncounterResource(IP)
 
+define "SDE Medication":
+  ("SDE Medication Request"
+  union "SDE Medication Administration") MedReqOrAdmin
+  return MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication))
+
 define "SDE Medication Administration":
 	[MedicationAdministration] MedicationAdministrations
   with "Initial Population" InitialPopulation
@@ -297,24 +326,16 @@ define "SDE Medication Request":
     and MedicationRequests.authoredOn during "Measurement Period"
   return MedicationRequestResource(MedicationRequests)
 
-define "SDE Blood Glucose Observation":
-	[Observation: "Blood Glucose Laboratory and Point of Care Tests"] Observations 
-  with "Initial Population" InitialPopulation
-  such that start of Global."Normalize Interval"(Observations.effective) during InitialPopulation.period
-    or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during InitialPopulation.period
-  with Observations.category category
-  such that category ~ "laboratory"
-  return ObservationResource(Observations)
+define "SDE Minimal Patient":
+  Patient p
+  return PatientResource(p)
 
 define "SDE Payer": 
 	[Coverage] Coverages
   with "Initial Population" InitialPopulation
   such that start of Coverages.period before end of InitialPopulation.period
   where Coverages.type in "Payer"
-  return Coverage{
-    id: FHIR.id{value: 'LCR-' + Coverages.id},
-    type: Coverages.type
-  }
+  return CoverageResource(Coverages)
   
 define "SDE Specimen":
   [Specimen] Specimen
@@ -322,8 +343,3 @@ define "SDE Specimen":
   such that Global."Normalize Interval"(Specimen.collection.collected) during InitialPopulation.period
   return SpecimenResource(Specimen)
 
-//Change on CQF ruler happened on 8/12. Check to make sure CQF-Ruler version is dated at or after (version 2.0.0). 
-//Wait 2-3 days before the changes are actually applied to the CQF-Ruler.
-define "SDE Minimal Patient":
-  Patient p
-  return PatientResource(p)
