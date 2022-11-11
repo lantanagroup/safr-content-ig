@@ -107,27 +107,23 @@ define function "GetSpecimen"(reference Reference):
     [Specimen] S where S.id = Global.GetId(reference.reference)
   )
 
+define function "GetIdExtensions"(domainResource DomainResource):
+  domainResource.extension E
+  where E.url = 'https://www.cdc.gov/nhsn/fhir/nhsnlink/StructureDefinition/nhsnlink-original-id'
+  return E
+
 define function "GetPatientExtensions"(domainResource DomainResource):
   domainResource.extension E
-    where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
-      or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
-      or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
-      or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity'
-    return E
+  where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
+    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
+    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
+    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity'
+  return E
 
 define function "GetPatientAddress"(addresses List<FHIR.Address>):
   addresses address
   return FHIR.Address{
     postalCode: address.postalCode
-  }
-
-define function "MedicationRequestResource"(medicationRequest MedicationRequest):
-  medicationRequest m
-  return MedicationRequest{
-    id: FHIR.id {value: 'LCR-' + m.id},
-    medication: m.medication,
-    dosageInstruction: GetDosage(m),
-    intent: m.intent
   }
 
 define function "GetDosage"(medicationRequest MedicationRequest):
@@ -140,69 +136,6 @@ define function "GetDosage"(medicationRequest MedicationRequest):
       doseAndRate: d.doseAndRate,
       route: d.route
     }
-
-define function "MedicationAdministrationResource"(medicationAdministration MedicationAdministration):
-  medicationAdministration m
-  return MedicationAdministration{
-    id: FHIR.id {value: 'LCR-' + m.id},
-    medication: m.medication,
-    dosage: m.dosage,
-    effective: m.effective
-  }
-
-define function "MedicationResource"(medication Medication):
-  medication m
-  return Medication{
-    id: FHIR.id {value: 'LCR-' + m.id},
-    form: m.form
-  }
-
-define function "ConditionResource"(condition Condition):
-  condition c
-  return Condition{
-    id: FHIR.id {value: 'LCR-' + c.id},
-    clinicalStatus: c.clinicalStatus
-  }
-
-/*define "Encounter Test":
-  [Encounter] Encounters
-  return Encounter{
-    id: Encounters.id,
-    diagnosis: getDiagnosisTest(Encounters)
-  }
-
-define function "getDiagnosisTest"(encounter Encounter):
-  encounter e
-  let diagnoses: e.diagnosis
-  return
-    diagnoses d
-    where d.use ~ "Chief Complaint"
-    return FHIR.Encounter.Diagnosis{
-      use: d.use
-    }*/
-
-define function "EncounterResource"(encounter Encounter):
-  encounter e
-  return Encounter{
-    id: FHIR.id{value: 'LCR-' + e.id},
-    identifier: e.identifier,
-    period: e.period,
-    diagnosis: getDiagnosis(e),
-    hospitalization: getDischargeDisposition(e),
-    location: getEncounterLocation(e)
-  }
-
-define function "PatientResource"(patient Patient):
-  patient p
-  return Patient{
-    id: FHIR.id{value: 'LCR-' + p.id},
-    extension: GetPatientExtensions(p),
-    identifier: p.identifier,
-    gender: p.gender,
-    birthDate: p.birthDate,
-    deceased: p.deceased,
-    address: GetPatientAddress(p.address)
-  }
 
 define function "getDiagnosis"(encounter Encounter):
   encounter e
@@ -229,10 +162,80 @@ define function "getEncounterLocation"(encounter Encounter):
     or Global.GetLocation(l.location).type in "Inpatient, Emergency, and Observation Locations"
     return l
 
+define function "GetMedicationFrom"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):
+  case
+    when choice is FHIR.Reference then
+      GetMedication(choice as FHIR.Reference)
+    else
+      null
+  end
+
+//Resource Modification and Return Functions
+define function "MedicationRequestResource"(medicationRequest MedicationRequest):
+  medicationRequest m
+  return MedicationRequest{
+    id: FHIR.id {value: 'LCR-' + m.id},
+    extension: GetIdExtensions(m),
+    medication: m.medication,
+    dosageInstruction: GetDosage(m),
+    intent: m.intent
+  }
+
+define function "MedicationAdministrationResource"(medicationAdministration MedicationAdministration):
+  medicationAdministration m
+  return MedicationAdministration{
+    id: FHIR.id {value: 'LCR-' + m.id},
+    extension: GetIdExtensions(m),
+    medication: m.medication,
+    dosage: m.dosage,
+    effective: m.effective
+  }
+
+define function "MedicationResource"(medication Medication):
+  medication m
+  return Medication{
+    id: FHIR.id {value: 'LCR-' + m.id},
+    extension: GetIdExtensions(m),
+    form: m.form
+  }
+
+define function "ConditionResource"(condition Condition):
+  condition c
+  return Condition{
+    id: FHIR.id {value: 'LCR-' + c.id},
+    extension: GetIdExtensions(c),
+    clinicalStatus: c.clinicalStatus
+  }
+
+define function "EncounterResource"(encounter Encounter):
+  encounter e
+  return Encounter{
+    id: FHIR.id{value: 'LCR-' + e.id},
+    extension: GetIdExtensions(e),
+    identifier: e.identifier,
+    period: e.period,
+    diagnosis: getDiagnosis(e),
+    hospitalization: getDischargeDisposition(e),
+    location: getEncounterLocation(e)
+  }
+
+define function "PatientResource"(patient Patient):
+  patient p
+  return Patient{
+    id: FHIR.id{value: 'LCR-' + p.id},
+    extension: GetPatientExtensions(p) union GetIdExtensions(p),
+    identifier: p.identifier,
+    gender: p.gender,
+    birthDate: p.birthDate,
+    deceased: p.deceased,
+    address: GetPatientAddress(p.address)
+  }
+
 define function "ObservationResource"(observation Observation):
   observation o
   return Observation{
     id: FHIR.id {value: 'LCR-' + o.id},
+    extension: GetIdExtensions(o),
     code: o.code,
     effective: o.effective,
     value: o.value
@@ -242,6 +245,7 @@ define function "SpecimenResource"(specimen Specimen):
   specimen s
   return Specimen{
     id: FHIR.id {value: 'LCR-' + s.id},
+    extension: GetIdExtensions(s),
     collection: s.collection
   }
 
@@ -249,16 +253,9 @@ define function "CoverageResource"(coverage Coverage):
   coverage c
   return Coverage{
     id: FHIR.id{value: 'LCR-' + c.id},
+    extension: GetIdExtensions(c),
     type: c.type
   }
-
-define function "GetMedicationFrom"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):
-  case
-    when choice is FHIR.Reference then
-      GetMedication(choice as FHIR.Reference)
-    else
-      null
-  end
 
 //Supplement Data Elements
 define "SDE Blood Glucose Observation":
