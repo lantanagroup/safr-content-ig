@@ -8,6 +8,13 @@
          <id value="effective-data-requirements"></id>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
             <valueCoding>
+               <system value="http://loinc.org"></system>
+               <code value="29463-7"></code>
+               <display value="Body Weight"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
                <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
                <code value="EMER"></code>
                <display value="emergency"></display>
@@ -39,6 +46,55 @@
                <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
                <code value="SS"></code>
                <display value="short stay"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/observation-category"></system>
+               <code value="vital-signs"></code>
+               <display value="vital-signs"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/condition-category"></system>
+               <code value="encounter-diagnosis"></code>
+               <display value="encounter-diagnosis"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/observation-category"></system>
+               <code value="laboratory"></code>
+               <display value="Laboratory"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/diagnosis-role"></system>
+               <code value="DD"></code>
+               <display value="Discharge Diagnosis"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://loinc.org"></system>
+               <code value="8302-2"></code>
+               <display value="Body Height"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/condition-clinical"></system>
+               <code value="active"></code>
+               <display value="active"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/diagnosis-role"></system>
+               <code value="CC"></code>
+               <display value="Chief Complaint"></display>
             </valueCoding>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -107,6 +163,269 @@ define &quot;Initial Population&quot;:
                <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
             </extension>
             <extension url="name">
+               <valueString value="SDE Body Weight Observation"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Body Weight Observation&quot;:
+  [Observation: &quot;body weight&quot;] O
+    with &quot;Initial Population&quot; InitialPopulation 
+    such that Global.&quot;Normalize Interval&quot;(O.effective) during InitialPopulation.period
+      and O.status in {'final'}
+    with O.category category
+    such that category ~&quot;vital-signs&quot;"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="3"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Service Request Clostridioides difficile Infection Lab"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="/* do not want the generitic serviceRequest
+define &quot;SDE Service Request&quot;:
+[ServiceRequest] CdiServiceRequestLab
+  with &quot;Initial Population&quot; InitialPopulation
+  such that (CdiServiceRequestLab.intent ~ 'order'
+    and CdiServiceRequestLab.status ~ 'completed')
+    and CdiServiceRequestLab.authoredOn during InitialPopulation.period
+*/
+define &quot;SDE Service Request Clostridioides difficile Infection Lab&quot;:
+	[ServiceRequest: &quot;Lab Tests for Clostridioides difficile Infection&quot;] CdiServiceRequestLab
+  with &quot;Initial Population&quot; InitialPopulation
+  such that (CdiServiceRequestLab.intent ~ 'order'
+    and CdiServiceRequestLab.status ~ 'completed')
+    and CdiServiceRequestLab.authoredOn during InitialPopulation.period"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="4"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Encounter with Discharge Dispositions"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Encounter with Discharge Dispositions&quot;:
+	&quot;Initial Population&quot; DischargeDispositions 
+  where DischargeDispositions.hospitalization.dischargeDisposition in &quot;Discharge Disposition&quot;"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="5"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE EncounterDiagnosis Condition"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE EncounterDiagnosis Condition&quot;:
+  [Condition] ConditionEncounterDiagnosis
+    where true in HasCategoryEncounterDiagnosis(ConditionEncounterDiagnosis.category)
+    and exists(&quot;Initial Population&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="6"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Laboratory Observation CDI Stool"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Laboratory Observation CDI Stool&quot;:
+  [Observation: &quot;Lab Tests for Clostridioides difficile Infection&quot;] CdiObservationLab
+    with &quot;Initial Population&quot; InitialPopulation
+    such that Global.&quot;Normalize Interval&quot;(CdiObservationLab.effective) during InitialPopulation.period
+      and CdiObservationLab.status ~ 'final'
+    with CdiObservationLab.category Category
+    such that Category ~ &quot;laboratory&quot;"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="7"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Observation CDI Stool"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Observation CDI Stool&quot;:
+  [Observation: &quot;Lab Tests for Clostridioides difficile Infection&quot;] CdiObservationLab
+    with &quot;Initial Population&quot; InitialPopulation
+    such that Global.&quot;Normalize Interval&quot;(CdiObservationLab.effective) during InitialPopulation.period
+      and CdiObservationLab.status ~ 'final'"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="8"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Encounter with Discharge Diagnosis"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Encounter with Discharge Diagnosis&quot;:
+  &quot;Initial Population&quot; EncounterDD
+    with EncounterDD.diagnosis diagnosis
+    such that diagnosis.use ~ &quot;Discharge Diagnosis&quot;"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="9"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Body Height Observation"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Body Height Observation&quot;:
+  [Observation: &quot;body height&quot;] O
+    with &quot;Initial Population&quot; InitialPopulation 
+    such that Global.&quot;Normalize Interval&quot;(O.effective) during InitialPopulation.period
+      and O.status in {'final'}
+    with O.category category
+    such that category ~&quot;vital-signs&quot;"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="10"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SupplementalDataElementsFHIR4"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Payer"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Payer&quot;:
+  [Coverage: type in &quot;Payer&quot;] Payer"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="11"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Payer"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//and MedicationAdministration.status in {'completed', 'in-progress'}
+
+/* do not constrain to CDI medication
+define &quot;SDE Medication Administration Fidaxomicin, Vancomycin, and Metronidazole&quot;:
+[MedicationAdministration] MedicationAdministrationWithCode
+  with &quot;Initial Population&quot; InitialPopulation
+  such that Global.&quot;Normalize Interval&quot;(MedicationAdministrationWithCode.effective) during InitialPopulation.period
+    and MedicationAdministrationWithCode.status in {'completed', 'in-progress'}
+    and GetMedicationCode(MedicationAdministrationWithCode.medication) in &quot;Fidaxomicin, Vancomycin, and Metronidazole&quot; 
+*/
+define &quot;SDE Payer&quot;: 
+	SDE.&quot;SDE Payer&quot; Payer
+  with &quot;Initial Population&quot; InitialPopulation
+  such that start of Payer.period before end of InitialPopulation.period"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="12"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE CDC Locations"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE CDC Locations&quot;:
+	[Location: type in &quot;Inpatient, Emergency, and Observation Locations&quot;] CDCLationLocation
+   where exists(&quot;Initial Population&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="13"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Minimal Patient"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Minimal Patient&quot;:
+  Patient p
+  return PatientResource(p)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="14"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Specimen"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Specimen&quot;:
+  [Specimen] Specimen
+    with &quot;Initial Population&quot; InitialPopulation
+    such that Global.&quot;Normalize Interval&quot;(Specimen.collection.collected) during InitialPopulation.period"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="15"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Medication Request"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Medication Request&quot;:
+  [MedicationRequest] MedicationRequest
+    with &quot;Initial Population&quot; InitialPopulation 
+    such that Global.&quot;Normalize Interval&quot;(MedicationRequest.authoredOn) during InitialPopulation.period"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="16"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
                <valueString value="SDE Encounter Locations"></valueString>
             </extension>
             <extension url="statement">
@@ -121,7 +440,206 @@ define &quot;SDE Encounter Locations&quot;:
     and IntialPopulationLocation.period during &quot;Measurement Period&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="3"></valueInteger>
+               <valueInteger value="17"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Laboratory Observation CDI Stool with Specimen"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Laboratory Observation CDI Stool with Specimen&quot;:
+  &quot;SDE Laboratory Observation CDI Stool&quot; CdiObservationLab
+    let ReferenceToSpecimen: GetSpecimen(CdiObservationLab.specimen)
+    with &quot;Initial Population&quot; InitialPopulation 
+    such that Global.&quot;Normalize Interval&quot;(ReferenceToSpecimen.collection.collected) during InitialPopulation.period"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="18"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Laboratory Observation CDI Stool 1"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Laboratory Observation CDI Stool 1&quot;:
+  [Observation: &quot;Lab Tests for Clostridioides difficile Infection&quot;] Observations
+    where (exists(Observations.category Category where Category ~ &quot;laboratory&quot;))
+    and Global.&quot;Normalize Interval&quot;(Observations.effective) during &quot;Measurement Period&quot;
+    and Observations.status ~ 'final'"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="19"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Medication Administration"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//and MedicationRequest.status in {'active', 'completed'}
+
+/* do not want to constrain the medication to CDI medication 
+define &quot;SDE Medication Request Fidaxomicin Vancomycin Metronidazole&quot;:
+[MedicationRequest] MedicationRequestWithCode 
+  with &quot;Initial Population&quot; InitialPopulation 
+  such that Global.&quot;Normalize Interval&quot;(MedicationRequestWithCode.authoredOn) during InitialPopulation.period
+    and MedicationRequestWithCode.status in {'active', 'completed'}
+    and GetMedicationCode(MedicationRequestWithCode.medication) in &quot;Fidaxomicin, Vancomycin, and Metronidazole&quot; 
+*/
+define &quot;SDE Medication Administration&quot;:
+[MedicationAdministration] MedicationAdministration
+  with &quot;Initial Population&quot; InitialPopulation
+  such that Global.&quot;Normalize Interval&quot;(MedicationAdministration.effective) during InitialPopulation.period"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="20"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Observation with CDI Specimen"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Observation with CDI Specimen&quot;:
+  [Observation: &quot;Lab Tests for Clostridioides difficile Infection&quot;] ObservationWithSpecimen
+    let ReferenceToSpecimen: GetSpecimen(ObservationWithSpecimen.specimen)
+    with &quot;Initial Population&quot; InitialPopulation 
+    such that Global.&quot;Normalize Interval&quot;(ReferenceToSpecimen.collection.collected) during InitialPopulation.period"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="21"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Diagnostic Report Stool"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Diagnostic Report Stool&quot;:
+  [DiagnosticReport: &quot;Lab Tests for Clostridioides difficile Infection&quot;] CdiDiagnosticReportLab
+    with &quot;Initial Population&quot; InitialPopulation
+    such that Global.&quot;Normalize Interval&quot;(CdiDiagnosticReportLab.effective) during InitialPopulation.period
+      and CdiDiagnosticReportLab.status in {'final'}"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="22"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Condition"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Condition&quot;:
+  [Condition] Conditions 
+  with &quot;Initial Population&quot; InitialPopulation
+  such that Global.&quot;Normalize Interval&quot;(Conditions.onset) overlaps InitialPopulation.period
+  and Conditions.clinicalStatus ~ Global.&quot;active&quot;"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="23"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Location"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Location&quot;:
+  [Location] Location
+  where exists(&quot;Initial Population&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="24"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE CDI Specimen"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE CDI Specimen&quot;:
+  [Observation: &quot;Lab Tests for Clostridioides difficile Infection&quot;] ObservationWithSpecimen
+    let ReferenceToSpecimen: GetSpecimen(ObservationWithSpecimen.specimen)
+    with &quot;Initial Population&quot; InitialPopulation 
+    such that Global.&quot;Normalize Interval&quot;(ReferenceToSpecimen.collection.collected) during InitialPopulation.period
+    return ReferenceToSpecimen"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="25"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Encounter with Admit Source"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Encounter with Admit Source&quot;:
+  &quot;Initial Population&quot; EncounterAdmitSource
+  where EncounterAdmitSource.hospitalization.admitSource in &quot;Admit Source&quot;"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="26"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNAntibioticTreatedCDIInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Chief Complaint"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="/*
+define &quot;SDE Encounter Locations Test&quot;:
+	&quot;Initial Population&quot; InitialPopulation
+  with InitialPopulation.location IntialPopulationLocation
+  such that ((Global.GetLocation(IntialPopulationLocation.location).type in &quot;Inpatient, Emergency, and Observation Locations&quot;
+    or Global.GetLocation(IntialPopulationLocation.location).physicalType in &quot;Inpatient, Emergency, and Observation Locations&quot;)
+    and IntialPopulationLocation.period during &quot;Measurement Period&quot;)
+  return Tuple{
+    encounter: InitialPopulation,
+    locationPeriodStart: InitialPopulation.location.period.start,
+    locationPeriodEnd: InitialPopulation.location.period.end,
+    locationType: GetLocations(InitialPopulation.location.location).type.coding.display
+  }
+*/
+define &quot;SDE Chief Complaint&quot;:
+  &quot;Initial Population&quot; EncounterCC
+    with EncounterCC.diagnosis diagnosis
+    such that diagnosis.use ~ &quot;Chief Complaint&quot;"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="27"></valueInteger>
             </extension>
          </extension>
          <status value="active"></status>
@@ -143,8 +661,38 @@ define &quot;SDE Encounter Locations&quot;:
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
+            <display value="Library SDE"></display>
+            <resource value="http://fhir.org/guides/cqf/Library/SupplementalDataElementsFHIR4|2.0.000"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Code system LOINC"></display>
+            <resource value="http://loinc.org"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
             <display value="Code system ActCode"></display>
             <resource value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Code system Observation Category"></display>
+            <resource value="http://terminology.hl7.org/CodeSystem/observation-category"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Code system Condition Category"></display>
+            <resource value="http://terminology.hl7.org/CodeSystem/condition-category"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Code system Diagnosis Role"></display>
+            <resource value="http://terminology.hl7.org/CodeSystem/diagnosis-role"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Code system ConditionClinicalStatusCodes"></display>
+            <resource value="http://terminology.hl7.org/CodeSystem/condition-clinical"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -166,12 +714,130 @@ define &quot;SDE Encounter Locations&quot;:
             <display value="Value set Inpatient, Emergency, and Observation Locations"></display>
             <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265"></resource>
          </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Lab Tests for Clostridioides difficile Infection"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.62"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Discharge Disposition"></display>
+            <resource value="http://terminology.hl7.org/ValueSet/encounter-discharge-disposition"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Payer"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Admit Source"></display>
+            <resource value="http://terminology.hl7.org/ValueSet/encounter-admit-source"></resource>
+         </relatedArtifact>
          <parameter>
             <name value="Measurement Period"></name>
             <use value="in"></use>
             <min value="0"></min>
             <max value="1"></max>
             <type value="Period"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Body Weight Observation"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Observation"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Service Request Clostridioides difficile Infection Lab"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="ServiceRequest"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Encounter with Discharge Dispositions"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Encounter"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE EncounterDiagnosis Condition"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Condition"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Laboratory Observation CDI Stool"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Observation"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Observation CDI Stool"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Observation"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Encounter with Discharge Diagnosis"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Encounter"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Body Height Observation"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Observation"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Payer"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Coverage"></type>
+         </parameter>
+         <parameter>
+            <name value="Initial Population"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Encounter"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE CDC Locations"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Location"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Minimal Patient"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="Patient"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Specimen"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Specimen"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Medication Request"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="MedicationRequest"></type>
          </parameter>
          <parameter>
             <name value="SDE Encounter Locations"></name>
@@ -181,7 +847,70 @@ define &quot;SDE Encounter Locations&quot;:
             <type value="Encounter"></type>
          </parameter>
          <parameter>
-            <name value="Initial Population"></name>
+            <name value="SDE Laboratory Observation CDI Stool with Specimen"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Observation"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Laboratory Observation CDI Stool 1"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Observation"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Medication Administration"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="MedicationAdministration"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Observation with CDI Specimen"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Observation"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Diagnostic Report Stool"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="DiagnosticReport"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Condition"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Condition"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Location"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Location"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE CDI Specimen"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Specimen"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Encounter with Admit Source"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Encounter"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Chief Complaint"></name>
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
@@ -255,7 +984,122 @@ define &quot;SDE Encounter Locations&quot;:
          <dataRequirement>
             <type value="Location"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
+            <mustSupport value="type"></mustSupport>
+            <codeFilter>
+               <path value="type"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Location"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
             <mustSupport value="id"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Observation"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
+            <mustSupport value="code"></mustSupport>
+            <mustSupport value="effective"></mustSupport>
+            <mustSupport value="status"></mustSupport>
+            <mustSupport value="category"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <code>
+                  <system value="http://loinc.org"></system>
+                  <code value="29463-7"></code>
+                  <display value="Body Weight"></display>
+               </code>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Observation"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
+            <mustSupport value="code"></mustSupport>
+            <mustSupport value="effective"></mustSupport>
+            <mustSupport value="status"></mustSupport>
+            <mustSupport value="category"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <code>
+                  <system value="http://loinc.org"></system>
+                  <code value="8302-2"></code>
+                  <display value="Body Height"></display>
+               </code>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Observation"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
+            <mustSupport value="code"></mustSupport>
+            <mustSupport value="effective"></mustSupport>
+            <mustSupport value="status"></mustSupport>
+            <mustSupport value="category"></mustSupport>
+            <mustSupport value="specimen"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.62"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="ServiceRequest"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/ServiceRequest"></profile>
+            <mustSupport value="code"></mustSupport>
+            <mustSupport value="intent"></mustSupport>
+            <mustSupport value="status"></mustSupport>
+            <mustSupport value="authoredOn"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.62"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Condition"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Condition"></profile>
+            <mustSupport value="category"></mustSupport>
+            <mustSupport value="onset"></mustSupport>
+            <mustSupport value="clinicalStatus"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Coverage"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Coverage"></profile>
+            <mustSupport value="type"></mustSupport>
+            <mustSupport value="period"></mustSupport>
+            <codeFilter>
+               <path value="type"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Patient"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Patient"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Specimen"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Specimen"></profile>
+            <mustSupport value="collection"></mustSupport>
+            <mustSupport value="collection.collected"></mustSupport>
+            <mustSupport value="id"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="MedicationRequest"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"></profile>
+            <mustSupport value="authoredOn"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="MedicationAdministration"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationAdministration"></profile>
+            <mustSupport value="effective"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="DiagnosticReport"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/DiagnosticReport"></profile>
+            <mustSupport value="code"></mustSupport>
+            <mustSupport value="effective"></mustSupport>
+            <mustSupport value="status"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.62"></valueSet>
+            </codeFilter>
          </dataRequirement>
       </Library>
    </contained>
@@ -277,7 +1121,7 @@ define &quot;SDE Encounter Locations&quot;:
    <version value="0.000.01"></version>
    <name value="NHSNAntibioticTreatedCDIInitialPopulation"></name>
    <title value="Measure NHSN Antibiotic Treated CDI Initial Population"></title>
-   <date value="2022-10-14T15:04:53-04:00"></date>
+   <date value="2022-11-17T15:07:35-04:00"></date>
    <description value="Clostridioides difficile (C. difficile) is responsible for a spectrum of C. difficile infections (CDI), including uncomplicated diarrhea, pseudomembranous colitis, and toxic megacolon, which can, in some instances, lead to sepsis and even death. As outlined in the Healthcare Infection Control Practices Advisory Committee (HICPAC) guideline (1), C. difficile pathogens may require specialized monitoring to evaluate if intensified infection control efforts are required to reduce the occurrence of these organisms and related infections.  The goal of this module is to provide a mechanism for facilities to report and to analyze data that will inform infection prevention professionals of the impact of targeted prevention efforts. This protocol describes the electronic surveillance for Antibiotic-treated Healthcare Facility-onset CDI. "></description>
    <library value="http://fhir.org/guides/cqf/Library/NHSNAntibioticTreatedCDIInitialPopulation"></library>
    <scoring>
@@ -615,6 +1459,19 @@ define &quot;SDE Encounter Locations&quot;:
       <criteria>
          <language value="text/cql.identifier"></language>
          <expression value="SDE Payer"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+            <display value="Supplemental Data"></display>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Minimal Patient"></expression>
       </criteria>
    </supplementalData>
 </Measure>
