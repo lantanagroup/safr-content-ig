@@ -826,7 +826,7 @@ define &quot;SDE Chief Complaint&quot;:
    <version value="0.0.001"></version>
    <name value="NHSN Hospital Onset Bacteremia Initial Population"></name>
    <title value="NHSN Healthcare onset Bacteremia Initial Population"></title>
-   <date value="2022-11-08T15:17:01-04:00"></date>
+   <date value="2022-11-21T16:54:48-04:00"></date>
    <description value="All inpatient, emergency department (ED) and observation (OBS) encounters that overlap the measurement period."></description>
    <copyright value="This measure and specifications are subject to further revisions.   This performance measure is not a clinical guideline, does not establish a standard of medical care and has not been tested for all potential applications.  THE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND."></copyright>
    <library value="http://fhir.org/guides/cqf/Library/NHSNHospitalonsetBacteremiaInitialPopulation"></library>

@@ -21,10 +21,10 @@ SET JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
 :: -d %fsoption%
 IF EXIST "%input_cache_path%\%tooling_jar%" (
 	ECHO running: JAVA -jar "%input_cache_path%\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d %fsoption%
-	JAVA -jar "%input_cache_path%\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t 
+	JAVA -jar "%input_cache_path%\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d
 ) ELSE If exist "..\%tooling_jar%" (
 	ECHO running: JAVA -jar "..\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t 
-	JAVA -jar "..\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t
+	JAVA -jar "..\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d
 ) ELSE (
 	ECHO IG Refresh NOT FOUND in input-cache or parent folder.  Please run _updateCQFTooling.  Aborting...
 )
