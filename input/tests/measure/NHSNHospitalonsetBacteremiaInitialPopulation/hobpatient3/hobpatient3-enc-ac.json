@@ -1,6 +1,6 @@
 {
 	"resourceType": "Encounter",
-	"id": "hobpatient2-enc-ac",
+	"id": "hobpatient3-enc-ac",
 	"meta": {
 		"lastUpdated": "2017-05-26T11:56:57.250-04:00",
 		"profile": [
@@ -22,14 +22,14 @@
 			"coding": [
 				{
 					"system": "http://snomed.info/sct",
-					"code": "4525004"
+					"code": "448951000124107"
 				}
 			],
-			"text": "Emergency department patient visit (procedure)"
+			"text": "Admission to observation unit (procedure)"
 		}
 	],
 	"subject": {
-		"reference": "Patient/hobpatient2"
+		"reference": "Patient/hobpatient3"
 	},
 	
 	"period": {

@@ -1,6 +1,6 @@
 {
 	"resourceType": "Encounter",
-	"id": "hobpatient2-enc-ac",
+	"id": "hobpatient5-enc-ac",
 	"meta": {
 		"lastUpdated": "2017-05-26T11:56:57.250-04:00",
 		"profile": [
@@ -14,22 +14,22 @@
 	"status": "finished",
 	"class": {
 		"system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
-		"code": "ACUTE",
-		"display": "inpatient acute"
+		"code": "test",
+		"display": "Emergency"
 	},
 	"type": [
 		{
 			"coding": [
 				{
 					"system": "http://snomed.info/sct",
-					"code": "4525004"
+					"code": "test"
 				}
 			],
-			"text": "Emergency department patient visit (procedure)"
+			"text": "Admission to observation unit (procedure)"
 		}
 	],
 	"subject": {
-		"reference": "Patient/hobpatient2"
+		"reference": "Patient/hobpatient5"
 	},
 	
 	"period": {
@@ -87,7 +87,7 @@
 	"location": [
 		{
 			"location": {
-				"reference": "Location/cdi-location",
+				"reference": "Location/hobpatient5-loc",
 				"display": "Emergency Waiting Room"
 			},
 			"status": "active",

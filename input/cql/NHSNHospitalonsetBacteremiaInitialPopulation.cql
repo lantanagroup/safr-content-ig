@@ -25,7 +25,6 @@ code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
 code "short stay": 'SS' from "ActCode" display 'short stay'
-code "stool": 'STL' from "Specimen Type" display 'stool'
 code "vital-signs": 'vital-signs' from "Observation Category" display 'vital-signs'
 
 valueset "Admit Source": 'http://terminology.hl7.org/ValueSet/encounter-admit-source'
@@ -44,7 +43,8 @@ define "Qualifying Encounter during Measurement Period":
     union [Encounter: "Emergency Department Visit"]
     union [Encounter: "Observation Services"]
     union [Encounter: class in {"emergency", "inpatient acute", "inpatient encounter", "inpatient non-acute", "short stay"}]) Encounters
-    where Encounters.period overlaps "Measurement Period"
+    where Encounters.status in {'finished', 'in-progress'}
+    and Encounters.period ends during "Measurement Period" 
 
 define "Qualifying Location during Measurement Period":
     [Encounter] Encounters
