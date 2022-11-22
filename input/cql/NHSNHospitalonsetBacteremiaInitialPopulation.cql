@@ -38,6 +38,8 @@ valueset "Observation Services": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.
 
 parameter "Measurement Period" default Interval[@2022-01-01T00:00:00.0, @2022-01-31T00:00:00.0)
 
+context Patient
+
 define "Qualifying Encounter during Measurement Period":
     ([Encounter: "Encounter Inpatient"]
     union [Encounter: "Emergency Department Visit"]
@@ -77,6 +79,10 @@ define "SDE Encounter with Admit Source":
 define "SDE Encounter with Discharge Dispositions":
 	"Initial Population" DischargeDispositions 
   where DischargeDispositions.hospitalization.dischargeDisposition in "Discharge Disposition"
+
+define "SDE Initial Population Encounters":
+  "Initial Population" IP
+  return EncounterResource(IP)
 
 define "SDE Locations":
     [Location: type in "Inpatient, Emergency, and Observation Locations"]
@@ -138,12 +144,16 @@ define "SDE Antibacterial Medications":
     and MedicationRequestWithCode.status in {'active', 'completed'}
     and GetMedicationCode(MedicationRequestWithCode.medication) in "Antibacterial Medications" 
 
-
 define "SDE Payer": 
 	SDE."SDE Payer" Payer
   with "Initial Population" InitialPopulation
   such that start of Payer.period before end of InitialPopulation.period
 
+define "SDE Minimal Patient":
+  Patient p
+  return PatientResource(p)
+
+//Functions
 define function "GetLocations"(references List<Reference>):
   references reference
   return Global.GetLocation(reference)
@@ -188,4 +198,63 @@ define function "HasCategoryEncounterDiagnosis"(categories List<FHIR.CodeableCon
   categories category
   return category ~ "encounter-diagnosis"
 
+define function "GetIdExtensions"(domainResource DomainResource):
+  domainResource.extension E
+  where E.url = 'https://www.cdc.gov/nhsn/fhir/nhsnlink/StructureDefinition/nhsnlink-original-id'
+  return E
 
+define function "GetPatientExtensions"(domainResource DomainResource):
+  domainResource.extension E
+  where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
+    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
+    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
+    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity'
+    or E.url = 'http://hl7.org/fhir/StructureDefinition/patient-genderIdentity'
+  return E
+
+//Resource Functions
+define function "PatientResource"(patient Patient):
+  patient p
+  return Patient{
+    id: FHIR.id{value: 'LCR-' + p.id},
+    extension: GetPatientExtensions(p) union GetIdExtensions(p),
+    identifier: p.identifier,
+    active: p.active,
+    name: p.name,
+    telecom: p.telecom,
+    gender: p.gender,
+    birthDate: p.birthDate,
+    deceased: p.deceased,
+    address: p.address,
+    communication: p.communication
+  }
+
+define function "EncounterResource"(encounter Encounter):
+  encounter e
+  return Encounter{
+    id: FHIR.id{value: 'LCR-' + e.id},
+    extension: e.extension,
+    identifier: e.identifier,
+    status: e.status,
+    statusHistory: e.statusHistory,
+    class: e.class,
+    classHistory: e.classHistory,
+    type: e.type,
+    serviceType: e.serviceType,
+    priority: e.priority,
+    subject: e.subject,
+    episodeOfCare: e.episodeOfCare,
+    basedOn: e.basedOn,
+    participant: e.participant,
+    appointment: e.appointment,
+    period: e.period,
+    length: e.length,
+    reasonCode: e.reasonCode,
+    reasonReference: e.reasonReference,
+    diagnosis: e.diagnosis,
+    account: e.account,
+    hospitalization: e.hospitalization,
+    location: e.location,
+    serviceProvider: e.serviceProvider,
+    partOf: e.partOf
+  }

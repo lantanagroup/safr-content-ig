@@ -1037,4 +1037,28 @@ define &quot;SDE Chief Complaint&quot;:
          <expression value="SDE Payer"></expression>
       </criteria>
    </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Initial Population Encounters"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Minimal Patient"></expression>
+      </criteria>
+   </supplementalData>
 </Measure>
