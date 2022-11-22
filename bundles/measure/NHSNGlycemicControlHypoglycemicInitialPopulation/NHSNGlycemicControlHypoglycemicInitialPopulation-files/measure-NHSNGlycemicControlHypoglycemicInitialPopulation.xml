@@ -170,26 +170,6 @@
                <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="SDE Minimal Medication Requests"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;SDE Minimal Medication Requests&quot;:
-  [MedicationRequest] MedicationRequests
-  return MedicationRequest{
-    id: MedicationRequests.id,
-    medication: GetMedicationCode(MedicationRequests.medication),
-    dosageInstruction: MedicationRequests.dosageInstruction
-  }"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="5"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
                <valueString value="SDE Condition during Encounter"></valueString>
             </extension>
             <extension url="statement">
@@ -452,13 +432,6 @@ define &quot;SDE Chief Complaint&quot;:
             <min value="0"></min>
             <max value="*"></max>
             <type value="Encounter"></type>
-         </parameter>
-         <parameter>
-            <name value="SDE Minimal Medication Requests"></name>
-            <use value="out"></use>
-            <min value="0"></min>
-            <max value="*"></max>
-            <type value="MedicationRequest"></type>
          </parameter>
          <parameter>
             <name value="SDE Condition during Encounter"></name>
@@ -805,10 +778,17 @@ define &quot;SDE Chief Complaint&quot;:
       </criteria>
    </supplementalData>
    <supplementalData>
-      <id value="sde-minimal-medication-requests"/>
+      <id value="sde-initial-population-encounters"/>
       <criteria>
          <language value="text/cql.identifier"></language>
-         <expression value="SDE Minimal Medication Requests"></expression>
+         <expression value="SDE Initial Population Encounters"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData>
+      <id value="sde-medication"/>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Medication"></expression>
       </criteria>
    </supplementalData>
 </Measure>

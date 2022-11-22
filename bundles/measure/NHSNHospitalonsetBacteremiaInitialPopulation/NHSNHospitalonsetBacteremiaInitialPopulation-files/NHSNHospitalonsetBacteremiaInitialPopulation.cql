@@ -48,9 +48,9 @@ define "Qualifying Encounter during Measurement Period":
 
 define "Qualifying Location during Measurement Period":
     [Encounter] Encounters
-    where exists ( 
+    where exists (
         Encounters.location InitialPopulationLocation
-        where Global.GetLocation(InitialPopulationLocation.location).type in "Inpatient, Emergency, and Observation Locations"   
+        where Global.GetLocation(InitialPopulationLocation.location).type in "Inpatient, Emergency, and Observation Locations"
         and InitialPopulationLocation.period during "Measurement Period"
     )
 

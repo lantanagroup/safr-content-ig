@@ -119,9 +119,9 @@
             <extension url="statement">
                <valueString value="define &quot;Qualifying Location during Measurement Period&quot;:
     [Encounter] Encounters
-    where exists ( 
+    where exists (
         Encounters.location InitialPopulationLocation
-        where Global.GetLocation(InitialPopulationLocation.location).type in &quot;Inpatient, Emergency, and Observation Locations&quot;   
+        where Global.GetLocation(InitialPopulationLocation.location).type in &quot;Inpatient, Emergency, and Observation Locations&quot;
         and InitialPopulationLocation.period during &quot;Measurement Period&quot;
     )"></valueString>
             </extension>
@@ -349,11 +349,7 @@ with &quot;Initial Population&quot; InitialPopulation
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Payer&quot;:
-  [Coverage: type in &quot;Payer&quot;] Payer
-        return {
-          code: Payer.type,
-          period: Payer.period
-        }"></valueString>
+  [Coverage: type in &quot;Payer&quot;] Payer"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="14"></valueInteger>
@@ -613,7 +609,7 @@ define &quot;SDE Chief Complaint&quot;:
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
-            <type value="Any"></type>
+            <type value="Coverage"></type>
          </parameter>
          <parameter>
             <name value="Initial Population"></name>
@@ -830,7 +826,7 @@ define &quot;SDE Chief Complaint&quot;:
    <version value="0.0.001"></version>
    <name value="NHSN Hospital Onset Bacteremia Initial Population"></name>
    <title value="NHSN Healthcare onset Bacteremia Initial Population"></title>
-   <date value="2022-10-14T15:04:53-04:00"></date>
+   <date value="2022-11-21T16:54:48-04:00"></date>
    <description value="All inpatient, emergency department (ED) and observation (OBS) encounters that overlap the measurement period."></description>
    <copyright value="This measure and specifications are subject to further revisions.   This performance measure is not a clinical guideline, does not establish a standard of medical care and has not been tested for all potential applications.  THE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND."></copyright>
    <library value="http://fhir.org/guides/cqf/Library/NHSNHospitalonsetBacteremiaInitialPopulation"></library>
@@ -1039,18 +1035,6 @@ define &quot;SDE Chief Complaint&quot;:
       <criteria>
          <language value="text/cql.identifier"></language>
          <expression value="SDE Payer"></expression>
-      </criteria>
-   </supplementalData>
-   <supplementalData>
-      <usage>
-         <coding>
-            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
-            <code value="supplemental-data"></code>
-         </coding>
-      </usage>
-      <criteria>
-         <language value="text/cql.identifier"></language>
-         <expression value="TODO"></expression>
       </criteria>
    </supplementalData>
 </Measure>

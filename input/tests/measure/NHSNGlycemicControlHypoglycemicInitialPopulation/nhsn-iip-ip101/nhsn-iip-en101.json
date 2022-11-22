@@ -43,5 +43,16 @@
         "display": "home"
       } ]
     }
-  }
+  },
+  "location": [
+    {
+      "location": {
+        "reference": "Location/nhsn-iip-loc101"
+      },
+      "period": {
+        "start": "2022-01-02T08:00:00.0",
+        "end": "2022-01-30T08:00:00.0"
+      }
+    }
+  ]
 }

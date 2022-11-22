@@ -254,6 +254,10 @@ define "SDE Payer":
   such that start of Payer.period before end of InitialPopulation.period
 
 
+define "SDE Minimal Patient":
+  Patient p
+  return PatientResource(p)
+  
 //-----------------------------------------------------------------
 // functions
 //-----------------------------------------------------------------
@@ -309,3 +313,36 @@ define function "HasCategoryEncounterDiagnosis"(categories List<FHIR.CodeableCon
 define function "HasCdcLocationType"(types List<FHIR.CodeableConcept>):
   types type
   return  type in "Inpatient, Emergency, and Observation Locations"
+
+
+
+define function "GetIdExtensions"(domainResource DomainResource):
+  domainResource.extension E
+  where E.url = 'https://www.cdc.gov/nhsn/fhir/nhsnlink/StructureDefinition/nhsnlink-original-id'
+  return E
+
+define function "GetPatientExtensions"(domainResource DomainResource):
+  domainResource.extension E
+  where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
+    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
+    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
+    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity'
+    or E.url = 'http://hl7.org/fhir/StructureDefinition/patient-genderIdentity'
+  return E
+
+define function "PatientResource"(patient Patient):
+  patient p
+  return Patient{
+    id: FHIR.id{value: 'LCR-' + p.id},
+    extension: GetPatientExtensions(p) union GetIdExtensions(p),
+    identifier: p.identifier,
+    active: p.active,
+    name: p.name,
+    telecom: p.telecom,
+    gender: p.gender,
+    birthDate: p.birthDate,
+    deceased: p.deceased,
+    address: p.address,
+    communication: p.communication
+  }
+
