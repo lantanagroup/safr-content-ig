@@ -74,7 +74,7 @@ define "SDE Condition":
 
 define "SDE Encounter with Admit Source":
   "Initial Population" EncounterAdmitSource
-            where EncounterAdmitSource.hospitalization.admitSource ~ "Admit Source"
+            where EncounterAdmitSource.hospitalization.admitSource in "Admit Source"
 
 define "SDE Encounter with Discharge Diagnosis":
   "Initial Population" InitialPopulation
@@ -83,7 +83,7 @@ define "SDE Encounter with Discharge Diagnosis":
 
 define "SDE Encounter Discharge Dispositions":
   "Initial Population" DischargeDispositions 
-            where DischargeDispositions.hospitalization.dischargeDisposition ~"Discharge disposition"
+            where DischargeDispositions.hospitalization.dischargeDisposition in "Discharge Disposition"
 
 define "SDE Encounter Locations":
   "Initial Population" InitialPopulation
