@@ -49,7 +49,7 @@ define "Qualifying Encounter During Measurement Period":
 union   [Encounter: "Emergency Department Visit"]
 union [Encounter: "Observation Services"]
 union [Encounter: class in {"emergency", "inpatient acute", "inpatient encounter", "inpatient non-acute", "short stay"}]) QualifyingEncounters
-  where QualifyingEncounters .status = 'finished'
+  where QualifyingEncounters .status in {'in-progress', 'finished'}
     and QualifyingEncounters.period ends during "Measurement Period"
 
 define "Qualifying Location During Measurement Period":
