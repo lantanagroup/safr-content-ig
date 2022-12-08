@@ -1,0 +1,34 @@
+<Observation xmlns="http://hl7.org/fhir">
+    <id value="nhsn-iip-sde-obs-bg-101"/>
+    <meta>
+        <versionId value="1"/>
+        <lastUpdated value="2022-03-15T18:41:12.000+00:00"/>
+        <source value="#a709314a88f29774"/>
+        <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab"/>
+    </meta>
+    <status value="final"/>
+    <category>
+        <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+            <code value="laboratory"/>
+            <display value="Laboratory"/>
+        </coding>
+        <text value="Laboratory"/>
+    </category>
+    <code>
+        <coding>
+            <system value="http://loinc.org"/>
+            <code value="2339-0"/>
+            <display value="Glucose [Mass/volume] in Blood"/>
+        </coding>
+        <text value="Glucose [Mass/volume] in Blood"/>
+    </code>
+    <subject>
+        <reference value="Patient/nhsn-iip-ipsde"/>
+        <display value="Amy Shaw"/>
+    </subject>
+    <effectiveDateTime value="2022-01-03T08:00:00.0"/>
+    <specimen>
+        <reference value="Specimen/nhsn-iip-bg-spec-101"/>
+    </specimen>
+</Observation>

@@ -1,0 +1,92 @@
+<ValueSet>
+    <id value="encounter-discharge-disposition"/>
+    <meta>
+        <lastUpdated value="2020-02-23T18:41:39.109-07:00"/>
+        <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
+    </meta>
+    <text>
+        <status value="generated"/>
+        <div
+            xmlns="http://www.w3.org/1999/xhtml">
+            <ul>
+                <li>Include all codes defined in 
+                    
+                    
+                    
+                    
+                    <a href="CodeSystem-discharge-disposition.html">
+                        <code>http://terminology.hl7.org/CodeSystem/discharge-disposition</code>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </text>
+    <url value="http://terminology.hl7.org/ValueSet/encounter-discharge-disposition"/>
+    <identifier>
+        <system value="urn:ietf:rfc:3986"/>
+        <value value="urn:oid:2.16.840.1.113883.4.642.3.259"/>
+    </identifier>
+    <version value="0.3.0"/>
+    <name value="DischargeDisposition"/>
+    <title value="Discharge disposition"/>
+    <status value="draft"/>
+    <experimental value="false"/>
+    <date value="2020-02-24T12:41:39+11:00"/>
+    <publisher value="FHIR Project team"/>
+    <contact>
+        <telecom>
+            <system value="url"/>
+            <value value="http://hl7.org/fhir"/>
+        </telecom>
+    </contact>
+    <description value="This value set defines a set of codes that can be used to where the patient left the hospital."/>
+    <compose>
+        <include>
+            <system value="http://terminology.hl7.org/CodeSystem/discharge-disposition"/>
+            <concept>
+                <code value="home"/>
+                <display value="Home"/>
+            </concept>
+            <concept>
+                <code value="alt-home"/>
+                <display value="Alternative home"/>
+            </concept>
+            <concept>
+                <code value="other-hcf"/>
+                <display value="Other healthcare facility"/>
+            </concept>
+            <concept>
+                <code value="hosp"/>
+                <display value="Hospice"/>
+            </concept>
+            <concept>
+                <code value="long"/>
+                <display value="Long-term care"/>
+            </concept>
+            <concept>
+                <code value="aadvice"/>
+                <display value="Left against advice"/>
+            </concept>
+            <concept>
+                <code value="exp"/>
+                <display value="Expired"/>
+            </concept>
+            <concept>
+                <code value="psy"/>
+                <display value="Psychiatric hospital"/>
+            </concept>
+            <concept>
+                <code value="rehab"/>
+                <display value="Rehabilitation"/>
+            </concept>
+            <concept>
+                <code value="snf"/>
+                <display value="Skilled nursing facility"/>
+            </concept>
+            <concept>
+                <code value="oth"/>
+                <display value="Other"/>
+            </concept>
+        </include>
+    </compose>
+</ValueSet>

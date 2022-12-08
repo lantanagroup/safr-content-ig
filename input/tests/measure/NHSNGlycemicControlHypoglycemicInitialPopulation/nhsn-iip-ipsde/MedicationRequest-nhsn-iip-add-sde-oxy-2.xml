@@ -1,0 +1,28 @@
+<MedicationRequest xmlns="http://hl7.org/fhir">
+    <id value="nhsn-iip-add-sde-oxy-2"/>
+    <meta>
+        <profile
+            value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest"/>
+    </meta>
+    <identifier>
+        <use value="official"/>
+        <system value="http://acme.org/prescriptions"/>
+        <value value="12345689"/>
+    </identifier>
+    <status value="active"/>
+    <intent value="plan"/>
+    <reportedBoolean value="true"/>
+    <medicationCodeableConcept>
+        <coding>
+            <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
+            <code value="1007184"/>
+            <display value="insulin aspart protamine, human / insulin aspart, human"/>
+        </coding>
+        <text value="insulin aspart protamine, human / insulin aspart, human"/>
+    </medicationCodeableConcept>
+    <subject>
+        <reference value="Patient/nhsn-iip-ipsde"/>
+        <display value="Amy V. Shaw"/>
+    </subject>
+    <authoredOn value="2022-01-24"/>
+</MedicationRequest>

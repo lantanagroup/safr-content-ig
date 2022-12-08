@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Observation xmlns="http://hl7.org/fhir">
+    <id value="nhsn-iip-sde-obs-2"/>
+    <meta>
+        <profile
+            value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab"/>
+    </meta>
+    <status value="final"/>
+    <category>
+        <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
+            <code value="laboratory"/>
+            <display value="Laboratory"/>
+        </coding>
+        <text value="Laboratory"/>
+    </category>
+    <code>
+        <coding>
+            <system value="http://loinc.org"/>
+            <code value="46020-4"/>
+            <display value="Endocrine, metabolic or nutritional disease or conditions Set"/>
+        </coding>
+        <text value="Endocrine, metabolic or nutritional disease or conditions Set"/>
+    </code>
+    <subject>
+        <reference value="Patient/nhsn-iip-ipsde"/>
+        <display value="Amy Shaw"/>
+    </subject>
+    <effectiveDateTime value="2020-01-02"/>
+</Observation>

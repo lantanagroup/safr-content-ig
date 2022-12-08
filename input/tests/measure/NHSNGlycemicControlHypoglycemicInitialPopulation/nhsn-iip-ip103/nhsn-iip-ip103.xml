@@ -1,0 +1,65 @@
+<Patient xmlns="http://hl7.org/fhir">
+   <id value="nhsn-iip-ip103"/>
+   <meta>
+      <versionId value="2"/>
+      <lastUpdated value="2022-03-15T18:41:31.000+00:00"/>
+      <source value="#ccae2d959a88912d"/>
+      <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"/>
+   </meta>
+   <text>
+      <status value="generated"/>
+      <div xmlns="http://www.w3.org/1999/xhtml">
+         <div class="hapiHeaderText">Amy V. 
+            <b>SHAW </b>
+         </div>
+         <table class="hapiPropertyTable">
+            <tbody>
+               <tr>
+                  <td>Identifier</td>
+                  <td>103</td>
+               </tr>
+               <tr>
+                  <td>Address</td>
+                  <td>
+                     <span>US </span>
+                  </td>
+               </tr>
+               <tr>
+                  <td>Date of birth</td>
+                  <td>
+                     <span>20 February 1987</span>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </text>
+   <identifier>
+      <system value="http://www.acme.com/identifiers/patient"/>
+      <value value="103"/>
+   </identifier>
+   <active value="true"/>
+   <name>
+      <family value="Shaw"/>
+      <given value="Amy"/>
+      <given value="V."/>
+   </name>
+   <gender value="female"/>
+   <birthDate value="1987-02-20"/>
+   <deceasedDateTime value="2022-02-02"/>
+   <address>
+      <postalCode value="80111"/>
+      <country value="US"/>
+      <period>
+         <start value="2022-12-06"/>
+      </period>
+   </address>
+   <address>
+      <postalCode value="80246"/>
+      <country value="US"/>
+      <period>
+         <start value="2015-07-22"/>
+         <end value="2022-12-06"/>
+      </period>
+   </address>
+</Patient>

@@ -1,0 +1,1634 @@
+{
+  "resourceType": "Bundle",
+  "id": "88c2dfef-dbb1-4d4c-9a1b-b4f68a15ff2e",
+  "meta": {
+    "lastUpdated": "2022-05-31T20:30:04.726+00:00"
+  },
+  "type": "searchset",
+  "total": 67,
+  "link": [ {
+    "relation": "self",
+    "url": "http://localhost:8014/fhir/Encounter/beaeee45-c9c3-4def-9375-18255e6bfb55/$everything"
+  }, {
+    "relation": "next",
+    "url": "http://localhost:8014/fhir?_getpages=88c2dfef-dbb1-4d4c-9a1b-b4f68a15ff2e&_getpagesoffset=20&_count=20&_pretty=true&_bundletype=searchset"
+  } ],
+  "entry": [ {
+    "fullUrl": "http://localhost:8014/fhir/Encounter/beaeee45-c9c3-4def-9375-18255e6bfb55",
+    "resource": {
+      "resourceType": "Encounter",
+      "id": "beaeee45-c9c3-4def-9375-18255e6bfb55",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T20:04:11.738+00:00",
+        "source": "#wcoIWplieWarvrJy",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter" ]
+      },
+      "identifier": [ {
+        "use": "official",
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "6605b48e-3c9a-2663-0778-0682eae16700"
+      } ],
+      "status": "finished",
+      "class": {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "IMP"
+      },
+      "type": [ {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "1505002",
+          "display": "SNOMED Code"
+        } ],
+        "text": "SNOMED Code"
+      } ],
+      "subject": {
+        "reference": "Patient/663955f2-978d-4fde-96d5-cfa5bb072f98",
+        "display": "Mrs. Germaine912 Lesch175"
+      },
+      "participant": [ {
+        "type": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+            "code": "PPRF",
+            "display": "primary performer"
+          } ],
+          "text": "primary performer"
+        } ],
+        "period": {
+          "start": "2022-01-04T15:21:38-05:00",
+          "end": "2022-01-13T02:21:38-05:00"
+        },
+        "individual": {
+          "reference": "Practitioner/ea5dfeb2-2a9d-4431-915b-5f94e7c96b7d",
+          "display": "Dr. Leonie332 Hirthe744"
+        }
+      } ],
+      "period": {
+        "start": "2022-01-04T15:21:38-05:00",
+        "end": "2022-01-13T02:21:38-05:00"
+      },
+      "location": [ {
+        "location": {
+          "reference": "Location/c9877c24-917e-444d-a153-64a8f73a6a39",
+          "display": "WINCHESTER HOSPITAL"
+        }
+      } ],
+      "serviceProvider": {
+        "reference": "Organization/be302d46-764c-494f-8563-b15ed1409fae",
+        "display": "WINCHESTER HOSPITAL"
+      }
+    },
+    "search": {
+      "mode": "match"
+    }
+  }, {
+    "fullUrl": "http://localhost:8014/fhir/Claim/ccc41ab9-0188-44a5-b069-ce9a05de4853",
+    "resource": {
+      "resourceType": "Claim",
+      "id": "ccc41ab9-0188-44a5-b069-ce9a05de4853",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T20:04:11.738+00:00",
+        "source": "#wcoIWplieWarvrJy"
+      },
+      "status": "active",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+          "code": "pharmacy"
+        } ]
+      },
+      "use": "claim",
+      "patient": {
+        "reference": "Patient/663955f2-978d-4fde-96d5-cfa5bb072f98"
+      },
+      "billablePeriod": {
+        "start": "2022-01-04T15:21:38-05:00",
+        "end": "2022-01-13T02:21:38-05:00"
+      },
+      "created": "2022-01-13T02:21:38-05:00",
+      "provider": {
+        "reference": "Organization/be302d46-764c-494f-8563-b15ed1409fae",
+        "display": "WINCHESTER HOSPITAL"
+      },
+      "priority": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/processpriority",
+          "code": "normal"
+        } ]
+      },
+      "prescription": {
+        "reference": "MedicationRequest/8d00c37b-ded9-4d25-ba6e-9ba9e9372e8a"
+      },
+      "insurance": [ {
+        "sequence": 1,
+        "focal": true,
+        "coverage": {
+          "display": "NO_INSURANCE"
+        }
+      } ],
+      "item": [ {
+        "sequence": 1,
+        "productOrService": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "1505002",
+            "display": "SNOMED Code"
+          } ],
+          "text": "SNOMED Code"
+        },
+        "encounter": [ {
+          "reference": "Encounter/beaeee45-c9c3-4def-9375-18255e6bfb55"
+        } ]
+      } ],
+      "total": {
+        "value": 0.00,
+        "currency": "USD"
+      }
+    },
+    "search": {
+      "mode": "match"
+    }
+  }, {
+    "fullUrl": "http://localhost:8014/fhir/Claim/c1b41d50-ef26-4500-80f7-cf1662343e5a",
+    "resource": {
+      "resourceType": "Claim",
+      "id": "c1b41d50-ef26-4500-80f7-cf1662343e5a",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T20:04:11.738+00:00",
+        "source": "#wcoIWplieWarvrJy"
+      },
+      "status": "active",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+          "code": "institutional"
+        } ]
+      },
+      "use": "claim",
+      "patient": {
+        "reference": "Patient/663955f2-978d-4fde-96d5-cfa5bb072f98",
+        "display": "Germaine912 Lesch175"
+      },
+      "billablePeriod": {
+        "start": "2022-01-04T15:21:38-05:00",
+        "end": "2022-01-13T02:21:38-05:00"
+      },
+      "created": "2022-01-13T02:21:38-05:00",
+      "provider": {
+        "reference": "Organization/be302d46-764c-494f-8563-b15ed1409fae",
+        "display": "WINCHESTER HOSPITAL"
+      },
+      "priority": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/processpriority",
+          "code": "normal"
+        } ]
+      },
+      "facility": {
+        "reference": "Location/c9877c24-917e-444d-a153-64a8f73a6a39",
+        "display": "WINCHESTER HOSPITAL"
+      },
+      "supportingInfo": [ {
+        "sequence": 1,
+        "category": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/claiminformationcategory",
+            "code": "info"
+          } ]
+        }
+      } ],
+      "diagnosis": [ {
+        "sequence": 1,
+        "diagnosisReference": {
+          "reference": "Condition/353696ba-d803-4d19-bc6f-a0a667ee1d7d"
+        }
+      } ],
+      "insurance": [ {
+        "sequence": 1,
+        "focal": true,
+        "coverage": {
+          "display": "NO_INSURANCE"
+        }
+      } ],
+      "item": [ {
+        "sequence": 1,
+        "productOrService": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "1505002",
+            "display": "SNOMED Code"
+          } ],
+          "text": "SNOMED Code"
+        },
+        "encounter": [ {
+          "reference": "Encounter/beaeee45-c9c3-4def-9375-18255e6bfb55"
+        } ]
+      }, {
+        "sequence": 2,
+        "diagnosisSequence": [ 1 ],
+        "productOrService": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "195967001",
+            "display": "Asthma"
+          } ],
+          "text": "Asthma"
+        }
+      }, {
+        "sequence": 3,
+        "informationSequence": [ 1 ],
+        "productOrService": {
+          "coding": [ {
+            "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+            "code": "239209",
+            "display": "vancomycin 100 MG/ML Injectable Solution"
+          } ],
+          "text": "vancomycin 100 MG/ML Injectable Solution"
+        },
+        "net": {
+          "value": 129.94,
+          "currency": "USD"
+        }
+      } ],
+      "total": {
+        "value": 276.12,
+        "currency": "USD"
+      }
+    },
+    "search": {
+      "mode": "match"
+    }
+  }, {
+    "fullUrl": "http://localhost:8014/fhir/DiagnosticReport/9327f0ea-b221-484e-be1d-3d587f9ffaec",
+    "resource": {
+      "resourceType": "DiagnosticReport",
+      "id": "9327f0ea-b221-484e-be1d-3d587f9ffaec",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T20:04:11.738+00:00",
+        "source": "#wcoIWplieWarvrJy",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\"> History and physical note </div><table class=\"hapiPropertyTable\"><tbody><tr><td>Status</td><td>FINAL</td></tr><tr><td>Issued</td><td> 04 January 2022 20:21:38</td></tr></tbody></table></div>"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "34117-2",
+          "display": "History and physical note"
+        }, {
+          "system": "http://loinc.org",
+          "code": "51847-2",
+          "display": "Evaluation+Plan note"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "34117-2",
+          "display": "History and physical note"
+        }, {
+          "system": "http://loinc.org",
+          "code": "51847-2",
+          "display": "Evaluation+Plan note"
+        } ]
+      },
+      "subject": {
+        "reference": "Patient/663955f2-978d-4fde-96d5-cfa5bb072f98"
+      },
+      "encounter": {
+        "reference": "Encounter/beaeee45-c9c3-4def-9375-18255e6bfb55"
+      },
+      "effectiveDateTime": "2022-01-04T15:21:38-05:00",
+      "issued": "2022-01-04T15:21:38.102-05:00",
+      "performer": [ {
+        "reference": "Practitioner/ea5dfeb2-2a9d-4431-915b-5f94e7c96b7d",
+        "display": "Dr. Leonie332 Hirthe744"
+      } ],
+      "presentedForm": [ {
+        "contentType": "text/plain; charset=utf-8",
+        "data": "DQoyMDIyLTAxLTA0DQoNCiMgQ2hpZWYgQ29tcGxhaW50DQpObyBjb21wbGFpbnRzLg0KDQojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzDQpHZXJtYWluZTkxMg0KIGlzIGEgNDEgeWVhci1vbGQgbm9uLWhpc3BhbmljIHdoaXRlIGZlbWFsZS4NCg0KIyBTb2NpYWwgSGlzdG9yeQ0KUGF0aWVudCBpcyBtYXJyaWVkLiBQYXRpZW50IGlzIGFuIGFjdGl2ZSBzbW9rZXIgYW5kIGlzIGFuIGFsY29ob2xpYy4NCiBQYXRpZW50IGlkZW50aWZpZXMgYXMgaGV0ZXJvc2V4dWFsLg0KDQpQYXRpZW50IGNvbWVzIGZyb20gYSBtaWRkbGUgc29jaW9lY29ub21pYyBiYWNrZ3JvdW5kLg0KIFBhdGllbnQgaGFzIGNvbXBsZXRlZCBzb21lIGNvbGxlZ2UgY291cnNlcy4NClBhdGllbnQgY3VycmVudGx5IGhhcyBOTyBJTlNVUkFOQ0UuDQoNCiMgQWxsZXJnaWVzDQpObyBLbm93biBBbGxlcmdpZXMuDQoNCiMgTWVkaWNhdGlvbnMNCk5vIEFjdGl2ZSBNZWRpY2F0aW9ucy4NCg0KIyBBc3Nlc3NtZW50IGFuZCBQbGFuDQpQYXRpZW50IGlzIHByZXNlbnRpbmcgd2l0aCBhc3RobWEuIA0KDQojIyBQbGFuDQoNClRoZSBwYXRpZW50IHdhcyBwcmVzY3JpYmVkIHRoZSBmb2xsb3dpbmcgbWVkaWNhdGlvbnM6DQotIHZhbmNvbXljaW4gMTAwIG1nL21sIGluamVjdGFibGUgc29sdXRpb24NCg=="
+      } ]
+    },
+    "search": {
+      "mode": "match"
+    }
+  }, {
+    "fullUrl": "http://localhost:8014/fhir/ExplanationOfBenefit/b819dfc5-7525-4de4-814a-0baeb685c503",
+    "resource": {
+      "resourceType": "ExplanationOfBenefit",
+      "id": "b819dfc5-7525-4de4-814a-0baeb685c503",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T20:04:11.738+00:00",
+        "source": "#wcoIWplieWarvrJy"
+      },
+      "contained": [ {
+        "resourceType": "ServiceRequest",
+        "id": "referral",
+        "status": "completed",
+        "intent": "order",
+        "subject": {
+          "reference": "Patient/663955f2-978d-4fde-96d5-cfa5bb072f98"
+        },
+        "requester": {
+          "reference": "Practitioner/ea5dfeb2-2a9d-4431-915b-5f94e7c96b7d"
+        },
+        "performer": [ {
+          "reference": "Practitioner/ea5dfeb2-2a9d-4431-915b-5f94e7c96b7d"
+        } ]
+      }, {
+        "resourceType": "Coverage",
+        "id": "coverage",
+        "status": "active",
+        "type": {
+          "text": "NO_INSURANCE"
+        },
+        "beneficiary": {
+          "reference": "Patient/663955f2-978d-4fde-96d5-cfa5bb072f98"
+        },
+        "payor": [ {
+          "display": "NO_INSURANCE"
+        } ]
+      } ],
+      "identifier": [ {
+        "system": "https://bluebutton.cms.gov/resources/variables/clm_id",
+        "value": "ba5765b1-8977-c420-d8bf-0ea1b71bdc6e"
+      }, {
+        "system": "https://bluebutton.cms.gov/resources/identifier/claim-group",
+        "value": "99999999999"
+      } ],
+      "status": "active",
+      "type": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+          "code": "institutional"
+        } ]
+      },
+      "use": "claim",
+      "patient": {
+        "reference": "Patient/663955f2-978d-4fde-96d5-cfa5bb072f98"
+      },
+      "billablePeriod": {
+        "start": "2022-01-13T02:21:38-05:00",
+        "end": "2023-01-13T02:21:38-05:00"
+      },
+      "created": "2022-01-13T02:21:38-05:00",
+      "insurer": {
+        "display": "NO_INSURANCE"
+      },
+      "provider": {
+        "reference": "Practitioner/ea5dfeb2-2a9d-4431-915b-5f94e7c96b7d"
+      },
+      "referral": {
+        "reference": "#referral"
+      },
+      "facility": {
+        "reference": "Location/c9877c24-917e-444d-a153-64a8f73a6a39",
+        "display": "WINCHESTER HOSPITAL"
+      },
+      "claim": {
+        "reference": "Claim/c1b41d50-ef26-4500-80f7-cf1662343e5a"
+      },
+      "outcome": "complete",
+      "careTeam": [ {
+        "sequence": 1,
+        "provider": {
+          "reference": "Practitioner/ea5dfeb2-2a9d-4431-915b-5f94e7c96b7d"
+        },
+        "role": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/claimcareteamrole",
+            "code": "primary",
+            "display": "Primary Care Practitioner"
+          } ]
+        }
+      } ],
+      "diagnosis": [ {
+        "sequence": 1,
+        "diagnosisReference": {
+          "reference": "Condition/353696ba-d803-4d19-bc6f-a0a667ee1d7d"
+        },
+        "type": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/ex-diagnosistype",
+            "code": "principal"
+          } ]
+        } ]
+      } ],
+      "insurance": [ {
+        "focal": true,
+        "coverage": {
+          "reference": "#coverage",
+          "display": "NO_INSURANCE"
+        }
+      } ],
+      "item": [ {
+        "sequence": 1,
+        "category": {
+          "coding": [ {
+            "system": "https://bluebutton.cms.gov/resources/variables/line_cms_type_srvc_cd",
+            "code": "1",
+            "display": "Medical care"
+          } ]
+        },
+        "productOrService": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "1505002",
+            "display": "SNOMED Code"
+          } ],
+          "text": "SNOMED Code"
+        },
+        "servicedPeriod": {
+          "start": "2022-01-04T15:21:38-05:00",
+          "end": "2022-01-13T02:21:38-05:00"
+        },
+        "locationCodeableConcept": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/ex-serviceplace",
+            "code": "21",
+            "display": "Inpatient Hospital"
+          } ]
+        },
+        "encounter": [ {
+          "reference": "Encounter/beaeee45-c9c3-4def-9375-18255e6bfb55"
+        } ]
+      }, {
+        "sequence": 2,
+        "diagnosisSequence": [ 1 ],
+        "category": {
+          "coding": [ {
+            "system": "https://bluebutton.cms.gov/resources/variables/line_cms_type_srvc_cd",
+            "code": "1",
+            "display": "Medical care"
+          } ]
+        },
+        "productOrService": {
+          "coding": [ {
+            "system": "http://snomed.info/sct",
+            "code": "195967001",
+            "display": "Asthma"
+          } ],
+          "text": "Asthma"
+        },
+        "servicedPeriod": {
+          "start": "2022-01-04T15:21:38-05:00",
+          "end": "2022-01-13T02:21:38-05:00"
+        },
+        "locationCodeableConcept": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/ex-serviceplace",
+            "code": "21",
+            "display": "Inpatient Hospital"
+          } ]
+        }
+      }, {
+        "sequence": 3,
+        "informationSequence": [ 1 ],
+        "category": {
+          "coding": [ {
+            "system": "https://bluebutton.cms.gov/resources/variables/line_cms_type_srvc_cd",
+            "code": "1",
+            "display": "Medical care"
+          } ]
+        },
+        "productOrService": {
+          "coding": [ {
+            "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+            "code": "239209",
+            "display": "vancomycin 100 MG/ML Injectable Solution"
+          } ],
+          "text": "vancomycin 100 MG/ML Injectable Solution"
+        },
+        "servicedPeriod": {
+          "start": "2022-01-04T15:21:38-05:00",
+          "end": "2022-01-13T02:21:38-05:00"
+        },
+        "locationCodeableConcept": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/ex-serviceplace",
+            "code": "21",
+            "display": "Inpatient Hospital"
+          } ]
+        },
+        "net": {
+          "value": 129.94,
+          "currency": "USD"
+        },
+        "adjudication": [ {
+          "category": {
+            "coding": [ {
+              "system": "https://bluebutton.cms.gov/resources/codesystem/adjudication",
+              "code": "https://bluebutton.cms.gov/resources/variables/line_coinsrnc_amt",
+              "display": "Line Beneficiary Coinsurance Amount"
+            } ]
+          },
+          "amount": {
+            "value": 25.988,
+            "currency": "USD"
+          }
+        }, {
+          "category": {
+            "coding": [ {
+              "system": "https://bluebutton.cms.gov/resources/codesystem/adjudication",
+              "code": "https://bluebutton.cms.gov/resources/variables/line_prvdr_pmt_amt",
+              "display": "Line Provider Payment Amount"
+            } ]
+          },
+          "amount": {
+            "value": 103.952,
+            "currency": "USD"
+          }
+        }, {
+          "category": {
+            "coding": [ {
+              "system": "https://bluebutton.cms.gov/resources/codesystem/adjudication",
+              "code": "https://bluebutton.cms.gov/resources/variables/line_sbmtd_chrg_amt",
+              "display": "Line Submitted Charge Amount"
+            } ]
+          },
+          "amount": {
+            "value": 129.94,
+            "currency": "USD"
+          }
+        }, {
+          "category": {
+            "coding": [ {
+              "system": "https://bluebutton.cms.gov/resources/codesystem/adjudication",
+              "code": "https://bluebutton.cms.gov/resources/variables/line_alowd_chrg_amt",
+              "display": "Line Allowed Charge Amount"
+            } ]
+          },
+          "amount": {
+            "value": 129.94,
+            "currency": "USD"
+          }
+        }, {
+          "category": {
+            "coding": [ {
+              "system": "https://bluebutton.cms.gov/resources/codesystem/adjudication",
+              "code": "https://bluebutton.cms.gov/resources/variables/line_bene_ptb_ddctbl_amt",
+              "display": "Line Beneficiary Part B Deductible Amount"
+            } ]
+          },
+          "amount": {
+            "value": 0,
+            "currency": "USD"
+          }
+        }, {
+          "category": {
+            "coding": [ {
+              "system": "https://bluebutton.cms.gov/resources/codesystem/adjudication",
+              "code": "https://bluebutton.cms.gov/resources/variables/line_prcsg_ind_cd",
+              "display": "Line Processing Indicator Code"
+            } ]
+          }
+        } ]
+      } ],
+      "total": [ {
+        "category": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/adjudication",
+            "code": "submitted",
+            "display": "Submitted Amount"
+          } ],
+          "text": "Submitted Amount"
+        },
+        "amount": {
+          "value": 276.12,
+          "currency": "USD"
+        }
+      } ],
+      "payment": {
+        "amount": {
+          "value": 103.952,
+          "currency": "USD"
+        }
+      }
+    },
+    "search": {
+      "mode": "match"
+    }
+  }, {
+    "fullUrl": "http://localhost:8014/fhir/MedicationAdministration/4e7c35d1-160c-4ffb-a50d-f5152956c4f9",
+    "resource": {
+      "resourceType": "MedicationAdministration",
+      "id": "4e7c35d1-160c-4ffb-a50d-f5152956c4f9",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T20:04:11.738+00:00",
+        "source": "#wcoIWplieWarvrJy"
+      },
+      "status": "completed",
+      "medicationCodeableConcept": {
+        "coding": [ {
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "code": "103866",
+          "display": "metronidazole benzoate"
+        } ],
+        "text": "metronidazole benzoate"
+      },
+      "subject": {
+        "reference": "Patient/663955f2-978d-4fde-96d5-cfa5bb072f98"
+      },
+      "context": {
+        "reference": "Encounter/beaeee45-c9c3-4def-9375-18255e6bfb55"
+      },
+      "effectiveDateTime": "2022-01-06T15:21:38-05:00",
+      "dosage": {
+        "dose": {
+          "value": 1.0
+        },
+        "rateQuantity": {
+          "value": 5
+        }
+      }
+    },
+    "search": {
+      "mode": "match"
+    }
+  }, {
+    "fullUrl": "http://localhost:8014/fhir/DocumentReference/8222c68a-60a8-4ced-a233-3283432f4446",
+    "resource": {
+      "resourceType": "DocumentReference",
+      "id": "8222c68a-60a8-4ced-a233-3283432f4446",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T20:04:11.738+00:00",
+        "source": "#wcoIWplieWarvrJy",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-documentreference" ]
+      },
+      "identifier": [ {
+        "system": "urn:ietf:rfc:3986",
+        "value": "urn:uuid:fa7e5c43-a99a-6f88-9a20-a8dd5432685e"
+      } ],
+      "status": "superseded",
+      "type": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "34117-2",
+          "display": "History and physical note"
+        }, {
+          "system": "http://loinc.org",
+          "code": "51847-2",
+          "display": "Evaluation+Plan note"
+        } ]
+      },
+      "category": [ {
+        "coding": [ {
+          "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+          "code": "clinical-note",
+          "display": "Clinical Note"
+        } ]
+      } ],
+      "subject": {
+        "reference": "Patient/663955f2-978d-4fde-96d5-cfa5bb072f98"
+      },
+      "date": "2022-01-04T15:21:38.102-05:00",
+      "author": [ {
+        "reference": "Practitioner/ea5dfeb2-2a9d-4431-915b-5f94e7c96b7d",
+        "display": "Dr. Leonie332 Hirthe744"
+      } ],
+      "custodian": {
+        "reference": "Organization/be302d46-764c-494f-8563-b15ed1409fae",
+        "display": "WINCHESTER HOSPITAL"
+      },
+      "content": [ {
+        "attachment": {
+          "contentType": "text/plain; charset=utf-8",
+          "data": "DQoyMDIyLTAxLTA0DQoNCiMgQ2hpZWYgQ29tcGxhaW50DQpObyBjb21wbGFpbnRzLg0KDQojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzDQpHZXJtYWluZTkxMg0KIGlzIGEgNDEgeWVhci1vbGQgbm9uLWhpc3BhbmljIHdoaXRlIGZlbWFsZS4NCg0KIyBTb2NpYWwgSGlzdG9yeQ0KUGF0aWVudCBpcyBtYXJyaWVkLiBQYXRpZW50IGlzIGFuIGFjdGl2ZSBzbW9rZXIgYW5kIGlzIGFuIGFsY29ob2xpYy4NCiBQYXRpZW50IGlkZW50aWZpZXMgYXMgaGV0ZXJvc2V4dWFsLg0KDQpQYXRpZW50IGNvbWVzIGZyb20gYSBtaWRkbGUgc29jaW9lY29ub21pYyBiYWNrZ3JvdW5kLg0KIFBhdGllbnQgaGFzIGNvbXBsZXRlZCBzb21lIGNvbGxlZ2UgY291cnNlcy4NClBhdGllbnQgY3VycmVudGx5IGhhcyBOTyBJTlNVUkFOQ0UuDQoNCiMgQWxsZXJnaWVzDQpObyBLbm93biBBbGxlcmdpZXMuDQoNCiMgTWVkaWNhdGlvbnMNCk5vIEFjdGl2ZSBNZWRpY2F0aW9ucy4NCg0KIyBBc3Nlc3NtZW50IGFuZCBQbGFuDQpQYXRpZW50IGlzIHByZXNlbnRpbmcgd2l0aCBhc3RobWEuIA0KDQojIyBQbGFuDQoNClRoZSBwYXRpZW50IHdhcyBwcmVzY3JpYmVkIHRoZSBmb2xsb3dpbmcgbWVkaWNhdGlvbnM6DQotIHZhbmNvbXljaW4gMTAwIG1nL21sIGluamVjdGFibGUgc29sdXRpb24NCg=="
+        },
+        "format": {
+          "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+          "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+          "display": "mimeType Sufficient"
+        }
+      } ],
+      "context": {
+        "encounter": [ {
+          "reference": "Encounter/beaeee45-c9c3-4def-9375-18255e6bfb55"
+        } ],
+        "period": {
+          "start": "2022-01-04T15:21:38-05:00",
+          "end": "2022-01-13T02:21:38-05:00"
+        }
+      }
+    },
+    "search": {
+      "mode": "match"
+    }
+  },  {
+    "fullUrl": "http://localhost:8014/fhir/Medication/d0a1c5a3-1534-41c5-8f78-ea39eaddce1f",
+    "resource": {
+      "resourceType": "Medication",
+      "id": "d0a1c5a3-1534-41c5-8f78-ea39eaddce1f",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T20:04:11.738+00:00",
+        "source": "#wcoIWplieWarvrJy",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\">vancomycin 100 MG/ML Injectable Solution</div></div>"
+      },
+      "code": {
+        "coding": [ {
+          "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+          "code": "103866",
+          "display": "metronidazole benzoate"
+        } ],
+        "text": "metronidazole benzoate"
+      },
+      "status": "active"
+    },
+    "search": {
+      "mode": "match"
+    }
+  },{
+    "fullUrl": "http://localhost:8014/fhir/MedicationRequest/8d00c37b-ded9-4d25-ba6e-9ba9e9372e8a",
+    "resource": {
+      "resourceType": "MedicationRequest",
+      "id": "8d00c37b-ded9-4d25-ba6e-9ba9e9372e8a",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T20:04:11.738+00:00",
+        "source": "#wcoIWplieWarvrJy",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest" ]
+      },
+      "status": "active",
+      "intent": "order",
+      "medicationReference": {
+        "reference": "Medication/d0a1c5a3-1534-41c5-8f78-ea39eaddce1f"
+      },
+      "subject": {
+        "reference": "Patient/663955f2-978d-4fde-96d5-cfa5bb072f98"
+      },
+      "encounter": {
+        "reference": "Encounter/beaeee45-c9c3-4def-9375-18255e6bfb55"
+      },
+      "authoredOn": "2022-01-06T15:21:38-05:00",
+      "requester": {
+        "reference": "Practitioner/ea5dfeb2-2a9d-4431-915b-5f94e7c96b7d",
+        "display": "Dr. Leonie332 Hirthe744"
+      },
+      "dosageInstruction": [ {
+        "sequence": 1,
+        "timing": {
+          "repeat": {
+            "frequency": 1,
+            "period": 1.0,
+            "periodUnit": "d"
+          }
+        },
+        "asNeededBoolean": false,
+        "doseAndRate": [ {
+          "type": {
+            "coding": [ {
+              "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+              "code": "ordered",
+              "display": "Ordered"
+            } ]
+          },
+          "doseQuantity": {
+            "value": 1.0
+          }
+        } ]
+      } ]
+    },
+    "search": {
+      "mode": "match"
+    }
+  }, {
+    "fullUrl": "http://localhost:8014/fhir/Observation/7cedcbe6-8b91-4bd6-96c6-80d344ac4d5f",
+    "resource": {
+      "resourceType": "Observation",
+      "id": "7cedcbe6-8b91-4bd6-96c6-80d344ac4d5f",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T20:04:11.738+00:00",
+        "source": "#wcoIWplieWarvrJy"
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "laboratory"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "10895-1",
+          "display": "Clostridioides difficile toxin B [Presence] in Stool"
+        } ],
+        "text": "Clostridioides difficile toxin B [Presence] in Stool"
+      },
+      "subject": {
+        "reference": "Patient/663955f2-978d-4fde-96d5-cfa5bb072f98"
+      },
+      "encounter": {
+        "reference": "Encounter/beaeee45-c9c3-4def-9375-18255e6bfb55"
+      },
+      "effectiveDateTime": "2022-01-06T15:21:38-05:00",
+      "issued": "2022-01-06T15:21:38.102-05:00",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "719220002",
+          "display": "Positive"
+        } ],
+        "text": "Positive"
+      }
+    },
+    "search": {
+      "mode": "match"
+    }
+  }, {
+    "fullUrl": "http://localhost:8014/fhir/Provenance/fc4f7d83-ed8b-4832-9308-44b8fcd6c966",
+    "resource": {
+      "resourceType": "Provenance",
+      "id": "fc4f7d83-ed8b-4832-9308-44b8fcd6c966",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T20:04:11.738+00:00",
+        "source": "#wcoIWplieWarvrJy",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-provenance" ]
+      },
+      "target": [ {
+        "reference": "Patient/663955f2-978d-4fde-96d5-cfa5bb072f98"
+      }, {
+        "reference": "Encounter/dbc13052-d466-4323-bb52-0dac4281939d"
+      }, {
+        "reference": "Immunization/48a8f6ab-bd10-4ef6-a388-b42c9df9b2d8"
+      }, {
+        "reference": "DiagnosticReport/08d5f1eb-c887-4c89-9d00-8188b301f358"
+      }, {
+        "reference": "DocumentReference/138c2fac-2a90-44b2-bc4f-349f6d1074bf"
+      }, {
+        "reference": "Claim/8824c4ed-81b3-47eb-aad1-c09e44ea7ddc"
+      }, {
+        "reference": "ExplanationOfBenefit/4e51fa28-9535-494e-9e9c-e44ec6b6fbfd"
+      }, {
+        "reference": "Encounter/ca0e38fa-f00d-4bbf-840c-6d5faf30aefb"
+      }, {
+        "reference": "Immunization/8f0c073e-b8a0-4b7f-b226-905e7fda9a5d"
+      }, {
+        "reference": "DiagnosticReport/4f66b169-288c-4fad-a644-6631f00d3ef2"
+      }, {
+        "reference": "DocumentReference/1c9da9c8-3077-43de-b363-b1cd608c07d1"
+      }, {
+        "reference": "Claim/039e891a-072a-400d-b54f-3fd80a6f8add"
+      }, {
+        "reference": "ExplanationOfBenefit/03051bd3-a9cc-470c-a870-3a9605d4375d"
+      }, {
+        "reference": "Encounter/db06c4bc-ece0-4a3c-ac32-0648510a2322"
+      }, {
+        "reference": "Immunization/3858e04a-37e4-4698-b1fe-b0c6de462189"
+      }, {
+        "reference": "Immunization/fbebd28e-010a-428d-8aa2-a7146816cdcc"
+      }, {
+        "reference": "DiagnosticReport/d209fca2-ae5e-416c-a0e2-ab313a60ae86"
+      }, {
+        "reference": "DocumentReference/77c61c26-95ad-48ca-bcb5-d93863b721a1"
+      }, {
+        "reference": "Claim/a129b41f-9f3a-4670-b12d-64c1eccbf777"
+      }, {
+        "reference": "ExplanationOfBenefit/c78830cf-180b-4de9-9468-3f8fbd2f8d31"
+      }, {
+        "reference": "Encounter/1afda5c3-f7a7-4cba-bfa6-1bb243f8d7ad"
+      }, {
+        "reference": "Immunization/40231551-163e-456d-ba2e-06b735b2a3f9"
+      }, {
+        "reference": "DiagnosticReport/b940f37e-ccd2-4cee-86f7-26cbb4a8b6ee"
+      }, {
+        "reference": "DocumentReference/f41e2419-8392-4af2-ad74-26c4e8dd167f"
+      }, {
+        "reference": "Claim/88142815-8e20-4490-8e83-362f3b689c82"
+      }, {
+        "reference": "ExplanationOfBenefit/ce1792c4-3bdb-4d9e-a413-5777e97278a2"
+      }, {
+        "reference": "Encounter/e8ca4642-ed37-4029-bd6a-91f8153157e5"
+      }, {
+        "reference": "Immunization/a05e9208-ff5f-4518-b311-7c2b4944ba9e"
+      }, {
+        "reference": "DiagnosticReport/0a24dd74-5da3-4f79-8912-f94bd8a2dcad"
+      }, {
+        "reference": "DocumentReference/aa37d123-5bad-46eb-b2c3-0d27abf47426"
+      }, {
+        "reference": "Claim/8c0c36c0-4402-4659-b0f0-da94fadd7698"
+      }, {
+        "reference": "ExplanationOfBenefit/88aa484d-1f72-4922-a804-d98a99d7723d"
+      }, {
+        "reference": "Encounter/ec99c1d6-3a6c-430e-8420-c62d6fe47ef2"
+      }, {
+        "reference": "Medication/3bbe7830-3b2f-4aed-9eeb-98e2b55c1cb8"
+      }, {
+        "reference": "MedicationRequest/cc1aaf75-2145-4461-85d6-22e4b0098468"
+      }, {
+        "reference": "Claim/de5e29ec-4492-4ff5-80a1-4ee95725709a"
+      }, {
+        "reference": "MedicationAdministration/60a5d4c1-9921-41a6-b394-6c09a1d3c924"
+      }, {
+        "reference": "DiagnosticReport/4b95b4bf-5343-48a1-b474-5a2a9eb5e2db"
+      }, {
+        "reference": "DocumentReference/9d8df697-3f62-4d7d-b5b5-736467037a2d"
+      }, {
+        "reference": "Claim/a526a495-7fd7-4de5-9219-20018f113cb8"
+      }, {
+        "reference": "ExplanationOfBenefit/b818066c-7f1a-4d7e-a97e-3905d3dbaec3"
+      }, {
+        "reference": "Encounter/beaeee45-c9c3-4def-9375-18255e6bfb55"
+      }, {
+        "reference": "Condition/353696ba-d803-4d19-bc6f-a0a667ee1d7d"
+      }, {
+        "reference": "Observation/7cedcbe6-8b91-4bd6-96c6-80d344ac4d5f"
+      }, {
+        "reference": "Medication/d0a1c5a3-1534-41c5-8f78-ea39eaddce1f"
+      }, {
+        "reference": "MedicationRequest/8d00c37b-ded9-4d25-ba6e-9ba9e9372e8a"
+      }, {
+        "reference": "Claim/ccc41ab9-0188-44a5-b069-ce9a05de4853"
+      }, {
+        "reference": "MedicationAdministration/4e7c35d1-160c-4ffb-a50d-f5152956c4f9"
+      }, {
+        "reference": "DiagnosticReport/9327f0ea-b221-484e-be1d-3d587f9ffaec"
+      }, {
+        "reference": "DocumentReference/8222c68a-60a8-4ced-a233-3283432f4446"
+      }, {
+        "reference": "Claim/c1b41d50-ef26-4500-80f7-cf1662343e5a"
+      }, {
+        "reference": "ExplanationOfBenefit/b819dfc5-7525-4de4-814a-0baeb685c503"
+      }, {
+        "reference": "Encounter/d7e2dac5-a753-4ec5-aa06-fff9a174289a"
+      }, {
+        "reference": "Immunization/9ae9e158-7559-46be-a17e-92111fd2d314"
+      }, {
+        "reference": "Immunization/1868331c-507e-4cbe-982c-a411aa1e9c1a"
+      }, {
+        "reference": "Immunization/d3d714a3-a8a0-4f45-88e0-72baf5448ff3"
+      }, {
+        "reference": "DiagnosticReport/f914461f-2738-4558-91c8-bb02bc00412d"
+      }, {
+        "reference": "DocumentReference/033cbeda-4b5f-4a1e-b2d5-5110142d51d5"
+      }, {
+        "reference": "Claim/a74c3790-5c4a-4f80-92df-54f207c17745"
+      }, {
+        "reference": "ExplanationOfBenefit/f5c3e6af-420d-48cf-87a7-09ebc8d9f4ab"
+      } ],
+      "recorded": "2022-05-31T16:21:38.102-04:00",
+      "agent": [ {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/provenance-participant-type",
+            "code": "author",
+            "display": "Author"
+          } ],
+          "text": "Author"
+        },
+        "who": {
+          "reference": "Practitioner/f29b27f8-e907-4b20-a13e-79f4d26bd1e3",
+          "display": "Dr. Christoper325 Labadie908"
+        },
+        "onBehalfOf": {
+          "reference": "Organization/b0f4bb3c-0424-4e1e-a1b2-79e73bbf2c50",
+          "display": "NESC BIDPO LLC"
+        }
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-provenance-participant-type",
+            "code": "transmitter",
+            "display": "Transmitter"
+          } ],
+          "text": "Transmitter"
+        },
+        "who": {
+          "reference": "Practitioner/f29b27f8-e907-4b20-a13e-79f4d26bd1e3",
+          "display": "Dr. Christoper325 Labadie908"
+        },
+        "onBehalfOf": {
+          "reference": "Organization/b0f4bb3c-0424-4e1e-a1b2-79e73bbf2c50",
+          "display": "NESC BIDPO LLC"
+        }
+      } ]
+    },
+    "search": {
+      "mode": "match"
+    }
+  }, {
+    "fullUrl": "http://localhost:8014/fhir/Condition/353696ba-d803-4d19-bc6f-a0a667ee1d7d",
+    "resource": {
+      "resourceType": "Condition",
+      "id": "353696ba-d803-4d19-bc6f-a0a667ee1d7d",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T20:04:11.738+00:00",
+        "source": "#wcoIWplieWarvrJy",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition" ]
+      },
+      "clinicalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+          "code": "active"
+        } ]
+      },
+      "verificationStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+          "code": "confirmed"
+        } ]
+      },
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+          "code": "encounter-diagnosis",
+          "display": "Encounter Diagnosis"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "195967001",
+          "display": "Asthma"
+        } ],
+        "text": "Asthma"
+      },
+      "subject": {
+        "reference": "Patient/663955f2-978d-4fde-96d5-cfa5bb072f98"
+      },
+      "encounter": {
+        "reference": "Encounter/beaeee45-c9c3-4def-9375-18255e6bfb55"
+      },
+      "onsetDateTime": "2022-01-04T15:21:38-05:00",
+      "recordedDate": "2022-01-04T15:21:38-05:00"
+    },
+    "search": {
+      "mode": "match"
+    }
+  }, {
+    "fullUrl": "http://localhost:8014/fhir/Organization/be302d46-764c-494f-8563-b15ed1409fae",
+    "resource": {
+      "resourceType": "Organization",
+      "id": "be302d46-764c-494f-8563-b15ed1409fae",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T19:55:21.318+00:00",
+        "source": "#0YM6X5L9m2FIdnbp",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization" ]
+      },
+      "extension": [ {
+        "url": "http://synthetichealth.github.io/synthea/utilization-encounters-extension",
+        "valueInteger": 4
+      }, {
+        "url": "http://synthetichealth.github.io/synthea/utilization-procedures-extension",
+        "valueInteger": 0
+      }, {
+        "url": "http://synthetichealth.github.io/synthea/utilization-labs-extension",
+        "valueInteger": 0
+      }, {
+        "url": "http://synthetichealth.github.io/synthea/utilization-prescriptions-extension",
+        "valueInteger": 0
+      } ],
+      "identifier": [ {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "f4e7709c-02f6-37ca-aeea-8247d74e88e7"
+      } ],
+      "active": true,
+      "type": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        } ],
+        "text": "Healthcare Provider"
+      } ],
+      "name": "WINCHESTER HOSPITAL",
+      "telecom": [ {
+        "system": "phone",
+        "value": "7817299000"
+      } ],
+      "address": [ {
+        "line": [ "41 HIGHLAND AVENUE" ],
+        "city": "WINCHESTER",
+        "state": "MA",
+        "postalCode": "01890",
+        "country": "US"
+      } ]
+    },
+    "search": {
+      "mode": "match"
+    }
+  }, {
+    "fullUrl": "http://localhost:8014/fhir/Location/c9877c24-917e-444d-a153-64a8f73a6a39",
+    "resource": {
+      "resourceType": "Location",
+      "id": "c9877c24-917e-444d-a153-64a8f73a6a39",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T19:55:27.259+00:00",
+        "source": "#0YM6X5L9m2FIdnbp",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-location" ]
+      },
+      "identifier": [ {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "633b4209-91a0-36dd-94c3-5d0ce0399fec"
+      } ],
+      "status": "active",
+      "name": "WINCHESTER HOSPITAL",
+      "telecom": [ {
+        "system": "phone",
+        "value": "7817299000"
+      } ],
+      "address": {
+        "line": [ "41 HIGHLAND AVENUE" ],
+        "city": "WINCHESTER",
+        "state": "MA",
+        "postalCode": "01890",
+        "country": "US"
+      },
+      "position": {
+        "longitude": -71.144319,
+        "latitude": 42.452752
+      },
+      "managingOrganization": {
+        "identifier": {
+          "system": "https://github.com/synthetichealth/synthea",
+          "value": "f4e7709c-02f6-37ca-aeea-8247d74e88e7"
+        },
+        "display": "WINCHESTER HOSPITAL"
+      }
+    },
+    "search": {
+      "mode": "match"
+    }
+  }, {
+    "fullUrl": "http://localhost:8014/fhir/Organization/b0f4bb3c-0424-4e1e-a1b2-79e73bbf2c50",
+    "resource": {
+      "resourceType": "Organization",
+      "id": "b0f4bb3c-0424-4e1e-a1b2-79e73bbf2c50",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T19:55:27.352+00:00",
+        "source": "#0YM6X5L9m2FIdnbp",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-organization" ]
+      },
+      "extension": [ {
+        "url": "http://synthetichealth.github.io/synthea/utilization-encounters-extension",
+        "valueInteger": 36
+      }, {
+        "url": "http://synthetichealth.github.io/synthea/utilization-procedures-extension",
+        "valueInteger": 0
+      }, {
+        "url": "http://synthetichealth.github.io/synthea/utilization-labs-extension",
+        "valueInteger": 0
+      }, {
+        "url": "http://synthetichealth.github.io/synthea/utilization-prescriptions-extension",
+        "valueInteger": 2
+      } ],
+      "identifier": [ {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "5020f005-91f5-3530-89da-2d6ec756e9a5"
+      } ],
+      "active": true,
+      "type": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+          "code": "prov",
+          "display": "Healthcare Provider"
+        } ],
+        "text": "Healthcare Provider"
+      } ],
+      "name": "NESC BIDPO LLC",
+      "telecom": [ {
+        "system": "phone",
+        "value": "(555) 555-5555"
+      } ],
+      "address": [ {
+        "line": [ "22 MILL ST" ],
+        "city": "ARLINGTON",
+        "state": "MA",
+        "postalCode": "02476-4744",
+        "country": "US"
+      } ]
+    },
+    "search": {
+      "mode": "match"
+    }
+  }, {
+    "fullUrl": "http://localhost:8014/fhir/Location/9b6d8f3e-37d1-44e4-9fbd-d1d56c592234",
+    "resource": {
+      "resourceType": "Location",
+      "id": "9b6d8f3e-37d1-44e4-9fbd-d1d56c592234",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T19:55:27.404+00:00",
+        "source": "#0YM6X5L9m2FIdnbp",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-location" ]
+      },
+      "identifier": [ {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "28234831-64f8-30e1-a8f5-5a83a111ad56"
+      } ],
+      "status": "active",
+      "name": "NESC BIDPO LLC",
+      "telecom": [ {
+        "system": "phone",
+        "value": "(555) 555-5555"
+      } ],
+      "address": {
+        "line": [ "22 MILL ST" ],
+        "city": "ARLINGTON",
+        "state": "MA",
+        "postalCode": "02476-4744",
+        "country": "US"
+      },
+      "position": {
+        "longitude": -71.163912,
+        "latitude": 42.418721999999995
+      },
+      "managingOrganization": {
+        "identifier": {
+          "system": "https://github.com/synthetichealth/synthea",
+          "value": "5020f005-91f5-3530-89da-2d6ec756e9a5"
+        },
+        "display": "NESC BIDPO LLC"
+      }
+    },
+    "search": {
+      "mode": "match"
+    }
+  }, {
+    "fullUrl": "http://localhost:8014/fhir/Practitioner/ea5dfeb2-2a9d-4431-915b-5f94e7c96b7d",
+    "resource": {
+      "resourceType": "Practitioner",
+      "id": "ea5dfeb2-2a9d-4431-915b-5f94e7c96b7d",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T19:55:27.526+00:00",
+        "source": "#izb2blTJTXsRPzOD",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner" ]
+      },
+      "extension": [ {
+        "url": "http://synthetichealth.github.io/synthea/utilization-encounters-extension",
+        "valueInteger": 4
+      } ],
+      "identifier": [ {
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "9999995696"
+      } ],
+      "active": true,
+      "name": [ {
+        "family": "Hirthe744",
+        "given": [ "Leonie332" ],
+        "prefix": [ "Dr." ]
+      } ],
+      "telecom": [ {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-direct",
+          "valueBoolean": true
+        } ],
+        "system": "email",
+        "value": "Leonie332.Hirthe744@example.com",
+        "use": "work"
+      } ],
+      "address": [ {
+        "line": [ "41 HIGHLAND AVENUE" ],
+        "city": "WINCHESTER",
+        "state": "MA",
+        "postalCode": "01890",
+        "country": "US"
+      } ],
+      "gender": "female"
+    },
+    "search": {
+      "mode": "match"
+    }
+  }, {
+    "fullUrl": "http://localhost:8014/fhir/Practitioner/f29b27f8-e907-4b20-a13e-79f4d26bd1e3",
+    "resource": {
+      "resourceType": "Practitioner",
+      "id": "f29b27f8-e907-4b20-a13e-79f4d26bd1e3",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T19:55:27.647+00:00",
+        "source": "#izb2blTJTXsRPzOD",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner" ]
+      },
+      "extension": [ {
+        "url": "http://synthetichealth.github.io/synthea/utilization-encounters-extension",
+        "valueInteger": 36
+      } ],
+      "identifier": [ {
+        "system": "http://hl7.org/fhir/sid/us-npi",
+        "value": "9999159293"
+      } ],
+      "active": true,
+      "name": [ {
+        "family": "Labadie908",
+        "given": [ "Christoper325" ],
+        "prefix": [ "Dr." ]
+      } ],
+      "telecom": [ {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-direct",
+          "valueBoolean": true
+        } ],
+        "system": "email",
+        "value": "Christoper325.Labadie908@example.com",
+        "use": "work"
+      } ],
+      "address": [ {
+        "line": [ "22 MILL ST" ],
+        "city": "ARLINGTON",
+        "state": "MA",
+        "postalCode": "02476-4744",
+        "country": "US"
+      } ],
+      "gender": "male"
+    },
+    "search": {
+      "mode": "match"
+    }
+  }, {
+    "fullUrl": "http://localhost:8014/fhir/Patient/663955f2-978d-4fde-96d5-cfa5bb072f98",
+    "resource": {
+      "resourceType": "Patient",
+      "id": "663955f2-978d-4fde-96d5-cfa5bb072f98",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T20:04:11.738+00:00",
+        "source": "#wcoIWplieWarvrJy",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient" ]
+      },
+      "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Generated by <a href=\"https://github.com/synthetichealth/synthea\">Synthea</a>.Version identifier: master-branch-latest\n .   Person seed: -147552510273036153  Population seed: 1653926189127</div>"
+      },
+      "extension": [ {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+        "extension": [ {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2106-3",
+            "display": "White"
+          }
+        }, {
+          "url": "text",
+          "valueString": "White"
+        } ]
+      }, {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+        "extension": [ {
+          "url": "ombCategory",
+          "valueCoding": {
+            "system": "urn:oid:2.16.840.1.113883.6.238",
+            "code": "2186-5",
+            "display": "Not Hispanic or Latino"
+          }
+        }, {
+          "url": "text",
+          "valueString": "Not Hispanic or Latino"
+        } ]
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName",
+        "valueString": "Kirstie385 Olson653"
+      }, {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+        "valueCode": "F"
+      }, {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-birthPlace",
+        "valueAddress": {
+          "city": "Thessaloniki",
+          "state": "Thessaloniki Prefecture",
+          "country": "GR"
+        }
+      }, {
+        "url": "http://synthetichealth.github.io/synthea/disability-adjusted-life-years",
+        "valueDecimal": 0.0
+      }, {
+        "url": "http://synthetichealth.github.io/synthea/quality-adjusted-life-years",
+        "valueDecimal": 41.0
+      } ],
+      "identifier": [ {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "cec10975-0d48-1913-7c1d-e48474c81322"
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "MR",
+            "display": "Medical Record Number"
+          } ],
+          "text": "Medical Record Number"
+        },
+        "system": "http://hospital.smarthealthit.org",
+        "value": "cec10975-0d48-1913-7c1d-e48474c81322"
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "SS",
+            "display": "Social Security Number"
+          } ],
+          "text": "Social Security Number"
+        },
+        "system": "http://hl7.org/fhir/sid/us-ssn",
+        "value": "999-34-5006"
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "DL",
+            "display": "Driver's License"
+          } ],
+          "text": "Driver's License"
+        },
+        "system": "urn:oid:2.16.840.1.113883.4.3.25",
+        "value": "S99977667"
+      }, {
+        "type": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+            "code": "PPN",
+            "display": "Passport Number"
+          } ],
+          "text": "Passport Number"
+        },
+        "system": "http://standardhealthrecord.org/fhir/StructureDefinition/passportNumber",
+        "value": "X55354218X"
+      } ],
+      "name": [ {
+        "use": "official",
+        "family": "Lesch175",
+        "given": [ "Germaine912" ],
+        "prefix": [ "Mrs." ]
+      }, {
+        "use": "maiden",
+        "family": "Rodriguez71",
+        "given": [ "Germaine912" ],
+        "prefix": [ "Mrs." ]
+      } ],
+      "telecom": [ {
+        "system": "phone",
+        "value": "555-642-1440",
+        "use": "home"
+      } ],
+      "gender": "female",
+      "birthDate": "1980-03-25",
+      "address": [ {
+        "extension": [ {
+          "url": "http://hl7.org/fhir/StructureDefinition/geolocation",
+          "extension": [ {
+            "url": "latitude",
+            "valueDecimal": 42.40783158541872
+          }, {
+            "url": "longitude",
+            "valueDecimal": -71.1703554790389
+          } ]
+        } ],
+        "line": [ "430 Spinka Ramp" ],
+        "city": "Cambridge",
+        "state": "MA",
+        "postalCode": "02472",
+        "country": "US"
+      } ],
+      "maritalStatus": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "code": "M",
+          "display": "M"
+        } ],
+        "text": "M"
+      },
+      "multipleBirthBoolean": false,
+      "communication": [ {
+        "language": {
+          "coding": [ {
+            "system": "urn:ietf:bcp:47",
+            "code": "el",
+            "display": "Greek"
+          } ],
+          "text": "Greek"
+        }
+      } ]
+    },
+    "search": {
+      "mode": "match"
+    }
+  }, {
+    "fullUrl": "http://localhost:8014/fhir/Encounter/dbc13052-d466-4323-bb52-0dac4281939d",
+    "resource": {
+      "resourceType": "Encounter",
+      "id": "dbc13052-d466-4323-bb52-0dac4281939d",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T20:04:11.738+00:00",
+        "source": "#wcoIWplieWarvrJy",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter" ]
+      },
+      "identifier": [ {
+        "use": "official",
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "90551491-8a60-44ca-067c-a7aea3d26155"
+      } ],
+      "status": "finished",
+      "class": {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "AMB"
+      },
+      "type": [ {
+        "coding": [ {
+          "system": "http://snomed.info/sct",
+          "code": "162673000",
+          "display": "General examination of patient (procedure)"
+        } ],
+        "text": "General examination of patient (procedure)"
+      } ],
+      "subject": {
+        "reference": "Patient/663955f2-978d-4fde-96d5-cfa5bb072f98",
+        "display": "Mrs. Germaine912 Lesch175"
+      },
+      "participant": [ {
+        "type": [ {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+            "code": "PPRF",
+            "display": "primary performer"
+          } ],
+          "text": "primary performer"
+        } ],
+        "period": {
+          "start": "2014-06-10T16:21:38-04:00",
+          "end": "2014-06-10T16:36:38-04:00"
+        },
+        "individual": {
+          "reference": "Practitioner/f29b27f8-e907-4b20-a13e-79f4d26bd1e3",
+          "display": "Dr. Christoper325 Labadie908"
+        }
+      } ],
+      "period": {
+        "start": "2014-06-10T16:21:38-04:00",
+        "end": "2014-06-10T16:36:38-04:00"
+      },
+      "location": [ {
+        "location": {
+          "reference": "Location/9b6d8f3e-37d1-44e4-9fbd-d1d56c592234",
+          "display": "NESC BIDPO LLC"
+        }
+      } ],
+      "serviceProvider": {
+        "reference": "Organization/b0f4bb3c-0424-4e1e-a1b2-79e73bbf2c50",
+        "display": "NESC BIDPO LLC"
+      }
+    },
+    "search": {
+      "mode": "match"
+    }
+  }, {
+    "fullUrl": "http://localhost:8014/fhir/Immunization/48a8f6ab-bd10-4ef6-a388-b42c9df9b2d8",
+    "resource": {
+      "resourceType": "Immunization",
+      "id": "48a8f6ab-bd10-4ef6-a388-b42c9df9b2d8",
+      "meta": {
+        "versionId": "1",
+        "lastUpdated": "2022-05-30T20:04:11.738+00:00",
+        "source": "#wcoIWplieWarvrJy",
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-immunization" ]
+      },
+      "status": "completed",
+      "vaccineCode": {
+        "coding": [ {
+          "system": "http://hl7.org/fhir/sid/cvx",
+          "code": "140",
+          "display": "Influenza, seasonal, injectable, preservative free"
+        } ],
+        "text": "Influenza, seasonal, injectable, preservative free"
+      },
+      "patient": {
+        "reference": "Patient/663955f2-978d-4fde-96d5-cfa5bb072f98"
+      },
+      "encounter": {
+        "reference": "Encounter/dbc13052-d466-4323-bb52-0dac4281939d"
+      },
+      "occurrenceDateTime": "2014-06-10T16:21:38-04:00",
+      "primarySource": true,
+      "location": {
+        "reference": "Location/9b6d8f3e-37d1-44e4-9fbd-d1d56c592234",
+        "display": "NESC BIDPO LLC"
+      }
+    },
+    "search": {
+      "mode": "match"
+    }
+  } ]
+}

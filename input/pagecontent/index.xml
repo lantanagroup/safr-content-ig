@@ -1,0 +1,34 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R5/fhir-single.xsd">
+  <!-- The spaces between the open and close "a" tag are mandatory.  (Cuz HTML renderers are dumb...) -->
+  <a name="intro"></a>
+  <h3>Introduction</h3>
+  <p>This represents the content for the NHSN hypoglycemic protocol measure. This page is under construction and is in draft format.</p>
+  <a name="contents"></a>
+  <h3>Background</h3>
+  <p>
+    Inpatient hypoglycemia can be severe and life-threatening and is associated with longer hospital stays and increased medical costs (1-7).
+    The prevalence of inpatient hypoglycemia varies with patient severity, hospital unit, time of episodes, and glycemic threshold. Severe hypoglycemia 
+    (&lt;40 mg/dL) occurs in 2%-5% of hospitalized patients with diabetes mellitus (DM) while hypoglycemia &lt;70 mg/dL has been reported in up to 10% 
+    of patients in the intensive care unit (8). Patients with DM comprise more than 25% of all U.S. inpatient stays and medication-related hypoglycemic 
+    events are common causes of adverse drug events (ADEs) occurring in inpatient settings (9,10). Rates of severe hypoglycemia vary across hospitals, 
+    suggesting opportunities for improvement in quality of care of glycemic control. Measurement of medication-related hypoglycemia in a meaningful and 
+    standardized way may improve glycemic management (11,12).
+  </p>
+  <a name="contents"></a>
+  <h3>Definitions</h3>
+  <p>
+    Antidiabetic Drug Days (ADD): Aggregate number of inpatient encounter days within the facility in which at least one injectable or oral ADD was 
+    received. All patients who received ADDs during the hospitalization contribute to the denominator, regardless of whether the patient experienced a 
+    hypoglycemic event. Emergency Department (ED) Visit or Observation Status (OBS): ED visit or observation status that ended within an hour of the 
+    inpatient admission are included when calculating the start and stop times of the hospitalization.  Inpatient Encounter: A hospitalization in any 
+    inpatient facility.
+  </p>
+  <a name="contents"></a>
+  <h3>References</h3>
+  <ol>
+    <li>Wexler DJ et al. Prevalence of hyper- and hypoglycemia among inpatients with diabetes: a national survey of 44 U.S. hospitals. Diabetes Care. 2007;30(2):367-369.</li>
+    <li>Curkendall SM, Natoli JL, Alexander CM, Nathanson BH, Haidar T, Dubois RW. Economic and clinical impact of inpatient diabetic hypoglycemia. Endocr Pract. 2009;15(4):302-312.</li>
+  </ol>
+
+  <a name="contents"></a>
+</div>
