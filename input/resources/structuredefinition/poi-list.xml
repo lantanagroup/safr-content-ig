@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition
+    xmlns="http://hl7.org/fhir">
+    <id value="poi-list"/>
+    <meta>
+        <versionId value="1"/>
+        <lastUpdated value="2022-12-08T21:27:07.061+00:00"/>
+        <source value="#y5JFbABAKFcGavO0"/>
+        <security>
+            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
+            <code value="everyone^write"/>
+        </security>
+        <security>
+            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
+            <code value="everyone^read"/>
+        </security>
+    </meta>
+    <url value="http://fhir.org/guides/cqf/StructureDefinition/poi-list"/>
+    <name value="PatientsOfInterestList"/>
+    <title value="Patients-Of-Interest List"/>
+    <status value="active"/>
+    <fhirVersion value="4.0.1"/>
+    <kind value="resource"/>
+    <abstract value="false"/>
+    <type value="List"/>
+    <baseDefinition value="http://hl7.org/fhir/StructureDefinition/List"/>
+    <derivation value="constraint"/>
+    <differential>
+        <element id="List">
+            <path value="List"/>
+        </element>
+        <element id="List.entry.item">
+            <path value="List.entry.item"/>
+            <type>
+                <code value="Reference"/>
+                <targetProfile value="http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"/>
+            </type>
+        </element>
+    </differential>
+</StructureDefinition>

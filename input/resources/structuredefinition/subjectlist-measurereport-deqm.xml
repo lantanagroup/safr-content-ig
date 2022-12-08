@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition
+    xmlns="http://hl7.org/fhir">
+    <id value="subjectlist-measurereport-deqm"/>
+    <meta>
+        <versionId value="2"/>
+        <lastUpdated value="2022-12-08T21:18:54.360+00:00"/>
+        <source value="#NTpAqekWtrrlUjkE"/>
+        <security>
+            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
+            <code value="everyone^write"/>
+        </security>
+        <security>
+            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
+            <code value="everyone^read"/>
+        </security>
+    </meta>
+    <url value="http://fhir.org/guides/cqf/StructureDefinition/subjectlist-measurereport-deqm"/>
+    <name value="DEQMSubjectListMeasureReportProfile"/>
+    <title value="DEQM Subject-List MeasureReport Profile"/>
+    <status value="active"/>
+    <fhirVersion value="4.0.1"/>
+    <kind value="resource"/>
+    <abstract value="false"/>
+    <type value="MeasureReport"/>
+    <baseDefinition value="http://hl7.org/fhir/StructureDefinition/MeasureReport"/>
+    <derivation value="constraint"/>
+    <differential>
+        <element id="MeasureReport">
+            <path value="MeasureReport"/>
+        </element>
+        <element id="MeasureReport.type">
+            <path value="MeasureReport.type"/>
+            <type>
+                <code value="code"/>
+            </type>
+            <fixedCode value="subject-list"/>
+            <constraint>
+                <key value="ele-1"/>
+                <severity value="error"/>
+                <human value="All FHIR elements must have a @value or children"/>
+                <expression value="hasValue() or (children().count() &gt; id.count())"/>
+                <xpath value="@value|f:*|h:div"/>
+                <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+            </constraint>
+            <mustSupport value="true"/>
+            <isModifier value="false"/>
+            <isSummary value="true"/>
+            <binding>
+                <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
+                    <valueString value="MeasureReportType"/>
+                </extension>
+                <strength value="required"/>
+                <description value="The type of the measure report."/>
+                <valueSet value="http://hl7.org/fhir/ValueSet/measure-report-type|4.0.1"/>
+            </binding>
+        </element>
+        <element id="MeasureReport.group">
+            <path value="MeasureReport.group"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="MeasureReport.group.population">
+            <path value="MeasureReport.group.population"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="MeasureReport.group.population.subjectResults">
+            <path value="MeasureReport.group.population.subjectResults"/>
+            <min value="1"/>
+            <type>
+                <code value="Reference"/>
+                <targetProfile value="http://fhir.org/guides/cqf/StructureDefinition/poi-list"/>
+            </type>
+        </element>
+    </differential>
+</StructureDefinition>
