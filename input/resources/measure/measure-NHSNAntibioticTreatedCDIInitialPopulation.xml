@@ -110,7 +110,7 @@
 union   [Encounter: &quot;Emergency Department Visit&quot;]
 union [Encounter: &quot;Observation Services&quot;]
 union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, &quot;inpatient encounter&quot;, &quot;inpatient non-acute&quot;, &quot;short stay&quot;}]) QualifyingEncounters
-  where QualifyingEncounters .status = 'finished'
+  where QualifyingEncounters .status in {'in-progress', 'finished'}
     and QualifyingEncounters.period ends during &quot;Measurement Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -652,17 +652,17 @@ define &quot;SDE Chief Complaint&quot;:
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library FHIRHelpers"></display>
-            <resource value="http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"></resource>
+            <resource value="http://fhir.org/guides/cqf/Library/FHIRHelpers|4.0.1"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library Global"></display>
-            <resource value="Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
+            <resource value="http://fhir.org/guides/cqf/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library SDE"></display>
-            <resource value="Library/SupplementalDataElementsFHIR4|2.0.000"></resource>
+            <resource value="http://fhir.org/guides/cqf/Library/SupplementalDataElementsFHIR4|2.0.000"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -1121,9 +1121,9 @@ define &quot;SDE Chief Complaint&quot;:
    <version value="0.000.01"></version>
    <name value="NHSNAntibioticTreatedCDIInitialPopulation"></name>
    <title value="Measure NHSN Antibiotic Treated CDI Initial Population"></title>
-   <date value="2022-11-21T16:54:48-04:00"></date>
+   <date value="2022-12-07T18:42:25-04:00"></date>
    <description value="Clostridioides difficile (C. difficile) is responsible for a spectrum of C. difficile infections (CDI), including uncomplicated diarrhea, pseudomembranous colitis, and toxic megacolon, which can, in some instances, lead to sepsis and even death. As outlined in the Healthcare Infection Control Practices Advisory Committee (HICPAC) guideline (1), C. difficile pathogens may require specialized monitoring to evaluate if intensified infection control efforts are required to reduce the occurrence of these organisms and related infections.  The goal of this module is to provide a mechanism for facilities to report and to analyze data that will inform infection prevention professionals of the impact of targeted prevention efforts. This protocol describes the electronic surveillance for Antibiotic-treated Healthcare Facility-onset CDI. "></description>
-   <library value="http://nhsnlink.org/fhir/Library/NHSNAntibioticTreatedCDIInitialPopulation"></library>
+   <library value="http://fhir.org/guides/cqf/Library/NHSNAntibioticTreatedCDIInitialPopulation"></library>
    <scoring>
       <coding>
          <system value="http://terminology.hl7.org/CodeSystem/measure-scoring"></system>

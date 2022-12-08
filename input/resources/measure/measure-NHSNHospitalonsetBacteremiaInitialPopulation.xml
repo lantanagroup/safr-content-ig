@@ -103,7 +103,8 @@
     union [Encounter: &quot;Emergency Department Visit&quot;]
     union [Encounter: &quot;Observation Services&quot;]
     union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, &quot;inpatient encounter&quot;, &quot;inpatient non-acute&quot;, &quot;short stay&quot;}]) Encounters
-    where Encounters.period overlaps &quot;Measurement Period&quot;"></valueString>
+    where Encounters.status in {'finished', 'in-progress'}
+    and Encounters.period ends during &quot;Measurement Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="0"></valueInteger>
@@ -290,6 +291,22 @@ with &quot;Initial Population&quot; InitialPopulation
                <valueString value="NHSNHospitalonsetBacteremiaInitialPopulation"></valueString>
             </extension>
             <extension url="name">
+               <valueString value="SDE Initial Population Encounters"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Initial Population Encounters&quot;:
+  &quot;Initial Population&quot; IP
+  return EncounterResource(IP)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="11"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNHospitalonsetBacteremiaInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
                <valueString value="SDE Encounter with Discharge Diagnosis"></valueString>
             </extension>
             <extension url="statement">
@@ -299,7 +316,7 @@ with &quot;Initial Population&quot; InitialPopulation
     such that diagnosis.use ~ &quot;Discharge Diagnosis&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="11"></valueInteger>
+               <valueInteger value="12"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -319,7 +336,7 @@ with &quot;Initial Population&quot; InitialPopulation
     such that category ~&quot;vital-signs&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="12"></valueInteger>
+               <valueInteger value="13"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -337,7 +354,7 @@ with &quot;Initial Population&quot; InitialPopulation
   and Conditions.clinicalStatus ~ Global.&quot;active&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="13"></valueInteger>
+               <valueInteger value="14"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -352,7 +369,7 @@ with &quot;Initial Population&quot; InitialPopulation
   [Coverage: type in &quot;Payer&quot;] Payer"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="14"></valueInteger>
+               <valueInteger value="15"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -369,7 +386,23 @@ with &quot;Initial Population&quot; InitialPopulation
   such that start of Payer.period before end of InitialPopulation.period"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="15"></valueInteger>
+               <valueInteger value="16"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNHospitalonsetBacteremiaInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Minimal Patient"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Minimal Patient&quot;:
+  Patient p
+  return PatientResource(p)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="17"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -385,7 +418,7 @@ with &quot;Initial Population&quot; InitialPopulation
   where EncounterAdmitSource.hospitalization.admitSource in &quot;Admit Source&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="16"></valueInteger>
+               <valueInteger value="18"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -402,7 +435,7 @@ with &quot;Initial Population&quot; InitialPopulation
     such that Global.&quot;Normalize Interval&quot;(Specimen.collection.collected) during InitialPopulation.period"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="17"></valueInteger>
+               <valueInteger value="19"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -420,7 +453,7 @@ define &quot;SDE Chief Complaint&quot;:
     such that diagnosis.use ~ &quot;Chief Complaint&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="18"></valueInteger>
+               <valueInteger value="20"></valueInteger>
             </extension>
          </extension>
          <status value="active"></status>
@@ -584,6 +617,13 @@ define &quot;SDE Chief Complaint&quot;:
             <type value="MedicationAdministration"></type>
          </parameter>
          <parameter>
+            <name value="SDE Initial Population Encounters"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Encounter"></type>
+         </parameter>
+         <parameter>
             <name value="SDE Encounter with Discharge Diagnosis"></name>
             <use value="out"></use>
             <min value="0"></min>
@@ -617,6 +657,13 @@ define &quot;SDE Chief Complaint&quot;:
             <min value="0"></min>
             <max value="*"></max>
             <type value="Encounter"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Minimal Patient"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="Patient"></type>
          </parameter>
          <parameter>
             <name value="SDE Encounter with Admit Source"></name>
@@ -826,7 +873,7 @@ define &quot;SDE Chief Complaint&quot;:
    <version value="0.0.001"></version>
    <name value="NHSN Hospital Onset Bacteremia Initial Population"></name>
    <title value="NHSN Healthcare onset Bacteremia Initial Population"></title>
-   <date value="2022-11-21T16:54:48-04:00"></date>
+   <date value="2022-12-07T18:42:25-04:00"></date>
    <description value="All inpatient, emergency department (ED) and observation (OBS) encounters that overlap the measurement period."></description>
    <copyright value="This measure and specifications are subject to further revisions.   This performance measure is not a clinical guideline, does not establish a standard of medical care and has not been tested for all potential applications.  THE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND."></copyright>
    <library value="http://fhir.org/guides/cqf/Library/NHSNHospitalonsetBacteremiaInitialPopulation"></library>
