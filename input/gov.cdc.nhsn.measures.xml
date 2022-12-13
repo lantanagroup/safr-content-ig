@@ -5,6 +5,7 @@
 <!--  <extension url="http://hl7.org/fhir/tools/StructureDefinition/igpublisher-spreadsheet">
     <valueString value="resources-spreadsheet.xml"/>
   </extension>-->
+  <!-- TODO: agree on base url -->
   <url value="http://fhir.org/guides/cqf/ImplementationGuide/gov.cdc.nhsn.measures"/>
   <!-- This version will propagate to all artifacts unless the "propagate-version" extension is overridden -->
   <version value="0.1.0"/>
