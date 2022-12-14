@@ -19,6 +19,10 @@
         <element id="Bundle.entry">
             <path value="Bundle.entry"/>
             <slicing>
+                <discriminator>
+                    <type value="pattern"/>
+                    <path value="$this"/>
+                </discriminator>
                 <rules value="open"/>
             </slicing>
         </element>
@@ -33,7 +37,7 @@
             <min value="1"/>
             <type>
                 <code value="Resource"/>
-                <profile value="http://fhir.org/guides/cqf/StructureDefinition/subjectlist-measurereport-deqm"/>
+                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/subjectlist-measurereport-deqm"/>
             </type>
         </element>
         <element id="Bundle.entry:individual">
