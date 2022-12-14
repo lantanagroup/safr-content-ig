@@ -11,6 +11,16 @@
   "version": "0.0.001",
   "name": "NHSNAntibioticTreatedCDIInitialPopulation",
   "title": "Library NHSN Antibiotic Treated CDI Initial Population",
+  "status": "active",
+  "experimental": "false",
+   "type": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/library-type",
+      "code": "module-definition"
+    } ]
+  },
+  "publisher": "Lantana Consulting Group",
+  "description": "This is the CDI Library",
   "relatedArtifact": [ {
     "type": "depends-on",
     "display": "FHIR model information",

@@ -10,6 +10,17 @@
   "url": "http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNGlycemicControlHypoglycemicInitialPopulation",
   "version": "0.0.003",
   "name": "NHSNGlycemicControlHypoglycemicInitialPopulation",
+   "title": "Library NHSN Glycemic Control Hypoglycemic Initial Population",
+  "status": "active",
+  "experimental": "false",
+   "type": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/library-type",
+      "code": "module-definition"
+    } ]
+  },
+   "publisher": "Lantana Consulting Group",
+  "description": "This is the Hypoglycemic event Library",
   "relatedArtifact": [ {
     "type": "depends-on",
     "display": "FHIR model information",

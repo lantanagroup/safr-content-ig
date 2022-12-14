@@ -10,6 +10,17 @@
   "url": "http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNHospitalonsetBacteremiaInitialPopulation",
   "version": "0.0.001",
   "name": "NHSNHospitalonsetBacteremiaInitialPopulation",
+  "title": "Library NHSN Hospital onset Bacteremia Initial Population",
+  "status": "active",
+  "experimental": "false",
+   "type": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/library-type",
+      "code": "module-definition"
+    } ]
+  },
+   "publisher": "Lantana Consulting Group",
+  "description": "This is the HOB Library",
   "relatedArtifact": [ {
     "type": "depends-on",
     "display": "FHIR model information",
