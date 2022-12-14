@@ -7,7 +7,7 @@
       "reference": "Device/cqf-tooling"
     }
   } ],
-  "url": "http://fhir.org/guides/cqf/Library/NHSNHospitalonsetBacteremiaInitialPopulation",
+  "url": "http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNHospitalonsetBacteremiaInitialPopulation",
   "version": "0.0.001",
   "name": "NHSNHospitalonsetBacteremiaInitialPopulation",
   "relatedArtifact": [ {

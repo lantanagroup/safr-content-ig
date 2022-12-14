@@ -7,7 +7,7 @@
       "reference": "Device/cqf-tooling"
     }
   } ],
-  "url": "http://nhsnlink.org/fhir/Library/NHSNAntibioticTreatedCDIInitialPopulation",
+  "url": "http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNAntibioticTreatedCDIInitialPopulation",
   "version": "0.0.001",
   "name": "NHSNAntibioticTreatedCDIInitialPopulation",
   "title": "Library NHSN Antibiotic Treated CDI Initial Population",

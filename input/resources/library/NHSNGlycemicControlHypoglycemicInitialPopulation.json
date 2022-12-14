@@ -7,7 +7,7 @@
       "reference": "Device/cqf-tooling"
     }
   } ],
-  "url": "http://fhir.org/guides/cqf/Library/NHSNGlycemicControlHypoglycemicInitialPopulation",
+  "url": "http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNGlycemicControlHypoglycemicInitialPopulation",
   "version": "0.0.003",
   "name": "NHSNGlycemicControlHypoglycemicInitialPopulation",
   "relatedArtifact": [ {

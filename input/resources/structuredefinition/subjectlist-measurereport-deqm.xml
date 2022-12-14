@@ -2,20 +2,7 @@
 <StructureDefinition
     xmlns="http://hl7.org/fhir">
     <id value="subjectlist-measurereport-deqm"/>
-    <meta>
-        <versionId value="2"/>
-        <lastUpdated value="2022-12-08T21:18:54.360+00:00"/>
-        <source value="#NTpAqekWtrrlUjkE"/>
-        <security>
-            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
-            <code value="everyone^write"/>
-        </security>
-        <security>
-            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
-            <code value="everyone^read"/>
-        </security>
-    </meta>
-    <url value="http://fhir.org/guides/cqf/StructureDefinition/subjectlist-measurereport-deqm"/>
+    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/subjectlist-measurereport-deqm"/>
     <name value="DEQMSubjectListMeasureReportProfile"/>
     <title value="DEQM Subject-List MeasureReport Profile"/>
     <status value="active"/>

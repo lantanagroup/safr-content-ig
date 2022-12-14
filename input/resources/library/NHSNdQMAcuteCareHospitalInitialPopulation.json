@@ -7,7 +7,7 @@
       "reference": "Device/cqf-tooling"
     }
   } ],
-  "url": "http://fhir.org/guides/cqf/Library/NHSNdQMAcuteCareHospitalInitialPopulation",
+  "url": "http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNdQMAcuteCareHospitalInitialPopulation",
   "version": "0.0.001",
   "name": "NHSNdQMAcuteCareHospitalInitialPopulation",
   "relatedArtifact": [ {

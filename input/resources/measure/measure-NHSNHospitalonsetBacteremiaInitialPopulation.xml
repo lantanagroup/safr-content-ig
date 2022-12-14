@@ -1,7 +1,7 @@
 <Measure xmlns="http://hl7.org/fhir">
    <id value="NHSNHospitalonsetBacteremiaInitialPopulation"></id>
    <meta>
-      <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm"></profile>
+      <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm"></profile>
    </meta>
    <contained>
       <Library xmlns="http://hl7.org/fhir">
@@ -865,13 +865,13 @@ define &quot;SDE Chief Complaint&quot;:
          <reference value="#effective-data-requirements"></reference>
       </valueReference>
    </extension>
-   <url value="http://nhsnlink.org/fhir/Measure/NHSNHospitalonsetBacteremiaInitialPopulation"></url>
+   <url value="http://lantanagroup.com/fhir/nhsn-measures/Measure/NHSNHospitalonsetBacteremiaInitialPopulation"></url>
    <identifier>
       <system value="https://nhsnlink.org"></system>
       <value value="nhsnhospitalonsetbacteremiainitialpopulation"></value>
    </identifier>
    <version value="0.0.001"></version>
-   <name value="NHSN Hospital Onset Bacteremia Initial Population"></name>
+   <name value="NHSNHospitalOnsetBacteremiaInitialPopulation"></name>
    <title value="NHSN Healthcare onset Bacteremia Initial Population"></title>
    <date value="2022-12-07T18:42:25-04:00"></date>
    <description value="All inpatient, emergency department (ED) and observation (OBS) encounters that overlap the measurement period."></description>

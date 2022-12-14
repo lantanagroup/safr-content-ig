@@ -1,7 +1,7 @@
 <Measure xmlns="http://hl7.org/fhir">
    <id value="NHSNAntibioticTreatedCDIInitialPopulation"></id>
    <meta>
-      <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm"></profile>
+      <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm"></profile>
    </meta>
    <contained>
       <Library xmlns="http://hl7.org/fhir">
@@ -1113,7 +1113,7 @@ define &quot;SDE Chief Complaint&quot;:
          <reference value="#effective-data-requirements"></reference>
       </valueReference>
    </extension>
-   <url value="http://nhsnlink.org/fhir/Measure/NHSNAntibioticTreatedCDIInitialPopulation"></url>
+   <url value="http://lantanagroup.com/fhir/nhsn-measures/Measure/NHSNAntibioticTreatedCDIInitialPopulation"></url>
    <identifier>
       <system value="https://nhsnlink.org"></system>
       <value value="NHSNAntibioticTreatedCDIInitialPopulation"></value>

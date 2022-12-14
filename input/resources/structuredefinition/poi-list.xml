@@ -2,20 +2,7 @@
 <StructureDefinition
     xmlns="http://hl7.org/fhir">
     <id value="poi-list"/>
-    <meta>
-        <versionId value="1"/>
-        <lastUpdated value="2022-12-08T21:27:07.061+00:00"/>
-        <source value="#y5JFbABAKFcGavO0"/>
-        <security>
-            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
-            <code value="everyone^write"/>
-        </security>
-        <security>
-            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
-            <code value="everyone^read"/>
-        </security>
-    </meta>
-    <url value="http://fhir.org/guides/cqf/StructureDefinition/poi-list"/>
+    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/poi-list"/>
     <name value="PatientsOfInterestList"/>
     <title value="Patients-Of-Interest List"/>
     <status value="active"/>

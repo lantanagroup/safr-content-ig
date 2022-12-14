@@ -2,7 +2,7 @@
 <StructureDefinition
     xmlns="http://hl7.org/fhir">
     <id value="individual-measurereport-list"/>
-    <url value="http://fhir.org/guides/cqf/StructureDefinition/individual-measurereport-list"/>
+    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/individual-measurereport-list"/>
     <name value="IndividualMeasureReportList"/>
     <title value="Individual MeasureReport List"/>
     <status value="active"/>

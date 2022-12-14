@@ -2,20 +2,7 @@
 <StructureDefinition
     xmlns="http://hl7.org/fhir">
     <id value="nhsn-measurereport-bundle"/>
-    <meta>
-        <versionId value="1"/>
-        <lastUpdated value="2022-12-08T21:33:30.685+00:00"/>
-        <source value="#KL8EiviImetWZVrW"/>
-        <security>
-            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
-            <code value="everyone^read"/>
-        </security>
-        <security>
-            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
-            <code value="everyone^write"/>
-        </security>
-    </meta>
-    <url value="http://fhir.org/guides/cqf/StructureDefinition/nhsn-measurereport-bundle"/>
+    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/nhsn-measurereport-bundle"/>
     <name value="NHSNMeasureReportBundleProfile"/>
     <title value="NHSN MeasureReport Bundle Profile"/>
     <status value="active"/>
@@ -46,7 +33,7 @@
             <min value="1"/>
             <type>
                 <code value="Resource"/>
-                <targetProfile value="http://fhir.org/guides/cqf/StructureDefinition/subjectlist-measurereport-deqm"/>
+                <profile value="http://fhir.org/guides/cqf/StructureDefinition/subjectlist-measurereport-deqm"/>
             </type>
         </element>
         <element id="Bundle.entry:individual">
@@ -59,7 +46,7 @@
             <min value="1"/>
             <type>
                 <code value="Resource"/>
-                <targetProfile value="http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"/>
+                <profile value="http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"/>
             </type>
         </element>
     </differential>

@@ -1,7 +1,7 @@
 <Measure xmlns="http://hl7.org/fhir">
    <id value="NHSNGlycemicControlHypoglycemicInitialPopulation"></id>
    <meta>
-      <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm"></profile>
+      <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm"></profile>
    </meta>
    <contained>
       <Library xmlns="http://hl7.org/fhir">
@@ -647,7 +647,7 @@ define &quot;SDE Chief Complaint&quot;:
          <reference value="#effective-data-requirements"></reference>
       </valueReference>
    </extension>
-   <url value="http://nhsnlink.org/fhir/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation"></url>
+   <url value="http://lantanagroup.com/fhir/nhsn-measures/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation"></url>
    <identifier>
       <system value="https://nhsnlink.org"></system>
       <value value="nhsnglycemiccontrolhypoglycemicinitialpopulation"></value>

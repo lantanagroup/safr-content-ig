@@ -1,7 +1,7 @@
 <Measure xmlns="http://hl7.org/fhir">
    <id value="NHSNdQMAcuteCareHospitalInitialPopulation"></id>
    <meta>
-      <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm"></profile>
+      <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm"></profile>
    </meta>
    <contained>
       <Library xmlns="http://hl7.org/fhir">
@@ -649,7 +649,7 @@ define &quot;SDE Payer&quot;:
          <reference value="#effective-data-requirements"></reference>
       </valueReference>
    </extension>
-   <url value="https://nhsnlink.org/fhir/Measure/NHSNdQMAcuteCareHospitalInitialPopulation"></url>
+   <url value="http://lantanagroup.com/fhir/nhsn-measures/Measure/NHSNdQMAcuteCareHospitalInitialPopulation"></url>
    <identifier>
       <system value="https://nhsnlink.org"></system>
       <value value="NHSNdQMAcuteCareHospitalInitialPopulation"></value>
