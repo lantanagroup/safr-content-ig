@@ -802,7 +802,7 @@ define &quot;SDE Payer&quot;:
       <description value="SDE Observation"></description>
       <criteria>
          <language value="text/cql.identifier"></language>
-         <expression value="SDE Observation"></expression>
+         <expression value="SDE Observation Category"></expression>
       </criteria>
    </supplementalData>
    <supplementalData>
