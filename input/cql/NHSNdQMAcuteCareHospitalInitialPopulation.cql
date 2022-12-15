@@ -21,14 +21,12 @@ code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
 code "short stay": 'SS' from "ActCode" display 'short stay'
 
-/* TBD 12/15 Meeting
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 code "social-history": 'social-history' from "Observation Category" display 'Social History'
 code "vital-signs": 'vital-signs' from "Observation Category" display 'Vital Signs'
 code "imaging": 'imaging' from "Observation Category" display 'Imaging'
 code "procedure": 'procedure' from "Observation Category" display 'Procedure'
 code "survey": 'survey' from "Observation Category" display 'Survey'
-*/
 
 parameter "Measurement Period" 
     default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
@@ -88,11 +86,12 @@ define "SDE Medication":
   [Medication] Medication
   where exists("Initial Population")
 
+/*
 define "SDE Observation":
     [Observation] Observations
     where exists("Initial Population")   
+*/
 
-/* TBD 12/15 meeting
 define "SDE Observation Category":
     [Observation] Observations 
     where ((exists(Observations.category Category where Category ~ "laboratory"))
@@ -102,7 +101,7 @@ define "SDE Observation Category":
     or (exists(Observations.category Category where Category ~ "imaging"))
     or (exists(Observations.category Category where Category ~ "procedure")))
     and exists("Initial Population")
-*/
+
 
 define "SDE Payer": 
 	SDE."SDE Payer" Payer
