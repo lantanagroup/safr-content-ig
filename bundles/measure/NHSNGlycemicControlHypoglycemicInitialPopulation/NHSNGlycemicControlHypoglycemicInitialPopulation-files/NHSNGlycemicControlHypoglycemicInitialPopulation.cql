@@ -1,4 +1,4 @@
-library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.003'
+library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.004'
 
 using FHIR version '4.0.1'
 
@@ -34,7 +34,7 @@ code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" disp
 
 
 parameter "Measurement Period" Interval<DateTime>
- default Interval[@2022-01-01T00:00:00.0, @2022-01-31T00:00:00.0)
+ //default Interval[@2022-01-01T00:00:00.0, @2022-01-31T00:00:00.0)
 
 context Patient
 
@@ -397,7 +397,7 @@ define function "CoverageResource"(coverage Coverage):
     contract: c.contract
   }
 
-//Supplement Data Elements
+//Supplemental Data Elements
 define "SDE Blood Glucose Observation":
 	[Observation: "Blood Glucose Laboratory and Point of Care Tests"] Observations 
   with "Initial Population" InitialPopulation

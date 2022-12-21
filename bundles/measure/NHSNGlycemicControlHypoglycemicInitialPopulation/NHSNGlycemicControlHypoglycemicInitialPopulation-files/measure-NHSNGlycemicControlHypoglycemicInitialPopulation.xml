@@ -1,6 +1,7 @@
 <Measure xmlns="http://hl7.org/fhir">
    <id value="NHSNGlycemicControlHypoglycemicInitialPopulation"></id>
    <meta>
+      <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm"></profile>
       <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm"></profile>
    </meta>
    <contained>
@@ -78,12 +79,33 @@
             </extension>
             <extension url="statement">
                <valueString value="define &quot;Inpatient Encounter&quot;:
-  [Encounter: class in {&quot;inpatient encounter&quot;, &quot;inpatient acute&quot;, &quot;inpatient non-acute&quot;, &quot;short stay&quot;}] Encounters
+  [Encounter: class in {&quot;inpatient encounter&quot;, &quot;inpatient acute&quot;, &quot;inpatient non-acute&quot;, &quot;short stay&quot;}]
+    union [Encounter: &quot;Encounter Inpatient&quot;] Encounters
   where Encounters.status in {'in-progress', 'finished'}
-  and Encounters.period overlaps &quot;Measurement Period&quot;"></valueString>
+    and Encounters.period overlaps &quot;Measurement Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="0"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Patient Hospital Locations"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Patient Hospital Locations&quot;:
+  [Encounter] Encounters
+  where exists(
+    Encounters.location EncounterLocation
+    where Global.GetLocation(EncounterLocation.location).type in &quot;Inpatient, Emergency, and Observation Locations&quot;
+      and EncounterLocation.period during Encounters.period
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="1"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -104,7 +126,7 @@
   )"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="1"></valueInteger>
+               <valueInteger value="2"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -115,15 +137,19 @@
                <valueString value="Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Initial Population&quot;:
-  &quot;Inpatient Encounter&quot; InpatientEncounters
+               <valueString value="/*
+@author Arvind Jagannathan
+*/
+define &quot;Initial Population&quot;:
+  (&quot;Inpatient Encounter&quot;
+  union &quot;Patient Hospital Locations&quot;) InpatientEncounters
   with &quot;Antidiabetic Drugs Administered or Ordered&quot; ADD
   such that Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn)
       during &quot;HospitalizationWithObservationOrEmergency&quot;(InpatientEncounters)
     and Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn) during &quot;Measurement Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="2"></valueInteger>
+               <valueInteger value="3"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -138,10 +164,11 @@
 	[MedicationRequest] MedicationRequests
   with &quot;Initial Population&quot; InitialPopulation
 	such that MedicationRequests.authoredOn during &quot;HospitalizationWithObservationOrEmergency&quot;(InitialPopulation)
-    and MedicationRequests.authoredOn during &quot;Measurement Period&quot;"></valueString>
+    and MedicationRequests.authoredOn during &quot;Measurement Period&quot;
+  return MedicationRequestResource(MedicationRequests)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="3"></valueInteger>
+               <valueInteger value="4"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -156,13 +183,13 @@
   &quot;Initial Population&quot; InitialPopulation 
   where exists ( 
     InitialPopulation.location InitialPopulationLocation
-    where (Global.GetLocation(InitialPopulationLocation.location).type in &quot;Inpatient, Emergency, and Observation Locations&quot;   
-      or Global.GetLocation(InitialPopulationLocation.location).physicalType in &quot;Inpatient, Emergency, and Observation Locations&quot;)
-      and InitialPopulationLocation.period during InitialPopulation.period
-  )"></valueString>
+    where (Global.GetLocation(InitialPopulationLocation.location).type in &quot;Inpatient, Emergency, and Observation Locations&quot;
+      and InitialPopulationLocation.period during InitialPopulation.period)
+  )
+  return EncounterResource(InitialPopulation)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="4"></valueInteger>
+               <valueInteger value="5"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -177,7 +204,8 @@
   [Condition] ConditionEncounterDiagnosis
   with ConditionEncounterDiagnosis.category Category
   such that Category ~ &quot;encounter-diagnosis&quot;
-    and exists(&quot;Initial Population&quot;)"></valueString>
+    and exists(&quot;Initial Population&quot;)
+  return ConditionResource(ConditionEncounterDiagnosis)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="6"></valueInteger>
@@ -195,7 +223,8 @@
 	[MedicationAdministration] MedicationAdministrations
   with &quot;Initial Population&quot; InitialPopulation
   such that start of Global.&quot;Normalize Interval&quot;(MedicationAdministrations.effective) during &quot;HospitalizationWithObservationOrEmergency&quot;(InitialPopulation)
-    and start of Global.&quot;Normalize Interval&quot;(MedicationAdministrations.effective) during &quot;Measurement Period&quot;"></valueString>
+    and start of Global.&quot;Normalize Interval&quot;(MedicationAdministrations.effective) during &quot;Measurement Period&quot;
+  return MedicationAdministrationResource(MedicationAdministrations)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="7"></valueInteger>
@@ -206,19 +235,37 @@
                <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
             </extension>
             <extension url="name">
+               <valueString value="SDE Initial Population Encounters"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Initial Population Encounters&quot;:
+  &quot;Initial Population&quot; IP
+  return EncounterResource(IP)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="8"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
                <valueString value="SDE Blood Glucose Observation"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Blood Glucose Observation&quot;:
+               <valueString value="//Supplemental Data Elements
+define &quot;SDE Blood Glucose Observation&quot;:
 	[Observation: &quot;Blood Glucose Laboratory and Point of Care Tests&quot;] Observations 
   with &quot;Initial Population&quot; InitialPopulation
   such that start of Global.&quot;Normalize Interval&quot;(Observations.effective) during InitialPopulation.period
     or Global.&quot;Normalize Interval&quot;(GetSpecimen(Observations.specimen).collection.collected) during InitialPopulation.period
   with Observations.category category
-  such that category ~ &quot;laboratory&quot;"></valueString>
+  such that category ~ &quot;laboratory&quot;
+  return ObservationResource(Observations)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="8"></valueInteger>
+               <valueInteger value="9"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -232,26 +279,8 @@
                <valueString value="define &quot;SDE Condition&quot;:
   [Condition] Conditions
   with &quot;Initial Population&quot; InitialPopulation
-  such that Global.&quot;Normalize Interval&quot;(Conditions.onset) overlaps InitialPopulation.period"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="9"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="SupplementalDataElementsFHIR4"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="SDE Payer"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;SDE Payer&quot;:
-  [Coverage: type in &quot;Payer&quot;] Payer
-        return {
-          code: Payer.type,
-          period: Payer.period
-        }"></valueString>
+  such that Global.&quot;Normalize Interval&quot;(Conditions.onset) overlaps InitialPopulation.period
+  return ConditionResource(Conditions)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="10"></valueInteger>
@@ -266,9 +295,11 @@
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Payer&quot;: 
-	SDE.&quot;SDE Payer&quot; Payer
+	[Coverage] Coverages
   with &quot;Initial Population&quot; InitialPopulation
-  such that start of Payer.period before end of InitialPopulation.period"></valueString>
+  such that start of Coverages.period before end of InitialPopulation.period
+  where Coverages.type in &quot;Payer&quot;
+  return CoverageResource(Coverages)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="11"></valueInteger>
@@ -284,7 +315,8 @@
             <extension url="statement">
                <valueString value="define &quot;SDE Encounter Discharge Dispositions&quot;:
 	&quot;Initial Population&quot; DischargeDispositions 
-  where DischargeDispositions.hospitalization.dischargeDisposition in &quot;Discharge Disposition&quot;"></valueString>
+  where DischargeDispositions.hospitalization.dischargeDisposition in &quot;Discharge Disposition&quot;
+  return EncounterResource(DischargeDispositions)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="12"></valueInteger>
@@ -298,13 +330,9 @@
                <valueString value="SDE Minimal Patient"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//Change on CQF ruler happened on 8/12. Check to make sure CQF-Ruler version is dated at or after
-define &quot;SDE Minimal Patient&quot;:
-  Patient{
-    id: Patient.id,
-    gender: Patient.gender,
-    birthDate: Patient.birthDate
-  }"></valueString>
+               <valueString value="define &quot;SDE Minimal Patient&quot;:
+  Patient p
+  return PatientResource(p)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="13"></valueInteger>
@@ -321,7 +349,8 @@ define &quot;SDE Minimal Patient&quot;:
                <valueString value="define &quot;SDE Specimen&quot;:
   [Specimen] Specimen
   with &quot;Initial Population&quot; InitialPopulation
-  such that Global.&quot;Normalize Interval&quot;(Specimen.collection.collected) during InitialPopulation.period"></valueString>
+  such that Global.&quot;Normalize Interval&quot;(Specimen.collection.collected) during InitialPopulation.period
+  return SpecimenResource(Specimen)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="14"></valueInteger>
@@ -332,17 +361,34 @@ define &quot;SDE Minimal Patient&quot;:
                <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="SDE Chief Complaint"></valueString>
+               <valueString value="SDE Medication"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//Supplement Data Elements
-define &quot;SDE Chief Complaint&quot;:
-  &quot;Initial Population&quot; InitialPopulation
-  with InitialPopulation.diagnosis InitialPopulationDiagnosis
-  such that InitialPopulationDiagnosis.use ~ &quot;Chief Complaint&quot;"></valueString>
+               <valueString value="define &quot;SDE Medication&quot;:
+  (&quot;SDE Medication Request&quot;
+  union &quot;SDE Medication Administration&quot;) MedReqOrAdmin
+  return MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication))"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="15"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Chief Complaint"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Chief Complaint&quot;:
+  &quot;Initial Population&quot; IP
+  with IP.diagnosis InitialPopulationDiagnosis
+  such that InitialPopulationDiagnosis.use ~ &quot;Chief Complaint&quot;
+  return EncounterResource(IP)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="16"></valueInteger>
             </extension>
          </extension>
          <status value="active"></status>
@@ -355,17 +401,12 @@ define &quot;SDE Chief Complaint&quot;:
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library FHIRHelpers"></display>
-            <resource value="http://fhir.org/guides/cqf/Library/FHIRHelpers|4.0.1"></resource>
+            <resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/FHIRHelpers|4.0.1"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library Global"></display>
-            <resource value="http://fhir.org/guides/cqf/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
-         </relatedArtifact>
-         <relatedArtifact>
-            <type value="depends-on"></type>
-            <display value="Library SDE"></display>
-            <resource value="http://fhir.org/guides/cqf/Library/SupplementalDataElementsFHIR4|2.0.000"></resource>
+            <resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -389,13 +430,28 @@ define &quot;SDE Chief Complaint&quot;:
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
-            <display value="Value set Antidiabetic Medications"></display>
-            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58"></resource>
+            <display value="Value set Encounter Inpatient"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Value set Inpatient, Emergency, and Observation Locations"></display>
             <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Antidiabetic Medications"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Observation Services"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Emergency Department Visit"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -448,6 +504,13 @@ define &quot;SDE Chief Complaint&quot;:
             <type value="MedicationAdministration"></type>
          </parameter>
          <parameter>
+            <name value="SDE Initial Population Encounters"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Encounter"></type>
+         </parameter>
+         <parameter>
             <name value="SDE Blood Glucose Observation"></name>
             <use value="out"></use>
             <min value="0"></min>
@@ -466,7 +529,7 @@ define &quot;SDE Chief Complaint&quot;:
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
-            <type value="Any"></type>
+            <type value="Coverage"></type>
          </parameter>
          <parameter>
             <name value="Initial Population"></name>
@@ -497,6 +560,13 @@ define &quot;SDE Chief Complaint&quot;:
             <type value="Specimen"></type>
          </parameter>
          <parameter>
+            <name value="SDE Medication"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Medication"></type>
+         </parameter>
+         <parameter>
             <name value="SDE Chief Complaint"></name>
             <use value="out"></use>
             <min value="0"></min>
@@ -507,8 +577,6 @@ define &quot;SDE Chief Complaint&quot;:
             <type value="Encounter"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
             <mustSupport value="class"></mustSupport>
-            <mustSupport value="status"></mustSupport>
-            <mustSupport value="period"></mustSupport>
             <codeFilter>
                <path value="class"></path>
                <code>
@@ -536,38 +604,46 @@ define &quot;SDE Chief Complaint&quot;:
          <dataRequirement>
             <type value="Encounter"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
-            <mustSupport value="class"></mustSupport>
+            <mustSupport value="type"></mustSupport>
+            <mustSupport value="status"></mustSupport>
+            <mustSupport value="period"></mustSupport>
+            <codeFilter>
+               <path value="type"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="location"></mustSupport>
             <mustSupport value="period"></mustSupport>
          </dataRequirement>
          <dataRequirement>
             <type value="Encounter"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="type"></mustSupport>
             <mustSupport value="class"></mustSupport>
-            <mustSupport value="status"></mustSupport>
             <mustSupport value="period"></mustSupport>
             <codeFilter>
-               <path value="class"></path>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="IMP"></code>
-                  <display value="inpatient encounter"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="ACUTE"></code>
-                  <display value="inpatient acute"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="NONAC"></code>
-                  <display value="inpatient non-acute"></display>
-               </code>
-               <code>
-                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-                  <code value="SS"></code>
-                  <display value="short stay"></display>
-               </code>
+               <path value="type"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143"></valueSet>
             </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="type"></mustSupport>
+            <mustSupport value="class"></mustSupport>
+            <mustSupport value="period"></mustSupport>
+            <codeFilter>
+               <path value="type"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Location"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
+            <mustSupport value="id"></mustSupport>
          </dataRequirement>
          <dataRequirement>
             <type value="Medication"></type>
@@ -586,13 +662,6 @@ define &quot;SDE Chief Complaint&quot;:
             <profile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"></profile>
             <mustSupport value="medication"></mustSupport>
             <mustSupport value="authoredOn"></mustSupport>
-            <mustSupport value="id"></mustSupport>
-            <mustSupport value="dosageInstruction"></mustSupport>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
-            <mustSupport value="id"></mustSupport>
          </dataRequirement>
          <dataRequirement>
             <type value="Condition"></type>
@@ -624,12 +693,8 @@ define &quot;SDE Chief Complaint&quot;:
          <dataRequirement>
             <type value="Coverage"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Coverage"></profile>
-            <mustSupport value="type"></mustSupport>
             <mustSupport value="period"></mustSupport>
-            <codeFilter>
-               <path value="type"></path>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"></valueSet>
-            </codeFilter>
+            <mustSupport value="type"></mustSupport>
          </dataRequirement>
          <dataRequirement>
             <type value="Patient"></type>
@@ -647,7 +712,7 @@ define &quot;SDE Chief Complaint&quot;:
          <reference value="#effective-data-requirements"></reference>
       </valueReference>
    </extension>
-   <url value="http://nhsnlink.org/fhir/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation"></url>
+   <url value="http://lantanagroup.com/fhir/nhsn-measures/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation"></url>
    <identifier>
       <system value="https://nhsnlink.org"></system>
       <value value="nhsnglycemiccontrolhypoglycemicinitialpopulation"></value>
@@ -656,11 +721,13 @@ define &quot;SDE Chief Complaint&quot;:
    <name value="NHSNGlycemicControlHypoglycemicInitialPopulation"></name>
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
-   <date value="2022-08-29T12:53:08-08:00"></date>
+   <experimental value="false"></experimental>
+   <date value="2022-12-19T10:26:45-08:00"></date>
+   <publisher value="Lantana Consulting Group"></publisher>
    <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the measurement period."></description>
    <purpose value="The primary purpose of this site is to provide CDC’s NHSN with access to view measure specification content in the dQMs under development by Lantana Consulting Group. Please note, this site is draft and undergoes constant revision and is not intended to serve as an implementation guide."></purpose>
    <copyright value="This measure and specifications are subject to further revisions.      This performance measure is not a clinical guideline, does not establish a standard of medical care and has not been tested for all potential applications.        THE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND."></copyright>
-   <library value="http://fhir.org/guides/cqf/Library/NHSNGlycemicControlHypoglycemicInitialPopulation"></library>
+   <library value="http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNGlycemicControlHypoglycemicInitialPopulation"></library>
    <scoring>
       <coding>
          <system value="http://terminology.hl7.org/CodeSystem/measure-scoring"></system>
@@ -695,99 +762,86 @@ define &quot;SDE Chief Complaint&quot;:
          </code>
          <description value="All inpatient encounters, as well as ED and OBS encounters that end within 1 hour of the start of the inpatient encounter, for patients of all ages where at least one antidiabetic drug (ADD) was ordered or administered during the encounter that is during the measurement period."></description>
          <criteria>
-            <language value="text/cql.identifier"></language>
+            <language value="text/cql-identifier"></language>
             <expression value="Initial Population"></expression>
          </criteria>
       </population>
    </group>
-   <supplementalData>
-      <id value="sde-chief-complaint"/>
+   <supplementalData id="sde-chief-complaint">
       <criteria>
-         <language value="text/cql.identifier"></language>
+         <language value="text/cql-identifier"></language>
          <expression value="SDE Chief Complaint"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
-      <id value="sde-condition"/>
+   <supplementalData id="sde-condition">
       <criteria>
-         <language value="text/cql.identifier"></language>
+         <language value="text/cql-identifier"></language>
          <expression value="SDE Condition"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
-      <id value="sde-condition-during-encounter"/>
+   <supplementalData id="sde-condition-during-encounter">
       <criteria>
-         <language value="text/cql.identifier"></language>
+         <language value="text/cql-identifier"></language>
          <expression value="SDE Condition during Encounter"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
-      <id value="sde-encounter-discharge-dispositions"/>
+   <supplementalData id="sde-encounter-discharge-dispositions">
       <criteria>
-         <language value="text/cql.identifier"></language>
+         <language value="text/cql-identifier"></language>
          <expression value="SDE Encounter Discharge Dispositions"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
-      <id value="sde-encounter-locations"/>
+   <supplementalData id="sde-encounter-locations">
       <criteria>
-         <language value="text/cql.identifier"></language>
+         <language value="text/cql-identifier"></language>
          <expression value="SDE Encounter Locations"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
-      <id value="sde-medication-administration"/>
+   <supplementalData id="sde-medication-administration">
       <criteria>
-         <language value="text/cql.identifier"></language>
+         <language value="text/cql-identifier"></language>
          <expression value="SDE Medication Administration"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
-      <id value="sde-medication-request"/>
+   <supplementalData id="sde-medication-request">
       <criteria>
-         <language value="text/cql.identifier"></language>
+         <language value="text/cql-identifier"></language>
          <expression value="SDE Medication Request"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
-      <id value="sde-blood-glucose-observation"/>
+   <supplementalData id="sde-blood-glucose-observation">
       <criteria>
-         <language value="text/cql.identifier"></language>
+         <language value="text/cql-identifier"></language>
          <expression value="SDE Blood Glucose Observation"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
-      <id value="sde-payer"/>
+   <supplementalData id="sde-payer">
       <criteria>
-         <language value="text/cql.identifier"></language>
+         <language value="text/cql-identifier"></language>
          <expression value="SDE Payer"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
-      <id value="sde-specimen"/>
+   <supplementalData id="sde-specimen">
       <criteria>
-         <language value="text/cql.identifier"></language>
+         <language value="text/cql-identifier"></language>
          <expression value="SDE Specimen"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
-      <id value="sde-minimal-patient"/>
+   <supplementalData id="sde-minimal-patient">
       <criteria>
-         <language value="text/cql.identifier"></language>
+         <language value="text/cql-identifier"></language>
          <expression value="SDE Minimal Patient"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
-      <id value="sde-initial-population-encounters"/>
+   <supplementalData id="sde-initial-population-encounters">
       <criteria>
-         <language value="text/cql.identifier"></language>
+         <language value="text/cql-identifier"></language>
          <expression value="SDE Initial Population Encounters"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
-      <id value="sde-medication"/>
+   <supplementalData id="sde-medication">
       <criteria>
-         <language value="text/cql.identifier"></language>
+         <language value="text/cql-identifier"></language>
          <expression value="SDE Medication"></expression>
       </criteria>
    </supplementalData>

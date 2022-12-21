@@ -397,7 +397,7 @@ define function "CoverageResource"(coverage Coverage):
     contract: c.contract
   }
 
-//Supplement Data Elements
+//Supplemental Data Elements
 define "SDE Blood Glucose Observation":
 	[Observation: "Blood Glucose Laboratory and Point of Care Tests"] Observations 
   with "Initial Population" InitialPopulation
