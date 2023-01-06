@@ -51,13 +51,6 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
             <valueCoding>
-               <system value="http://terminology.hl7.org/CodeSystem/condition-category"></system>
-               <code value="encounter-diagnosis"></code>
-               <display value="encounter-diagnosis"></display>
-            </valueCoding>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
-            <valueCoding>
                <system value="http://terminology.hl7.org/CodeSystem/observation-category"></system>
                <code value="laboratory"></code>
                <display value="Laboratory"></display>
@@ -220,9 +213,6 @@ define &quot;Initial Population&quot;:
             <extension url="statement">
                <valueString value="define &quot;SDE Condition during Encounter&quot;:
   [Condition] ConditionEncounterDiagnosis
-  with ConditionEncounterDiagnosis.category Category
-  such that Category ~ &quot;encounter-diagnosis&quot;
-    and exists(&quot;Initial Population&quot;)
   return SharedResource.ConditionResource(ConditionEncounterDiagnosis)"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -456,11 +446,6 @@ define &quot;Patient Gender Not Valid&quot;:
             <type value="depends-on"></type>
             <display value="Code system ActCode"></display>
             <resource value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></resource>
-         </relatedArtifact>
-         <relatedArtifact>
-            <type value="depends-on"></type>
-            <display value="Code system Condition Category"></display>
-            <resource value="http://terminology.hl7.org/CodeSystem/condition-category"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -725,7 +710,6 @@ define &quot;Patient Gender Not Valid&quot;:
          <dataRequirement>
             <type value="Condition"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Condition"></profile>
-            <mustSupport value="category"></mustSupport>
             <mustSupport value="onset"></mustSupport>
          </dataRequirement>
          <dataRequirement>
@@ -776,7 +760,7 @@ define &quot;Patient Gender Not Valid&quot;:
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-01-06T08:19:15-08:00"></date>
+   <date value="2023-01-06T11:39:48-08:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the measurement period."></description>
    <purpose value="The primary purpose of this site is to provide CDC’s NHSN with access to view measure specification content in the dQMs under development by Lantana Consulting Group. Please note, this site is draft and undergoes constant revision and is not intended to serve as an implementation guide."></purpose>
