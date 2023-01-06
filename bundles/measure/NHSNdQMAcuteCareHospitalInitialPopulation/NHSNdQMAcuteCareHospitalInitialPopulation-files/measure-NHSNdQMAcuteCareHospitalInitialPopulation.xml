@@ -402,17 +402,17 @@ define &quot;SDE Condition&quot;:
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library FHIRHelpers"></display>
-            <resource value="http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"></resource>
+            <resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/FHIRHelpers|4.0.1"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library Global"></display>
-            <resource value="Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
+            <resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library SDE"></display>
-            <resource value="Library/SupplementalDataElementsFHIR4|2.0.000"></resource>
+            <resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/SupplementalDataElementsFHIR4|2.0.000"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -706,7 +706,7 @@ define &quot;SDE Condition&quot;:
    <version value="0.000.01"></version>
    <name value="NHSN dQM Acute Care Hospital Initial Population"></name>
    <title value="NHSN dQM Acute Care Hospital Initial Population"></title>
-   <date value="2023-01-06T11:17:37-05:00"></date>
+   <date value="2023-01-06T11:19:15-05:00"></date>
    <library value="http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNdQMAcuteCareHospitalInitialPopulation"></library>
    <scoring>
       <coding>
