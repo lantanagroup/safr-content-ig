@@ -1,16 +1,11 @@
 {
   "resourceType": "Library",
   "id": "FHIRCommon",
-  "extension": [ {
-    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem",
-    "valueReference": {
-      "reference": "Device/cqf-tooling"
-    }
-  } ],
   "url": "http://fhir.org/guides/cqf/Library/FHIRCommon",
   "version": "4.0.1",
   "name": "FHIRCommon",
   "title": "FHIRCommon",
+  "status": "draft",
   "type": {
     "coding": [ {
       "system": "http://terminology.hl7.org/CodeSystem/library-type",

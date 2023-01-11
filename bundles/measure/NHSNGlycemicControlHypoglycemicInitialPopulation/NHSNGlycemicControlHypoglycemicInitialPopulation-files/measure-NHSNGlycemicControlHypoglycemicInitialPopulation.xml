@@ -740,14 +740,17 @@ define &quot;Patient Gender Not Valid&quot;:
          </dataRequirement>
       </Library>
    </contained>
-   <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem">
-      <valueReference>
-         <reference value="Device/cqf-tooling"></reference>
-      </valueReference>
+   <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-populationBasis">
+      <valueCode value="Encounter"></valueCode>
    </extension>
    <extension id="effective-data-requirements" url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-effectiveDataRequirements">
       <valueReference>
          <reference value="#effective-data-requirements"></reference>
+      </valueReference>
+   </extension>
+   <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem">
+      <valueReference>
+         <reference value="Device/cqf-tooling"></reference>
       </valueReference>
    </extension>
    <url value="http://lantanagroup.com/fhir/nhsn-measures/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation"></url>
@@ -760,7 +763,7 @@ define &quot;Patient Gender Not Valid&quot;:
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-01-06T11:39:48-08:00"></date>
+   <date value="2023-01-11T14:29:59-08:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the measurement period."></description>
    <purpose value="The primary purpose of this site is to provide CDC’s NHSN with access to view measure specification content in the dQMs under development by Lantana Consulting Group. Please note, this site is draft and undergoes constant revision and is not intended to serve as an implementation guide."></purpose>
