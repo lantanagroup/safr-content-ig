@@ -2,9 +2,9 @@
 <StructureDefinition
     xmlns="http://hl7.org/fhir">
     <id value="poi-list"/>
-    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/poi-list"/>
-    <name value="PatientsOfInterestList"/>
-    <title value="Patients-Of-Interest List"/>
+    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/ip-list"/>
+    <name value="InitialPopulationList"/>
+    <title value="Initial Population List"/>
     <status value="active"/>
     <fhirVersion value="4.0.1"/>
     <kind value="resource"/>

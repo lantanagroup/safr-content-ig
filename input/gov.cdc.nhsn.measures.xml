@@ -76,10 +76,10 @@
         </resource>
         <resource>
             <reference>
-                <reference value="StructureDefinition/poi-list"/>
+                <reference value="StructureDefinition/ip-list"/>
             </reference>
-            <name value="Patients of Interest Profile"/>
-            <description value="Patients of Interest List Profile is provided by a facility as a broad list/census of all Patients who should be considered candidates for a given NHSN measure evaluation. Patients are expected to conform to US Core Patient Profile."/>
+            <name value="Initial Population List Profile"/>
+            <description value="List of Patients who have been evaluated and determined to be IN the initial population (IP)"/>
             <groupingId value="submission"/>
         </resource>
         <resource>
