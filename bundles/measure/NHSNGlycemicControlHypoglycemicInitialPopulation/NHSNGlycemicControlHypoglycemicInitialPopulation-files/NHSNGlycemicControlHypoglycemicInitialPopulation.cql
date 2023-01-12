@@ -30,9 +30,6 @@ code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
 code "short stay": 'SS' from "ActCode" display 'short stay'
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
-code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display'encounter-diagnosis'
-
-
 
 parameter "Measurement Period" Interval<DateTime>
  default Interval[@2022-01-01T00:00:00.0, @2022-01-31T00:00:00.0)
@@ -201,9 +198,6 @@ define "SDE Condition":
   
 define "SDE Condition during Encounter":
   [Condition] ConditionEncounterDiagnosis
-  with ConditionEncounterDiagnosis.category Category
-  such that Category ~ "encounter-diagnosis"
-    and exists("Initial Population")
   return SharedResource.ConditionResource(ConditionEncounterDiagnosis)
     
 define "SDE Encounter Discharge Dispositions":

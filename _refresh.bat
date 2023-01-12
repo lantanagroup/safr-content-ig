@@ -20,11 +20,11 @@ ECHO We're online, setting publish to local sandbox FHIR server
 SET JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
 :: -d %fsoption%
 IF EXIST "%input_cache_path%\%tooling_jar%" (
-	ECHO running: JAVA -jar "%input_cache_path%\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d %fsoption%
-	JAVA -jar "%input_cache_path%\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d
+	ECHO running: JAVA -jar "%input_cache_path%\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d -ss=false
+	JAVA -jar "%input_cache_path%\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d -ss=false
 ) ELSE If exist "..\%tooling_jar%" (
-	ECHO running: JAVA -jar "..\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t 
-	JAVA -jar "..\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d
+	ECHO running: JAVA -jar "..\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d -ss=false
+	JAVA -jar "..\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d -ss=false
 ) ELSE (
 	ECHO IG Refresh NOT FOUND in input-cache or parent folder.  Please run _updateCQFTooling.  Aborting...
 )
