@@ -1,0 +1,260 @@
+<StructureDefinition xmlns="http://hl7.org/fhir">
+    <id value="cross-measure-patient-prequalification"/>
+    <url
+        value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/cross-measure-patient-prequalification"/>
+    <name value="CrossMeasurePatientPrequalification"/>
+    <title value="Cross-Measure Patient Prequalification"/>
+    <status value="active"/>
+    <fhirVersion value="4.0.1"/>
+    <kind value="resource"/>
+    <abstract value="false"/>
+    <type value="Patient"/>
+    <baseDefinition value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"/>
+    <derivation value="constraint"/>
+    <differential>
+        <element id="Patient">
+            <path value="Patient"/>
+        </element>
+        <element id="Patient.extension">
+            <path value="Patient.extension"/>
+            <slicing>
+                <discriminator>
+                    <type value="value"/>
+                    <path value="url"/>
+                </discriminator>
+                <ordered value="false"/>
+                <rules value="open"/>
+            </slicing>
+            <short value="Extension"/>
+            <definition value="An Extension"/>
+            <min value="0"/>
+            <max value="*"/>
+            <base>
+                <path value="DomainResource.extension"/>
+                <min value="0"/>
+                <max value="*"/>
+            </base>
+            <type>
+                <code value="Extension"/>
+            </type>
+            <constraint>
+                <key value="ele-1"/>
+                <severity value="error"/>
+                <human value="All FHIR elements must have a @value or children"/>
+                <expression value="hasValue() or (children().count() &gt; id.count())"/>
+                <xpath value="@value|f:*|h:div"/>
+                <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+            </constraint>
+            <constraint>
+                <key value="ext-1"/>
+                <severity value="error"/>
+                <human value="Must have either extensions or value[x], not both"/>
+                <expression value="extension.exists() != value.exists()"/>
+                <xpath
+                    value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &quot;value&quot;)])"/>
+                <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+            </constraint>
+            <isModifier value="false"/>
+            <isSummary value="false"/>
+        </element>
+        <element id="Patient.extension:race">
+            <path value="Patient.extension"/>
+            <sliceName value="race"/>
+            <short value="US Core Race Extension"/>
+            <definition
+                value="Concepts classifying the person into a named category of humans sharing common history, traits, geographical origin or nationality.  The race codes used to represent these concepts are based upon the [CDC Race and Ethnicity Code Set Version 1.0](http://www.cdc.gov/phin/resources/vocabulary/index.html) which includes over 900 concepts for representing race and ethnicity of which 921 reference race.  The race concepts are grouped by and pre-mapped to the 5 OMB race categories:&#xA;                &#xA;                - American Indian or Alaska Native&#xA;                - Asian&#xA;                - Black or African American&#xA;                - Native Hawaiian or Other Pacific Islander&#xA;                - White."/>
+            <min value="1"/>
+            <max value="1"/>
+            <base>
+                <path value="DomainResource.extension"/>
+                <min value="0"/>
+                <max value="*"/>
+            </base>
+            <type>
+                <code value="Extension"/>
+                <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"/>
+            </type>
+            <condition value="ele-1"/>
+            <constraint>
+                <key value="ele-1"/>
+                <severity value="error"/>
+                <human value="All FHIR elements must have a @value or children"/>
+                <expression value="hasValue() or (children().count() &gt; id.count())"/>
+                <xpath value="@value|f:*|h:div"/>
+                <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+            </constraint>
+            <constraint>
+                <key value="ext-1"/>
+                <severity value="error"/>
+                <human value="Must have either extensions or value[x], not both"/>
+                <expression value="extension.exists() != value.exists()"/>
+                <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])"/>
+                <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+            </constraint>
+            <mustSupport value="false"/>
+            <isModifier value="false"/>
+            <mapping>
+                <identity value="argonaut-dq-dstu2"/>
+                <map value="Patient.extension"/>
+            </mapping>
+        </element>
+        <element id="Patient.extension:ethnicity">
+            <path value="Patient.extension"/>
+            <sliceName value="ethnicity"/>
+            <short value="US Core ethnicity Extension"/>
+            <definition
+                value="Concepts classifying the person into a named category of humans sharing common history, traits, geographical origin or nationality.  The ethnicity codes used to represent these concepts are based upon the [CDC ethnicity and Ethnicity Code Set Version 1.0](http://www.cdc.gov/phin/resources/vocabulary/index.html) which includes over 900 concepts for representing race and ethnicity of which 43 reference ethnicity.  The ethnicity concepts are grouped by and pre-mapped to the 2 OMB ethnicity categories: - Hispanic or Latino - Not Hispanic or Latino."/>
+            <min value="1"/>
+            <max value="1"/>
+            <base>
+                <path value="DomainResource.extension"/>
+                <min value="0"/>
+                <max value="*"/>
+            </base>
+            <type>
+                <code value="Extension"/>
+                <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"/>
+            </type>
+            <condition value="ele-1"/>
+            <constraint>
+                <key value="ele-1"/>
+                <severity value="error"/>
+                <human value="All FHIR elements must have a @value or children"/>
+                <expression value="hasValue() or (children().count() &gt; id.count())"/>
+                <xpath value="@value|f:*|h:div"/>
+                <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+            </constraint>
+            <constraint>
+                <key value="ext-1"/>
+                <severity value="error"/>
+                <human value="Must have either extensions or value[x], not both"/>
+                <expression value="extension.exists() != value.exists()"/>
+                <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])"/>
+                <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+            </constraint>
+            <mustSupport value="false"/>
+            <isModifier value="false"/>
+            <mapping>
+                <identity value="argonaut-dq-dstu2"/>
+                <map value="Patient.extension"/>
+            </mapping>
+        </element>
+        <element id="Patient.extension:birthsex">
+            <path value="Patient.extension"/>
+            <sliceName value="birthsex"/>
+            <short value="Extension"/>
+            <definition
+                value="A code classifying the person's sex assigned at birth  as specified by the [Office of the National Coordinator for Health IT (ONC)](https://www.healthit.gov/newsroom/about-onc)."/>
+            <comment
+                value="The codes required are intended to present birth sex (i.e., the sex recorded on the patient's birth certificate) and not gender identity or reassigned sex."/>
+            <min value="1"/>
+            <max value="1"/>
+            <base>
+                <path value="DomainResource.extension"/>
+                <min value="0"/>
+                <max value="*"/>
+            </base>
+            <type>
+                <code value="Extension"/>
+                <profile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex"/>
+            </type>
+            <condition value="ele-1"/>
+            <constraint>
+                <key value="ele-1"/>
+                <severity value="error"/>
+                <human value="All FHIR elements must have a @value or children"/>
+                <expression value="hasValue() or (children().count() &gt; id.count())"/>
+                <xpath value="@value|f:*|h:div"/>
+                <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+            </constraint>
+            <constraint>
+                <key value="ext-1"/>
+                <severity value="error"/>
+                <human value="Must have either extensions or value[x], not both"/>
+                <expression value="extension.exists() != value.exists()"/>
+                <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])"/>
+                <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+            </constraint>
+            <mustSupport value="false"/>
+            <isModifier value="false"/>
+            <mapping>
+                <identity value="rim"/>
+                <map
+                    value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/administrativeGender"
+                />
+            </mapping>
+            <mapping>
+                <identity value="iso11179"/>
+                <map value=".patient.administrativeGenderCode"/>
+            </mapping>
+            <mapping>
+                <identity value="argonaut-dq-dstu2"/>
+                <map value="Patient.extension"/>
+            </mapping>
+        </element>
+        <element id="Patient.extension:genderIdentity">
+            <path value="Patient.extension"/>
+            <sliceName value="genderIdentity"/>
+            <short value="The individual's gender identity"/>
+            <definition
+                value="An individual's personal sense of being a man, woman, boy, girl, nonbinary, or something else."/>
+            <comment
+                value="This represents an individual’s identity, ascertained by asking them what that identity is."/>
+            <min value="1"/>
+            <max value="*"/>
+            <base>
+                <path value="DomainResource.extension"/>
+                <min value="0"/>
+                <max value="*"/>
+            </base>
+            <type>
+                <code value="Extension"/>
+                <profile
+                    value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity"/>
+            </type>
+            <condition value="ele-1"/>
+            <constraint>
+                <key value="ele-1"/>
+                <severity value="error"/>
+                <human value="All FHIR elements must have a @value or children"/>
+                <expression value="hasValue() or (children().count() &gt; id.count())"/>
+                <xpath value="@value|f:*|h:div"/>
+                <source value="http://hl7.org/fhir/StructureDefinition/Element"/>
+            </constraint>
+            <constraint>
+                <key value="ext-1"/>
+                <severity value="error"/>
+                <human value="Must have either extensions or value[x], not both"/>
+                <expression value="extension.exists() != value.exists()"/>
+                <xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), 'value')])"/>
+                <source value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+            </constraint>
+            <mustSupport value="false"/>
+            <isModifier value="false"/>
+        </element>
+        <element id="Patient.active">
+            <path value="Patient.active"/>
+            <min value="1"/>
+        </element>
+        <element id="Patient.telecom">
+            <path value="Patient.telecom"/>
+            <min value="1"/>
+        </element>
+        <element id="Patient.birthDate">
+            <path value="Patient.birthDate"/>
+            <min value="1"/>
+        </element>
+        <element id="Patient.deceased[x]">
+            <path value="Patient.deceased[x]"/>
+            <min value="1"/>
+        </element>
+        <element id="Patient.address">
+            <path value="Patient.address"/>
+            <min value="1"/>
+        </element>
+        <element id="Patient.communication">
+            <path value="Patient.communication"/>
+            <min value="1"/>
+        </element>
+    </differential>
+</StructureDefinition>
