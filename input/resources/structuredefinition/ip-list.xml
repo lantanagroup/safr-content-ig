@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <StructureDefinition
     xmlns="http://hl7.org/fhir">
-    <id value="poi-list"/>
+    <id value="ip-list"/>
     <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/ip-list"/>
     <name value="InitialPopulationList"/>
     <title value="Initial Population List"/>
