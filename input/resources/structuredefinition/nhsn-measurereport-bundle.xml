@@ -20,8 +20,8 @@
             <path value="Bundle.entry"/>
             <slicing>
                 <discriminator>
-                    <type value="pattern"/>
-                    <path value="$this"/>
+                    <type value="profile"/>
+                    <path value=".resolve()"/>
                 </discriminator>
                 <rules value="open"/>
             </slicing>
