@@ -44,20 +44,19 @@
     </dependsOn>
     <definition>
         <grouping id="submission">
-            <name value="NHSN Report Submission"/>
+            <name value="Current NHSN Report Submission"/>
         </grouping>
-        <grouping id="prequal">
+        <!-- <grouping id="prequal">
             <name value="Pre-Qualification"/>
-        </grouping>
+        </grouping> -->
         <resource>
             <reference>
                 <reference value="StructureDefinition/nhsn-measurereport-bundle"/>
             </reference>
             <name value="NHSN MeasureReport Bundle Profile"/>
-            <description value="Report Submission (to NHSN) Bundle profile comprised of a subject-list MeasureReport and multiple individual MeasureReport entries."/>
+            <description value="Profile of the *Current* Report Submission (to NHSN) Bundle profile comprised of a Patients of Interest List, a subject-list MeasureReport, and multiple individual MeasureReports."/>
             <groupingId value="submission"/>
         </resource>
-       
         <resource>
             <reference>
                 <reference value="StructureDefinition/subjectlist-measurereport-deqm"/>
@@ -66,38 +65,57 @@
             <description value="Subject-list MeasureReport Profile is based on the base MeasureReport structure, and requires that subjectResult references conform to the Individual MeasureReport List profile (when present)"/>
             <groupingId value="submission"/>
         </resource>
-        <resource>
+        <!-- <resource>
             <reference>
                 <reference value="StructureDefinition/individual-measurereport-list"/>
             </reference>
             <name value="Individual MeasureReport List Profile"/>
             <description value="List Profile defining individual MeasureReports entries conform to DaVinci DEQM Individual MeasureReports"/>
             <groupingId value="submission"/>
-        </resource>
+        </resource> -->
+        
         <resource>
+            <reference>
+                <reference value="StructureDefinition/poi-list"/>
+            </reference>
+            <name value="Patients of Interest List Profile"/>
+            <description value="List Profile defining individual Patients being considered for evalautation for NHSN Measure reporting"/>
+            <groupingId value="submission"/>
+        </resource>
+        
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/ip-measurereport-list"/>
+            </reference>
+            <name value="Individual MasureReport List Profile"/>
+            <description value="List Profile containing individual MeasureReports; each individual MR pertians to an individual who has been determined/evaluated to be in the Initial Population"/>
+            <groupingId value="submission"/>
+        </resource>
+        
+        <!-- <resource>
             <reference>
                 <reference value="StructureDefinition/ip-list"/>
             </reference>
             <name value="Initial Population List Profile"/>
             <description value="List of Patients who have been evaluated and determined to be IN the initial population (IP)"/>
             <groupingId value="submission"/>
-        </resource>
-        <resource>
+        </resource> -->
+        <!-- <resource>
             <reference>
                 <reference value="StructureDefinition/nhsnlink-original-id"/>
             </reference>
             <name value="Original ID (extension)"/>
             <description value="This extension is used for original (raw) IDs. NHSNLink normalizes FHIR IDs to ensure they are FHIR compliant; this extension is used to show the original ID"/>
             <groupingId value="submission"/>
-        </resource>
-        <resource>
+        </resource> -->
+        <!-- <resource>
             <reference>
                 <reference value="StructureDefinition/cross-measure-patient-prequalification"/>
             </reference>
             <name value="Cross-Measure Patient Pre-qualification Profile"/>
             <description value="Profile asserting cross-measure pre-qualification requirements for Patients to be reportable to NHSN"/>
             <groupingId value="prequal"/>
-        </resource>
+        </resource> -->
         <page>
             <!-- The root will always be toc.html - the template will force it if you don't do it -->
             <nameUrl value="toc.html"/>

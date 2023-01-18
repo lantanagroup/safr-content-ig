@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <StructureDefinition
     xmlns="http://hl7.org/fhir">
-    <id value="individual-measurereport-list"/>
-    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/individual-measurereport-list"/>
-    <name value="IndividualMeasureReportList"/>
-    <title value="Individual MeasureReport List"/>
+    <id value="ip-measurereport-list"/>
+    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/ip-measurereport-list"/>
+    <name value="InitialPopulationMeasureReportListCurrent"/>
+    <title value="Initial Population Measure Report List (Current)"/>
     <status value="active"/>
-    <fhirVersion value="4.0.1"/>
     <kind value="resource"/>
     <abstract value="false"/>
     <type value="List"/>
@@ -20,7 +18,7 @@
             <path value="List.entry.item"/>
             <type>
                 <code value="Reference"/>
-                <targetProfile value="http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"/>
+                <targetProfile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/individiaul-measure-report"/>
             </type>
         </element>
     </differential>

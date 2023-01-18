@@ -3,8 +3,8 @@
     xmlns="http://hl7.org/fhir">
     <id value="nhsn-measurereport-bundle"/>
     <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/nhsn-measurereport-bundle"/>
-    <name value="NHSNMeasureReportBundleProfile"/>
-    <title value="NHSN MeasureReport Bundle Profile"/>
+    <name value="NHSNMeasureReportBundleProfileCurrent"/>
+    <title value="NHSN MeasureReport Bundle Profile (Current)"/>
     <status value="active"/>
     <fhirVersion value="4.0.1"/>
     <kind value="resource"/>
@@ -26,6 +26,22 @@
                 <rules value="open"/>
             </slicing>
         </element>
+        <!-- POI List -->
+        <element id="Bundle.entry:poi-list">
+            <path value="Bundle.entry"/>
+            <sliceName value="poi-list"/>
+            <min value="1"/>
+            <max value="1"/>
+        </element>
+        <element id="Bundle.entry:poi-list.resource">
+            <path value="Bundle.entry.resource"/>
+            <min value="1"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/poi-list"/>
+            </type>
+        </element>
+        <!-- subject-list MR -->
         <element id="Bundle.entry:subject-list">
             <path value="Bundle.entry"/>
             <sliceName value="subject-list"/>
@@ -40,6 +56,7 @@
                 <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/subjectlist-measurereport-deqm"/>
             </type>
         </element>
+        <!-- indv MRs -->
         <element id="Bundle.entry:individual">
             <path value="Bundle.entry"/>
             <sliceName value="individual"/>

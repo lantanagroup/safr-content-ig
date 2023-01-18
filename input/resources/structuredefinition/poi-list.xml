@@ -1,0 +1,47 @@
+<StructureDefinition
+    xmlns="http://hl7.org/fhir">
+    <id value="poi-list"/>
+    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/poi-list"/>
+    <name value="PatientsOfInterestList"/>
+    <title value="Patients-Of-Interest List"/>
+    <status value="active"/>
+    <fhirVersion value="4.0.1"/>
+    <kind value="resource"/>
+    <abstract value="false"/>
+    <type value="List"/>
+    <baseDefinition value="http://hl7.org/fhir/StructureDefinition/List"/>
+    <derivation value="constraint"/>
+    <differential>
+        <element id="List">
+            <path value="List"/>
+        </element>
+        <element id="List.extension">
+            <path value="List.extension"/>
+            <min value="1"/>
+            <max value="1"/>
+            <type>
+                <code value="Extension"/>
+            </type>
+            <fixedUri value="https://www.lantanagroup.com/fhir/StructureDefinition/link-patient-list-applicable-period"/>
+        </element>
+        <element id="List.extension.value[x]">
+            <path value="List.extension.value[x]"/>
+            <min value="1"/>
+            <type>
+                <code value="Period"/>
+            </type>
+        </element>
+        <element id="List.identifier">
+            <path value="List.identifier"/>
+            <min value="1"/>
+        </element>
+       
+        <element id="List.entry.item">
+            <path value="List.entry.item"/>
+            <type>
+                <code value="Reference"/>
+                <targetProfile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"/>
+            </type>
+        </element>
+    </differential>
+</StructureDefinition>
