@@ -20,7 +20,6 @@ valueset "Antidiabetic Medications": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.
 valueset "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292'
 valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
 valueset "Observation Services": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143'
-valueset "Payer": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591' 
 
 code "Chief Complaint": 'CC' from "Diagnosis Role" display 'Chief complaint'
 code "emergency": 'EMER' from "ActCode" display 'emergency'
@@ -30,6 +29,7 @@ code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
 code "short stay": 'SS' from "ActCode" display 'short stay'
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
+code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display 'encounter-diagnosis'
 
 parameter "Measurement Period" Interval<DateTime>
  default Interval[@2022-01-01T00:00:00.0, @2022-01-31T00:00:00.0)
@@ -43,8 +43,7 @@ define "Initial Population":
   ("Inpatient Encounter"
   union "Patient Hospital Locations") InpatientEncounters
   with "Antidiabetic Drugs Administered or Ordered" ADD
-  such that //"Valid Resources" and 
-    Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn)
+  such that Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn)
       during "HospitalizationWithObservationOrEmergency"(InpatientEncounters)
     and Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn) during "Measurement Period"
 
@@ -70,10 +69,6 @@ define "Antidiabetic Drugs Administered or Ordered":
     [MedicationRequest] MedicationRequests
       where GetMedicationCode(MedicationRequests.medication) in "Antidiabetic Medications"
   )
-
-define "Valid Resources":
-  //"Patient Gender Not Valid" is null and
-  "Patient Birthdate Not Valid" is null
 
 define function "GetMedicationCode"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):
   case
@@ -198,6 +193,8 @@ define "SDE Condition":
   
 define "SDE Condition during Encounter":
   [Condition] ConditionEncounterDiagnosis
+  with ConditionEncounterDiagnosis.category category
+  such that category ~ "encounter-diagnosis"
   return SharedResource.ConditionResource(ConditionEncounterDiagnosis)
     
 define "SDE Encounter Discharge Dispositions":
@@ -242,7 +239,7 @@ define "SDE Minimal Patient":
   Patient p
   return SharedResource.PatientResource(p)
 
-define "SDE Payer": 
+define "SDE Coverage": 
 	[Coverage] Coverages
   with "Initial Population" InitialPopulation
   such that start of Coverages.period before day of end of InitialPopulation.period
@@ -257,8 +254,12 @@ define "SDE Specimen":
   such that Global."Normalize Interval"(Specimen.collection.collected) during InitialPopulation.period
   return SharedResource.SpecimenResource(Specimen)
 
+/*define "Valid Resources":
+  "Patient Gender Not Valid" is null and
+  "Patient Birthdate Not Valid" is null*/
+
 //Note, when creating custom resources, you need to specify the exact type of each element created if it's new and not pulled from an existing resource
-define "Patient Gender Not Valid":
+/*define "Patient Gender Not Valid":
   Patient p
   where p.gender is null
   return SharedResource.OperationOutcomeResource('LCR-PatientGenderNotValid', 'Patient gender does not exist')
@@ -266,4 +267,4 @@ define "Patient Gender Not Valid":
 define "Patient Birthdate Not Valid":
   Patient p
   where p.birthDate is null
-  return SharedResource.OperationOutcomeResource('LCR-PatientBirthdateNotValid', 'Patient birth date does not exist')
+  return SharedResource.OperationOutcomeResource('LCR-PatientBirthdateNotValid', 'Patient birth date does not exist')*/

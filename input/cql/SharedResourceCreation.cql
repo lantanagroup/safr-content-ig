@@ -244,22 +244,22 @@ define function "CoverageResource"(coverage Coverage):
   }
 
 define function "OperationOutcomeResource"(id String, message String):
-    OperationOutcome{
-        id: FHIR.id{value: id},
-        issue: {
-            FHIR.OperationOutcome.Issue{
-            severity: FHIR.IssueSeverity{value: 'error'},
-            code: FHIR.IssueType{value: 'exception'},
-            details: 
-                FHIR.CodeableConcept{
-                    coding: {
-                        Coding{
-                        system: uri{value: 'https://lantanagroup.com/validation-error'},
-                        code: code{value: 'GenderError'},
-                        display: string{value: message}
-                        }
-                    }
-                }
-            }
-        }
-    }
+  OperationOutcome{
+      id: FHIR.id{value: id},
+      issue: {
+          FHIR.OperationOutcome.Issue{
+          severity: FHIR.IssueSeverity{value: 'error'},
+          code: FHIR.IssueType{value: 'exception'},
+          details: 
+              FHIR.CodeableConcept{
+                  coding: {
+                      Coding{
+                      system: uri{value: 'https://lantanagroup.com/validation-error'},
+                      code: code{value: 'GenderError'},
+                      display: string{value: message}
+                      }
+                  }
+              }
+          }
+      }
+  }
