@@ -142,6 +142,7 @@ define function "PatientResource"(patient Patient):
     birthDate: p.birthDate,
     deceased: p.deceased,
     address: p.address,
-    communication: p.communication
+    communication: p.communication,
+    contact: p.contact
   }
 
