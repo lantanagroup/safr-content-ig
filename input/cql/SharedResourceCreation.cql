@@ -165,7 +165,9 @@ define function "PatientResource"(patient Patient):
     birthDate: p.birthDate,
     deceased: p.deceased,
     address: p.address,
-    communication: p.communication
+    contact: p.contact,
+    communication: p.communication,
+    link: p.link
   }
 
 define function "ObservationResource"(observation Observation):
@@ -197,6 +199,46 @@ define function "ObservationResource"(observation Observation):
     hasMember: o.hasMember,
     derivedFrom: o.derivedFrom,
     component: o.component
+  }
+
+define function "ServiceRequestResource"(serviceRequest ServiceRequest):
+  serviceRequest sR
+  return ServiceRequest{
+    id: FHIR.id {value: 'LCR-' + sR.id},
+    extension: sR.extension,
+    identifier: sR.identifier,
+    instantiatesCanonical: sR.instantiatesCanonical,
+    instantiatesUri: sR.instantiatesUri,
+    basedOn: sR.basedOn,
+    replaces: sR.replaces,
+    requisition: sR.requisition,
+    status: sR.status,
+    intent: sR.intent,
+    category: sR.category,
+    priority: sR.priority,
+    doNotPerform: sR.doNotPerform,
+    code: sR.code,
+    orderDetail: sR.orderDetail,
+    quantity: sR.quantity,
+    subject: sR.subject,
+    encounter: sR.encounter,
+    occurrence: sR.occurrence,
+    asNeeded: sR.asNeeded,
+    authoredOn: sR.authoredOn,
+    requester: sR.requester,
+    performerType: sR.performerType,
+    performer: sR.performer,
+    locationCode: sR.locationCode,
+    locationReference: sR.locationReference,
+    reasonCode: sR.reasonCode,
+    reasonReference: sR.reasonReference,
+    insurance: sR.insurance,
+    supportingInfo: sR.supportingInfo,
+    specimen: sR.specimen,
+    bodySite: sR.bodySite,
+    note: sR.note,
+    patientInstruction: sR.patientInstruction,
+    relevantHistory: sR.relevantHistory
   }
 
 define function "SpecimenResource"(specimen Specimen):
