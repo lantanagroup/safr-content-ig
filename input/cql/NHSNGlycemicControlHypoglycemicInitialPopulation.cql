@@ -175,8 +175,6 @@ define "SDE Blood Glucose Observation":
   with "Initial Population" InitialPopulation
   such that start of Global."Normalize Interval"(Observations.effective) during InitialPopulation.period
     or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during InitialPopulation.period
-  with Observations.category category
-  such that category ~ "laboratory"
   return SharedResource.ObservationResource(Observations)
 
 define "SDE Chief Complaint":
@@ -196,6 +194,15 @@ define "SDE Condition during Encounter":
   with ConditionEncounterDiagnosis.category category
   such that category ~ "encounter-diagnosis"
   return SharedResource.ConditionResource(ConditionEncounterDiagnosis)
+
+define "SDE Coverage": 
+	[Coverage] Coverages
+  with "Initial Population" InitialPopulation
+  such that start of Coverages.period before day of end of InitialPopulation.period
+  and (end of Coverages.period is null
+    or (end of Coverages.period is not null
+      and end of Coverages.period on or after day of end of InitialPopulation.period))
+  return SharedResource.CoverageResource(Coverages)
     
 define "SDE Encounter Discharge Dispositions":
 	"Initial Population" DischargeDispositions 
@@ -238,28 +245,31 @@ define "SDE Medication Request":
 define "SDE Minimal Patient":
   Patient p
   return SharedResource.PatientResource(p)
-
-define "SDE Coverage": 
-	[Coverage] Coverages
-  with "Initial Population" InitialPopulation
-  such that start of Coverages.period before day of end of InitialPopulation.period
-  and (end of Coverages.period is null
-    or (end of Coverages.period is not null
-      and end of Coverages.period on or after day of end of InitialPopulation.period))
-  return SharedResource.CoverageResource(Coverages)
   
-define "SDE Specimen":
-  [Specimen] Specimen
+define "SDE Service Request":
+  [ServiceRequest] ServiceRequests
   with "Initial Population" InitialPopulation
-  such that Global."Normalize Interval"(Specimen.collection.collected) during InitialPopulation.period
-  return SharedResource.SpecimenResource(Specimen)
+  such that ServiceRequests.authoredOn during InitialPopulation.period
+  return SharedResource.ServiceRequestResource(ServiceRequests)
+
+define "SDE Specimen":
+  [Specimen] Specimens
+  with "Initial Population" InitialPopulation
+  such that Global."Normalize Interval"(Specimens.collection.collected) during InitialPopulation.period
+  return SharedResource.SpecimenResource(Specimens)
 
 /*define "Valid Resources":
-  "Patient Gender Not Valid" is null and
-  "Patient Birthdate Not Valid" is null*/
+  "Encounter Class Not Valid" is null and
+  "Encounter Type Not Valid" is null
+
+define "Encounter Class Not Valid":*/
+
+
+  /*"Patient Gender Not Valid" is null and
+  "Patient Birthdate Not Valid" is null
 
 //Note, when creating custom resources, you need to specify the exact type of each element created if it's new and not pulled from an existing resource
-/*define "Patient Gender Not Valid":
+define "Patient Gender Not Valid":
   Patient p
   where p.gender is null
   return SharedResource.OperationOutcomeResource('LCR-PatientGenderNotValid', 'Patient gender does not exist')

@@ -58,13 +58,6 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
             <valueCoding>
-               <system value="http://terminology.hl7.org/CodeSystem/observation-category"></system>
-               <code value="laboratory"></code>
-               <display value="Laboratory"></display>
-            </valueCoding>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
-            <valueCoding>
                <system value="http://terminology.hl7.org/CodeSystem/diagnosis-role"></system>
                <code value="CC"></code>
                <display value="Chief complaint"></display>
@@ -176,6 +169,27 @@ define &quot;Initial Population&quot;:
                <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
             </extension>
             <extension url="name">
+               <valueString value="SDE Coverage"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Coverage&quot;: 
+	[Coverage] Coverages
+  with &quot;Initial Population&quot; InitialPopulation
+  such that start of Coverages.period before day of end of InitialPopulation.period
+  and (end of Coverages.period is null
+    or (end of Coverages.period is not null
+      and end of Coverages.period on or after day of end of InitialPopulation.period))
+  return SharedResource.CoverageResource(Coverages)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="5"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
                <valueString value="SDE Encounter Locations"></valueString>
             </extension>
             <extension url="statement">
@@ -189,7 +203,7 @@ define &quot;Initial Population&quot;:
   return SharedResource.EncounterResource(InitialPopulation)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="5"></valueInteger>
+               <valueInteger value="6"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -207,7 +221,7 @@ define &quot;Initial Population&quot;:
   return SharedResource.ConditionResource(ConditionEncounterDiagnosis)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="6"></valueInteger>
+               <valueInteger value="7"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -226,7 +240,7 @@ define &quot;Initial Population&quot;:
   return SharedResource.MedicationAdministrationResource(MedicationAdministrations)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="7"></valueInteger>
+               <valueInteger value="8"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -242,7 +256,7 @@ define &quot;Initial Population&quot;:
   return SharedResource.EncounterResource(IP)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="8"></valueInteger>
+               <valueInteger value="9"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -259,12 +273,10 @@ define &quot;SDE Blood Glucose Observation&quot;:
   with &quot;Initial Population&quot; InitialPopulation
   such that start of Global.&quot;Normalize Interval&quot;(Observations.effective) during InitialPopulation.period
     or Global.&quot;Normalize Interval&quot;(GetSpecimen(Observations.specimen).collection.collected) during InitialPopulation.period
-  with Observations.category category
-  such that category ~ &quot;laboratory&quot;
   return SharedResource.ObservationResource(Observations)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="9"></valueInteger>
+               <valueInteger value="10"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -282,7 +294,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
   return SharedResource.ConditionResource(Conditions)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="10"></valueInteger>
+               <valueInteger value="11"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -299,7 +311,25 @@ define &quot;SDE Blood Glucose Observation&quot;:
   return SharedResource.EncounterResource(DischargeDispositions)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="11"></valueInteger>
+               <valueInteger value="12"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Service Request"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Service Request&quot;:
+  [ServiceRequest] ServiceRequests
+  with &quot;Initial Population&quot; InitialPopulation
+  such that ServiceRequests.authoredOn during InitialPopulation.period
+  return SharedResource.ServiceRequestResource(ServiceRequests)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="13"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -315,7 +345,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
   return SharedResource.PatientResource(p)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="12"></valueInteger>
+               <valueInteger value="14"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -327,13 +357,13 @@ define &quot;SDE Blood Glucose Observation&quot;:
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Specimen&quot;:
-  [Specimen] Specimen
+  [Specimen] Specimens
   with &quot;Initial Population&quot; InitialPopulation
-  such that Global.&quot;Normalize Interval&quot;(Specimen.collection.collected) during InitialPopulation.period
-  return SharedResource.SpecimenResource(Specimen)"></valueString>
+  such that Global.&quot;Normalize Interval&quot;(Specimens.collection.collected) during InitialPopulation.period
+  return SharedResource.SpecimenResource(Specimens)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="13"></valueInteger>
+               <valueInteger value="15"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -351,7 +381,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
   return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication))"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="14"></valueInteger>
+               <valueInteger value="16"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -369,7 +399,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
   return SharedResource.EncounterResource(IP)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="15"></valueInteger>
+               <valueInteger value="17"></valueInteger>
             </extension>
          </extension>
          <status value="active"></status>
@@ -403,11 +433,6 @@ define &quot;SDE Blood Glucose Observation&quot;:
             <type value="depends-on"></type>
             <display value="Code system Condition Category"></display>
             <resource value="http://terminology.hl7.org/CodeSystem/condition-category"></resource>
-         </relatedArtifact>
-         <relatedArtifact>
-            <type value="depends-on"></type>
-            <display value="Code system Observation Category"></display>
-            <resource value="http://terminology.hl7.org/CodeSystem/observation-category"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -464,6 +489,13 @@ define &quot;SDE Blood Glucose Observation&quot;:
             <type value="MedicationRequest"></type>
          </parameter>
          <parameter>
+            <name value="SDE Coverage"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Coverage"></type>
+         </parameter>
+         <parameter>
             <name value="SDE Encounter Locations"></name>
             <use value="out"></use>
             <min value="0"></min>
@@ -518,6 +550,13 @@ define &quot;SDE Blood Glucose Observation&quot;:
             <min value="0"></min>
             <max value="*"></max>
             <type value="Encounter"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Service Request"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="ServiceRequest"></type>
          </parameter>
          <parameter>
             <name value="SDE Minimal Patient"></name>
@@ -638,6 +677,11 @@ define &quot;SDE Blood Glucose Observation&quot;:
             <mustSupport value="authoredOn"></mustSupport>
          </dataRequirement>
          <dataRequirement>
+            <type value="Coverage"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Coverage"></profile>
+            <mustSupport value="period"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
             <type value="Condition"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Condition"></profile>
             <mustSupport value="category"></mustSupport>
@@ -658,11 +702,15 @@ define &quot;SDE Blood Glucose Observation&quot;:
             <mustSupport value="specimen"></mustSupport>
             <mustSupport value="specimen.collection"></mustSupport>
             <mustSupport value="specimen.collection.collected"></mustSupport>
-            <mustSupport value="category"></mustSupport>
             <codeFilter>
                <path value="code"></path>
                <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38"></valueSet>
             </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="ServiceRequest"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/ServiceRequest"></profile>
+            <mustSupport value="authoredOn"></mustSupport>
          </dataRequirement>
          <dataRequirement>
             <type value="Patient"></type>
@@ -690,7 +738,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-01-19T11:13:58-08:00"></date>
+   <date value="2023-01-23T14:25:34-08:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the measurement period."></description>
    <purpose value="The primary purpose of this site is to provide CDC’s NHSN with access to view measure specification content in the dQMs under development by Lantana Consulting Group. Please note, this site is draft and undergoes constant revision and is not intended to serve as an implementation guide."></purpose>
@@ -783,10 +831,10 @@ define &quot;SDE Blood Glucose Observation&quot;:
          <expression value="SDE Blood Glucose Observation"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData id="sde-payer">
+   <supplementalData id="sde-coverage">
       <criteria>
          <language value="text/cql-identifier"></language>
-         <expression value="SDE Payer"></expression>
+         <expression value="SDE Coverage"></expression>
       </criteria>
    </supplementalData>
    <supplementalData id="sde-specimen">
@@ -811,6 +859,12 @@ define &quot;SDE Blood Glucose Observation&quot;:
       <criteria>
          <language value="text/cql-identifier"></language>
          <expression value="SDE Medication"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-service-request">
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE Service Request"></expression>
       </criteria>
    </supplementalData>
 </Measure>
