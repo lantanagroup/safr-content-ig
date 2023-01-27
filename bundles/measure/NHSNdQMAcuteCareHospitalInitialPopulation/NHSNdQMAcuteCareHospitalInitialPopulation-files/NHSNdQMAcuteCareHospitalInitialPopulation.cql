@@ -86,12 +86,6 @@ define "SDE Medication":
   [Medication] Medication
   where exists("Initial Population")
 
-/*
-define "SDE Observation":
-    [Observation] Observations
-    where exists("Initial Population")   
-*/
-
 define "SDE Observation Category":
     [Observation] Observations 
     where ((exists(Observations.category Category where Category ~ "laboratory"))
@@ -102,18 +96,12 @@ define "SDE Observation Category":
     or (exists(Observations.category Category where Category ~ "procedure")))
     and exists("Initial Population")
 
-
-define "SDE Payer": 
-	SDE."SDE Payer" Payer
-  with "Initial Population" InitialPopulation
-  such that Payer.period overlaps InitialPopulation.period
+define "SDE Coverage": 
+	[Coverage] Coverages
+  where exists("Initial Population")
 
 define "SDE Procedure":
     [Procedure] Procedures 
-    where exists("Initial Population")
-
-define "SDE Service Request":
-    [ServiceRequest] ServiceRequests
     where exists("Initial Population")
 
 define "SDE Specimen":
@@ -154,6 +142,7 @@ define function "PatientResource"(patient Patient):
     birthDate: p.birthDate,
     deceased: p.deceased,
     address: p.address,
-    communication: p.communication
+    communication: p.communication,
+    contact: p.contact
   }
 

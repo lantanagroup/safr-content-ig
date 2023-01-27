@@ -175,6 +175,22 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
                <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
             </extension>
             <extension url="name">
+               <valueString value="SDE Coverage"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Coverage&quot;: 
+	[Coverage] Coverages
+  where exists(&quot;Initial Population&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="5"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
                <valueString value="SDE Procedure"></valueString>
             </extension>
             <extension url="statement">
@@ -183,7 +199,7 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
     where exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="5"></valueInteger>
+               <valueInteger value="6"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -199,7 +215,7 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
     where exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="6"></valueInteger>
+               <valueInteger value="7"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -215,7 +231,7 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
     where exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="7"></valueInteger>
+               <valueInteger value="8"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -226,12 +242,7 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
                <valueString value="SDE Observation Category"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="/*
-define &quot;SDE Observation&quot;:
-    [Observation] Observations
-    where exists(&quot;Initial Population&quot;)   
-*/
-define &quot;SDE Observation Category&quot;:
+               <valueString value="define &quot;SDE Observation Category&quot;:
     [Observation] Observations 
     where ((exists(Observations.category Category where Category ~ &quot;laboratory&quot;))
     or (exists(Observations.category Category where Category ~ &quot;social-history&quot;))
@@ -242,7 +253,7 @@ define &quot;SDE Observation Category&quot;:
     and exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="8"></valueInteger>
+               <valueInteger value="9"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -261,39 +272,7 @@ define &quot;SDE Condition&quot;:
   where exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="9"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="SupplementalDataElementsFHIR4"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="SDE Payer"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;SDE Payer&quot;:
-  [Coverage: type in &quot;Payer&quot;] Payer"></valueString>
-            </extension>
-            <extension url="displaySequence">
                <valueInteger value="10"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="SDE Payer"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;SDE Payer&quot;: 
-	SDE.&quot;SDE Payer&quot; Payer
-  with &quot;Initial Population&quot; InitialPopulation
-  such that Payer.period overlaps InitialPopulation.period"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="11"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -309,23 +288,7 @@ define &quot;SDE Condition&quot;:
     where exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="12"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="SDE Service Request"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;SDE Service Request&quot;:
-    [ServiceRequest] ServiceRequests
-    where exists(&quot;Initial Population&quot;)"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="13"></valueInteger>
+               <valueInteger value="11"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -341,7 +304,7 @@ define &quot;SDE Condition&quot;:
     where exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="14"></valueInteger>
+               <valueInteger value="12"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -357,7 +320,7 @@ define &quot;SDE Condition&quot;:
   return PatientResource(p)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="15"></valueInteger>
+               <valueInteger value="13"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -373,7 +336,7 @@ define &quot;SDE Condition&quot;:
   where exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="16"></valueInteger>
+               <valueInteger value="14"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -389,7 +352,7 @@ define &quot;SDE Condition&quot;:
   where exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="17"></valueInteger>
+               <valueInteger value="15"></valueInteger>
             </extension>
          </extension>
          <status value="active"></status>
@@ -408,11 +371,6 @@ define &quot;SDE Condition&quot;:
             <type value="depends-on"></type>
             <display value="Library Global"></display>
             <resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
-         </relatedArtifact>
-         <relatedArtifact>
-            <type value="depends-on"></type>
-            <display value="Library SDE"></display>
-            <resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/SupplementalDataElementsFHIR4|2.0.000"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -444,11 +402,6 @@ define &quot;SDE Condition&quot;:
             <display value="Value set Inpatient, Emergency, and Observation Locations"></display>
             <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265"></resource>
          </relatedArtifact>
-         <relatedArtifact>
-            <type value="depends-on"></type>
-            <display value="Value set Payer"></display>
-            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"></resource>
-         </relatedArtifact>
          <parameter>
             <name value="Measurement Period"></name>
             <use value="in"></use>
@@ -469,6 +422,13 @@ define &quot;SDE Condition&quot;:
             <min value="0"></min>
             <max value="*"></max>
             <type value="MedicationRequest"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Coverage"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Coverage"></type>
          </parameter>
          <parameter>
             <name value="SDE Procedure"></name>
@@ -506,13 +466,6 @@ define &quot;SDE Condition&quot;:
             <type value="Condition"></type>
          </parameter>
          <parameter>
-            <name value="SDE Payer"></name>
-            <use value="out"></use>
-            <min value="0"></min>
-            <max value="*"></max>
-            <type value="Coverage"></type>
-         </parameter>
-         <parameter>
             <name value="Initial Population"></name>
             <use value="out"></use>
             <min value="0"></min>
@@ -525,13 +478,6 @@ define &quot;SDE Condition&quot;:
             <min value="0"></min>
             <max value="*"></max>
             <type value="Location"></type>
-         </parameter>
-         <parameter>
-            <name value="SDE Service Request"></name>
-            <use value="out"></use>
-            <min value="0"></min>
-            <max value="*"></max>
-            <type value="ServiceRequest"></type>
          </parameter>
          <parameter>
             <name value="SDE DiagnosticReport"></name>
@@ -636,6 +582,10 @@ define &quot;SDE Condition&quot;:
             <profile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"></profile>
          </dataRequirement>
          <dataRequirement>
+            <type value="Coverage"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Coverage"></profile>
+         </dataRequirement>
+         <dataRequirement>
             <type value="Procedure"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Procedure"></profile>
          </dataRequirement>
@@ -655,20 +605,6 @@ define &quot;SDE Condition&quot;:
          <dataRequirement>
             <type value="Condition"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Condition"></profile>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Coverage"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Coverage"></profile>
-            <mustSupport value="type"></mustSupport>
-            <mustSupport value="period"></mustSupport>
-            <codeFilter>
-               <path value="type"></path>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"></valueSet>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="ServiceRequest"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/ServiceRequest"></profile>
          </dataRequirement>
          <dataRequirement>
             <type value="DiagnosticReport"></type>
@@ -706,7 +642,8 @@ define &quot;SDE Condition&quot;:
    <version value="0.000.01"></version>
    <name value="NHSN dQM Acute Care Hospital Initial Population"></name>
    <title value="NHSN dQM Acute Care Hospital Initial Population"></title>
-   <date value="2023-01-11T17:29:59-05:00"></date>
+   <date value="2023-01-27T10:09:15-05:00"></date>
+   <description value="dQM Mesure for Inpatients (Acute) Care setting"></description>
    <library value="http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNdQMAcuteCareHospitalInitialPopulation"></library>
    <scoring>
       <coding>
@@ -861,10 +798,10 @@ define &quot;SDE Condition&quot;:
             <code value="supplemental-data"></code>
          </coding>
       </usage>
-      <description value="SDE Payer"></description>
+      <description value="SDE Coverage"></description>
       <criteria>
          <language value="text/cql.identifier"></language>
-         <expression value="SDE Payer"></expression>
+         <expression value="SDE Coverage"></expression>
       </criteria>
    </supplementalData>
    <supplementalData>
@@ -878,19 +815,6 @@ define &quot;SDE Condition&quot;:
       <criteria>
          <language value="text/cql.identifier"></language>
          <expression value="SDE Procedure"></expression>
-      </criteria>
-   </supplementalData>
-   <supplementalData>
-      <usage>
-         <coding>
-            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
-            <code value="supplemental-data"></code>
-         </coding>
-      </usage>
-      <description value="SDE Service Request"></description>
-      <criteria>
-         <language value="text/cql.identifier"></language>
-         <expression value="SDE Service Request"></expression>
       </criteria>
    </supplementalData>
    <supplementalData>
