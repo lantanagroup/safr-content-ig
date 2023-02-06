@@ -147,8 +147,9 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Encounter&quot;: 
-    [Encounter] Encounters
-    where exists(&quot;Initial Population&quot;)"></valueString>
+  [Encounter] Encounters
+  where exists(&quot;Initial Population&quot;)
+  return SharedResource.EncounterResource(Encounters)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="3"></valueInteger>
@@ -164,7 +165,8 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
             <extension url="statement">
                <valueString value="define &quot;SDE Medication Request&quot;:
   [MedicationRequest] MedicationRequests 
-  where exists(&quot;Initial Population&quot;)"></valueString>
+  where exists(&quot;Initial Population&quot;)
+  return SharedResource.MedicationRequestResource(MedicationRequests)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="4"></valueInteger>
@@ -180,7 +182,8 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
             <extension url="statement">
                <valueString value="define &quot;SDE Coverage&quot;: 
 	[Coverage] Coverages
-  where exists(&quot;Initial Population&quot;)"></valueString>
+  where exists(&quot;Initial Population&quot;)
+  return SharedResource.CoverageResource(Coverages)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="5"></valueInteger>
@@ -195,8 +198,9 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Procedure&quot;:
-    [Procedure] Procedures 
-    where exists(&quot;Initial Population&quot;)"></valueString>
+  [Procedure] Procedures 
+  where exists(&quot;Initial Population&quot;)
+  return SharedResource.ProcedureResource(Procedures)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="6"></valueInteger>
@@ -211,8 +215,9 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Device&quot;:
-    [Device] Devices 
-    where exists(&quot;Initial Population&quot;)"></valueString>
+  [Device] Devices 
+  where exists(&quot;Initial Population&quot;)
+  return SharedResource.DeviceResource(Devices)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="7"></valueInteger>
@@ -227,8 +232,9 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Medication Administration&quot;:
-    [MedicationAdministration] MedicationAdministrations 
-    where exists(&quot;Initial Population&quot;)"></valueString>
+  [MedicationAdministration] MedicationAdministrations 
+  where exists(&quot;Initial Population&quot;)
+  return SharedResource.MedicationAdministrationResource(MedicationAdministrations)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="8"></valueInteger>
@@ -243,17 +249,34 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Observation Category&quot;:
-    [Observation] Observations 
-    where ((exists(Observations.category Category where Category ~ &quot;laboratory&quot;))
+  [Observation] Observations 
+  where ((exists(Observations.category Category where Category ~ &quot;laboratory&quot;))
     or (exists(Observations.category Category where Category ~ &quot;social-history&quot;))
     or (exists(Observations.category Category where Category ~ &quot;vital-signs&quot;))
     or (exists(Observations.category Category where Category ~ &quot;survey&quot;))
     or (exists(Observations.category Category where Category ~ &quot;imaging&quot;))
     or (exists(Observations.category Category where Category ~ &quot;procedure&quot;)))
-    and exists(&quot;Initial Population&quot;)"></valueString>
+    and exists(&quot;Initial Population&quot;)
+  return SharedResource.ObservationResource(Observations)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="9"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Initial Population Encounters"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Initial Population Encounters&quot;:
+  &quot;Initial Population&quot; IP
+  return SharedResource.EncounterResource(IP)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="10"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -269,10 +292,11 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
 //============================
 define &quot;SDE Condition&quot;:
   [Condition] Conditions 
-  where exists(&quot;Initial Population&quot;)"></valueString>
+  where exists(&quot;Initial Population&quot;)
+  return SharedResource.ConditionResource(Conditions)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="10"></valueInteger>
+               <valueInteger value="11"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -284,11 +308,12 @@ define &quot;SDE Condition&quot;:
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Location&quot;:
-    [Location] Locations
-    where exists(&quot;Initial Population&quot;)"></valueString>
+  [Location] Locations
+  where exists(&quot;Initial Population&quot;)
+  return SharedResource.LocationResource(Locations)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="11"></valueInteger>
+               <valueInteger value="12"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -300,11 +325,12 @@ define &quot;SDE Condition&quot;:
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE DiagnosticReport&quot;:
-    [DiagnosticReport] DiagnosticReports
-    where exists(&quot;Initial Population&quot;)"></valueString>
+  [DiagnosticReport] DiagnosticReports
+  where exists(&quot;Initial Population&quot;)
+  return SharedResource.DiagnosticReportResource(DiagnosticReports)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="12"></valueInteger>
+               <valueInteger value="13"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -317,10 +343,10 @@ define &quot;SDE Condition&quot;:
             <extension url="statement">
                <valueString value="define &quot;SDE Minimal Patient&quot;:
   Patient p
-  return PatientResource(p)"></valueString>
+  return SharedResource.PatientResource(p)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="13"></valueInteger>
+               <valueInteger value="14"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -333,10 +359,11 @@ define &quot;SDE Condition&quot;:
             <extension url="statement">
                <valueString value="define &quot;SDE Medication&quot;:
   [Medication] Medication
-  where exists(&quot;Initial Population&quot;)"></valueString>
+  where exists(&quot;Initial Population&quot;)
+  return SharedResource.MedicationResource(Medication)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="14"></valueInteger>
+               <valueInteger value="15"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -349,10 +376,11 @@ define &quot;SDE Condition&quot;:
             <extension url="statement">
                <valueString value="define &quot;SDE Specimen&quot;:
   [Specimen] Specimen
-  where exists(&quot;Initial Population&quot;)"></valueString>
+  where exists(&quot;Initial Population&quot;)
+  return SharedResource.SpecimenResource(Specimen)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="15"></valueInteger>
+               <valueInteger value="16"></valueInteger>
             </extension>
          </extension>
          <status value="active"></status>
@@ -371,6 +399,11 @@ define &quot;SDE Condition&quot;:
             <type value="depends-on"></type>
             <display value="Library Global"></display>
             <resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Library SharedResource"></display>
+            <resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/SharedResourceCreation|0.0.001"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -457,6 +490,13 @@ define &quot;SDE Condition&quot;:
             <min value="0"></min>
             <max value="*"></max>
             <type value="Observation"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Initial Population Encounters"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Encounter"></type>
          </parameter>
          <parameter>
             <name value="SDE Condition"></name>
@@ -642,7 +682,7 @@ define &quot;SDE Condition&quot;:
    <version value="0.000.01"></version>
    <name value="NHSN dQM Acute Care Hospital Initial Population"></name>
    <title value="NHSN dQM Acute Care Hospital Initial Population"></title>
-   <date value="2023-01-27T10:09:15-05:00"></date>
+   <date value="2023-02-06T10:31:51-05:00"></date>
    <description value="dQM Mesure for Inpatients (Acute) Care setting"></description>
    <library value="http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNdQMAcuteCareHospitalInitialPopulation"></library>
    <scoring>
@@ -674,7 +714,7 @@ define &quot;SDE Condition&quot;:
          </criteria>
       </population>
    </group>
-   <supplementalData>
+   <supplementalData id="sde-condition">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
@@ -687,7 +727,7 @@ define &quot;SDE Condition&quot;:
          <expression value="SDE Condition"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
+   <supplementalData id="sde-device">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
@@ -700,7 +740,7 @@ define &quot;SDE Condition&quot;:
          <expression value="SDE Device"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
+   <supplementalData id="sde-diagnosticreport">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
@@ -713,7 +753,7 @@ define &quot;SDE Condition&quot;:
          <expression value="SDE DiagnosticReport"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
+   <supplementalData id="sde-encounter">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
@@ -726,7 +766,7 @@ define &quot;SDE Condition&quot;:
          <expression value="SDE Encounter"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
+   <supplementalData id="sde-location">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
@@ -739,7 +779,7 @@ define &quot;SDE Condition&quot;:
          <expression value="SDE Location"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
+   <supplementalData id="sde-medication-administration">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
@@ -752,7 +792,7 @@ define &quot;SDE Condition&quot;:
          <expression value="SDE Medication Administration"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
+   <supplementalData id="sde-medication-request">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
@@ -765,7 +805,7 @@ define &quot;SDE Condition&quot;:
          <expression value="SDE Medication Request"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
+   <supplementalData id="sde-medication">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
@@ -778,7 +818,7 @@ define &quot;SDE Condition&quot;:
          <expression value="SDE Medication"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
+   <supplementalData id="sde-observation">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
@@ -791,7 +831,7 @@ define &quot;SDE Condition&quot;:
          <expression value="SDE Observation Category"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
+   <supplementalData id="sde-coverage">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
@@ -804,7 +844,7 @@ define &quot;SDE Condition&quot;:
          <expression value="SDE Coverage"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
+   <supplementalData id="sde-procedure">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
@@ -817,7 +857,7 @@ define &quot;SDE Condition&quot;:
          <expression value="SDE Procedure"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
+   <supplementalData id="sde-specimen">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
@@ -830,7 +870,7 @@ define &quot;SDE Condition&quot;:
          <expression value="SDE Specimen"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData>
+   <supplementalData id="sde-minimal-patient">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
@@ -841,6 +881,19 @@ define &quot;SDE Condition&quot;:
       <criteria>
          <language value="text/cql.identifier"></language>
          <expression value="SDE Minimal Patient"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-initial-population-encounters">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE Initial Population Encounters"></description>
+      <criteria>
+         <language value="text/cql.identifier"></language>
+         <expression value="SDE Initial Population Encounters"></expression>
       </criteria>
    </supplementalData>
 </Measure>

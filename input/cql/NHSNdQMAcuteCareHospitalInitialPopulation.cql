@@ -5,6 +5,7 @@ using FHIR version '4.0.1'
 include FHIRHelpers version '4.0.1' called FHIRHelpers
 include MATGlobalCommonFunctionsFHIR4 version '6.1.000' called Global
 include SupplementalDataElementsFHIR4 version '2.0.000' called SDE
+include SharedResourceCreation version '0.0.001' called SharedResource
 
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
 codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category'
@@ -57,92 +58,73 @@ define "Initial Population":
 define "SDE Condition":
   [Condition] Conditions 
   where exists("Initial Population")
+  return SharedResource.ConditionResource(Conditions)
 
 define "SDE Device":
-    [Device] Devices 
-    where exists("Initial Population")
+  [Device] Devices 
+  where exists("Initial Population")
+  return SharedResource.DeviceResource(Devices)
 
 define "SDE DiagnosticReport":
-    [DiagnosticReport] DiagnosticReports
-    where exists("Initial Population")
+  [DiagnosticReport] DiagnosticReports
+  where exists("Initial Population")
+  return SharedResource.DiagnosticReportResource(DiagnosticReports)
 
 define "SDE Encounter": 
-    [Encounter] Encounters
-    where exists("Initial Population")
+  [Encounter] Encounters
+  where exists("Initial Population")
+  return SharedResource.EncounterResource(Encounters)
+
+define "SDE Initial Population Encounters":
+  "Initial Population" IP
+  return SharedResource.EncounterResource(IP)
 
 define "SDE Location":
-    [Location] Locations
-    where exists("Initial Population")
+  [Location] Locations
+  where exists("Initial Population")
+  return SharedResource.LocationResource(Locations)
  
 define "SDE Medication Administration":
-    [MedicationAdministration] MedicationAdministrations 
-    where exists("Initial Population")
+  [MedicationAdministration] MedicationAdministrations 
+  where exists("Initial Population")
+  return SharedResource.MedicationAdministrationResource(MedicationAdministrations)
  
 define "SDE Medication Request":
   [MedicationRequest] MedicationRequests 
   where exists("Initial Population")
+  return SharedResource.MedicationRequestResource(MedicationRequests)
 
 define "SDE Medication":
   [Medication] Medication
   where exists("Initial Population")
+  return SharedResource.MedicationResource(Medication)
 
 define "SDE Observation Category":
-    [Observation] Observations 
-    where ((exists(Observations.category Category where Category ~ "laboratory"))
+  [Observation] Observations 
+  where ((exists(Observations.category Category where Category ~ "laboratory"))
     or (exists(Observations.category Category where Category ~ "social-history"))
     or (exists(Observations.category Category where Category ~ "vital-signs"))
     or (exists(Observations.category Category where Category ~ "survey"))
     or (exists(Observations.category Category where Category ~ "imaging"))
     or (exists(Observations.category Category where Category ~ "procedure")))
     and exists("Initial Population")
+  return SharedResource.ObservationResource(Observations)
 
 define "SDE Coverage": 
 	[Coverage] Coverages
   where exists("Initial Population")
+  return SharedResource.CoverageResource(Coverages)
 
 define "SDE Procedure":
-    [Procedure] Procedures 
-    where exists("Initial Population")
+  [Procedure] Procedures 
+  where exists("Initial Population")
+  return SharedResource.ProcedureResource(Procedures)
 
 define "SDE Specimen":
   [Specimen] Specimen
   where exists("Initial Population")
+  return SharedResource.SpecimenResource(Specimen)
 
 define "SDE Minimal Patient":
   Patient p
-  return PatientResource(p)
-  
-//-----------------------------------------------------------------
-// functions
-//-----------------------------------------------------------------
-define function "GetIdExtensions"(domainResource DomainResource):
-  domainResource.extension E
-  where E.url = 'https://www.cdc.gov/nhsn/fhir/nhsnlink/StructureDefinition/nhsnlink-original-id'
-  return E
-
-define function "GetPatientExtensions"(domainResource DomainResource):
-  domainResource.extension E
-  where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
-    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
-    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
-    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity'
-    or E.url = 'http://hl7.org/fhir/StructureDefinition/patient-genderIdentity'
-  return E
-
-define function "PatientResource"(patient Patient):
-  patient p
-  return Patient{
-    id: FHIR.id{value: 'LCR-' + p.id},
-    extension: GetPatientExtensions(p) union GetIdExtensions(p),
-    identifier: p.identifier,
-    active: p.active,
-    name: p.name,
-    telecom: p.telecom,
-    gender: p.gender,
-    birthDate: p.birthDate,
-    deceased: p.deceased,
-    address: p.address,
-    communication: p.communication,
-    contact: p.contact
-  }
-
+  return SharedResource.PatientResource(p)

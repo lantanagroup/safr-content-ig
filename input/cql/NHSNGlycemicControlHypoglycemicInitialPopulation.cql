@@ -70,6 +70,12 @@ define "Antidiabetic Drugs Administered or Ordered":
       where GetMedicationCode(MedicationRequests.medication) in "Antidiabetic Medications"
   )
 
+define "Medications":
+  [Medication]
+
+define "Specimens":
+  [Specimen]
+
 define function "GetMedicationCode"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):
   case
     when choice is FHIR.CodeableConcept then
@@ -82,7 +88,7 @@ define function "GetMedicationCode"(choice Choice<FHIR.CodeableConcept, FHIR.Ref
 
 define function "GetMedication"(reference Reference ):
   singleton from (
-    [Medication] M where M.id = Global.GetId(reference.reference)
+    "Medications" M where M.id = Global.GetId(reference.reference)
   )
 
 define function "HospitalizationWithObservationOrEmergency"(TheEncounter FHIR.Encounter ):
@@ -102,7 +108,7 @@ define function "HospitalizationWithObservationOrEmergency"(TheEncounter FHIR.En
 
 define function "GetSpecimen"(reference Reference):
   singleton from (
-    [Specimen] S where S.id = Global.GetId(reference.reference)
+    "Specimens" S where S.id = Global.GetId(reference.reference)
   )
 
 define function "GetIdExtensions"(domainResource DomainResource):
@@ -258,23 +264,22 @@ define "SDE Specimen":
   such that Global."Normalize Interval"(Specimens.collection.collected) during InitialPopulation.period
   return SharedResource.SpecimenResource(Specimens)
 
-/*define "Valid Resources":
-  "Encounter Class Not Valid" is null and
-  "Encounter Type Not Valid" is null
+//Validation
+/*define "Invalid MedicationRequest":
+  [MedicationRequest] MedicationRequests
+  return "MedicationRequest Not Valid"(MedicationRequests)
 
-define "Encounter Class Not Valid":*/
+define function "MedicationRequest Not Valid"(medicationRequest MedicationRequest):
+  medicationRequest m
+  return "MedicationRequest Requester Not Valid"(m)
+
+define function "MedicationRequest Requester Not Valid"(medicationRequest MedicationRequest):
+  medicationRequest m
+  where m.requester is null
+  return SharedResource.OperationOutcomeResource('LCR-MedicationRequestRequesterNotValid-' + m.id, m.id, 'MedicationRequest does not have a requester')*/
 
 
-  /*"Patient Gender Not Valid" is null and
-  "Patient Birthdate Not Valid" is null
+
+
 
 //Note, when creating custom resources, you need to specify the exact type of each element created if it's new and not pulled from an existing resource
-define "Patient Gender Not Valid":
-  Patient p
-  where p.gender is null
-  return SharedResource.OperationOutcomeResource('LCR-PatientGenderNotValid', 'Patient gender does not exist')
-
-define "Patient Birthdate Not Valid":
-  Patient p
-  where p.birthDate is null
-  return SharedResource.OperationOutcomeResource('LCR-PatientBirthdateNotValid', 'Patient birth date does not exist')*/

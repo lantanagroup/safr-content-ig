@@ -285,9 +285,125 @@ define function "CoverageResource"(coverage Coverage):
     contract: c.contract
   }
 
-define function "OperationOutcomeResource"(id String, message String):
+define function "ProcedureResource"(procedure Procedure):
+  procedure p
+  return Procedure{
+    id: FHIR.id {value: 'LCR-' + p.id},
+    extension: p.extension,
+    identifier: p.identifier,
+    instantiatesCanonical: p.instantiatesCanonical,
+    instantiatesUri: p.instantiatesUri,
+    basedOn: p.basedOn,
+    partOf: p.partOf,
+    status: p.status,
+    statusReason: p.statusReason,
+    category: p.category,
+    code: p.code,
+    subject: p.subject,
+    encounter: p.encounter,
+    performed: p.performed,
+    recorder: p.recorder,
+    asserter: p.asserter,
+    performer: p.performer,
+    location: p.location,
+    reasonCode: p.reasonCode,
+    reasonReference: p.reasonReference,
+    bodySite: p.bodySite,
+    outcome: p.outcome,
+    report: p.report,
+    complication: p.complication,
+    followUp: p.followUp,
+    note: p.note,
+    focalDevice: p.focalDevice,
+    usedReference: p.usedReference,
+    usedCode: p.usedCode
+  }
+
+define function "LocationResource"(location Location):
+  location l
+  return Location{
+    id: FHIR.id {value: 'LCR-' + l.id},
+    extension: l.extension,
+    identifier: l.identifier,
+    status: l.status,
+    operationalStatus: l.operationalStatus,
+    name: l.name,
+    alias: l.alias,
+    description: l.description,
+    mode: l.mode,
+    type: l.type,
+    telecom: l.telecom,
+    address: l.address,
+    physicalType: l.physicalType,
+    position: l.position,
+    managingOrganization: l.managingOrganization,
+    partOf: l.partOf,
+    hoursOfOperation: l.hoursOfOperation,
+    availabilityExceptions: l.availabilityExceptions,
+    endpoint: l.endpoint
+  }
+
+define function "DiagnosticReportResource"(diagnosticReport DiagnosticReport):
+  diagnosticReport d
+  return DiagnosticReport{
+    id: FHIR.id{value: 'LCR-' + d.id},
+    extension: d.extension,
+    identifier: d.identifier,
+    basedOn: d.basedOn,
+    status: d.status,
+    category: d.category,
+    code: d.code,
+    subject: d.subject,
+    encounter: d.encounter,
+    effective: d.effective,
+    issued: d.issued,
+    performer: d.performer,
+    resultsInterpreter: d.resultsInterpreter,
+    specimen: d.specimen,
+    result: d.result,
+    imagingStudy: d.imagingStudy,
+    media: d.media,
+    conclusion: d.conclusion,
+    conclusionCode: d.conclusionCode,
+    presentedForm: d.presentedForm
+  }
+
+define function "DeviceResource"(device Device):
+  device d
+  return Device{
+    id: FHIR.id{value: 'LCR-' + d.id},
+    extension: d.extension,
+    identifier: d.identifier,
+    definition: d.definition,
+    udiCarrier: d.udiCarrier,
+    status: d.status,
+    statusReason: d.statusReason,
+    distinctIdentifier: d.distinctIdentifier,
+    manufacturer: d.manufacturer,
+    manufactureDate: d.manufactureDate,
+    expirationDate: d.expirationDate,
+    lotNumber: d.lotNumber,
+    serialNumber: d.serialNumber,
+    deviceName: d.deviceName,
+    modelNumber: d.modelNumber,
+    partNumber: d.partNumber,
+    type: d.type,
+    specialization: d.specialization,
+    version: d.version,
+    property: d.property,
+    patient: d.patient,
+    owner: d.owner,
+    contact: d.contact,
+    location: d.location,
+    url: d.url,
+    note: d.note,
+    safety: d.safety,
+    parent: d.parent
+  }
+
+define function "OperationOutcomeResource"(errorId String, resourceId FHIR.id, message String):
   OperationOutcome{
-      id: FHIR.id{value: id},
+      id: FHIR.id{value: errorId},
       issue: {
           FHIR.OperationOutcome.Issue{
           severity: FHIR.IssueSeverity{value: 'error'},
@@ -297,8 +413,8 @@ define function "OperationOutcomeResource"(id String, message String):
                   coding: {
                       Coding{
                       system: uri{value: 'https://lantanagroup.com/validation-error'},
-                      code: code{value: 'GenderError'},
-                      display: string{value: message}
+                      code: code{value: 'Error'},
+                      display: string{value: 'Resource ' + resourceId.value + ' failed validation: ' + message}
                       }
                   }
               }
