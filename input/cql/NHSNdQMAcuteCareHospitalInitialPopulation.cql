@@ -44,9 +44,11 @@ union [Encounter: class in {"emergency", "inpatient acute", "inpatient encounter
 
 define "Qualifying Location During Measurement Period":
   [Encounter] Encounters
-    with Encounters.location EncounterLocation
-    such that Global.GetLocation(EncounterLocation.location).type in "Inpatient, Emergency, and Observation Locations"
-     and  EncounterLocation.period overlaps "Measurement Period"
+  where exists(
+    Encounters.location EncounterLocation
+    where Global.GetLocation(EncounterLocation.location).type in "Inpatient, Emergency, and Observation Locations"
+      and EncounterLocation.period overlaps Encounters.period
+  )
 
 define "Initial Population":
   "Qualifying Encounter During Measurement Period"
