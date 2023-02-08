@@ -43,7 +43,7 @@ union [Encounter: class in {"emergency", "inpatient acute", "inpatient encounter
     and QualifyingEncounters.period overlaps "Measurement Period"
 
 define "Qualifying Location During Measurement Period":
-  [Encounter] Encounters
+  "Encounters" Encounters
   where exists(
     Encounters.location EncounterLocation
     where Global.GetLocation(EncounterLocation.location).type in "Inpatient, Emergency, and Observation Locations"
@@ -53,6 +53,9 @@ define "Qualifying Location During Measurement Period":
 define "Initial Population":
   "Qualifying Encounter During Measurement Period"
   union "Qualifying Location During Measurement Period"
+
+define "Encounters":
+  [Encounter]
 
 //============================
 //Supplemental Data Element
@@ -73,7 +76,7 @@ define "SDE DiagnosticReport":
   return SharedResource.DiagnosticReportResource(DiagnosticReports)
 
 define "SDE Encounter": 
-  [Encounter] Encounters
+  "Encounters" Encounters
   where exists("Initial Population")
   return SharedResource.EncounterResource(Encounters)
 

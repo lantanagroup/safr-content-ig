@@ -89,6 +89,21 @@
                <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
             </extension>
             <extension url="name">
+               <valueString value="Encounters"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Encounters&quot;:
+  [Encounter]"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="0"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
                <valueString value="Qualifying Encounter During Measurement Period"></valueString>
             </extension>
             <extension url="statement">
@@ -101,7 +116,7 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
     and QualifyingEncounters.period overlaps &quot;Measurement Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="0"></valueInteger>
+               <valueInteger value="1"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -113,13 +128,15 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
             </extension>
             <extension url="statement">
                <valueString value="define &quot;Qualifying Location During Measurement Period&quot;:
-  [Encounter] Encounters
-    with Encounters.location EncounterLocation
-    such that Global.GetLocation(EncounterLocation.location).type in &quot;Inpatient, Emergency, and Observation Locations&quot;
-     and  EncounterLocation.period overlaps &quot;Measurement Period&quot;"></valueString>
+  &quot;Encounters&quot; Encounters
+  where exists(
+    Encounters.location EncounterLocation
+    where Global.GetLocation(EncounterLocation.location).type in &quot;Inpatient, Emergency, and Observation Locations&quot;
+      and EncounterLocation.period overlaps Encounters.period
+  )"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="1"></valueInteger>
+               <valueInteger value="2"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -135,7 +152,7 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
   union &quot;Qualifying Location During Measurement Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="2"></valueInteger>
+               <valueInteger value="3"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -147,12 +164,12 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Encounter&quot;: 
-  [Encounter] Encounters
+  &quot;Encounters&quot; Encounters
   where exists(&quot;Initial Population&quot;)
   return SharedResource.EncounterResource(Encounters)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="3"></valueInteger>
+               <valueInteger value="4"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -169,7 +186,7 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
   return SharedResource.MedicationRequestResource(MedicationRequests)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="4"></valueInteger>
+               <valueInteger value="5"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -186,7 +203,7 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
   return SharedResource.CoverageResource(Coverages)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="5"></valueInteger>
+               <valueInteger value="6"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -203,7 +220,7 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
   return SharedResource.ProcedureResource(Procedures)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="6"></valueInteger>
+               <valueInteger value="7"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -220,7 +237,7 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
   return SharedResource.DeviceResource(Devices)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="7"></valueInteger>
+               <valueInteger value="8"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -237,7 +254,7 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
   return SharedResource.MedicationAdministrationResource(MedicationAdministrations)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="8"></valueInteger>
+               <valueInteger value="9"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -260,7 +277,7 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
   return SharedResource.ObservationResource(Observations)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="9"></valueInteger>
+               <valueInteger value="10"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -276,7 +293,7 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
   return SharedResource.EncounterResource(IP)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="10"></valueInteger>
+               <valueInteger value="11"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -296,7 +313,7 @@ define &quot;SDE Condition&quot;:
   return SharedResource.ConditionResource(Conditions)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="11"></valueInteger>
+               <valueInteger value="12"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -313,7 +330,7 @@ define &quot;SDE Condition&quot;:
   return SharedResource.LocationResource(Locations)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="12"></valueInteger>
+               <valueInteger value="13"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -330,7 +347,7 @@ define &quot;SDE Condition&quot;:
   return SharedResource.DiagnosticReportResource(DiagnosticReports)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="13"></valueInteger>
+               <valueInteger value="14"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -346,7 +363,7 @@ define &quot;SDE Condition&quot;:
   return SharedResource.PatientResource(p)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="14"></valueInteger>
+               <valueInteger value="15"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -363,7 +380,7 @@ define &quot;SDE Condition&quot;:
   return SharedResource.MedicationResource(Medication)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="15"></valueInteger>
+               <valueInteger value="16"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -380,7 +397,7 @@ define &quot;SDE Condition&quot;:
   return SharedResource.SpecimenResource(Specimen)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="16"></valueInteger>
+               <valueInteger value="17"></valueInteger>
             </extension>
          </extension>
          <status value="active"></status>
@@ -611,6 +628,7 @@ define &quot;SDE Condition&quot;:
             <type value="Encounter"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
             <mustSupport value="location"></mustSupport>
+            <mustSupport value="period"></mustSupport>
          </dataRequirement>
          <dataRequirement>
             <type value="Location"></type>
@@ -682,7 +700,7 @@ define &quot;SDE Condition&quot;:
    <version value="0.000.01"></version>
    <name value="NHSN dQM Acute Care Hospital Initial Population"></name>
    <title value="NHSN dQM Acute Care Hospital Initial Population"></title>
-   <date value="2023-02-06T10:31:51-05:00"></date>
+   <date value="2023-02-08T09:43:25-05:00"></date>
    <description value="dQM Mesure for Inpatients (Acute) Care setting"></description>
    <library value="http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNdQMAcuteCareHospitalInitialPopulation"></library>
    <scoring>
