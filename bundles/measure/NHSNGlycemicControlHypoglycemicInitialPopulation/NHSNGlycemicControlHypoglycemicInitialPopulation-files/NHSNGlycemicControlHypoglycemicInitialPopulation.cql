@@ -1,4 +1,4 @@
-library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.004'
+library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.005'
 
 using FHIR version '4.0.1'
 
@@ -42,10 +42,11 @@ context Patient
 define "Initial Population":
   ("Inpatient Encounter"
   union "Patient Hospital Locations") InpatientEncounters
-  with "Antidiabetic Drugs Administered or Ordered" ADD
-  such that Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn)
+  where exists( 
+    "Antidiabetic Drugs Administered or Ordered" ADD
+    where Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn)
       during "HospitalizationWithObservationOrEmergency"(InpatientEncounters)
-    and Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn) during "Measurement Period"
+    and Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn) during "Measurement Period")
 
 define "Inpatient Encounter":
   [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "short stay"}]
@@ -62,14 +63,141 @@ define "Patient Hospital Locations":
   )
 
 define "Antidiabetic Drugs Administered or Ordered":
-  ([MedicationAdministration] ADDMedAdmin
+  ("MedicationAdministrations" ADDMedAdmin
     where GetMedicationCode(ADDMedAdmin.medication) in "Antidiabetic Medications"
       and ADDMedAdmin.status ~ 'completed')
   union (
-    [MedicationRequest] MedicationRequests
+    "MedicationRequests" MedicationRequests
       where GetMedicationCode(MedicationRequests.medication) in "Antidiabetic Medications"
   )
 
+define "MedicationRequests":
+  [MedicationRequest]
+
+define "MedicationAdministrations":
+  [MedicationAdministration]
+
+define "Medications":
+  [Medication]
+
+define "Specimens":
+  [Specimen]
+
+define "Conditions":
+  [Condition]
+
+//Supplemental Data Elements
+define "SDE Blood Glucose Observation":
+	[Observation: "Blood Glucose Laboratory and Point of Care Tests"] Observations 
+  where exists(
+    "Initial Population" InitialPopulation
+    where start of Global."Normalize Interval"(Observations.effective) during InitialPopulation.period
+    or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) 
+      during InitialPopulation.period
+  )
+  return SharedResource.ObservationResource(Observations)
+
+define "SDE Chief Complaint":
+  "Initial Population" IP
+  where exists(
+    IP.diagnosis InitialPopulationDiagnosis
+    where InitialPopulationDiagnosis.use ~ "Chief Complaint"
+  )
+  return SharedResource.EncounterResource(IP)
+
+define "SDE Condition":
+  "Conditions" Conditions
+  where exists(
+    "Initial Population" InitialPopulation
+    where Global."Normalize Interval"(Conditions.onset) overlaps InitialPopulation.period
+  )
+  return SharedResource.ConditionResource(Conditions)
+  
+define "SDE Condition during Encounter":
+  "Conditions" ConditionEncounterDiagnosis
+  where exists(
+    ConditionEncounterDiagnosis.category category
+    where category ~ "encounter-diagnosis"
+  )
+  return SharedResource.ConditionResource(ConditionEncounterDiagnosis)
+
+define "SDE Coverage": 
+	[Coverage] Coverages
+  where exists(
+    "Initial Population" InitialPopulation
+    where start of Coverages.period before day of end of InitialPopulation.period
+    and (end of Coverages.period is null
+      or (end of Coverages.period is not null
+        and end of Coverages.period on or after day of end of InitialPopulation.period
+      )
+    )
+  )
+  return SharedResource.CoverageResource(Coverages)
+    
+define "SDE Encounter Discharge Dispositions":
+	"Initial Population" DischargeDispositions 
+  where DischargeDispositions.hospitalization.dischargeDisposition in "Discharge Disposition"
+  return SharedResource.EncounterResource(DischargeDispositions)
+  
+define "SDE Encounter Locations":
+  "Initial Population" InitialPopulation 
+  where exists ( 
+    InitialPopulation.location InitialPopulationLocation
+    where (Global.GetLocation(InitialPopulationLocation.location).type in "Inpatient, Emergency, and Observation Locations"
+      and InitialPopulationLocation.period during InitialPopulation.period)
+  )
+  return SharedResource.EncounterResource(InitialPopulation)
+
+define "SDE Initial Population Encounters":
+  "Initial Population" IP
+  return SharedResource.EncounterResource(IP)
+
+define "SDE Medication":
+  ("SDE Medication Request"
+  union "SDE Medication Administration") MedReqOrAdmin
+  where MedReqOrAdmin.medication is FHIR.Reference
+  return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication))
+
+define "SDE Medication Administration":
+	"MedicationAdministrations" MedicationAdministrations
+  where exists(
+    "Initial Population" InitialPopulation
+    where start of Global."Normalize Interval"(MedicationAdministrations.effective) 
+      during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
+    and start of Global."Normalize Interval"(MedicationAdministrations.effective) during "Measurement Period"
+  )
+  return SharedResource.MedicationAdministrationResource(MedicationAdministrations)
+
+define "SDE Medication Request":
+	"MedicationRequests" MedicationRequests
+  where exists(
+    "Initial Population" InitialPopulation
+	  where MedicationRequests.authoredOn during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
+    and MedicationRequests.authoredOn during "Measurement Period"
+  )
+  return SharedResource.MedicationRequestResource(MedicationRequests)
+
+define "SDE Minimal Patient":
+  Patient p
+  return SharedResource.PatientResource(p)
+  
+define "SDE Service Request":
+  [ServiceRequest] ServiceRequests
+  where exists(
+    "Initial Population" InitialPopulation
+    where ServiceRequests.authoredOn during InitialPopulation.period
+  )
+  return SharedResource.ServiceRequestResource(ServiceRequests)
+
+define "SDE Specimen":
+  "Specimens" Specimens
+  where exists(
+    "Initial Population" InitialPopulation
+    where Global."Normalize Interval"(Specimens.collection.collected) during InitialPopulation.period
+  )
+  return SharedResource.SpecimenResource(Specimens)
+
+//Functions
 define function "GetMedicationCode"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):
   case
     when choice is FHIR.CodeableConcept then
@@ -81,8 +209,8 @@ define function "GetMedicationCode"(choice Choice<FHIR.CodeableConcept, FHIR.Ref
   end
 
 define function "GetMedication"(reference Reference ):
-  singleton from (
-    [Medication] M where M.id = Global.GetId(reference.reference)
+  First (
+    "Medications" M where M.id = Global.GetId(reference.reference)
   )
 
 define function "HospitalizationWithObservationOrEmergency"(TheEncounter FHIR.Encounter ):
@@ -101,8 +229,8 @@ define function "HospitalizationWithObservationOrEmergency"(TheEncounter FHIR.En
     return Interval[Coalesce(start of EDVisit.period, VisitStart), end of Visit.period]
 
 define function "GetSpecimen"(reference Reference):
-  singleton from (
-    [Specimen] S where S.id = Global.GetId(reference.reference)
+  First (
+    "Specimens" S where S.id = Global.GetId(reference.reference)
   )
 
 define function "GetIdExtensions"(domainResource DomainResource):
@@ -169,106 +297,22 @@ define function "GetMedicationFrom"(choice Choice<FHIR.CodeableConcept, FHIR.Ref
       null
   end
 
-//Supplemental Data Elements
-define "SDE Blood Glucose Observation":
-	[Observation: "Blood Glucose Laboratory and Point of Care Tests"] Observations 
-  with "Initial Population" InitialPopulation
-  such that start of Global."Normalize Interval"(Observations.effective) during InitialPopulation.period
-    or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during InitialPopulation.period
-  return SharedResource.ObservationResource(Observations)
+//Validation
+/*define "Invalid MedicationRequest":
+  [MedicationRequest] MedicationRequests
+  return "MedicationRequest Not Valid"(MedicationRequests)
 
-define "SDE Chief Complaint":
-  "Initial Population" IP
-  with IP.diagnosis InitialPopulationDiagnosis
-  such that InitialPopulationDiagnosis.use ~ "Chief Complaint"
-  return SharedResource.EncounterResource(IP)
+define function "MedicationRequest Not Valid"(medicationRequest MedicationRequest):
+  medicationRequest m
+  return "MedicationRequest Requester Not Valid"(m)
 
-define "SDE Condition":
-  [Condition] Conditions
-  with "Initial Population" InitialPopulation
-  such that Global."Normalize Interval"(Conditions.onset) overlaps InitialPopulation.period
-  return SharedResource.ConditionResource(Conditions)
-  
-define "SDE Condition during Encounter":
-  [Condition] ConditionEncounterDiagnosis
-  with ConditionEncounterDiagnosis.category category
-  such that category ~ "encounter-diagnosis"
-  return SharedResource.ConditionResource(ConditionEncounterDiagnosis)
+define function "MedicationRequest Requester Not Valid"(medicationRequest MedicationRequest):
+  medicationRequest m
+  where m.requester is null
+  return SharedResource.OperationOutcomeResource('LCR-MedicationRequestRequesterNotValid-' + m.id, m.id, 'MedicationRequest does not have a requester')*/
 
-define "SDE Coverage": 
-	[Coverage] Coverages
-  with "Initial Population" InitialPopulation
-  such that start of Coverages.period before day of end of InitialPopulation.period
-  and (end of Coverages.period is null
-    or (end of Coverages.period is not null
-      and end of Coverages.period on or after day of end of InitialPopulation.period))
-  return SharedResource.CoverageResource(Coverages)
-    
-define "SDE Encounter Discharge Dispositions":
-	"Initial Population" DischargeDispositions 
-  where DischargeDispositions.hospitalization.dischargeDisposition in "Discharge Disposition"
-  return SharedResource.EncounterResource(DischargeDispositions)
-  
-define "SDE Encounter Locations":
-  "Initial Population" InitialPopulation 
-  where exists ( 
-    InitialPopulation.location InitialPopulationLocation
-    where (Global.GetLocation(InitialPopulationLocation.location).type in "Inpatient, Emergency, and Observation Locations"
-      and InitialPopulationLocation.period during InitialPopulation.period)
-  )
-  return SharedResource.EncounterResource(InitialPopulation)
 
-define "SDE Initial Population Encounters":
-  "Initial Population" IP
-  return SharedResource.EncounterResource(IP)
 
-define "SDE Medication":
-  ("SDE Medication Request"
-  union "SDE Medication Administration") MedReqOrAdmin
-  where MedReqOrAdmin.medication is FHIR.Reference
-  return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication))
 
-define "SDE Medication Administration":
-	[MedicationAdministration] MedicationAdministrations
-  with "Initial Population" InitialPopulation
-  such that start of Global."Normalize Interval"(MedicationAdministrations.effective) during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
-    and start of Global."Normalize Interval"(MedicationAdministrations.effective) during "Measurement Period"
-  return SharedResource.MedicationAdministrationResource(MedicationAdministrations)
-
-define "SDE Medication Request":
-	[MedicationRequest] MedicationRequests
-  with "Initial Population" InitialPopulation
-	such that MedicationRequests.authoredOn during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
-    and MedicationRequests.authoredOn during "Measurement Period"
-  return SharedResource.MedicationRequestResource(MedicationRequests)
-
-define "SDE Minimal Patient":
-  Patient p
-  return SharedResource.PatientResource(p)
-  
-define "SDE Service Request":
-  [ServiceRequest] ServiceRequests
-  with "Initial Population" InitialPopulation
-  such that ServiceRequests.authoredOn during InitialPopulation.period
-  return SharedResource.ServiceRequestResource(ServiceRequests)
-
-define "SDE Specimen":
-  [Specimen] Specimens
-  with "Initial Population" InitialPopulation
-  such that Global."Normalize Interval"(Specimens.collection.collected) during InitialPopulation.period
-  return SharedResource.SpecimenResource(Specimens)
-
-/*define "Valid Resources":
-  "Patient Gender Not Valid" is null and
-  "Patient Birthdate Not Valid" is null*/
 
 //Note, when creating custom resources, you need to specify the exact type of each element created if it's new and not pulled from an existing resource
-/*define "Patient Gender Not Valid":
-  Patient p
-  where p.gender is null
-  return SharedResource.OperationOutcomeResource('LCR-PatientGenderNotValid', 'Patient gender does not exist')
-
-define "Patient Birthdate Not Valid":
-  Patient p
-  where p.birthDate is null
-  return SharedResource.OperationOutcomeResource('LCR-PatientBirthdateNotValid', 'Patient birth date does not exist')*/

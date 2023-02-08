@@ -68,6 +68,21 @@
                <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
             </extension>
             <extension url="name">
+               <valueString value="MedicationRequests"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;MedicationRequests&quot;:
+  [MedicationRequest]"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="0"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
                <valueString value="Inpatient Encounter"></valueString>
             </extension>
             <extension url="statement">
@@ -78,7 +93,7 @@
     and Encounters.period overlaps &quot;Measurement Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="0"></valueInteger>
+               <valueInteger value="1"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -98,7 +113,37 @@
   )"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="1"></valueInteger>
+               <valueInteger value="2"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="MedicationAdministrations"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;MedicationAdministrations&quot;:
+  [MedicationAdministration]"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="3"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Medications"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Medications&quot;:
+  [Medication]"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="4"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -110,16 +155,16 @@
             </extension>
             <extension url="statement">
                <valueString value="define &quot;Antidiabetic Drugs Administered or Ordered&quot;:
-  ([MedicationAdministration] ADDMedAdmin
+  (&quot;MedicationAdministrations&quot; ADDMedAdmin
     where GetMedicationCode(ADDMedAdmin.medication) in &quot;Antidiabetic Medications&quot;
       and ADDMedAdmin.status ~ 'completed')
   union (
-    [MedicationRequest] MedicationRequests
+    &quot;MedicationRequests&quot; MedicationRequests
       where GetMedicationCode(MedicationRequests.medication) in &quot;Antidiabetic Medications&quot;
   )"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="2"></valueInteger>
+               <valueInteger value="5"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -136,13 +181,14 @@
 define &quot;Initial Population&quot;:
   (&quot;Inpatient Encounter&quot;
   union &quot;Patient Hospital Locations&quot;) InpatientEncounters
-  with &quot;Antidiabetic Drugs Administered or Ordered&quot; ADD
-  such that Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn)
+  where exists( 
+    &quot;Antidiabetic Drugs Administered or Ordered&quot; ADD
+    where Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn)
       during &quot;HospitalizationWithObservationOrEmergency&quot;(InpatientEncounters)
-    and Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn) during &quot;Measurement Period&quot;"></valueString>
+    and Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn) during &quot;Measurement Period&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="3"></valueInteger>
+               <valueInteger value="6"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -154,14 +200,16 @@ define &quot;Initial Population&quot;:
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Medication Request&quot;:
-	[MedicationRequest] MedicationRequests
-  with &quot;Initial Population&quot; InitialPopulation
-	such that MedicationRequests.authoredOn during &quot;HospitalizationWithObservationOrEmergency&quot;(InitialPopulation)
+	&quot;MedicationRequests&quot; MedicationRequests
+  where exists(
+    &quot;Initial Population&quot; InitialPopulation
+	  where MedicationRequests.authoredOn during &quot;HospitalizationWithObservationOrEmergency&quot;(InitialPopulation)
     and MedicationRequests.authoredOn during &quot;Measurement Period&quot;
+  )
   return SharedResource.MedicationRequestResource(MedicationRequests)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="4"></valueInteger>
+               <valueInteger value="7"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -174,15 +222,19 @@ define &quot;Initial Population&quot;:
             <extension url="statement">
                <valueString value="define &quot;SDE Coverage&quot;: 
 	[Coverage] Coverages
-  with &quot;Initial Population&quot; InitialPopulation
-  such that start of Coverages.period before day of end of InitialPopulation.period
-  and (end of Coverages.period is null
-    or (end of Coverages.period is not null
-      and end of Coverages.period on or after day of end of InitialPopulation.period))
+  where exists(
+    &quot;Initial Population&quot; InitialPopulation
+    where start of Coverages.period before day of end of InitialPopulation.period
+    and (end of Coverages.period is null
+      or (end of Coverages.period is not null
+        and end of Coverages.period on or after day of end of InitialPopulation.period
+      )
+    )
+  )
   return SharedResource.CoverageResource(Coverages)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="5"></valueInteger>
+               <valueInteger value="8"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -203,7 +255,22 @@ define &quot;Initial Population&quot;:
   return SharedResource.EncounterResource(InitialPopulation)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="6"></valueInteger>
+               <valueInteger value="9"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Conditions"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Conditions&quot;:
+  [Condition]"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="10"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -215,13 +282,15 @@ define &quot;Initial Population&quot;:
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Condition during Encounter&quot;:
-  [Condition] ConditionEncounterDiagnosis
-  with ConditionEncounterDiagnosis.category category
-  such that category ~ &quot;encounter-diagnosis&quot;
+  &quot;Conditions&quot; ConditionEncounterDiagnosis
+  where exists(
+    ConditionEncounterDiagnosis.category category
+    where category ~ &quot;encounter-diagnosis&quot;
+  )
   return SharedResource.ConditionResource(ConditionEncounterDiagnosis)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="7"></valueInteger>
+               <valueInteger value="11"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -233,14 +302,17 @@ define &quot;Initial Population&quot;:
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Medication Administration&quot;:
-	[MedicationAdministration] MedicationAdministrations
-  with &quot;Initial Population&quot; InitialPopulation
-  such that start of Global.&quot;Normalize Interval&quot;(MedicationAdministrations.effective) during &quot;HospitalizationWithObservationOrEmergency&quot;(InitialPopulation)
+	&quot;MedicationAdministrations&quot; MedicationAdministrations
+  where exists(
+    &quot;Initial Population&quot; InitialPopulation
+    where start of Global.&quot;Normalize Interval&quot;(MedicationAdministrations.effective) 
+      during &quot;HospitalizationWithObservationOrEmergency&quot;(InitialPopulation)
     and start of Global.&quot;Normalize Interval&quot;(MedicationAdministrations.effective) during &quot;Measurement Period&quot;
+  )
   return SharedResource.MedicationAdministrationResource(MedicationAdministrations)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="8"></valueInteger>
+               <valueInteger value="12"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -256,7 +328,22 @@ define &quot;Initial Population&quot;:
   return SharedResource.EncounterResource(IP)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="9"></valueInteger>
+               <valueInteger value="13"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Specimens"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Specimens&quot;:
+  [Specimen]"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="14"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -270,13 +357,16 @@ define &quot;Initial Population&quot;:
                <valueString value="//Supplemental Data Elements
 define &quot;SDE Blood Glucose Observation&quot;:
 	[Observation: &quot;Blood Glucose Laboratory and Point of Care Tests&quot;] Observations 
-  with &quot;Initial Population&quot; InitialPopulation
-  such that start of Global.&quot;Normalize Interval&quot;(Observations.effective) during InitialPopulation.period
-    or Global.&quot;Normalize Interval&quot;(GetSpecimen(Observations.specimen).collection.collected) during InitialPopulation.period
+  where exists(
+    &quot;Initial Population&quot; InitialPopulation
+    where start of Global.&quot;Normalize Interval&quot;(Observations.effective) during InitialPopulation.period
+    or Global.&quot;Normalize Interval&quot;(GetSpecimen(Observations.specimen).collection.collected) 
+      during InitialPopulation.period
+  )
   return SharedResource.ObservationResource(Observations)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="10"></valueInteger>
+               <valueInteger value="15"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -288,13 +378,15 @@ define &quot;SDE Blood Glucose Observation&quot;:
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Condition&quot;:
-  [Condition] Conditions
-  with &quot;Initial Population&quot; InitialPopulation
-  such that Global.&quot;Normalize Interval&quot;(Conditions.onset) overlaps InitialPopulation.period
+  &quot;Conditions&quot; Conditions
+  where exists(
+    &quot;Initial Population&quot; InitialPopulation
+    where Global.&quot;Normalize Interval&quot;(Conditions.onset) overlaps InitialPopulation.period
+  )
   return SharedResource.ConditionResource(Conditions)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="11"></valueInteger>
+               <valueInteger value="16"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -311,7 +403,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
   return SharedResource.EncounterResource(DischargeDispositions)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="12"></valueInteger>
+               <valueInteger value="17"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -324,12 +416,14 @@ define &quot;SDE Blood Glucose Observation&quot;:
             <extension url="statement">
                <valueString value="define &quot;SDE Service Request&quot;:
   [ServiceRequest] ServiceRequests
-  with &quot;Initial Population&quot; InitialPopulation
-  such that ServiceRequests.authoredOn during InitialPopulation.period
+  where exists(
+    &quot;Initial Population&quot; InitialPopulation
+    where ServiceRequests.authoredOn during InitialPopulation.period
+  )
   return SharedResource.ServiceRequestResource(ServiceRequests)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="13"></valueInteger>
+               <valueInteger value="18"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -345,7 +439,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
   return SharedResource.PatientResource(p)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="14"></valueInteger>
+               <valueInteger value="19"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -357,13 +451,15 @@ define &quot;SDE Blood Glucose Observation&quot;:
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Specimen&quot;:
-  [Specimen] Specimens
-  with &quot;Initial Population&quot; InitialPopulation
-  such that Global.&quot;Normalize Interval&quot;(Specimens.collection.collected) during InitialPopulation.period
+  &quot;Specimens&quot; Specimens
+  where exists(
+    &quot;Initial Population&quot; InitialPopulation
+    where Global.&quot;Normalize Interval&quot;(Specimens.collection.collected) during InitialPopulation.period
+  )
   return SharedResource.SpecimenResource(Specimens)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="15"></valueInteger>
+               <valueInteger value="20"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -381,7 +477,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
   return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication))"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="16"></valueInteger>
+               <valueInteger value="21"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -394,12 +490,14 @@ define &quot;SDE Blood Glucose Observation&quot;:
             <extension url="statement">
                <valueString value="define &quot;SDE Chief Complaint&quot;:
   &quot;Initial Population&quot; IP
-  with IP.diagnosis InitialPopulationDiagnosis
-  such that InitialPopulationDiagnosis.use ~ &quot;Chief Complaint&quot;
+  where exists(
+    IP.diagnosis InitialPopulationDiagnosis
+    where InitialPopulationDiagnosis.use ~ &quot;Chief Complaint&quot;
+  )
   return SharedResource.EncounterResource(IP)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="17"></valueInteger>
+               <valueInteger value="22"></valueInteger>
             </extension>
          </extension>
          <status value="active"></status>
@@ -587,6 +685,12 @@ define &quot;SDE Blood Glucose Observation&quot;:
             <type value="Encounter"></type>
          </parameter>
          <dataRequirement>
+            <type value="MedicationRequest"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"></profile>
+            <mustSupport value="medication"></mustSupport>
+            <mustSupport value="authoredOn"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
             <type value="Encounter"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
             <mustSupport value="class"></mustSupport>
@@ -659,11 +763,6 @@ define &quot;SDE Blood Glucose Observation&quot;:
             <mustSupport value="id"></mustSupport>
          </dataRequirement>
          <dataRequirement>
-            <type value="Medication"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Medication"></profile>
-            <mustSupport value="id"></mustSupport>
-         </dataRequirement>
-         <dataRequirement>
             <type value="MedicationAdministration"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/MedicationAdministration"></profile>
             <mustSupport value="medication"></mustSupport>
@@ -671,10 +770,9 @@ define &quot;SDE Blood Glucose Observation&quot;:
             <mustSupport value="effective"></mustSupport>
          </dataRequirement>
          <dataRequirement>
-            <type value="MedicationRequest"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"></profile>
-            <mustSupport value="medication"></mustSupport>
-            <mustSupport value="authoredOn"></mustSupport>
+            <type value="Medication"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Medication"></profile>
+            <mustSupport value="id"></mustSupport>
          </dataRequirement>
          <dataRequirement>
             <type value="Coverage"></type>
@@ -738,7 +836,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-01-23T14:25:34-08:00"></date>
+   <date value="2023-02-08T05:40:25-08:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the measurement period."></description>
    <purpose value="The primary purpose of this site is to provide CDC’s NHSN with access to view measure specification content in the dQMs under development by Lantana Consulting Group. Please note, this site is draft and undergoes constant revision and is not intended to serve as an implementation guide."></purpose>
