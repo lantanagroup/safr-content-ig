@@ -1,0 +1,68 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113883.3.3616.200.110.102.2097-20220729",
+  "meta": {
+    "versionId": "9",
+    "lastUpdated": "2022-07-29T01:06:04.000-04:00",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/shareablevalueset", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm" ]
+  },
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate",
+    "valueDate": "2022-07-29"
+  } ],
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2097",
+  "version": "20220729",
+  "name": "Casirivimab",
+  "status": "active",
+  "date": "2022-07-29T01:06:04-04:00",
+  "publisher": "Clinical Architecture",
+  "expansion": {
+    "identifier": "urn:uuid:6d8ab996-0b56-43b9-8e48-e869e8d89741",
+    "timestamp": "2023-01-31T10:14:47-05:00",
+    "total": 7,
+    "offset": 0,
+    "parameter": [ {
+      "name": "count",
+      "valueInteger": 1000
+    }, {
+      "name": "offset",
+      "valueInteger": 0
+    } ],
+    "contains": [ {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "01032023",
+      "code": "2465242",
+      "display": "casirivimab"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "01032023",
+      "code": "2465243",
+      "display": "casirivimab 120 MG/ML"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "01032023",
+      "code": "2465244",
+      "display": "casirivimab Injectable Product"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "01032023",
+      "code": "2465245",
+      "display": "casirivimab Injection"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "01032023",
+      "code": "2465246",
+      "display": "11.1 ML casirivimab 120 MG/ML Injection"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "01032023",
+      "code": "2465248",
+      "display": "2.5 ML casirivimab 120 MG/ML Injection"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "01032023",
+      "code": "2557235",
+      "display": "casirivimab 60 MG/ML"
+    } ]
+  }
+}

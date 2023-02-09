@@ -1,0 +1,48 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113883.10.20.22.5.300-20190425",
+  "meta": {
+    "versionId": "8",
+    "lastUpdated": "2019-04-25T15:36:46.000-04:00",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/shareablevalueset", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm" ]
+  },
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate",
+    "valueDate": "2019-04-25"
+  } ],
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.10.20.22.5.300",
+  "version": "20190425",
+  "name": "Transmission Based Precaution Types",
+  "status": "active",
+  "date": "2019-04-25T15:36:46-04:00",
+  "publisher": "HL7 Terminology",
+  "expansion": {
+    "identifier": "urn:uuid:22dca48e-fde5-44ec-9b38-07a9019a062d",
+    "timestamp": "2023-01-31T12:40:26-05:00",
+    "total": 3,
+    "offset": 0,
+    "parameter": [ {
+      "name": "count",
+      "valueInteger": 1000
+    }, {
+      "name": "offset",
+      "valueInteger": 0
+    } ],
+    "contains": [ {
+      "system": "http://snomed.info/sct",
+      "version": "http://snomed.info/sct/731000124108/version/20220901",
+      "code": "409524006",
+      "display": "Airborne precautions (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "http://snomed.info/sct/731000124108/version/20220901",
+      "code": "409525007",
+      "display": "Respiratory secretion precautions (procedure)"
+    }, {
+      "system": "http://snomed.info/sct",
+      "version": "http://snomed.info/sct/731000124108/version/20220901",
+      "code": "409529001",
+      "display": "Contact precautions (procedure)"
+    } ]
+  }
+}
