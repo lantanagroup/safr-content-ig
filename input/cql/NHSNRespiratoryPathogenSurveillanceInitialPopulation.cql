@@ -66,6 +66,72 @@ valueset "Bebtelovimab": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883
 
 valueset "Transmission Based Precaution Types": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.10.20.22.5.300'
 
+//medication Flu antivirals
+code "baloxavir":  '2197842'   from "RXNORM"  display  'baloxavir'
+code "Xofluza":  '2100001'   from "RXNORM"  display  'Xofluza' 
+code "Xofluza 40 MG Dose Pack (2 x 20 MG Tablets)":  '2100099'   from "RXNORM"  display  'Xofluza 40 MG Dose Pack (2 x 20 MG Tablets)' 
+code "Xofluza 80 MG Dose Pack (2 x 40 MG Tablets)":  '2100100'   from "RXNORM"  display  'Xofluza 80 MG Dose Pack (2 x 40 MG Tablets)' 
+code "Granules for Oral Suspension":  '1540454'   from "RXNORM"  display  'Granules for Oral Suspension' 
+code "Oral Tablet":  '317541'   from "RXNORM"  display  'Oral Tablet' 
+code "Oral Product":  '1151131'   from "RXNORM"  display  'Oral Product' 
+code "Pill":  '1151133'   from "RXNORM"  display  'Pill' 
+code "Granule Product":  '1294708'   from "RXNORM"  display  'Granule Product' 
+code "{2 (baloxavir marboxil 20 MG Oral Tablet) } Pack":  '2100024'   from "RXNORM"  display  '{2 (baloxavir marboxil 20 MG Oral Tablet) } Pack' 
+code "{2 (baloxavir marboxil 40 MG Oral Tablet) } Pack":  '2100026'   from "RXNORM"  display  '{2 (baloxavir marboxil 40 MG Oral Tablet) } Pack' 
+code "baloxavir marboxil":  '2099995'   from "RXNORM"  display  'baloxavir marboxil' 
+code "Xofluza 20 MG Oral Tablet":  '2100006'   from "RXNORM"  display  'Xofluza 20 MG Oral Tablet' 
+code "Xofluza 40 MG Oral Tablet":  '2100010'   from "RXNORM"  display  'Xofluza 40 MG Oral Tablet' 
+code "Xofluza 40 MG Granules for Oral Suspension":  '2467539'   from "RXNORM"  display  'Xofluza 40 MG Granules for Oral Suspension' 
+code "Xofluza 80 MG Oral Tablet":  '2536742'   from "RXNORM"  display  'Xofluza 80 MG Oral Tablet' 
+code "baloxavir marboxil 20 MG [Xofluza]":  '2100002'   from "RXNORM"  display  'baloxavir marboxil 20 MG [Xofluza]' 
+code "baloxavir marboxil 40 MG [Xofluza]":  '2100009'   from "RXNORM"  display  'baloxavir marboxil 40 MG [Xofluza]' 
+code "baloxavir marboxil 80 MG [Xofluza]":  '2536741'   from "RXNORM"  display  'baloxavir marboxil 80 MG [Xofluza]' 
+code "baloxavir marboxil Oral Tablet [Xofluza]":  '2100003'   from "RXNORM"  display  'baloxavir marboxil Oral Tablet [Xofluza]' 
+code "baloxavir marboxil Granules for Oral Suspension [Xofluza]":  '2467538'   from "RXNORM"  display  'baloxavir marboxil Granules for Oral Suspension [Xofluza]' 
+code "Xofluza Oral Product":  '2100004'   from "RXNORM"  display  'Xofluza Oral Product' 
+code "Xofluza Pill":  '2100005'   from "RXNORM"  display  'Xofluza Pill' 
+code "Xofluza Granule Product":  '2467534'   from "RXNORM"  display  'Xofluza Granule Product' 
+code "baloxavir marboxil 20 MG Oral Tablet":  '2100000'   from "RXNORM"  display  'baloxavir marboxil 20 MG Oral Tablet' 
+code "baloxavir marboxil 40 MG Oral Tablet":  '2100008'   from "RXNORM"  display  'baloxavir marboxil 40 MG Oral Tablet' 
+code "baloxavir marboxil 40 MG Granules for Oral Suspension":  '2467537'   from "RXNORM"  display  'baloxavir marboxil 40 MG Granules for Oral Suspension' 
+code "baloxavir marboxil 80 MG Oral Tablet":  '2536740'   from "RXNORM"  display  'baloxavir marboxil 80 MG Oral Tablet' 
+code "baloxavir marboxil 20 MG":  '2099996'   from "RXNORM"  display  'baloxavir marboxil 20 MG' 
+code "baloxavir marboxil 40 MG":  '2100007'   from "RXNORM"  display  'baloxavir marboxil 40 MG' 
+code "baloxavir marboxil 80 MG":  '2536739'   from "RXNORM"  display  'baloxavir marboxil 80 MG' 
+code "baloxavir marboxil Oral Tablet":  '2099999'   from "RXNORM"  display  'baloxavir marboxil Oral Tablet' 
+code "baloxavir marboxil Granules for Oral Suspension":  '2467536'   from "RXNORM"  display  'baloxavir marboxil Granules for Oral Suspension' 
+code "baloxavir marboxil Oral Product":  '2099997'   from "RXNORM"  display  'baloxavir marboxil Oral Product' 
+code "baloxavir marboxil Pill":  '2099998'   from "RXNORM"  display  'baloxavir marboxil Pill' 
+code "baloxavir marboxil Granule Product":  '2467530'   from "RXNORM"  display  'baloxavir marboxil Granule Product' 
+
+code "Rapivab":  '1598078'   from "RXNORM"  display  'Rapivab' 
+code "Injection":  '1649574'   from "RXNORM"  display  'Injection' 
+code "Injectable Product":  '1151126'   from "RXNORM"  display  'Injectable Product' 
+code "peramivir":  '619693'   from "RXNORM"  display  'peramivir' 
+code "peramivir anhydrous":  '1598096'   from "RXNORM"  display  'peramivir anhydrous' 
+code "Rapivab 200 MG per 20 ML Injection":  '876203'   from "RXNORM"  display  'Rapivab 200 MG per 20 ML Injection' 
+code "peramivir 10 MG/ML [Rapivab]":  '1598079'   from "RXNORM"  display  'peramivir 10 MG/ML [Rapivab]' 
+code "peramivir Injection [Rapivab]":  '1724186'   from "RXNORM"  display  'peramivir Injection [Rapivab]' 
+code "Rapivab Injectable Product":  '1598081'   from "RXNORM"  display  'Rapivab Injectable Product' 
+code "20 ML peramivir 10 MG/ML Injection":  '1598082'   from "RXNORM"  display  '20 ML peramivir 10 MG/ML Injection' 
+code "peramivir 10 MG/ML":  '876201'   from "RXNORM"  display  'peramivir 10 MG/ML' 
+code "peramivir Injection":  '1724184'   from "RXNORM"  display  'peramivir Injection' 
+code "peramivir Injectable Product":  '1161399'   from "RXNORM"  display  'peramivir Injectable Product' 
+
+code "Relenza":  '261633'   from "RXNORM"  display  'Relenza' 
+code "Dry Powder Inhaler":  '744995'   from "RXNORM"  display  'Dry Powder Inhaler' 
+code "Inhalant Product":  '1151123'   from "RXNORM"  display  'Inhalant Product' 
+code "zanamivir":  '69722'   from "RXNORM"  display  'zanamivir' 
+code "20 ACTUAT Relenza 5 MG/ACTUAT Dry Powder Inhaler":  '759473'   from "RXNORM"  display  '20 ACTUAT Relenza 5 MG/ACTUAT Dry Powder Inhaler' 
+code "zanamivir 5 MG/ACTUAT [Relenza]":  '582580'   from "RXNORM"  display  'zanamivir 5 MG/ACTUAT [Relenza]' 
+code "zanamivir Dry Powder Inhaler [Relenza]":  '759472'   from "RXNORM"  display  'zanamivir Dry Powder Inhaler [Relenza]' 
+code "Relenza Inhalant Product":  '1180701'   from "RXNORM"  display  'Relenza Inhalant Product' 
+code "20 ACTUAT zanamivir 5 MG/ACTUAT Dry Powder Inhaler":  '759471'   from "RXNORM"  display  '20 ACTUAT zanamivir 5 MG/ACTUAT Dry Powder Inhaler' 
+code "zanamivir 5 MG/ACTUAT":  '582578'   from "RXNORM"  display  'zanamivir 5 MG/ACTUAT' 
+code "zanamivir Dry Powder Inhaler":  '759470'   from "RXNORM"  display  'zanamivir Dry Powder Inhaler' 
+code "zanamivir Inhalant Product":  '1163025'   from "RXNORM"  display  'zanamivir Inhalant Product' 
+
+
 //==========================
 //new valueset end
 //==========================
@@ -103,6 +169,19 @@ define "EncounterInpatient":
 define "EncounterObservation":
   [Encounter: "Observation Services"]
 
+
+define "MedicationRequests":
+  [MedicationRequest]
+
+define "MedicationAdministrations":
+  [MedicationAdministration]
+
+define "Medications":
+  [Medication]
+
+define "Specimens":
+  [Specimen]
+
 define "SDE Minimal Patient":
   Patient p
   where exists("Initial Population")
@@ -112,6 +191,150 @@ define "SDE Location":
   [Location] Locations
   where exists("Initial Population")
   return SharedResource.LocationResource(Locations)
+
+//Observation for Lab test and result
+define "SDE influenza A or B virus Nucleic Acid Observation":
+  [Observation: "Influenza (Tests for influenza A or B virus Nucleic Acid)"] Observations
+    where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
+      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period")
+      and exists(Observations.category Category where Category ~ "laboratory")
+      and exists("Initial Population")
+  return SharedResource.ObservationResource(Observations)
+
+define "SDE influenza A or B virus Antigen Observation":
+  [Observation: "Influenza (Tests for influenza A or B virus Antigen)"] Observations
+    where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
+      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period")
+      and exists(Observations.category Category where Category ~ "laboratory")
+      and exists("Initial Population")
+  return SharedResource.ObservationResource(Observations)
+
+define "SDE SARS_CoV_2 Nucleic Acid Observation":
+  [Observation: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] Observations
+    where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
+      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period")
+      and exists(Observations.category Category where Category ~ "laboratory")
+      and exists("Initial Population")
+  return SharedResource.ObservationResource(Observations)
+
+define "SDE SARS_CoV_2 Antigen Observation":
+  [Observation: "COVID_19 (Tests for SARS_CoV_2 Antigen)"] Observations
+    where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
+      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period")
+      and exists(Observations.category Category where Category ~ "laboratory")
+      and exists("Initial Population")
+  return SharedResource.ObservationResource(Observations)
+
+define "SDE RSV Nucleic Acid Observation":
+  [Observation: "RSV (Tests for RSV Nucleic Acid)"] Observations
+    where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
+      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period")
+      and exists(Observations.category Category where Category ~ "laboratory")
+      and exists("Initial Population")
+  return SharedResource.ObservationResource(Observations)
+
+define "SDE RSV Antigen Observation":
+  [Observation: "RSV (Tests for RSV Antigen)"] Observations
+    where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
+      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period")
+      and exists(Observations.category Category where Category ~ "laboratory")
+      and exists("Initial Population")
+  return SharedResource.ObservationResource(Observations)
+
+//Diagonostic Report for test and result
+define "SDE SARS_CoV_2 Nucleic Acid Diagnostic Report":
+  [DiagnosticReport: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] DiagnosticReports
+    where start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
+      and DiagnosticReports.status in {'final'}
+      and exists("Initial Population")
+  return SharedResource.DiagnosticReportResource(DiagnosticReports)
+
+define "SDE SARS_CoV_2 Antigen Diagnostic Report":
+  [DiagnosticReport: "COVID_19 (Tests for SARS_CoV_2 Antigen)"] DiagnosticReports
+    where start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
+      and DiagnosticReports.status in {'final'}
+      and exists("Initial Population")
+  return SharedResource.DiagnosticReportResource(DiagnosticReports)
+
+define "SDE influenza A or B virus Nucleic Acid Diagnostic Report":
+  [DiagnosticReport: "Influenza (Tests for influenza A or B virus Nucleic Acid)"] DiagnosticReports
+    where start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
+      and DiagnosticReports.status in {'final'}
+      and exists("Initial Population")
+  return SharedResource.DiagnosticReportResource(DiagnosticReports)
+
+define "SDE influenza A or B virus Antigen Diagnostic Report":
+  [DiagnosticReport: "Influenza (Tests for influenza A or B virus Antigen)"] DiagnosticReports
+    where start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
+      and DiagnosticReports.status in {'final'}
+      and exists("Initial Population")
+  return SharedResource.DiagnosticReportResource(DiagnosticReports)
+
+define "SDE RSV Nucleic Acid Diagnostic Report":
+  [DiagnosticReport: "RSV (Tests for RSV Nucleic Acid)"] DiagnosticReports
+    where start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
+      and DiagnosticReports.status in {'final'}
+      and exists("Initial Population")
+  return SharedResource.DiagnosticReportResource(DiagnosticReports)
+
+define "SDE RSV Antigen Diagnostic Report":
+  [DiagnosticReport: "RSV (Tests for RSV Antigen)"] DiagnosticReports
+    where start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
+      and DiagnosticReports.status in {'final'}
+      and exists("Initial Population")
+  return SharedResource.DiagnosticReportResource(DiagnosticReports)
+
+//ServiceRequest - order
+define "SDE SARS_CoV_2 Nucleic Acid ServiceRequest":
+  [ServiceRequest: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] ServiceRequests
+    where ServiceRequests.intent ~ 'order'
+      and ServiceRequests.status ~ 'completed'
+      and exists("Initial Population")
+  return SharedResource.ServiceRequestResource(ServiceRequests)
+
+define "SDE SARS_CoV_2 Antigen ServiceRequest":
+  [ServiceRequest: "COVID_19 (Tests for SARS_CoV_2 Antigen)"] ServiceRequests
+    where ServiceRequests.intent ~ 'order'
+      and ServiceRequests.status ~ 'completed'
+      and exists("Initial Population")
+  return SharedResource.ServiceRequestResource(ServiceRequests)
+
+define "SDE influenza A or B virus Nucleic Acid ServiceRequest":
+  [ServiceRequest: "Influenza (Tests for influenza A or B virus Nucleic Acid)"] ServiceRequests
+    where ServiceRequests.intent ~ 'order'
+      and ServiceRequests.status ~ 'completed'
+      and exists("Initial Population")
+  return SharedResource.ServiceRequestResource(ServiceRequests)
+
+define "SDE influenza A or B virus Antigen ServiceRequest":
+  [ServiceRequest: "Influenza (Tests for influenza A or B virus Antigen)"] ServiceRequests
+    where ServiceRequests.intent ~ 'order'
+      and ServiceRequests.status ~ 'completed'
+      and exists("Initial Population")
+  return SharedResource.ServiceRequestResource(ServiceRequests)
+
+define "SDE RSV Nucleic Acid ServiceRequest":
+  [ServiceRequest: "RSV (Tests for RSV Nucleic Acid)"] ServiceRequests
+    where ServiceRequests.intent ~ 'order'
+      and ServiceRequests.status ~ 'completed'
+      and exists("Initial Population")
+  return SharedResource.ServiceRequestResource(ServiceRequests)
+
+define "SDE RSV Antigen ServiceRequest":
+  [ServiceRequest: "RSV (Tests for RSV Antigen)"] ServiceRequests
+    where ServiceRequests.intent ~ 'order'
+      and ServiceRequests.status ~ 'completed'
+      and exists("Initial Population")
+  return SharedResource.ServiceRequestResource(ServiceRequests)
+
+//Procedure for Isolation Precautions
+define "SDE Isolation Precautions Implemented":
+  [Procedure: "Transmission Based Precaution Types"] IsolationPrecautions
+    where Global."Normalize Interval"(IsolationPrecautions.performed) during "Measurement Period"
+    and exists("Initial Population")
+  return SharedResource.ProcedureResource(IsolationPrecautions)
+   
+
 
 define "SDE Medication Administration":
   [MedicationAdministration] MedicationAdministration
@@ -123,180 +346,16 @@ define "SDE Medication Request":
   with "Initial Population" InitialPopulation 
   such that Global."Normalize Interval"(MedicationRequest.authoredOn) during InitialPopulation.period
 
-//Observation for Lab test and result
-define "influenza A or B virus Nucleic Acid Observation":
-  [Observation: "Influenza (Tests for influenza A or B virus Nucleic Acid)"] Observations
-    where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period")
-      and exists(Observations.category Category where Category ~ "laboratory")
-      and exists("Initial Population")
 
-define "influenza A or B virus Antigen Observation":
-  [Observation: "Influenza (Tests for influenza A or B virus Antigen)"] Observations
-    where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period")
-      and exists(Observations.category Category where Category ~ "laboratory")
-      and exists("Initial Population")
 
-define "SARS_CoV_2 Nucleic Acid Observation":
-  [Observation: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] Observations
-    where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period")
-      and exists(Observations.category Category where Category ~ "laboratory")
-      and exists("Initial Population")
-
-define "SARS_CoV_2 Antigen Observation":
-  [Observation: "COVID_19 (Tests for SARS_CoV_2 Antigen)"] Observations
-    where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period")
-      and exists(Observations.category Category where Category ~ "laboratory")
-      and exists("Initial Population")
-
-define "RSV Nucleic Acid Observation":
-  [Observation: "RSV (Tests for RSV Nucleic Acid)"] Observations
-    where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period")
-      and exists(Observations.category Category where Category ~ "laboratory")
-      and exists("Initial Population")
-
-define "SDE RSV Antigen Observation":
-  [Observation: "RSV (Tests for RSV Antigen)"] Observations
-    where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period")
-      and exists(Observations.category Category where Category ~ "laboratory")
-      and exists("Initial Population")
-return SharedResource.ObservationResource(Observations)
-  
-/*
-define "SDE Observation For All RPS Test":
-  ("SARS_CoV_2 Nucleic Acid Observation"
-  union 
-    "SARS_CoV_2 Antigen Observation"
-  union
-    "influenza A or B virus Nucleic Acid Observation"
-  union 
-    "influenza A or B virus Antigen Observation"
-  union
-    "RSV Nucleic Acid Observation"
-  union 
-    "RSV Antigen Observation") Observations
-  return SharedResource.ObservationResource(Observations)
-*/
-
-//Diagonostic Report for test and result
-define "SARS_CoV_2 Nucleic Acid Diagnostic Report":
-  [DiagnosticReport: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] DiagnosticReports
-    where start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
-      and DiagnosticReports.status in {'final'}
-      and exists("Initial Population")
-
-define "SARS_CoV_2 Antigen Diagnostic Report":
-  [DiagnosticReport: "COVID_19 (Tests for SARS_CoV_2 Antigen)"] DiagnosticReports
-    where start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
-      and DiagnosticReports.status in {'final'}
-      and exists("Initial Population")
-
-define "influenza A or B virus Nucleic Acid Diagnostic Report":
-  [DiagnosticReport: "Influenza (Tests for influenza A or B virus Nucleic Acid)"] DiagnosticReports
-    where start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
-      and DiagnosticReports.status in {'final'}
-      and exists("Initial Population")
-
-define "influenza A or B virus Antigen Diagnostic Report":
-  [DiagnosticReport: "Influenza (Tests for influenza A or B virus Antigen)"] DiagnosticReports
-    where start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
-      and DiagnosticReports.status in {'final'}
-      and exists("Initial Population")
-
-define "RSV Nucleic Acid Diagnostic Report":
-  [DiagnosticReport: "RSV (Tests for RSV Nucleic Acid)"] DiagnosticReports
-    where start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
-      and DiagnosticReports.status in {'final'}
-      and exists("Initial Population")
-
-define "RSV Antigen Diagnostic Report":
-  [DiagnosticReport: "RSV (Tests for RSV Antigen)"] DiagnosticReports
-    where start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
-      and DiagnosticReports.status in {'final'}
-      and exists("Initial Population")
-
-define "SDE Diagnostic Report For All RPS Test":
-  ("SARS_CoV_2 Nucleic Acid Diagnostic Report"
-  union
-    "SARS_CoV_2 Antigen Diagnostic Report"
-  union
-    "influenza A or B virus Nucleic Acid Diagnostic Report"
-  union
-    "influenza A or B virus Antigen Diagnostic Report"
-  union
-    "RSV Nucleic Acid Diagnostic Report"
-  union
-    "RSV Antigen Diagnostic Report") DiagnosticReports
-  return SharedResource.DiagnosticReportResource(DiagnosticReports)
-
-//ServiceRequest - order
-define "SARS_CoV_2 Nucleic Acid ServiceRequest":
-  [ServiceRequest: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] ServiceRequests
-    where ServiceRequests.intent ~ 'order'
-      and ServiceRequests.status ~ 'completed'
-      and exists("Initial Population")
-
-define "SARS_CoV_2 Antigen ServiceRequest":
-  [ServiceRequest: "COVID_19 (Tests for SARS_CoV_2 Antigen)"] ServiceRequests
-    where ServiceRequests.intent ~ 'order'
-      and ServiceRequests.status ~ 'completed'
-      and exists("Initial Population")
-
-define "influenza A or B virus Nucleic Acid ServiceRequest":
-  [ServiceRequest: "Influenza (Tests for influenza A or B virus Nucleic Acid)"] ServiceRequests
-    where ServiceRequests.intent ~ 'order'
-      and ServiceRequests.status ~ 'completed'
-      and exists("Initial Population")
-
-define "influenza A or B virus Antigen ServiceRequest":
-  [ServiceRequest: "Influenza (Tests for influenza A or B virus Antigen)"] ServiceRequests
-    where ServiceRequests.intent ~ 'order'
-      and ServiceRequests.status ~ 'completed'
-      and exists("Initial Population")
-
-define "RSV Nucleic Acid ServiceRequest":
-  [ServiceRequest: "RSV (Tests for RSV Nucleic Acid)"] ServiceRequests
-    where ServiceRequests.intent ~ 'order'
-      and ServiceRequests.status ~ 'completed'
-      and exists("Initial Population")
-
-define "RSV Antigen ServiceRequest":
-  [ServiceRequest: "RSV (Tests for RSV Antigen)"] ServiceRequests
-    where ServiceRequests.intent ~ 'order'
-      and ServiceRequests.status ~ 'completed'
-      and exists("Initial Population")
-
-define "SDE ServiceRequest For All RPS Lab Order":
-  ("SARS_CoV_2 Nucleic Acid ServiceRequest"
-  union
-    "SARS_CoV_2 Antigen ServiceRequest"
-  union
-    "influenza A or B virus Nucleic Acid ServiceRequest"
-  union
-    "influenza A or B virus Antigen ServiceRequest"
-  union
-    "RSV Nucleic Acid ServiceRequest"
-  union
-    "RSV Antigen ServiceRequest") ServiceRequests
-  return SharedResource.ServiceRequestResource(ServiceRequests)
-
-//Procedure for Isolation Precautions
-define "SDE Isolation Precautions Implemented":
-  [Procedure: "Transmission Based Precaution Types"] IsolationPrecautions
-    where Global."Normalize Interval"(IsolationPrecautions.performed) during "Measurement Period"
-    and exists("Initial Population")
-  return SharedResource.ProcedureResource(IsolationPrecautions)
-   
-
-define function "GetSpecimen"(reference Reference ):
-  singleton from (
-    [Specimen] S where S.id = Global.GetId(reference.reference)
+//-----------------------------------------------------
+//functions
+//-----------------------------------------------------
+define function "GetSpecimen"(reference Reference):
+  First (
+    "Specimens" S where S.id = Global.GetId(reference.reference)
   )
+
 
 define function "CalendarDayOfOrDayBefore"(StartValue DateTime ):
   Interval["TruncateTime"( StartValue ), "TruncateTime"( StartValue - 1 days ) )
