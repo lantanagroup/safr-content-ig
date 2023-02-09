@@ -84,9 +84,9 @@ context Patient
 
 define "Qualifying Encounter During Measurement Period":
   ( "EncounterInpatient"
-    union "EncounterObservation") QualifyingEncounters
-      where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged'}
-        and QualifyingEncounters.period overlaps "Measurement Period"
+  union "EncounterObservation") QualifyingEncounters
+  where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged'}
+    and QualifyingEncounters.period overlaps "Measurement Period"
 
 define "Inpatient and Observation Encounters that ended within the last twenty four Hours":
   ( "EncounterInpatient"
@@ -105,22 +105,23 @@ define "EncounterObservation":
 
 define "SDE Minimal Patient":
   Patient p
+  where exists("Initial Population")
   return SharedResource.PatientResource(p)
 
 define "SDE Location":
   [Location] Locations
-    where exists("Initial Population")
-    return SharedResource.LocationResource(Locations)
+  where exists("Initial Population")
+  return SharedResource.LocationResource(Locations)
 
 define "SDE Medication Administration":
   [MedicationAdministration] MedicationAdministration
-    with "Initial Population" InitialPopulation
-    such that Global."Normalize Interval"(MedicationAdministration.effective) during InitialPopulation.period
+  with "Initial Population" InitialPopulation
+  such that Global."Normalize Interval"(MedicationAdministration.effective) during InitialPopulation.period
 
 define "SDE Medication Request":
   [MedicationRequest] MedicationRequest
-              with "Initial Population" InitialPopulation 
-              such that Global."Normalize Interval"(MedicationRequest.authoredOn) during InitialPopulation.period
+  with "Initial Population" InitialPopulation 
+  such that Global."Normalize Interval"(MedicationRequest.authoredOn) during InitialPopulation.period
 
 //Observation for Lab test and result
 define "influenza A or B virus Nucleic Acid Observation":
