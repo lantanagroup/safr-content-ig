@@ -51,7 +51,7 @@ define "Initial Population":
 define "Inpatient Encounter":
   [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "short stay"}]
     union [Encounter: "Encounter Inpatient"] Encounters
-  where Encounters.status in {'in-progress', 'finished'}
+  where Encounters.status in {'in-progress', 'finished', 'triaged'}
     and Encounters.period overlaps "Measurement Period"
 
 define "Patient Hospital Locations":
