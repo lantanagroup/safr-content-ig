@@ -15,6 +15,7 @@ codesystem "RXNORM": 'http://www.nlm.nih.gov/research/umls/rxnorm'
 valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307' 
 valueset "Inpatient, Emergency, and Observation Locations": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265' 
 valueset "Observation Services": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143' 
+valueset "Discharge Disposition": 'http://terminology.hl7.org/ValueSet/encounter-discharge-disposition'
 
 //===========================================
 //New valuese start
@@ -182,6 +183,10 @@ define "Medications":
 define "Specimens":
   [Specimen]
 
+//----------------------------------
+// SDE
+//----------------------------------
+
 define "SDE Minimal Patient":
   Patient p
   where exists("Initial Population")
@@ -191,12 +196,19 @@ define "SDE Location":
   [Location] Locations
   where exists("Initial Population")
   return SharedResource.LocationResource(Locations)
+   
+define "SDE Encounter Discharge Dispositions":
+	"Initial Population" DischargeDispositions 
+  where DischargeDispositions.hospitalization.dischargeDisposition in "Discharge Disposition"
+  return SharedResource.EncounterResource(DischargeDispositions)
 
 //Observation for Lab test and result
 define "SDE influenza A or B virus Nucleic Acid Observation":
   [Observation: "Influenza (Tests for influenza A or B virus Nucleic Acid)"] Observations
     where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period")
+      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period"
+      or Global."Normalize Interval"(Observations.effective) 14 days or less on or before start of "Measurement Period"
+      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) 14 days or less on or before start of "Measurement Period")
       and exists(Observations.category Category where Category ~ "laboratory")
       and exists("Initial Population")
   return SharedResource.ObservationResource(Observations)
@@ -204,7 +216,9 @@ define "SDE influenza A or B virus Nucleic Acid Observation":
 define "SDE influenza A or B virus Antigen Observation":
   [Observation: "Influenza (Tests for influenza A or B virus Antigen)"] Observations
     where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period")
+      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period"
+      or Global."Normalize Interval"(Observations.effective) 14 days or less on or before start of "Measurement Period"
+      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) 14 days or less on or before start of "Measurement Period")
       and exists(Observations.category Category where Category ~ "laboratory")
       and exists("Initial Population")
   return SharedResource.ObservationResource(Observations)
@@ -212,7 +226,9 @@ define "SDE influenza A or B virus Antigen Observation":
 define "SDE SARS_CoV_2 Nucleic Acid Observation":
   [Observation: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] Observations
     where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period")
+      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period"
+      or Global."Normalize Interval"(Observations.effective) 14 days or less on or before start of "Measurement Period"
+      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) 14 days or less on or before start of "Measurement Period")
       and exists(Observations.category Category where Category ~ "laboratory")
       and exists("Initial Population")
   return SharedResource.ObservationResource(Observations)
@@ -220,7 +236,9 @@ define "SDE SARS_CoV_2 Nucleic Acid Observation":
 define "SDE SARS_CoV_2 Antigen Observation":
   [Observation: "COVID_19 (Tests for SARS_CoV_2 Antigen)"] Observations
     where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period")
+      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period"
+      or Global."Normalize Interval"(Observations.effective) 14 days or less on or before start of "Measurement Period"
+      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) 14 days or less on or before start of "Measurement Period")
       and exists(Observations.category Category where Category ~ "laboratory")
       and exists("Initial Population")
   return SharedResource.ObservationResource(Observations)
@@ -228,7 +246,9 @@ define "SDE SARS_CoV_2 Antigen Observation":
 define "SDE RSV Nucleic Acid Observation":
   [Observation: "RSV (Tests for RSV Nucleic Acid)"] Observations
     where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period")
+      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period"
+      or Global."Normalize Interval"(Observations.effective) 14 days or less on or before start of "Measurement Period"
+      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) 14 days or less on or before start of "Measurement Period")
       and exists(Observations.category Category where Category ~ "laboratory")
       and exists("Initial Population")
   return SharedResource.ObservationResource(Observations)
@@ -236,7 +256,9 @@ define "SDE RSV Nucleic Acid Observation":
 define "SDE RSV Antigen Observation":
   [Observation: "RSV (Tests for RSV Antigen)"] Observations
     where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period")
+      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period"
+      or Global."Normalize Interval"(Observations.effective) 14 days or less on or before start of "Measurement Period"
+      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) 14 days or less on or before start of "Measurement Period")
       and exists(Observations.category Category where Category ~ "laboratory")
       and exists("Initial Population")
   return SharedResource.ObservationResource(Observations)
@@ -244,42 +266,48 @@ define "SDE RSV Antigen Observation":
 //Diagonostic Report for test and result
 define "SDE SARS_CoV_2 Nucleic Acid Diagnostic Report":
   [DiagnosticReport: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] DiagnosticReports
-    where start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
+    where (start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
+      or Global."Normalize Interval"(DiagnosticReports.effective) 14 days or less on or before start of "Measurement Period")
       and DiagnosticReports.status in {'final'}
       and exists("Initial Population")
   return SharedResource.DiagnosticReportResource(DiagnosticReports)
 
 define "SDE SARS_CoV_2 Antigen Diagnostic Report":
   [DiagnosticReport: "COVID_19 (Tests for SARS_CoV_2 Antigen)"] DiagnosticReports
-    where start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
+    where (start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
+      or Global."Normalize Interval"(DiagnosticReports.effective) 14 days or less on or before start of "Measurement Period")
       and DiagnosticReports.status in {'final'}
       and exists("Initial Population")
   return SharedResource.DiagnosticReportResource(DiagnosticReports)
 
 define "SDE influenza A or B virus Nucleic Acid Diagnostic Report":
   [DiagnosticReport: "Influenza (Tests for influenza A or B virus Nucleic Acid)"] DiagnosticReports
-    where start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
+    where (start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
+      or Global."Normalize Interval"(DiagnosticReports.effective) 14 days or less on or before start of "Measurement Period")
       and DiagnosticReports.status in {'final'}
       and exists("Initial Population")
   return SharedResource.DiagnosticReportResource(DiagnosticReports)
 
 define "SDE influenza A or B virus Antigen Diagnostic Report":
   [DiagnosticReport: "Influenza (Tests for influenza A or B virus Antigen)"] DiagnosticReports
-    where start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
+    where (start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
+      or Global."Normalize Interval"(DiagnosticReports.effective) 14 days or less on or before start of "Measurement Period")
       and DiagnosticReports.status in {'final'}
       and exists("Initial Population")
   return SharedResource.DiagnosticReportResource(DiagnosticReports)
 
 define "SDE RSV Nucleic Acid Diagnostic Report":
   [DiagnosticReport: "RSV (Tests for RSV Nucleic Acid)"] DiagnosticReports
-    where start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
+    where (start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
+      or Global."Normalize Interval"(DiagnosticReports.effective) 14 days or less on or before start of "Measurement Period")
       and DiagnosticReports.status in {'final'}
       and exists("Initial Population")
   return SharedResource.DiagnosticReportResource(DiagnosticReports)
 
 define "SDE RSV Antigen Diagnostic Report":
   [DiagnosticReport: "RSV (Tests for RSV Antigen)"] DiagnosticReports
-    where start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
+    where (start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
+      or Global."Normalize Interval"(DiagnosticReports.effective) 14 days or less on or before start of "Measurement Period")
       and DiagnosticReports.status in {'final'}
       and exists("Initial Population")
   return SharedResource.DiagnosticReportResource(DiagnosticReports)
@@ -334,7 +362,6 @@ define "SDE Isolation Precautions Implemented":
     and exists("Initial Population")
   return SharedResource.ProcedureResource(IsolationPrecautions)
    
-
 
 define "SDE Medication Administration":
   [MedicationAdministration] MedicationAdministration
