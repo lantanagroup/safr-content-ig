@@ -138,16 +138,26 @@ code "zanamivir Inhalant Product":  '1163025'   from "RXNORM"  display  'zanamiv
 //==========================
 
 //====================================
-// ??? There is not medication for RSV
+// There is not medication for RSV
 //====================================
 
 
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 
 parameter "Measurement Period" 
-  default Interval[@2022-01-01T00:00:00.0, @2022-01-02T00:00:00.0)
+  default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
 
 context Patient
+
+define "EncounterInpatient":
+  [Encounter: "Encounter Inpatient"]
+
+define "EncounterObservation":
+  [Encounter: "Observation Services"]
+
+
+define "Specimens":
+  [Specimen]
 
 define "Qualifying Encounter During Measurement Period":
   ( "EncounterInpatient"
@@ -158,35 +168,16 @@ define "Qualifying Encounter During Measurement Period":
 define "Inpatient and Observation Encounters that ended within the last twenty four Hours":
   ( "EncounterInpatient"
     union "EncounterObservation") QualifyingEncounters
-      where end of QualifyingEncounters.period during "CalendarDayOfOrDayBefore" (end of QualifyingEncounters.period)
+      where end of QualifyingEncounters.period before Today()
+      and end of QualifyingEncounters.period after Today() - 1 day
 
 define "Initial Population":
   "Qualifying Encounter During Measurement Period"
   union "Inpatient and Observation Encounters that ended within the last twenty four Hours"
 
-define "EncounterInpatient":
-  [Encounter: "Encounter Inpatient"]
-
-define "EncounterObservation":
-  [Encounter: "Observation Services"]
-
-
-define "MedicationRequests":
-  [MedicationRequest]
-
-define "MedicationAdministrations":
-  [MedicationAdministration]
-
-define "Medications":
-  [Medication]
-
-define "Specimens":
-  [Specimen]
-
 //----------------------------------
 // SDE
 //----------------------------------
-
 define "SDE Minimal Patient":
   Patient p
   where exists("Initial Population")
@@ -202,179 +193,152 @@ define "SDE Encounter Discharge Dispositions":
   where DischargeDispositions.hospitalization.dischargeDisposition in "Discharge Disposition"
   return SharedResource.EncounterResource(DischargeDispositions)
 
-//Observation for Lab test and result
-define "SDE influenza A or B virus Nucleic Acid Observation":
-  [Observation: "Influenza (Tests for influenza A or B virus Nucleic Acid)"] Observations
-    where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period"
-      or Global."Normalize Interval"(Observations.effective) 14 days or less on or before start of "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) 14 days or less on or before start of "Measurement Period")
-      and exists(Observations.category Category where Category ~ "laboratory")
+//Retrieve Observation categories and lab codes valuesets
+define "RPS Observation 1":
+  ([Observation: "Influenza (Tests for influenza A or B virus Nucleic Acid)"] 
+  union [Observation: "Influenza (Tests for influenza A or B virus Antigen)"]
+  union [Observation: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"]
+  union [Observation: "COVID_19 (Tests for SARS_CoV_2 Antigen)"]
+  union [Observation: "RSV (Tests for RSV Nucleic Acid)"]
+  union [Observation: "RSV (Tests for RSV Antigen)"]   
+  ) Observations
+    where exists(Observations.category Category where Category ~ "laboratory")
       and exists("Initial Population")
-  return SharedResource.ObservationResource(Observations)
 
-define "SDE influenza A or B virus Antigen Observation":
-  [Observation: "Influenza (Tests for influenza A or B virus Antigen)"] Observations
-    where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period"
-      or Global."Normalize Interval"(Observations.effective) 14 days or less on or before start of "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) 14 days or less on or before start of "Measurement Period")
-      and exists(Observations.category Category where Category ~ "laboratory")
+//further filter by the timing 
+define "RPS Observation 2":
+  from "RPS Observation 1" Observations 
+    where exists("Initial Population" InitialPopulation
+        where Global."Normalize Interval"(Observations.effective) 14 days or less on or before start of InitialPopulation.period
+          or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) 14 days or less on or before start of InitialPopulation.period)
+      or start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
+      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period"    
+
+//further filter by result value set
+define "RPS Observation 3":
+  from "RPS Observation 2" Observations 
+    where FHIRHelpers.ToConcept(Observations.value) in "Influenza (influenza A or B virus in Lab Results)"
+      or FHIRHelpers.ToConcept(Observations.value) in "LIVD SARS CoV2 Test Result Codes"
+
+//return SDE
+define "SDE RPSObservation":
+  "RPS Observation 2" Observations
+    return SharedResource.ObservationResource(Observations)
+
+//return the Specimen related to the Observation
+define "SDE RPS Specimen":
+  "RPS Observation 2" ObservationWithSpecimen
+    let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
+    return SharedResource.SpecimenResource(Specimen)
+
+define "DiagnosticReports":
+  [DiagnosticReport]
+
+define "SDE RPS DiagnosticReport":
+  from "Initial Population" InitialPopulation,
+  ([DiagnosticReport: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"]
+    union [DiagnosticReport: "COVID_19 (Tests for SARS_CoV_2 Antigen)"]
+    union [DiagnosticReport: "Influenza (Tests for influenza A or B virus Nucleic Acid)"]
+    union [DiagnosticReport: "Influenza (Tests for influenza A or B virus Antigen)"]
+    union [DiagnosticReport: "RSV (Tests for RSV Nucleic Acid)"]
+    union [DiagnosticReport: "RSV (Tests for RSV Antigen)"]
+  ) Reports
+    where exists("Initial Population")
+      and Reports.status in {'final'}
+      and (start of Global."Normalize Interval"(Reports.effective) during "Measurement Period"
+        or Global."Normalize Interval"(Reports.effective) 14 days or less on or before start of InitialPopulation.period)
+    return SharedResource.DiagnosticReportResource(Reports)
+
+define "RPS DiagnosticReport Result from Lab":
+  from
+  "DiagnosticReports" Reports,
+  "Initial Population" InitialPopulation
+    where (GetObservations(Reports.result).code in "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"
+      or GetObservations(Reports.result).code in "COVID_19 (Tests for SARS_CoV_2 Antigen)"
+      or GetObservations(Reports.result).code in "Influenza (Tests for influenza A or B virus Nucleic Acid)"
+      or GetObservations(Reports.result).code in "Influenza (Tests for influenza A or B virus Antigen)"
+      or GetObservations(Reports.result).code in "RSV (Tests for RSV Nucleic Acid)"
+      or GetObservations(Reports.result).code in "RSV (Tests for RSV Antigen)")
+      and Reports.status in {'final'}
       and exists("Initial Population")
-  return SharedResource.ObservationResource(Observations)
+      and (start of Global."Normalize Interval"(Reports.effective) during "Measurement Period"
+        or Global."Normalize Interval"(Reports.effective) 14 days or less on or before start of InitialPopulation.period)
+    return SharedResource.DiagnosticReportResource(Reports)
 
-define "SDE SARS_CoV_2 Nucleic Acid Observation":
-  [Observation: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] Observations
-    where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period"
-      or Global."Normalize Interval"(Observations.effective) 14 days or less on or before start of "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) 14 days or less on or before start of "Measurement Period")
-      and exists(Observations.category Category where Category ~ "laboratory")
-      and exists("Initial Population")
-  return SharedResource.ObservationResource(Observations)
-
-define "SDE SARS_CoV_2 Antigen Observation":
-  [Observation: "COVID_19 (Tests for SARS_CoV_2 Antigen)"] Observations
-    where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period"
-      or Global."Normalize Interval"(Observations.effective) 14 days or less on or before start of "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) 14 days or less on or before start of "Measurement Period")
-      and exists(Observations.category Category where Category ~ "laboratory")
-      and exists("Initial Population")
-  return SharedResource.ObservationResource(Observations)
-
-define "SDE RSV Nucleic Acid Observation":
-  [Observation: "RSV (Tests for RSV Nucleic Acid)"] Observations
-    where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period"
-      or Global."Normalize Interval"(Observations.effective) 14 days or less on or before start of "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) 14 days or less on or before start of "Measurement Period")
-      and exists(Observations.category Category where Category ~ "laboratory")
-      and exists("Initial Population")
-  return SharedResource.ObservationResource(Observations)
-
-define "SDE RSV Antigen Observation":
-  [Observation: "RSV (Tests for RSV Antigen)"] Observations
-    where (start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period"
-      or Global."Normalize Interval"(Observations.effective) 14 days or less on or before start of "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) 14 days or less on or before start of "Measurement Period")
-      and exists(Observations.category Category where Category ~ "laboratory")
-      and exists("Initial Population")
-  return SharedResource.ObservationResource(Observations)
-
-//Diagonostic Report for test and result
-define "SDE SARS_CoV_2 Nucleic Acid Diagnostic Report":
-  [DiagnosticReport: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] DiagnosticReports
-    where (start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
-      or Global."Normalize Interval"(DiagnosticReports.effective) 14 days or less on or before start of "Measurement Period")
-      and DiagnosticReports.status in {'final'}
-      and exists("Initial Population")
-  return SharedResource.DiagnosticReportResource(DiagnosticReports)
-
-define "SDE SARS_CoV_2 Antigen Diagnostic Report":
-  [DiagnosticReport: "COVID_19 (Tests for SARS_CoV_2 Antigen)"] DiagnosticReports
-    where (start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
-      or Global."Normalize Interval"(DiagnosticReports.effective) 14 days or less on or before start of "Measurement Period")
-      and DiagnosticReports.status in {'final'}
-      and exists("Initial Population")
-  return SharedResource.DiagnosticReportResource(DiagnosticReports)
-
-define "SDE influenza A or B virus Nucleic Acid Diagnostic Report":
-  [DiagnosticReport: "Influenza (Tests for influenza A or B virus Nucleic Acid)"] DiagnosticReports
-    where (start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
-      or Global."Normalize Interval"(DiagnosticReports.effective) 14 days or less on or before start of "Measurement Period")
-      and DiagnosticReports.status in {'final'}
-      and exists("Initial Population")
-  return SharedResource.DiagnosticReportResource(DiagnosticReports)
-
-define "SDE influenza A or B virus Antigen Diagnostic Report":
-  [DiagnosticReport: "Influenza (Tests for influenza A or B virus Antigen)"] DiagnosticReports
-    where (start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
-      or Global."Normalize Interval"(DiagnosticReports.effective) 14 days or less on or before start of "Measurement Period")
-      and DiagnosticReports.status in {'final'}
-      and exists("Initial Population")
-  return SharedResource.DiagnosticReportResource(DiagnosticReports)
-
-define "SDE RSV Nucleic Acid Diagnostic Report":
-  [DiagnosticReport: "RSV (Tests for RSV Nucleic Acid)"] DiagnosticReports
-    where (start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
-      or Global."Normalize Interval"(DiagnosticReports.effective) 14 days or less on or before start of "Measurement Period")
-      and DiagnosticReports.status in {'final'}
-      and exists("Initial Population")
-  return SharedResource.DiagnosticReportResource(DiagnosticReports)
-
-define "SDE RSV Antigen Diagnostic Report":
-  [DiagnosticReport: "RSV (Tests for RSV Antigen)"] DiagnosticReports
-    where (start of Global."Normalize Interval"(DiagnosticReports.effective) during "Measurement Period"
-      or Global."Normalize Interval"(DiagnosticReports.effective) 14 days or less on or before start of "Measurement Period")
-      and DiagnosticReports.status in {'final'}
-      and exists("Initial Population")
-  return SharedResource.DiagnosticReportResource(DiagnosticReports)
-
-//ServiceRequest - order
-define "SDE SARS_CoV_2 Nucleic Acid ServiceRequest":
-  [ServiceRequest: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] ServiceRequests
+define "SDE RPS ServiceRequest":
+  ([ServiceRequest: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] 
+  union  [ServiceRequest: "COVID_19 (Tests for SARS_CoV_2 Antigen)"] 
+  union  [ServiceRequest: "Influenza (Tests for influenza A or B virus Nucleic Acid)"]
+  union  [ServiceRequest: "Influenza (Tests for influenza A or B virus Antigen)"]
+  union  [ServiceRequest: "RSV (Tests for RSV Nucleic Acid)"]
+  union  [ServiceRequest: "RSV (Tests for RSV Antigen)"]
+  ) ServiceRequests
     where ServiceRequests.intent ~ 'order'
       and ServiceRequests.status ~ 'completed'
       and exists("Initial Population")
   return SharedResource.ServiceRequestResource(ServiceRequests)
 
-define "SDE SARS_CoV_2 Antigen ServiceRequest":
-  [ServiceRequest: "COVID_19 (Tests for SARS_CoV_2 Antigen)"] ServiceRequests
-    where ServiceRequests.intent ~ 'order'
-      and ServiceRequests.status ~ 'completed'
-      and exists("Initial Population")
-  return SharedResource.ServiceRequestResource(ServiceRequests)
-
-define "SDE influenza A or B virus Nucleic Acid ServiceRequest":
-  [ServiceRequest: "Influenza (Tests for influenza A or B virus Nucleic Acid)"] ServiceRequests
-    where ServiceRequests.intent ~ 'order'
-      and ServiceRequests.status ~ 'completed'
-      and exists("Initial Population")
-  return SharedResource.ServiceRequestResource(ServiceRequests)
-
-define "SDE influenza A or B virus Antigen ServiceRequest":
-  [ServiceRequest: "Influenza (Tests for influenza A or B virus Antigen)"] ServiceRequests
-    where ServiceRequests.intent ~ 'order'
-      and ServiceRequests.status ~ 'completed'
-      and exists("Initial Population")
-  return SharedResource.ServiceRequestResource(ServiceRequests)
-
-define "SDE RSV Nucleic Acid ServiceRequest":
-  [ServiceRequest: "RSV (Tests for RSV Nucleic Acid)"] ServiceRequests
-    where ServiceRequests.intent ~ 'order'
-      and ServiceRequests.status ~ 'completed'
-      and exists("Initial Population")
-  return SharedResource.ServiceRequestResource(ServiceRequests)
-
-define "SDE RSV Antigen ServiceRequest":
-  [ServiceRequest: "RSV (Tests for RSV Antigen)"] ServiceRequests
-    where ServiceRequests.intent ~ 'order'
-      and ServiceRequests.status ~ 'completed'
-      and exists("Initial Population")
-  return SharedResource.ServiceRequestResource(ServiceRequests)
-
-//Procedure for Isolation Precautions
 define "SDE Isolation Precautions Implemented":
   [Procedure: "Transmission Based Precaution Types"] IsolationPrecautions
     where Global."Normalize Interval"(IsolationPrecautions.performed) during "Measurement Period"
     and exists("Initial Population")
   return SharedResource.ProcedureResource(IsolationPrecautions)
    
+define "MedicationRequests":
+  [MedicationRequest]
 
-define "SDE Medication Administration":
-  [MedicationAdministration] MedicationAdministration
-  with "Initial Population" InitialPopulation
-  such that Global."Normalize Interval"(MedicationAdministration.effective) during InitialPopulation.period
+define "MedicationAdministrations":
+  [MedicationAdministration]
 
-define "SDE Medication Request":
-  [MedicationRequest] MedicationRequest
-  with "Initial Population" InitialPopulation 
-  such that Global."Normalize Interval"(MedicationRequest.authoredOn) during InitialPopulation.period
+define "Medications":
+  [Medication]
 
+define "SDE FLU or Covid Medication Administered":
+  "MedicationAdministrations" RPSMedAdmin
+    where (GetMedicationCode(RPSMedAdmin.medication) in "Anakinra"
+            or GetMedicationCode(RPSMedAdmin.medication) in "Bamlanivimab"
+            or GetMedicationCode(RPSMedAdmin.medication) in "Baricitinib"
+            or GetMedicationCode(RPSMedAdmin.medication) in "Bebtelovimab"
+            or GetMedicationCode(RPSMedAdmin.medication) in "Casirivimab"
+            or GetMedicationCode(RPSMedAdmin.medication) in "Casirivimab / Imdevimab"
+            or GetMedicationCode(RPSMedAdmin.medication) in "COVID19 RxNorm Value Set for Tocilizumab"
+            or GetMedicationCode(RPSMedAdmin.medication) in "Etesevimab"
+            or GetMedicationCode(RPSMedAdmin.medication) in "Imdevimab"
+            or GetMedicationCode(RPSMedAdmin.medication) in "Molnupiravir"
+            or GetMedicationCode(RPSMedAdmin.medication) in "Nirmatrelvir / Ritonavir"
+            or GetMedicationCode(RPSMedAdmin.medication) in "Oseltamivir"
+            or GetMedicationCode(RPSMedAdmin.medication) in "Remdesivir"
+            or GetMedicationCode(RPSMedAdmin.medication) in "Sarilumab"
+            or GetMedicationCode(RPSMedAdmin.medication) in "Sotrovimab"    
+            or GetMedicationCode(RPSMedAdmin.medication) in "Tofacitinib")
+      and RPSMedAdmin.status ~ 'completed'
+      and exists("Initial Population")
+      and Global."Normalize Interval"(RPSMedAdmin.effective) during "Measurement Period"
+    return SharedResource.MedicationAdministrationResource(RPSMedAdmin)
 
-
+define "SDE FLU or Covid Medication Ordered":
+  "MedicationRequests" RPSMedRequest
+    where (GetMedicationCode(RPSMedRequest.medication) in "Anakinra"
+            or GetMedicationCode(RPSMedRequest.medication) in "Bamlanivimab"
+            or GetMedicationCode(RPSMedRequest.medication) in "Baricitinib"
+            or GetMedicationCode(RPSMedRequest.medication) in "Bebtelovimab"
+            or GetMedicationCode(RPSMedRequest.medication) in "Casirivimab"
+            or GetMedicationCode(RPSMedRequest.medication) in "Casirivimab / Imdevimab"
+            or GetMedicationCode(RPSMedRequest.medication) in "COVID19 RxNorm Value Set for Tocilizumab"
+            or GetMedicationCode(RPSMedRequest.medication) in "Etesevimab"
+            or GetMedicationCode(RPSMedRequest.medication) in "Imdevimab"
+            or GetMedicationCode(RPSMedRequest.medication) in "Molnupiravir"
+            or GetMedicationCode(RPSMedRequest.medication) in "Nirmatrelvir / Ritonavir"
+            or GetMedicationCode(RPSMedRequest.medication) in "Oseltamivir"
+            or GetMedicationCode(RPSMedRequest.medication) in "Remdesivir"
+            or GetMedicationCode(RPSMedRequest.medication) in "Sarilumab"
+            or GetMedicationCode(RPSMedRequest.medication) in "Sotrovimab"    
+            or GetMedicationCode(RPSMedRequest.medication) in "Tofacitinib")
+      and RPSMedRequest.status ~ 'completed'
+      and exists("Initial Population")
+      and Global."Normalize Interval"(RPSMedRequest.authoredOn) during "Measurement Period"
+    return SharedResource.MedicationRequestResource(RPSMedRequest)
+      
 //-----------------------------------------------------
 //functions
 //-----------------------------------------------------
@@ -383,10 +347,30 @@ define function "GetSpecimen"(reference Reference):
     "Specimens" S where S.id = Global.GetId(reference.reference)
   )
 
+define function "GetMedicationCode"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):
+  case
+    when choice is FHIR.CodeableConcept then
+      choice as FHIR.CodeableConcept
+    when choice is FHIR.Reference then
+      GetMedication(choice as FHIR.Reference).code
+    else
+      null as FHIR.CodeableConcept
+  end
 
-define function "CalendarDayOfOrDayBefore"(StartValue DateTime ):
-  Interval["TruncateTime"( StartValue ), "TruncateTime"( StartValue - 1 days ) )
 
-define function "TruncateTime"(Value DateTime ):
-  DateTime(year from Value, month from Value, day from Value, 0, 0, 0, 0, timezoneoffset from Value)
+define function "GetMedication"(reference Reference ):
+  First (
+    "Medications" M where M.id = Global.GetId(reference.reference)
+  )
+
+define function GetObservations(reference List<Reference>):
+  reference reference
+    return GetObservation(reference)
+
+define function GetObservation(reference Reference):
+  First (
+    "RPS Observation 2" Observations
+      where reference.reference.value = Observations.id
+  )
+
 
