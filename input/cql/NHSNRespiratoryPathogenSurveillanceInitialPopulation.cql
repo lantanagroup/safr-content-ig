@@ -41,7 +41,7 @@ valueset "RSV (Organism or Substance in Lab Results)": 'http://cts.nlm.nih.gov/f
 //Test result shared among Covid, Influenza and RSV
 valueset "LIVD SARS CoV2 Test Result Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1114.10'
 
-//Influenza and Covid medication
+//Influenza medication
 valueset "Oseltamivir": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2078'
 
 //COVID medication
@@ -204,7 +204,7 @@ define "SDE Isolation Precautions Implemented":
     and exists("Initial Population")
   return SharedResource.ProcedureResource(IsolationPrecautions)
 
-define "SDE FLU or Covid Medication Administered":
+define "SDE Covid or Influenza Medication Administered":
   "MedicationAdministrations" RPSMedAdmin
     where (GetMedicationCode(RPSMedAdmin.medication) in "Anakinra"
             or GetMedicationCode(RPSMedAdmin.medication) in "Bamlanivimab"
@@ -227,7 +227,7 @@ define "SDE FLU or Covid Medication Administered":
       and Global."Normalize Interval"(RPSMedAdmin.effective) during "Measurement Period"
     return SharedResource.MedicationAdministrationResource(RPSMedAdmin)
 
-define "SDE FLU or Covid Medication Ordered":
+define "SDE Covid or Influenza Medication Ordered":
   "MedicationRequests" RPSMedRequest
     where (GetMedicationCode(RPSMedRequest.medication) in "Anakinra"
             or GetMedicationCode(RPSMedRequest.medication) in "Bamlanivimab"
