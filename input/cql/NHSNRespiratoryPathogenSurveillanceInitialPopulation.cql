@@ -139,7 +139,7 @@ define "RPS Observation 2":
 define "RPS Observation 3":
   from "RPS Observation 2" Observations 
     where FHIRHelpers.ToConcept(Observations.value) in "Influenza (influenza A or B virus in Lab Results)"
-      or FHIRHelpers.ToConcept(Observations.value) in "LIVD SARS CoV2 Test Result Codes"
+      or FHIRHelpers.ToConcept(Observations.value) in "COVID_19 (Organism or Substance in Lab Results)"
       or FHIRHelpers.ToConcept(Observations.value) in  "RSV (Organism or Substance in Lab Results)"
       or FHIRHelpers.ToConcept(Observations.value) in "LIVD SARS CoV2 Test Result Codes"
 
