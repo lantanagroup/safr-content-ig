@@ -41,9 +41,6 @@ valueset "RSV (Organism or Substance in Lab Results)": 'http://cts.nlm.nih.gov/f
 //Test result shared among Covid, Influenza and RSV
 valueset "LIVD SARS CoV2 Test Result Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1114.10'
 
-//Influenza medication
-valueset "Oseltamivir": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2078'
-
 //COVID medication
 valueset "Baricitinib": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2046'
 valueset "Anakinra": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2054'
@@ -60,6 +57,9 @@ valueset "Molnupiravir": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883
 valueset "Remdesivir": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2081'
 valueset "Nirmatrelvir / Ritonavir": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2104'
 valueset "Bebtelovimab": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2105'
+
+//Influenza medication
+valueset "Oseltamivir": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2078'
 
 valueset "Transmission Based Precaution Types": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.10.20.22.5.300'
 
@@ -134,14 +134,6 @@ define "RPS Observation 2":
           or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) 14 days or less on or before start of InitialPopulation.period)
       or start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
       or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period"    
-
-//further filter by result value set
-define "RPS Observation 3":
-  from "RPS Observation 2" Observations 
-    where FHIRHelpers.ToConcept(Observations.value) in "Influenza (influenza A or B virus in Lab Results)"
-      or FHIRHelpers.ToConcept(Observations.value) in "COVID_19 (Organism or Substance in Lab Results)"
-      or FHIRHelpers.ToConcept(Observations.value) in  "RSV (Organism or Substance in Lab Results)"
-      or FHIRHelpers.ToConcept(Observations.value) in "LIVD SARS CoV2 Test Result Codes"
 
 //return SDE
 define "SDE RPSObservation":
@@ -302,4 +294,15 @@ define function GetObservation(reference Reference):
       where reference.reference.value = Observations.id
   )
 
+
+/*--------------------------------------------------------------------------------------------------------
+Comment this logic out for now 
+//further filter by result value set.
+define "RPS Observation 3":
+  from "RPS Observation 2" Observations 
+    where FHIRHelpers.ToConcept(Observations.value) in "Influenza (influenza A or B virus in Lab Results)"
+      or FHIRHelpers.ToConcept(Observations.value) in "COVID_19 (Organism or Substance in Lab Results)"
+      or FHIRHelpers.ToConcept(Observations.value) in  "RSV (Organism or Substance in Lab Results)"
+      or FHIRHelpers.ToConcept(Observations.value) in "LIVD SARS CoV2 Test Result Codes"
+-----------------------------------------------------------------------------------------------------------*/
 
