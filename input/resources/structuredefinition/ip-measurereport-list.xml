@@ -18,7 +18,7 @@
             <path value="List.entry.item"/>
             <type>
                 <code value="Reference"/>
-                <targetProfile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/individiaul-measure-report"/>
+                <targetProfile value="http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"/>
             </type>
         </element>
     </differential>
