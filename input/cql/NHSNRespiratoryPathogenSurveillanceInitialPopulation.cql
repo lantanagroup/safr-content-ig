@@ -160,7 +160,7 @@ define "SDE RPS DiagnosticReport":
       and (start of Global."Normalize Interval"(Reports.effective) during "Measurement Period"
         or Global."Normalize Interval"(Reports.effective) 14 days or less on or before start of InitialPopulation.period)
     return SharedResource.DiagnosticReportResource(Reports)
-
+  
 define "SDE RPS DiagnosticReport Result from Lab":
   from
   "DiagnosticReports" Reports,
@@ -198,50 +198,52 @@ define "SDE Isolation Precautions Implemented":
 
 define "SDE Covid or Influenza Medication Administered":
   "MedicationAdministrations" RPSMedAdmin
-    where (GetMedicationCode(RPSMedAdmin.medication) in "Anakinra"
-            or GetMedicationCode(RPSMedAdmin.medication) in "Bamlanivimab"
-            or GetMedicationCode(RPSMedAdmin.medication) in "Baricitinib"
-            or GetMedicationCode(RPSMedAdmin.medication) in "Bebtelovimab"
-            or GetMedicationCode(RPSMedAdmin.medication) in "Casirivimab"
-            or GetMedicationCode(RPSMedAdmin.medication) in "Casirivimab / Imdevimab"
-            or GetMedicationCode(RPSMedAdmin.medication) in "COVID19 RxNorm Value Set for Tocilizumab"
-            or GetMedicationCode(RPSMedAdmin.medication) in "Etesevimab"
-            or GetMedicationCode(RPSMedAdmin.medication) in "Imdevimab"
-            or GetMedicationCode(RPSMedAdmin.medication) in "Molnupiravir"
-            or GetMedicationCode(RPSMedAdmin.medication) in "Nirmatrelvir / Ritonavir"
-            or GetMedicationCode(RPSMedAdmin.medication) in "Oseltamivir"
-            or GetMedicationCode(RPSMedAdmin.medication) in "Remdesivir"
-            or GetMedicationCode(RPSMedAdmin.medication) in "Sarilumab"
-            or GetMedicationCode(RPSMedAdmin.medication) in "Sotrovimab"    
-            or GetMedicationCode(RPSMedAdmin.medication) in "Tofacitinib")
+    let Meds: GetMedicationCode(RPSMedAdmin.medication)
+   where (Meds in "Anakinra"
+            or Meds in "Bamlanivimab"
+            or Meds in "Baricitinib"
+            or Meds in "Bebtelovimab"
+            or Meds in "Casirivimab"
+            or Meds in "Casirivimab / Imdevimab"
+            or Meds in "COVID19 RxNorm Value Set for Tocilizumab"
+            or Meds in "Etesevimab"
+            or Meds in "Imdevimab"
+            or Meds in "Molnupiravir"
+            or Meds in "Nirmatrelvir / Ritonavir"
+            or Meds in "Oseltamivir"
+            or Meds in "Remdesivir"
+            or Meds in "Sarilumab"
+            or Meds in "Sotrovimab"    
+            or Meds in "Tofacitinib")
       and RPSMedAdmin.status ~ 'completed'
       and exists("Initial Population")
       and Global."Normalize Interval"(RPSMedAdmin.effective) during "Measurement Period"
     return SharedResource.MedicationAdministrationResource(RPSMedAdmin)
 
+
 define "SDE Covid or Influenza Medication Ordered":
   "MedicationRequests" RPSMedRequest
-    where (GetMedicationCode(RPSMedRequest.medication) in "Anakinra"
-            or GetMedicationCode(RPSMedRequest.medication) in "Bamlanivimab"
-            or GetMedicationCode(RPSMedRequest.medication) in "Baricitinib"
-            or GetMedicationCode(RPSMedRequest.medication) in "Bebtelovimab"
-            or GetMedicationCode(RPSMedRequest.medication) in "Casirivimab"
-            or GetMedicationCode(RPSMedRequest.medication) in "Casirivimab / Imdevimab"
-            or GetMedicationCode(RPSMedRequest.medication) in "COVID19 RxNorm Value Set for Tocilizumab"
-            or GetMedicationCode(RPSMedRequest.medication) in "Etesevimab"
-            or GetMedicationCode(RPSMedRequest.medication) in "Imdevimab"
-            or GetMedicationCode(RPSMedRequest.medication) in "Molnupiravir"
-            or GetMedicationCode(RPSMedRequest.medication) in "Nirmatrelvir / Ritonavir"
-            or GetMedicationCode(RPSMedRequest.medication) in "Oseltamivir"
-            or GetMedicationCode(RPSMedRequest.medication) in "Remdesivir"
-            or GetMedicationCode(RPSMedRequest.medication) in "Sarilumab"
-            or GetMedicationCode(RPSMedRequest.medication) in "Sotrovimab"    
-            or GetMedicationCode(RPSMedRequest.medication) in "Tofacitinib")
+    let Meds: (GetMedicationCode(RPSMedRequest.medication))
+    where (Meds in "Anakinra"
+            or Meds in "Bamlanivimab"
+            or Meds in "Baricitinib"
+            or Meds in "Bebtelovimab"
+            or Meds in "Casirivimab"
+            or Meds in "Casirivimab / Imdevimab"
+            or Meds in "COVID19 RxNorm Value Set for Tocilizumab"
+            or Meds in "Etesevimab"
+            or Meds in "Imdevimab"
+            or Meds in "Molnupiravir"
+            or Meds in "Nirmatrelvir / Ritonavir"
+            or Meds in "Oseltamivir"
+            or Meds in "Remdesivir"
+            or Meds in "Sarilumab"
+            or Meds in "Sotrovimab"    
+            or Meds in "Tofacitinib")
       and RPSMedRequest.status ~ 'completed'
       and exists("Initial Population")
       and Global."Normalize Interval"(RPSMedRequest.authoredOn) during "Measurement Period"
     return SharedResource.MedicationRequestResource(RPSMedRequest)
-
 
 //----------------------------------------------
 //Retrieve Resources
@@ -260,6 +262,9 @@ define "MedicationAdministrations":
 
 define "Medications":
   [Medication]
+
+define "Observations":
+  [Observation]
 
 //-----------------------------------------------------
 //functions
@@ -290,8 +295,7 @@ define function GetObservations(reference List<Reference>):
 
 define function GetObservation(reference Reference):
   First (
-    "RPS Observation 2" Observations
-      where reference.reference.value = Observations.id
+    "Observations" O where O.id = Global.GetId(reference.reference)
   )
 
 
