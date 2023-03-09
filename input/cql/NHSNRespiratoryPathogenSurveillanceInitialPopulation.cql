@@ -245,6 +245,22 @@ define "SDE Covid or Influenza Medication Ordered":
       and Global."Normalize Interval"(RPSMedRequest.authoredOn) during "Measurement Period"
     return SharedResource.MedicationRequestResource(RPSMedRequest)
 
+define "SDE All Observations":
+  "Observations" O
+  where exists("Initial Population")
+  return SharedResource.ObservationResource(O)
+
+define "SDE All ServiceRequests":
+  [ServiceRequest] SR
+  where exists("Initial Population")
+  return SharedResource.ServiceRequestResource(SR)
+
+define "SDE All Procedures":
+  [Procedure] P
+  where exists("Initial Population")
+  return SharedResource.ProcedureResource(P)
+  
+
 //----------------------------------------------
 //Retrieve Resources
 //----------------------------------------------
