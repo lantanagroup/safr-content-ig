@@ -38,15 +38,15 @@
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
             <valueCoding>
                <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-               <code value="OBSENC"></code>
-               <display value="observation encounter"></display>
+               <code value="EMER"></code>
+               <display value="emergency"></display>
             </valueCoding>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
             <valueCoding>
                <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
-               <code value="EMER"></code>
-               <display value="emergency"></display>
+               <code value="OBSENC"></code>
+               <display value="observation encounter"></display>
             </valueCoding>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
@@ -87,7 +87,7 @@
             </extension>
             <extension url="statement">
                <valueString value="define &quot;Inpatient Encounter&quot;:
-  [Encounter: class in {&quot;inpatient encounter&quot;, &quot;inpatient acute&quot;, &quot;inpatient non-acute&quot;, &quot;short stay&quot;}]
+  [Encounter: class in {&quot;inpatient encounter&quot;, &quot;inpatient acute&quot;, &quot;inpatient non-acute&quot;, &quot;short stay&quot;, &quot;emergency&quot;, &quot;observation encounter&quot;}]
     union [Encounter: &quot;Encounter Inpatient&quot;] Encounters
   where Encounters.status in {'in-progress', 'finished', 'triaged'}
     and Encounters.period overlaps &quot;Measurement Period&quot;"></valueString>
@@ -716,6 +716,16 @@ define &quot;SDE Blood Glucose Observation&quot;:
                   <code value="SS"></code>
                   <display value="short stay"></display>
                </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="EMER"></code>
+                  <display value="emergency"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="OBSENC"></code>
+                  <display value="observation encounter"></display>
+               </code>
             </codeFilter>
          </dataRequirement>
          <dataRequirement>
@@ -836,7 +846,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-02-09T10:59:40-08:00"></date>
+   <date value="2023-03-09T09:41:26-08:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the measurement period."></description>
    <purpose value="The primary purpose of this site is to provide CDC’s NHSN with access to view measure specification content in the dQMs under development by Lantana Consulting Group. Please note, this site is draft and undergoes constant revision and is not intended to serve as an implementation guide."></purpose>

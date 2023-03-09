@@ -32,7 +32,7 @@ code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display 'encounter-diagnosis'
 
 parameter "Measurement Period" Interval<DateTime>
- default Interval[@2022-01-01T00:00:00.0, @2022-01-31T00:00:00.0)
+ default Interval[@2022-08-01T00:00:00.0, @2022-08-31T00:00:00.0)
 
 context Patient
 
@@ -49,7 +49,7 @@ define "Initial Population":
     and Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn) during "Measurement Period")
 
 define "Inpatient Encounter":
-  [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "short stay"}]
+  [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "short stay", "emergency", "observation encounter"}]
     union [Encounter: "Encounter Inpatient"] Encounters
   where Encounters.status in {'in-progress', 'finished', 'triaged'}
     and Encounters.period overlaps "Measurement Period"
@@ -70,6 +70,10 @@ define "Antidiabetic Drugs Administered or Ordered":
     "MedicationRequests" MedicationRequests
       where GetMedicationCode(MedicationRequests.medication) in "Antidiabetic Medications"
   )
+
+define "getMedicationCodeTest":
+  "MedicationRequests" MedicationRequest
+  return GetMedicationCode(MedicationRequest.medication)
 
 define "MedicationRequests":
   [MedicationRequest]
