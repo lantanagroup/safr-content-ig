@@ -1,10 +1,13 @@
 <!-- Start by finding all references to "mycontentig" and updating to appropriate text for your IG, including changing realm -->
-<ImplementationGuide xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../input-cache/schemas/R5/fhir-single.xsd">
+<ImplementationGuide xmlns="http://hl7.org/fhir"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://hl7.org/fhir ../input-cache/schemas/R5/fhir-single.xsd">
     <id value="gov.cdc.nhsn.measures"/>
     <!--  <extension url="http://hl7.org/fhir/tools/StructureDefinition/igpublisher-spreadsheet">
     <valueString value="resources-spreadsheet.xml"/>
   </extension>-->
-    <url value="http://lantanagroup.com/fhir/nhsn-measures/ImplementationGuide/gov.cdc.nhsn.measures"/>
+    <url
+        value="http://lantanagroup.com/fhir/nhsn-measures/ImplementationGuide/gov.cdc.nhsn.measures"/>
     <!-- This version will propagate to all artifacts unless the "propagate-version" extension is overridden -->
     <version value="0.2.0"/>
     <name value="NHSNMeasures"/>
@@ -38,13 +41,26 @@
         <version value="3.0.0"/>
     </dependsOn>
     <dependsOn>
-        <uri value="http://hl7.org/fhir/us/davinci-deqm/ImplementationGuide/hl7.fhir.us.davinci-deqm"/>
+        <uri
+            value="http://hl7.org/fhir/us/davinci-deqm/ImplementationGuide/hl7.fhir.us.davinci-deqm"/>
         <packageId value="hl7.fhir.us.davinci-deqm"/>
         <version value="3.1.0"/>
     </dependsOn>
     <definition>
         <grouping id="submission">
             <name value="Current NHSN Report Submission"/>
+        </grouping>
+        <grouping id="cross-measure">
+            <name value="Cross-Measure profiles"/>
+        </grouping>
+        <grouping id="hypo">
+            <name value="Hypoglycemic Reporting profiles"/>
+        </grouping>
+        <grouping id="measures">
+            <name value="Knowledge Artifacts: Measure"/>
+        </grouping>
+        <grouping id="libs">
+            <name value="Knowledge Artifacts: Libraries"/>
         </grouping>
         <!-- <grouping id="prequal">
             <name value="Pre-Qualification"/>
@@ -54,7 +70,8 @@
                 <reference value="StructureDefinition/nhsn-measurereport-bundle"/>
             </reference>
             <name value="NHSN MeasureReport Bundle Profile"/>
-            <description value="Profile of the *Current* Report Submission (to NHSN) Bundle profile comprised of a Patients of Interest List, a subject-list MeasureReport, and multiple individual MeasureReports."/>
+            <description
+                value="Profile of the *Current* Report Submission (to NHSN) Bundle profile comprised of a Patients of Interest List, a subject-list MeasureReport, and multiple individual MeasureReports."/>
             <groupingId value="submission"/>
         </resource>
         <resource>
@@ -62,60 +79,73 @@
                 <reference value="StructureDefinition/subjectlist-measurereport-deqm"/>
             </reference>
             <name value="Subject-List MeasureReport Profile"/>
-            <description value="Subject-list MeasureReport Profile is based on the base MeasureReport structure, and requires that subjectResult references conform to the Individual MeasureReport List profile (when present)"/>
+            <description
+                value="Subject-list MeasureReport Profile is based on the base MeasureReport structure, and requires that subjectResult references conform to the Individual MeasureReport List profile (when present)"/>
             <groupingId value="submission"/>
         </resource>
-        <!-- <resource>
-            <reference>
-                <reference value="StructureDefinition/individual-measurereport-list"/>
-            </reference>
-            <name value="Individual MeasureReport List Profile"/>
-            <description value="List Profile defining individual MeasureReports entries conform to DaVinci DEQM Individual MeasureReports"/>
-            <groupingId value="submission"/>
-        </resource> -->
-        
+
         <resource>
             <reference>
                 <reference value="StructureDefinition/poi-list"/>
             </reference>
             <name value="Patients of Interest List Profile"/>
-            <description value="List Profile defining individual Patients being considered for evalautation for NHSN Measure reporting"/>
+            <description
+                value="List Profile defining individual Patients being considered for evalautation for NHSN Measure reporting"/>
             <groupingId value="submission"/>
         </resource>
-        
+
         <resource>
             <reference>
                 <reference value="StructureDefinition/ip-measurereport-list"/>
             </reference>
             <name value="Individual MasureReport List Profile"/>
-            <description value="List Profile containing individual MeasureReports; each individual MR pertians to an individual who has been determined/evaluated to be in the Initial Population"/>
+            <description
+                value="List Profile containing individual MeasureReports; each individual MR pertians to an individual who has been determined/evaluated to be in the Initial Population"/>
             <groupingId value="submission"/>
         </resource>
-        
-        <!-- <resource>
+
+        <resource>
             <reference>
-                <reference value="StructureDefinition/ip-list"/>
+                <reference value="StructureDefinition/cross-measure-patient"/>
             </reference>
-            <name value="Initial Population List Profile"/>
-            <description value="List of Patients who have been evaluated and determined to be IN the initial population (IP)"/>
-            <groupingId value="submission"/>
-        </resource> -->
-        <!-- <resource>
+            <name value="Cross-Measure Patient"/>
+            <description
+                value="This is the cross-measure Patient profle requirements for reporting to NHSN for all measures"/>
+            <groupingId value="hypo"/>
+        </resource>
+
+        <resource>
             <reference>
-                <reference value="StructureDefinition/nhsnlink-original-id"/>
+                <reference value="StructureDefinition/hypoglycemic-report-encounter"/>
             </reference>
-            <name value="Original ID (extension)"/>
-            <description value="This extension is used for original (raw) IDs. NHSNLink normalizes FHIR IDs to ensure they are FHIR compliant; this extension is used to show the original ID"/>
-            <groupingId value="submission"/>
-        </resource> -->
-        <!-- <resource>
+            <name value="Hypoglycemic Report Encounter"/>
+            <description
+                value="These are the reporting requirements for Encounters for facilities reporting on to NHSN on the Hypoglycemic Control measure"/>
+            <groupingId value="cross-measure"/>
+        </resource>
+
+        <resource>
             <reference>
-                <reference value="StructureDefinition/cross-measure-patient-prequalification"/>
+                <reference
+                    value="StructureDefinition/hypoglycemic-reporting-medicationadministration"/>
             </reference>
-            <name value="Cross-Measure Patient Pre-qualification Profile"/>
-            <description value="Profile asserting cross-measure pre-qualification requirements for Patients to be reportable to NHSN"/>
-            <groupingId value="prequal"/>
-        </resource> -->
+            <name value="Hypoglycemic Reporting MedicationAdministration"/>
+            <description
+                value="MedicationAdministration profile for reporting to NHSN on Hypoglycemic Event reporting"/>
+            <groupingId value="hypo"/>
+        </resource>
+
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/hypoglycemic-report-medicationrequest"/>
+            </reference>
+            <name value="Hypoglycemic Report MedicationRequest"/>
+            <description
+                value="MedicationRequest requirements for reporting the Hypoglycemic events"/>
+            <groupingId value="hypo"/>
+        </resource>
+
+
         <page>
             <!-- The root will always be toc.html - the template will force it if you don't do it -->
             <nameUrl value="toc.html"/>

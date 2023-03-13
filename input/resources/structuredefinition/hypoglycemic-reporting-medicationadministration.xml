@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition
+    xmlns="http://hl7.org/fhir">
+    <id value="hypoglycemic-reporting-medicationadministration"/>
+    <meta>
+        <versionId value="3"/>
+        <lastUpdated value="2023-03-13T22:49:08.716+00:00"/>
+        <source value="#sAZs4uoAy6SSEBVR"/>
+        <security>
+            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
+            <code value="everyone^read"/>
+        </security>
+        <security>
+            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
+            <code value="everyone^write"/>
+        </security>
+    </meta>
+    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/hypoglycemic-reporting-medicationadministration"/>
+    <name value="HypoglycemicReportingMedicationAdministration"/>
+    <title value="Hypoglycemic Reporting MedicationAdministration"/>
+    <status value="active"/>
+    <description value="MedicationAdministration profile for reporting to NHSN on Hypoglycemic Event reporting"/>
+    <fhirVersion value="4.0.1"/>
+    <kind value="resource"/>
+    <abstract value="false"/>
+    <type value="MedicationAdministration"/>
+    <baseDefinition value="http://hl7.org/fhir/StructureDefinition/MedicationAdministration"/>
+    <derivation value="constraint"/>
+    <differential>
+        <element id="MedicationAdministration">
+            <path value="MedicationAdministration"/>
+        </element>
+        <element id="MedicationAdministration.statusReason">
+            <path value="MedicationAdministration.statusReason"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="MedicationAdministration.category">
+            <path value="MedicationAdministration.category"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="MedicationAdministration.reasonCode">
+            <path value="MedicationAdministration.reasonCode"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="MedicationAdministration.reasonReference">
+            <path value="MedicationAdministration.reasonReference"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="MedicationAdministration.dosage">
+            <path value="MedicationAdministration.dosage"/>
+            <min value="1"/>
+        </element>
+        <element id="MedicationAdministration.dosage.route">
+            <path value="MedicationAdministration.dosage.route"/>
+            <min value="1"/>
+        </element>
+        <element id="MedicationAdministration.dosage.method">
+            <path value="MedicationAdministration.dosage.method"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="MedicationAdministration.dosage.dose">
+            <path value="MedicationAdministration.dosage.dose"/>
+            <min value="1"/>
+        </element>
+    </differential>
+</StructureDefinition>
