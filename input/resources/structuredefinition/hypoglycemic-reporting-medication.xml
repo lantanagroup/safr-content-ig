@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition
+    xmlns="http://hl7.org/fhir">
+    <id value="hypoglycemic-reporting-medication"/>
+    <meta>
+        <versionId value="1"/>
+        <lastUpdated value="2023-03-14T20:54:56.032+00:00"/>
+        <source value="#jrx5t7kvyIPppxn8"/>
+        <security>
+            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
+            <code value="everyone^read"/>
+        </security>
+        <security>
+            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
+            <code value="everyone^write"/>
+        </security>
+    </meta>
+    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/hypoglycemic-reporting-medication"/>
+    <name value="HypoGlycemicReportingMedication"/>
+    <title value="HypoGlycemic Reporting Medication"/>
+    <status value="active"/>
+    <description value="Medication requirements for reporting Hypoglycemic events"/>
+    <fhirVersion value="4.0.1"/>
+    <kind value="resource"/>
+    <abstract value="false"/>
+    <type value="Medication"/>
+    <baseDefinition value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication"/>
+    <derivation value="constraint"/>
+    <differential>
+        <element id="Medication">
+            <path value="Medication"/>
+        </element>
+        <element id="Medication.status">
+            <path value="Medication.status"/>
+            <min value="1"/>
+        </element>
+        <element id="Medication.form">
+            <path value="Medication.form"/>
+            <mustSupport value="true"/>
+        </element>
+    </differential>
+</StructureDefinition>

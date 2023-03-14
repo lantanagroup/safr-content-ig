@@ -30,6 +30,11 @@
     </jurisdiction>
     <packageId value="gov.cdc.nhsn.measures"/>
     <fhirVersion value="4.0.1"/>
+    <dependsOn>
+        <uri value="http://hl7.org/fhir/us/core/ImplementationGuide/hl7.fhir.us.core"/>
+        <packageId value="hl7.fhir.us.core"/>
+        <version value="3.1.1"/>
+    </dependsOn>
     <dependsOn id="cqf">
         <uri value="http://fhir.org/guides/cqf/common/ImplementationGuide/cqf.fhir.common"/>
         <packageId value="fhir.cqf.common"/>
@@ -83,7 +88,6 @@
                 value="Subject-list MeasureReport Profile is based on the base MeasureReport structure, and requires that subjectResult references conform to the Individual MeasureReport List profile (when present)"/>
             <groupingId value="submission"/>
         </resource>
-
         <resource>
             <reference>
                 <reference value="StructureDefinition/poi-list"/>
@@ -93,7 +97,6 @@
                 value="List Profile defining individual Patients being considered for evalautation for NHSN Measure reporting"/>
             <groupingId value="submission"/>
         </resource>
-
         <resource>
             <reference>
                 <reference value="StructureDefinition/ip-measurereport-list"/>
@@ -103,7 +106,6 @@
                 value="List Profile containing individual MeasureReports; each individual MR pertians to an individual who has been determined/evaluated to be in the Initial Population"/>
             <groupingId value="submission"/>
         </resource>
-
         <resource>
             <reference>
                 <reference value="StructureDefinition/cross-measure-patient"/>
@@ -113,7 +115,6 @@
                 value="This is the cross-measure Patient profile requirements for reporting to NHSN for all measures"/>
             <groupingId value="cross-measure"/>
         </resource>
-
         <resource>
             <reference>
                 <reference value="StructureDefinition/hypoglycemic-reporting-encounter"/>
@@ -123,7 +124,6 @@
                 value="Encounter requirements for reporting Hypoglycemic events"/>
             <groupingId value="hypo"/>
         </resource>
-        
         <resource>
             <reference>
                 <reference value="StructureDefinition/hypoglycemic-reporting-condition"/>
@@ -133,7 +133,6 @@
                 value="Condition requirements for reporting Hypoglycemic events"/>
             <groupingId value="hypo"/>
         </resource>
-
         <resource>
             <reference>
                 <reference
@@ -144,7 +143,6 @@
                 value="MedicationAdministration requirements for reporting Hypoglycemic events"/>
             <groupingId value="hypo"/>
         </resource>
-
         <resource>
             <reference>
                 <reference value="StructureDefinition/hypoglycemic-reporting-medicationrequest"/>
@@ -154,7 +152,6 @@
                 value="MedicationRequest requirements for reporting Hypoglycemic events"/>
             <groupingId value="hypo"/>
         </resource>
-
         <resource>
             <reference>
                 <reference value="StructureDefinition/hypoglycemic-reporting-coverage"/>
@@ -162,6 +159,51 @@
             <name value="Hypoglycemic Event Coverage"/>
             <description
                 value="Coverage requirements for reporting Hypoglycemic events"/>
+            <groupingId value="hypo"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/hypoglycemic-reporting-lab-observation"/>
+            </reference>
+            <name value="Hypoglycemic Event Lab Result Observation"/>
+            <description
+                value="Lab Result Observation requirements for reporting Hypoglycemic events"/>
+            <groupingId value="hypo"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/hypoglycemic-reporting-lab-location"/>
+            </reference>
+            <name value="Hypoglycemic Event Location"/>
+            <description
+                value="Location requirements for reporting Hypoglycemic events"/>
+            <groupingId value="hypo"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/hypoglycemic-reporting-medication"/>
+            </reference>
+            <name value="Hypoglycemic Event Medication"/>
+            <description
+                value="Medication requirements for reporting Hypoglycemic events"/>
+            <groupingId value="hypo"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/hypoglycemic-reporting-servicerequest"/>
+            </reference>
+            <name value="Hypoglycemic Event ServiceRequest"/>
+            <description
+                value="ServiceRequest requirements for reporting Hypoglycemic events"/>
+            <groupingId value="hypo"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/hypoglycemic-reporting-specimen"/>
+            </reference>
+            <name value="Hypoglycemic Event Specimen"/>
+            <description
+                value="Specimen requirements for reporting Hypoglycemic events"/>
             <groupingId value="hypo"/>
         </resource>
 

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition
+    xmlns="http://hl7.org/fhir">
+    <id value="hypoglycemic-reporting-specimen"/>
+    <meta>
+        <versionId value="1"/>
+        <lastUpdated value="2023-03-14T21:15:29.441+00:00"/>
+        <source value="#RYvWrC0Y64y9vDB4"/>
+        <security>
+            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
+            <code value="everyone^write"/>
+        </security>
+        <security>
+            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
+            <code value="everyone^read"/>
+        </security>
+    </meta>
+    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/hypoglycemic-reporting-specimen"/>
+    <name value="HypoglycemicReportingSpecimen"/>
+    <title value="Hypoglycemic Reporting Specimen"/>
+    <status value="active"/>
+    <description value="Specimen requirements for reporting Hypoglycemic events"/>
+    <fhirVersion value="4.0.1"/>
+    <kind value="resource"/>
+    <abstract value="false"/>
+    <type value="Specimen"/>
+    <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Specimen"/>
+    <derivation value="constraint"/>
+    <differential>
+        <element id="Specimen">
+            <path value="Specimen"/>
+        </element>
+        <element id="Specimen.id">
+            <path value="Specimen.id"/>
+            <min value="1"/>
+        </element>
+        <element id="Specimen.identifier">
+            <path value="Specimen.identifier"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Specimen.accessionIdentifier">
+            <path value="Specimen.accessionIdentifier"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Specimen.type">
+            <path value="Specimen.type"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Specimen.collection">
+            <path value="Specimen.collection"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Specimen.collection.collected[x]">
+            <path value="Specimen.collection.collected[x]"/>
+            <min value="1"/>
+        </element>
+        <element id="Specimen.collection.bodySite">
+            <path value="Specimen.collection.bodySite"/>
+            <mustSupport value="true"/>
+        </element>
+    </differential>
+</StructureDefinition>
