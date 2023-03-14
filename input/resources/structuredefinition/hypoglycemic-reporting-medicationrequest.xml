@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <StructureDefinition
     xmlns="http://hl7.org/fhir">
-    <id value="hypoglycemic-report-medicationrequest"/>
+    <id value="hypoglycemic-reporting-medicationrequest"/>
     <meta>
         <versionId value="3"/>
         <lastUpdated value="2023-03-13T22:44:53.041+00:00"/>
@@ -15,7 +15,7 @@
             <code value="everyone^read"/>
         </security>
     </meta>
-    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/hypoglycemic-report-medicationrequest"/>
+    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/hypoglycemic-reporting-medicationrequest"/>
     <name value="HypoglycemicReportMedicationRequest"/>
     <title value="Hypoglycemic Report MedicationRequest"/>
     <status value="active"/>

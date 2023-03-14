@@ -110,17 +110,27 @@
             </reference>
             <name value="Cross-Measure Patient"/>
             <description
-                value="This is the cross-measure Patient profle requirements for reporting to NHSN for all measures"/>
+                value="This is the cross-measure Patient profile requirements for reporting to NHSN for all measures"/>
             <groupingId value="cross-measure"/>
         </resource>
 
         <resource>
             <reference>
-                <reference value="StructureDefinition/hypoglycemic-report-encounter"/>
+                <reference value="StructureDefinition/hypoglycemic-reporting-encounter"/>
             </reference>
-            <name value="Hypoglycemic Report Encounter"/>
+            <name value="Hypoglycemic Event Encounter"/>
             <description
-                value="These are the reporting requirements for Encounters for facilities reporting on to NHSN on the Hypoglycemic Control measure"/>
+                value="Encounter requirements for reporting Hypoglycemic events"/>
+            <groupingId value="hypo"/>
+        </resource>
+        
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/hypoglycemic-reporting-condition"/>
+            </reference>
+            <name value="Hypoglycemic Event Condition"/>
+            <description
+                value="Condition requirements for reporting Hypoglycemic events"/>
             <groupingId value="hypo"/>
         </resource>
 
@@ -129,19 +139,29 @@
                 <reference
                     value="StructureDefinition/hypoglycemic-reporting-medicationadministration"/>
             </reference>
-            <name value="Hypoglycemic Reporting MedicationAdministration"/>
+            <name value="Hypoglycemic Event MedicationAdministration"/>
             <description
-                value="MedicationAdministration profile for reporting to NHSN on Hypoglycemic Event reporting"/>
+                value="MedicationAdministration requirements for reporting Hypoglycemic events"/>
             <groupingId value="hypo"/>
         </resource>
 
         <resource>
             <reference>
-                <reference value="StructureDefinition/hypoglycemic-report-medicationrequest"/>
+                <reference value="StructureDefinition/hypoglycemic-reporting-medicationrequest"/>
             </reference>
-            <name value="Hypoglycemic Report MedicationRequest"/>
+            <name value="Hypoglycemic Event MedicationRequest"/>
             <description
-                value="MedicationRequest requirements for reporting the Hypoglycemic events"/>
+                value="MedicationRequest requirements for reporting Hypoglycemic events"/>
+            <groupingId value="hypo"/>
+        </resource>
+
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/hypoglycemic-reporting-coverage"/>
+            </reference>
+            <name value="Hypoglycemic Event Coverage"/>
+            <description
+                value="Coverage requirements for reporting Hypoglycemic events"/>
             <groupingId value="hypo"/>
         </resource>
 

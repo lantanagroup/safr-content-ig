@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition
+    xmlns="http://hl7.org/fhir">
+    <id value="hypoglycemic-reporting-coverage"/>
+    <meta>
+        <versionId value="1"/>
+        <lastUpdated value="2023-03-14T19:39:33.434+00:00"/>
+        <source value="#uu0LKxlLQn9SdhD5"/>
+        <security>
+            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
+            <code value="everyone^read"/>
+        </security>
+        <security>
+            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
+            <code value="everyone^write"/>
+        </security>
+    </meta>
+    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/hypoglycemic-reporting-coverage"/>
+    <name value="HypoglycemicReportingCoverage"/>
+    <title value="Hypoglycemic Reporting Coverage"/>
+    <status value="active"/>
+    <description value="Coverage requirements for reporting Hypoglycemic events"/>
+    <fhirVersion value="4.0.1"/>
+    <kind value="resource"/>
+    <abstract value="false"/>
+    <type value="Coverage"/>
+    <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Coverage"/>
+    <derivation value="constraint"/>
+    <differential>
+        <element id="Coverage">
+            <path value="Coverage"/>
+        </element>
+        <element id="Coverage.id">
+            <path value="Coverage.id"/>
+            <min value="1"/>
+        </element>
+        <element id="Coverage.type">
+            <path value="Coverage.type"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Coverage.policyHolder">
+            <path value="Coverage.policyHolder"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Coverage.subscriber">
+            <path value="Coverage.subscriber"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Coverage.subscriberId">
+            <path value="Coverage.subscriberId"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Coverage.dependent">
+            <path value="Coverage.dependent"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Coverage.relationship">
+            <path value="Coverage.relationship"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Coverage.period">
+            <path value="Coverage.period"/>
+            <mustSupport value="true"/>
+        </element>
+    </differential>
+</StructureDefinition>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <StructureDefinition
     xmlns="http://hl7.org/fhir">
-    <id value="hypoglycemic-report-encounter"/>
+    <id value="hypoglycemic-reporting-encounter"/>
     <meta>
         <versionId value="4"/>
         <lastUpdated value="2023-03-13T22:36:20.061+00:00"/>
@@ -15,7 +15,7 @@
             <code value="everyone^write"/>
         </security>
     </meta>
-    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/hypoglycemic-report-encounter"/>
+    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/hypoglycemic-reporting-encounter"/>
     <name value="HypoglycemicReportEncounter"/>
     <title value="Hypoglycemic Report Encounter"/>
     <status value="active"/>
