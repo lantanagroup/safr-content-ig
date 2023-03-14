@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition
+    xmlns="http://hl7.org/fhir">
+    <id value="hypoglycemic-report-encounter"/>
+    <meta>
+        <versionId value="4"/>
+        <lastUpdated value="2023-03-13T22:36:20.061+00:00"/>
+        <source value="#PeoFoBdonQ9OJMCy"/>
+        <security>
+            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
+            <code value="everyone^read"/>
+        </security>
+        <security>
+            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
+            <code value="everyone^write"/>
+        </security>
+    </meta>
+    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/hypoglycemic-report-encounter"/>
+    <name value="HypoglycemicReportEncounter"/>
+    <title value="Hypoglycemic Report Encounter"/>
+    <status value="active"/>
+    <description value="These are the reporting requirements for Encounters for facilities reporting on to NHSN on the Hypoglycemic Control measure"/>
+    <fhirVersion value="4.0.1"/>
+    <kind value="resource"/>
+    <abstract value="false"/>
+    <type value="Encounter"/>
+    <baseDefinition value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter"/>
+    <derivation value="constraint"/>
+    <differential>
+        <element id="Encounter">
+            <path value="Encounter"/>
+        </element>
+        <element id="Encounter.id">
+            <path value="Encounter.id"/>
+            <min value="1"/>
+        </element>
+        <element id="Encounter.identifier">
+            <path value="Encounter.identifier"/>
+            <min value="1"/>
+        </element>
+        <element id="Encounter.statusHistory">
+            <path value="Encounter.statusHistory"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Encounter.episodeOfCare">
+            <path value="Encounter.episodeOfCare"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Encounter.period">
+            <path value="Encounter.period"/>
+            <min value="1"/>
+        </element>
+        <element id="Encounter.diagnosis">
+            <path value="Encounter.diagnosis"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Encounter.location.status">
+            <path value="Encounter.location.status"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Encounter.location.period">
+            <path value="Encounter.location.period"/>
+            <min value="1"/>
+        </element>
+        <element id="Encounter.hospitalization.admitSource">
+            <path value="Encounter.hospitalization.admitSource"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Encounter.hospitalization.reAdmission">
+            <path value="Encounter.hospitalization.reAdmission"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Encounter.diagnosis.use">
+            <path value="Encounter.diagnosis.use"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Encounter.identifier.use">
+            <path value="Encounter.identifier.use"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Encounter.identifier.type">
+            <path value="Encounter.identifier.type"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Encounter.identifier.period">
+            <path value="Encounter.identifier.period"/>
+            <mustSupport value="true"/>
+        </element>
+    </differential>
+</StructureDefinition>
