@@ -111,7 +111,7 @@
             <name value="Cross-Measure Patient"/>
             <description
                 value="This is the cross-measure Patient profle requirements for reporting to NHSN for all measures"/>
-            <groupingId value="hypo"/>
+            <groupingId value="cross-measure"/>
         </resource>
 
         <resource>
@@ -121,7 +121,7 @@
             <name value="Hypoglycemic Report Encounter"/>
             <description
                 value="These are the reporting requirements for Encounters for facilities reporting on to NHSN on the Hypoglycemic Control measure"/>
-            <groupingId value="cross-measure"/>
+            <groupingId value="hypo"/>
         </resource>
 
         <resource>
