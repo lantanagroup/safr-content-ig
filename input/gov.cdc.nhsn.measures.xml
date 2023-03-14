@@ -172,7 +172,7 @@
         </resource>
         <resource>
             <reference>
-                <reference value="StructureDefinition/hypoglycemic-reporting-lab-location"/>
+                <reference value="StructureDefinition/hypoglycemic-reporting-location"/>
             </reference>
             <name value="Hypoglycemic Event Location"/>
             <description
