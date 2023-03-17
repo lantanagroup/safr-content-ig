@@ -104,8 +104,7 @@ define "Qualifying Encounter During Measurement Period":
 define "Inpatient and Observation Encounters that ended within the last twenty four Hours":
   ( "EncounterInpatient"
     union "EncounterObservation") QualifyingEncounters
-      where end of QualifyingEncounters.period before Today()
-      and end of QualifyingEncounters.period after Today() - 1 day
+      where end of QualifyingEncounters.period before or on end of "Measurement Period"
 
 
 //----------------------------------
@@ -336,5 +335,13 @@ define "RPS Observation 3":
       or FHIRHelpers.ToConcept(Observations.value) in "COVID_19 (Organism or Substance in Lab Results)"
       or FHIRHelpers.ToConcept(Observations.value) in  "RSV (Organism or Substance in Lab Results)"
       or FHIRHelpers.ToConcept(Observations.value) in "LIVD SARS CoV2 Test Result Codes"
+
+//This logic does not make sense.
+define "Inpatient and Observation Encounters that ended within the last twenty four Hours":
+  ( "EncounterInpatient"
+    union "EncounterObservation") QualifyingEncounters
+      where end of QualifyingEncounters.period before Today()
+      and end of QualifyingEncounters.period after Today() - 1 day
+
 -----------------------------------------------------------------------------------------------------------*/
 
