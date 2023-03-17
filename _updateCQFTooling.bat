@@ -1,12 +1,8 @@
 @ECHO OFF
 
-REM SET "dlurl=https://oss.sonatype.org/service/local/artifact/maven/redirect?r=snapshots&g=org.opencds.cqf&a=tooling&v=1.4.1-SNAPSHOT&c=jar-with-dependencies"
-SET "dlurl=https://oss.sonatype.org/service/local/artifact/maven/redirect?r=snapshots&g=org.opencds.cqf&a=tooling&v=1.4.1-SNAPSHOT&c=jar-with-dependencies"
-REM SET tooling_jar=tooling-1.4.4-SNAPSHOT-jar-with-dependencies.jar
-SET tooling_jar=tooling-1.4.4-SNAPSHOT-jar-with-dependencies.jar
+SET "dlurl=https://oss.sonatype.org/service/local/artifact/maven/redirect?r=snapshots&g=org.opencds.cqf&a=tooling-cli&v=2.4.0-SNAPSHOT"
+SET tooling_jar=tooling-cli-2.4.0-SNAPSHOT.jar
 SET input_cache_path=%~dp0input-cache\
-SET skipPrompts=false
-IF "%~1"=="/f" SET skipPrompts=true
 
 FOR %%x IN ("%CD%") DO SET upper_path=%%~dpx
 
@@ -32,27 +28,17 @@ IF NOT EXIST "%input_cache_path%%tooling_jar%" (
 
 :create
 ECHO Will place refresh jar here: %input_cache_path%%tooling_jar%
-IF "%skipPrompts%"=="false" (
-    SET /p create="Ok? (Y/N)"
-    IF /I "%create%"=="Y" (
-        MKDIR "%input_cache_path%" 2> NUL
-        GOTO:download
-    )
-) ELSE (
-    MKDIR "%input_cache_path%" 2> NUL
-    GOTO:download
+SET /p create="Ok? (Y/N)"
+IF /I "%create%"=="Y" (
+	MKDIR "%input_cache_path%" 2> NUL
+	GOTO:download
 )
-
 GOTO:done
 
 :upgrade
-IF "%skipPrompts%"=="false" (
-    SET /p overwrite="Overwrite %jarlocation%? (Y/N)"
-    IF /I "%overwrite%"=="Y" (
-        GOTO:download
-    )
-) ELSE (
-    GOTO:download
+SET /p overwrite="Overwrite %jarlocation%? (Y/N)"
+IF /I "%overwrite%"=="Y" (
+	GOTO:download
 )
 GOTO:done
 
@@ -86,6 +72,4 @@ ECHO This script does not yet support Windows %winver%.  Please ask for help on 
 GOTO done
 
 :done
-IF "%skipPrompts%"=="false" (
-    PAUSE
-)
+PAUSE

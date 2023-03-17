@@ -1,6 +1,6 @@
 @ECHO OFF
-REM SET tooling_jar=tooling-1.4.4-SNAPSHOT-jar-with-dependencies.jar
-SET tooling_jar=tooling-1.4.4-SNAPSHOT-jar-with-dependencies.jar
+REM SET tooling_jar=tooling-cli-2.4.0-SNAPSHOT.jar
+SET tooling_jar=tooling-cli-2.4.0-SNAPSHOT.jar
 SET input_cache_path=%~dp0input-cache
 SET resources_path=%~dp0/input/resources
 SET ig_ini_path=%~dp0ig.ini
@@ -20,11 +20,11 @@ ECHO We're online, setting publish to local sandbox FHIR server
 SET JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
 :: -d %fsoption%
 IF EXIST "%input_cache_path%\%tooling_jar%" (
-	ECHO running: JAVA -jar "%input_cache_path%\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d -ss=false
-	JAVA -jar "%input_cache_path%\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d -ss=false
+	ECHO running: JAVA -jar "%input_cache_path%\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d -ss=false -timestamp=true
+	JAVA -jar "%input_cache_path%\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d -ss=false -timestamp=true
 ) ELSE If exist "..\%tooling_jar%" (
-	ECHO running: JAVA -jar "..\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d -ss=false
-	JAVA -jar "..\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d -ss=false
+	ECHO running: JAVA -jar "..\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d -ss=false -timestamp=true
+	JAVA -jar "..\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d -ss=false -timestamp=true
 ) ELSE (
 	ECHO IG Refresh NOT FOUND in input-cache or parent folder.  Please run _updateCQFTooling.  Aborting...
 )
