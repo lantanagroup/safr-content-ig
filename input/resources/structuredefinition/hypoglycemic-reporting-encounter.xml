@@ -38,8 +38,8 @@
             <path value="Encounter.identifier"/>
             <min value="1"/>
         </element>
-        <element id="Encounter.statusHistory">
-            <path value="Encounter.statusHistory"/>
+        <element id="Encounter.classHistory">
+            <path value="Encounter.classHistory"/>
             <mustSupport value="true"/>
         </element>
         <element id="Encounter.episodeOfCare">

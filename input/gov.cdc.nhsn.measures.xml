@@ -74,18 +74,27 @@
             <reference>
                 <reference value="StructureDefinition/nhsn-measurereport-bundle"/>
             </reference>
-            <name value="NHSN MeasureReport Bundle Profile"/>
+            <name value="NHSN Report Bundle"/>
             <description
                 value="Profile of the *Current* Report Submission (to NHSN) Bundle profile comprised of a Patients of Interest List, a subject-list MeasureReport, and multiple individual MeasureReports."/>
             <groupingId value="submission"/>
         </resource>
         <resource>
             <reference>
-                <reference value="StructureDefinition/subjectlist-measurereport-deqm"/>
+                <reference value="StructureDefinition/subjectlist-measurereport"/>
             </reference>
             <name value="Subject-List MeasureReport Profile"/>
             <description
-                value="Subject-list MeasureReport Profile is based on the base MeasureReport structure, and requires that subjectResult references conform to the Individual MeasureReport List profile (when present)"/>
+                value="Subject-list MeasureReport Profile is based on the base MeasureReport structure. It contains the List of all Individual MeasureReports that have been evaluated to be included in the Initial Population (IP), the IP count total, and its subjectReults references the aforementioned .contained Individual MeasureReport List."/>
+            <groupingId value="submission"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/ip-measurereport-list"/>
+            </reference>
+            <name value="Individual MasureReport List Profile"/>
+            <description
+                value="List of all Individual MeasureReports for a given NHSN measure; each individual MR pertians to an individual who has been determined/evaluated to be in the Initial Population"/>
             <groupingId value="submission"/>
         </resource>
         <resource>
@@ -95,15 +104,6 @@
             <name value="Patients of Interest List Profile"/>
             <description
                 value="List Profile defining individual Patients being considered for evalautation for NHSN Measure reporting"/>
-            <groupingId value="submission"/>
-        </resource>
-        <resource>
-            <reference>
-                <reference value="StructureDefinition/ip-measurereport-list"/>
-            </reference>
-            <name value="Individual MasureReport List Profile"/>
-            <description
-                value="List Profile containing individual MeasureReports; each individual MR pertians to an individual who has been determined/evaluated to be in the Initial Population"/>
             <groupingId value="submission"/>
         </resource>
         <resource>

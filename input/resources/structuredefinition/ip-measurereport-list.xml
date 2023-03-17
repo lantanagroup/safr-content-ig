@@ -2,8 +2,8 @@
     xmlns="http://hl7.org/fhir">
     <id value="ip-measurereport-list"/>
     <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/ip-measurereport-list"/>
-    <name value="InitialPopulationMeasureReportListCurrent"/>
-    <title value="Initial Population Measure Report List (Current)"/>
+    <name value="IndividualMeasureReportList"/>
+    <title value="Individual MeasureReport List"/>
     <status value="active"/>
     <kind value="resource"/>
     <abstract value="false"/>
@@ -13,6 +13,10 @@
     <differential>
         <element id="List">
             <path value="List"/>
+        </element>
+        <element id="List.entry">
+            <path value="List.entry"/>
+            <min value="1"/>
         </element>
         <element id="List.entry.item">
             <path value="List.entry.item"/>

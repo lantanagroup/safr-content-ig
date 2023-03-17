@@ -26,6 +26,35 @@
                 <rules value="open"/>
             </slicing>
         </element>
+        <!-- subject-list MR -->
+        <element id="Bundle.entry:subject-list">
+            <path value="Bundle.entry"/>
+            <sliceName value="subject-list"/>
+            <min value="1"/>
+            <max value="*"/>
+        </element>
+        <element id="Bundle.entry:subject-list.resource">
+            <path value="Bundle.entry.resource"/>
+            <min value="1"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/subjectlist-measurereport"/>
+            </type>
+        </element>
+        <!-- indv MRs -->
+        <element id="Bundle.entry:individual">
+            <path value="Bundle.entry"/>
+            <min value="1"/>
+            <sliceName value="individual"/>
+        </element>
+        <element id="Bundle.entry:individual.resource">
+            <path value="Bundle.entry.resource"/>
+            <min value="1"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"/>
+            </type>
+        </element>
         <!-- POI List -->
         <element id="Bundle.entry:poi-list">
             <path value="Bundle.entry"/>
@@ -39,35 +68,6 @@
             <type>
                 <code value="Resource"/>
                 <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/poi-list"/>
-            </type>
-        </element>
-        <!-- subject-list MR -->
-        <element id="Bundle.entry:subject-list">
-            <path value="Bundle.entry"/>
-            <sliceName value="subject-list"/>
-            <min value="1"/>
-            <max value="1"/>
-        </element>
-        <element id="Bundle.entry:subject-list.resource">
-            <path value="Bundle.entry.resource"/>
-            <min value="1"/>
-            <type>
-                <code value="Resource"/>
-                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/subjectlist-measurereport-deqm"/>
-            </type>
-        </element>
-        <!-- indv MRs -->
-        <element id="Bundle.entry:individual">
-            <path value="Bundle.entry"/>
-            <sliceName value="individual"/>
-            <mustSupport value="true"/>
-        </element>
-        <element id="Bundle.entry:individual.resource">
-            <path value="Bundle.entry.resource"/>
-            <min value="1"/>
-            <type>
-                <code value="Resource"/>
-                <profile value="http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"/>
             </type>
         </element>
     </differential>

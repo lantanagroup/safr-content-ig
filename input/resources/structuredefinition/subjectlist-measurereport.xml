@@ -1,9 +1,9 @@
 <StructureDefinition
     xmlns="http://hl7.org/fhir">
-    <id value="subjectlist-measurereport-deqm"/>
-    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/subjectlist-measurereport-deqm"/>
-    <name value="DEQMSubjectListMeasureReportProfileCurrent"/>
-    <title value="DEQM Subject-List MeasureReport Profile (Current)"/>
+    <id value="subjectlist-measurereport"/>
+    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/subjectlist-measurereport"/>
+    <name value="SubjectListMeasureReportProfile"/>
+    <title value="Subject-List MeasureReport Profile"/>
     <status value="active"/>
     <fhirVersion value="4.0.1"/>
     <kind value="resource"/>
@@ -21,7 +21,7 @@
             <max value="1"/>
             <type>
                 <code value="Resource"/>
-                <targetProfile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/ip-measurereport-list"/>
+                <Profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/ip-measurereport-list"/>
             </type>
         </element>
         <element id="MeasureReport.type">
