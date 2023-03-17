@@ -1,6 +1,6 @@
 == Suppressed Messages ==
 
-# Needs updating
+# Needs review
 
 # HTML fragments are not needed for this guide
 The HTML fragment 'ip-statements.xhtml' is not included anywhere in the produced implementation guide
