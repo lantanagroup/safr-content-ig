@@ -76,7 +76,7 @@
             </reference>
             <name value="NHSN Report Bundle"/>
             <description
-                value="Profile of the *Current* Report Submission (to NHSN) Bundle profile comprised of a Patients of Interest List, a subject-list MeasureReport, and multiple individual MeasureReports."/>
+                value="Profile of the Report Submission (to NHSN) Bundle profile comprised of a Patients of Interest List, a subject-list MeasureReport, and multiple individual MeasureReports."/>
             <groupingId value="submission"/>
         </resource>
         <resource>
