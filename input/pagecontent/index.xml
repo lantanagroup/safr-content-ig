@@ -9,7 +9,7 @@
   <h3>Purpose</h3>
   <p>
     The specification described here is for the initial population (IP) DQM. The IP dQM provides the necessary Fast Healthcare Interoperability Resources (FHIR) line-level 
-    data necessary for calculating CDC’s NHSN Glycemic Control, Hypoglycemia module metrics (1). The IP measure is defined as all inpatient encounters, as well as emergency 
+    data necessary for calculating CDC's NHSN Glycemic Control, Hypoglycemia module metrics (1). The IP measure is defined as all inpatient encounters, as well as emergency 
     department (ED) and Observation (OBS) encounters that end within 1 hour of the start of the inpatient encounter, for patients of all ages where at least one antidiabetic 
     drug (ADD) was ordered or administered during the encounter that is during the performance period. 
   </p>
