@@ -1,34 +1,40 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R5/fhir-single.xsd">
   <!-- The spaces between the open and close "a" tag are mandatory.  (Cuz HTML renderers are dumb...) -->
-  <a name="intro"></a>
-  <h3>Introduction</h3>
-  <p>This represents the content for the NHSN hypoglycemic protocol measure. This page is under construction and is in draft format.</p>
-  <a name="contents"></a>
+  <a name="scope"></a>
+  <h3>Scope</h3>
+  <p>
+    This document represents the content for the Fast Healthcare Interoperability Resources (FHIR) specifications for the initial population (IP) measure that informs 
+    CDC's NHSN Glycemic Control, Hypoglycemia module (1). This page is under construction and is in draft format.</p>
+  <a name="purpose"></a>
+  <h3>Purpose</h3>
+  <p>
+    The specification described here is for the initial population (IP) DQM. The IP dQM provides the necessary Fast Healthcare Interoperability Resources (FHIR) line-level 
+    data necessary for calculating CDC’s NHSN Glycemic Control, Hypoglycemia module metrics (1). The IP measure is defined as all inpatient encounters, as well as emergency 
+    department (ED) and Observation (OBS) encounters that end within 1 hour of the start of the inpatient encounter, for patients of all ages where at least one antidiabetic 
+    drug (ADD) was ordered or administered during the encounter that is during the performance period. 
+  </p>
+  <a name="background"></a>
   <h3>Background</h3>
   <p>
-    Inpatient hypoglycemia can be severe and life-threatening and is associated with longer hospital stays and increased medical costs (1-7).
-    The prevalence of inpatient hypoglycemia varies with patient severity, hospital unit, time of episodes, and glycemic threshold. Severe hypoglycemia 
-    (&lt;40 mg/dL) occurs in 2%-5% of hospitalized patients with diabetes mellitus (DM) while hypoglycemia &lt;70 mg/dL has been reported in up to 10% 
-    of patients in the intensive care unit (8). Patients with DM comprise more than 25% of all U.S. inpatient stays and medication-related hypoglycemic 
-    events are common causes of adverse drug events (ADEs) occurring in inpatient settings (9,10). Rates of severe hypoglycemia vary across hospitals, 
-    suggesting opportunities for improvement in quality of care of glycemic control. Measurement of medication-related hypoglycemia in a meaningful and 
-    standardized way may improve glycemic management (11,12).
+    The NHSN Glycemic Control, Hypoglycemia module provides a mechanism for facilities to report inpatient medication-related hypoglycemia events, and to provide analytic 
+    reports based on these data to inform glycemic control quality improvement efforts and patient safety events. The primary objective of the NHSN Glycemic Control, 
+    Hypoglycemia module is to facilitate measurement and benchmarking of medication-related hypoglycemia events within a facility. As additional data are collected by NHSN, 
+    an additional objective will be to facilitate inter-facility benchmarking and evaluate national-level trends of medication-related hypoglycemia over time. The IP dQM 
+    provides the FHIR line-level data necessary for calculating the module metrics.   
   </p>
-  <a name="contents"></a>
-  <h3>Definitions</h3>
+  <a name="settings_and_patient_locations"></a>
+  <h3>Settings and Patient Locations</h3>
   <p>
-    Antidiabetic Drug Days (ADD): Aggregate number of inpatient encounter days within the facility in which at least one injectable or oral ADD was 
-    received. All patients who received ADDs during the hospitalization contribute to the denominator, regardless of whether the patient experienced a 
-    hypoglycemic event. Emergency Department (ED) Visit or Observation Status (OBS): ED visit or observation status that ended within an hour of the 
-    inpatient admission are included when calculating the start and stop times of the hospitalization.  Inpatient Encounter: A hospitalization in any 
-    inpatient facility.
+    The IP dQM provides the FHIR line-level data necessary for the NHSN Glycemic Control, Hypoglycemia module. This is for all patients ordered or administered ADDs from 
+    all inpatient locations for inpatient facilities enrolled in NHSN and using the Medication Safety Component, except for long-term care facilities (LTCFs) and outpatient 
+    dialysis facilities. ED and OBS encounters are also collected if they end within an hour of the inpatient admission (hospitalization). All participating facilities must 
+    have the ability to report data electronically to NHSN using the required HL7 FHIR specifications (2).  
   </p>
-  <a name="contents"></a>
+  <a name="references"></a>
   <h3>References</h3>
   <ol>
-    <li>Wexler DJ et al. Prevalence of hyper- and hypoglycemia among inpatients with diabetes: a national survey of 44 U.S. hospitals. Diabetes Care. 2007;30(2):367-369.</li>
-    <li>Curkendall SM, Natoli JL, Alexander CM, Nathanson BH, Haidar T, Dubois RW. Economic and clinical impact of inpatient diabetic hypoglycemia. Endocr Pract. 2009;15(4):302-312.</li>
-  </ol>
+    <li>[placeholder for future site of Hypoglycemia protocol on NHSN website]</li>
+    <li>Health Level Seven International. HL7 FHIR Release 4. Available at: <a href="https://hl7.org/FHIR/">https://hl7.org/FHIR/</a></li>
 
-  <a name="contents"></a>
+  </ol>
 </div>
