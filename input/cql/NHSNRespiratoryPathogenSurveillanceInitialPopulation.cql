@@ -68,7 +68,6 @@ valueset "Transmission Based Precaution Types": 'http://cts.nlm.nih.gov/fhir/Val
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 
 //Encounter Class Codes
-code "emergency": 'EMER' from "ActCode" display 'emergency'
 code "inpatient acute": 'ACUTE' from "ActCode" display 'inpatient acute'
 code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
 code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
@@ -85,15 +84,24 @@ context Patient
 //----------------------------------
 define "Initial Population":
   "Qualifying Encounter During Measurement Period"
+  union "Qualifying Location During Measurement Period"
   union "Inpatient and Observation Encounters that ended within the last twenty four Hours"
 
 define "EncounterInpatient":
   [Encounter: "Encounter Inpatient"]
-    union [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "short stay", "emergency"}]
+    union [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "short stay"}]
 
 define "EncounterObservation":
   [Encounter: "Observation Services"]
     union [Encounter: class in {"observation encounter"}]
+
+define "Qualifying Location During Measurement Period":
+  [Encounter] Encounters
+  where exists(
+    Encounters.location EncounterLocation
+    where Global.GetLocation(EncounterLocation.location).type in "Inpatient, Emergency, and Observation Locations"
+      and EncounterLocation.period overlaps Encounters.period
+  )
 
 define "Qualifying Encounter During Measurement Period":
   ( "EncounterInpatient"
@@ -104,7 +112,7 @@ define "Qualifying Encounter During Measurement Period":
 define "Inpatient and Observation Encounters that ended within the last twenty four Hours":
   ( "EncounterInpatient"
     union "EncounterObservation") QualifyingEncounters
-      where end of QualifyingEncounters.period before or on end of "Measurement Period"
+      where end of QualifyingEncounters.period during "Measurement Period"
 
 
 //----------------------------------
@@ -256,16 +264,19 @@ define "SDE Covid or Influenza Medication Ordered":
       and Global."Normalize Interval"(RPSMedRequest.authoredOn) during "Measurement Period"
     return SharedResource.MedicationRequestResource(RPSMedRequest)
 
+//To catch all isolation precautions
 define "SDE All Observations":
   "Observations" O
   where exists("Initial Population")
   return SharedResource.ObservationResource(O)
 
+//To catch all isolation precautions
 define "SDE All ServiceRequests":
   [ServiceRequest] SR
   where exists("Initial Population")
   return SharedResource.ServiceRequestResource(SR)
 
+//To catch all isolation precautions
 define "SDE All Procedures":
   [Procedure] P
   where exists("Initial Population")
