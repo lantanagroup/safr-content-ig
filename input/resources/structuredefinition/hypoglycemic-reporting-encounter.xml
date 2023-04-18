@@ -54,6 +54,11 @@
             <path value="Encounter.diagnosis"/>
             <mustSupport value="true"/>
         </element>
+        <element id="Encounter.location">
+            <path value="Encounter.location"/>
+            <short value = "List of locations where the patient has been. Used in part to discern whether the patient is Inpatient, Emergency and or Observation status."/>
+            <min value="1"/>
+        </element>
         <element id="Encounter.location.status">
             <path value="Encounter.location.status"/>
             <mustSupport value="true"/>
