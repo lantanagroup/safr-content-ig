@@ -3,7 +3,7 @@
     "id": "NHSNdQMAcuteCareHospitalInitialPopulation",
     "identifier": {
         "system": "https://nhsnlink.org",
-        "value": "NHSNdQMAcuteCareHospitalInitialPopulation-bundle"
+        "value": "NHSNdQMAcuteCareHospitalInitialPopulation"
     },
     "type": "transaction",
     "timestamp": "2023-04-20T09:11:53.085-04:00",
