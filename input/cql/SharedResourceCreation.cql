@@ -16,6 +16,7 @@ define function "GetPatientExtensions"(domainResource DomainResource):
     or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
     or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity'
     or E.url = 'http://hl7.org/fhir/StructureDefinition/patient-genderIdentity'
+    or E.url = 'https://www.cdc.gov/nhsn/fhir/nhsnlink/StructureDefinition/nhsnlink-original-id'
   return E
 
 define function "MedicationRequestResource"(medicationRequest MedicationRequest):
