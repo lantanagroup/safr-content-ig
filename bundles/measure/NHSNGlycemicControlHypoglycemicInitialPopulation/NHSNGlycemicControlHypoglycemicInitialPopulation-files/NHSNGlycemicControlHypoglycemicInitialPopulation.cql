@@ -71,10 +71,6 @@ define "Antidiabetic Drugs Administered or Ordered":
       where GetMedicationCode(MedicationRequests.medication) in "Antidiabetic Medications"
   )
 
-define "getMedicationCodeTest":
-  "MedicationRequests" MedicationRequest
-  return GetMedicationCode(MedicationRequest.medication)
-
 define "MedicationRequests":
   [MedicationRequest]
 
