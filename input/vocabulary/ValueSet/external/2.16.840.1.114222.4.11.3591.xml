@@ -999,10 +999,11 @@
    <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591"/>
    <version value="20180718"/>
    <name value="Payer"/>
+   <title value="Payer"/>
    <status value="active"/>
    <date value="2018-07-18T01:00:04-04:00"/>
    <publisher value="HL7 Terminology"/>
-   <description value="Categories of types of health care payor entities as defined by the US Public Health Data Consortium SOP code system."/>
+   <description value="Categories of types of health care payor entities as defined by the US Public Health Data Consortium SOP code system"/>
    <expansion>
       <identifier value="urn:uuid:a5a88a41-73c9-45a6-9d07-7e887f7fa830"/>
       <timestamp value="2022-03-09T10:13:23-05:00"/>

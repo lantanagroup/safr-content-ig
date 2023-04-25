@@ -39,10 +39,11 @@
    <url value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.837"/>
    <version value="20121025"/>
    <name value="Ethnicity"/>
+   <title value="Ethnicity"/>
    <status value="active"/>
    <date value="2012-10-25T12:28:31-04:00"/>
    <publisher value="CDC NCHS"/>
-   <description value="The purpose of this value set is to represent CDC concepts for Ethnicity."/>
+   <description value="The purpose of this value set is to represent CDC concepts for Ethnicity"/>
    <expansion>
       <identifier value="urn:uuid:4ee1b2a1-fb24-4145-afaa-30345e5e0ea2"/>
       <timestamp value="2022-03-09T10:12:54-05:00"/>
