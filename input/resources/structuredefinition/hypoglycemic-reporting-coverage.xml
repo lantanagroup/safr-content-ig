@@ -2,19 +2,6 @@
 <StructureDefinition
     xmlns="http://hl7.org/fhir">
     <id value="hypoglycemic-reporting-coverage"/>
-    <meta>
-        <versionId value="1"/>
-        <lastUpdated value="2023-03-14T19:39:33.434+00:00"/>
-        <source value="#uu0LKxlLQn9SdhD5"/>
-        <security>
-            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
-            <code value="everyone^read"/>
-        </security>
-        <security>
-            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
-            <code value="everyone^write"/>
-        </security>
-    </meta>
     <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/hypoglycemic-reporting-coverage"/>
     <name value="HypoglycemicReportingCoverage"/>
     <title value="Hypoglycemic Reporting Coverage"/>

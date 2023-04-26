@@ -1784,7 +1784,7 @@
                                 "valueCoding": {
                                     "system": "http://terminology.hl7.org/CodeSystem/condition-category",
                                     "code": "encounter-diagnosis",
-                                    "display": "encounter-diagnosis"
+                                    "display": "Encounter Diagnosis"
                                 }
                             },
                             {

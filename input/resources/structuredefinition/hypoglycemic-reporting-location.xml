@@ -2,19 +2,6 @@
 <StructureDefinition
     xmlns="http://hl7.org/fhir">
     <id value="hypoglycemic-reporting-location"/>
-    <meta>
-        <versionId value="1"/>
-        <lastUpdated value="2023-03-14T20:43:03.126+00:00"/>
-        <source value="#V3jxvctzhH5W4OG9"/>
-        <security>
-            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
-            <code value="everyone^write"/>
-        </security>
-        <security>
-            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
-            <code value="everyone^read"/>
-        </security>
-    </meta>
     <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/hypoglycemic-reporting-location"/>
     <name value="HypoglycemicReportingLocation"/>
     <title value="Hypoglycemic Reporting Location"/>

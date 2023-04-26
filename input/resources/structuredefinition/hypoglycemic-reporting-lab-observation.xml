@@ -2,19 +2,6 @@
 <StructureDefinition
     xmlns="http://hl7.org/fhir">
     <id value="hypoglycemic-reporting-lab-observation"/>
-    <meta>
-        <versionId value="1"/>
-        <lastUpdated value="2023-03-14T19:52:03.380+00:00"/>
-        <source value="#0XCVrtSSpNZme7Op"/>
-        <security>
-            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
-            <code value="everyone^read"/>
-        </security>
-        <security>
-            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
-            <code value="everyone^write"/>
-        </security>
-    </meta>
     <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/hypoglycemic-reporting-lab-observation"/>
     <name value="HypoglycemicReportingLabObservation"/>
     <title value="Hypoglycemic Reporting Lab Observation"/>

@@ -2,19 +2,6 @@
 <StructureDefinition
     xmlns="http://hl7.org/fhir">
     <id value="hypoglycemic-reporting-specimen"/>
-    <meta>
-        <versionId value="1"/>
-        <lastUpdated value="2023-03-14T21:15:29.441+00:00"/>
-        <source value="#RYvWrC0Y64y9vDB4"/>
-        <security>
-            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
-            <code value="everyone^write"/>
-        </security>
-        <security>
-            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
-            <code value="everyone^read"/>
-        </security>
-    </meta>
     <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/hypoglycemic-reporting-specimen"/>
     <name value="HypoglycemicReportingSpecimen"/>
     <title value="Hypoglycemic Reporting Specimen"/>
