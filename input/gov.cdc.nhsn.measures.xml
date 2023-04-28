@@ -70,6 +70,9 @@
         <grouping id="example">
             <name value="Knowledge Artifacts: Examples"/>
         </grouping>
+        <grouping id="extensions">
+            <name value="Extensions"/>
+        </grouping>
 
         <!-- <grouping id="prequal">
             <name value="Pre-Qualification"/>
@@ -96,9 +99,9 @@
             <reference>
                 <reference value="StructureDefinition/ip-measurereport-list"/>
             </reference>
-            <name value="Individual MasureReport List Profile"/>
+            <name value="Individual MeasureReport List Profile"/>
             <description
-                value="List of all Individual MeasureReports for a given NHSN measure; each individual MR pertians to an individual who has been determined/evaluated to be in the Initial Population"/>
+                value="List of all Individual MeasureReports for a given NHSN measure; each individual MR pertains to an individual who has been determined/evaluated to be in the Initial Population"/>
             <groupingId value="submission"/>
         </resource>
         <resource>
@@ -107,7 +110,7 @@
             </reference>
             <name value="Patients of Interest List Profile"/>
             <description
-                value="List Profile defining individual Patients being considered for evalautation for NHSN Measure reporting"/>
+                value="List Profile defining individual Patients being considered for evaluation for NHSN Measure reporting"/>
             <groupingId value="submission"/>
         </resource>
         <resource>
@@ -117,6 +120,15 @@
             <name value="Cross-Measure Patient"/>
             <description
                 value="This is the cross-measure Patient profile requirements for reporting to NHSN for all measures"/>
+            <groupingId value="cross-measure"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/nhsn-submitting-organization"/>
+            </reference>
+            <name value="Submitting Organization"/>
+            <description
+                value="NHSN Submitting Organization"/>
             <groupingId value="cross-measure"/>
         </resource>
         <resource>
@@ -254,6 +266,51 @@
             <description
                 value="Device - Software System Example"/>
             <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Bundle/submission-example1"/>
+            </reference>
+            <name value="Submission Example 1"/>
+            <description
+                value="Measure Bundle - Submission Example 1"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/link-patient-list-applicable-period-extension"/>
+            </reference>
+            <name value="Patient List Applicable Period"/>
+            <description
+                value="An extension used to indicate the reporting period associated with the census List."/>
+            <groupingId value="extensions"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/link-original-resource-id-extension"/>
+            </reference>
+            <name value="Original Resource Id"/>
+            <description
+                value="An extension to store an original {Resource}.id of from a source that was modified by a processing system (e.g. NHSNLink) to make it usable for NHSN. This may occur if the resource id is not valid per the FHIR specification (e.g. the id is more than 64 characters)."/>
+            <groupingId value="extensions"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/link-original-element-value-extension"/>
+            </reference>
+            <name value="Original Element Value"/>
+            <description
+                value="An extension to store an original value of an element from a source that was modified by a processing system (e.g. NHSNLink) to make it usable for NHSN. This may include changing logically invalid data, data not matching specification requirements (use sparingly for specific instances only), normalization purposes, or other reasons."/>
+            <groupingId value="extensions"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/link-original-mapped-concept-extension"/>
+            </reference>
+            <name value="Original Mapped Concept"/>
+            <description
+                value="An extension used to store an original Concept that was mapped during processing."/>
+            <groupingId value="extensions"/>
         </resource>
 
 

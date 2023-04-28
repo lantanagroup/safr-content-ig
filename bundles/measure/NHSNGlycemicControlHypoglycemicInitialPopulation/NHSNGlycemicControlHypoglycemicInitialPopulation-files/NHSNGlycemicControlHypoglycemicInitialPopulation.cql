@@ -235,7 +235,7 @@ define function "GetSpecimen"(reference Reference):
 
 define function "GetIdExtensions"(domainResource DomainResource):
   domainResource.extension E
-  where E.url = 'https://www.cdc.gov/nhsn/fhir/nhsnlink/StructureDefinition/nhsnlink-original-id'
+  where E.url = 'http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension'
   return E
 
 define function "GetPatientExtensions"(domainResource DomainResource):

@@ -29,7 +29,7 @@
         </element>
         <element id="List.extension.url">
             <path value="List.extension.url"/>
-            <fixedUri value="https://www.lantanagroup.com/fhir/StructureDefinition/link-patient-list-applicable-period"/>
+            <fixedUri value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-patient-list-applicable-period-extension"/>
         </element>
         <element id="List.extension.value[x]">
             <path value="List.extension.value[x]"/>
