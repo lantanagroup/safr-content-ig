@@ -1,13 +1,11 @@
 <!-- Start by finding all references to "mycontentig" and updating to appropriate text for your IG, including changing realm -->
 <ImplementationGuide xmlns="http://hl7.org/fhir"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://hl7.org/fhir ../input-cache/schemas/R5/fhir-single.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../input-cache/schemas/R5/fhir-single.xsd">
     <id value="gov.cdc.nhsn.measures"/>
     <!--  <extension url="http://hl7.org/fhir/tools/StructureDefinition/igpublisher-spreadsheet">
     <valueString value="resources-spreadsheet.xml"/>
   </extension>-->
-    <url
-        value="http://lantanagroup.com/fhir/nhsn-measures/ImplementationGuide/gov.cdc.nhsn.measures"/>
+    <url value="http://lantanagroup.com/fhir/nhsn-measures/ImplementationGuide/gov.cdc.nhsn.measures"/>
     <!-- This version will propagate to all artifacts unless the "propagate-version" extension is overridden -->
     <version value="0.2.0"/>
     <name value="NHSNMeasures"/>
@@ -46,12 +44,39 @@
         <version value="3.0.0"/>
     </dependsOn>
     <dependsOn>
-        <uri
-            value="http://hl7.org/fhir/us/davinci-deqm/ImplementationGuide/hl7.fhir.us.davinci-deqm"/>
+        <uri value="http://hl7.org/fhir/us/davinci-deqm/ImplementationGuide/hl7.fhir.us.davinci-deqm"/>
         <packageId value="hl7.fhir.us.davinci-deqm"/>
         <version value="3.1.0"/>
     </dependsOn>
     <definition>
+        <!-- Special parameter for external extensions with external URLs, but unpublished -->
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+            <extension url="code">
+                <valueString value="special-url"/>
+            </extension>
+            <extension url="value">
+                <valueString value="http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.population.description"/>
+            </extension>
+        </extension>
+
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+            <extension url="code">
+                <valueString value="special-url"/>
+            </extension>
+            <extension url="value">
+                <valueString value="http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference"/>
+            </extension>
+        </extension>
+
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+            <extension url="code">
+                <valueString value="special-url"/>
+            </extension>
+            <extension url="value">
+                <valueString value="http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference"/>
+            </extension>
+        </extension>
+
         <grouping id="submission">
             <name value="Current NHSN Report Submission"/>
         </grouping>
@@ -82,8 +107,7 @@
                 <reference value="StructureDefinition/nhsn-measurereport-bundle"/>
             </reference>
             <name value="NHSN Report Bundle"/>
-            <description
-                value="Profile of the Report Submission (to NHSN) Bundle profile comprised of a Patients of Interest List, a subject-list MeasureReport, and multiple individual MeasureReports."/>
+            <description value="Profile of the Report Submission (to NHSN) Bundle profile comprised of a Patients of Interest List, a subject-list MeasureReport, and multiple individual MeasureReports."/>
             <groupingId value="submission"/>
         </resource>
         <resource>
@@ -91,8 +115,7 @@
                 <reference value="StructureDefinition/subjectlist-measurereport"/>
             </reference>
             <name value="Subject-List MeasureReport Profile"/>
-            <description
-                value="Subject-list MeasureReport Profile is based on the base MeasureReport structure. It contains the List of all Individual MeasureReports that have been evaluated to be included in the Initial Population (IP), the IP count total, and its subjectReults references the aforementioned .contained Individual MeasureReport List."/>
+            <description value="Subject-list MeasureReport Profile is based on the base MeasureReport structure. It contains the List of all Individual MeasureReports that have been evaluated to be included in the Initial Population (IP), the IP count total, and its subjectReults references the aforementioned .contained Individual MeasureReport List."/>
             <groupingId value="submission"/>
         </resource>
         <resource>
@@ -100,8 +123,7 @@
                 <reference value="StructureDefinition/ip-measurereport-list"/>
             </reference>
             <name value="Individual MeasureReport List Profile"/>
-            <description
-                value="List of all Individual MeasureReports for a given NHSN measure; each individual MR pertains to an individual who has been determined/evaluated to be in the Initial Population"/>
+            <description value="List of all Individual MeasureReports for a given NHSN measure; each individual MR pertains to an individual who has been determined/evaluated to be in the Initial Population"/>
             <groupingId value="submission"/>
         </resource>
         <resource>
@@ -109,8 +131,7 @@
                 <reference value="StructureDefinition/poi-list"/>
             </reference>
             <name value="Patients of Interest List Profile"/>
-            <description
-                value="List Profile defining individual Patients being considered for evaluation for NHSN Measure reporting"/>
+            <description value="List Profile defining individual Patients being considered for evaluation for NHSN Measure reporting"/>
             <groupingId value="submission"/>
         </resource>
         <resource>
@@ -118,8 +139,7 @@
                 <reference value="StructureDefinition/cross-measure-patient"/>
             </reference>
             <name value="Cross-Measure Patient"/>
-            <description
-                value="This is the cross-measure Patient profile requirements for reporting to NHSN for all measures"/>
+            <description value="This is the cross-measure Patient profile requirements for reporting to NHSN for all measures"/>
             <groupingId value="cross-measure"/>
         </resource>
         <resource>
@@ -127,8 +147,7 @@
                 <reference value="StructureDefinition/nhsn-submitting-organization"/>
             </reference>
             <name value="Submitting Organization"/>
-            <description
-                value="NHSN Submitting Organization"/>
+            <description value="NHSN Submitting Organization"/>
             <groupingId value="cross-measure"/>
         </resource>
         <resource>
@@ -136,8 +155,7 @@
                 <reference value="StructureDefinition/hypoglycemic-reporting-encounter"/>
             </reference>
             <name value="Hypoglycemic Event Encounter"/>
-            <description
-                value="Encounter requirements for reporting Hypoglycemic events"/>
+            <description value="Encounter requirements for reporting Hypoglycemic events"/>
             <groupingId value="hypo"/>
         </resource>
         <resource>
@@ -145,18 +163,15 @@
                 <reference value="StructureDefinition/hypoglycemic-reporting-condition"/>
             </reference>
             <name value="Hypoglycemic Event Condition"/>
-            <description
-                value="Condition requirements for reporting Hypoglycemic events"/>
+            <description value="Condition requirements for reporting Hypoglycemic events"/>
             <groupingId value="hypo"/>
         </resource>
         <resource>
             <reference>
-                <reference
-                    value="StructureDefinition/hypoglycemic-reporting-medicationadministration"/>
+                <reference value="StructureDefinition/hypoglycemic-reporting-medicationadministration"/>
             </reference>
             <name value="Hypoglycemic Event MedicationAdministration"/>
-            <description
-                value="MedicationAdministration requirements for reporting Hypoglycemic events"/>
+            <description value="MedicationAdministration requirements for reporting Hypoglycemic events"/>
             <groupingId value="hypo"/>
         </resource>
         <resource>
@@ -164,8 +179,7 @@
                 <reference value="StructureDefinition/hypoglycemic-reporting-medicationrequest"/>
             </reference>
             <name value="Hypoglycemic Event MedicationRequest"/>
-            <description
-                value="MedicationRequest requirements for reporting Hypoglycemic events"/>
+            <description value="MedicationRequest requirements for reporting Hypoglycemic events"/>
             <groupingId value="hypo"/>
         </resource>
         <resource>
@@ -173,8 +187,7 @@
                 <reference value="StructureDefinition/hypoglycemic-reporting-coverage"/>
             </reference>
             <name value="Hypoglycemic Event Coverage"/>
-            <description
-                value="Coverage requirements for reporting Hypoglycemic events"/>
+            <description value="Coverage requirements for reporting Hypoglycemic events"/>
             <groupingId value="hypo"/>
         </resource>
         <resource>
@@ -182,8 +195,7 @@
                 <reference value="StructureDefinition/hypoglycemic-reporting-lab-observation"/>
             </reference>
             <name value="Hypoglycemic Event Lab Result Observation"/>
-            <description
-                value="Lab Result Observation requirements for reporting Hypoglycemic events"/>
+            <description value="Lab Result Observation requirements for reporting Hypoglycemic events"/>
             <groupingId value="hypo"/>
         </resource>
         <resource>
@@ -191,8 +203,7 @@
                 <reference value="StructureDefinition/hypoglycemic-reporting-location"/>
             </reference>
             <name value="Hypoglycemic Event Location"/>
-            <description
-                value="Location requirements for reporting Hypoglycemic events"/>
+            <description value="Location requirements for reporting Hypoglycemic events"/>
             <groupingId value="hypo"/>
         </resource>
         <resource>
@@ -200,8 +211,7 @@
                 <reference value="StructureDefinition/hypoglycemic-reporting-medication"/>
             </reference>
             <name value="Hypoglycemic Event Medication"/>
-            <description
-                value="Medication requirements for reporting Hypoglycemic events"/>
+            <description value="Medication requirements for reporting Hypoglycemic events"/>
             <groupingId value="hypo"/>
         </resource>
         <resource>
@@ -209,8 +219,7 @@
                 <reference value="StructureDefinition/hypoglycemic-reporting-servicerequest"/>
             </reference>
             <name value="Hypoglycemic Event ServiceRequest"/>
-            <description
-                value="ServiceRequest requirements for reporting Hypoglycemic events"/>
+            <description value="ServiceRequest requirements for reporting Hypoglycemic events"/>
             <groupingId value="hypo"/>
         </resource>
         <resource>
@@ -218,8 +227,7 @@
                 <reference value="StructureDefinition/hypoglycemic-reporting-specimen"/>
             </reference>
             <name value="Hypoglycemic Event Specimen"/>
-            <description
-                value="Specimen requirements for reporting Hypoglycemic events"/>
+            <description value="Specimen requirements for reporting Hypoglycemic events"/>
             <groupingId value="hypo"/>
         </resource>
         <resource>
@@ -227,8 +235,7 @@
                 <reference value="Library/SharedResourceCreation"/>
             </reference>
             <name value="SharedResourceCreation"/>
-            <description
-                value="Shared Resource Creation Library"/>
+            <description value="Shared Resource Creation Library"/>
             <groupingId value="libs"/>
         </resource>
         <resource>
@@ -236,8 +243,7 @@
                 <reference value="Library/NHSNGlycemicControlHypoglycemicInitialPopulation"/>
             </reference>
             <name value="NHSNGlycemicControlHypoglycemicInitialPopulation"/>
-            <description
-                value="Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure"/>
+            <description value="Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure"/>
             <groupingId value="libs"/>
         </resource>
         <resource>
@@ -245,8 +251,7 @@
                 <reference value="Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation"/>
             </reference>
             <name value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"/>
-            <description
-                value="Library of NHSN Respiratory Pathogen Surveillance Initial Population Measure"/>
+            <description value="Library of NHSN Respiratory Pathogen Surveillance Initial Population Measure"/>
             <groupingId value="libs"/>
         </resource>
         <resource>
@@ -254,8 +259,7 @@
                 <reference value="Library/NHSNdQMAcuteCareHospitalInitialPopulation"/>
             </reference>
             <name value="NHSNdQMAcuteCareHospitalInitialPopulation"/>
-            <description
-                value="Library of NHSN dQM Acute Care Hospital Initial Population Measure"/>
+            <description value="Library of NHSN dQM Acute Care Hospital Initial Population Measure"/>
             <groupingId value="libs"/>
         </resource>
         <resource>
@@ -263,8 +267,7 @@
                 <reference value="Device/cqf-tooling"/>
             </reference>
             <name value="cqf-tooling"/>
-            <description
-                value="Device - Software System Example"/>
+            <description value="Device - Software System Example"/>
             <groupingId value="example"/>
         </resource>
         <resource>
@@ -272,17 +275,23 @@
                 <reference value="Bundle/submission-example1"/>
             </reference>
             <name value="Submission Example 1"/>
-            <description
-                value="Measure Bundle - Submission Example 1"/>
+            <description value="Measure Bundle - Submission Example 1"/>
             <groupingId value="example"/>
         </resource>
+        <!--<resource>
+            <reference>
+                <reference value="Bundle/submission-example2"/>
+            </reference>
+            <name value="Submission Example 2"/>
+            <description value="Measure Bundle - Submission Example 2"/>
+            <groupingId value="example"/>
+        </resource>-->
         <resource>
             <reference>
                 <reference value="StructureDefinition/link-patient-list-applicable-period-extension"/>
             </reference>
             <name value="Patient List Applicable Period"/>
-            <description
-                value="An extension used to indicate the reporting period associated with the census List."/>
+            <description value="An extension used to indicate the reporting period associated with the census List."/>
             <groupingId value="extensions"/>
         </resource>
         <resource>
@@ -290,8 +299,7 @@
                 <reference value="StructureDefinition/link-original-resource-id-extension"/>
             </reference>
             <name value="Original Resource Id"/>
-            <description
-                value="An extension to store an original {Resource}.id of from a source that was modified by a processing system (e.g. NHSNLink) to make it usable for NHSN. This may occur if the resource id is not valid per the FHIR specification (e.g. the id is more than 64 characters)."/>
+            <description value="An extension to store an original {Resource}.id of from a source that was modified by a processing system (e.g. NHSNLink) to make it usable for NHSN. This may occur if the resource id is not valid per the FHIR specification (e.g. the id is more than 64 characters)."/>
             <groupingId value="extensions"/>
         </resource>
         <resource>
@@ -299,8 +307,7 @@
                 <reference value="StructureDefinition/link-original-element-value-extension"/>
             </reference>
             <name value="Original Element Value"/>
-            <description
-                value="An extension to store an original value of an element from a source that was modified by a processing system (e.g. NHSNLink) to make it usable for NHSN. This may include changing logically invalid data, data not matching specification requirements (use sparingly for specific instances only), normalization purposes, or other reasons."/>
+            <description value="An extension to store an original value of an element from a source that was modified by a processing system (e.g. NHSNLink) to make it usable for NHSN. This may include changing logically invalid data, data not matching specification requirements (use sparingly for specific instances only), normalization purposes, or other reasons."/>
             <groupingId value="extensions"/>
         </resource>
         <resource>
@@ -308,8 +315,32 @@
                 <reference value="StructureDefinition/link-original-mapped-concept-extension"/>
             </reference>
             <name value="Original Mapped Concept"/>
-            <description
-                value="An extension used to store an original Concept that was mapped during processing."/>
+            <description value="An extension used to store an original Concept that was mapped during processing."/>
+            <groupingId value="extensions"/>
+        </resource>
+
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/extension-MeasureReport.population.description"/>
+            </reference>
+            <name value="Measure Report Population Description (R5 surrogate extension)"/>
+            <description value="Measure Report Population Description (The definition in the NHSN is a surrogate for the extension. CQF Tooling uses this extension, but is yet unpublished.)"/>
+            <groupingId value="extensions"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/extension-MeasureReport.supplementalDataElement.reference"/>
+            </reference>
+            <name value="Measure Report Supplemental Data Element Reference (R5 surrogate extension)"/>
+            <description value="Measure Report Supplemental Data Element Reference (The definition in the NHSN is a surrogate for the extension. CQF Tooling uses this extension, but is yet unpublished.)"/>
+            <groupingId value="extensions"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/extension-criteriaReference"/>
+            </reference>
+            <name value="Measure Report Criteria Reference (R5 surrogate extension)"/>
+            <description value="Measure Report Criteria Reference (The definition in the NHSN is a surrogate for the extension. CQF Tooling uses this extension, but is yet unpublished.)"/>
             <groupingId value="extensions"/>
         </resource>
 

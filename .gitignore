@@ -12,6 +12,9 @@ output
 ###########################
 Thumbs.db
 
+# VS Code generated files
+.vscode
+
 # OS generated files #
 ######################
 .DS_Store
