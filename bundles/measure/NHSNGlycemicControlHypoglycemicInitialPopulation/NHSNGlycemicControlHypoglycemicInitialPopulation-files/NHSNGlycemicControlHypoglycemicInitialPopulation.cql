@@ -152,6 +152,10 @@ define "SDE Initial Population Encounters":
   "Initial Population" IP
   return SharedResource.EncounterResource(IP)
 
+define "SDE Location":
+  [Location] Locations
+  return SharedResource.LocationResource(Locations)
+
 define "SDE Medication":
   ("SDE Medication Request"
   union "SDE Medication Administration") MedReqOrAdmin
