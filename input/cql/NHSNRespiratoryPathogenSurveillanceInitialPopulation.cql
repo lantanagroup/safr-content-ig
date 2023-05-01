@@ -85,7 +85,6 @@ context Patient
 define "Initial Population":
   "Qualifying Encounter During Measurement Period"
   union "Qualifying Location During Measurement Period"
-  union "Inpatient and Observation Encounters that ended within the last twenty four Hours"
 
 define "EncounterInpatient":
   [Encounter: "Encounter Inpatient"]
@@ -108,11 +107,6 @@ define "Qualifying Encounter During Measurement Period":
   union "EncounterObservation") QualifyingEncounters
   where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged'}
     and QualifyingEncounters.period overlaps "Measurement Period"
-
-define "Inpatient and Observation Encounters that ended within the last twenty four Hours":
-  ( "EncounterInpatient"
-    union "EncounterObservation") QualifyingEncounters
-      where end of QualifyingEncounters.period during "Measurement Period"
 
 
 //----------------------------------
@@ -353,6 +347,12 @@ define "Inpatient and Observation Encounters that ended within the last twenty f
     union "EncounterObservation") QualifyingEncounters
       where end of QualifyingEncounters.period before Today()
       and end of QualifyingEncounters.period after Today() - 1 day
+
+//Remove by request of the CDC due to is a duplicate logic. 
+define "Inpatient and Observation Encounters that ended within the last twenty four Hours":
+  ( "EncounterInpatient"
+    union "EncounterObservation") QualifyingEncounters
+      where end of QualifyingEncounters.period during "Measurement Period"
 
 -----------------------------------------------------------------------------------------------------------*/
 
