@@ -48,7 +48,7 @@
         <code value="home"/>
         <display value="Home"/>
         <definition
-            value="The patient was dicharged and has indicated that they are going to return home afterwards."/>
+            value="The patient was discharged and has indicated that they are going to return home afterwards."/>
     </concept>
     <concept>
         <code value="alt-home"/>

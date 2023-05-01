@@ -21,7 +21,7 @@
             <max value="1"/>
             <type>
                 <code value="Resource"/>
-                <Profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/ip-measurereport-list"/>
+                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/ip-measurereport-list"/>
             </type>
         </element>
         <element id="MeasureReport.type">

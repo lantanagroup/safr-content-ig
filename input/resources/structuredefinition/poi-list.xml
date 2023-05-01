@@ -22,7 +22,14 @@
             <type>
                 <code value="Extension"/>
             </type>
-            <fixedUri value="https://www.lantanagroup.com/fhir/StructureDefinition/link-patient-list-applicable-period"/>
+        </element>
+        <element id="List.extension.extension">
+            <path value="List.extension.extension"/>
+            <max value="0"/>
+        </element>
+        <element id="List.extension.url">
+            <path value="List.extension.url"/>
+            <fixedUri value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-patient-list-applicable-period-extension"/>
         </element>
         <element id="List.extension.value[x]">
             <path value="List.extension.value[x]"/>
@@ -35,7 +42,6 @@
             <path value="List.identifier"/>
             <min value="1"/>
         </element>
-       
         <element id="List.entry.item">
             <path value="List.entry.item"/>
             <type>

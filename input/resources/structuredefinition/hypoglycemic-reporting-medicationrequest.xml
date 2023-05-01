@@ -2,19 +2,6 @@
 <StructureDefinition
     xmlns="http://hl7.org/fhir">
     <id value="hypoglycemic-reporting-medicationrequest"/>
-    <meta>
-        <versionId value="3"/>
-        <lastUpdated value="2023-03-13T22:44:53.041+00:00"/>
-        <source value="#Vkme7sUxWsDwvNKL"/>
-        <security>
-            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
-            <code value="everyone^write"/>
-        </security>
-        <security>
-            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
-            <code value="everyone^read"/>
-        </security>
-    </meta>
     <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/hypoglycemic-reporting-medicationrequest"/>
     <name value="HypoglycemicReportMedicationRequest"/>
     <title value="Hypoglycemic Report MedicationRequest"/>

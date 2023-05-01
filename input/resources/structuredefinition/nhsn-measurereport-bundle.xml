@@ -19,12 +19,31 @@
         <element id="Bundle.entry">
             <path value="Bundle.entry"/>
             <slicing>
+                <!--<discriminator>
+                    <type value="type"/>
+                    <path value="resource"/>
+                </discriminator>-->
                 <discriminator>
                     <type value="profile"/>
-                    <path value=".resolve()"/>
+                    <path value="resource"/>
                 </discriminator>
                 <rules value="open"/>
             </slicing>
+        </element>
+        <!-- NHSN Submitting Organization -->
+        <element id="Bundle.entry:submitting-organization">
+            <path value="Bundle.entry"/>
+            <sliceName value="organization"/>
+            <min value="1"/>
+            <max value="1"/>
+        </element>
+        <element id="Bundle.entry:submitting-organization.resource">
+            <path value="Bundle.entry.resource"/>
+            <min value="1"/>
+            <type>
+                <code value="Organization"/>
+                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/nhsn-submitting-organization"/>
+            </type>
         </element>
         <!-- subject-list MR -->
         <element id="Bundle.entry:subject-list">
@@ -37,7 +56,7 @@
             <path value="Bundle.entry.resource"/>
             <min value="1"/>
             <type>
-                <code value="Resource"/>
+                <code value="MeasureReport"/>
                 <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/subjectlist-measurereport"/>
             </type>
         </element>
@@ -51,7 +70,7 @@
             <path value="Bundle.entry.resource"/>
             <min value="1"/>
             <type>
-                <code value="Resource"/>
+                <code value="MeasureReport"/>
                 <profile value="http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"/>
             </type>
         </element>
@@ -66,9 +85,91 @@
             <path value="Bundle.entry.resource"/>
             <min value="1"/>
             <type>
-                <code value="Resource"/>
+                <code value="List"/>
                 <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/poi-list"/>
             </type>
         </element>
+        <!-- Patients -->
+        <element id="Bundle.entry:patient">
+            <path value="Bundle.entry"/>
+            <sliceName value="patient"/>
+            <min value="1"/>
+            <max value="*"/>
+        </element>
+        <element id="Bundle.entry:patient.resource">
+            <path value="Bundle.entry.resource"/>
+            <min value="1"/>
+            <type>
+                <code value="Patient"/>
+                <profile value="http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"/>
+            </type>
+        </element>
+        <!-- Encounters -
+        <element id="Bundle.entry:encounter">
+            <path value="Bundle.entry"/>
+            <sliceName value="encounter"/>
+            <min value="0"/>
+            <max value="*"/>
+        </element>
+        <element id="Bundle.entry:encounter.resource">
+            <path value="Bundle.entry.resource"/>
+            <min value="1"/>
+            <type>
+                <code value="Encounter"/>
+                
+            </type>
+        </element>
+        - Coverage -
+        <element id="Bundle.entry:coverage">
+            <path value="Bundle.entry"/>
+            <sliceName value="coverage"/>
+            <min value="0"/>
+            <max value="*"/>
+        </element>
+        <element id="Bundle.entry:coverage.resource">
+            <path value="Bundle.entry.resource"/>
+            <min value="1"/>
+            <type>
+                <code value="Coverage"/>
+            </type>
+        </element>
+        - Clinical -
+        <element id="Bundle.entry:clinical">
+            <path value="Bundle.entry"/>
+            <sliceName value="clinical"/>
+            <min value="0"/>
+            <max value="*"/>
+        </element>
+        <element id="Bundle.entry:clinical.resource">
+            <path value="Bundle.entry.resource"/>
+            <min value="1"/>
+            <type>
+                <code value="Condition"/>
+                <code value="DocumentReference"/>
+                <code value="DiagnositcReport"/>
+                <code value="Device"/>
+                <code value="Medication"/>
+                <code value="MedicationRequest"/>
+                <code value="MedicationAdministration"/>
+                <code value="Observation"/>
+                <code value="Procedure"/>
+                <code value="ServiceRequest"/>
+                <code value="Specimen"/>
+            </type>
+        </element>
+        - Supportive -
+        <element id="Bundle.entry:supportive-resources">
+            <path value="Bundle.entry"/>
+            <sliceName value="supportive-resources"/>
+            <min value="0"/>
+            <max value="*"/>
+        </element>
+        <element id="Bundle.entry:supportive-resources.resource">
+            <path value="Bundle.entry.resource"/>
+            <min value="1"/>
+            <type>
+                <code value="Location"/>
+            </type>
+        </element>-->
     </differential>
 </StructureDefinition>

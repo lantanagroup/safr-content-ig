@@ -2,24 +2,11 @@
 <StructureDefinition
     xmlns="http://hl7.org/fhir">
     <id value="cross-measure-patient"/>
-    <meta>
-        <versionId value="3"/>
-        <lastUpdated value="2023-03-13T22:27:20.844+00:00"/>
-        <source value="#Q6gBtfxvpquqGtSU"/>
-        <security>
-            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
-            <code value="everyone^write"/>
-        </security>
-        <security>
-            <system value="https://trifolia-fhir.lantanagroup.com/security"/>
-            <code value="everyone^read"/>
-        </security>
-    </meta>
     <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/cross-measure-patient"/>
     <name value="CrossMeasurePatient"/>
     <title value="Cross-Measure Patient Profile"/>
     <status value="active"/>
-    <description value="This is the cross-measure Patient profle requirements for reporting to NHSN for all measures"/>
+    <description value="This is the cross-measure Patient profile requirements for reporting to NHSN for all measures"/>
     <fhirVersion value="4.0.1"/>
     <kind value="resource"/>
     <abstract value="false"/>
@@ -34,68 +21,16 @@
             <path value="Patient.identifier"/>
             <min value="1"/>
         </element>
-        <element id="Patient.birthDate">
-            <path value="Patient.birthDate"/>
-            <min value="1"/>
-        </element>
-        <element id="Patient.deceased[x]">
-            <path value="Patient.deceased[x]"/>
+        <element id="Patient.identifier.use">
+            <path value="Patient.identifier.use"/>
             <mustSupport value="true"/>
         </element>
-        <element id="Patient.contact">
-            <path value="Patient.contact"/>
+        <element id="Patient.identifier.type">
+            <path value="Patient.identifier.type"/>
             <mustSupport value="true"/>
         </element>
-        <element id="Patient.link">
-            <path value="Patient.link"/>
-            <mustSupport value="true"/>
-        </element>
-        <element id="Patient.communication.preferred">
-            <path value="Patient.communication.preferred"/>
-            <mustSupport value="true"/>
-        </element>
-        <element id="Patient.contact.relationship">
-            <path value="Patient.contact.relationship"/>
-            <mustSupport value="true"/>
-        </element>
-        <element id="Patient.contact.name">
-            <path value="Patient.contact.name"/>
-            <mustSupport value="true"/>
-        </element>
-        <element id="Patient.contact.address">
-            <path value="Patient.contact.address"/>
-            <mustSupport value="true"/>
-        </element>
-        <element id="Patient.contact.period">
-            <path value="Patient.contact.period"/>
-            <mustSupport value="true"/>
-        </element>
-        <element id="Patient.address.use">
-            <path value="Patient.address.use"/>
-            <mustSupport value="true"/>
-        </element>
-        <element id="Patient.address.type">
-            <path value="Patient.address.type"/>
-            <mustSupport value="true"/>
-        </element>
-        <element id="Patient.address.text">
-            <path value="Patient.address.text"/>
-            <mustSupport value="true"/>
-        </element>
-        <element id="Patient.address.district">
-            <path value="Patient.address.district"/>
-            <mustSupport value="true"/>
-        </element>
-        <element id="Patient.address.country">
-            <path value="Patient.address.country"/>
-            <mustSupport value="true"/>
-        </element>
-        <element id="Patient.telecom.rank">
-            <path value="Patient.telecom.rank"/>
-            <mustSupport value="true"/>
-        </element>
-        <element id="Patient.telecom.period">
-            <path value="Patient.telecom.period"/>
+        <element id="Patient.identifier.period">
+            <path value="Patient.identifier.period"/>
             <mustSupport value="true"/>
         </element>
         <element id="Patient.name.use">
@@ -118,16 +53,68 @@
             <path value="Patient.name.period"/>
             <mustSupport value="true"/>
         </element>
-        <element id="Patient.identifier.use">
-            <path value="Patient.identifier.use"/>
+        <element id="Patient.telecom.rank">
+            <path value="Patient.telecom.rank"/>
             <mustSupport value="true"/>
         </element>
-        <element id="Patient.identifier.type">
-            <path value="Patient.identifier.type"/>
+        <element id="Patient.telecom.period">
+            <path value="Patient.telecom.period"/>
             <mustSupport value="true"/>
         </element>
-        <element id="Patient.identifier.period">
-            <path value="Patient.identifier.period"/>
+        <element id="Patient.birthDate">
+            <path value="Patient.birthDate"/>
+            <min value="1"/>
+        </element>
+        <element id="Patient.deceased[x]">
+            <path value="Patient.deceased[x]"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Patient.address.use">
+            <path value="Patient.address.use"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Patient.address.type">
+            <path value="Patient.address.type"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Patient.address.text">
+            <path value="Patient.address.text"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Patient.address.district">
+            <path value="Patient.address.district"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Patient.address.country">
+            <path value="Patient.address.country"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Patient.contact">
+            <path value="Patient.contact"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Patient.contact.relationship">
+            <path value="Patient.contact.relationship"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Patient.contact.name">
+            <path value="Patient.contact.name"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Patient.contact.address">
+            <path value="Patient.contact.address"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Patient.contact.period">
+            <path value="Patient.contact.period"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Patient.communication.preferred">
+            <path value="Patient.communication.preferred"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Patient.link">
+            <path value="Patient.link"/>
             <mustSupport value="true"/>
         </element>
     </differential>
