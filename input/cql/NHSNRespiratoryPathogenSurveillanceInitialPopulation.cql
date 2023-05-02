@@ -233,7 +233,6 @@ define "SDE Covid or Influenza Medication Administered":
       and Global."Normalize Interval"(RPSMedAdmin.effective) during "Measurement Period"
     return SharedResource.MedicationAdministrationResource(RPSMedAdmin)
 
-
 define "SDE Covid or Influenza Medication Ordered":
   "MedicationRequests" RPSMedRequest
     let Meds: (GetMedicationCode(RPSMedRequest.medication))
@@ -258,6 +257,12 @@ define "SDE Covid or Influenza Medication Ordered":
       and Global."Normalize Interval"(RPSMedRequest.authoredOn) during "Measurement Period"
     return SharedResource.MedicationRequestResource(RPSMedRequest)
 
+define "SDE Medication":
+  ("SDE Covid or Influenza Medication Ordered"
+  union "SDE Covid or Influenza Medication Administered") MedReqOrAdmin
+  where MedReqOrAdmin.medication is FHIR.Reference
+  return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication))
+
 //To catch all isolation precautions
 define "SDE All Observations":
   "Observations" O
@@ -275,8 +280,8 @@ define "SDE All Procedures":
   [Procedure] P
   where exists("Initial Population")
   return SharedResource.ProcedureResource(P)
-  
 
+  
 //----------------------------------------------
 //Retrieve Resources
 //----------------------------------------------
@@ -301,10 +306,10 @@ define "Observations":
 //-----------------------------------------------------
 //functions
 //-----------------------------------------------------
-define function "GetSpecimen"(reference Reference):
+define function "GetMedication"(reference Reference ):
   First (
-    "Specimens" S where S.id = Global.GetId(reference.reference)
-  )
+    "Medications" M where M.id = Global.GetId(reference.reference)
+  )  
 
 define function "GetMedicationCode"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):
   case
@@ -316,19 +321,28 @@ define function "GetMedicationCode"(choice Choice<FHIR.CodeableConcept, FHIR.Ref
       null as FHIR.CodeableConcept
   end
 
-define function "GetMedication"(reference Reference ):
+define function "GetMedicationFrom"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):
+  case
+    when choice is FHIR.Reference then
+      GetMedication(choice as FHIR.Reference)
+    else
+      null
+  end
+
+define function GetObservation(reference Reference):
   First (
-    "Medications" M where M.id = Global.GetId(reference.reference)
+    "Observations" O where O.id = Global.GetId(reference.reference)
   )
 
 define function GetObservations(reference List<Reference>):
   reference reference
     return GetObservation(reference)
 
-define function GetObservation(reference Reference):
+define function "GetSpecimen"(reference Reference):
   First (
-    "Observations" O where O.id = Global.GetId(reference.reference)
+    "Specimens" S where S.id = Global.GetId(reference.reference)
   )
+
 
 
 /*--------------------------------------------------------------------------------------------------------
