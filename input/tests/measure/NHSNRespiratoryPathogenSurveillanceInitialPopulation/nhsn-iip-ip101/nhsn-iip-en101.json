@@ -1,0 +1,58 @@
+{
+  "resourceType": "Encounter",
+  "id": "nhsn-iip-en101",
+  "meta": {
+    "versionId": "2",
+    "lastUpdated": "2022-03-15T18:38:31.000+00:00",
+    "source": "#85cc96f2a2652dd5",
+    "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter" ]
+  },
+  "status": "finished",
+  "class": {
+    "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+    "code": "IMP",
+    "display": "inpatient encounter"
+  },
+  "type": [ {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "4525004"
+    } ],
+    "text": "Emergency department patient visit (procedure)"
+  } ],
+  "subject": {
+    "reference": "Patient/nhsn-iip-ip101"
+  },
+  "period": {
+    "start": "2022-01-01T08:00:00.0",
+    "end": "2022-01-31T08:00:00.0"
+  },
+  "diagnosis": [ {
+    "use": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+        "code": "CC"
+      } ]
+    }
+  } ],
+  "hospitalization": {
+    "dischargeDisposition": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/discharge-disposition",
+        "code": "home",
+        "display": "home"
+      } ]
+    }
+  },
+  "location": [
+    {
+      "location": {
+        "reference": "Location/nhsn-iip-loc101"
+      },
+      "period": {
+        "start": "2022-01-02T08:00:00.0",
+        "end": "2022-01-30T08:00:00.0"
+      }
+    }
+  ]
+}
