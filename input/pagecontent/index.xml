@@ -3,6 +3,40 @@
   <a name="scope"></a>
   <h3>Scope</h3>
   <p>
+    This content describes the specifications for the for the Health Level Seven International (HL7) Fast Healthcare Interoperability 
+    Resources® (FHIR) digital quality measures (dQMs) reported to the National Healthcare Safety Network (NHSN). The specifications are 
+    based on HL7 FHIR Release 4 (R4)<sup><a href="#fhir_r4">1</a></sup>, US Core 3.1.1 profiles<sup><a href="#us_core">2</a></sup>, 
+    QI Core 4.1.1 profiles<sup><a href="#qi_core">3</a></sup>, Quality Measure IG 3.0.0 profiles<sup><a href="#scqf_measures">3</a></sup>,
+    Clinical Quality Framework Common FHIR Assets 4.0.1 profiles<sup><a href="#cqf_common">3</a></sup>, Data Exchange for Quality Measures (DEQM) 3.1.0 profiles<sup><a href="#deqm">3</a></sup>, 
+    and NHSN reporting requirements.
+    </p>
+  <a name="purpose"></a>
+  <h3>Purpose</h3>
+  <p>
+    These specifications define the data content requirements for submissions to NHSN through NHSNLink.
+  </p>
+  <a name="description"></a>
+  <h3>Description</h3>
+  <p>
+    These specifications are for the content contained within the encounters identified as meeting the criteria for the dQM initial 
+    population (IP). The dQM IP defines the cohort population for which the denominator will be determined and events will be 
+    calculated per the metrics defined in each NHSN protocol. The IP can vary between dQMs and may include all inpatient, emergency 
+    department, and observation encounters. The line-level data for calculating the NHSN metrics along with data needed for 
+    stratification, risk adjustment, or benchmarking are gathered once the encounter meets the criteria for the IP.   
+  </p>
+  <h3>References</h3>
+  <ol>
+    <li><a name="fhir_r4">HL7 FHIR Release 4</a> - <a href="https://hl7.org/fhir/R4/">https://hl7.org/fhir/R4/</a></li>
+    <li><a name="us_core">US Core 3.1.1</a> - <a href="http://hl7.org/fhir/us/core/STU3.1.1/">http://hl7.org/fhir/us/core/STU3.1.1/</a></li>
+    <li><a name="qi_core">QI Core 4.1.1</a> - <a href="http://hl7.org/fhir/us/qicore/STU4.1.1/">http://hl7.org/fhir/us/qicore/STU4.1.1/</a></li>
+    <li><a name="cqf_measures">Quality Measure IG 3.0.0</a> - <a href="http://hl7.org/fhir/us/cqfmeasures/STU3/">http://hl7.org/fhir/us/cqfmeasures/STU3/</a></li>
+    <li><a name="cqf_common">Clinical Quality Framework Common FHIR Assets 4.0.1</a> - <a href="http://fhir.org/guides/cqf/common/4.0.1/">http://fhir.org/guides/cqf/common/4.0.1/</a></li>
+    <li><a name="deqm">Data Exchange for Quality Measures (DEQM) 3.1.0</a> - <a href="http://hl7.org/fhir/us/davinci-deqm/STU3.1/">http://hl7.org/fhir/us/davinci-deqm/STU3.1/</a></li>
+  </ol>
+  <!-- Previous Hypoglycemia landing page saved for potential future use for the Hypo measure page
+  <a name="scope"></a>
+  <h3>Scope</h3>
+  <p>
     This document represents the content for the Fast Healthcare Interoperability Resources (FHIR) specifications for the initial population (IP) measure that informs 
     CDC's NHSN Glycemic Control, Hypoglycemia module (1). This page is under construction and is in draft format.</p>
   <a name="purpose"></a>
@@ -37,4 +71,5 @@
     <li>Health Level Seven International. HL7 FHIR Release 4. Available at: <a href="https://hl7.org/FHIR/">https://hl7.org/FHIR/</a></li>
 
   </ol>
+-->
 </div>

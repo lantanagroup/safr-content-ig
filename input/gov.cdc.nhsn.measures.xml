@@ -48,6 +48,11 @@
         <packageId value="hl7.fhir.us.davinci-deqm"/>
         <version value="3.1.0"/>
     </dependsOn>
+    <dependsOn>
+        <uri value="http://hl7.org/fhir/us/qicore/ImplementationGuide/hl7.fhir.us.qicore"/>
+        <packageId value="hl7.fhir.us.qicore"/>
+        <version value="4.1.1"/>
+    </dependsOn>
     <definition>
         <!-- Special parameter for external extensions with external URLs, but unpublished -->
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
@@ -139,7 +144,7 @@
                 <reference value="StructureDefinition/cross-measure-patient"/>
             </reference>
             <name value="Cross-Measure Patient"/>
-            <description value="This is the cross-measure Patient profile requirements for reporting to NHSN for all measures"/>
+            <description value="This profile contains NHSN-specific Required and Must-Support elements for reporting patient information on public-health surveillance measures to NHSN (https://www.cdc.gov/nhsn/index.html)."/>
             <groupingId value="cross-measure"/>
         </resource>
         <resource>
@@ -152,34 +157,10 @@
         </resource>
         <resource>
             <reference>
-                <reference value="StructureDefinition/hypoglycemic-reporting-encounter"/>
-            </reference>
-            <name value="Hypoglycemic Event Encounter"/>
-            <description value="Encounter requirements for reporting Hypoglycemic events"/>
-            <groupingId value="hypo"/>
-        </resource>
-        <resource>
-            <reference>
                 <reference value="StructureDefinition/hypoglycemic-reporting-condition"/>
             </reference>
             <name value="Hypoglycemic Event Condition"/>
-            <description value="Condition requirements for reporting Hypoglycemic events"/>
-            <groupingId value="hypo"/>
-        </resource>
-        <resource>
-            <reference>
-                <reference value="StructureDefinition/hypoglycemic-reporting-medicationadministration"/>
-            </reference>
-            <name value="Hypoglycemic Event MedicationAdministration"/>
-            <description value="MedicationAdministration requirements for reporting Hypoglycemic events"/>
-            <groupingId value="hypo"/>
-        </resource>
-        <resource>
-            <reference>
-                <reference value="StructureDefinition/hypoglycemic-reporting-medicationrequest"/>
-            </reference>
-            <name value="Hypoglycemic Event MedicationRequest"/>
-            <description value="MedicationRequest requirements for reporting Hypoglycemic events"/>
+            <description value="This profile contains Required and Must Support data elements for reporting patient condition information to the NHSN Glycemic Control, Hypoglycemia Module. This profile is based on the [HL7 US Core Condition Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-condition.html)."/>
             <groupingId value="hypo"/>
         </resource>
         <resource>
@@ -187,7 +168,15 @@
                 <reference value="StructureDefinition/hypoglycemic-reporting-coverage"/>
             </reference>
             <name value="Hypoglycemic Event Coverage"/>
-            <description value="Coverage requirements for reporting Hypoglycemic events"/>
+            <description value="This profile contains Required and Must Support data elements for reporting coverage information to the NHSN Glycemic Control, Hypoglycemia Module. This profile is based on the [HL7 FHIR R4 Coverage Profile v4.0.1](http://hl7.org/fhir/R4/coverage.html)."/>
+            <groupingId value="hypo"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/hypoglycemic-reporting-encounter"/>
+            </reference>
+            <name value="Hypoglycemic Event Encounter"/>
+            <description value="This profile contains Required and Must Support data elements for reporting encounter information to the NHSN Glycemic Control, Hypoglycemia Module. This profile is based on the [HL7 US Core Encounter Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-encounter.html)."/>
             <groupingId value="hypo"/>
         </resource>
         <resource>
@@ -195,7 +184,7 @@
                 <reference value="StructureDefinition/hypoglycemic-reporting-lab-observation"/>
             </reference>
             <name value="Hypoglycemic Event Lab Result Observation"/>
-            <description value="Lab Result Observation requirements for reporting Hypoglycemic events"/>
+            <description value="This profile contains Required and Must Support data elements for reporting blood-glucose result information to the NHSN Glycemic Control, Hypoglycemia Module. This profile is based on the [HL7 US Core Condition Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-observation-lab.html)."/>
             <groupingId value="hypo"/>
         </resource>
         <resource>
@@ -203,7 +192,7 @@
                 <reference value="StructureDefinition/hypoglycemic-reporting-location"/>
             </reference>
             <name value="Hypoglycemic Event Location"/>
-            <description value="Location requirements for reporting Hypoglycemic events"/>
+            <description value="This profile contains Required and Must Support data elements for reporting location information to the NHSN Glycemic Control, Hypoglycemia Module. This profile is based on the [HL7 US Core Location Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-location.html)."/>
             <groupingId value="hypo"/>
         </resource>
         <resource>
@@ -211,7 +200,23 @@
                 <reference value="StructureDefinition/hypoglycemic-reporting-medication"/>
             </reference>
             <name value="Hypoglycemic Event Medication"/>
-            <description value="Medication requirements for reporting Hypoglycemic events"/>
+            <description value="This profile contains Required and Must Support data elements for reporting medication information to the NHSN Glycemic Control, Hypoglycemia Module. This profile is based on the [HL7 US Core Medication Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-medication.html)."/>
+            <groupingId value="hypo"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/hypoglycemic-reporting-medicationadministration"/>
+            </reference>
+            <name value="Hypoglycemic Event MedicationAdministration"/>
+            <description value="This profile contains Required and Must Support data elements for reporting medication administration information to the NHSN Glycemic Control, Hypoglycemia Module. This profile is based on the [HL7 FHIR R4 MedicationAdministration Profile v4.0.1](http://hl7.org/fhir/R4/medicationadministration.html)."/>
+            <groupingId value="hypo"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="StructureDefinition/hypoglycemic-reporting-medicationrequest"/>
+            </reference>
+            <name value="Hypoglycemic Event MedicationRequest"/>
+            <description value="This profile contains Required and Must Support data elements for reporting medication request (order) information to the NHSN Glycemic Control, Hypoglycemia Module. This profile is based on the [HL7 US Core MedicationRequest Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-medicationrequest.html)."/>
             <groupingId value="hypo"/>
         </resource>
         <resource>
@@ -219,7 +224,7 @@
                 <reference value="StructureDefinition/hypoglycemic-reporting-servicerequest"/>
             </reference>
             <name value="Hypoglycemic Event ServiceRequest"/>
-            <description value="ServiceRequest requirements for reporting Hypoglycemic events"/>
+            <description value="This profile contains Required and Must Support data elements for reporting blood glucose order information to the NHSN Glycemic Control, Hypoglycemia Module. This profile is based on the [HL7 FHIR R4 ServiceRequest Profile v4.0.1](http://hl7.org/fhir/R4/servicerequest.html). "/>
             <groupingId value="hypo"/>
         </resource>
         <resource>
@@ -227,7 +232,7 @@
                 <reference value="StructureDefinition/hypoglycemic-reporting-specimen"/>
             </reference>
             <name value="Hypoglycemic Event Specimen"/>
-            <description value="Specimen requirements for reporting Hypoglycemic events"/>
+            <description value="This profile contains Required and Must Support data elements for reporting blood glucose specimen information to the NHSN Glycemic Control, Hypoglycemia Module. This profile is based on the [HL7 FHIR R4 Specimen Profile v4.0.1](http://hl7.org/fhir/R4/specimen.html)."/>
             <groupingId value="hypo"/>
         </resource>
         <resource>

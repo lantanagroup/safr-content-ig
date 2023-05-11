@@ -6,7 +6,7 @@
     <name value="HypoglycemicReportingLabObservation"/>
     <title value="Hypoglycemic Reporting Lab Observation"/>
     <status value="active"/>
-    <description value="Lab Result Observation requirements for reporting Hypoglycemic events"/>
+    <description value="This profile contains Required and Must Support data elements for reporting blood-glucose result information to the NHSN Glycemic Control, Hypoglycemia Module. This profile is based on the [HL7 US Core Condition Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-observation-lab.html)"/>
     <fhirVersion value="4.0.1"/>
     <kind value="resource"/>
     <abstract value="false"/>
