@@ -112,7 +112,7 @@
                 <reference value="StructureDefinition/nhsn-measurereport-bundle"/>
             </reference>
             <name value="NHSN Report Bundle"/>
-            <description value="Profile of the Report Submission (to NHSN) Bundle profile comprised of a Patients of Interest List, a subject-list MeasureReport, and multiple individual MeasureReports."/>
+            <description value="This profile defines a valid Submission Report Submission to NHSN. The Bundle is comprised of entry slices for the data source Organization, a Patients of Interest (POI) List, at least one subject-list MeasureReport, multiple cooresponding individual MeasureReports, and the underlying patient-centric clinical information.."/>
             <groupingId value="submission"/>
         </resource>
         <resource>
