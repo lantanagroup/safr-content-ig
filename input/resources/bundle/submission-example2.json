@@ -132,26 +132,6 @@
             "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/subjectlist-measurereport"
           ]
         },
-        "contained": [
-          {
-            "resourceType": "List",
-            "id": "1",
-            "status": "current",
-            "mode": "snapshot",
-            "entry": [
-              {
-                "item": {
-                  "reference": "MeasureReport/788ca455-e11b1a59-838c24b5"
-                }
-              },
-              {
-                "item": {
-                  "reference": "MeasureReport/788ca455-e11b1a59-2ad816ff"
-                }
-              }
-            ]
-          }
-        ],
         "status": "complete",
         "type": "subject-list",
         "measure": "http://lantanagroup.com/fhir/nhsn-measures/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation",
@@ -177,10 +157,36 @@
                 },
                 "count": 2,
                 "subjectResults": {
-                  "reference": "#1"
+                  "reference": "List/788ca455-e11b1a59-9876"
                 }
               }
             ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://nhsnlink.org/fhir/List/788ca455-e11b1a59-9876",
+      "resource": {
+        "resourceType": "List",
+        "meta": {
+          "profile": [
+            "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/ip-measurereport-list"
+          ]
+        },
+        "id": "788ca455-e11b1a59-9876",
+        "status": "current",
+        "mode": "snapshot",
+        "entry": [
+          {
+            "item": {
+              "reference": "MeasureReport/788ca455-e11b1a59-838c24b5"
+            }
+          },
+          {
+            "item": {
+              "reference": "MeasureReport/788ca455-e11b1a59-2ad816ff"
+            }
           }
         ]
       }

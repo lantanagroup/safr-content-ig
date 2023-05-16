@@ -14,16 +14,7 @@
     <differential>
         <element id="MeasureReport">
             <path value="MeasureReport"/>
-        </element>
-        <element id="MeasureReport.contained">
-            <path value="MeasureReport.contained"/>
-            <min value="1"/>
-            <max value="1"/>
-            <type>
-                <code value="Resource"/>
-                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/ip-measurereport-list"/>
-            </type>
-        </element>
+        </element> 
         <element id="MeasureReport.type">
             <path value="MeasureReport.type"/>
             <type>

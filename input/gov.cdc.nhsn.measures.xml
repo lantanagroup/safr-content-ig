@@ -121,7 +121,7 @@
                 <reference value="StructureDefinition/subjectlist-measurereport"/>
             </reference>
             <name value="Subject-List MeasureReport Profile"/>
-            <description value="Subject-list MeasureReport Profile contains the count of subjects (i.e. Patients) that have been evalauted to be in the Initial Population (IP). It also references the Individual MeasureReport List "/>
+            <description value="Subject-list MeasureReport Profile contains the count of subjects (i.e. Patients) that have been evaluated to be in the Initial Population (IP). It also references the Individual MeasureReport List "/>
             <groupingId value="submission"/>
         </resource>
         <resource>
