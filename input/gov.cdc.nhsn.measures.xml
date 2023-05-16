@@ -84,6 +84,7 @@
 
         <grouping id="submission">
             <name value="Current NHSN Report Submission"/>
+            <description value="Note: By default, modifier extensions are prohibited from inclusion of report submission Bundle data to NHSN until said extension meaning is accepted by NHSN. See [Medifier Extensions](https://build.fhir.org/extensibility.html#modifierExtension) for additional information. "/>
         </grouping>
         <grouping id="cross-measure">
             <name value="Cross-Measure profiles"/>
@@ -112,7 +113,7 @@
                 <reference value="StructureDefinition/nhsn-measurereport-bundle"/>
             </reference>
             <name value="NHSN Report Bundle"/>
-            <description value="This profile defines a valid Submission Report Submission to NHSN. The Bundle is comprised of entry slices for the data source Organization, a Patients of Interest (POI) List, at least one subject-list MeasureReport, multiple cooresponding individual MeasureReports, and the underlying patient-centric clinical information.."/>
+            <description value="This profile defines a valid Submission Report Submission to NHSN. The Bundle is comprised of entry slices representing the data source Organization, a Patients of Interest (POI) List, one Subject List MeasureReport per reportable measure, an Individual MeasureReport List, individual MeasureReports, and the underlying patient-centric clinical information."/>
             <groupingId value="submission"/>
         </resource>
         <resource>
@@ -120,7 +121,7 @@
                 <reference value="StructureDefinition/subjectlist-measurereport"/>
             </reference>
             <name value="Subject-List MeasureReport Profile"/>
-            <description value="Subject-list MeasureReport Profile is based on the base MeasureReport structure. It contains the List of all Individual MeasureReports that have been evaluated to be included in the Initial Population (IP), the IP count total, and its subjectReults references the aforementioned .contained Individual MeasureReport List."/>
+            <description value="Subject-list MeasureReport Profile contains the count of subjects (i.e. Patients) that have been evalauted to be in the Initial Population (IP). It also references the Individual MeasureReport List "/>
             <groupingId value="submission"/>
         </resource>
         <resource>
@@ -128,7 +129,7 @@
                 <reference value="StructureDefinition/ip-measurereport-list"/>
             </reference>
             <name value="Individual MeasureReport List Profile"/>
-            <description value="List of all Individual MeasureReports for a given NHSN measure; each individual MR pertains to an individual who has been determined/evaluated to be in the Initial Population"/>
+            <description value="List containing all Individual MeasureReports for a given NHSN measure; each individual MeasureReport pertains to an individual who has been evaluated to be within the Initial Population of a given measure"/>
             <groupingId value="submission"/>
         </resource>
         <resource>
@@ -136,7 +137,7 @@
                 <reference value="StructureDefinition/poi-list"/>
             </reference>
             <name value="Patients of Interest List Profile"/>
-            <description value="List Profile defining individual Patients being considered for evaluation for NHSN Measure reporting"/>
+            <description value="List defining all individual Patients being considered for evaluation for NHSN Measure reporting"/>
             <groupingId value="submission"/>
         </resource>
         <resource>
