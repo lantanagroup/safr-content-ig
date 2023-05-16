@@ -252,7 +252,7 @@ define "SDE Covid or Influenza Medication Ordered":
             or Meds in "Sarilumab"
             or Meds in "Sotrovimab"    
             or Meds in "Tofacitinib")
-      and RPSMedRequest.status ~ 'completed'
+      //and RPSMedRequest.status ~ 'completed' //This is not needed for the medication ordered
       and exists("Initial Population")
       and Global."Normalize Interval"(RPSMedRequest.authoredOn) during "Measurement Period"
     return SharedResource.MedicationRequestResource(RPSMedRequest)
