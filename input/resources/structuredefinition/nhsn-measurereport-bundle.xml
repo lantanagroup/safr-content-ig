@@ -45,6 +45,21 @@
                 <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/nhsn-submitting-organization"/>
             </type>
         </element>
+        <!-- POI/Census List -->
+        <element id="Bundle.entry:poi-list">
+            <path value="Bundle.entry"/>
+            <sliceName value="poi-list"/>
+            <min value="1"/>
+            <max value="1"/>
+        </element>
+        <element id="Bundle.entry:poi-list.resource">
+            <path value="Bundle.entry.resource"/>
+            <min value="1"/>
+            <type>
+                <code value="List"/>
+                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/poi-list"/>
+            </type>
+        </element>
         <!-- subject-list MR -->
         <element id="Bundle.entry:subject-list">
             <path value="Bundle.entry"/>
@@ -60,33 +75,32 @@
                 <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/subjectlist-measurereport"/>
             </type>
         </element>
+        <!-- individual-measure-report-list -->
+        <element id="Bundle.entry:individual-measure-report-list">
+            <path value="Bundle.entry"/>
+            <sliceName value="individual-measure-report-list"/>
+            <min value="0"/>
+        </element>
+        <element id="Bundle.entry:individual-measure-report-list.resource">
+            <path value="Bundle.entry.resource"/>
+            <min value="1"/>
+            <type>
+                <code value="List"/>
+                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/ip-measurereport-list"/>
+            </type>
+        </element>
         <!-- indv MRs -->
-        <element id="Bundle.entry:individual">
+        <element id="Bundle.entry:individual-measurereport">
             <path value="Bundle.entry"/>
             <min value="1"/>
-            <sliceName value="individual"/>
+            <sliceName value="individual-measurereport"/>
         </element>
-        <element id="Bundle.entry:individual.resource">
+        <element id="Bundle.entry:individual-measurereport.resource">
             <path value="Bundle.entry.resource"/>
             <min value="1"/>
             <type>
                 <code value="MeasureReport"/>
                 <profile value="http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"/>
-            </type>
-        </element>
-        <!-- POI List -->
-        <element id="Bundle.entry:poi-list">
-            <path value="Bundle.entry"/>
-            <sliceName value="poi-list"/>
-            <min value="1"/>
-            <max value="1"/>
-        </element>
-        <element id="Bundle.entry:poi-list.resource">
-            <path value="Bundle.entry.resource"/>
-            <min value="1"/>
-            <type>
-                <code value="List"/>
-                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/poi-list"/>
             </type>
         </element>
         <!-- Patients -->
