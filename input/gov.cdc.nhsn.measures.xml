@@ -46,7 +46,7 @@
     <dependsOn>
         <uri value="http://hl7.org/fhir/us/davinci-deqm/ImplementationGuide/hl7.fhir.us.davinci-deqm"/>
         <packageId value="hl7.fhir.us.davinci-deqm"/>
-        <version value="3.1.0"/>
+        <version value="current"/>
     </dependsOn>
     <dependsOn>
         <uri value="http://hl7.org/fhir/us/qicore/ImplementationGuide/hl7.fhir.us.qicore"/>
@@ -84,7 +84,7 @@
 
         <grouping id="submission">
             <name value="Current NHSN Report Submission"/>
-            <description value="Note: By default, modifier extensions are prohibited from inclusion of report submission Bundle data to NHSN until said extension meaning is accepted by NHSN. See [Medifier Extensions](https://build.fhir.org/extensibility.html#modifierExtension) for additional information. "/>
+            <description value="Note: By default, modifier extensions are prohibited from inclusion of report submission Bundle data to NHSN until said extension meaning is accepted by NHSN. See [Medifier Extensions](https://build.fhir.org/extensibility.html#modifierExtension) for additional information."/>
         </grouping>
         <grouping id="cross-measure">
             <name value="Cross-Measure profiles"/>
@@ -121,7 +121,7 @@
                 <reference value="StructureDefinition/subjectlist-measurereport"/>
             </reference>
             <name value="Subject-List MeasureReport Profile"/>
-            <description value="Subject-list MeasureReport Profile contains the count of subjects (i.e. Patients) that have been evaluated to be in the Initial Population (IP). It also references the Individual MeasureReport List "/>
+            <description value="Subject-list MeasureReport Profile contains the count of subjects (i.e. Patients) that have been evaluated to be in the Initial Population (IP). It also references the Individual MeasureReport List."/>
             <groupingId value="submission"/>
         </resource>
         <resource>
@@ -225,7 +225,7 @@
                 <reference value="StructureDefinition/hypoglycemic-reporting-servicerequest"/>
             </reference>
             <name value="Hypoglycemic Event ServiceRequest"/>
-            <description value="This profile contains Required and Must Support data elements for reporting blood glucose order information to the NHSN Glycemic Control, Hypoglycemia Module. This profile is based on the [HL7 FHIR R4 ServiceRequest Profile v4.0.1](http://hl7.org/fhir/R4/servicerequest.html). "/>
+            <description value="This profile contains Required and Must Support data elements for reporting blood glucose order information to the NHSN Glycemic Control, Hypoglycemia Module. This profile is based on the [HL7 FHIR R4 ServiceRequest Profile v4.0.1](http://hl7.org/fhir/R4/servicerequest.html)."/>
             <groupingId value="hypo"/>
         </resource>
         <resource>
