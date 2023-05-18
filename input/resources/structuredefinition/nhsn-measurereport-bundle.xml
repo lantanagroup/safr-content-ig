@@ -15,6 +15,22 @@
     <differential>
         <element id="Bundle">
             <path value="Bundle"/>
+            <constraint>
+                <key value="bundle-no-modifier-extensions"/>
+                <severity value="error"/>
+                <human value="MeasureReport Bundle:  must not contain any modifierExensions"/>
+                <expression value="(select(modifierExtension) | descendants().select(modifierExtension)).exists().not()"/>
+                <source value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/nhsn-measurereport-bundle"/>
+            </constraint>
+            <constraint>
+                <key value="bundle-contain-all-measurereport-references"/>
+                <severity value="error"/>
+                <human value="MeasureReport Bundle: must contain all resources that are references by MeasureReport references"/>
+                <expression value="Bundle.entry.resource.where($this.is(MeasureReport)).descendants().reference.where($this.startsWith('#').not()).all((%resource.entry.fullUrl.join('|')&amp;'|').contains(($this&amp;'|')))"/>
+                <source value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/nhsn-measurereport-bundle"/>
+            </constraint>
+
+            
         </element>
         <element id="Bundle.entry">
             <path value="Bundle.entry"/>
