@@ -700,7 +700,7 @@ define &quot;SDE Condition&quot;:
    <version value="0.000.01"></version>
    <name value="NHSN dQM Acute Care Hospital Initial Population"></name>
    <title value="NHSN dQM Acute Care Hospital Initial Population"></title>
-   <date value="2023-05-18T08:57:41-05:00"></date>
+   <date value="2023-05-18T15:41:31-05:00"></date>
    <description value="dQM Mesure for Inpatients (Acute) Care setting"></description>
    <library value="http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNdQMAcuteCareHospitalInitialPopulation"></library>
    <scoring>
