@@ -1,0 +1,27 @@
+{
+	"resourceType": "Procedure",
+	"id": "nhsn-iip-pro-sde-2-2",
+	"meta": {
+		"profile": [
+			"http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure"
+		]
+	},
+	"status": "completed",
+	"code": {
+		"coding": [
+			{
+				"system": "http://www.ama-assn.org/go/cpt",
+				"code": "33533",
+				"display": "Coronary Artery Bypass (CABG) (CPT)"
+			}
+		]
+	},
+	"subject": {
+		"reference": "Patient/nhsn-iip-ipsde",
+		"display": "Amy Shaw"
+	},
+	"encounter": {
+		"reference": "Encounter/nhsn-iip-en101-2"
+	},
+	"performedDateTime": "2022-05-23"
+}

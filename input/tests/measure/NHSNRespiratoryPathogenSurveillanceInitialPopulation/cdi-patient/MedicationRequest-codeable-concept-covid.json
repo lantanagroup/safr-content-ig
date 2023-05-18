@@ -1,0 +1,34 @@
+{
+	"resourceType": "MedicationRequest",
+	"id": "medication-request-codeable-concept-covid",
+	"meta": {
+		"profile": [
+			"http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest"
+		]
+	},
+	"identifier": [
+		{
+			"use": "official",
+			"system": "http://acme.org/prescriptions",
+			"value": "12345689"
+		}
+	],
+	"status": "completed",
+	"intent": "plan",
+	"reportedBoolean": true,
+	"medicationCodeableConcept": {
+		"coding": [
+			{
+				"system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+				"code": "2047238",
+                "display": "baricitinib Oral Product"
+			}
+		],
+		"text": "baricitinib Oral Product"
+	},
+	"subject": {
+		"reference": "Patient/cdi-patient",
+		"display": "Amy V. Shaw"
+	},
+	"authoredOn": "2022-01-01T18:00:14-05:00"
+}
