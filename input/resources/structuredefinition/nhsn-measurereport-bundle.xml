@@ -29,8 +29,6 @@
                 <expression value="Bundle.entry.resource.where($this.is(MeasureReport)).descendants().reference.where($this.startsWith('#').not()).all((%resource.entry.fullUrl.join('|')&amp;'|').contains(($this&amp;'|')))"/>
                 <source value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/nhsn-measurereport-bundle"/>
             </constraint>
-
-            
         </element>
         <element id="Bundle.entry">
             <path value="Bundle.entry"/>
@@ -131,7 +129,7 @@
             <min value="1"/>
             <type>
                 <code value="Patient"/>
-                <profile value="http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient"/>
+                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/cross-measure-patient"/>
             </type>
         </element>
         <!-- Encounters -

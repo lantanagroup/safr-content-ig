@@ -36,11 +36,13 @@
         <element id="MeasureReport.group">
             <path value="MeasureReport.group"/>
             <min value="1"/>
+            <max value="1"/>
             <mustSupport value="true"/>
         </element>
         <element id="MeasureReport.group.population">
             <path value="MeasureReport.group.population"/>
             <min value="1"/>
+            <max value="1"/>
             <mustSupport value="true"/>
         </element>
         <element id="MeasureReport.group.population.code">
