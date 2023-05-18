@@ -431,6 +431,23 @@ define &quot;SDE Blood Glucose Observation&quot;:
                <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
             </extension>
             <extension url="name">
+               <valueString value="SDE Location"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Location&quot;:
+  [Location] Locations
+  where exists(&quot;Initial Population&quot;)
+  return SharedResource.LocationResource(Locations)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="19"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
                <valueString value="SDE Minimal Patient"></valueString>
             </extension>
             <extension url="statement">
@@ -439,7 +456,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
   return SharedResource.PatientResource(p)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="19"></valueInteger>
+               <valueInteger value="20"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -459,7 +476,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
   return SharedResource.SpecimenResource(Specimens)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="20"></valueInteger>
+               <valueInteger value="21"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -477,7 +494,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
   return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication))"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="21"></valueInteger>
+               <valueInteger value="22"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -497,7 +514,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
   return SharedResource.EncounterResource(IP)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="22"></valueInteger>
+               <valueInteger value="23"></valueInteger>
             </extension>
          </extension>
          <status value="active"></status>
@@ -655,6 +672,13 @@ define &quot;SDE Blood Glucose Observation&quot;:
             <min value="0"></min>
             <max value="*"></max>
             <type value="ServiceRequest"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Location"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Location"></type>
          </parameter>
          <parameter>
             <name value="SDE Minimal Patient"></name>
@@ -846,7 +870,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-05-02T08:18:33-08:00"></date>
+   <date value="2023-05-18T05:57:41-08:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the measurement period."></description>
    <purpose value="The primary purpose of this site is to provide CDC’s NHSN with access to view measure specification content in the dQMs under development by Lantana Consulting Group. Please note, this site is draft and undergoes constant revision and is not intended to serve as an implementation guide."></purpose>
@@ -973,6 +997,12 @@ define &quot;SDE Blood Glucose Observation&quot;:
       <criteria>
          <language value="text/cql-identifier"></language>
          <expression value="SDE Service Request"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-location">
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE Location"></expression>
       </criteria>
    </supplementalData>
 </Measure>

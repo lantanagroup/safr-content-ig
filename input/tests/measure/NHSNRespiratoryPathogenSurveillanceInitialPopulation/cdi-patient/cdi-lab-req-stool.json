@@ -1,0 +1,23 @@
+{
+	"resourceType": "ServiceRequest",
+	"id": "cdi-lab-req-stool",
+	"status": "completed",
+	"intent": "order",
+	"code": {
+		"coding": [
+			{
+				"system": "http://loinc.org",
+				"code": "10895-1",
+                "display": "Clostridioides difficile toxin B [Presence] in Stool"
+			}
+		],
+		"text": "Clostridioides difficile toxin B [Presence] in Stool"
+	},
+	"subject": {
+		"reference": "Patient/cdi-patient"
+	},
+	"encounter": {
+		"reference": "Encounter/cdi-enc-acute"
+	},
+	"authoredOn": "2022-01-02T16:16:00-07:00"
+}

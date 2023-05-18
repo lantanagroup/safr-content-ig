@@ -1,7 +1,7 @@
 {
   "resourceType": "Library",
   "id": "FHIRHelpers",
-  "url": "http://hl7.org/fhir/Library/FHIRHelpers",
+  "url": "http://lantanagroup.com/fhir/nhsn-measures/Library/FHIRHelpers",
   "version": "4.0.1",
   "name": "FHIRHelpers",
   "relatedArtifact": [ {
