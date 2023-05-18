@@ -1,4 +1,4 @@
-library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.006'
+library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.007'
 
 using FHIR version '4.0.1'
 
@@ -154,6 +154,7 @@ define "SDE Initial Population Encounters":
 
 define "SDE Location":
   [Location] Locations
+  where exists("Initial Population")
   return SharedResource.LocationResource(Locations)
 
 define "SDE Medication":
