@@ -1,0 +1,19 @@
+{
+	"resourceType": "Medication",
+	"id": "nhsn-iip-add-sde-mcl-med-2",
+	"meta": {
+		"profile": [
+			"http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication"
+		]
+	},
+	"code": {
+		"coding": [
+			{
+				"system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+				"code": "2047238",
+                "display": "baricitinib Oral Product"
+			}
+		],
+		"text": "baricitinib Oral Product"
+	}
+}
