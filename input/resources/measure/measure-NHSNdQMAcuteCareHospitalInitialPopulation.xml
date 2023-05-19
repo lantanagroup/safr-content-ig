@@ -1,37 +1,271 @@
-<Measure xmlns="http://hl7.org/fhir"><id value="NHSNdQMAcuteCareHospitalInitialPopulation"></id><meta><profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm"></profile><profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm"></profile></meta><contained><Library xmlns="http://hl7.org/fhir"><id value="effective-data-requirements"></id><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode"><valueCoding><system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system><code value="EMER"></code><display value="emergency"></display></valueCoding></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode"><valueCoding><system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system><code value="ACUTE"></code><display value="inpatient acute"></display></valueCoding></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode"><valueCoding><system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system><code value="IMP"></code><display value="inpatient encounter"></display></valueCoding></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode"><valueCoding><system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system><code value="NONAC"></code><display value="inpatient non-acute"></display></valueCoding></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode"><valueCoding><system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system><code value="SS"></code><display value="short stay"></display></valueCoding></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode"><valueCoding><system value="http://terminology.hl7.org/CodeSystem/observation-category"></system><code value="laboratory"></code><display value="Laboratory"></display></valueCoding></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode"><valueCoding><system value="http://terminology.hl7.org/CodeSystem/observation-category"></system><code value="social-history"></code><display value="Social History"></display></valueCoding></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode"><valueCoding><system value="http://terminology.hl7.org/CodeSystem/observation-category"></system><code value="vital-signs"></code><display value="Vital Signs"></display></valueCoding></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode"><valueCoding><system value="http://terminology.hl7.org/CodeSystem/observation-category"></system><code value="survey"></code><display value="Survey"></display></valueCoding></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode"><valueCoding><system value="http://terminology.hl7.org/CodeSystem/observation-category"></system><code value="imaging"></code><display value="Imaging"></display></valueCoding></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode"><valueCoding><system value="http://terminology.hl7.org/CodeSystem/observation-category"></system><code value="procedure"></code><display value="Procedure"></display></valueCoding></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"><extension url="libraryName"><valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString></extension><extension url="name"><valueString value="Encounters"></valueString></extension><extension url="statement"><valueString value="define &quot;Encounters&quot;:
-  [Encounter]"></valueString></extension><extension url="displaySequence"><valueInteger value="0"></valueInteger></extension></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"><extension url="libraryName"><valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString></extension><extension url="name"><valueString value="Qualifying Encounter During Measurement Period"></valueString></extension><extension url="statement"><valueString value="define &quot;Qualifying Encounter During Measurement Period&quot;:
+<Measure xmlns="http://hl7.org/fhir">
+   <id value="NHSNdQMAcuteCareHospitalInitialPopulation"></id>
+   <meta>
+      <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm"></profile>
+      <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm"></profile>
+   </meta>
+   <contained>
+      <Library xmlns="http://hl7.org/fhir">
+         <id value="effective-data-requirements"></id>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+               <code value="EMER"></code>
+               <display value="emergency"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+               <code value="ACUTE"></code>
+               <display value="inpatient acute"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+               <code value="IMP"></code>
+               <display value="inpatient encounter"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+               <code value="NONAC"></code>
+               <display value="inpatient non-acute"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+               <code value="SS"></code>
+               <display value="short stay"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/observation-category"></system>
+               <code value="laboratory"></code>
+               <display value="Laboratory"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/observation-category"></system>
+               <code value="social-history"></code>
+               <display value="Social History"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/observation-category"></system>
+               <code value="vital-signs"></code>
+               <display value="Vital Signs"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/observation-category"></system>
+               <code value="survey"></code>
+               <display value="Survey"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/observation-category"></system>
+               <code value="imaging"></code>
+               <display value="Imaging"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/observation-category"></system>
+               <code value="procedure"></code>
+               <display value="Procedure"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Encounters"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Encounters&quot;:
+  [Encounter]"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="0"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Qualifying Encounter During Measurement Period"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Qualifying Encounter During Measurement Period&quot;:
  ( [Encounter: &quot;Encounter Inpatient&quot;]
 union   [Encounter: &quot;Emergency Department Visit&quot;]
 union [Encounter: &quot;Observation Services&quot;]
 union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, &quot;inpatient encounter&quot;, &quot;inpatient non-acute&quot;, &quot;short stay&quot;}]) QualifyingEncounters
   where QualifyingEncounters .status in {'in-progress', 'finished', 'triaged'}
-    and QualifyingEncounters.period overlaps &quot;Measurement Period&quot;"></valueString></extension><extension url="displaySequence"><valueInteger value="1"></valueInteger></extension></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"><extension url="libraryName"><valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString></extension><extension url="name"><valueString value="Qualifying Location During Measurement Period"></valueString></extension><extension url="statement"><valueString value="define &quot;Qualifying Location During Measurement Period&quot;:
+    and QualifyingEncounters.period overlaps &quot;Measurement Period&quot;"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="1"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Qualifying Location During Measurement Period"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Qualifying Location During Measurement Period&quot;:
   &quot;Encounters&quot; Encounters
   where exists(
     Encounters.location EncounterLocation
     where Global.GetLocation(EncounterLocation.location).type in &quot;Inpatient, Emergency, and Observation Locations&quot;
       and EncounterLocation.period overlaps Encounters.period
-  )"></valueString></extension><extension url="displaySequence"><valueInteger value="2"></valueInteger></extension></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"><extension url="libraryName"><valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString></extension><extension url="name"><valueString value="Initial Population"></valueString></extension><extension url="statement"><valueString value="define &quot;Initial Population&quot;:
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="2"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Initial Population&quot;:
   &quot;Qualifying Encounter During Measurement Period&quot;
-  union &quot;Qualifying Location During Measurement Period&quot;"></valueString></extension><extension url="displaySequence"><valueInteger value="3"></valueInteger></extension></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"><extension url="libraryName"><valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString></extension><extension url="name"><valueString value="SDE Encounter"></valueString></extension><extension url="statement"><valueString value="define &quot;SDE Encounter&quot;: 
+  union &quot;Qualifying Location During Measurement Period&quot;"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="3"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Encounter"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Encounter&quot;: 
   &quot;Encounters&quot; Encounters
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.EncounterResource(Encounters)"></valueString></extension><extension url="displaySequence"><valueInteger value="4"></valueInteger></extension></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"><extension url="libraryName"><valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString></extension><extension url="name"><valueString value="SDE Medication Request"></valueString></extension><extension url="statement"><valueString value="define &quot;SDE Medication Request&quot;:
+  return SharedResource.EncounterResource(Encounters)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="4"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Medication Request"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Medication Request&quot;:
   [MedicationRequest] MedicationRequests 
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.MedicationRequestResource(MedicationRequests)"></valueString></extension><extension url="displaySequence"><valueInteger value="5"></valueInteger></extension></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"><extension url="libraryName"><valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString></extension><extension url="name"><valueString value="SDE Coverage"></valueString></extension><extension url="statement"><valueString value="define &quot;SDE Coverage&quot;: 
+  return SharedResource.MedicationRequestResource(MedicationRequests)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="5"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Coverage"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Coverage&quot;: 
 	[Coverage] Coverages
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.CoverageResource(Coverages)"></valueString></extension><extension url="displaySequence"><valueInteger value="6"></valueInteger></extension></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"><extension url="libraryName"><valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString></extension><extension url="name"><valueString value="SDE Procedure"></valueString></extension><extension url="statement"><valueString value="define &quot;SDE Procedure&quot;:
+  return SharedResource.CoverageResource(Coverages)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="6"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Procedure"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Procedure&quot;:
   [Procedure] Procedures 
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.ProcedureResource(Procedures)"></valueString></extension><extension url="displaySequence"><valueInteger value="7"></valueInteger></extension></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"><extension url="libraryName"><valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString></extension><extension url="name"><valueString value="SDE Device"></valueString></extension><extension url="statement"><valueString value="define &quot;SDE Device&quot;:
+  return SharedResource.ProcedureResource(Procedures)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="7"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Device"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Device&quot;:
   [Device] Devices 
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.DeviceResource(Devices)"></valueString></extension><extension url="displaySequence"><valueInteger value="8"></valueInteger></extension></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"><extension url="libraryName"><valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString></extension><extension url="name"><valueString value="SDE Medication Administration"></valueString></extension><extension url="statement"><valueString value="define &quot;SDE Medication Administration&quot;:
+  return SharedResource.DeviceResource(Devices)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="8"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Medication Administration"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Medication Administration&quot;:
   [MedicationAdministration] MedicationAdministrations 
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.MedicationAdministrationResource(MedicationAdministrations)"></valueString></extension><extension url="displaySequence"><valueInteger value="9"></valueInteger></extension></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"><extension url="libraryName"><valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString></extension><extension url="name"><valueString value="SDE Observation Category"></valueString></extension><extension url="statement"><valueString value="define &quot;SDE Observation Category&quot;:
+  return SharedResource.MedicationAdministrationResource(MedicationAdministrations)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="9"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Observation Category"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Observation Category&quot;:
   [Observation] Observations 
   where ((exists(Observations.category Category where Category ~ &quot;laboratory&quot;))
     or (exists(Observations.category Category where Category ~ &quot;social-history&quot;))
@@ -40,26 +274,644 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
     or (exists(Observations.category Category where Category ~ &quot;imaging&quot;))
     or (exists(Observations.category Category where Category ~ &quot;procedure&quot;)))
     and exists(&quot;Initial Population&quot;)
-  return SharedResource.ObservationResource(Observations)"></valueString></extension><extension url="displaySequence"><valueInteger value="10"></valueInteger></extension></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"><extension url="libraryName"><valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString></extension><extension url="name"><valueString value="SDE Initial Population Encounters"></valueString></extension><extension url="statement"><valueString value="define &quot;SDE Initial Population Encounters&quot;:
+  return SharedResource.ObservationResource(Observations)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="10"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Initial Population Encounters"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Initial Population Encounters&quot;:
   &quot;Initial Population&quot; IP
-  return SharedResource.EncounterResource(IP)"></valueString></extension><extension url="displaySequence"><valueInteger value="11"></valueInteger></extension></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"><extension url="libraryName"><valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString></extension><extension url="name"><valueString value="SDE Condition"></valueString></extension><extension url="statement"><valueString value="//============================
+  return SharedResource.EncounterResource(IP)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="11"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Condition"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//============================
 //Supplemental Data Element
 //============================
 define &quot;SDE Condition&quot;:
   [Condition] Conditions 
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.ConditionResource(Conditions)"></valueString></extension><extension url="displaySequence"><valueInteger value="12"></valueInteger></extension></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"><extension url="libraryName"><valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString></extension><extension url="name"><valueString value="SDE Location"></valueString></extension><extension url="statement"><valueString value="define &quot;SDE Location&quot;:
+  return SharedResource.ConditionResource(Conditions)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="12"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Location"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Location&quot;:
   [Location] Locations
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.LocationResource(Locations)"></valueString></extension><extension url="displaySequence"><valueInteger value="13"></valueInteger></extension></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"><extension url="libraryName"><valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString></extension><extension url="name"><valueString value="SDE DiagnosticReport"></valueString></extension><extension url="statement"><valueString value="define &quot;SDE DiagnosticReport&quot;:
+  return SharedResource.LocationResource(Locations)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="13"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE DiagnosticReport"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE DiagnosticReport&quot;:
   [DiagnosticReport] DiagnosticReports
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.DiagnosticReportResource(DiagnosticReports)"></valueString></extension><extension url="displaySequence"><valueInteger value="14"></valueInteger></extension></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"><extension url="libraryName"><valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString></extension><extension url="name"><valueString value="SDE Minimal Patient"></valueString></extension><extension url="statement"><valueString value="define &quot;SDE Minimal Patient&quot;:
+  return SharedResource.DiagnosticReportResource(DiagnosticReports)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="14"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Minimal Patient"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Minimal Patient&quot;:
   Patient p
-  return SharedResource.PatientResource(p)"></valueString></extension><extension url="displaySequence"><valueInteger value="15"></valueInteger></extension></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"><extension url="libraryName"><valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString></extension><extension url="name"><valueString value="SDE Medication"></valueString></extension><extension url="statement"><valueString value="define &quot;SDE Medication&quot;:
+  return SharedResource.PatientResource(p)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="15"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Medication"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Medication&quot;:
   [Medication] Medication
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.MedicationResource(Medication)"></valueString></extension><extension url="displaySequence"><valueInteger value="16"></valueInteger></extension></extension><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition"><extension url="libraryName"><valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString></extension><extension url="name"><valueString value="SDE Specimen"></valueString></extension><extension url="statement"><valueString value="define &quot;SDE Specimen&quot;:
+  return SharedResource.MedicationResource(Medication)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="16"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Specimen"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Specimen&quot;:
   [Specimen] Specimen
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.SpecimenResource(Specimen)"></valueString></extension><extension url="displaySequence"><valueInteger value="17"></valueInteger></extension></extension><status value="active"></status><type><coding><system value="http://terminology.hl7.org/CodeSystem/library-type"></system><code value="module-definition"></code></coding></type><relatedArtifact><type value="depends-on"></type><display value="Library FHIRHelpers"></display><resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/FHIRHelpers|4.0.1"></resource></relatedArtifact><relatedArtifact><type value="depends-on"></type><display value="Library Global"></display><resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource></relatedArtifact><relatedArtifact><type value="depends-on"></type><display value="Library SharedResource"></display><resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/SharedResourceCreation|0.0.001"></resource></relatedArtifact><relatedArtifact><type value="depends-on"></type><display value="Code system ActCode"></display><resource value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></resource></relatedArtifact><relatedArtifact><type value="depends-on"></type><display value="Code system Observation Category"></display><resource value="http://terminology.hl7.org/CodeSystem/observation-category"></resource></relatedArtifact><relatedArtifact><type value="depends-on"></type><display value="Value set Encounter Inpatient"></display><resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"></resource></relatedArtifact><relatedArtifact><type value="depends-on"></type><display value="Value set Emergency Department Visit"></display><resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"></resource></relatedArtifact><relatedArtifact><type value="depends-on"></type><display value="Value set Observation Services"></display><resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143"></resource></relatedArtifact><relatedArtifact><type value="depends-on"></type><display value="Value set Inpatient, Emergency, and Observation Locations"></display><resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265"></resource></relatedArtifact><parameter><name value="Measurement Period"></name><use value="in"></use><min value="0"></min><max value="1"></max><type value="Period"></type></parameter><parameter><name value="SDE Encounter"></name><use value="out"></use><min value="0"></min><max value="*"></max><type value="Encounter"></type></parameter><parameter><name value="SDE Medication Request"></name><use value="out"></use><min value="0"></min><max value="*"></max><type value="MedicationRequest"></type></parameter><parameter><name value="SDE Coverage"></name><use value="out"></use><min value="0"></min><max value="*"></max><type value="Coverage"></type></parameter><parameter><name value="SDE Procedure"></name><use value="out"></use><min value="0"></min><max value="*"></max><type value="Procedure"></type></parameter><parameter><name value="SDE Device"></name><use value="out"></use><min value="0"></min><max value="*"></max><type value="Device"></type></parameter><parameter><name value="SDE Medication Administration"></name><use value="out"></use><min value="0"></min><max value="*"></max><type value="MedicationAdministration"></type></parameter><parameter><name value="SDE Observation Category"></name><use value="out"></use><min value="0"></min><max value="*"></max><type value="Observation"></type></parameter><parameter><name value="SDE Initial Population Encounters"></name><use value="out"></use><min value="0"></min><max value="*"></max><type value="Encounter"></type></parameter><parameter><name value="SDE Condition"></name><use value="out"></use><min value="0"></min><max value="*"></max><type value="Condition"></type></parameter><parameter><name value="Initial Population"></name><use value="out"></use><min value="0"></min><max value="*"></max><type value="Encounter"></type></parameter><parameter><name value="SDE Location"></name><use value="out"></use><min value="0"></min><max value="*"></max><type value="Location"></type></parameter><parameter><name value="SDE DiagnosticReport"></name><use value="out"></use><min value="0"></min><max value="*"></max><type value="DiagnosticReport"></type></parameter><parameter><name value="SDE Minimal Patient"></name><use value="out"></use><min value="0"></min><max value="1"></max><type value="Patient"></type></parameter><parameter><name value="SDE Medication"></name><use value="out"></use><min value="0"></min><max value="*"></max><type value="Medication"></type></parameter><parameter><name value="SDE Specimen"></name><use value="out"></use><min value="0"></min><max value="*"></max><type value="Specimen"></type></parameter><dataRequirement><type value="Encounter"></type><profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile><mustSupport value="type"></mustSupport><codeFilter><path value="type"></path><valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"></valueSet></codeFilter></dataRequirement><dataRequirement><type value="Encounter"></type><profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile><mustSupport value="type"></mustSupport><codeFilter><path value="type"></path><valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"></valueSet></codeFilter></dataRequirement><dataRequirement><type value="Encounter"></type><profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile><mustSupport value="type"></mustSupport><codeFilter><path value="type"></path><valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143"></valueSet></codeFilter></dataRequirement><dataRequirement><type value="Encounter"></type><profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile><mustSupport value="class"></mustSupport><codeFilter><path value="class"></path><code><system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system><code value="EMER"></code><display value="emergency"></display></code><code><system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system><code value="ACUTE"></code><display value="inpatient acute"></display></code><code><system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system><code value="IMP"></code><display value="inpatient encounter"></display></code><code><system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system><code value="NONAC"></code><display value="inpatient non-acute"></display></code><code><system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system><code value="SS"></code><display value="short stay"></display></code></codeFilter></dataRequirement><dataRequirement><type value="Encounter"></type><profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile><mustSupport value="location"></mustSupport><mustSupport value="period"></mustSupport></dataRequirement><dataRequirement><type value="Location"></type><profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile><mustSupport value="id"></mustSupport></dataRequirement><dataRequirement><type value="MedicationRequest"></type><profile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"></profile></dataRequirement><dataRequirement><type value="Coverage"></type><profile value="http://hl7.org/fhir/StructureDefinition/Coverage"></profile></dataRequirement><dataRequirement><type value="Procedure"></type><profile value="http://hl7.org/fhir/StructureDefinition/Procedure"></profile></dataRequirement><dataRequirement><type value="Device"></type><profile value="http://hl7.org/fhir/StructureDefinition/Device"></profile></dataRequirement><dataRequirement><type value="MedicationAdministration"></type><profile value="http://hl7.org/fhir/StructureDefinition/MedicationAdministration"></profile></dataRequirement><dataRequirement><type value="Observation"></type><profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile><mustSupport value="category"></mustSupport></dataRequirement><dataRequirement><type value="Condition"></type><profile value="http://hl7.org/fhir/StructureDefinition/Condition"></profile></dataRequirement><dataRequirement><type value="DiagnosticReport"></type><profile value="http://hl7.org/fhir/StructureDefinition/DiagnosticReport"></profile></dataRequirement><dataRequirement><type value="Patient"></type><profile value="http://hl7.org/fhir/StructureDefinition/Patient"></profile></dataRequirement><dataRequirement><type value="Medication"></type><profile value="http://hl7.org/fhir/StructureDefinition/Medication"></profile></dataRequirement><dataRequirement><type value="Specimen"></type><profile value="http://hl7.org/fhir/StructureDefinition/Specimen"></profile></dataRequirement></Library></contained><extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem"><valueReference><reference value="Device/cqf-tooling"></reference></valueReference></extension><extension id="effective-data-requirements" url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-effectiveDataRequirements"><valueReference><reference value="#effective-data-requirements"></reference></valueReference></extension><url value="http://lantanagroup.com/fhir/nhsn-measures/Measure/NHSNdQMAcuteCareHospitalInitialPopulation"></url><identifier><system value="https://nhsnlink.org"></system><value value="NHSNdQMAcuteCareHospitalInitialPopulation"></value></identifier><version value="0.000.01"></version><name value="NHSN dQM Acute Care Hospital Initial Population"></name><title value="NHSN dQM Acute Care Hospital Initial Population"></title><date value="2023-05-01T18:24:15-05:00"></date><description value="dQM Mesure for Inpatients (Acute) Care setting"></description><library value="http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNdQMAcuteCareHospitalInitialPopulation"></library><scoring><coding><system value="http://terminology.hl7.org/CodeSystem/measure-scoring"></system><code value="cohort"></code><display value="Cohort"></display></coding></scoring><type><coding><system value="http://terminology.hl7.org/CodeSystem/measure-type"></system><code value="outcome"></code><display value="Outcome"></display></coding></type><group><population><code><coding><system value="http://terminology.hl7.org/CodeSystem/measure-population"></system><code value="initial-population"></code><display value="Initial Population"></display></coding></code><criteria><language value="text/cql-identifier"></language><expression value="Initial Population"></expression></criteria></population></group><supplementalData id="sde-condition"><usage><coding><system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system><code value="supplemental-data"></code></coding></usage><description value="SDE Condition"></description><criteria><language value="text/cql-identifier"></language><expression value="SDE Condition"></expression></criteria></supplementalData><supplementalData id="sde-device"><usage><coding><system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system><code value="supplemental-data"></code></coding></usage><description value="SDE Device"></description><criteria><language value="text/cql-identifier"></language><expression value="SDE Device"></expression></criteria></supplementalData><supplementalData id="sde-diagnosticreport"><usage><coding><system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system><code value="supplemental-data"></code></coding></usage><description value="SDE DiagnosticReport"></description><criteria><language value="text/cql-identifier"></language><expression value="SDE DiagnosticReport"></expression></criteria></supplementalData><supplementalData id="sde-encounter"><usage><coding><system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system><code value="supplemental-data"></code></coding></usage><description value="SDE Encounter"></description><criteria><language value="text/cql-identifier"></language><expression value="SDE Encounter"></expression></criteria></supplementalData><supplementalData id="sde-location"><usage><coding><system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system><code value="supplemental-data"></code></coding></usage><description value="SDE Location"></description><criteria><language value="text/cql-identifier"></language><expression value="SDE Location"></expression></criteria></supplementalData><supplementalData id="sde-medication-administration"><usage><coding><system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system><code value="supplemental-data"></code></coding></usage><description value="SDE Medication Administration"></description><criteria><language value="text/cql-identifier"></language><expression value="SDE Medication Administration"></expression></criteria></supplementalData><supplementalData id="sde-medication-request"><usage><coding><system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system><code value="supplemental-data"></code></coding></usage><description value="SDE Medication Request"></description><criteria><language value="text/cql-identifier"></language><expression value="SDE Medication Request"></expression></criteria></supplementalData><supplementalData id="sde-medication"><usage><coding><system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system><code value="supplemental-data"></code></coding></usage><description value="SDE Medication"></description><criteria><language value="text/cql-identifier"></language><expression value="SDE Medication"></expression></criteria></supplementalData><supplementalData id="sde-observation"><usage><coding><system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system><code value="supplemental-data"></code></coding></usage><description value="SDE Observation"></description><criteria><language value="text/cql-identifier"></language><expression value="SDE Observation Category"></expression></criteria></supplementalData><supplementalData id="sde-coverage"><usage><coding><system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system><code value="supplemental-data"></code></coding></usage><description value="SDE Coverage"></description><criteria><language value="text/cql-identifier"></language><expression value="SDE Coverage"></expression></criteria></supplementalData><supplementalData id="sde-procedure"><usage><coding><system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system><code value="supplemental-data"></code></coding></usage><description value="SDE Procedure"></description><criteria><language value="text/cql-identifier"></language><expression value="SDE Procedure"></expression></criteria></supplementalData><supplementalData id="sde-specimen"><usage><coding><system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system><code value="supplemental-data"></code></coding></usage><description value="SDE Specimen"></description><criteria><language value="text/cql-identifier"></language><expression value="SDE Specimen"></expression></criteria></supplementalData><supplementalData id="sde-minimal-patient"><usage><coding><system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system><code value="supplemental-data"></code></coding></usage><description value="SDE Minimal Patient"></description><criteria><language value="text/cql-identifier"></language><expression value="SDE Minimal Patient"></expression></criteria></supplementalData><supplementalData id="sde-initial-population-encounters"><usage><coding><system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system><code value="supplemental-data"></code></coding></usage><description value="SDE Initial Population Encounters"></description><criteria><language value="text/cql-identifier"></language><expression value="SDE Initial Population Encounters"></expression></criteria></supplementalData></Measure>
+  return SharedResource.SpecimenResource(Specimen)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="17"></valueInteger>
+            </extension>
+         </extension>
+         <status value="active"></status>
+         <type>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/library-type"></system>
+               <code value="module-definition"></code>
+            </coding>
+         </type>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Library FHIRHelpers"></display>
+            <resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/FHIRHelpers|4.0.1"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Library Global"></display>
+            <resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Library SharedResource"></display>
+            <resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/SharedResourceCreation|0.0.001"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Code system ActCode"></display>
+            <resource value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Code system Observation Category"></display>
+            <resource value="http://terminology.hl7.org/CodeSystem/observation-category"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Encounter Inpatient"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Emergency Department Visit"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Observation Services"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Inpatient, Emergency, and Observation Locations"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265"></resource>
+         </relatedArtifact>
+         <parameter>
+            <name value="Measurement Period"></name>
+            <use value="in"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="Period"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Encounter"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Encounter"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Medication Request"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="MedicationRequest"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Coverage"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Coverage"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Procedure"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Procedure"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Device"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Device"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Medication Administration"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="MedicationAdministration"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Observation Category"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Observation"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Initial Population Encounters"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Encounter"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Condition"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Condition"></type>
+         </parameter>
+         <parameter>
+            <name value="Initial Population"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Encounter"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Location"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Location"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE DiagnosticReport"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="DiagnosticReport"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Minimal Patient"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="Patient"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Medication"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Medication"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE Specimen"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Specimen"></type>
+         </parameter>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="type"></mustSupport>
+            <codeFilter>
+               <path value="type"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="type"></mustSupport>
+            <codeFilter>
+               <path value="type"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="type"></mustSupport>
+            <codeFilter>
+               <path value="type"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="class"></mustSupport>
+            <codeFilter>
+               <path value="class"></path>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="EMER"></code>
+                  <display value="emergency"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="ACUTE"></code>
+                  <display value="inpatient acute"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="IMP"></code>
+                  <display value="inpatient encounter"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="NONAC"></code>
+                  <display value="inpatient non-acute"></display>
+               </code>
+               <code>
+                  <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"></system>
+                  <code value="SS"></code>
+                  <display value="short stay"></display>
+               </code>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="location"></mustSupport>
+            <mustSupport value="period"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Location"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
+            <mustSupport value="id"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="MedicationRequest"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationRequest"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Coverage"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Coverage"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Procedure"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Procedure"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Device"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Device"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="MedicationAdministration"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/MedicationAdministration"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Observation"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
+            <mustSupport value="category"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Condition"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Condition"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="DiagnosticReport"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/DiagnosticReport"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Patient"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Patient"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Medication"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Medication"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Specimen"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Specimen"></profile>
+         </dataRequirement>
+      </Library>
+   </contained>
+   <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem">
+      <valueReference>
+         <reference value="Device/cqf-tooling"></reference>
+      </valueReference>
+   </extension>
+   <extension id="effective-data-requirements" url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-effectiveDataRequirements">
+      <valueReference>
+         <reference value="#effective-data-requirements"></reference>
+      </valueReference>
+   </extension>
+   <url value="http://lantanagroup.com/fhir/nhsn-measures/Measure/NHSNdQMAcuteCareHospitalInitialPopulation"></url>
+   <identifier>
+      <system value="https://nhsnlink.org"></system>
+      <value value="NHSNdQMAcuteCareHospitalInitialPopulation"></value>
+   </identifier>
+   <version value="0.000.01"></version>
+   <name value="NHSN dQM Acute Care Hospital Initial Population"></name>
+   <title value="NHSN dQM Acute Care Hospital Initial Population"></title>
+   <date value="2023-05-18T15:41:31-05:00"></date>
+   <description value="dQM Mesure for Inpatients (Acute) Care setting"></description>
+   <library value="http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNdQMAcuteCareHospitalInitialPopulation"></library>
+   <scoring>
+      <coding>
+         <system value="http://terminology.hl7.org/CodeSystem/measure-scoring"></system>
+         <code value="cohort"></code>
+         <display value="Cohort"></display>
+      </coding>
+   </scoring>
+   <type>
+      <coding>
+         <system value="http://terminology.hl7.org/CodeSystem/measure-type"></system>
+         <code value="outcome"></code>
+         <display value="Outcome"></display>
+      </coding>
+   </type>
+   <group>
+      <population>
+         <code>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/measure-population"></system>
+               <code value="initial-population"></code>
+               <display value="Initial Population"></display>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Initial Population"></expression>
+         </criteria>
+      </population>
+   </group>
+   <supplementalData id="sde-condition">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE Condition"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE Condition"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-device">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE Device"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE Device"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-diagnosticreport">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE DiagnosticReport"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE DiagnosticReport"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-encounter">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE Encounter"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE Encounter"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-location">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE Location"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE Location"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-medication-administration">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE Medication Administration"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE Medication Administration"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-medication-request">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE Medication Request"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE Medication Request"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-medication">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE Medication"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE Medication"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-observation">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE Observation"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE Observation Category"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-coverage">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE Coverage"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE Coverage"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-procedure">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE Procedure"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE Procedure"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-specimen">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE Specimen"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE Specimen"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-minimal-patient">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE Minimal Patient"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE Minimal Patient"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-initial-population-encounters">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE Initial Population Encounters"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE Initial Population Encounters"></expression>
+      </criteria>
+   </supplementalData>
+</Measure>

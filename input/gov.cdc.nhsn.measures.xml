@@ -84,7 +84,7 @@
 
         <grouping id="submission">
             <name value="Current NHSN Report Submission"/>
-            <description value="Note: By default, modifier extensions are prohibited from inclusion of report submission Bundle data to NHSN until said extension meaning is accepted by NHSN. See [Medifier Extensions](https://build.fhir.org/extensibility.html#modifierExtension) for additional information."/>
+            <description value="Note: By default, modifier extensions are prohibited from inclusion of report submission Bundle data to NHSN until said extension meaning is accepted by NHSN. See [Modifier Extensions](https://build.fhir.org/extensibility.html#modifierExtension) for additional information."/>
         </grouping>
         <grouping id="cross-measure">
             <name value="Cross-Measure profiles"/>
