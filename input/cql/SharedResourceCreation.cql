@@ -1,4 +1,4 @@
-library SharedResourceCreation version '0.0.001'
+library SharedResourceCreation version '0.1.001'
 
 using FHIR version '4.0.1'
 
@@ -23,6 +23,7 @@ define function "MedicationRequestResource"(medicationRequest MedicationRequest)
   medicationRequest m
   return MedicationRequest{
     id: FHIR.id {value: 'LCR-' + m.id},
+    meta: m.meta,
     extension: m.extension,
     identifier: m.identifier,
     status: m.status,
@@ -62,6 +63,7 @@ define function "MedicationAdministrationResource"(medicationAdministration Medi
   medicationAdministration m
   return MedicationAdministration{
     id: FHIR.id {value: 'LCR-' + m.id},
+    meta: m.meta,
     extension: m.extension,
     identifier: m.identifier,
     instantiates: m.instantiates,
@@ -88,6 +90,7 @@ define function "MedicationResource"(medication Medication):
   medication m
   return Medication{
     id: FHIR.id {value: 'LCR-' + m.id},
+    meta: m.meta,
     extension: m.extension,
     identifier: m.identifier,
     code: m.code,
@@ -103,6 +106,7 @@ define function "ConditionResource"(condition Condition):
   condition c
   return Condition{
     id: FHIR.id {value: 'LCR-' + c.id},
+    meta: c.meta,
     extension: c.extension,
     identifier: c.identifier,
     clinicalStatus: c.clinicalStatus,
@@ -127,6 +131,7 @@ define function "EncounterResource"(encounter Encounter):
   encounter e
   return Encounter{
     id: FHIR.id{value: 'LCR-' + e.id},
+    meta: e.meta,
     extension: e.extension,
     identifier: e.identifier,
     status: e.status,
@@ -157,6 +162,7 @@ define function "PatientResource"(patient Patient):
   patient p
   return Patient{
     id: FHIR.id{value: 'LCR-' + p.id},
+    meta: p.meta,
     extension: GetPatientExtensions(p) union GetIdExtensions(p),
     identifier: p.identifier,
     active: p.active,
@@ -175,6 +181,7 @@ define function "ObservationResource"(observation Observation):
   observation o
   return Observation{
     id: FHIR.id {value: 'LCR-' + o.id},
+    meta: o.meta,
     extension: o.extension,
     identifier: o.identifier,
     basedOn: o.basedOn,
@@ -206,6 +213,7 @@ define function "ServiceRequestResource"(serviceRequest ServiceRequest):
   serviceRequest sR
   return ServiceRequest{
     id: FHIR.id {value: 'LCR-' + sR.id},
+    meta: sR.meta,
     extension: sR.extension,
     identifier: sR.identifier,
     instantiatesCanonical: sR.instantiatesCanonical,
@@ -246,6 +254,7 @@ define function "SpecimenResource"(specimen Specimen):
   specimen s
   return Specimen{
     id: FHIR.id {value: 'LCR-' + s.id},
+    meta: s.meta,
     extension: s.extension,
     identifier: s.identifier,
     accessionIdentifier: s.accessionIdentifier,
@@ -266,6 +275,7 @@ define function "CoverageResource"(coverage Coverage):
   coverage c
   return Coverage{
     id: FHIR.id{value: 'LCR-' + c.id},
+    meta: c.meta,
     extension: c.extension,
     identifier: c.identifier,
     status: c.status,
@@ -290,6 +300,7 @@ define function "ProcedureResource"(procedure Procedure):
   procedure p
   return Procedure{
     id: FHIR.id {value: 'LCR-' + p.id},
+    meta: p.meta,
     extension: p.extension,
     identifier: p.identifier,
     instantiatesCanonical: p.instantiatesCanonical,
@@ -324,6 +335,7 @@ define function "LocationResource"(location Location):
   location l
   return Location{
     id: FHIR.id {value: 'LCR-' + l.id},
+    meta: l.meta,
     extension: l.extension,
     identifier: l.identifier,
     status: l.status,
@@ -348,6 +360,7 @@ define function "DiagnosticReportResource"(diagnosticReport DiagnosticReport):
   diagnosticReport d
   return DiagnosticReport{
     id: FHIR.id{value: 'LCR-' + d.id},
+    meta: d.meta,
     extension: d.extension,
     identifier: d.identifier,
     basedOn: d.basedOn,
@@ -373,6 +386,7 @@ define function "DeviceResource"(device Device):
   device d
   return Device{
     id: FHIR.id{value: 'LCR-' + d.id},
+    meta: d.meta,
     extension: d.extension,
     identifier: d.identifier,
     definition: d.definition,

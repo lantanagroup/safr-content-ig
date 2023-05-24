@@ -537,7 +537,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library SharedResource"></display>
-            <resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/SharedResourceCreation|0.0.001"></resource>
+            <resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/SharedResourceCreation|0.1.001"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -870,7 +870,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-05-18T12:41:31-08:00"></date>
+   <date value="2023-05-24T09:45:26-08:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the measurement period."></description>
    <purpose value="The primary purpose of this site is to provide CDC’s NHSN with access to view measure specification content in the dQMs under development by Lantana Consulting Group. Please note, this site is draft and undergoes constant revision and is not intended to serve as an implementation guide."></purpose>
