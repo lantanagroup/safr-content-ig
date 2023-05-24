@@ -1,0 +1,13 @@
+﻿{
+  "name": "nhsn.fhir.template",
+  "type": "fhir.template",
+  "license": "CC0-1.0",
+  "description": "Template developed for NHSN Measure Reporting FHIR IG",
+  "author": "http://lantanagroup.com",
+  "canonical": "http://lantanagroup.com/templates/nhsn.fhir.template",
+  "base": "fhir.base.template",
+  "dependencies": {
+    "fhir.base.template": "current"
+  },
+  "version": "1.0.0"
+}
