@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<StructureDefinition
-    xmlns="http://hl7.org/fhir">
+<StructureDefinition xmlns="http://hl7.org/fhir">
     <id value="cross-measure-patient"/>
     <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/cross-measure-patient"/>
     <name value="CrossMeasurePatient"/>
@@ -16,6 +15,16 @@
     <differential>
         <element id="Patient">
             <path value="Patient"/>
+        </element>
+        <element id="Patient.meta.extension:link-received-date-extension">
+            <path value="Patient.meta.extension"/>
+            <sliceName value="link-received-date-extension"/>
+            <min value="0"/>
+            <max value="1"/>
+            <type>
+                <code value="Extension"/>
+                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-received-date-extension"/>
+            </type>
         </element>
         <element id="Patient.identifier">
             <path value="Patient.identifier"/>

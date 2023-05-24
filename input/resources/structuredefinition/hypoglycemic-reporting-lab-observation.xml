@@ -21,6 +21,16 @@
             <path value="Observation.id"/>
             <min value="1"/>
         </element>
+        <element id="Observation.meta.extension:link-received-date-extension">
+            <path value="Observation.meta.extension"/>
+            <sliceName value="link-received-date-extension"/>
+            <min value="0"/>
+            <max value="1"/>
+            <type>
+                <code value="Extension"/>
+                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-received-date-extension"/>
+            </type>
+        </element>
         <element id="Observation.effective[x]">
             <path value="Observation.effective[x]"/>
             <min value="1"/>

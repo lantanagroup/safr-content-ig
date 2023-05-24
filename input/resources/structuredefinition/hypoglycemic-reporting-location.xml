@@ -17,6 +17,20 @@
         <element id="Location">
             <path value="Location"/>
         </element>
+        <element id="Location.id">
+            <path value="Location.id"/>
+            <min value="1"/>
+        </element>
+        <element id="Location.meta.extension:link-received-date-extension">
+            <path value="Location.meta.extension"/>
+            <sliceName value="link-received-date-extension"/>
+            <min value="0"/>
+            <max value="1"/>
+            <type>
+                <code value="Extension"/>
+                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-received-date-extension"/>
+            </type>
+        </element>
         <element id="Location.alias">
             <path value="Location.alias"/>
             <min value="1"/>

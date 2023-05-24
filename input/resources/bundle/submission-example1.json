@@ -112,6 +112,12 @@
                 "meta": {
                     "profile": [
                         "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/subjectlist-measurereport"
+                    ],
+                    "extension": [
+                        {
+                            "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-received-date-extension",
+                            "valueDateTime": "2023-05-23T06:07:08Z"
+                        }
                     ]
                 },
                 "id": "788ca455-e11b1a59",
@@ -158,6 +164,12 @@
                 "meta": {
                     "profile": [
                         "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/ip-measurereport-list"
+                    ],
+                    "extension": [
+                        {
+                            "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-received-date-extension",
+                            "valueDateTime": "2023-05-23T06:07:08Z"
+                        }
                     ]
                 },
                 "id": "788ca455-e11b1a59-1234",
@@ -759,6 +771,15 @@
             "resource": {
                 "resourceType": "Patient",
                 "id": "edffl-xa2-jlLcPu5RGp50A3",
+                "meta": 
+                {
+                        "extension": [
+                        {
+                            "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-received-date-extension",
+                            "valueDateTime": "2023-05-23T06:07:08Z"
+                        }
+                    ]
+                },
                 "extension": [
                     {
                         "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",

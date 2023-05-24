@@ -294,6 +294,14 @@
         </resource>-->
         <resource>
             <reference>
+                <reference value="StructureDefinition/link-received-date-extension"/>
+            </reference>
+            <name value="Received Date"/>
+            <description value="An extension to store the date and time that a resource was received by the processing system (e.g. NHSNLink)."/>
+            <groupingId value="extensions"/>
+        </resource>
+        <resource>
+            <reference>
                 <reference value="StructureDefinition/link-patient-list-applicable-period-extension"/>
             </reference>
             <name value="Patient List Applicable Period"/>
@@ -324,6 +332,7 @@
             <description value="An extension used to store an original Concept that was mapped during processing."/>
             <groupingId value="extensions"/>
         </resource>
+        
 
         <resource>
             <reference>

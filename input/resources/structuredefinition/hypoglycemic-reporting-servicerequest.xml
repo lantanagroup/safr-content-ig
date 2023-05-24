@@ -21,6 +21,16 @@
             <path value="ServiceRequest.id"/>
             <min value="1"/>
         </element>
+        <element id="ServiceRequest.meta.extension:link-received-date-extension">
+            <path value="ServiceRequest.meta.extension"/>
+            <sliceName value="link-received-date-extension"/>
+            <min value="0"/>
+            <max value="1"/>
+            <type>
+                <code value="Extension"/>
+                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-received-date-extension"/>
+            </type>
+        </element>
         <element id="ServiceRequest.category">
             <path value="ServiceRequest.category"/>
             <mustSupport value="true"/>
