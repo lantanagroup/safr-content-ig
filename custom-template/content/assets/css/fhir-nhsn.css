@@ -40,6 +40,9 @@
   --dragon-background-color: #fffbf7; /* 29. Dragon background color */
   --dragon-text-color: #101020; /* 30. Dragon font color */
 
+  --section-header-text-color: #0070c0; /* 31. Section Header text color */
+  --subsection-header-text-color: black; /* 31. Sub-section Header text color */
+
 }
 
 .navbar-inverse {
