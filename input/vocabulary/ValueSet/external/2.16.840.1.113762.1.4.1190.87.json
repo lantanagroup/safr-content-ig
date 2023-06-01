@@ -1,0 +1,73 @@
+{
+  "resourceType": "ValueSet",
+  "id": "2.16.840.1.113762.1.4.1190.87",
+  "meta": {
+    "versionId": "5",
+    "lastUpdated": "2023-05-16T01:00:59.000-04:00",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/shareablevalueset", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm" ]
+  },
+  "extension": [ {
+    "url": "http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate",
+    "valueDate": "2023-05-16"
+  } ],
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.87",
+  "version": "20230516",
+  "name": "Zanamivir",
+  "status": "active",
+  "date": "2023-05-16T01:00:59-04:00",
+  "publisher": "CDC NHSN",
+  "expansion": {
+    "identifier": "urn:uuid:a01e6633-b431-427a-9b24-e94956d9abc5",
+    "timestamp": "2023-05-31T17:39:36-04:00",
+    "total": 8,
+    "offset": 0,
+    "parameter": [ {
+      "name": "count",
+      "valueInteger": 1000
+    }, {
+      "name": "offset",
+      "valueInteger": 0
+    } ],
+    "contains": [ {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "05012023",
+      "code": "1163025",
+      "display": "zanamivir Inhalant Product"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "05012023",
+      "code": "582578",
+      "display": "zanamivir 5 MG/ACTUAT"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "05012023",
+      "code": "582580",
+      "display": "zanamivir 5 MG/ACTUAT [Relenza]"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "05012023",
+      "code": "69722",
+      "display": "zanamivir"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "05012023",
+      "code": "759470",
+      "display": "zanamivir Dry Powder Inhaler"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "05012023",
+      "code": "759471",
+      "display": "20 ACTUAT zanamivir 5 MG/ACTUAT Dry Powder Inhaler"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "05012023",
+      "code": "759472",
+      "display": "zanamivir Dry Powder Inhaler [Relenza]"
+    }, {
+      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+      "version": "05012023",
+      "code": "759473",
+      "display": "20 ACTUAT zanamivir 5 MG/ACTUAT Dry Powder Inhaler [Relenza]"
+    } ]
+  }
+}
