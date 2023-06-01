@@ -59,6 +59,9 @@ valueset "Nirmatrelvir / Ritonavir": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.
 valueset "Bebtelovimab": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2105'
 
 //Influenza medication
+valueset "Baloxavir": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.85'
+valueset "Peramivir": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.86'
+valueset "Zanamivir": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.87'
 valueset "Oseltamivir": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2078'
 
 //Isolation Precautions
@@ -334,6 +337,7 @@ define "SDE Covid or Influenza Medication Administered":
     let Meds: GetMedicationCode(RPSMedAdmin.medication)
    where (Meds in "Anakinra"
             or Meds in "Bamlanivimab"
+            or Meds in "Baloxavir"
             or Meds in "Baricitinib"
             or Meds in "Bebtelovimab"
             or Meds in "Casirivimab"
@@ -344,10 +348,12 @@ define "SDE Covid or Influenza Medication Administered":
             or Meds in "Molnupiravir"
             or Meds in "Nirmatrelvir / Ritonavir"
             or Meds in "Oseltamivir"
+            or Meds in "Peramivir"
             or Meds in "Remdesivir"
             or Meds in "Sarilumab"
             or Meds in "Sotrovimab"    
-            or Meds in "Tofacitinib")
+            or Meds in "Tofacitinib"
+            or Meds in "Zanamivir")
       and RPSMedAdmin.status ~ 'completed'
       and exists("Initial Population")
       and Global."Normalize Interval"(RPSMedAdmin.effective) during "Measurement Period"
@@ -357,6 +363,7 @@ define "SDE Covid or Influenza Medication Ordered":
   "MedicationRequests" RPSMedRequest
     let Meds: (GetMedicationCode(RPSMedRequest.medication))
     where (Meds in "Anakinra"
+            or Meds in "Baloxavir"
             or Meds in "Bamlanivimab"
             or Meds in "Baricitinib"
             or Meds in "Bebtelovimab"
@@ -368,10 +375,12 @@ define "SDE Covid or Influenza Medication Ordered":
             or Meds in "Molnupiravir"
             or Meds in "Nirmatrelvir / Ritonavir"
             or Meds in "Oseltamivir"
+            or Meds in "Peramivir"
             or Meds in "Remdesivir"
             or Meds in "Sarilumab"
             or Meds in "Sotrovimab"    
-            or Meds in "Tofacitinib")
+            or Meds in "Tofacitinib"
+            or Meds in "Zanamivir")
       and exists("Initial Population")
       and Global."Normalize Interval"(RPSMedRequest.authoredOn) during "Measurement Period"
     return SharedResource.MedicationRequestResource(RPSMedRequest)

@@ -1,25 +1,25 @@
 {
   "resourceType": "ValueSet",
-  "id": "2.16.840.1.113883.3.3616.200.110.102.2078",
+  "id": "2.16.840.1.113762.1.4.1190.85",
   "meta": {
     "versionId": "5",
-    "lastUpdated": "2022-07-28T14:31:51.000-04:00",
+    "lastUpdated": "2023-05-16T01:00:59.000-04:00",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/shareablevalueset", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm" ]
   },
   "extension": [ {
     "url": "http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate",
-    "valueDate": "2020-07-11"
+    "valueDate": "2023-05-16"
   } ],
-  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2078",
-  "version": "20200711",
-  "name": "Oseltamivir",
+  "url": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.85",
+  "version": "20230516",
+  "name": "Baloxavir",
   "status": "active",
-  "date": "2020-07-11T01:00:42-04:00",
-  "publisher": "Clinical Architecture",
+  "date": "2023-05-16T01:00:59-04:00",
+  "publisher": "CDC NHSN",
   "expansion": {
-    "identifier": "urn:uuid:6f38f60a-409d-4503-be3f-c8a24d49a4a9",
-    "timestamp": "2023-05-31T17:40:09-04:00",
-    "total": 32,
+    "identifier": "urn:uuid:d91c0abf-00cc-44ce-b59f-b17e894e5e99",
+    "timestamp": "2023-05-31T17:33:47-04:00",
+    "total": 27,
     "offset": 0,
     "parameter": [ {
       "name": "count",
@@ -31,163 +31,138 @@
     "contains": [ {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "1115697",
-      "display": "oseltamivir 6 MG/ML"
+      "code": "2099995",
+      "display": "baloxavir marboxil"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "1115698",
-      "display": "oseltamivir 6 MG/ML Oral Suspension"
+      "code": "2099996",
+      "display": "baloxavir marboxil 20 MG"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "1115699",
-      "display": "oseltamivir 6 MG/ML [Tamiflu]"
+      "code": "2099997",
+      "display": "baloxavir marboxil Oral Product"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "1115700",
-      "display": "oseltamivir 6 MG/ML Oral Suspension [Tamiflu]"
+      "code": "2099998",
+      "display": "baloxavir marboxil Pill"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "1161647",
-      "display": "oseltamivir Oral Liquid Product"
+      "code": "2099999",
+      "display": "baloxavir marboxil Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "1161648",
-      "display": "oseltamivir Oral Product"
+      "code": "2100000",
+      "display": "baloxavir marboxil 20 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "1161649",
-      "display": "oseltamivir Pill"
+      "code": "2100002",
+      "display": "baloxavir marboxil 20 MG [Xofluza]"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "1177854",
-      "display": "Tamiflu Oral Liquid Product"
+      "code": "2100003",
+      "display": "baloxavir marboxil Oral Tablet [Xofluza]"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "1177855",
-      "display": "Tamiflu Oral Product"
+      "code": "2100006",
+      "display": "baloxavir marboxil 20 MG Oral Tablet [Xofluza]"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "1177856",
-      "display": "Tamiflu Pill"
+      "code": "2100007",
+      "display": "baloxavir marboxil 40 MG"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "1546279",
-      "display": "oseltamivir carboxylate"
+      "code": "2100008",
+      "display": "baloxavir marboxil 40 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "259275",
-      "display": "oseltamivir phosphate"
+      "code": "2100009",
+      "display": "baloxavir marboxil 40 MG [Xofluza]"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "260101",
-      "display": "oseltamivir"
+      "code": "2100010",
+      "display": "baloxavir marboxil 40 MG Oral Tablet [Xofluza]"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "261315",
-      "display": "oseltamivir 75 MG Oral Capsule [Tamiflu]"
+      "code": "2100024",
+      "display": "{2 (baloxavir marboxil 20 MG Oral Tablet) } Pack"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "261657",
-      "display": "Tamiflu"
+      "code": "2100026",
+      "display": "{2 (baloxavir marboxil 40 MG Oral Tablet) } Pack"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "312122",
-      "display": "oseltamivir 75 MG Oral Capsule"
+      "code": "2100099",
+      "display": "{2 (baloxavir marboxil 20 MG Oral Tablet [Xofluza]) } Pack [Xofluza 40 MG Dose Pack (2 x 20 MG Tablets)]"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "314157",
-      "display": "oseltamivir 12 MG/ML Oral Suspension"
+      "code": "2100100",
+      "display": "{2 (baloxavir marboxil 40 MG Oral Tablet [Xofluza]) } Pack [Xofluza 80 MG Dose Pack (2 x 40 MG Tablets)]"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "330390",
-      "display": "oseltamivir 12 MG/ML"
+      "code": "2197842",
+      "display": "baloxavir"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "330391",
-      "display": "oseltamivir 75 MG"
+      "code": "2467530",
+      "display": "baloxavir marboxil Granule Product"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "366559",
-      "display": "oseltamivir Oral Capsule [Tamiflu]"
+      "code": "2467536",
+      "display": "baloxavir marboxil Granules for Oral Suspension"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "374615",
-      "display": "oseltamivir Oral Capsule"
+      "code": "2467537",
+      "display": "baloxavir marboxil 40 MG Granules for Oral Suspension"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "375196",
-      "display": "oseltamivir Oral Suspension"
+      "code": "2467538",
+      "display": "baloxavir marboxil Granules for Oral Suspension [Xofluza]"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "574537",
-      "display": "oseltamivir 75 MG [Tamiflu]"
+      "code": "2467539",
+      "display": "baloxavir marboxil 40 MG Granules for Oral Suspension [Xofluza]"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "581625",
-      "display": "oseltamivir Oral Suspension [Tamiflu]"
+      "code": "2536739",
+      "display": "baloxavir marboxil 80 MG"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "728108",
-      "display": "oseltamivir 30 MG"
+      "code": "2536740",
+      "display": "baloxavir marboxil 80 MG Oral Tablet"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "728109",
-      "display": "oseltamivir 30 MG Oral Capsule"
+      "code": "2536741",
+      "display": "baloxavir marboxil 80 MG [Xofluza]"
     }, {
       "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
       "version": "05012023",
-      "code": "728110",
-      "display": "oseltamivir 30 MG [Tamiflu]"
-    }, {
-      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "05012023",
-      "code": "728111",
-      "display": "oseltamivir 30 MG Oral Capsule [Tamiflu]"
-    }, {
-      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "05012023",
-      "code": "728112",
-      "display": "oseltamivir 45 MG"
-    }, {
-      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "05012023",
-      "code": "728113",
-      "display": "oseltamivir 45 MG Oral Capsule"
-    }, {
-      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "05012023",
-      "code": "728114",
-      "display": "oseltamivir 45 MG [Tamiflu]"
-    }, {
-      "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-      "version": "05012023",
-      "code": "728115",
-      "display": "oseltamivir 45 MG Oral Capsule [Tamiflu]"
+      "code": "2536742",
+      "display": "baloxavir marboxil 80 MG Oral Tablet [Xofluza]"
     } ]
   }
 }
