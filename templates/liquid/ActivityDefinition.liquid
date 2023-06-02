@@ -169,7 +169,7 @@
         {% if ActivityDefinition.jurisdiction.exists() %}
         <tr>
             <th scope="row"><b>Jurisdiction: </b></th>
-            <td style="padding-left: 4px;">{{ActivityDefinition.jurisdiction.first().coding.first().code}}</td>
+            <td style="padding-left: 4px;"><ul>{% for jurisdiction in ActivityDefinition.jurisdiction %}<li>{% if jurisdiction.coding.first().code = '001' %}US{% else %}{{jurisdiction.coding.first().code}}{% endif %}</li>{% endfor %}</ul></td>
         </tr>
         {% endif %}
         {% if ActivityDefinition.purpose.exists() %}

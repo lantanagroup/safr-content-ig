@@ -198,7 +198,7 @@
         {% if Library.jurisdiction.exists() %}
         <tr>
             <th scope="row"><b>Jurisdiction: </b></th>
-            <td style="padding-left: 4px;">{{Library.jurisdiction.first().coding.first().code}}</td>
+            <td style="padding-left: 4px;"><ul>{% for jurisdiction in Library.jurisdiction %}<li>{% if jurisdiction.coding.first().code = '001' %}US{% else %}{{jurisdiction.coding.first().code}}{% endif %}</li>{% endfor %}</ul></td>
         </tr>
         {% endif %}
         {% if Library.purpose.exists() %}
@@ -328,7 +328,7 @@
                 <tr>
                   <th>{{requirement.type.value}}</th>
                   <th>{% for profile in requirement.profile %}{{profile.value}}{% endfor %}</th>
-                  <th>{% for support in requirement.mustSupport %}{{mustSupport}};{% endfor %}</th>
+                  <th> {% if requirement.mustSupport.exists() %}<ul>{% for mustSupport in requirement.mustSupport %}<li>{{mustSupport}}</li>{% endfor %}</ul>{% endif %}</th>
                   <th>
                     {% for cfilter in requirement.codeFilter %}
                       <b>code filter: </b>
