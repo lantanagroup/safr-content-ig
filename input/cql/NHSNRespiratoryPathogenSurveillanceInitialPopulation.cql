@@ -111,6 +111,9 @@ define "Qualifying Encounter During Measurement Period":
   where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged'}
     and QualifyingEncounters.period overlaps "Measurement Period"
 
+//-----------------------------------------------
+// Start logic related to Laboratory
+//-----------------------------------------------
 //seperate RSV from COVID and Influenza due to they have different lookback days
 define "COVID And Influenza Observation":
   ([Observation: "Influenza (Tests for influenza A or B virus Nucleic Acid)"] 
