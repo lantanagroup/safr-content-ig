@@ -30,6 +30,7 @@
         </element>
         <element id="List.entry.item">
             <path value="List.entry.item"/>
+            <short value="Individual measure report reference"/>
             <type>
                 <code value="Reference"/>
                 <targetProfile value="http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"/>

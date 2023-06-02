@@ -48,11 +48,13 @@
         <element id="Bundle.entry:submitting-organization">
             <path value="Bundle.entry"/>
             <sliceName value="organization"/>
+            <short value="Submitting organization"/>
             <min value="1"/>
             <max value="1"/>
         </element>
         <element id="Bundle.entry:submitting-organization.resource">
             <path value="Bundle.entry.resource"/>
+            <short value="Bundle entry for submitting organization"/>
             <min value="1"/>
             <type>
                 <code value="Organization"/>
@@ -63,11 +65,13 @@
         <element id="Bundle.entry:poi-list">
             <path value="Bundle.entry"/>
             <sliceName value="poi-list"/>
+            <short value="Patients of Interest List - A list of Patient FHIR IDs that may be included in the initial population across all measures"/>
             <min value="1"/>
             <max value="1"/>
         </element>
         <element id="Bundle.entry:poi-list.resource">
             <path value="Bundle.entry.resource"/>
+            <short value="Bundle entry for patients of interest list"/>
             <min value="1"/>
             <type>
                 <code value="List"/>
@@ -78,11 +82,13 @@
         <element id="Bundle.entry:subject-list">
             <path value="Bundle.entry"/>
             <sliceName value="subject-list"/>
+            <short value="Summary Measure Reports - One for each measure that includes the population count and a link to the list of included individual measure reports"/>
             <min value="1"/>
             <max value="*"/>
         </element>
         <element id="Bundle.entry:subject-list.resource">
             <path value="Bundle.entry.resource"/>
+            <short value="Bundle entry for a summary measure report"/>
             <type>
                 <code value="MeasureReport"/>
                 <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/subjectlist-measurereport"/>
@@ -92,9 +98,11 @@
         <element id="Bundle.entry:individual-measure-report-list">
             <path value="Bundle.entry"/>
             <sliceName value="individual-measure-report-list"/>
+            <short value="Individual Measure Report List - A list of Individual MeasureReports, each associated with a single Summary Measure Report"/>
         </element>
         <element id="Bundle.entry:individual-measure-report-list.resource">
             <path value="Bundle.entry.resource"/>
+            <short value="Bundle entry for an individual measure report list"/>
             <min value="1"/>
             <type>
                 <code value="List"/>
@@ -105,9 +113,11 @@
         <element id="Bundle.entry:individual-measurereport">
             <path value="Bundle.entry"/>
             <sliceName value="individual-measurereport"/>
+            <short value="Individual Measure Reports - Each associated per patient and measure included in the individual measure report list"/>
         </element>
         <element id="Bundle.entry:individual-measurereport.resource">
             <path value="Bundle.entry.resource"/>
+            <short value="Bendle entry for an individual measure report"/>
             <min value="1"/>
             <type>
                 <code value="MeasureReport"/>
@@ -118,9 +128,11 @@
         <element id="Bundle.entry:patient">
             <path value="Bundle.entry"/>
             <sliceName value="patient"/>
+            <short value="Patients associated with an Individual MeasureReport"/>
         </element>
         <element id="Bundle.entry:patient.resource">
             <path value="Bundle.entry.resource"/>
+            <short value="Bundle entry for patient associated with an individual measure report"/>
             <min value="1"/>
             <type>
                 <code value="Patient"/>

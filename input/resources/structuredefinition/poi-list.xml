@@ -54,6 +54,7 @@
         </element>
         <element id="List.entry.item">
             <path value="List.entry.item"/>
+            <short value="Patient Of Interest reference"/>
             <type>
                 <code value="Reference"/>
                 <targetProfile value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"/>
