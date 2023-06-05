@@ -22,8 +22,8 @@
     <description value="..."/>
     <jurisdiction>
         <coding>
-            <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
-            <code value="001"/>
+            <system value="urn:iso:std:iso:3166"/>
+            <code value="US"/>
         </coding>
     </jurisdiction>
     <packageId value="gov.cdc.nhsn.measures"/>
