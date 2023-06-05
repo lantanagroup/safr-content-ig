@@ -98,6 +98,9 @@
         <grouping id="libs">
             <name value="Knowledge Artifacts: Libraries"/>
         </grouping>
+        <grouping id="ext-libs">
+            <name value="Knowledge Artifacts: External Libraries"/>
+        </grouping>
         <grouping id="example">
             <name value="Knowledge Artifacts: Examples"/>
         </grouping>
@@ -238,6 +241,30 @@
         </resource>
         <resource>
             <reference>
+                <reference value="Measure/NHSNGlycemicControlHypoglycemicInitialPopulation"/>
+            </reference>
+            <name value="NHSN Glycemic Control, Hypoglycemia Initial Population"/>
+            <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the measurement period."/>
+            <groupingId value="measures"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Measure/NHSNdQMAcuteCareHospitalInitialPopulation"/>
+            </reference>
+            <name value="NHSN dQM Acute Care Hospital Initial Population"/>
+            <description value="dQM Measure for Inpatients (Acute) Care setting"/>
+            <groupingId value="measures"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Measure/NHSNRespiratoryPathogenSurveillanceInitialPopulation"/>
+            </reference>
+            <name value="NHSN Respiratory Pathogen Surveillance Initial Population"/>
+            <description value="dQM Measure for Respiratory Pathogen Surveillance"/>
+            <groupingId value="measures"/>
+        </resource>
+        <resource>
+            <reference>
                 <reference value="Library/SharedResourceCreation"/>
             </reference>
             <name value="SharedResourceCreation"/>
@@ -268,6 +295,42 @@
             <description value="Library of NHSN dQM Acute Care Hospital Initial Population Measure"/>
             <groupingId value="libs"/>
         </resource>
+
+
+        <resource>
+            <reference>
+                <reference value="Library/FHIRCommon"/>
+            </reference>
+            <name value="FHIR Common"/>
+            <description value="This library defines terminologies and functions commonly used in FHIR-based CQL artifacts."/>
+            <groupingId value="ext-libs"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Library/FHIRHelpers"/>
+            </reference>
+            <name value="FHIR Helpers"/>
+            <description value="This library defines functions to convert between FHIR data types and CQL system-defined types, as well as functions to support FHIRPath implementation. For more information, the FHIRHelpers wiki page: https://github.com/cqframework/clinical_quality_language/wiki/FHIRHelpers"/>
+            <groupingId value="ext-libs"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Library/MATGlobalCommonFunctionsFHIR4"/>
+            </reference>
+            <name value="MAT Global Common Functions FHIR"/>
+            <description value="Measure Authoring Tool (MAT) Global Common Functions FHIR."/>
+            <groupingId value="ext-libs"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Library/SupplementalDataElementsFHIR4"/>
+            </reference>
+            <name value="Supplemental Data Elements FHIR"/>
+            <description value="Measure illustrating the use of supplemental data elements to gather additional information about a population"/>
+            <groupingId value="ext-libs"/>
+        </resource>
+
+
         <resource>
             <reference>
                 <reference value="Device/cqf-tooling"/>

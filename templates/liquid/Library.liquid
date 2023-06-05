@@ -198,7 +198,7 @@
         {% if Library.jurisdiction.exists() %}
         <tr>
             <th scope="row"><b>Jurisdiction: </b></th>
-            <td style="padding-left: 4px;"><ul>{% for jurisdiction in Library.jurisdiction %}<li>{% if jurisdiction.coding.first().code = '001' %}US{% else %}{{jurisdiction.coding.first().code}}{% endif %}</li>{% endfor %}</ul></td>
+            <td style="padding-left: 4px;"><ul>{% for jurisdiction in Library.jurisdiction %}<li>{% if jurisdiction.coding.first().code = '001' %}001 (US){% else %}{{jurisdiction.coding.first().code}}{% endif %}</li>{% endfor %}</ul></td>
         </tr>
         {% endif %}
         {% if Library.purpose.exists() %}

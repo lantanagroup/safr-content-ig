@@ -1208,7 +1208,7 @@ define &quot;SDE All Observations&quot;:
    <status value="draft"></status>
    <experimental value="false"></experimental>
    <date value="2023-05-24T12:45:26-05:00"></date>
-   <description value="dQM Measure for Inpatients (Acute) Care setting"></description>
+   <description value="dQM Measure for Respiratory Pathogen Surveillance"></description>
    <library value="http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation"></library>
    <scoring>
       <coding>
