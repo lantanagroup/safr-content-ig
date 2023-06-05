@@ -1291,6 +1291,32 @@ define &quot;SDE All Observations&quot;:
          <expression value="SDE RPSObservation"></expression>
       </criteria>
    </supplementalData>
+   <supplementalData id="sde-rsv-pre-admission-observation">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE RSV PRE Admission Observation"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE RSV PRE Admission Observation"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-covid-and-influenza-pre-admission-observation">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE COVID And Influenza PRE Admission Observation"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE COVID And Influenza PRE Admission Observation"></expression>
+      </criteria>
+   </supplementalData>
    <supplementalData id="sde-rps-specimen">
       <usage>
          <coding>
@@ -1302,6 +1328,32 @@ define &quot;SDE All Observations&quot;:
       <criteria>
          <language value="text/cql-identifier"></language>
          <expression value="SDE RPS Specimen"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-rsv-specimen">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE RSV Specimen"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE RSV Specimen"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-covid-and-influenza-specimen">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE COVID And Influenza Specimen"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE COVID And Influenza Specimen"></expression>
       </criteria>
    </supplementalData>
    <supplementalData id="sde-rps-diagnosticreport">
@@ -1317,6 +1369,32 @@ define &quot;SDE All Observations&quot;:
          <expression value="SDE RPS DiagnosticReport"></expression>
       </criteria>
    </supplementalData>
+   <supplementalData id="sde-rsv-diagnosticreport">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE RSV DiagnosticReport"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE RSV DiagnosticReport"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-covid-and-influenza-diagnosticreport">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE COVID And Influenza DiagnosticReport"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE COVID And Influenza DiagnosticReport"></expression>
+      </criteria>
+   </supplementalData>
    <supplementalData id="sde-rps-diagnosticreport-result-from-lab">
       <usage>
          <coding>
@@ -1328,6 +1406,32 @@ define &quot;SDE All Observations&quot;:
       <criteria>
          <language value="text/cql-identifier"></language>
          <expression value="SDE RPS DiagnosticReport Result from Lab"></expression>
+      </criteria>
+   </supplementalData>
+    <supplementalData id="sde-covid-and-influenza-diagnosticreport-result-from-lab">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE COVID and Influenza DiagnosticReport Result from Lab"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE COVID and Influenza DiagnosticReport Result from Lab"></expression>
+      </criteria>
+   </supplementalData>
+    <supplementalData id="sde-rsv-diagnosticreport-result-from-lab">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE RSV DiagnosticReport Result from Lab"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE RSV DiagnosticReport Result from Lab"></expression>
       </criteria>
    </supplementalData>
    <supplementalData id="sde-rps-servicerequest">
