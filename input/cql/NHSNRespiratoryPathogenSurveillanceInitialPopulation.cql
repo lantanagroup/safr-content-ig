@@ -165,14 +165,14 @@ define "COVID And Influenza DiagnosticReport":
     union [DiagnosticReport: "Influenza (Tests for influenza A or B virus Antigen)"]
   ) Reports
     where exists("Initial Population")
-      and Reports.status in {'final'}
+      and Reports.status in {'final','registered','preliminary','partial'}
 
 define "RSV DiagnosticReport":
   ([DiagnosticReport: "RSV (Tests for RSV Nucleic Acid)"]
     union [DiagnosticReport: "RSV (Tests for RSV Antigen)"]
   ) Reports
     where exists("Initial Population")
-      and Reports.status in {'final'}
+      and Reports.status in {'final','registered','preliminary','partial'}
 
 define "RPS DiagnosticReport":
   "COVID And Influenza DiagnosticReport"
@@ -203,14 +203,14 @@ define "COVID and Influenza DiagnosticReport Result from Lab":
       or GetObservations(Reports.result).code in "COVID_19 (Tests for SARS_CoV_2 Antigen)"
       or GetObservations(Reports.result).code in "Influenza (Tests for influenza A or B virus Nucleic Acid)"
       or GetObservations(Reports.result).code in "Influenza (Tests for influenza A or B virus Antigen)")
-      and Reports.status in {'final'}
+      and Reports.status in {'final','registered','preliminary','partial'}
       and exists("Initial Population")
  
 define "RSV DiagnosticReport Result from Lab":
   "DiagnosticReports" Reports
     where (GetObservations(Reports.result).code in "RSV (Tests for RSV Nucleic Acid)"
       or GetObservations(Reports.result).code in "RSV (Tests for RSV Antigen)")
-      and Reports.status in {'final'}
+      and Reports.status in {'final','registered','preliminary','partial'}
       and exists("Initial Population")
 
 define "RPS DiagnosticReport Result from Lab":
