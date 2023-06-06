@@ -41,7 +41,7 @@
         </element>
         <element id="Specimen.type">
             <path value="Specimen.type"/>
-            <mustSupport value="true"/>
+            <min value="1"/>
         </element>
         <element id="Specimen.collection">
             <path value="Specimen.collection"/>

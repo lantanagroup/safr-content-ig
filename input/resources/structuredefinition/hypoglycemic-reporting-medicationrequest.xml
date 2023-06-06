@@ -82,5 +82,13 @@
             <path value="MedicationRequest.dosageInstruction.doseAndRate"/>
             <mustSupport value="true"/>
         </element>
+        <element id="MedicationRequest.dosageInstruction.doseAndRate.type">
+            <path value="MedicationRequest.dosageInstruction.doseAndRate.type"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="MedicationRequest.dosageInstruction.doseAndRate.dose[x]">
+            <path value="MedicationRequest.dosageInstruction.doseAndRate.dose[x]"/>
+            <mustSupport value="true"/>
+        </element>
     </differential>
 </StructureDefinition>
