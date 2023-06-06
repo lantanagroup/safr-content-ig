@@ -39,5 +39,13 @@
             <path value="Medication.form"/>
             <mustSupport value="true"/>
         </element>
+        <element id="Medication.amount">
+            <path value="Medication.amount"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="Medication.ingredient">
+            <path value="Medication.ingredient"/>
+            <mustSupport value="true"/>
+        </element>
     </differential>
 </StructureDefinition>

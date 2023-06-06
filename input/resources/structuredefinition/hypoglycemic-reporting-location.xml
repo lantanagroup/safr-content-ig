@@ -33,8 +33,11 @@
         </element>
         <element id="Location.alias">
             <path value="Location.alias"/>
-            <min value="1"/>
             <mustSupport value="true"/>
+        </element>
+        <element id="Location.type">
+            <path value="Location.type"/>
+            <min value="1"/>
         </element>
         <element id="Location.partOf">
             <path value="Location.partOf"/>

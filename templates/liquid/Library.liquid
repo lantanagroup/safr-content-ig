@@ -1,45 +1,47 @@
 <div>
     <table class="grid dict">
-        {% if Library.id.exists() %}
-        <tr>
-            <th scope="row"><b>Id: </b></th>
-            <td style="padding-left: 4px;">{{Library.id}}</td>
-        </tr>
-        {% endif %}
-        {% if Library.url.exists() %}
-        <tr>
-            <th scope="row"><b>Url: </b></th>
-            <td style="padding-left: 4px;">{{Library.url}}</td>
-        </tr>
-        {% endif %}
-        {% if Library.version.exists() %}
-        <tr>
-            <th scope="row"><b>Version: </b></th>
-            <td style="padding-left: 4px;">{{Library.version}}</td>
-        </tr>
-        {% endif %}
-        {% for identifier in Library.identifier %}
-        <tr>
-            <th scope="row"><b>Identifier: </b></th>
-            <td style="padding-left: 4px;">
-                {% if identifier.type.exists() %}
-                <p style="margin-bottom: 5px;">
-                    <b>type: </b> <span>{{identifier.type.value}}</span>
-                </p>
-                {% endif %}
-                {% if identifier.value.exists() %}
-                <p style="margin-bottom: 5px;">
-                    <b>value: </b> <span>{{identifier.value}}</span>
-                </p>
-                {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
-        {% if Library.name.exists() %}
-        <tr>
-            <th scope="row"><b>Name: </b></th>
-            <td style="padding-left: 4px;">{{Library.name}}</td>
-        </tr>
+        {% if false %}
+          {% if Library.id.exists() %}
+          <tr>
+              <th scope="row"><b>Id: </b></th>
+              <td style="padding-left: 4px;">{{Library.id}}</td>
+          </tr>
+          {% endif %}
+          {% if Library.url.exists() %}
+          <tr>
+              <th scope="row"><b>Url: </b></th>
+              <td style="padding-left: 4px;">{{Library.url}}</td>
+          </tr>
+          {% endif %}
+          {% if Library.version.exists() %}
+          <tr>
+              <th scope="row"><b>Version: </b></th>
+              <td style="padding-left: 4px;">{{Library.version}}</td>
+          </tr>
+          {% endif %}
+          {% for identifier in Library.identifier %}
+          <tr>
+              <th scope="row"><b>Identifier: </b></th>
+              <td style="padding-left: 4px;">
+                  {% if identifier.type.exists() %}
+                  <p style="margin-bottom: 5px;">
+                      <b>type: </b> <span>{{identifier.type.value}}</span>
+                  </p>
+                  {% endif %}
+                  {% if identifier.value.exists() %}
+                  <p style="margin-bottom: 5px;">
+                      <b>value: </b> <span>{{identifier.value}}</span>
+                  </p>
+                  {% endif %}
+              </td>
+          </tr>
+          {% endfor %}
+          {% if Library.name.exists() %}
+          <tr>
+              <th scope="row"><b>Name: </b></th>
+              <td style="padding-left: 4px;">{{Library.name}}</td>
+          </tr>
+          {% endif %}
         {% endif %}
         {% if Library.title.exists() %}
         <tr>
@@ -53,17 +55,19 @@
             <td style="padding-left: 4px;">{{Library.subtitle.escape('html')}}</td>
         </tr>
         {% endif %}
-        {% if Library.status.exists() %}
-        <tr>
-            <th scope="row"><b>Status: </b></th>
-            <td style="padding-left: 4px;">{{Library.status.value}}</td>
-        </tr>
-        {% endif %}
-        {% if Library.experimental.exists() %}
-        <tr>
-            <th scope="row"><b>Experimental: </b></th>
-            <td style="padding-left: 4px;">{{Library.experimental.value}}</td>
-        </tr>
+        {% if false %}
+          {% if Library.status.exists() %}
+          <tr>
+              <th scope="row"><b>Status: </b></th>
+              <td style="padding-left: 4px;">{{Library.status.value}}</td>
+          </tr>
+          {% endif %}
+          {% if Library.experimental.exists() %}
+          <tr>
+              <th scope="row"><b>Experimental: </b></th>
+              <td style="padding-left: 4px;">{{Library.experimental.value}}</td>
+          </tr>
+          {% endif %}
         {% endif %}
         {% if Library.type.exists() %}
         <tr>

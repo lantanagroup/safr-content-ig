@@ -43,13 +43,20 @@
             <path value="MedicationRequest.reasonCode"/>
             <mustSupport value="true"/>
         </element>
+        <element id="MedicationRequest.instantiatesCanonical">
+            <path value="MedicationRequest.instantiatesCanonical"/>
+            <mustSupport value="true"/>
+        </element>
+        <element id="MedicationRequest.instantiatesUri">
+            <path value="MedicationRequest.instantiatesUri"/>
+            <mustSupport value="true"/>
+        </element>
         <element id="MedicationRequest.courseOfTherapyType">
             <path value="MedicationRequest.courseOfTherapyType"/>
             <mustSupport value="true"/>
         </element>
         <element id="MedicationRequest.dosageInstruction">
             <path value="MedicationRequest.dosageInstruction"/>
-            <mustSupport value="true"/>
         </element>
         <element id="MedicationRequest.dosageInstruction.timing">
             <path value="MedicationRequest.dosageInstruction.timing"/>
