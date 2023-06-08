@@ -1,6 +1,6 @@
 <div>
     <table class="grid dict">
-        {% if false %}
+        <!-- Removed per MEASDEV-518 - HYPO: Measure Specific FHIR IG Narrative
           {% if Measure.id.exists() %}
           <tr>
               <th scope="row"><b>Id: </b></th>
@@ -36,13 +36,14 @@
               </td>
           </tr>
           {% endfor %}
+        -->
           {% if Measure.name.exists() %}
           <tr>
               <th scope="row"><b>Name: </b></th>
               <td style="padding-left: 4px;">{{Measure.name}}</td>
           </tr>
           {% endif %}
-        {% endif %}
+
         {% if Measure.title.exists() %}
         <tr>
             <th scope="row"><b>Title: </b></th>
@@ -55,49 +56,51 @@
             <td style="padding-left: 4px;">{{Measure.subtitle.escape('html')}}</td>
         </tr>
         {% endif %}
-        {% if false %}
-          {% if Measure.status.exists() %}
-          <tr>
-              <th scope="row"><b>Status: </b></th>
-              <td style="padding-left: 4px;">{{Measure.status.value}}</td>
-          </tr>
-          {% endif %}
+        
+        {% if Measure.status.exists() %}
+        <tr>
+            <th scope="row"><b>Status: </b></th>
+            <td style="padding-left: 4px;">{{Measure.status.value}}</td>
+        </tr>
+        {% endif %}
+        <!-- Removed per MEASDEV-518 - HYPO: Measure Specific FHIR IG Narrative
           {% if Measure.experimental.exists() %}
           <tr>
               <th scope="row"><b>Experimental: </b></th>
               <td style="padding-left: 4px;">{{Measure.experimental.value}}</td>
           </tr>
           {% endif %}
-        {% endif %}
-        {% if Measure.scoring.exists() %}
-        <tr>
-            <th scope="row"><b>Scoring: </b></th>
-            <td style="padding-left: 4px;">
-                {% if Measure.scoring.coding.exists() %}
-                    {% for coding in Measure.scoring.coding %}
-                        {% if coding.system.exists() %}
-                        <p style="margin-bottom: 5px;">
-                            <b>system: </b> <span>{{coding.system}}</span>
-                        </p>
-                        {% endif %}
-                        {% if coding.code.exists() %}
-                        <p style="margin-bottom: 5px;">
-                            <b>code: </b> <span>{{coding.code}}</span>
-                        </p>
-                        {% endif %}
-                        {% if coding.display.exists() %}
-                        <p style="margin-bottom: 5px;">
-                            <b>display: </b> <span>{{coding.display.escape('html')}}</span>
-                        </p>
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-                {% if Measure.scoring.coding.exists().not and Measure.scoring.text.exists() %}
-                    {{Measure.scoring.text}}
-                {% endif %}
-            </td>
-        </tr>
-        {% endif %}
+        
+          {% if Measure.scoring.exists() %}
+          <tr>
+              <th scope="row"><b>Scoring: </b></th>
+              <td style="padding-left: 4px;">
+                  {% if Measure.scoring.coding.exists() %}
+                      {% for coding in Measure.scoring.coding %}
+                          {% if coding.system.exists() %}
+                          <p style="margin-bottom: 5px;">
+                              <b>system: </b> <span>{{coding.system}}</span>
+                          </p>
+                          {% endif %}
+                          {% if coding.code.exists() %}
+                          <p style="margin-bottom: 5px;">
+                              <b>code: </b> <span>{{coding.code}}</span>
+                          </p>
+                          {% endif %}
+                          {% if coding.display.exists() %}
+                          <p style="margin-bottom: 5px;">
+                              <b>display: </b> <span>{{coding.display.escape('html')}}</span>
+                          </p>
+                          {% endif %}
+                      {% endfor %}
+                  {% endif %}
+                  {% if Measure.scoring.coding.exists().not and Measure.scoring.text.exists() %}
+                      {{Measure.scoring.text}}
+                  {% endif %}
+              </td>
+          </tr>
+          {% endif %}
+      -->
         {% if Measure.improvementNotation.exists() %}
         <tr>
             <th scope="row"><b>Improvement Notation: </b></th>
@@ -127,6 +130,7 @@
             </td>
         </tr>
         {% endif %}
+        <!-- Removed per MEASDEV-518 - HYPO: Measure Specific FHIR IG Narrative
         {% if Measure.type.exists() %}
         <tr>
             <th scope="row"><b>Type: </b></th>
@@ -156,6 +160,7 @@
             </td>
         </tr>
         {% endif %}
+      -->
         {% if Measure.subject.exists() %}
         <tr>
             <th scope="row"><b>Subject: </b></th>
@@ -214,12 +219,14 @@
           </tr>
           {% endif %}
         {% endif %}
+        <!-- Removed per MEASDEV-518 - HYPO: Measure Specific FHIR IG Narrative
         {% if Measure.publisher.exists() %}
         <tr>
             <th scope="row"><b>Publisher: </b></th>
             <td style="padding-left: 4px;">{{Measure.publisher.escape('html')}}</td>
         </tr>
         {% endif %}
+        -->
         {% if Measure.description.exists() %}
         <tr>
             <th scope="row"><b>Measure Description: </b></th>
@@ -232,6 +239,7 @@
             <td style="padding-left: 4px;">{{Measure.rationale.escape('html')}}</td>
         </tr>
         {% endif %}
+        <!-- Removed per MEASDEV-518 - HYPO: Measure Specific FHIR IG Narrative
         {% if Measure.definition.exists() %}
         <tr>
           <th scope="row"><b>Definition: </b></th>
@@ -244,6 +252,7 @@
           </td>
         </tr>
         {% endif %}
+        -->
          {% if Measure.guidance.exists() %}
         <tr>
             <th scope="row"><b>Guidance: </b></th>
@@ -327,19 +336,44 @@
           </td>
         </tr>
         {% endif %}
+        <!-- MEASDEV-518 - HYPO: Measure Specific FHIR IG Narrative
+          Add groups and population information
+        -->
+        {% if Measure.group.exists() %}
+          {% for group in Measure.group %}
+            {% if group.population.exists() %}
+              {% for population in group.population %}
+                <tr>
+                  <!-- Really should include the group designation in front, but variables are not currently working -->
+                  <th scope="row"><b>{{population.code.coding.first().display}}: </b></th>
+                  <td>{{population.description}}</td>
+                </tr>
+              {% endfor %}      
+            {% endif %}
+          {% endfor %}
+        {% endif %}
         {% if Measure.supplementalData.exists() %}
             <tr>
                 <th scope="row"><b>Supplemental Data: </b></th>
                 <td style="padding-left: 4px;">
+                  <!-- If a system is present, include in table, if not, add as list  -->
+                  {% if Measure.(supplementalData.usage.first() as CodeableConcept).coding.first().system.exists() %}
                     <table class="grid-dict">
-                        <tr><th><b>expression</b></th><th><b>system</b></th></tr>
-                        {% for supplementalData in Measure.supplementalData %}
-                        <tr>
-                            <td>{{supplementalData.criteria.expression}}</td>
-                            <td>{{(supplementalData.usage.first() as CodeableConcept).coding.first().system}}</td>
-                        </tr>
-                        {% endfor %}
+                      <tr><th><b>expression</b></th><th><b>system</b></th></tr>
+                      {% for supplementalData in Measure.supplementalData %}
+                      <tr>
+                          <td>{{supplementalData.criteria.expression}}</td>
+                          <td>{{(supplementalData.usage.first() as CodeableConcept).coding.first().system}}</td>
+                      </tr>
+                      {% endfor %}
                     </table>
+                  {% else%}
+                    <ul>
+                      {% for supplementalData in Measure.supplementalData %}
+                        <li>{{supplementalData.criteria.expression}}</li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
                 </td>
             </tr>
         {% endif %}
@@ -359,24 +393,28 @@
             </td>
         </tr>
         {% endif %}
+        <!-- Removed per MEASDEV-518 - HYPO: Measure Specific FHIR IG Narrative
         {% if Measure.jurisdiction.exists() %}
         <tr>
             <th scope="row"><b>Jurisdiction: </b></th>
             <td style="padding-left: 4px;"><ul>{% for jurisdiction in Measure.jurisdiction %}<li>{% if jurisdiction.coding.first().code = '001' %}001 (US){% else %}{{jurisdiction.coding.first().code}}{% endif %}</li>{% endfor %}</ul></td>
         </tr>
         {% endif %}
+        -->
         {% if Measure.topic.exists() %}
         <tr>
             <th scope="row"><b>Topic: </b></th>
             <td style="padding-left: 25px;">{{Measure.topic.first().coding.first().code}}</td>
         </tr>
         {% endif %}
+        <!-- Removed per MEASDEV-518 - HYPO: Measure Specific FHIR IG Narrative
         {% if Measure.purpose.exists() %}
         <tr>
             <th scope="row"><b>Purpose: </b></th>
             <td style="padding-left: 4px;">{{Measure.purpose.escape('html')}}</td>
         </tr>
         {% endif %}
+        -->
         {% if Measure.usage.exists() %}
         <tr>
             <th scope="row"><b>Usage: </b></th>
@@ -566,7 +604,7 @@
         </tr>
         {% endif %}
         {% endfor %}
-
+        <!-- Removed per MEASDEV-518 - HYPO: Measure Specific FHIR IG Narrative
         {% if Measure.library.exists() %}
         <tr>
           <th scope="row"><b>Libraries: </b></th>
@@ -579,7 +617,7 @@
           </td>
         </tr>
         {% endif %}
-
+        -->
         {% if Measure.extension.where(url = 'http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition').exists() %}
         <tr>
           <th scope="row"><b>Logic Definitions: </b></th>

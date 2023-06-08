@@ -872,13 +872,18 @@ define &quot;SDE Blood Glucose Observation&quot;:
    <experimental value="false"></experimental>
    <date value="2023-05-24T12:54:38-08:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
-   <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the measurement period."></description>
+   <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one diabetes medication was ordered or administered during the encounter that is during the measurement period."></description>
    <purpose value="The primary purpose of this site is to provide CDC’s NHSN with access to view measure specification content in the dQMs under development by Lantana Consulting Group. Please note, this site is draft and undergoes constant revision and is not intended to serve as an implementation guide."></purpose>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>
+   <relatedArtifact>
+      <type value="documentation"></type>
+      <display value="NHSN Protocol Documentation [Placeholder]"></display>
+      <resource value="https://www.cdc.gov/nhsn/index.html"></resource>
+   </relatedArtifact>
    <library value="http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNGlycemicControlHypoglycemicInitialPopulation"></library>
    <disclaimer value="This performance measure is not a clinical guideline, does not establish a standard of medical care and has not been tested for all potential applications.
 
-THE MEASURES AND SPECIFICATIONS ARE PROVIDED &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND.
+THE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.
 
 This measure and specifications are subject to further revisions."></disclaimer>
    <scoring>
@@ -914,7 +919,7 @@ The IP dQM provides the initial population, FHIR line-level and supplement data 
                <display value="Initial Population"></display>
             </coding>
          </code>
-         <description value="All inpatient encounters, as well as ED and OBS encounters that end within 1 hour of the start of the inpatient encounter, for patients of all ages where at least one antidiabetic drug (ADD) was ordered or administered during the encounter that is during the measurement period."></description>
+         <description value="All inpatient encounters, as well as ED and OBS encounters that end within 1 hour of the start of the inpatient encounter, for patients of all ages where at least one diabetes medication."></description>
          <criteria>
             <language value="text/cql-identifier"></language>
             <expression value="Initial Population"></expression>
