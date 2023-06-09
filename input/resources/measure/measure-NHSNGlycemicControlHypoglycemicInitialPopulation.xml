@@ -870,7 +870,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-05-24T12:54:38-08:00"></date>
+   <date value="2023-06-09T10:37:53-08:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one diabetes medication was ordered or administered during the encounter that is during the measurement period."></description>
    <purpose value="The primary purpose of this site is to provide CDC’s NHSN with access to view measure specification content in the dQMs under development by Lantana Consulting Group. Please note, this site is draft and undergoes constant revision and is not intended to serve as an implementation guide."></purpose>
@@ -881,11 +881,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
       <resource value="https://www.cdc.gov/nhsn/index.html"></resource>
    </relatedArtifact>
    <library value="http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNGlycemicControlHypoglycemicInitialPopulation"></library>
-   <disclaimer value="This performance measure is not a clinical guideline, does not establish a standard of medical care and has not been tested for all potential applications.
-
-THE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.
-
-This measure and specifications are subject to further revisions."></disclaimer>
+   <disclaimer value="This performance measure is not a clinical guideline, does not establish a standard of medical care and has not been tested for all potential applications.  THE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.  This measure and specifications are subject to further revisions."></disclaimer>
    <scoring>
       <coding>
          <system value="http://terminology.hl7.org/CodeSystem/measure-scoring"></system>
@@ -900,8 +896,7 @@ This measure and specifications are subject to further revisions."></disclaimer>
          <display value="Outcome"></display>
       </coding>
    </type>
-   <rationale value="The NHSN Glycemic Control module supports an electronic health record (EHR)- and vendor-neutral standard for reporting patient-level, linked medication and blood glucose data for inpatients. These data support calculation of inpatient medication-related hypoglycemia events by the NHSN application, which are then returned as reports to the facility. Inpatient hyperglycemia measurement is being incorporated into a future version of the NHSN Glycemic Control module. The primary objective of the NHSN Glycemic Control Module is to support U.S. hospitals in glycemic control measurement to improve glycemic management and patient safety.  As additional data are collected by NHSN, an additional objective will be to facilitate inter-facility benchmarking of glycemic control metrics across U.S. hospitals and evaluate national-level trends of glycemic control metrics over time. 
-The IP dQM provides the initial population, FHIR line-level and supplement data necessary for calculating the module metrics."></rationale>
+   <rationale value="The NHSN Glycemic Control module supports an electronic health record (EHR)- and vendor-neutral standard for reporting patient-level, linked medication and blood glucose data for inpatients. These data support calculation of inpatient medication-related hypoglycemia events by the NHSN application, which are then returned as reports to the facility. Inpatient hyperglycemia measurement is being incorporated into a future version of the NHSN Glycemic Control module. The primary objective of the NHSN Glycemic Control Module is to support U.S. hospitals in glycemic control measurement to improve glycemic management and patient safety.  As additional data are collected by NHSN, an additional objective will be to facilitate inter-facility benchmarking of glycemic control metrics across U.S. hospitals and evaluate national-level trends of glycemic control metrics over time.  The IP dQM provides the initial population, FHIR line-level and supplement data necessary for calculating the module metrics."></rationale>
    <definition value="Antidiabetic Drug Days (ADD): Aggregate number of inpatient encounter days within the facility in which at least one injectable or oral ADD was received. All patients who received ADDs during the hospitalization contribute to the initial population regardless of whether the patient experienced a hypoglycemic event."></definition>
    <definition value="Emergency Department (ED) or Observation (OBS) encounters: ED or observation encounters that ended within an hour of the inpatient admission are included when calculating the start and stop times of the hospitalization. Only Metric 1 includes ED  and OBS encounters."></definition>
    <definition value="Hypoglycemia Day: An inpatient day with at least one documented hypoglycemia event."></definition>
