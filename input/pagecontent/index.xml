@@ -18,20 +18,20 @@
   <a name="description"></a>
   <h3>Description</h3>
   <p>
-    These specifications are for the content contained within the encounters identified as meeting the criteria for the dQM initial 
-    population (IP). The dQM IP defines the cohort population for which the denominator will be determined and events will be 
-    calculated per the metrics defined in each NHSN protocol. The IP can vary between dQMs and may include all inpatient, emergency 
-    department, and observation encounters. The line-level data for calculating the NHSN metrics along with data needed for 
-    stratification, risk adjustment, or benchmarking are gathered once the encounter meets the criteria for the IP.   
+    These specifications are for the content contained within the encounters identified as meeting the criteria for the dQM Initial 
+    Population (IP). The dQM IP defines the cohort population for which NHSN analysts determine the denominator and calculate events 
+    per the metrics defined in each NHSN protocol. The IP can vary between dQMs and may include all inpatient, emergency department, 
+    and observation encounters. NHSNLink (or other compiling system) gathers the line-level data for calculating the NHSN metrics 
+    along with data needed for stratification, risk adjustment, or benchmarking once the encounter meets the criteria for the IP.
   </p>
   <h3>References</h3>
   <ol>
-    <li><a name="fhir_r4">HL7 FHIR Release 4</a> - <a href="https://hl7.org/fhir/R4/">https://hl7.org/fhir/R4/</a></li>
-    <li><a name="us_core">US Core 3.1.1</a> - <a href="http://hl7.org/fhir/us/core/STU3.1.1/">http://hl7.org/fhir/us/core/STU3.1.1/</a></li>
-    <li><a name="qi_core">QI Core 4.1.1</a> - <a href="http://hl7.org/fhir/us/qicore/STU4.1.1/">http://hl7.org/fhir/us/qicore/STU4.1.1/</a></li>
-    <li><a name="cqf_measures">Quality Measure IG 3.0.0</a> - <a href="http://hl7.org/fhir/us/cqfmeasures/STU3/">http://hl7.org/fhir/us/cqfmeasures/STU3/</a></li>
-    <li><a name="cqf_common">Clinical Quality Framework Common FHIR Assets 4.0.1</a> - <a href="http://fhir.org/guides/cqf/common/4.0.1/">http://fhir.org/guides/cqf/common/4.0.1/</a></li>
-    <li><a name="deqm">Data Exchange for Quality Measures (DEQM) 4.0.0</a> - Link to be updated upon publication of DEQM 4.0.0 <a href="http://hl7.org/fhir/us/davinci-deqm/STU3.1/">http://hl7.org/fhir/us/davinci-deqm/STU3.1/</a></li>
+    <li><a name="fhir_r4">HL7 FHIR Release 4</a>: <a href="https://hl7.org/fhir/R4/">https://hl7.org/fhir/R4/</a></li>
+    <li><a name="us_core">US Core 3.1.1</a>: <a href="http://hl7.org/fhir/us/core/STU3.1.1/">http://hl7.org/fhir/us/core/STU3.1.1/</a></li>
+    <li><a name="qi_core">QI Core 4.1.1</a>: <a href="http://hl7.org/fhir/us/qicore/STU4.1.1/">http://hl7.org/fhir/us/qicore/STU4.1.1/</a></li>
+    <li><a name="cqf_measures">Quality Measure IG 3.0.0</a>: <a href="http://hl7.org/fhir/us/cqfmeasures/STU3/">http://hl7.org/fhir/us/cqfmeasures/STU3/</a></li>
+    <li><a name="cqf_common">Clinical Quality Framework Common FHIR Assets 4.0.1</a>: <a href="http://fhir.org/guides/cqf/common/4.0.1/">http://fhir.org/guides/cqf/common/4.0.1/</a></li>
+    <li><a name="deqm">Data Exchange for Quality Measures (DEQM) 4.0.0</a>: Link to be updated upon publication of DEQM 4.0.0 <a href="http://hl7.org/fhir/us/davinci-deqm/STU3.1/">http://hl7.org/fhir/us/davinci-deqm/STU3.1/</a></li>
   </ol>
   <!-- Previous Hypoglycemia landing page saved for potential future use for the Hypo measure page
   <a name="scope"></a>
