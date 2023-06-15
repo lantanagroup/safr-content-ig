@@ -46,7 +46,7 @@
     <dependsOn>
         <uri value="http://hl7.org/fhir/us/davinci-deqm/ImplementationGuide/hl7.fhir.us.davinci-deqm"/>
         <packageId value="hl7.fhir.us.davinci-deqm"/>
-        <version value="current"/>
+        <version value="3.1.0"/>
     </dependsOn>
     <dependsOn>
         <uri value="http://hl7.org/fhir/us/qicore/ImplementationGuide/hl7.fhir.us.qicore"/>
