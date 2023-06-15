@@ -1,4 +1,4 @@
-library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.008'
+library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.009'
 
 using FHIR version '4.0.1'
 
@@ -32,7 +32,7 @@ code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display 'Encounter Diagnosis'
 
 parameter "Measurement Period" Interval<DateTime>
- default Interval[@2022-08-01T00:00:00.0, @2022-08-31T00:00:00.0)
+ default Interval[@2022-07-01T00:00:00.0, @2022-07-31T00:00:00.0)
 
 context Patient
 
@@ -49,8 +49,8 @@ define "Initial Population":
     and Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn) during "Measurement Period")
 
 define "Inpatient Encounter":
-  [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "short stay", "emergency", "observation encounter"}]
-    union [Encounter: "Encounter Inpatient"] Encounters
+  ([Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "short stay", "emergency", "observation encounter"}]
+    union [Encounter: "Encounter Inpatient"]) Encounters
   where Encounters.status in {'in-progress', 'finished', 'triaged'}
     and Encounters.period overlaps "Measurement Period"
 

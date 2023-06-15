@@ -181,6 +181,7 @@ define &quot;Initial Population&quot;:
     let Meds: GetMedicationCode(RPSMedAdmin.medication)
    where (Meds in &quot;Anakinra&quot;
             or Meds in &quot;Bamlanivimab&quot;
+            or Meds in &quot;Baloxavir&quot;
             or Meds in &quot;Baricitinib&quot;
             or Meds in &quot;Bebtelovimab&quot;
             or Meds in &quot;Casirivimab&quot;
@@ -191,10 +192,12 @@ define &quot;Initial Population&quot;:
             or Meds in &quot;Molnupiravir&quot;
             or Meds in &quot;Nirmatrelvir / Ritonavir&quot;
             or Meds in &quot;Oseltamivir&quot;
+            or Meds in &quot;Peramivir&quot;
             or Meds in &quot;Remdesivir&quot;
             or Meds in &quot;Sarilumab&quot;
             or Meds in &quot;Sotrovimab&quot;    
-            or Meds in &quot;Tofacitinib&quot;)
+            or Meds in &quot;Tofacitinib&quot;
+            or Meds in &quot;Zanamivir&quot;)
       and RPSMedAdmin.status ~ 'completed'
       and exists(&quot;Initial Population&quot;)
       and Global.&quot;Normalize Interval&quot;(RPSMedAdmin.effective) during &quot;Measurement Period&quot;
@@ -239,24 +242,15 @@ define &quot;Initial Population&quot;:
                <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="SDE RPS DiagnosticReport Result from Lab"></valueString>
+               <valueString value="RSV DiagnosticReport Result from Lab"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE RPS DiagnosticReport Result from Lab&quot;:
-  from
-  &quot;DiagnosticReports&quot; Reports,
-  &quot;Initial Population&quot; InitialPopulation
-    where (GetObservations(Reports.result).code in &quot;COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)&quot;
-      or GetObservations(Reports.result).code in &quot;COVID_19 (Tests for SARS_CoV_2 Antigen)&quot;
-      or GetObservations(Reports.result).code in &quot;Influenza (Tests for influenza A or B virus Nucleic Acid)&quot;
-      or GetObservations(Reports.result).code in &quot;Influenza (Tests for influenza A or B virus Antigen)&quot;
-      or GetObservations(Reports.result).code in &quot;RSV (Tests for RSV Nucleic Acid)&quot;
+               <valueString value="define &quot;RSV DiagnosticReport Result from Lab&quot;:
+  &quot;DiagnosticReports&quot; Reports
+    where (GetObservations(Reports.result).code in &quot;RSV (Tests for RSV Nucleic Acid)&quot;
       or GetObservations(Reports.result).code in &quot;RSV (Tests for RSV Antigen)&quot;)
-      and Reports.status in {'final'}
-      and exists(&quot;Initial Population&quot;)
-      and (start of Global.&quot;Normalize Interval&quot;(Reports.effective) during &quot;Measurement Period&quot;
-        or Global.&quot;Normalize Interval&quot;(Reports.effective) 14 days or less on or before start of InitialPopulation.period)
-    return SharedResource.DiagnosticReportResource(Reports)"></valueString>
+      and Reports.status in {'final','registered','preliminary','partial'}
+      and exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="10"></valueInteger>
@@ -267,14 +261,13 @@ define &quot;Initial Population&quot;:
                <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="SDE Isolation Precautions Implemented"></valueString>
+               <valueString value="SDE RSV DiagnosticReport Result from Lab"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Isolation Precautions Implemented&quot;:
-  [Procedure: &quot;Transmission Based Precaution Types&quot;] IsolationPrecautions
-    where Global.&quot;Normalize Interval&quot;(IsolationPrecautions.performed) during &quot;Measurement Period&quot;
-    and exists(&quot;Initial Population&quot;)
-  return SharedResource.ProcedureResource(IsolationPrecautions)"></valueString>
+               <valueString value="//return the RSV DiagnosticReport based on the result pre admission
+define &quot;SDE RSV DiagnosticReport Result from Lab&quot;:
+  &quot;RSV DiagnosticReport Result from Lab&quot; Reports
+    return SharedResource.DiagnosticReportResource(Reports)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="11"></valueInteger>
@@ -285,16 +278,11 @@ define &quot;Initial Population&quot;:
                <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="RPS Observation 1"></valueString>
+               <valueString value="RSV Observation"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//Retrieve Observation categories and lab codes valuesets
-define &quot;RPS Observation 1&quot;:
-  ([Observation: &quot;Influenza (Tests for influenza A or B virus Nucleic Acid)&quot;] 
-  union [Observation: &quot;Influenza (Tests for influenza A or B virus Antigen)&quot;]
-  union [Observation: &quot;COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)&quot;]
-  union [Observation: &quot;COVID_19 (Tests for SARS_CoV_2 Antigen)&quot;]
-  union [Observation: &quot;RSV (Tests for RSV Nucleic Acid)&quot;]
+               <valueString value="define &quot;RSV Observation&quot;:
+  ([Observation: &quot;RSV (Tests for RSV Nucleic Acid)&quot;]
   union [Observation: &quot;RSV (Tests for RSV Antigen)&quot;]   
   ) Observations
     where exists(Observations.category Category where Category ~ &quot;laboratory&quot;)
@@ -327,17 +315,19 @@ define &quot;Specimens&quot;:
                <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="RPS Observation 2"></valueString>
+               <valueString value="RSV PRE Admission Observation"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//further filter by the timing
-define &quot;RPS Observation 2&quot;:
-  from &quot;RPS Observation 1&quot; Observations 
-    where exists(&quot;Initial Population&quot; InitialPopulation
-        where Global.&quot;Normalize Interval&quot;(Observations.effective) 14 days or less on or before start of InitialPopulation.period
-          or Global.&quot;Normalize Interval&quot;(GetSpecimen(Observations.specimen).collection.collected) 14 days or less on or before start of InitialPopulation.period)
-      or start of Global.&quot;Normalize Interval&quot;(Observations.effective) during &quot;Measurement Period&quot;
-      or Global.&quot;Normalize Interval&quot;(GetSpecimen(Observations.specimen).collection.collected) during &quot;Measurement Period&quot;"></valueString>
+               <valueString value="//further constrain with lookback 8 days
+define &quot;RSV PRE Admission Observation&quot;:
+  &quot;RSV Observation&quot; O 
+  where exists(EncounterInpatient E 
+    where (
+      Global.&quot;Normalize Interval&quot;(O.effective) 8 days or less on or before start of E.period
+      or Global.&quot;Normalize Interval&quot;(GetSpecimen(O.specimen).collection.collected) 8 days or less on or before start of E.period
+      )
+      and start of E.period during &quot;Measurement Period&quot;
+    )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="14"></valueInteger>
@@ -348,12 +338,12 @@ define &quot;RPS Observation 2&quot;:
                <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="SDE RPS Specimen"></valueString>
+               <valueString value="SDE RSV Specimen"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//return the Specimen related to the Observation
-define &quot;SDE RPS Specimen&quot;:
-  &quot;RPS Observation 2&quot; ObservationWithSpecimen
+               <valueString value="//return the Specimen related to the RSV Observation Pre Admission
+define &quot;SDE RSV Specimen&quot;:
+  &quot;RSV PRE Admission Observation&quot; ObservationWithSpecimen
     let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
     return SharedResource.SpecimenResource(Specimen)"></valueString>
             </extension>
@@ -366,16 +356,242 @@ define &quot;SDE RPS Specimen&quot;:
                <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="SDE RPSObservation"></valueString>
+               <valueString value="COVID and Influenza DiagnosticReport Result from Lab"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//return SDE
-define &quot;SDE RPSObservation&quot;:
-  &quot;RPS Observation 2&quot; Observations
-    return SharedResource.ObservationResource(Observations)"></valueString>
+               <valueString value="//retrieve RSV, and COVID and Influenza DiagnosticReport based on the result in the DiagnosticReport separately due to they have different lookback days
+define &quot;COVID and Influenza DiagnosticReport Result from Lab&quot;:
+  &quot;DiagnosticReports&quot; Reports
+    where (GetObservations(Reports.result).code in &quot;COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)&quot;
+      or GetObservations(Reports.result).code in &quot;COVID_19 (Tests for SARS_CoV_2 Antigen)&quot;
+      or GetObservations(Reports.result).code in &quot;Influenza (Tests for influenza A or B virus Nucleic Acid)&quot;
+      or GetObservations(Reports.result).code in &quot;Influenza (Tests for influenza A or B virus Antigen)&quot;)
+      and Reports.status in {'final','registered','preliminary','partial'}
+      and exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="16"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="RPS DiagnosticReport Result from Lab"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;RPS DiagnosticReport Result from Lab&quot;:
+  &quot;COVID and Influenza DiagnosticReport Result from Lab&quot;
+    union &quot;RSV DiagnosticReport Result from Lab&quot;"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="17"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE RPS DiagnosticReport Result from Lab"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//return the DiagnosticReport based on the result during the Measurement Period
+define &quot;SDE RPS DiagnosticReport Result from Lab&quot;:
+  &quot;RPS DiagnosticReport Result from Lab&quot; Reports
+    return SharedResource.DiagnosticReportResource(Reports)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="18"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE RSV PRE Admission Observation"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//return the RSV Observation Pre Admission
+define &quot;SDE RSV PRE Admission Observation&quot;:
+  &quot;RSV PRE Admission Observation&quot; Observations
+    return SharedResource.ObservationResource(Observations)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="19"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE Isolation Precautions Implemented"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE Isolation Precautions Implemented&quot;:
+  [Procedure: &quot;Transmission Based Precaution Types&quot;] IsolationPrecautions
+    where Global.&quot;Normalize Interval&quot;(IsolationPrecautions.performed) during &quot;Measurement Period&quot;
+    and exists(&quot;Initial Population&quot;)
+  return SharedResource.ProcedureResource(IsolationPrecautions)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="20"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="COVID And Influenza Observation"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//-----------------------------------------------
+// Start logic related to Laboratory
+//-----------------------------------------------
+//seperate RSV from COVID and Influenza due to they have different lookback days
+define &quot;COVID And Influenza Observation&quot;:
+  ([Observation: &quot;Influenza (Tests for influenza A or B virus Nucleic Acid)&quot;] 
+  union [Observation: &quot;Influenza (Tests for influenza A or B virus Antigen)&quot;]
+  union [Observation: &quot;COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)&quot;]
+  union [Observation: &quot;COVID_19 (Tests for SARS_CoV_2 Antigen)&quot;]
+  ) Observations
+    where exists(Observations.category Category where Category ~ &quot;laboratory&quot;)
+      and exists(&quot;Initial Population&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="21"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="COVID And Influenza PRE Admission Observation"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//further constrain with lookback 14 days
+define &quot;COVID And Influenza PRE Admission Observation&quot;:
+  &quot;COVID And Influenza Observation&quot; O 
+   where exists(EncounterInpatient E 
+    where (
+      Global.&quot;Normalize Interval&quot;(O.effective) 14 days or less on or before start of E.period
+      or Global.&quot;Normalize Interval&quot;(GetSpecimen(O.specimen).collection.collected) 14 days or less on or before start of E.period
+      )
+      and start of E.period during &quot;Measurement Period&quot;
+    )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="22"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE COVID And Influenza Specimen"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//return the Specimen related to the COVID And Influenza Observation Pre Admission
+define &quot;SDE COVID And Influenza Specimen&quot;:
+  &quot;COVID And Influenza PRE Admission Observation&quot; ObservationWithSpecimen
+    let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
+    return SharedResource.SpecimenResource(Specimen)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="23"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="RPS Observation"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;RPS Observation&quot;:
+  &quot;RSV Observation&quot;
+  union &quot;COVID And Influenza Observation&quot;"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="24"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE RPS Specimen"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//return the Specimen related to the Observation during the Measurement Period
+define &quot;SDE RPS Specimen&quot;:
+  &quot;RPS Observation&quot; ObservationWithSpecimen
+    let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
+    return SharedResource.SpecimenResource(Specimen)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="25"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="RSV DiagnosticReport"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;RSV DiagnosticReport&quot;:
+  ([DiagnosticReport: &quot;RSV (Tests for RSV Nucleic Acid)&quot;]
+    union [DiagnosticReport: &quot;RSV (Tests for RSV Antigen)&quot;]
+  ) Reports
+    where exists(&quot;Initial Population&quot;)
+      and Reports.status in {'final','registered','preliminary','partial'}"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="26"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE RSV DiagnosticReport"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//return the RSV DiagnosticReport pre admission
+define &quot;SDE RSV DiagnosticReport&quot;:
+  &quot;RSV DiagnosticReport&quot; Reports
+    return SharedResource.DiagnosticReportResource(Reports)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="27"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE RPSObservation"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//return the Observation during the Measurement Period
+define &quot;SDE RPSObservation&quot;:
+  &quot;RPS Observation&quot; Observations
+    return SharedResource.ObservationResource(Observations)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="28"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -393,7 +609,63 @@ define &quot;SDE All ServiceRequests&quot;:
   return SharedResource.ServiceRequestResource(SR)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="17"></valueInteger>
+               <valueInteger value="29"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="COVID And Influenza DiagnosticReport"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//Retrieve RSV, and COVID and Influenza DiagnosticReport separately due to they have different lookback days
+define &quot;COVID And Influenza DiagnosticReport&quot;:
+  ([DiagnosticReport: &quot;COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)&quot;]
+    union [DiagnosticReport: &quot;COVID_19 (Tests for SARS_CoV_2 Antigen)&quot;]
+    union [DiagnosticReport: &quot;Influenza (Tests for influenza A or B virus Nucleic Acid)&quot;]
+    union [DiagnosticReport: &quot;Influenza (Tests for influenza A or B virus Antigen)&quot;]
+  ) Reports
+    where exists(&quot;Initial Population&quot;)
+      and Reports.status in {'final','registered','preliminary','partial'}"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="30"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE COVID And Influenza DiagnosticReport"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//return the COVID And Influenza DiagnosticReport pre admission
+define &quot;SDE COVID And Influenza DiagnosticReport&quot;:
+  &quot;COVID And Influenza DiagnosticReport&quot; Reports
+    return SharedResource.DiagnosticReportResource(Reports)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="31"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE COVID And Influenza PRE Admission Observation"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//return the COVID And Influenza Observation Pre Admission
+define &quot;SDE COVID And Influenza PRE Admission Observation&quot;:
+  &quot;COVID And Influenza PRE Admission Observation&quot; Observations
+    return SharedResource.ObservationResource(Observations)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="32"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -418,7 +690,24 @@ define &quot;SDE All ServiceRequests&quot;:
   return SharedResource.ServiceRequestResource(ServiceRequests)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="18"></valueInteger>
+               <valueInteger value="33"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="SDE COVID and Influenza DiagnosticReport Result from Lab"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//return the COVID and Infrluenza DiagnosticReport based on the result pre admission
+define &quot;SDE COVID and Influenza DiagnosticReport Result from Lab&quot;:
+  &quot;COVID and Influenza DiagnosticReport Result from Lab&quot; Reports
+    return SharedResource.DiagnosticReportResource(Reports)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="34"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -436,7 +725,7 @@ define &quot;SDE All Procedures&quot;:
   return SharedResource.ProcedureResource(P)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="19"></valueInteger>
+               <valueInteger value="35"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -453,7 +742,7 @@ define &quot;SDE All Procedures&quot;:
   return SharedResource.LocationResource(Locations)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="20"></valueInteger>
+               <valueInteger value="36"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -470,7 +759,23 @@ define &quot;SDE All Procedures&quot;:
   return SharedResource.EncounterResource(DischargeDispositions)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="21"></valueInteger>
+               <valueInteger value="37"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="RPS DiagnosticReport"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;RPS DiagnosticReport&quot;:
+  &quot;COVID And Influenza DiagnosticReport&quot;
+    union &quot;RSV DiagnosticReport&quot;"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="38"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -481,23 +786,13 @@ define &quot;SDE All Procedures&quot;:
                <valueString value="SDE RPS DiagnosticReport"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE RPS DiagnosticReport&quot;:
-  from &quot;Initial Population&quot; InitialPopulation,
-  ([DiagnosticReport: &quot;COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)&quot;]
-    union [DiagnosticReport: &quot;COVID_19 (Tests for SARS_CoV_2 Antigen)&quot;]
-    union [DiagnosticReport: &quot;Influenza (Tests for influenza A or B virus Nucleic Acid)&quot;]
-    union [DiagnosticReport: &quot;Influenza (Tests for influenza A or B virus Antigen)&quot;]
-    union [DiagnosticReport: &quot;RSV (Tests for RSV Nucleic Acid)&quot;]
-    union [DiagnosticReport: &quot;RSV (Tests for RSV Antigen)&quot;]
-  ) Reports
-    where exists(&quot;Initial Population&quot;)
-      and Reports.status in {'final'}
-      and (start of Global.&quot;Normalize Interval&quot;(Reports.effective) during &quot;Measurement Period&quot;
-        or Global.&quot;Normalize Interval&quot;(Reports.effective) 14 days or less on or before start of InitialPopulation.period)
+               <valueString value="//return the DiagnosticReport during the Measurement Period
+define &quot;SDE RPS DiagnosticReport&quot;:
+  &quot;RPS DiagnosticReport&quot; Reports
     return SharedResource.DiagnosticReportResource(Reports)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="22"></valueInteger>
+               <valueInteger value="39"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -512,7 +807,7 @@ define &quot;SDE All Procedures&quot;:
   [MedicationRequest]"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="23"></valueInteger>
+               <valueInteger value="40"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -527,6 +822,7 @@ define &quot;SDE All Procedures&quot;:
   &quot;MedicationRequests&quot; RPSMedRequest
     let Meds: (GetMedicationCode(RPSMedRequest.medication))
     where (Meds in &quot;Anakinra&quot;
+            or Meds in &quot;Baloxavir&quot;
             or Meds in &quot;Bamlanivimab&quot;
             or Meds in &quot;Baricitinib&quot;
             or Meds in &quot;Bebtelovimab&quot;
@@ -538,17 +834,18 @@ define &quot;SDE All Procedures&quot;:
             or Meds in &quot;Molnupiravir&quot;
             or Meds in &quot;Nirmatrelvir / Ritonavir&quot;
             or Meds in &quot;Oseltamivir&quot;
+            or Meds in &quot;Peramivir&quot;
             or Meds in &quot;Remdesivir&quot;
             or Meds in &quot;Sarilumab&quot;
             or Meds in &quot;Sotrovimab&quot;    
-            or Meds in &quot;Tofacitinib&quot;)
-      //and RPSMedRequest.status ~ 'completed' //This is not needed for the medication ordered
+            or Meds in &quot;Tofacitinib&quot;
+            or Meds in &quot;Zanamivir&quot;)
       and exists(&quot;Initial Population&quot;)
       and Global.&quot;Normalize Interval&quot;(RPSMedRequest.authoredOn) during &quot;Measurement Period&quot;
     return SharedResource.MedicationRequestResource(RPSMedRequest)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="24"></valueInteger>
+               <valueInteger value="41"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -568,7 +865,7 @@ define &quot;SDE Minimal Patient&quot;:
   return SharedResource.PatientResource(p)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="25"></valueInteger>
+               <valueInteger value="42"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -586,7 +883,7 @@ define &quot;SDE All Observations&quot;:
   return SharedResource.ObservationResource(O)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="26"></valueInteger>
+               <valueInteger value="43"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -604,7 +901,7 @@ define &quot;SDE All Observations&quot;:
   return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication))"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="27"></valueInteger>
+               <valueInteger value="44"></valueInteger>
             </extension>
          </extension>
          <status value="active"></status>
@@ -648,6 +945,11 @@ define &quot;SDE All Observations&quot;:
             <type value="depends-on"></type>
             <display value="Value set Bamlanivimab"></display>
             <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2099"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Baloxavir"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.85"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -701,6 +1003,11 @@ define &quot;SDE All Observations&quot;:
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
+            <display value="Value set Peramivir"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.86"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
             <display value="Value set Remdesivir"></display>
             <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2081"></resource>
          </relatedArtifact>
@@ -721,6 +1028,11 @@ define &quot;SDE All Observations&quot;:
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
+            <display value="Value set Zanamivir"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.87"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
             <display value="Value set Encounter Inpatient"></display>
             <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"></resource>
          </relatedArtifact>
@@ -733,6 +1045,16 @@ define &quot;SDE All Observations&quot;:
             <type value="depends-on"></type>
             <display value="Value set Inpatient, Emergency, and Observation Locations"></display>
             <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set RSV (Tests for RSV Nucleic Acid)"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1312"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set RSV (Tests for RSV Antigen)"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1311"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -753,16 +1075,6 @@ define &quot;SDE All Observations&quot;:
             <type value="depends-on"></type>
             <display value="Value set Influenza (Tests for influenza A or B virus Antigen)"></display>
             <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.337"></resource>
-         </relatedArtifact>
-         <relatedArtifact>
-            <type value="depends-on"></type>
-            <display value="Value set RSV (Tests for RSV Nucleic Acid)"></display>
-            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1312"></resource>
-         </relatedArtifact>
-         <relatedArtifact>
-            <type value="depends-on"></type>
-            <display value="Value set RSV (Tests for RSV Antigen)"></display>
-            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1311"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -789,11 +1101,32 @@ define &quot;SDE All Observations&quot;:
             <type value="MedicationAdministration"></type>
          </parameter>
          <parameter>
+            <name value="SDE RSV DiagnosticReport Result from Lab"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="DiagnosticReport"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE RSV Specimen"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Specimen"></type>
+         </parameter>
+         <parameter>
             <name value="SDE RPS DiagnosticReport Result from Lab"></name>
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
             <type value="DiagnosticReport"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE RSV PRE Admission Observation"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Observation"></type>
          </parameter>
          <parameter>
             <name value="SDE Isolation Precautions Implemented"></name>
@@ -803,11 +1136,25 @@ define &quot;SDE All Observations&quot;:
             <type value="Procedure"></type>
          </parameter>
          <parameter>
+            <name value="SDE COVID And Influenza Specimen"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Specimen"></type>
+         </parameter>
+         <parameter>
             <name value="SDE RPS Specimen"></name>
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
             <type value="Specimen"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE RSV DiagnosticReport"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="DiagnosticReport"></type>
          </parameter>
          <parameter>
             <name value="SDE RPSObservation"></name>
@@ -824,11 +1171,32 @@ define &quot;SDE All Observations&quot;:
             <type value="ServiceRequest"></type>
          </parameter>
          <parameter>
+            <name value="SDE COVID And Influenza DiagnosticReport"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="DiagnosticReport"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE COVID And Influenza PRE Admission Observation"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Observation"></type>
+         </parameter>
+         <parameter>
             <name value="SDE RPS ServiceRequest"></name>
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
             <type value="ServiceRequest"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE COVID and Influenza DiagnosticReport Result from Lab"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="DiagnosticReport"></type>
          </parameter>
          <parameter>
             <name value="Initial Population"></name>
@@ -978,49 +1346,66 @@ define &quot;SDE All Observations&quot;:
          <dataRequirement>
             <type value="DiagnosticReport"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/DiagnosticReport"></profile>
+            <mustSupport value="code"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1312"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="DiagnosticReport"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/DiagnosticReport"></profile>
+            <mustSupport value="code"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1311"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="DiagnosticReport"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/DiagnosticReport"></profile>
+            <mustSupport value="code"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1142"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="DiagnosticReport"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/DiagnosticReport"></profile>
+            <mustSupport value="code"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1158"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="DiagnosticReport"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/DiagnosticReport"></profile>
+            <mustSupport value="code"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.336"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="DiagnosticReport"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/DiagnosticReport"></profile>
+            <mustSupport value="code"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.337"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="DiagnosticReport"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/DiagnosticReport"></profile>
             <mustSupport value="result"></mustSupport>
             <mustSupport value="status"></mustSupport>
-            <mustSupport value="effective"></mustSupport>
          </dataRequirement>
          <dataRequirement>
-            <type value="DiagnosticReport"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/DiagnosticReport"></profile>
-            <mustSupport value="code"></mustSupport>
-            <codeFilter>
-               <path value="code"></path>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1142"></valueSet>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="DiagnosticReport"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/DiagnosticReport"></profile>
-            <mustSupport value="code"></mustSupport>
-            <codeFilter>
-               <path value="code"></path>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1158"></valueSet>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="DiagnosticReport"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/DiagnosticReport"></profile>
-            <mustSupport value="code"></mustSupport>
-            <codeFilter>
-               <path value="code"></path>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.336"></valueSet>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="DiagnosticReport"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/DiagnosticReport"></profile>
-            <mustSupport value="code"></mustSupport>
-            <codeFilter>
-               <path value="code"></path>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.337"></valueSet>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="DiagnosticReport"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/DiagnosticReport"></profile>
+            <type value="Observation"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
             <mustSupport value="code"></mustSupport>
             <codeFilter>
                <path value="code"></path>
@@ -1028,8 +1413,8 @@ define &quot;SDE All Observations&quot;:
             </codeFilter>
          </dataRequirement>
          <dataRequirement>
-            <type value="DiagnosticReport"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/DiagnosticReport"></profile>
+            <type value="Observation"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
             <mustSupport value="code"></mustSupport>
             <codeFilter>
                <path value="code"></path>
@@ -1075,24 +1460,11 @@ define &quot;SDE All Observations&quot;:
          <dataRequirement>
             <type value="Observation"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
-            <mustSupport value="code"></mustSupport>
-            <codeFilter>
-               <path value="code"></path>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1312"></valueSet>
-            </codeFilter>
+            <mustSupport value="id"></mustSupport>
          </dataRequirement>
          <dataRequirement>
-            <type value="Observation"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
-            <mustSupport value="code"></mustSupport>
-            <codeFilter>
-               <path value="code"></path>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1311"></valueSet>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Observation"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
+            <type value="Specimen"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Specimen"></profile>
             <mustSupport value="id"></mustSupport>
          </dataRequirement>
          <dataRequirement>
@@ -1108,11 +1480,6 @@ define &quot;SDE All Observations&quot;:
          <dataRequirement>
             <type value="Procedure"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Procedure"></profile>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Specimen"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Specimen"></profile>
-            <mustSupport value="id"></mustSupport>
          </dataRequirement>
          <dataRequirement>
             <type value="ServiceRequest"></type>
@@ -1207,7 +1574,7 @@ define &quot;SDE All Observations&quot;:
    <title value="NHSN Respiratory Pathogen Surveillance Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-05-24T12:45:26-05:00"></date>
+   <date value="2023-06-09T13:37:53-05:00"></date>
    <description value="dQM Measure for Respiratory Pathogen Surveillance"></description>
    <library value="http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation"></library>
    <scoring>
@@ -1291,6 +1658,32 @@ define &quot;SDE All Observations&quot;:
          <expression value="SDE RPSObservation"></expression>
       </criteria>
    </supplementalData>
+   <supplementalData id="sde-rsv-pre-admission-observation">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE RSV PRE Admission Observation"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE RSV PRE Admission Observation"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-covid-and-influenza-pre-admission-observation">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE COVID And Influenza PRE Admission Observation"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE COVID And Influenza PRE Admission Observation"></expression>
+      </criteria>
+   </supplementalData>
    <supplementalData id="sde-rps-specimen">
       <usage>
          <coding>
@@ -1302,6 +1695,32 @@ define &quot;SDE All Observations&quot;:
       <criteria>
          <language value="text/cql-identifier"></language>
          <expression value="SDE RPS Specimen"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-rsv-specimen">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE RSV Specimen"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE RSV Specimen"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-covid-and-influenza-specimen">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE COVID And Influenza Specimen"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE COVID And Influenza Specimen"></expression>
       </criteria>
    </supplementalData>
    <supplementalData id="sde-rps-diagnosticreport">
@@ -1317,6 +1736,32 @@ define &quot;SDE All Observations&quot;:
          <expression value="SDE RPS DiagnosticReport"></expression>
       </criteria>
    </supplementalData>
+   <supplementalData id="sde-rsv-diagnosticreport">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE RSV DiagnosticReport"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE RSV DiagnosticReport"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-covid-and-influenza-diagnosticreport">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE COVID And Influenza DiagnosticReport"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE COVID And Influenza DiagnosticReport"></expression>
+      </criteria>
+   </supplementalData>
    <supplementalData id="sde-rps-diagnosticreport-result-from-lab">
       <usage>
          <coding>
@@ -1328,6 +1773,32 @@ define &quot;SDE All Observations&quot;:
       <criteria>
          <language value="text/cql-identifier"></language>
          <expression value="SDE RPS DiagnosticReport Result from Lab"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-covid-and-influenza-diagnosticreport-result-from-lab">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE COVID and Influenza DiagnosticReport Result from Lab"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE COVID and Influenza DiagnosticReport Result from Lab"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-rsv-diagnosticreport-result-from-lab">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE RSV DiagnosticReport Result from Lab"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE RSV DiagnosticReport Result from Lab"></expression>
       </criteria>
    </supplementalData>
    <supplementalData id="sde-rps-servicerequest">

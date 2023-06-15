@@ -59,6 +59,9 @@ valueset "Nirmatrelvir / Ritonavir": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.
 valueset "Bebtelovimab": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2105'
 
 //Influenza medication
+valueset "Baloxavir": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.85'
+valueset "Peramivir": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.86'
+valueset "Zanamivir": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.87'
 valueset "Oseltamivir": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2078'
 
 //Isolation Precautions
@@ -108,7 +111,130 @@ define "Qualifying Encounter During Measurement Period":
   where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged'}
     and QualifyingEncounters.period overlaps "Measurement Period"
 
+//-----------------------------------------------
+// Start logic related to Laboratory
+//-----------------------------------------------
+//seperate RSV from COVID and Influenza due to they have different lookback days
+define "COVID And Influenza Observation":
+  ([Observation: "Influenza (Tests for influenza A or B virus Nucleic Acid)"] 
+  union [Observation: "Influenza (Tests for influenza A or B virus Antigen)"]
+  union [Observation: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"]
+  union [Observation: "COVID_19 (Tests for SARS_CoV_2 Antigen)"]
+  ) Observations
+    where exists(Observations.category Category where Category ~ "laboratory")
+      and exists("Initial Population")
 
+define "RSV Observation":
+  ([Observation: "RSV (Tests for RSV Nucleic Acid)"]
+  union [Observation: "RSV (Tests for RSV Antigen)"]   
+  ) Observations
+    where exists(Observations.category Category where Category ~ "laboratory")
+      and exists("Initial Population")
+
+define "RPS Observation":
+  "RSV Observation"
+  union "COVID And Influenza Observation"
+
+//further constrain with lookback 14 days
+define "COVID And Influenza PRE Admission Observation":
+  "COVID And Influenza Observation" O 
+   where exists(EncounterInpatient E 
+    where (
+      Global."Normalize Interval"(O.effective) 14 days or less on or before start of E.period
+      or Global."Normalize Interval"(GetSpecimen(O.specimen).collection.collected) 14 days or less on or before start of E.period
+      )
+      and start of E.period during "Measurement Period"
+    )  
+
+//further constrain with lookback 8 days
+define "RSV PRE Admission Observation":
+  "RSV Observation" O 
+  where exists(EncounterInpatient E 
+    where (
+      Global."Normalize Interval"(O.effective) 8 days or less on or before start of E.period
+      or Global."Normalize Interval"(GetSpecimen(O.specimen).collection.collected) 8 days or less on or before start of E.period
+      )
+      and start of E.period during "Measurement Period"
+    )
+
+//Retrieve RSV, and COVID and Influenza DiagnosticReport separately due to they have different lookback days
+define "COVID And Influenza DiagnosticReport":
+  ([DiagnosticReport: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"]
+    union [DiagnosticReport: "COVID_19 (Tests for SARS_CoV_2 Antigen)"]
+    union [DiagnosticReport: "Influenza (Tests for influenza A or B virus Nucleic Acid)"]
+    union [DiagnosticReport: "Influenza (Tests for influenza A or B virus Antigen)"]
+  ) Reports
+    where exists("Initial Population")
+      and Reports.status in {'final','registered','preliminary','partial'}
+
+define "RSV DiagnosticReport":
+  ([DiagnosticReport: "RSV (Tests for RSV Nucleic Acid)"]
+    union [DiagnosticReport: "RSV (Tests for RSV Antigen)"]
+  ) Reports
+    where exists("Initial Population")
+      and Reports.status in {'final','registered','preliminary','partial'}
+
+define "RPS DiagnosticReport":
+  "COVID And Influenza DiagnosticReport"
+    union "RSV DiagnosticReport"
+
+//further constrain with lookback 14 days
+define "COVID And Influenza DiagnosticReport PRE Admission":
+  "COVID And Influenza DiagnosticReport" R 
+  where exists(EncounterInpatient E 
+    where (
+      Global."Normalize Interval"(R.effective) 14 days or less on or before start of E.period)
+      and start of E.period during "Measurement Period"
+    )
+
+//further constrain with lookback 8 days
+define "RSV DiagnosticReport PRE Admission":
+  "RSV DiagnosticReport" R 
+  where exists(EncounterInpatient E 
+    where (
+      Global."Normalize Interval"(R.effective) 8 days or less on or before start of E.period)
+      and start of E.period during "Measurement Period"
+    )
+
+//retrieve RSV, and COVID and Influenza DiagnosticReport based on the result in the DiagnosticReport separately due to they have different lookback days
+define "COVID and Influenza DiagnosticReport Result from Lab":
+  "DiagnosticReports" Reports
+    where (GetObservations(Reports.result).code in "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"
+      or GetObservations(Reports.result).code in "COVID_19 (Tests for SARS_CoV_2 Antigen)"
+      or GetObservations(Reports.result).code in "Influenza (Tests for influenza A or B virus Nucleic Acid)"
+      or GetObservations(Reports.result).code in "Influenza (Tests for influenza A or B virus Antigen)")
+      and Reports.status in {'final','registered','preliminary','partial'}
+      and exists("Initial Population")
+ 
+define "RSV DiagnosticReport Result from Lab":
+  "DiagnosticReports" Reports
+    where (GetObservations(Reports.result).code in "RSV (Tests for RSV Nucleic Acid)"
+      or GetObservations(Reports.result).code in "RSV (Tests for RSV Antigen)")
+      and Reports.status in {'final','registered','preliminary','partial'}
+      and exists("Initial Population")
+
+define "RPS DiagnosticReport Result from Lab":
+  "COVID and Influenza DiagnosticReport Result from Lab"
+    union "RSV DiagnosticReport Result from Lab"
+
+//further constrain with lookback 14 days
+define "COVID and Influenza DiagnosticReport Result from Lab PRE Admission":
+  "COVID and Influenza DiagnosticReport Result from Lab" R 
+  where exists(EncounterInpatient E 
+    where (
+      Global."Normalize Interval"(R.effective) 14 days or less on or before start of E.period)
+      and start of E.period during "Measurement Period"
+    )
+
+//further constrain with lookback 8 days
+define "RSV DiagnosticReport Result from Lab PRE Admission":
+  "RSV DiagnosticReport Result from Lab" R 
+  where exists(EncounterInpatient E 
+    where (
+      Global."Normalize Interval"(R.effective) 8 days or less on or before start of E.period)
+      and start of E.period during "Measurement Period"
+    )
+    
 //----------------------------------
 // SDE
 //----------------------------------
@@ -127,69 +253,69 @@ define "SDE Encounter Discharge Dispositions":
   where DischargeDispositions.hospitalization.dischargeDisposition in "Discharge Disposition"
   return SharedResource.EncounterResource(DischargeDispositions)
 
-//Retrieve Observation categories and lab codes valuesets
-define "RPS Observation 1":
-  ([Observation: "Influenza (Tests for influenza A or B virus Nucleic Acid)"] 
-  union [Observation: "Influenza (Tests for influenza A or B virus Antigen)"]
-  union [Observation: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"]
-  union [Observation: "COVID_19 (Tests for SARS_CoV_2 Antigen)"]
-  union [Observation: "RSV (Tests for RSV Nucleic Acid)"]
-  union [Observation: "RSV (Tests for RSV Antigen)"]   
-  ) Observations
-    where exists(Observations.category Category where Category ~ "laboratory")
-      and exists("Initial Population")
-
-//further filter by the timing 
-define "RPS Observation 2":
-  from "RPS Observation 1" Observations 
-    where exists("Initial Population" InitialPopulation
-        where Global."Normalize Interval"(Observations.effective) 14 days or less on or before start of InitialPopulation.period
-          or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) 14 days or less on or before start of InitialPopulation.period)
-      or start of Global."Normalize Interval"(Observations.effective) during "Measurement Period"
-      or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) during "Measurement Period"    
-
-//return SDE
+//return the Observation during the Measurement Period
 define "SDE RPSObservation":
-  "RPS Observation 2" Observations
+  "RPS Observation" Observations
     return SharedResource.ObservationResource(Observations)
 
-//return the Specimen related to the Observation
+//return the RSV Observation Pre Admission    
+define "SDE RSV PRE Admission Observation":
+  "RSV PRE Admission Observation" Observations
+    return SharedResource.ObservationResource(Observations)
+
+//return the COVID And Influenza Observation Pre Admission
+define "SDE COVID And Influenza PRE Admission Observation":
+  "COVID And Influenza PRE Admission Observation" Observations
+    return SharedResource.ObservationResource(Observations)
+
+//return the Specimen related to the Observation during the Measurement Period
 define "SDE RPS Specimen":
-  "RPS Observation 2" ObservationWithSpecimen
+  "RPS Observation" ObservationWithSpecimen
     let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
     return SharedResource.SpecimenResource(Specimen)
 
+//return the Specimen related to the RSV Observation Pre Admission
+define "SDE RSV Specimen":
+  "RSV PRE Admission Observation" ObservationWithSpecimen
+    let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
+    return SharedResource.SpecimenResource(Specimen)
+
+//return the Specimen related to the COVID And Influenza Observation Pre Admission
+define "SDE COVID And Influenza Specimen":
+  "COVID And Influenza PRE Admission Observation" ObservationWithSpecimen
+    let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
+    return SharedResource.SpecimenResource(Specimen)
+
+//return the DiagnosticReport during the Measurement Period
 define "SDE RPS DiagnosticReport":
-  from "Initial Population" InitialPopulation,
-  ([DiagnosticReport: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"]
-    union [DiagnosticReport: "COVID_19 (Tests for SARS_CoV_2 Antigen)"]
-    union [DiagnosticReport: "Influenza (Tests for influenza A or B virus Nucleic Acid)"]
-    union [DiagnosticReport: "Influenza (Tests for influenza A or B virus Antigen)"]
-    union [DiagnosticReport: "RSV (Tests for RSV Nucleic Acid)"]
-    union [DiagnosticReport: "RSV (Tests for RSV Antigen)"]
-  ) Reports
-    where exists("Initial Population")
-      and Reports.status in {'final'}
-      and (start of Global."Normalize Interval"(Reports.effective) during "Measurement Period"
-        or Global."Normalize Interval"(Reports.effective) 14 days or less on or before start of InitialPopulation.period)
-    return SharedResource.DiagnosticReportResource(Reports)
-  
-define "SDE RPS DiagnosticReport Result from Lab":
-  from
-  "DiagnosticReports" Reports,
-  "Initial Population" InitialPopulation
-    where (GetObservations(Reports.result).code in "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"
-      or GetObservations(Reports.result).code in "COVID_19 (Tests for SARS_CoV_2 Antigen)"
-      or GetObservations(Reports.result).code in "Influenza (Tests for influenza A or B virus Nucleic Acid)"
-      or GetObservations(Reports.result).code in "Influenza (Tests for influenza A or B virus Antigen)"
-      or GetObservations(Reports.result).code in "RSV (Tests for RSV Nucleic Acid)"
-      or GetObservations(Reports.result).code in "RSV (Tests for RSV Antigen)")
-      and Reports.status in {'final'}
-      and exists("Initial Population")
-      and (start of Global."Normalize Interval"(Reports.effective) during "Measurement Period"
-        or Global."Normalize Interval"(Reports.effective) 14 days or less on or before start of InitialPopulation.period)
+  "RPS DiagnosticReport" Reports
     return SharedResource.DiagnosticReportResource(Reports)
 
+//return the COVID And Influenza DiagnosticReport pre admission
+define "SDE COVID And Influenza DiagnosticReport":
+  "COVID And Influenza DiagnosticReport" Reports
+    return SharedResource.DiagnosticReportResource(Reports)
+
+//return the RSV DiagnosticReport pre admission
+define "SDE RSV DiagnosticReport":
+  "RSV DiagnosticReport" Reports
+    return SharedResource.DiagnosticReportResource(Reports)
+
+//return the DiagnosticReport based on the result during the Measurement Period    
+define "SDE RPS DiagnosticReport Result from Lab":
+  "RPS DiagnosticReport Result from Lab" Reports
+    return SharedResource.DiagnosticReportResource(Reports)
+
+//return the COVID and Infrluenza DiagnosticReport based on the result pre admission
+define "SDE COVID and Influenza DiagnosticReport Result from Lab":
+  "COVID and Influenza DiagnosticReport Result from Lab" Reports
+    return SharedResource.DiagnosticReportResource(Reports)
+
+//return the RSV DiagnosticReport based on the result pre admission
+define "SDE RSV DiagnosticReport Result from Lab":
+  "RSV DiagnosticReport Result from Lab" Reports
+    return SharedResource.DiagnosticReportResource(Reports)
+  
 define "SDE RPS ServiceRequest":
   ([ServiceRequest: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] 
   union  [ServiceRequest: "COVID_19 (Tests for SARS_CoV_2 Antigen)"] 
@@ -214,6 +340,7 @@ define "SDE Covid or Influenza Medication Administered":
     let Meds: GetMedicationCode(RPSMedAdmin.medication)
    where (Meds in "Anakinra"
             or Meds in "Bamlanivimab"
+            or Meds in "Baloxavir"
             or Meds in "Baricitinib"
             or Meds in "Bebtelovimab"
             or Meds in "Casirivimab"
@@ -224,10 +351,12 @@ define "SDE Covid or Influenza Medication Administered":
             or Meds in "Molnupiravir"
             or Meds in "Nirmatrelvir / Ritonavir"
             or Meds in "Oseltamivir"
+            or Meds in "Peramivir"
             or Meds in "Remdesivir"
             or Meds in "Sarilumab"
             or Meds in "Sotrovimab"    
-            or Meds in "Tofacitinib")
+            or Meds in "Tofacitinib"
+            or Meds in "Zanamivir")
       and RPSMedAdmin.status ~ 'completed'
       and exists("Initial Population")
       and Global."Normalize Interval"(RPSMedAdmin.effective) during "Measurement Period"
@@ -237,6 +366,7 @@ define "SDE Covid or Influenza Medication Ordered":
   "MedicationRequests" RPSMedRequest
     let Meds: (GetMedicationCode(RPSMedRequest.medication))
     where (Meds in "Anakinra"
+            or Meds in "Baloxavir"
             or Meds in "Bamlanivimab"
             or Meds in "Baricitinib"
             or Meds in "Bebtelovimab"
@@ -248,11 +378,12 @@ define "SDE Covid or Influenza Medication Ordered":
             or Meds in "Molnupiravir"
             or Meds in "Nirmatrelvir / Ritonavir"
             or Meds in "Oseltamivir"
+            or Meds in "Peramivir"
             or Meds in "Remdesivir"
             or Meds in "Sarilumab"
             or Meds in "Sotrovimab"    
-            or Meds in "Tofacitinib")
-      //and RPSMedRequest.status ~ 'completed' //This is not needed for the medication ordered
+            or Meds in "Tofacitinib"
+            or Meds in "Zanamivir")
       and exists("Initial Population")
       and Global."Normalize Interval"(RPSMedRequest.authoredOn) during "Measurement Period"
     return SharedResource.MedicationRequestResource(RPSMedRequest)
@@ -281,7 +412,7 @@ define "SDE All Procedures":
   where exists("Initial Population")
   return SharedResource.ProcedureResource(P)
 
-  
+ 
 //----------------------------------------------
 //Retrieve Resources
 //----------------------------------------------
@@ -342,31 +473,4 @@ define function "GetSpecimen"(reference Reference):
   First (
     "Specimens" S where S.id = Global.GetId(reference.reference)
   )
-
-
-
-/*--------------------------------------------------------------------------------------------------------
-Comment this logic out for now 
-//further filter by result value set.
-define "RPS Observation 3":
-  from "RPS Observation 2" Observations 
-    where FHIRHelpers.ToConcept(Observations.value) in "Influenza (influenza A or B virus in Lab Results)"
-      or FHIRHelpers.ToConcept(Observations.value) in "COVID_19 (Organism or Substance in Lab Results)"
-      or FHIRHelpers.ToConcept(Observations.value) in  "RSV (Organism or Substance in Lab Results)"
-      or FHIRHelpers.ToConcept(Observations.value) in "LIVD SARS CoV2 Test Result Codes"
-
-//This logic does not make sense.
-define "Inpatient and Observation Encounters that ended within the last twenty four Hours":
-  ( "EncounterInpatient"
-    union "EncounterObservation") QualifyingEncounters
-      where end of QualifyingEncounters.period before Today()
-      and end of QualifyingEncounters.period after Today() - 1 day
-
-//Remove by request of the CDC due to is a duplicate logic. 
-define "Inpatient and Observation Encounters that ended within the last twenty four Hours":
-  ( "EncounterInpatient"
-    union "EncounterObservation") QualifyingEncounters
-      where end of QualifyingEncounters.period during "Measurement Period"
-
------------------------------------------------------------------------------------------------------------*/
 
