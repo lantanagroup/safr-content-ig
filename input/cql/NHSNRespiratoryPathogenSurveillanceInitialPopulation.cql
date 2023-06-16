@@ -122,6 +122,7 @@ define "COVID And Influenza Observation":
   union [Observation: "COVID_19 (Tests for SARS_CoV_2 Antigen)"]
   ) Observations
     where exists(Observations.category Category where Category ~ "laboratory")
+      and Observations.status in {'final','registered','preliminary','partial'}
       and exists("Initial Population")
 
 define "RSV Observation":
@@ -129,6 +130,7 @@ define "RSV Observation":
   union [Observation: "RSV (Tests for RSV Antigen)"]   
   ) Observations
     where exists(Observations.category Category where Category ~ "laboratory")
+      and Observations.status in {'final','registered','preliminary','partial'}
       and exists("Initial Population")
 
 define "RPS Observation":
