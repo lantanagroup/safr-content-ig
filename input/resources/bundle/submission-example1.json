@@ -2095,11 +2095,11 @@
                     },
                     {
                         "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.population.description",
-                        "valueString": "All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the measurement period."
+                        "valueString": "All inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) for patients of all ages where at least one diabetes medication was ordered or administered during the encounter that is during the measurement period."
                     },
                     {
                         "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.population.description",
-                        "valueString": "All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the measurement period."
+                        "valueString": "All inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) for patients of all ages where at least one diabetes medication was ordered or administered during the encounter that is during the measurement period."
                     },
                     {
                         "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference",
@@ -4691,7 +4691,7 @@
                     },
                     {
                         "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.population.description",
-                        "valueString": "All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the measurement period."
+                        "valueString": "All inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) for patients of all ages where at least one diabetes medication was ordered or administered during the encounter that is during the measurement period."
                     },
                     {
                         "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference",

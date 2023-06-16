@@ -46,7 +46,7 @@
     <dependsOn>
         <uri value="http://hl7.org/fhir/us/davinci-deqm/ImplementationGuide/hl7.fhir.us.davinci-deqm"/>
         <packageId value="hl7.fhir.us.davinci-deqm"/>
-        <version value="3.1.0"/>
+        <version value="current"/>
     </dependsOn>
     <dependsOn>
         <uri value="http://hl7.org/fhir/us/qicore/ImplementationGuide/hl7.fhir.us.qicore"/>
@@ -84,7 +84,7 @@
 
         <grouping id="submission">
             <name value="Current NHSN Report Submission"/>
-            <description value="Note: By default, modifier extensions are prohibited from inclusion of report submission Bundle data to NHSN until said extension meaning is accepted by NHSN. See [Modifier Extensions](https://build.fhir.org/extensibility.html#modifierExtension) for additional information."/>
+            <description value="Note: By default, a modifier extension may not be included in Report Submission Bundle data to NHSN until NHSN accepts the said extension&#39;s meaning is accepted by NHSN. See [Modifier Extensions](https://build.fhir.org/extensibility.html#modifierExtension) for additional information."/>
         </grouping>
         <grouping id="cross-measure">
             <name value="Cross-Measure profiles"/>
@@ -116,7 +116,7 @@
                 <reference value="StructureDefinition/nhsn-measurereport-bundle"/>
             </reference>
             <name value="NHSN Report Bundle"/>
-            <description value="This profile defines a valid Submission Report Submission to NHSN. The Bundle is comprised of entry slices representing the data source Organization, a Patients of Interest (POI) List, one Subject List MeasureReport per reportable measure, an Individual MeasureReport List, individual MeasureReports, and the underlying patient-centric clinical information."/>
+            <description value="This profile defines a valid Submission Report Bundle to NHSN. The Bundle is comprised of entry slices representing the data source Organization, a Patients of Interest (POI) List, one Subject List MeasureReport per reportable measure, an Individual MeasureReport List, individual MeasureReports, and the underlying patient-centric clinical information."/>
             <groupingId value="submission"/>
         </resource>
         <resource>
@@ -124,7 +124,7 @@
                 <reference value="StructureDefinition/subjectlist-measurereport"/>
             </reference>
             <name value="Subject-List MeasureReport Profile"/>
-            <description value="Subject-list MeasureReport Profile contains the count of subjects (i.e. Patients) that have been evaluated to be in the Initial Population (IP). It also references the Individual MeasureReport List."/>
+            <description value="A Subject-List MeasureReport contains the count of subjects (i.e. patients) in the Initial Population (IP). It also references the Individual MeasureReport List."/>
             <groupingId value="submission"/>
         </resource>
         <resource>
@@ -132,7 +132,7 @@
                 <reference value="StructureDefinition/ip-measurereport-list"/>
             </reference>
             <name value="Individual MeasureReport List Profile"/>
-            <description value="List containing all Individual MeasureReports for a given NHSN measure; each individual MeasureReport pertains to an individual who has been evaluated to be within the Initial Population of a given measure"/>
+            <description value="An Individual MeasureReport List contains references to all Individual MeasureReports for a given NHSN measure; each MeasureReport pertains to an individual patient within the Initial Population of a given measure."/>
             <groupingId value="submission"/>
         </resource>
         <resource>
@@ -140,7 +140,7 @@
                 <reference value="StructureDefinition/poi-list"/>
             </reference>
             <name value="Patients of Interest List Profile"/>
-            <description value="List defining all individual Patients being considered for evaluation for NHSN Measure reporting"/>
+            <description value="A Patients of Interest List defines all individual Patients considered for inclusion in NHSN Measure reporting"/>
             <groupingId value="submission"/>
         </resource>
         <resource>
@@ -148,7 +148,7 @@
                 <reference value="StructureDefinition/cross-measure-patient"/>
             </reference>
             <name value="Cross-Measure Patient"/>
-            <description value="This profile contains NHSN-specific Required and Must-Support elements for reporting patient information on public-health surveillance measures to NHSN (https://www.cdc.gov/nhsn/index.html)."/>
+            <description value="This profile contains NHSN-specific Required and Must-Support elements for reporting Patient information on public-health surveillance measures to NHSN (https://www.cdc.gov/nhsn/index.html)."/>
             <groupingId value="cross-measure"/>
         </resource>
         <resource>
@@ -156,7 +156,7 @@
                 <reference value="StructureDefinition/nhsn-submitting-organization"/>
             </reference>
             <name value="Submitting Organization"/>
-            <description value="NHSN Submitting Organization"/>
+            <description value="This profile includes the name and identifier of the organization submitting the report Bundle, and may include other information about the organization."/>
             <groupingId value="cross-measure"/>
         </resource>
         <resource>
@@ -244,7 +244,7 @@
                 <reference value="Measure/NHSNGlycemicControlHypoglycemicInitialPopulation"/>
             </reference>
             <name value="NHSN Glycemic Control, Hypoglycemia Initial Population"/>
-            <description value="All inpatient encounters (including ED/Observation visits that end within 1 hour of the start of the inpatient encounter) for patients of all ages where at least one ADD was ordered or administered during the encounter that is during the measurement period."/>
+            <description value="All inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) for patients of all ages where at least one diabetes medication was ordered or administered during the encounter that is during the measurement period."/>
             <groupingId value="measures"/>
         </resource>
         <resource>
@@ -326,7 +326,7 @@
                 <reference value="Library/SupplementalDataElementsFHIR4"/>
             </reference>
             <name value="Supplemental Data Elements FHIR"/>
-            <description value="Measure illustrating the use of supplemental data elements to gather additional information about a population"/>
+            <description value="This measure illustrates using supplemental data elements to gather additional information about a population."/>
             <groupingId value="ext-libs"/>
         </resource>
 
@@ -360,7 +360,7 @@
                 <reference value="StructureDefinition/link-received-date-extension"/>
             </reference>
             <name value="Received Date"/>
-            <description value="An extension to store the date and time that a resource was received by the processing system (e.g. NHSNLink)."/>
+            <description value="This extension stores the date and time a Resource was received by the processing system (e.g. NHSNLink)."/>
             <groupingId value="extensions"/>
         </resource>
         <resource>
@@ -376,7 +376,7 @@
                 <reference value="StructureDefinition/link-original-resource-id-extension"/>
             </reference>
             <name value="Original Resource Id"/>
-            <description value="An extension to store an original {Resource}.id of from a source that was modified by a processing system (e.g. NHSNLink) to make it usable for NHSN. This may occur if the resource id is not valid per the FHIR specification (e.g. the id is more than 64 characters)."/>
+            <description value="This extension stores the original {Resource}.id of a source that was modified by a processing system (e.g. NHSNLink) to make it usable for NHSN when the original did not meet FHIR-standard requirements. Resource IDs that are more than 64 characters long are not valid per the FHIR specification and must be modified."/>
             <groupingId value="extensions"/>
         </resource>
         <resource>
@@ -384,7 +384,7 @@
                 <reference value="StructureDefinition/link-original-element-value-extension"/>
             </reference>
             <name value="Original Element Value"/>
-            <description value="An extension to store an original value of an element from a source that was modified by a processing system (e.g. NHSNLink) to make it usable for NHSN. This may include changing logically invalid data, data not matching specification requirements (use sparingly for specific instances only), normalization purposes, or other reasons."/>
+            <description value="This extension stores the original value of an element from a source that was modified by a processing system (e.g., NHSNLink) to make it usable for NHSN. Modification may include changing logically invalid data, changing data that does not match specification requirements (this modification is used sparingly, for specific instances only), or normalizing data."/>
             <groupingId value="extensions"/>
         </resource>
         <resource>
@@ -392,7 +392,7 @@
                 <reference value="StructureDefinition/link-original-mapped-concept-extension"/>
             </reference>
             <name value="Original Mapped Concept"/>
-            <description value="An extension used to store an original Concept that was mapped during processing."/>
+            <description value="This extension stores an original Concept that was mapped during processing."/>
             <groupingId value="extensions"/>
         </resource>
         
@@ -402,7 +402,7 @@
                 <reference value="StructureDefinition/extension-MeasureReport.population.description"/>
             </reference>
             <name value="Measure Report Population Description (R5 surrogate extension)"/>
-            <description value="Measure Report Population Description (The definition in the NHSN is a surrogate for the extension. CQF Tooling uses this extension, but is yet unpublished.)"/>
+            <description value="This extension is not defined by this IG. CQF Tooling uses this extension, but the extension is yet unpublished."/>
             <groupingId value="extensions"/>
         </resource>
         <resource>
@@ -410,7 +410,7 @@
                 <reference value="StructureDefinition/extension-MeasureReport.supplementalDataElement.reference"/>
             </reference>
             <name value="Measure Report Supplemental Data Element Reference (R5 surrogate extension)"/>
-            <description value="Measure Report Supplemental Data Element Reference (The definition in the NHSN is a surrogate for the extension. CQF Tooling uses this extension, but is yet unpublished.)"/>
+            <description value="This extension is not defined by this IG.  CQF Tooling uses this extension, but the extension is yet unpublished."/>
             <groupingId value="extensions"/>
         </resource>
         <resource>
@@ -418,7 +418,7 @@
                 <reference value="StructureDefinition/extension-criteriaReference"/>
             </reference>
             <name value="Measure Report Criteria Reference (R5 surrogate extension)"/>
-            <description value="Measure Report Criteria Reference (The definition in the NHSN is a surrogate for the extension. CQF Tooling uses this extension, but is yet unpublished.)"/>
+            <description value="This extension is not defined by this IG.  CQF Tooling uses this extension, but the extension is yet unpublished."/>
             <groupingId value="extensions"/>
         </resource>
 
