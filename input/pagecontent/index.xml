@@ -7,7 +7,7 @@
     Resources® (FHIR) digital quality measures (dQMs) reported to the National Healthcare Safety Network (NHSN). The specifications are 
     based on HL7 FHIR Release 4 (R4)<sup><a href="#fhir_r4">1</a></sup>, US Core 3.1.1 profiles<sup><a href="#us_core">2</a></sup>, 
     QI Core 4.1.1 profiles<sup><a href="#qi_core">3</a></sup>, Quality Measure IG 3.0.0 profiles<sup><a href="#cqf_measures">4</a></sup>,
-    Clinical Quality Framework Common FHIR Assets 4.0.1 profiles<sup><a href="#cqf_common">5</a></sup>, Data Exchange for Quality Measures (DEQM) 4.0.0 profiles<sup><a href="#deqm">6</a></sup>, 
+    Clinical Quality Framework Common FHIR Assets 4.0.1 profiles<sup><a href="#cqf_common">5</a></sup>, Data Exchange for Quality Measures (DEQM) 3.1.0 profiles<sup><a href="#deqm">6</a></sup>, 
     and NHSN reporting requirements.
     </p>
   <a name="purpose"></a>
