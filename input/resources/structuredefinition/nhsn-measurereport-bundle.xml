@@ -34,6 +34,7 @@
         <element id="Bundle.entry">
             <path value="Bundle.entry"/>
             <short value="An entry in the Bundle; will have a Resource or information"/>
+            <min value="3"/>
             <slicing>
                 <!--<discriminator>
                     <type value="type"/>
