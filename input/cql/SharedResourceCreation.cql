@@ -6,7 +6,7 @@ include FHIRHelpers version '4.0.1' called FHIRHelpers
 
 define function "GetIdExtensions"(domainResource DomainResource):
   domainResource.extension E
-  where E.url = 'http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension'
+  where E.url = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'
   return E
 
 define function "GetPatientExtensions"(domainResource DomainResource):
@@ -16,7 +16,7 @@ define function "GetPatientExtensions"(domainResource DomainResource):
     or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
     or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity'
     or E.url = 'http://hl7.org/fhir/StructureDefinition/patient-genderIdentity'
-    or E.url = 'http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension'
+    or E.url = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'
   return E
 
 define function "MedicationRequestResource"(medicationRequest MedicationRequest):

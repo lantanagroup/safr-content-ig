@@ -527,17 +527,17 @@ define &quot;SDE Blood Glucose Observation&quot;:
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library FHIRHelpers"></display>
-            <resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/FHIRHelpers|4.0.1"></resource>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library Global"></display>
-            <resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library SharedResource"></display>
-            <resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/SharedResourceCreation|0.1.001"></resource>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.001"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -858,7 +858,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
          <reference value="#effective-data-requirements"></reference>
       </valueReference>
    </extension>
-   <url value="http://lantanagroup.com/fhir/nhsn-measures/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation"></url>
+   <url value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation"></url>
    <identifier>
       <system value="https://nhsnlink.org"></system>
       <value value="nhsnglycemiccontrolhypoglycemicinitialpopulation"></value>
@@ -878,7 +878,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
       <display value="NHSN Protocol Documentation [Placeholder]"></display>
       <url value="https://www.cdc.gov/nhsn/index.html"></url>
    </relatedArtifact>
-   <library value="http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNGlycemicControlHypoglycemicInitialPopulation"></library>
+   <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNGlycemicControlHypoglycemicInitialPopulation"></library>
    <disclaimer value="This performance measure is not a clinical guideline, does not establish a standard of medical care and has not been tested for all potential applications.  THE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.  This measure and specifications are subject to further revisions."></disclaimer>
    <scoring>
       <coding>

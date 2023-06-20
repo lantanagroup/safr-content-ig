@@ -3,7 +3,7 @@
   "id": "submission-example2",
   "meta": {
     "profile": [
-      "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/nhsn-measurereport-bundle"
+      "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-measurereport-bundle"
     ],
     "tag": [
       {
@@ -21,13 +21,13 @@
   "timestamp": "2023-04-28T17:20:53.871+00:00",
   "entry": [
     {
-      "fullUrl": "http://lantanagroup.com/fhir/nhsn-measures/Organization/720ca371-6fe9-47c8-b428-b1ce3391efba",
+      "fullUrl": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Organization/720ca371-6fe9-47c8-b428-b1ce3391efba",
       "resource": {
         "resourceType": "Organization",
         "id": "720ca371-6fe9-47c8-b428-b1ce3391efba",
         "meta": {
           "profile": [
-            "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/nhsn-submitting-organization"
+            "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submitting-organization"
           ]
         },
         "identifier": [
@@ -72,18 +72,18 @@
       }
     },
     {
-      "fullUrl": "http://lantanagroup.com/fhir/nhsn-measures/List/644abef7712e2a7135531927",
+      "fullUrl": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/List/644abef7712e2a7135531927",
       "resource": {
         "resourceType": "List",
         "id": "644abef7712e2a7135531927",
         "meta": {
           "profile": [
-            "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/poi-list"
+            "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/poi-list"
           ]
         },
         "extension": [
           {
-            "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-patient-list-applicable-period-extension",
+            "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-patient-list-applicable-period-extension",
             "valuePeriod": {
               "start": "2022-08-01T00:00:00.000Z",
               "end": "2022-08-31T23:59:59.000Z"
@@ -123,18 +123,18 @@
       }
     },
     {
-      "fullUrl": "http://lantanagroup.com/fhir/nhsn-measures/MeasureReport/788ca455-e11b1a59",
+      "fullUrl": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/MeasureReport/788ca455-e11b1a59",
       "resource": {
         "resourceType": "MeasureReport",
         "id": "788ca455-e11b1a59",
         "meta": {
           "profile": [
-            "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/subjectlist-measurereport"
+            "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/subjectlist-measurereport"
           ]
         },
         "status": "complete",
         "type": "subject-list",
-        "measure": "http://lantanagroup.com/fhir/nhsn-measures/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation",
+        "measure": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation",
         "reporter": {
           "reference": "Organization/720ca371-6fe9-47c8-b428-b1ce3391efba"
         },
@@ -171,7 +171,7 @@
         "resourceType": "List",
         "meta": {
           "profile": [
-            "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/ip-measurereport-list"
+            "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list"
           ]
         },
         "id": "788ca455-e11b1a59-9876",
@@ -192,7 +192,7 @@
       }
     },
     {
-      "fullUrl": "http://lantanagroup.com/fhir/nhsn-measures/MeasureReport/788ca455-e11b1a59-2ad816ff",
+      "fullUrl": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/MeasureReport/788ca455-e11b1a59-2ad816ff",
       "resource": {
         "resourceType": "MeasureReport",
         "id": "788ca455-e11b1a59-2ad816ff",
@@ -217,7 +217,7 @@
         ],
         "status": "complete",
         "type": "individual",
-        "measure": "http://lantanagroup.com/fhir/nhsn-measures/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation",
+        "measure": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation",
         "subject": {
           "reference": "Patient/esXf-ev0p4gJ6A9iOs32DDg3"
         },
@@ -460,7 +460,7 @@
       }
     },
     {
-      "fullUrl": "http://lantanagroup.com/fhir/nhsn-measures/MeasureReport/788ca455-e11b1a59-838c24b5",
+      "fullUrl": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/MeasureReport/788ca455-e11b1a59-838c24b5",
       "resource": {
         "resourceType": "MeasureReport",
         "id": "788ca455-e11b1a59-838c24b5",
@@ -485,7 +485,7 @@
         ],
         "status": "complete",
         "type": "individual",
-        "measure": "http://lantanagroup.com/fhir/nhsn-measures/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation",
+        "measure": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation",
         "subject": {
           "reference": "Patient/edffl-xa2-jlLcPu5RGp50A3"
         },

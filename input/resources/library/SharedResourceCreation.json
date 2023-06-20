@@ -1,7 +1,7 @@
 {
   "resourceType": "Library",
   "id": "SharedResourceCreation",
-  "url": "http://lantanagroup.com/fhir/nhsn-measures/Library/SharedResourceCreation",
+  "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation",
   "version": "0.1.001",
   "name": "SharedResourceCreation",
   "type": {
@@ -17,7 +17,7 @@
   }, {
     "type": "depends-on",
     "display": "Library FHIRHelpers",
-    "resource": "http://lantanagroup.com/fhir/nhsn-measures/Library/FHIRHelpers|4.0.1"
+    "resource": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1"
   } ],
   "content": [ {
     "contentType": "text/cql",

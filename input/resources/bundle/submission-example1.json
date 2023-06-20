@@ -3,7 +3,7 @@
     "id": "submission-example1",
     "meta": {
         "profile": [
-            "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/nhsn-measurereport-bundle"
+            "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-measurereport-bundle"
         ],
         "tag": [
             {
@@ -75,7 +75,7 @@
                 "id": "1fa6e312-581b-42bb-a202-a4332f819e23",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-patient-list-applicable-period-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-patient-list-applicable-period-extension",
                         "valuePeriod": {
                             "start": "2022-08-01T00:00:00.000Z",
                             "end": "2022-08-31T23:59:59.000Z"
@@ -111,11 +111,11 @@
                 "resourceType": "MeasureReport",
                 "meta": {
                     "profile": [
-                        "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/subjectlist-measurereport"
+                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/subjectlist-measurereport"
                     ],
                     "extension": [
                         {
-                            "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-received-date-extension",
+                            "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-received-date-extension",
                             "valueDateTime": "2023-05-23T06:07:08Z"
                         }
                     ]
@@ -163,11 +163,11 @@
                 "resourceType": "List",
                 "meta": {
                     "profile": [
-                        "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/ip-measurereport-list"
+                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list"
                     ],
                     "extension": [
                         {
-                            "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-received-date-extension",
+                            "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-received-date-extension",
                             "valueDateTime": "2023-05-23T06:07:08Z"
                         }
                     ]
@@ -196,7 +196,7 @@
                 "id": "hash-86e0696",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "eDM8ABTRBjSPufStEIBO3HvwBspfD0oXLHMv97-pguBOoSTrdrxjGw9zmmgjJl1NsoxlmOydXuO5nk4kugSGubzSTWOgchZYpXPiM5vLG4PI3"
                     }
                 ],
@@ -303,7 +303,7 @@
                 "id": "LCR-hash-a8ff1599",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "ezpuYrqPh-i07uxw8chC4Fmf-vXiPwr.yVP2-xB6DfWdHWgDkX8XyBla.dAb24t7c3"
                     }
                 ],
@@ -400,7 +400,7 @@
                 "medicationReference": {
                     "extension": [
                         {
-                            "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                            "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                             "valueString": "Medication/eDM8ABTRBjSPufStEIBO3HvwBspfD0oXLHMv97-pguBOoSTrdrxjGw9zmmgjJl1NsoxlmOydXuO5nk4kugSGubzSTWOgchZYpXPiM5vLG4PI3"
                         }
                     ],
@@ -529,7 +529,7 @@
                 "id": "LCR-hash-a0c19bd3",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "eDBsPVmO1ldptMGm1Wd3Ad9kAeCKM65gvk1wKr6FdHRP57K-rmJdu.P8RK0rSNtcb3"
                     }
                 ],
@@ -603,7 +603,7 @@
                 "id": "LCR-hash-367e959",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "egPBq43ZIj31SXoxILZVqWc56Tf9bRPrupc.Y-NbKU4tL2Z9J5SEQzj.Jxk0SIKCG3"
                     }
                 ],
@@ -688,7 +688,7 @@
                 "id": "LCR-hash-8ef6d2da",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "e04ReypenAmCHTBpEQkNqBcqDpzEzxOl4aTsQ2EdJvaHi7wLW4AO0db.D5173sns73"
                     }
                 ],
@@ -775,7 +775,7 @@
                 {
                         "extension": [
                         {
-                            "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-received-date-extension",
+                            "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-received-date-extension",
                             "valueDateTime": "2023-05-23T06:07:08Z"
                         }
                     ]
@@ -954,7 +954,7 @@
                 "_status": {
                     "extension": [
                         {
-                            "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-element-value-extension",
+                            "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-element-value-extension",
                             "valueString": "TRIAGED"
                         }
                     ]
@@ -962,7 +962,7 @@
                 "class": {
                     "extension": [
                         {
-                            "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-mapped-concept-extension",
+                            "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-mapped-concept-extension",
                             "valueCoding": {
                                 "system": "urn:oid:1.2.840.114350.1.72.1.7.7.10.696784.13260",
                                 "code": "6",
@@ -1276,7 +1276,7 @@
                 "id": "LCR-hash-530c9f2",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "erEwa1wAjBszFgEhpJ3VABbBcX-vTs0z718aFwKUvAzaDb3kycOmh7uCp1jidKpr63"
                     }
                 ],
@@ -1361,7 +1361,7 @@
                 "id": "LCR-hash-a417883b",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "exkEYAJJt6vAJPb5EHFZGtFJ4QplVzGaK1nZ6PeLV5oTiPGIoC1uLik7C0TcEU5Zd3"
                     }
                 ],
@@ -1446,7 +1446,7 @@
                 "id": "LCR-hash-62d8611b",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "eY82JB.8ppTTV5RktPwJbpUHKAGfJmD2YuyeQZY4c6pgp3uu5d4Ip9Kje-bi3zAF2Kd.pcEag3zNHvMZ3ZAowUNmGzpyyXXZ0tImXpg90ojw3"
                     }
                 ],
@@ -1703,7 +1703,7 @@
                 "medicationReference": {
                     "extension": [
                         {
-                            "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                            "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                             "valueString": "Medication/eY82JB.8ppTTV5RktPwJbpUHKAGfJmD2YuyeQZY4c6pgp3uu5d4Ip9Kje-bi3zAF2Kd.pcEag3zNHvMZ3ZAowUNmGzpyyXXZ0tImXpg90ojw3"
                         }
                     ],
@@ -1835,7 +1835,7 @@
                 "id": "LCR-hash-bac42370",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "eDBsPVmO1ldptMGm1Wd3Ad6T5xbPltA3nSEJTmvuzohITBZPF3cSD1V49M3K2xNGQ3"
                     }
                 ],
@@ -1908,7 +1908,7 @@
                 "id": "LCR-hash-1363bc28",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "e5onzgp6XJsy-YpdmlnoEXHwJgV-hmQbLD8S-XalMzJHKvjMY4r0Ptb0zM7-WZv1e3"
                     }
                 ],
@@ -1993,7 +1993,7 @@
                 "id": "LCR-hash-c852aaca",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "ecWm9uIRYO1YbNebr39d6KMIndGfaqkAof.X9Ht9gN24Wh8DGhMEjhh00IDiwWvDG3"
                     }
                 ],
@@ -2392,7 +2392,7 @@
                 "id": "LCR-hash-1028fb49",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "evEYVz0wgiO2HiQ7opHkVkv.PKzlBzXgq.FBYq-9dJiJy0tajUnLEpHNPrMlzrR5i3"
                     }
                 ],
@@ -2486,7 +2486,7 @@
                 "_status": {
                     "extension": [
                         {
-                            "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-element-value-extension",
+                            "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-element-value-extension",
                             "valueString": "TRIAGED"
                         }
                     ]
@@ -2494,7 +2494,7 @@
                 "class": {
                     "extension": [
                         {
-                            "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-mapped-concept-extension",
+                            "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-mapped-concept-extension",
                             "valueCoding": {
                                 "system": "urn:oid:1.2.840.114350.1.72.1.7.7.10.696784.13260",
                                 "code": "6",
@@ -2749,7 +2749,7 @@
                 "id": "LCR-hash-208414d7",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "e9FZFYR3oTtlkn4nGa80yydYkSB8bn20MGT0zddTBtdEgPNiui9BEGh28pOSouXLG3"
                     }
                 ],
@@ -2834,7 +2834,7 @@
                 "id": "LCR-hash-7ae4915e",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "eQ3q6LpUf1A3wTsNWNxmzcLYyDG6vKNcOG0R-aabNHy1DQPurA1JNLSXzZTolkmyY3"
                     }
                 ],
@@ -2919,7 +2919,7 @@
                 "id": "LCR-hash-78742212",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "exaOflSQX3EYaZluUGUrRGkZb.UOlNYDwKxY.mmKO6P80Gpc.S8fihBkQ0FjfmmpP3"
                     }
                 ],
@@ -3004,7 +3004,7 @@
                 "id": "LCR-hash-2ec96737",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "eZeW55xkBH0DrR0Xj004fNlA99h1sjXKwuhGs.PNpjjUi.Dh2-U-oGW0c9xZjPn2b29S.YZMgFiH.76i57tFS1PARcjzOMkC6TPHQQXiH6vA3"
                     }
                 ],
@@ -3283,7 +3283,7 @@
                 "id": "LCR-hash-b980e6d7",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "eDqE6JdEkh8mZo4TPwrQ9EeahisqKXGVniOD2rN80PE2EUeGATq60KM.KVXjzcHYMVMeCDuUpqdqoATqaUjUNVXwPRyqWkRVYyVVq2UgaecU3"
                     }
                 ],
@@ -3384,7 +3384,7 @@
                 "medicationReference": {
                     "extension": [
                         {
-                            "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                            "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                             "valueString": "Medication/eDqE6JdEkh8mZo4TPwrQ9EeahisqKXGVniOD2rN80PE2EUeGATq60KM.KVXjzcHYMVMeCDuUpqdqoATqaUjUNVXwPRyqWkRVYyVVq2UgaecU3"
                         }
                     ],
@@ -3537,7 +3537,7 @@
                 "id": "LCR-hash-74915585",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "e-NAkZEjcviIFhSRTifOwDhtUmkIFdE5GoUYEPs-hU8afCOhF3vtY9eSmlFOpHydm3"
                     }
                 ],
@@ -3644,7 +3644,7 @@
                 "medicationReference": {
                     "extension": [
                         {
-                            "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                            "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                             "valueString": "Medication/eZeW55xkBH0DrR0Xj004fNlA99h1sjXKwuhGs.PNpjjUi.Dh2-U-oGW0c9xZjPn2b29S.YZMgFiH.76i57tFS1PARcjzOMkC6TPHQQXiH6vA3"
                         }
                     ],
@@ -3771,7 +3771,7 @@
                 "id": "LCR-hash-81d1b1fb",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "eq0EVE9XTOpd88ieWI6Er1o2vm5o6uzHK2jzWouEW72IhHfOVjl6k3owSS8WndmDL3"
                     }
                 ],
@@ -3856,7 +3856,7 @@
                 "id": "LCR-hash-59dce1a3",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "ezaszo1KqoABo5mSXIK20fsDNysIHRIFpUApRn7uMKMpmwwc5Ojx8Gc9TEkZ7glhV3"
                     }
                 ],
@@ -3941,7 +3941,7 @@
                 "id": "LCR-hash-3ba39cec",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "eloBHVi6UskNwFJ55XgUq294CfCWyE3tytd.P4NomlhQprDjGoqWBeK2-ed8C2oMs3"
                     }
                 ],
@@ -4014,7 +4014,7 @@
                 "id": "LCR-hash-f491ab95",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "eZeW55xkBH0DrR0Xj004fNid0iluLJl6nT2adScy2TI9SbXSOBJPdED7Qjms.Fj48j0.MQxtisgjhubwnqaIImzMAo7axKzx4khlfA7xEkUU3"
                     }
                 ],
@@ -4159,7 +4159,7 @@
                 "medicationReference": {
                     "extension": [
                         {
-                            "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                            "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                             "valueString": "Medication/e11kF5DQLQwz8WrCTi-fTXUBZW8CRdsY0CXeVGHY.RA8LNuzDmn9GrZmbcWKSA1xb2ES.RitNJ5o-LqrwbAoS-zJZ9Wp8oS-UB1RNw-eZ22o3"
                         }
                     ],
@@ -4288,7 +4288,7 @@
                 "id": "LCR-hash-492f9552",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "egcnW6Nn2B4jBxhWCFxF2WdeZC.LNcy-w6VjkSozRY5CR5XKCi6.p9WpTzS49qvlE3"
                     }
                 ],
@@ -4395,7 +4395,7 @@
                 "medicationReference": {
                     "extension": [
                         {
-                            "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                            "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                             "valueString": "Medication/eZeW55xkBH0DrR0Xj004fNid0iluLJl6nT2adScy2TI9SbXSOBJPdED7Qjms.Fj48j0.MQxtisgjhubwnqaIImzMAo7axKzx4khlfA7xEkUU3"
                         }
                     ],
@@ -4527,7 +4527,7 @@
                 "id": "LCR-hash-794d4b07",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "e11kF5DQLQwz8WrCTi-fTXUBZW8CRdsY0CXeVGHY.RA8LNuzDmn9GrZmbcWKSA1xb2ES.RitNJ5o-LqrwbAoS-zJZ9Wp8oS-UB1RNw-eZ22o3"
                     }
                 ],
@@ -4600,7 +4600,7 @@
                 "id": "LCR-hash-c496def2",
                 "extension": [
                     {
-                        "url": "http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-original-resource-id-extension",
+                        "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
                         "valueString": "eloBHVi6UskNwFJ55XgUq25O1kkv9.cGk8JbqbtcoHsoCe9GptkoZD1ITVouIP-4e3"
                     }
                 ],

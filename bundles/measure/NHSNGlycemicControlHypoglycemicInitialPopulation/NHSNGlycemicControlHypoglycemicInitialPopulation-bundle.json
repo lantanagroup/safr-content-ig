@@ -1232,7 +1232,7 @@
             "resource": {
                 "resourceType": "Library",
                 "id": "MATGlobalCommonFunctionsFHIR4",
-                "url": "http://lantanagroup.com/fhir/nhsn-measures/Library/MATGlobalCommonFunctionsFHIR4",
+                "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/MATGlobalCommonFunctionsFHIR4",
                 "version": "6.1.000",
                 "name": "MATGlobalCommonFunctionsFHIR4",
                 "type": {
@@ -1252,7 +1252,7 @@
                     {
                         "type": "depends-on",
                         "display": "Library FHIRHelpers",
-                        "resource": "http://lantanagroup.com/fhir/nhsn-measures/Library/FHIRHelpers|4.0.1"
+                        "resource": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1"
                     },
                     {
                         "type": "depends-on",
@@ -1582,7 +1582,7 @@
             "resource": {
                 "resourceType": "Library",
                 "id": "SupplementalDataElementsFHIR4",
-                "url": "http://lantanagroup.com/fhir/nhsn-measures/Library/SupplementalDataElementsFHIR4",
+                "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SupplementalDataElementsFHIR4",
                 "version": "2.0.000",
                 "name": "SupplementalDataElementsFHIR4",
                 "type": {
@@ -1602,7 +1602,7 @@
                     {
                         "type": "depends-on",
                         "display": "Library FHIRHelpers",
-                        "resource": "http://lantanagroup.com/fhir/nhsn-measures/Library/FHIRHelpers|4.0.1"
+                        "resource": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1"
                     },
                     {
                         "type": "depends-on",
@@ -2307,17 +2307,17 @@
                             {
                                 "type": "depends-on",
                                 "display": "Library FHIRHelpers",
-                                "resource": "http://lantanagroup.com/fhir/nhsn-measures/Library/FHIRHelpers|4.0.1"
+                                "resource": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1"
                             },
                             {
                                 "type": "depends-on",
                                 "display": "Library Global",
-                                "resource": "http://lantanagroup.com/fhir/nhsn-measures/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"
+                                "resource": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"
                             },
                             {
                                 "type": "depends-on",
                                 "display": "Library SharedResource",
-                                "resource": "http://lantanagroup.com/fhir/nhsn-measures/Library/SharedResourceCreation|0.1.001"
+                                "resource": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.001"
                             },
                             {
                                 "type": "depends-on",
@@ -2718,7 +2718,7 @@
                         }
                     }
                 ],
-                "url": "http://lantanagroup.com/fhir/nhsn-measures/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation",
+                "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation",
                 "identifier": [
                     {
                         "system": "https://nhsnlink.org",
@@ -2743,7 +2743,7 @@
                     }
                 ],
                 "library": [
-                    "http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNGlycemicControlHypoglycemicInitialPopulation"
+                    "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNGlycemicControlHypoglycemicInitialPopulation"
                 ],
                 "disclaimer": "This performance measure is not a clinical guideline, does not establish a standard of medical care and has not been tested for all potential applications.  THE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.  This measure and specifications are subject to further revisions.",
                 "scoring": {
@@ -9936,7 +9936,7 @@
             "resource": {
                 "resourceType": "Library",
                 "id": "SharedResourceCreation",
-                "url": "http://lantanagroup.com/fhir/nhsn-measures/Library/SharedResourceCreation",
+                "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation",
                 "version": "0.1.001",
                 "name": "SharedResourceCreation",
                 "type": {
@@ -9956,7 +9956,7 @@
                     {
                         "type": "depends-on",
                         "display": "Library FHIRHelpers",
-                        "resource": "http://lantanagroup.com/fhir/nhsn-measures/Library/FHIRHelpers|4.0.1"
+                        "resource": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1"
                     }
                 ],
                 "content": [
@@ -10025,7 +10025,7 @@
             "resource": {
                 "resourceType": "Library",
                 "id": "NHSNGlycemicControlHypoglycemicInitialPopulation",
-                "url": "http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNGlycemicControlHypoglycemicInitialPopulation",
+                "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNGlycemicControlHypoglycemicInitialPopulation",
                 "version": "0.0.009",
                 "name": "NHSNGlycemicControlHypoglycemicInitialPopulation",
                 "type": {
@@ -10045,22 +10045,22 @@
                     {
                         "type": "depends-on",
                         "display": "Library FHIRHelpers",
-                        "resource": "http://lantanagroup.com/fhir/nhsn-measures/Library/FHIRHelpers|4.0.1"
+                        "resource": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1"
                     },
                     {
                         "type": "depends-on",
                         "display": "Library SDE",
-                        "resource": "http://lantanagroup.com/fhir/nhsn-measures/Library/SupplementalDataElementsFHIR4|2.0.000"
+                        "resource": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SupplementalDataElementsFHIR4|2.0.000"
                     },
                     {
                         "type": "depends-on",
                         "display": "Library Global",
-                        "resource": "http://lantanagroup.com/fhir/nhsn-measures/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"
+                        "resource": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"
                     },
                     {
                         "type": "depends-on",
                         "display": "Library SharedResource",
-                        "resource": "http://lantanagroup.com/fhir/nhsn-measures/Library/SharedResourceCreation|0.1.001"
+                        "resource": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.001"
                     },
                     {
                         "type": "depends-on",

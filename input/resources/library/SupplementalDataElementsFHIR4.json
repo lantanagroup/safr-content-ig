@@ -1,7 +1,7 @@
 {
   "resourceType": "Library",
   "id": "SupplementalDataElementsFHIR4",
-  "url": "http://lantanagroup.com/fhir/nhsn-measures/Library/SupplementalDataElementsFHIR4",
+  "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SupplementalDataElementsFHIR4",
   "version": "2.0.000",
   "name": "SupplementalDataElementsFHIR4",
   "type": {
@@ -17,7 +17,7 @@
   }, {
     "type": "depends-on",
     "display": "Library FHIRHelpers",
-    "resource": "http://lantanagroup.com/fhir/nhsn-measures/Library/FHIRHelpers|4.0.1"
+    "resource": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1"
   }, {
     "type": "depends-on",
     "display": "Value set Ethnicity",

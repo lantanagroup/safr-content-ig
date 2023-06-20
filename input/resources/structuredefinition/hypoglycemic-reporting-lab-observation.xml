@@ -2,7 +2,7 @@
 <StructureDefinition
     xmlns="http://hl7.org/fhir">
     <id value="hypoglycemic-reporting-lab-observation"/>
-    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/hypoglycemic-reporting-lab-observation"/>
+    <url value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation"/>
     <name value="HypoglycemicReportingLabObservation"/>
     <title value="Hypoglycemic Reporting Lab Observation"/>
     <status value="active"/>
@@ -28,7 +28,7 @@
             <max value="1"/>
             <type>
                 <code value="Extension"/>
-                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-received-date-extension"/>
+                <profile value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-received-date-extension"/>
             </type>
         </element>
         <element id="Observation.encounter">

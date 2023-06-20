@@ -2,7 +2,7 @@
 <StructureDefinition
     xmlns="http://hl7.org/fhir">
     <id value="hypoglycemic-reporting-condition"/>
-    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/hypoglycemic-reporting-condition"/>
+    <url value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition"/>
     <name value="HypoglycemicReportingCondition"/>
     <title value="Hypoglycemic Reporting Condition"/>
     <status value="active"/>
@@ -28,7 +28,7 @@
             <max value="1"/>
             <type>
                 <code value="Extension"/>
-                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-received-date-extension"/>
+                <profile value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-received-date-extension"/>
             </type>
         </element>
         <element id="Condition.encounter">

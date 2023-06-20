@@ -2,7 +2,7 @@
 <StructureDefinition
     xmlns="http://hl7.org/fhir">
     <id value="nhsn-measurereport-bundle"/>
-    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/nhsn-measurereport-bundle"/>
+    <url value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-measurereport-bundle"/>
     <name value="NHSNMeasureReportBundleProfileCurrent"/>
     <title value="NHSN MeasureReport Bundle Profile (Current)"/>
     <status value="active"/>
@@ -21,14 +21,14 @@
                 <severity value="error"/>
                 <human value="MeasureReport Bundle:  must not contain any modifierExensions"/>
                 <expression value="(select(modifierExtension) | descendants().select(modifierExtension)).exists().not()"/>
-                <source value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/nhsn-measurereport-bundle"/>
+                <source value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-measurereport-bundle"/>
             </constraint>
             <constraint>
                 <key value="bundle-contain-all-measurereport-references"/>
                 <severity value="error"/>
                 <human value="MeasureReport Bundle: must contain all Resources that are references by MeasureReport references"/>
                 <expression value="Bundle.entry.resource.where($this.is(MeasureReport)).descendants().reference.where($this.startsWith('#').not()).all((%resource.entry.fullUrl.join('|')&amp;'|').contains(($this&amp;'|')))"/>
-                <source value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/nhsn-measurereport-bundle"/>
+                <source value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-measurereport-bundle"/>
             </constraint>
         </element>
         <element id="Bundle.entry">
@@ -61,7 +61,7 @@
             <min value="1"/>
             <type>
                 <code value="Organization"/>
-                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/nhsn-submitting-organization"/>
+                <profile value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submitting-organization"/>
             </type>
         </element>
         <!-- POI/Census List -->
@@ -78,7 +78,7 @@
             <min value="1"/>
             <type>
                 <code value="List"/>
-                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/poi-list"/>
+                <profile value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/poi-list"/>
             </type>
         </element>
         <!-- subject-list MR -->
@@ -94,7 +94,7 @@
             <short value="The Bundle entry for a Summary Measure Report"/>
             <type>
                 <code value="MeasureReport"/>
-                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/subjectlist-measurereport"/>
+                <profile value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/subjectlist-measurereport"/>
             </type>
         </element>
         <!-- individual-measure-report-list -->
@@ -109,7 +109,7 @@
             <min value="1"/>
             <type>
                 <code value="List"/>
-                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/ip-measurereport-list"/>
+                <profile value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list"/>
             </type>
         </element>
         <!-- indv MRs -->
@@ -139,7 +139,7 @@
             <min value="1"/>
             <type>
                 <code value="Patient"/>
-                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/cross-measure-patient"/>
+                <profile value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/cross-measure-patient"/>
             </type>
         </element>
         <!-- Encounters -

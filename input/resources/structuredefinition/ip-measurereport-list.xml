@@ -1,7 +1,7 @@
 <StructureDefinition
     xmlns="http://hl7.org/fhir">
     <id value="ip-measurereport-list"/>
-    <url value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/ip-measurereport-list"/>
+    <url value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list"/>
     <name value="IndividualMeasureReportList"/>
     <title value="Individual MeasureReport List"/>
     <status value="active"/>
@@ -21,7 +21,7 @@
             <max value="1"/>
             <type>
                 <code value="Extension"/>
-                <profile value="http://lantanagroup.com/fhir/nhsn-measures/StructureDefinition/link-received-date-extension"/>
+                <profile value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-received-date-extension"/>
             </type>
         </element>
         <element id="List.entry">

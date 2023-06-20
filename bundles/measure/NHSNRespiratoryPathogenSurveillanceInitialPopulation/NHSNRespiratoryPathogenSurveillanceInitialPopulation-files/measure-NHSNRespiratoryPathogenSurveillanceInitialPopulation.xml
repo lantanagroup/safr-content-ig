@@ -914,17 +914,17 @@ define &quot;SDE All Observations&quot;:
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library FHIRHelpers"></display>
-            <resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/FHIRHelpers|4.0.1"></resource>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library Global"></display>
-            <resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library SharedResource"></display>
-            <resource value="http://lantanagroup.com/fhir/nhsn-measures/Library/SharedResourceCreation|0.1.001"></resource>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.001"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -1564,7 +1564,7 @@ define &quot;SDE All Observations&quot;:
          <reference value="#effective-data-requirements"></reference>
       </valueReference>
    </extension>
-   <url value="http://lantanagroup.com/fhir/nhsn-measures/Measure/NHSNRespiratoryPathogenSurveillanceInitialPopulation"></url>
+   <url value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNRespiratoryPathogenSurveillanceInitialPopulation"></url>
    <identifier>
       <system value="https://nhsnlink.org"></system>
       <value value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></value>
@@ -1576,7 +1576,7 @@ define &quot;SDE All Observations&quot;:
    <experimental value="false"></experimental>
    <date value="2023-06-09T13:37:53-05:00"></date>
    <description value="dQM Measure for Respiratory Pathogen Surveillance"></description>
-   <library value="http://lantanagroup.com/fhir/nhsn-measures/Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation"></library>
+   <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation"></library>
    <scoring>
       <coding>
          <system value="http://terminology.hl7.org/CodeSystem/measure-scoring"></system>
