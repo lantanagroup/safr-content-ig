@@ -249,7 +249,7 @@
             <p><b>Documentation</b></p>
             <ul>
               {% for artifact in Library.relatedArtifact.where(type = 'documentation' or type = 'justification') %}
-                <li><a href="{{artifact.url}}">{{artifact.label}} {{artifact.display.escape('html')}}</a></li>
+                <li>{{artifact.label}} {{artifact.display.escape('html') | artifact.url}}</li>
               {% endfor %}
             </ul>
             {% endif %}
@@ -257,7 +257,7 @@
             <p><b>References</b></p>
             <ul>
               {% for artifact in Library.relatedArtifact.where(type = 'citation') %}
-                <li>{{artifact.citation}}<br/><a href="{{artifact.url}}">{{artifact.url}}</a></li>
+                <li>{{artifact.citation}}<br/>{{artifact.url}}</li>
               {% endfor %}
             </ul>
             {% endif %}
@@ -377,27 +377,110 @@
           </td>
         </tr>
         {% endif %}
-        {% for c in Library.content %}
-        {% if c.contentType = 'text/cql' %}
-        <tr>
-          <td colspan="2">
-            <table>
-              <tr><th><a id="cql-content"><b>Content: </b></a> {{c.contentType}}</th></tr>
-              <tr><td><pre><code class="language-cql">{{c.data.decode('base64').escape('html')}}</code></pre></td></tr>
-            </table>
-          </td>
-        </tr>
+        {% if Library.content.exists() %}
+          <tr>
+            <td colspan="2">
+              <div id="tabs">
+                <ul>
+                {% for c in Library.content %}
+                  <li>
+                    {% if c.contentType = 'text/cql' %}
+                      <a href="#tabs-cql">CQL Content</a>
+                    {% elsif c.contentType = 'application/elm+json' %}
+                    <a href="#tabs-json">ELM JSON Content</a>
+                    {% elsif c.contentType = 'application/elm+xml' %}
+                    <a href="#tabs-xml">ELM XML Content</a>
+                    {% else %}
+                    <a href="#tabs-other">{{c.contentType}} Attachment</a>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+                </ul>
+                {% for c in Library.content %}
+                  {% if c.contentType = 'text/cql' %}
+                    <a name="tabs-cql"> </a>
+                    <div id="tabs-cql">
+                      <div id="tbl-cql">
+                        <div id="tbl-cql-inner">
+                  {% elsif c.contentType = 'application/elm+json' %}
+                    <a name="tabs-json"> </a>
+                    <div id="tabs-json">
+                      <div id="tbl-json">
+                        <div id="tbl-json-inner">
+                  {% elsif c.contentType = 'application/elm+xml' %}
+                    <a name="tabs-xml"> </a>
+                    <div id="tabs-xml">
+                      <div id="tbl-xml">
+                        <div id="tbl-xml-inner">
+                  {% else %}
+                    <a name="tabs-other"> </a>
+                    <div id="tabs-other">
+                      <div id="tbl-other">
+                        <div id="tbl-other-inner">
+                  {% endif %}
+                      {% if c.contentType = 'text/cql' %}
+                        <table>
+                          <tr><th><a id="cql-content"><b>Content Attachement Type: </b></a> {{c.contentType}}</th></tr>
+                          <tr><td><pre><code class="language-cql">{{c.data.decode('base64')}}</code></pre></td></tr>
+                        </table>
+                      {% elsif c.contentType = 'application/elm+json' %}
+                        <table>
+                          <tr><th><a id="cql-content"><b>Attachement Content Type: </b></a> {{c.contentType}}</th></tr>
+                          <tr><td><pre><code class="language-json">{{c.data.decode('base64')}}</code></pre></td></tr>
+                        </table>
+                      {% elsif c.contentType = 'application/elm+xml' %}
+                        <table>
+                          <tr><th><a id="cql-content"><b>Attachement Content Type: </b></a> {{c.contentType}}</th></tr>
+                          <tr><td><pre><code class="language-xml">{{c.data.decode('base64')}}</code></pre></td></tr>
+                        </table>
+                      {% endif %}
+                      </div>
+                    </div>
+                  </div>  
+                  <!--
+                  {% if c.contentType = 'text/cql' %}
+                  <tr>
+                    <td colspan="2">
+                      <table>
+                        <tr><th><a id="cql-content"><b>Content: </b></a> {{c.contentType}}</th></tr>
+                        <tr><td><pre><code class="language-cql">{{c.data.decode('base64')}}</code></pre></td></tr>
+                      </table>
+                    </td>
+                  </tr>
+                  {% elsif c.contentType = 'application/elm+json' %}
+                    <tr>
+                      <td colspan="2">
+                        <table>
+                          <tr><th><a id="cql-content"><b>Content: </b></a> {{c.contentType}}</th></tr>
+                          <tr><td><pre class="collapsable_content"><a class="expand_sign">[+]</a><a class="collapse_sign hidden">[-]</a><code class="language-json">{{c.data.decode('base64')}}</code></pre></td></tr>
+                        </table>
+                      </td>
+                    </tr>
+                  {% elsif c.contentType = 'application/elm+xml' %}
+                  <tr>
+                    <td colspan="2">
+                      <table>
+                        <tr><th><a id="cql-content"><b>Content: </b></a> {{c.contentType}}</th></tr>
+                        <tr><td><div class="collapsable_content"><a class="expand_sign">[+]</a><a class="collapse_sign hidden">[-]</a><pre><code class="language-xml">{{c.data.decode('base64')}}</code></pre></div></td></tr>
+                      </table>
+                    </td>
+                  </tr>
+                  {% else %}
+                  <tr>
+                    <td colspan="2">
+                      <table>
+                        <tr><th><b>Content: </b> {{c.contentType}}</th></tr>
+                        <tr><td><pre><code>{{'Encoded data (' + c.data.length().toString() + ' characters)'}}</code></pre></td></tr>
+                      </table>
+                    </td>
+                  </tr>
+                  {% endif %}
+                -->
+                {% endfor %}
+              </div>
+            </td>
+          </tr>
         {% endif %}
-        {% if c.contentType != 'text/cql' %}
-        <tr>
-          <td colspan="2">
-            <table>
-              <tr><th><b>Content: </b> {{c.contentType}}</th></tr>
-              <tr><td><pre><code>{{'Encoded data (' + c.data.length().toString() + ' characters)'}}</code></pre></td></tr>
-            </table>
-          </td>
-        </tr>
-        {% endif %}
-        {% endfor %}
     </table>
 </div>
+
