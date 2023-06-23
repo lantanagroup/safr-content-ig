@@ -71,7 +71,10 @@
                <valueString value="MedicationRequests"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;MedicationRequests&quot;:
+               <valueString value="//
+// Retrieve Resources
+//
+define &quot;MedicationRequests&quot;:
   [MedicationRequest]"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -89,7 +92,7 @@
                <valueString value="define &quot;Inpatient Encounter&quot;:
   ([Encounter: class in {&quot;inpatient encounter&quot;, &quot;inpatient acute&quot;, &quot;inpatient non-acute&quot;, &quot;short stay&quot;, &quot;emergency&quot;, &quot;observation encounter&quot;}]
     union [Encounter: &quot;Encounter Inpatient&quot;]) Encounters
-  where Encounters.status in {'in-progress', 'finished', 'triaged'}
+    where Encounters.status in {'in-progress', 'finished', 'triaged'}
     and Encounters.period overlaps &quot;Measurement Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -175,9 +178,9 @@
                <valueString value="Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="/*
-@author Arvind Jagannathan
-*/
+               <valueString value="//
+// Initial Population
+//
 define &quot;Initial Population&quot;:
   (&quot;Inpatient Encounter&quot;
   union &quot;Patient Hospital Locations&quot;) InpatientEncounters
@@ -199,7 +202,8 @@ define &quot;Initial Population&quot;:
                <valueString value="SDE Medication Request"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Medication Request&quot;:
+               <valueString value="//To capture information about the medication order
+define &quot;SDE Medication Request&quot;:
 	&quot;MedicationRequests&quot; MedicationRequests
   where exists(
     &quot;Initial Population&quot; InitialPopulation
@@ -220,7 +224,8 @@ define &quot;Initial Population&quot;:
                <valueString value="SDE Coverage"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Coverage&quot;: 
+               <valueString value="//To capture Coverage information
+define &quot;SDE Coverage&quot;: 
 	[Coverage] Coverages
   where exists(
     &quot;Initial Population&quot; InitialPopulation
@@ -245,7 +250,8 @@ define &quot;Initial Population&quot;:
                <valueString value="SDE Encounter Locations"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Encounter Locations&quot;:
+               <valueString value="//To capture the Locations where the Encounter took place
+define &quot;SDE Encounter Locations&quot;:
   &quot;Initial Population&quot; InitialPopulation 
   where exists ( 
     InitialPopulation.location InitialPopulationLocation
@@ -281,7 +287,8 @@ define &quot;Initial Population&quot;:
                <valueString value="SDE Condition during Encounter"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Condition during Encounter&quot;:
+               <valueString value="//TO capture the Encounter diagnosis
+define &quot;SDE Condition during Encounter&quot;:
   &quot;Conditions&quot; ConditionEncounterDiagnosis
   where exists(
     ConditionEncounterDiagnosis.category category
@@ -301,7 +308,8 @@ define &quot;Initial Population&quot;:
                <valueString value="SDE Medication Administration"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Medication Administration&quot;:
+               <valueString value="//To capture information on when the Medication was given
+define &quot;SDE Medication Administration&quot;:
 	&quot;MedicationAdministrations&quot; MedicationAdministrations
   where exists(
     &quot;Initial Population&quot; InitialPopulation
@@ -354,7 +362,11 @@ define &quot;Initial Population&quot;:
                <valueString value="SDE Blood Glucose Observation"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//Supplemental Data Elements
+               <valueString value="//
+//Supplemental Data Elements
+//
+
+//Blood glucose testing during the initial population period
 define &quot;SDE Blood Glucose Observation&quot;:
 	[Observation: &quot;Blood Glucose Laboratory and Point of Care Tests&quot;] Observations 
   where exists(
@@ -377,7 +389,8 @@ define &quot;SDE Blood Glucose Observation&quot;:
                <valueString value="SDE Condition"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Condition&quot;:
+               <valueString value="//To capture any active Conditions the patient has
+define &quot;SDE Condition&quot;:
   &quot;Conditions&quot; Conditions
   where exists(
     &quot;Initial Population&quot; InitialPopulation
@@ -397,7 +410,8 @@ define &quot;SDE Blood Glucose Observation&quot;:
                <valueString value="SDE Encounter Discharge Dispositions"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Encounter Discharge Dispositions&quot;:
+               <valueString value="//To capture the discharge disposition
+define &quot;SDE Encounter Discharge Dispositions&quot;:
 	&quot;Initial Population&quot; DischargeDispositions 
   where DischargeDispositions.hospitalization.dischargeDisposition in &quot;Discharge Disposition&quot;
   return SharedResource.EncounterResource(DischargeDispositions)"></valueString>
@@ -414,7 +428,8 @@ define &quot;SDE Blood Glucose Observation&quot;:
                <valueString value="SDE Service Request"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Service Request&quot;:
+               <valueString value="//To capture blood glucose testing orders
+define &quot;SDE Service Request&quot;:
   [ServiceRequest] ServiceRequests
   where exists(
     &quot;Initial Population&quot; InitialPopulation
@@ -436,7 +451,9 @@ define &quot;SDE Blood Glucose Observation&quot;:
             <extension url="statement">
                <valueString value="define &quot;SDE Location&quot;:
   [Location] Locations
-  where exists(&quot;Initial Population&quot;)
+  where exists(Locations.type types
+    where types in &quot;Inpatient, Emergency, and Observation Locations&quot;)
+  and exists(&quot;Initial Population&quot;)
   return SharedResource.LocationResource(Locations)"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -467,7 +484,8 @@ define &quot;SDE Blood Glucose Observation&quot;:
                <valueString value="SDE Specimen"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Specimen&quot;:
+               <valueString value="//To capture the blood glucose specimen information
+define &quot;SDE Specimen&quot;:
   &quot;Specimens&quot; Specimens
   where exists(
     &quot;Initial Population&quot; InitialPopulation
@@ -487,7 +505,8 @@ define &quot;SDE Blood Glucose Observation&quot;:
                <valueString value="SDE Medication"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Medication&quot;:
+               <valueString value="//To capture information about the Medication
+define &quot;SDE Medication&quot;:
   (&quot;SDE Medication Request&quot;
   union &quot;SDE Medication Administration&quot;) MedReqOrAdmin
   where MedReqOrAdmin.medication is FHIR.Reference
@@ -505,7 +524,8 @@ define &quot;SDE Blood Glucose Observation&quot;:
                <valueString value="SDE Chief Complaint"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Chief Complaint&quot;:
+               <valueString value="//To capture the patient's chief complaint
+define &quot;SDE Chief Complaint&quot;:
   &quot;Initial Population&quot; IP
   where exists(
     IP.diagnosis InitialPopulationDiagnosis
@@ -793,6 +813,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
             <type value="Location"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
             <mustSupport value="id"></mustSupport>
+            <mustSupport value="type"></mustSupport>
          </dataRequirement>
          <dataRequirement>
             <type value="MedicationAdministration"></type>
@@ -868,7 +889,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-06-13T05:40:54-08:00"></date>
+   <date value="2023-06-23T09:26:18-08:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="All inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) for patients of all ages where at least one diabetes medication was ordered or administered during the encounter that is during the measurement period."></description>
    <purpose value="The primary purpose of this site is to provide CDC’s NHSN with access to view measure specification content in the dQMs under development by Lantana Consulting Group. Please note, this site is draft and undergoes constant revision and is not intended to serve as an implementation guide."></purpose>
@@ -877,6 +898,9 @@ define &quot;SDE Blood Glucose Observation&quot;:
       <type value="documentation"></type>
       <display value="NHSN Protocol Documentation [Placeholder]"></display>
       <url value="https://www.cdc.gov/nhsn/index.html"></url>
+      <document>
+         <url value="https://www.cdc.gov/nhsn/index.html"></url>
+      </document>
    </relatedArtifact>
    <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNGlycemicControlHypoglycemicInitialPopulation"></library>
    <disclaimer value="This performance measure is not a clinical guideline, does not establish a standard of medical care and has not been tested for all potential applications.  THE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.  This measure and specifications are subject to further revisions."></disclaimer>

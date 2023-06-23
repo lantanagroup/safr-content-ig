@@ -1,4 +1,4 @@
-library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.009'
+library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.011'
 
 using FHIR version '4.0.1'
 
@@ -13,32 +13,50 @@ codesystem "Specimen Type": 'http://terminology.hl7.org/CodeSystem/v2-0487'
 codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category'
 codesystem "Condition Category": 'http://terminology.hl7.org/CodeSystem/condition-category' 
 
-valueset "Blood Glucose Laboratory and Point of Care Tests": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38'
-valueset "Inpatient, Emergency, and Observation Locations": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
+//
+// Value Sets Used in the Measure
+//
 valueset "Discharge Disposition": 'http://terminology.hl7.org/ValueSet/encounter-discharge-disposition'
 valueset "Antidiabetic Medications": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58'
+
+//Glucose Lab Tests
+valueset "Blood Glucose Laboratory and Point of Care Tests": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38'
+
+//Encounter Locations
+valueset "Inpatient, Emergency, and Observation Locations": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
+
+//Encounter Types
 valueset "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292'
 valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
 valueset "Observation Services": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143'
 
+//
+// Codes Used in the Measure
+//
 code "Chief Complaint": 'CC' from "Diagnosis Role" display 'Chief complaint'
+
+//Encounter Class Codes
 code "emergency": 'EMER' from "ActCode" display 'emergency'
 code "inpatient acute": 'ACUTE' from "ActCode" display 'inpatient acute'
 code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
 code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
 code "short stay": 'SS' from "ActCode" display 'short stay'
-code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
+
+//Encounter Diagnosis Codes
 code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display 'Encounter Diagnosis'
+
+//Lab Test Codes
+code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 
 parameter "Measurement Period" Interval<DateTime>
  default Interval[@2022-07-01T00:00:00.0, @2022-07-31T00:00:00.0)
 
 context Patient
 
-/*
-@author Arvind Jagannathan
-*/
+//
+// Initial Population
+//
 define "Initial Population":
   ("Inpatient Encounter"
   union "Patient Hospital Locations") InpatientEncounters
@@ -51,9 +69,9 @@ define "Initial Population":
 define "Inpatient Encounter":
   ([Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "short stay", "emergency", "observation encounter"}]
     union [Encounter: "Encounter Inpatient"]) Encounters
-  where Encounters.status in {'in-progress', 'finished', 'triaged'}
+    where Encounters.status in {'in-progress', 'finished', 'triaged'}
     and Encounters.period overlaps "Measurement Period"
-
+  
 define "Patient Hospital Locations":
   [Encounter] Encounters
   where exists(
@@ -71,22 +89,11 @@ define "Antidiabetic Drugs Administered or Ordered":
       where GetMedicationCode(MedicationRequests.medication) in "Antidiabetic Medications"
   )
 
-define "MedicationRequests":
-  [MedicationRequest]
-
-define "MedicationAdministrations":
-  [MedicationAdministration]
-
-define "Medications":
-  [Medication]
-
-define "Specimens":
-  [Specimen]
-
-define "Conditions":
-  [Condition]
-
+//
 //Supplemental Data Elements
+//
+
+//Blood glucose testing during the initial population period
 define "SDE Blood Glucose Observation":
 	[Observation: "Blood Glucose Laboratory and Point of Care Tests"] Observations 
   where exists(
@@ -97,6 +104,7 @@ define "SDE Blood Glucose Observation":
   )
   return SharedResource.ObservationResource(Observations)
 
+//To capture the patient's chief complaint
 define "SDE Chief Complaint":
   "Initial Population" IP
   where exists(
@@ -105,6 +113,7 @@ define "SDE Chief Complaint":
   )
   return SharedResource.EncounterResource(IP)
 
+//To capture any active Conditions the patient has
 define "SDE Condition":
   "Conditions" Conditions
   where exists(
@@ -113,6 +122,7 @@ define "SDE Condition":
   )
   return SharedResource.ConditionResource(Conditions)
   
+//TO capture the Encounter diagnosis
 define "SDE Condition during Encounter":
   "Conditions" ConditionEncounterDiagnosis
   where exists(
@@ -121,6 +131,7 @@ define "SDE Condition during Encounter":
   )
   return SharedResource.ConditionResource(ConditionEncounterDiagnosis)
 
+//To capture Coverage information
 define "SDE Coverage": 
 	[Coverage] Coverages
   where exists(
@@ -134,11 +145,13 @@ define "SDE Coverage":
   )
   return SharedResource.CoverageResource(Coverages)
     
+//To capture the discharge disposition
 define "SDE Encounter Discharge Dispositions":
 	"Initial Population" DischargeDispositions 
   where DischargeDispositions.hospitalization.dischargeDisposition in "Discharge Disposition"
   return SharedResource.EncounterResource(DischargeDispositions)
-  
+
+//To capture the Locations where the Encounter took place
 define "SDE Encounter Locations":
   "Initial Population" InitialPopulation 
   where exists ( 
@@ -154,15 +167,19 @@ define "SDE Initial Population Encounters":
 
 define "SDE Location":
   [Location] Locations
-  where exists("Initial Population")
+  where exists(Locations.type types
+    where types in "Inpatient, Emergency, and Observation Locations")
+  and exists("Initial Population")
   return SharedResource.LocationResource(Locations)
 
+//To capture information about the Medication
 define "SDE Medication":
   ("SDE Medication Request"
   union "SDE Medication Administration") MedReqOrAdmin
   where MedReqOrAdmin.medication is FHIR.Reference
   return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication))
 
+//To capture information on when the Medication was given
 define "SDE Medication Administration":
 	"MedicationAdministrations" MedicationAdministrations
   where exists(
@@ -173,6 +190,7 @@ define "SDE Medication Administration":
   )
   return SharedResource.MedicationAdministrationResource(MedicationAdministrations)
 
+//To capture information about the medication order
 define "SDE Medication Request":
 	"MedicationRequests" MedicationRequests
   where exists(
@@ -186,6 +204,7 @@ define "SDE Minimal Patient":
   Patient p
   return SharedResource.PatientResource(p)
   
+//To capture blood glucose testing orders
 define "SDE Service Request":
   [ServiceRequest] ServiceRequests
   where exists(
@@ -194,6 +213,7 @@ define "SDE Service Request":
   )
   return SharedResource.ServiceRequestResource(ServiceRequests)
 
+//To capture the blood glucose specimen information
 define "SDE Specimen":
   "Specimens" Specimens
   where exists(
@@ -202,7 +222,27 @@ define "SDE Specimen":
   )
   return SharedResource.SpecimenResource(Specimens)
 
+//
+// Retrieve Resources
+//
+define "MedicationRequests":
+  [MedicationRequest]
+
+define "MedicationAdministrations":
+  [MedicationAdministration]
+
+define "Medications":
+  [Medication]
+
+define "Specimens":
+  [Specimen]
+
+define "Conditions":
+  [Condition]
+
+//
 //Functions
+//
 define function "GetMedicationCode"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):
   case
     when choice is FHIR.CodeableConcept then
@@ -240,7 +280,7 @@ define function "GetSpecimen"(reference Reference):
 
 define function "GetIdExtensions"(domainResource DomainResource):
   domainResource.extension E
-  where E.url = 'https://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsnlink-original-id'
+  where E.url = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'
   return E
 
 define function "GetPatientExtensions"(domainResource DomainResource):
@@ -301,23 +341,3 @@ define function "GetMedicationFrom"(choice Choice<FHIR.CodeableConcept, FHIR.Ref
     else
       null
   end
-
-//Validation
-/*define "Invalid MedicationRequest":
-  [MedicationRequest] MedicationRequests
-  return "MedicationRequest Not Valid"(MedicationRequests)
-
-define function "MedicationRequest Not Valid"(medicationRequest MedicationRequest):
-  medicationRequest m
-  return "MedicationRequest Requester Not Valid"(m)
-
-define function "MedicationRequest Requester Not Valid"(medicationRequest MedicationRequest):
-  medicationRequest m
-  where m.requester is null
-  return SharedResource.OperationOutcomeResource('LCR-MedicationRequestRequesterNotValid-' + m.id, m.id, 'MedicationRequest does not have a requester')*/
-
-
-
-
-
-//Note, when creating custom resources, you need to specify the exact type of each element created if it's new and not pulled from an existing resource
