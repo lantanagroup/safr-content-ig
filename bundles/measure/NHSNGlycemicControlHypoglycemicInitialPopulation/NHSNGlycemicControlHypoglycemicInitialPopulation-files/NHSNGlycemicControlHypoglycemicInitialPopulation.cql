@@ -1,4 +1,4 @@
-library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.011'
+library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.012'
 
 using FHIR version '4.0.1'
 
@@ -50,7 +50,7 @@ code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" disp
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 
 parameter "Measurement Period" Interval<DateTime>
- default Interval[@2022-07-01T00:00:00.0, @2022-07-31T00:00:00.0)
+ default Interval[@2023-03-01T00:00:00.0, @2023-03-31T00:00:00.0)
 
 context Patient
 
@@ -277,62 +277,6 @@ define function "GetSpecimen"(reference Reference):
   First (
     "Specimens" S where S.id = Global.GetId(reference.reference)
   )
-
-define function "GetIdExtensions"(domainResource DomainResource):
-  domainResource.extension E
-  where E.url = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'
-  return E
-
-define function "GetPatientExtensions"(domainResource DomainResource):
-  domainResource.extension E
-  where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
-    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
-    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
-    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity'
-    or E.url = 'http://hl7.org/fhir/StructureDefinition/patient-genderIdentity'
-  return E
-
-define function "GetPatientAddress"(addresses List<FHIR.Address>):
-  addresses address
-  return FHIR.Address{
-    postalCode: address.postalCode
-  }
-
-define function "GetDosage"(medicationRequest MedicationRequest):
-  medicationRequest m
-  let dosages: m.dosageInstruction
-  return 
-    dosages d
-    return Dosage{
-      timing: d.timing,
-      doseAndRate: d.doseAndRate,
-      route: d.route
-    }
-
-define function "getDiagnosis"(encounter Encounter):
-  encounter e
-  let diagnoses: e.diagnosis
-  return
-    diagnoses d
-    where d.use ~ "Chief Complaint"
-    return d
-    
-define function "getDischargeDisposition"(encounter Encounter):
-  encounter e
-  let dischargeDisposition: e.hospitalization.dischargeDisposition
-  return
-    dischargeDisposition d
-    where d in "Discharge Disposition"
-    return e.hospitalization
-    
-define function "getEncounterLocation"(encounter Encounter):
-  encounter e
-  let locations: e.location
-  return
-    locations l
-    where l.physicalType in "Inpatient, Emergency, and Observation Locations"
-    or Global.GetLocation(l.location).type in "Inpatient, Emergency, and Observation Locations"
-    return l
 
 define function "GetMedicationFrom"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):
   case
