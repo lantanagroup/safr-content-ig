@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+    <id value="nhsn-submitting-device"/>
+    <url value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submitting-device"/>
+    <name value="NHSNSubmittingDevice"/>
+    <title value="NHSN Submitting Device"/>
+    <status value="active"/>
+    <description value="This is the NHSN submitting Device profile requirements for reporting to NHSN for all measures"/>
+    <fhirVersion value="4.0.1"/>
+    <kind value="resource"/>
+    <abstract value="false"/>
+    <type value="Device"/>
+    <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Device"/>
+    <derivation value="constraint"/>
+    <differential>
+        <element id="Device">
+            <path value="Device"/>
+        </element>
+        <element id="Device.meta.extension:link-received-date-extension">
+            <path value="Device.meta.extension"/>
+            <sliceName value="link-received-date-extension"/>
+            <min value="0"/>
+            <max value="1"/>
+            <type>
+                <code value="Extension"/>
+                <profile value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-received-date-extension"/>
+            </type>
+        </element>
+        <element id="Device.deviceName">
+            <path value="Device.deviceName"/>
+            <min value="1"/>
+            <max value="1"/>
+        </element>
+        <element id="Device.version">
+            <path value="Device.version"/>
+            <min value="1"/>
+            <max value="1"/>
+        </element>
+    </differential>
+</StructureDefinition>

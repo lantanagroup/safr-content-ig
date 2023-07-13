@@ -161,6 +161,14 @@
         </resource>
         <resource>
             <reference>
+                <reference value="StructureDefinition/nhsn-submitting-device"/>
+            </reference>
+            <name value="Submitting Device"/>
+            <description value="This profile includes the name and version of the device or software submitting the report Bundle, and may include other information about the device."/>
+            <groupingId value="cross-measure"/>
+        </resource>
+        <resource>
+            <reference>
                 <reference value="StructureDefinition/hypoglycemic-reporting-condition"/>
             </reference>
             <name value="Hypoglycemic Event Condition"/>
@@ -244,7 +252,7 @@
                 <reference value="Measure/NHSNGlycemicControlHypoglycemicInitialPopulation"/>
             </reference>
             <name value="NHSN Glycemic Control, Hypoglycemia Initial Population"/>
-            <description value="All inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) for patients of all ages where at least one diabetes medication was ordered or administered during the encounter that is during the measurement period."/>
+            <description value="The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."/>
             <groupingId value="measures"/>
         </resource>
         <resource>

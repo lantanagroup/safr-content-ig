@@ -20,7 +20,8 @@
                 <key value="bundle-no-modifier-extensions"/>
                 <severity value="error"/>
                 <human value="MeasureReport Bundle:  must not contain any modifierExensions"/>
-                <expression value="(select(modifierExtension) | descendants().select(modifierExtension)).exists().not()"/>
+                <!--<expression value="(select(modifierExtension) | descendants().select(modifierExtension)).exists().not()"/>-->
+                <expression value="(descendants().select(modifierExtension)).exists().not()"/>
                 <source value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-measurereport-bundle"/>
             </constraint>
             <constraint>
@@ -30,11 +31,18 @@
                 <expression value="Bundle.entry.resource.where($this.is(MeasureReport)).descendants().reference.where($this.startsWith('#').not()).all((%resource.entry.fullUrl.join('|')&amp;'|').contains(($this&amp;'|')))"/>
                 <source value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-measurereport-bundle"/>
             </constraint>
+            <constraint>
+                <key value="bundle-all-measurereport-measure-contains-version"/>
+                <severity value="error"/>
+                <human value="MeasureReport Bundle: All MeasureReport entry's measure Canonical must contain version"/>
+                <expression value="Bundle.entry.resource.where($this.is(MeasureReport)).all(measure.matches('(\\|)..*$'))"/>
+                <source value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-measurereport-bundle"/>
+            </constraint>
         </element>
         <element id="Bundle.entry">
             <path value="Bundle.entry"/>
             <short value="An entry in the Bundle; will have a Resource or information"/>
-            <min value="3"/>
+            <min value="4"/>
             <slicing>
                 <!--<discriminator>
                     <type value="type"/>
@@ -62,6 +70,23 @@
             <type>
                 <code value="Organization"/>
                 <profile value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submitting-organization"/>
+            </type>
+        </element>
+        <!-- NHSN Submitting Device -->
+        <element id="Bundle.entry:submitting-device">
+            <path value="Bundle.entry"/>
+            <sliceName value="submitting-device"/>
+            <short value="The Submitting Device: the device or software that is submitting the data"/>
+            <min value="1"/>
+            <max value="1"/>
+        </element>
+        <element id="Bundle.entry:submitting-device.resource">
+            <path value="Bundle.entry.resource"/>
+            <short value="Bundle entry for submitting device"/>
+            <min value="1"/>
+            <type>
+                <code value="Device"/>
+                <profile value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submitting-device"/>
             </type>
         </element>
         <!-- POI/Census List -->

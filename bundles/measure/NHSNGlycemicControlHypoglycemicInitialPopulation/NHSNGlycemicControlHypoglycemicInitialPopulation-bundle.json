@@ -2733,9 +2733,9 @@
                 "experimental": false,
                 "date": "2023-06-28T11:36:41-08:00",
                 "publisher": "Lantana Consulting Group",
-                "description": "All inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) for patients of all ages where at least one diabetes medication was ordered or administered during the encounter that is during the measurement period.",
-                "purpose": "The primary purpose of this site is to provide CDC’s NHSN with access to view measure specification content in the dQMs under development by Lantana Consulting Group. Please note, this site is draft and undergoes constant revision and is not intended to serve as an implementation guide.",
-                "copyright": "Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.",
+                "description": "The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter.",
+                "purpose": "This site allows NHSN to view Measure-specification content in the dQMs under development by Lantana Consulting Group. Note that this site undergoes constant revision and is not intended to serve as an implementation guide.",
+                "copyright": "The Measure specifications contain limited proprietary coding for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.",
                 "relatedArtifact": [
                     {
                         "type": "documentation",
@@ -2770,7 +2770,7 @@
                         ]
                     }
                 ],
-                "rationale": "The NHSN Glycemic Control module supports an electronic health record (EHR)- and vendor-neutral standard for reporting patient-level, linked medication and blood glucose data for inpatients. These data support calculation of inpatient medication-related hypoglycemia events by the NHSN application, which are then returned as reports to the facility. Inpatient hyperglycemia measurement is being incorporated into a future version of the NHSN Glycemic Control module. The primary objective of the NHSN Glycemic Control Module is to support U.S. hospitals in glycemic control measurement to improve glycemic management and patient safety.  As additional data are collected by NHSN, an additional objective will be to facilitate inter-facility benchmarking of glycemic control metrics across U.S. hospitals and evaluate national-level trends of glycemic control metrics over time.  The IP dQM provides the initial population, FHIR line-level and supplement data necessary for calculating the module metrics.",
+                "rationale": "The NHSN Glycemic Control Module supports an electronic health record (EHR)- and vendor-neutral standard for reporting patient-level, linked medication and blood-glucose data for inpatients. The NHSN application uses these data to calculate inpatient medication-related hypoglycemia events, which are then returned as reports to the facility. The module’s primary objective is to provide glycemic control measurement to U.S. hospitals to improve glycemic management and patient safety. As NSHN collects additional data, an additional objective will be to establish inter-facility benchmarking of glycemic-control metrics across U.S. hospitals and evaluate national-level trends of glycemic control metrics over time. The IP dQM provides the initial population, FHIR line-level data, and supplement data necessary for calculating the module metrics.",
                 "definition": [
                     "Antidiabetic Drug Days (ADD): Aggregate number of inpatient encounter days within the facility in which at least one injectable or oral ADD was received. All patients who received ADDs during the hospitalization contribute to the initial population regardless of whether the patient experienced a hypoglycemic event.",
                     "Emergency Department (ED) or Observation (OBS) encounters: ED or observation encounters that ended within an hour of the inpatient admission are included when calculating the start and stop times of the hospitalization. Only Metric 1 includes ED  and OBS encounters.",
@@ -2794,7 +2794,7 @@
                                         }
                                     ]
                                 },
-                                "description": "All inpatient encounters, as well as ED and OBS encounters that end within 1 hour of the start of the inpatient encounter, for patients of all ages where at least one diabetes medication.",
+                                "description": "All inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter.",
                                 "criteria": {
                                     "language": "text/cql-identifier",
                                     "expression": "Initial Population"
