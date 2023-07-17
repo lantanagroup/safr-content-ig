@@ -2661,6 +2661,7 @@
                     ],
                     "text": "Insulin glargine (LANTUS) 100 unit/mL injection"
                 },
+                "status": "active",
                 "form": {
                     "coding": [
                         {
@@ -2880,7 +2881,8 @@
                         }
                     ],
                     "text": "insulin lispro (HumaLOG) correction scale injection"
-                },
+                },                
+                "status": "active",
                 "form": {
                     "coding": [
                         {
@@ -3561,6 +3563,7 @@
                     ],
                     "text": "Insulin glargine (LANTUS) 100 unit/mL injection"
                 },
+                "status": "active",
                 "form": {
                     "coding": [
                         {
@@ -4025,6 +4028,7 @@
                     ],
                     "text": "dextrose 50% in water injection syringe"
                 },
+                "status": "active",
                 "form": {
                     "coding": [
                         {
