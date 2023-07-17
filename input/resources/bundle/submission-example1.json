@@ -322,7 +322,7 @@
                 "id": "LCR-hash-a8ff1599",
                 "meta": {
                     "profile": [
-                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation"
+                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation"
                     ]
                 },
                 "extension": [
@@ -592,7 +592,7 @@
                 "id": "LCR-hash-367e959",
                 "meta": {
                     "profile": [
-                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation"
+                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation"
                     ]
                 },
                 "extension": [
@@ -659,7 +659,7 @@
                 "id": "LCR-hash-8ef6d2da",
                 "meta": {
                     "profile": [
-                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation"
+                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation"
                     ]
                 },
                 "extension": [
@@ -1097,7 +1097,7 @@
                 "id": "LCR-hash-530c9f2",
                 "meta": {
                     "profile": [
-                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation"
+                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation"
                     ]
                 },
                 "extension": [
@@ -1164,7 +1164,7 @@
                 "id": "LCR-hash-a417883b",
                 "meta": {
                     "profile": [
-                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation"
+                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation"
                     ]
                 },
                 "extension": [
@@ -1333,6 +1333,7 @@
                     ],
                     "text": "glyBURIDE (DIABETA) tablet"
                 },
+                "status": "active",
                 "form": {
                     "coding": [
                         {
@@ -1678,7 +1679,7 @@
                 "id": "LCR-hash-1363bc28",
                 "meta": {
                     "profile": [
-                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation"
+                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation"
                     ]
                 },
                 "extension": [
@@ -1745,7 +1746,7 @@
                 "id": "LCR-hash-c852aaca",
                 "meta": {
                     "profile": [
-                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation"
+                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation"
                     ]
                 },
                 "extension": [
@@ -2122,7 +2123,7 @@
                 "id": "LCR-hash-1028fb49",
                 "meta": {
                     "profile": [
-                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation"
+                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation"
                     ]
                 },
                 "extension": [
@@ -2414,7 +2415,7 @@
                 "id": "LCR-hash-208414d7",
                 "meta": {
                     "profile": [
-                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation"
+                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation"
                     ]
                 },
                 "extension": [
@@ -2481,7 +2482,7 @@
                 "id": "LCR-hash-7ae4915e",
                 "meta": {
                     "profile": [
-                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation"
+                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation"
                     ]
                 },
                 "extension": [
@@ -2548,7 +2549,7 @@
                 "id": "LCR-hash-78742212",
                 "meta": {
                     "profile": [
-                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation"
+                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation"
                     ]
                 },
                 "extension": [
@@ -3106,7 +3107,7 @@
                 "id": "LCR-hash-74915585",
                 "meta": {
                     "profile": [
-                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation"
+                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation"
                     ]
                 },
                 "extension": [
@@ -3320,7 +3321,7 @@
                 "id": "LCR-hash-81d1b1fb",
                 "meta": {
                     "profile": [
-                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation"
+                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation"
                     ]
                 },
                 "extension": [
@@ -3387,7 +3388,7 @@
                 "id": "LCR-hash-59dce1a3",
                 "meta": {
                     "profile": [
-                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation"
+                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation"
                     ]
                 },
                 "extension": [
@@ -3787,7 +3788,7 @@
                 "id": "LCR-hash-492f9552",
                 "meta": {
                     "profile": [
-                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation"
+                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation"
                     ]
                 },
                 "extension": [
