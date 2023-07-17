@@ -46,6 +46,14 @@
         <element id="ServiceRequest.code">
             <path value="ServiceRequest.code"/>
             <mustSupport value="true"/>
+            <binding>
+                <extension url="http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName">
+                <valueString value="ServiceRequestCode"/>
+                </extension>
+                <strength value="example"/>
+                <description value="Codes for tests or services that can be carried out by a designated individual, organization or healthcare service."/>
+                <valueSet value="http://hl7.org/fhir/ValueSet/procedure-code"/>
+            </binding>
         </element>
         <element id="ServiceRequest.encounter">
             <path value="ServiceRequest.encounter"/>
