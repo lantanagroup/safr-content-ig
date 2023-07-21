@@ -1,0 +1,102 @@
+{
+    "resourceType": "Medication",
+    "meta": {
+        "profile": [
+            "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication"
+        ]
+    },
+    "id": "medication-example-hypo-sameresultdiffday1",
+    "extension": [
+        {
+            "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
+            "valueString": "eDM8ABTRBjSPufStEIBO3HvwBspfD0oXLHMv97-pguBOoSTrdrxjGw9zmmgjJl1NsoxlmOydXuO5nk4kugSGubzSTWOgchZYpXPiM5vLG4PI3"
+        }
+    ],
+    "code": {
+        "coding": [
+            {
+                "system": "http://www.whocc.no/atc",
+                "code": "C10AA05"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "83366"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "83367"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "153165"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "617312"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "617314"
+            }
+        ],
+        "text": "atorvastatin (LIPITOR) tablet"
+    },
+    "status": "active",
+    "form": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "385055001",
+                "display": "Tablet"
+            }
+        ],
+        "text": "Tablet"
+    },
+    "ingredient": [
+        {
+            "itemCodeableConcept": {
+                "coding": [
+                    {
+                        "system": "http://www.whocc.no/atc",
+                        "code": "C10AA05"
+                    },
+                    {
+                        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                        "code": "83366"
+                    },
+                    {
+                        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                        "code": "83367"
+                    },
+                    {
+                        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                        "code": "153165"
+                    },
+                    {
+                        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                        "code": "617312"
+                    },
+                    {
+                        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                        "code": "617314"
+                    }
+                ],
+                "text": "atorvastatin (LIPITOR) tablet"
+            },
+            "strength": {
+                "numerator": {
+                    "value": 10,
+                    "unit": "mg",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "mg"
+                },
+                "denominator": {
+                    "value": 10,
+                    "unit": "mg",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "mg"
+                }
+            }
+        }
+    ]
+}

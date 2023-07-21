@@ -1,0 +1,40 @@
+{
+    "resourceType": "Specimen",
+    "id": "specimen-example-hypo-sameresultdiffday1",
+    "meta": {
+        "profile": [
+            "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-specimen"
+        ]
+    },
+    "identifier": [
+        {
+            "system": "urn:oid:1.2.840.114350.1.13.277.3.7.3.798268.320",
+            "value": "C10408290",
+            "assigner": {
+                "display": "LIS"
+            }
+        },
+        {
+            "system": "urn:oid:1.2.840.114350.1.13.277.3.7.3.798268.800",
+            "value": "C10408290:4"
+        }
+    ],
+    "type": {
+        "coding": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0487",
+                "code": "STL",
+                "display": "Stool = Fecal"
+            }
+        ],
+        "text": "C. difficile PCR and Toxin"
+    },
+    "subject": {
+        "reference": "Patient/patient-example-sameresultdiffday",
+        "display": "Hypo, Sameresultdiffday"
+    },
+    "receivedTime": "2023-01-04T22:06:00Z",
+    "collection": {
+        "collectedDateTime": "2023-01-04T20:39:00Z"
+    }                
+}

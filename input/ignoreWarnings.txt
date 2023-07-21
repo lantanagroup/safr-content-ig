@@ -10,3 +10,7 @@ The HTML fragment 'globals-table.xhtml' is not included anywhere in the produced
 
 # Incorrectly formed invariant in CQF Measures 3.0.0 specification
 Rule cqm-4: 'Group population criteria SHOULD be simple expression names found within the primary library for the measure. The criteria SHOULD NOT include a namespace.' Failed
+
+# These Extensions are purposefully meant to be used anywhere
+WARNING: StructureDefinition/link-original-element-value-extension: StructureDefinition.context[0]: Review the extension type: extensions should not have a context of Element unless it's really intended that they can be used anywhere
+WARNING: StructureDefinition/link-original-mapped-concept-extension: StructureDefinition.context[0]: Review the extension type: extensions should not have a context of Element unless it's really intended that they can be used anywhere

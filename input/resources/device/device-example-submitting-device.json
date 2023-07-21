@@ -1,0 +1,33 @@
+{
+    "resourceType": "Device",
+    "id": "device-example-submitting-device",
+    "meta": {
+        "profile": [
+            "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submitting-device"
+        ]
+    },
+    "deviceName": [
+        {
+            "name": "NHSN Link",
+            "type": "model-name"
+        }
+    ],
+    "version": [
+        {
+            "component": {"value": "api"},
+            "value": "0.9.0"
+        },
+        {
+            "component": {"value": "api"},
+            "value": "20230713.1"
+        },
+        {
+            "component": {"value": "api"},
+            "value": "3f9662a8"
+        },
+        {
+            "component": {"value": "cqf-ruler"},
+            "value": "0.13.0"
+        }
+    ]
+}

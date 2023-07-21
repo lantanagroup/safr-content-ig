@@ -1,0 +1,307 @@
+{
+    "resourceType": "MeasureReport",
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"
+        ]
+    },
+    "id": "measurereport-example-individual-measurereport-sameresultdiffday",
+    "extension": [
+        {
+            "url": "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-measureScoring",
+            "valueCodeableConcept": {
+                "coding": [
+                    {
+                        "system": "http://terminology.hl7.org/CodeSystem/measure-scoring",
+                        "code": "cohort"
+                    }
+                ]
+            }
+        },
+        {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.population.description",
+            "valueString": "The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."
+        },
+        {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference",
+            "valueReference": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference",
+                        "valueString": "sde-medication"
+                    }
+                ],
+                "reference": "Medication/medication-example-hypo-sameresultdiffday1"
+            }
+        },
+        {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference",
+            "valueReference": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference",
+                        "valueString": "sde-blood-glucose-observation"
+                    }
+                ],
+                "reference": "Observation/observation-example-hypo-lab-sameresultdiffday1"
+            }
+        },
+        {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference",
+            "valueReference": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference",
+                        "valueString": "sde-medication-request"
+                    }
+                ],
+                "reference": "MedicationRequest/medicationrequest-example-hypo-sameresultdiffday1"
+            }
+        },
+        {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference",
+            "valueReference": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference",
+                        "valueString": "sde-condition-during-encounter"
+                    }
+                ],
+                "reference": "Condition/condition-example-diagnosis-sameresultdiffday2"
+            }
+        },
+        {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference",
+            "valueReference": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference",
+                        "valueString": "sde-blood-glucose-observation"
+                    }
+                ],
+                "reference": "Observation/observation-example-hypo-lab-sameresultdiffday2"
+            }
+        },
+        {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference",
+            "valueReference": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference",
+                        "valueString": "sde-blood-glucose-observation"
+                    }
+                ],
+                "reference": "Observation/observation-example-hypo-lab-sameresultdiffday3"
+            }
+        },
+        {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference",
+            "valueReference": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference",
+                        "valueString": "sde-minimal-patient"
+                    }
+                ],
+                "reference": "Patient/patient-example-sameresultdiffday"
+            }
+        },
+        {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference",
+            "valueReference": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference",
+                        "valueString": "sde-initial-population-encounters"
+                    }
+                ],
+                "reference": "Encounter/encounter-example-hypo-sameresultdiffday"
+            }
+        },
+        {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference",
+            "valueReference": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference",
+                        "valueString": "sde-blood-glucose-observation"
+                    }
+                ],
+                "reference": "Observation/observation-example-hypo-lab-sameresultdiffday4"
+            }
+        },
+        {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference",
+            "valueReference": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference",
+                        "valueString": "sde-blood-glucose-observation"
+                    }
+                ],
+                "reference": "Observation/observation-example-hypo-lab-sameresultdiffday5"
+            }
+        },
+        {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference",
+            "valueReference": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference",
+                        "valueString": "sde-medication"
+                    }
+                ],
+                "reference": "Medication/medication-example-hypo-sameresultdiffday2"
+            }
+        },
+        {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference",
+            "valueReference": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference",
+                        "valueString": "sde-medication-request"
+                    }
+                ],
+                "reference": "MedicationRequest/medicationrequest-example-hypo-sameresultdiffday2"
+            }
+        },
+        {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference",
+            "valueReference": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference",
+                        "valueString": "sde-condition-during-encounter"
+                    }
+                ],
+                "reference": "Condition/condition-example-diagnosis-sameresultdiffday1"
+            }
+        },
+        {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference",
+            "valueReference": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference",
+                        "valueString": "sde-blood-glucose-observation"
+                    }
+                ],
+                "reference": "Observation/observation-example-hypo-lab-sameresultdiffday6"
+            }
+        },
+        {
+            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference",
+            "valueReference": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference",
+                        "valueString": "sde-blood-glucose-observation"
+                    }
+                ],
+                "reference": "Observation/observation-example-hypo-lab-sameresultdiffday7"
+            }
+        }
+    ],
+    "status": "complete",
+    "type": "individual",
+    "measure": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation|0.3.0",
+    "subject": {
+        "reference": "Patient/patient-example-sameresultdiffday"
+    },
+    "date": "2022-11-15T21:03:39+00:00",
+    "reporter": {
+        "reference": "Organization/organization-example-submitting-organization"
+    },
+    "period": {
+        "start": "2022-08-01T00:00:00+00:00",
+        "end": "2022-08-31T23:59:59+00:00"
+    },
+    "improvementNotation": {
+        "coding": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/measure-improvement-notation",
+                "code": "increase"
+            }
+        ]
+    },
+    "group": [
+        {
+            "measureScore": {
+                "extension": [
+                    {
+                        "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                        "valueCode": "unknown"
+                    }
+                ]
+            },
+            "population": [
+                {
+                    "extension": [
+                        {
+                            "url": "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.population.description",
+                            "valueString": "All inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."
+                        }
+                    ],
+                    "code": {
+                        "coding": [
+                            {
+                                "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+                                "code": "initial-population",
+                                "display": "Initial Population"
+                            }
+                        ]
+                    },
+                    "count": 1
+                }
+            ]
+        }
+    ],
+    "evaluatedResource": [
+        {
+            "reference": "Medication/medication-example-hypo-sameresultdiffday1"
+        },
+        {
+            "reference": "Observation/observation-example-hypo-lab-sameresultdiffday1"
+        },
+        {
+            "reference": "MedicationRequest/medicationrequest-example-hypo-sameresultdiffday1"
+        },
+        {
+            "reference": "Condition/condition-example-diagnosis-sameresultdiffday2"
+        },
+        {
+            "reference": "Observation/observation-example-hypo-lab-sameresultdiffday2"
+        },
+        {
+            "reference": "Observation/observation-example-hypo-lab-sameresultdiffday3"
+        },
+        {
+            "reference": "Patient/patient-example-sameresultdiffday"
+        },
+        {
+            "reference": "Encounter/encounter-example-hypo-sameresultdiffday"
+        },
+        {
+            "reference": "Observation/observation-example-hypo-lab-sameresultdiffday4"
+        },
+        {
+            "reference": "Observation/observation-example-hypo-lab-sameresultdiffday5"
+        },
+        {
+            "reference": "Medication/medication-example-hypo-sameresultdiffday2"
+        },
+        {
+            "reference": "MedicationRequest/medicationrequest-example-hypo-sameresultdiffday2"
+        },
+        {
+            "reference": "Condition/condition-example-diagnosis-sameresultdiffday1"
+        },
+        {
+            "reference": "Observation/observation-example-hypo-lab-sameresultdiffday6"
+        },
+        {
+            "reference": "Observation/observation-example-hypo-lab-sameresultdiffday7"
+        }
+    ]
+}

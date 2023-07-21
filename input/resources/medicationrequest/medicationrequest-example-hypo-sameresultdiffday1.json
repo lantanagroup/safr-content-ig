@@ -1,0 +1,146 @@
+{
+    "resourceType": "MedicationRequest",
+    "id": "medicationrequest-example-hypo-sameresultdiffday1",
+    "meta": {
+        "profile": [
+            "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest"
+        ]
+    },
+    "identifier": [
+        {
+            "use": "usual",
+            "system": "urn:oid:1.2.840.114350.1.13.277.3.7.2.798268",
+            "value": "101888894"
+        }
+    ],
+    "status": "stopped",
+    "intent": "order",
+    "category": [
+        {
+            "coding": [
+                {
+                    "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                    "code": "inpatient",
+                    "display": "Inpatient"
+                }
+            ],
+            "text": "Inpatient"
+        }
+    ],
+    "medicationReference": {
+        "extension": [
+            {
+                "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
+                "valueString": "Medication/eDM8ABTRBjSPufStEIBO3HvwBspfD0oXLHMv97-pguBOoSTrdrxjGw9zmmgjJl1NsoxlmOydXuO5nk4kugSGubzSTWOgchZYpXPiM5vLG4PI3"
+            }
+        ],
+        "reference": "Medication/medication-example-hypo-sameresultdiffday1",
+        "display": "atorvastatin (LIPITOR) tablet"
+    },
+    "subject": {
+        "reference": "Patient/patient-example-sameresultdiffday",
+        "display": "Hypo, Sameresultdiffday"
+    },
+    "encounter": {
+        "reference": "Encounter/encounter-example-hypo-sameresultdiffday",
+        "display": "Hospital Encounter"
+    },
+    "authoredOn": "2022-08-17T16:15:04Z",
+    "requester": {
+        "type": "Practitioner",
+        "display": "Faculty Physician Um_Cln, MD"
+    },
+    "recorder": {
+        "type": "Practitioner",
+        "display": "Faculty Physician Um_Cln, MD"
+    },
+    "courseOfTherapyType": {
+        "coding": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy",
+                "code": "continuous",
+                "display": "Continuous long term therapy"
+            }
+        ],
+        "text": "Continuous long term therapy"
+    },
+    "dosageInstruction": [
+        {
+            "text": "10 mg, Oral, ONCE DAILY\nFirst dose on Wed 8/17/22 at 1300, Until Discontinued",
+            "timing": {
+                "repeat": {
+                    "boundsPeriod": {
+                        "start": "2022-08-17T17:00:00Z",
+                        "end": "2022-08-22T20:03:08Z"
+                    },
+                    "frequency": 1,
+                    "period": 1,
+                    "periodUnit": "d"
+                },
+                "code": {
+                    "text": "0900"
+                }
+            },
+            "asNeededBoolean": false,
+            "route": {
+                "coding": [
+                    {
+                        "system": "http://snomed.info/sct",
+                        "code": "26643006",
+                        "display": "Oral Use"
+                    }
+                ],
+                "text": "Oral"
+            },
+            "doseAndRate": [
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                                "code": "calculated",
+                                "display": "Calculated"
+                            }
+                        ],
+                        "text": "calculated"
+                    },
+                    "doseQuantity": {
+                        "value": 10,
+                        "unit": "mg",
+                        "system": "http://unitsofmeasure.org",
+                        "code": "mg"
+                    }
+                },
+                {
+                    "type": {
+                        "text": "Administered Amount"
+                    },
+                    "doseQuantity": {
+                        "value": 1,
+                        "unit": "tablet",
+                        "system": "http://unitsofmeasure.org",
+                        "code": "{tbl}"
+                    }
+                },
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                                "code": "ordered",
+                                "display": "Ordered"
+                            }
+                        ],
+                        "text": "ordered"
+                    },
+                    "doseQuantity": {
+                        "value": 10,
+                        "unit": "mg",
+                        "system": "http://unitsofmeasure.org",
+                        "code": "mg"
+                    }
+                }
+            ]
+        }
+    ]
+}

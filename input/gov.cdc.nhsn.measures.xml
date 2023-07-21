@@ -355,6 +355,412 @@
             <description value="Measure Bundle - Submission Example 1"/>
             <groupingId value="example"/>
         </resource>
+        <resource>
+            <reference>
+                <reference value="Organization/organization-example-submitting-organization"/>
+            </reference>
+            <name value="Organization - Example Submitting Organization 1"/>
+            <description value="Organization - Submitting Organization Example 1"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Device/device-example-submitting-device"/>
+            </reference>
+            <name value="Device - Example Submitting Device 1"/>
+            <description value="Device - Submitting Device Example 1"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="List/list-example-patients-of-interest"/>
+            </reference>
+            <name value="List - Example Patients of Interest List 1"/>
+            <description value="List - Patients of Interest Example 1"/>
+            <groupingId value="example"/>
+        </resource>
+
+        <resource>
+            <reference>
+                <reference value="MeasureReport/measurereport-example-subjectlist1"/>
+            </reference>
+            <name value="MeasureReport - Example Subject List 1"/>
+            <description value="Measure Report - Subject List Example 1"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="List/list-example-individual-measurereport-list"/>
+            </reference>
+            <name value="List - Example Individual Measure Report List 1"/>
+            <description value="List - Individual Measure Report List Example 1"/>
+            <groupingId value="example"/>
+        </resource>
+
+        
+        <resource>
+            <reference>
+                <reference value="MeasureReport/measurereport-example-individual-measurereport-sameresultdiffday"/>
+            </reference>
+            <name value="MeasureReport - Example Individual Measure Report Sameresultdiffday"/>
+            <description value="Measure Report - Individual Measure Report Example Sameresultdiffday"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="MeasureReport/measurereport-example-individual-measurereport-hypo"/>
+            </reference>
+            <name value="MeasureReport - Example Individual Measure Report Hypo"/>
+            <description value="Measure Report - Individual Measure Report Example Hypo"/>
+            <groupingId value="example"/>
+        </resource>
+
+
+        <resource>
+            <reference>
+                <reference value="Patient/patient-example-sameresultdiffday"/>
+            </reference>
+            <name value="Patient - Cross-Measure Patient Example SameResultDiffDay"/>
+            <description value="Patient - Example Measure Patient SameResultDiffDay"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Patient/patient-example-hypo"/>
+            </reference>
+            <name value="Patient - Cross-Measure Patient Example Hypo"/>
+            <description value="Patient - Example Measure Patient Hypo"/>
+            <groupingId value="example"/>
+        </resource>
+
+        <resource>
+            <reference>
+                <reference value="Encounter/encounter-example-hypo-sameresultdiffday"/>
+            </reference>
+            <name value="Encounter - Hypo Encounter Example SameResultDiffDay"/>
+            <description value="Encounter - Example Hypo Encounter SameResultDiffDay"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Encounter/encounter-example-hypo-hypo"/>
+            </reference>
+            <name value="Encounter - Hypo Encounter Example Hypo"/>
+            <description value="Encounter - Example Hypo Encounter Hypo"/>
+            <groupingId value="example"/>
+        </resource>
+
+        <resource>
+            <reference>
+                <reference value="Location/location-example-hypo-encounter-location-sameresultdiffday"/>
+            </reference>
+            <name value="Location - Hypo Encounter Location Example Sameersultdiffday"/>
+            <description value="Location - Example Hypo Encounter Location Sameresultdiffday"/>
+            <groupingId value="example"/>
+        </resource>
+
+        <resource>
+            <reference>
+                <reference value="Coverage/coverage-example-sameresultdiffday"/>
+            </reference>
+            <name value="Coverage - Coverage Example Sameresultdiffday"/>
+            <description value="Coverage - Example Coverage Sameresultdiffday"/>
+            <groupingId value="example"/>
+        </resource>
+
+        <resource>
+            <reference>
+                <reference value="Condition/condition-example-diagnosis-sameresultdiffday1"/>
+            </reference>
+            <name value="Condition - Hypo Diagnosis Example Sameersultdiffday 1"/>
+            <description value="Condition - Example Hypo Diagnosis Sameresultdiffday 1"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Condition/condition-example-diagnosis-sameresultdiffday2"/>
+            </reference>
+            <name value="Condition - Hypo Diagnosis Example Sameersultdiffday 2"/>
+            <description value="Condition - Example Hypo Diagnosis Sameresultdiffday 2"/>
+            <groupingId value="example"/>
+        </resource>
+
+        <resource>
+            <reference>
+                <reference value="Condition/condition-example-diagnosis-hypo1"/>
+            </reference>
+            <name value="Condition - Hypo Diagnosis Example Hypo 1"/>
+            <description value="Condition - Example Hypo Diagnosis Hypo 1"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Condition/condition-example-diagnosis-hypo2"/>
+            </reference>
+            <name value="Condition - Hypo Diagnosis Example Hypo 2"/>
+            <description value="Condition - Example Hypo Diagnosis Hypo 2"/>
+            <groupingId value="example"/>
+        </resource>
+
+        <resource>
+            <reference>
+                <reference value="Observation/observation-example-hypo-lab-sameresultdiffday1"/>
+            </reference>
+            <name value="Observation - Hypo Lab Example Sameresultdiffday 1"/>
+            <description value="Condition - Example Hypo Lab Sameresultdiffday 1"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Observation/observation-example-hypo-lab-sameresultdiffday2"/>
+            </reference>
+            <name value="Observation - Hypo Lab Example Sameresultdiffday 2"/>
+            <description value="Condition - Example Hypo Lab Sameresultdiffday 2"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Observation/observation-example-hypo-lab-sameresultdiffday3"/>
+            </reference>
+            <name value="Observation - Hypo Lab Example Sameresultdiffday 3"/>
+            <description value="Condition - Example Hypo Lab Sameresultdiffday 3"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Observation/observation-example-hypo-lab-sameresultdiffday4"/>
+            </reference>
+            <name value="Observation - Hypo Lab Example Sameresultdiffday 4"/>
+            <description value="Condition - Example Hypo Lab Sameresultdiffday 4"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Observation/observation-example-hypo-lab-sameresultdiffday5"/>
+            </reference>
+            <name value="Observation - Hypo Lab Example Sameresultdiffday 5"/>
+            <description value="Condition - Example Hypo Lab Sameresultdiffday 5"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Observation/observation-example-hypo-lab-sameresultdiffday6"/>
+            </reference>
+            <name value="Observation - Hypo Lab Example Sameresultdiffday 6"/>
+            <description value="Condition - Example Hypo Lab Sameresultdiffday 6"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Observation/observation-example-hypo-lab-sameresultdiffday7"/>
+            </reference>
+            <name value="Observation - Hypo Lab Example Sameresultdiffday 7"/>
+            <description value="Condition - Example Hypo Lab Sameresultdiffday 7"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Observation/observation-example-hypo-lab-hypo1"/>
+            </reference>
+            <name value="Observation - Hypo Lab Example Hypo 1"/>
+            <description value="Condition - Example Hypo Lab Hypo 1"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Observation/observation-example-hypo-lab-hypo2"/>
+            </reference>
+            <name value="Observation - Hypo Lab Example Hypo 2"/>
+            <description value="Condition - Example Hypo Lab Hypo 2"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Observation/observation-example-hypo-lab-hypo3"/>
+            </reference>
+            <name value="Observation - Hypo Lab Example Hypo 3"/>
+            <description value="Condition - Example Hypo Lab Hypo 3"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Observation/observation-example-hypo-lab-hypo4"/>
+            </reference>
+            <name value="Observation - Hypo Lab Example Hypo 4"/>
+            <description value="Condition - Example Hypo Lab Hypo 4"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Observation/observation-example-hypo-lab-hypo5"/>
+            </reference>
+            <name value="Observation - Hypo Lab Example Hypo 5"/>
+            <description value="Condition - Example Hypo Lab Hypo 5"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Observation/observation-example-hypo-lab-hypo6"/>
+            </reference>
+            <name value="Observation - Hypo Lab Example Hypo 6"/>
+            <description value="Condition - Example Hypo Lab Hypo 6"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Observation/observation-example-hypo-lab-hypo7"/>
+            </reference>
+            <name value="Observation - Hypo Lab Example Hypo 7"/>
+            <description value="Condition - Example Hypo Lab Hypo 7"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Observation/observation-example-hypo-lab-hypo8"/>
+            </reference>
+            <name value="Observation - Hypo Lab Example Hypo 8"/>
+            <description value="Condition - Example Hypo Lab Hypo 8"/>
+            <groupingId value="example"/>
+        </resource>
+
+
+        <resource>
+            <reference>
+                <reference value="MedicationRequest/medicationrequest-example-hypo-sameresultdiffday1"/>
+            </reference>
+            <name value="MedicationRequest - Hypo MedicationRequest Example Sameresultdiffday 1"/>
+            <description value="MedicationRequest - Example Hypo MedicationRequest Sameresultdiffday 1"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="MedicationRequest/medicationrequest-example-hypo-sameresultdiffday2"/>
+            </reference>
+            <name value="MedicationRequest - Hypo MedicationRequest Example Sameresultdiffday 2"/>
+            <description value="MedicationRequest - Example Hypo MedicationRequest Sameresultdiffday 2"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="MedicationRequest/medicationrequest-example-hypo-hypo1"/>
+            </reference>
+            <name value="MedicationRequest - Hypo MedicationRequest Example Hypo 1"/>
+            <description value="MedicationRequest - Example Hypo MedicationRequest Hypo 1"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="MedicationRequest/medicationrequest-example-hypo-hypo2"/>
+            </reference>
+            <name value="MedicationRequest - Hypo MedicationRequest Example Hypo 2"/>
+            <description value="MedicationRequest - Example Hypo MedicationRequest Hypo 2"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="MedicationRequest/medicationrequest-example-hypo-hypo3"/>
+            </reference>
+            <name value="MedicationRequest - Hypo MedicationRequest Example Hypo 3"/>
+            <description value="MedicationRequest - Example Hypo MedicationRequest Hypo 3"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="MedicationRequest/medicationrequest-example-hypo-hypo4"/>
+            </reference>
+            <name value="MedicationRequest - Hypo MedicationRequest Example Hypo 4"/>
+            <description value="MedicationRequest - Example Hypo MedicationRequest Hypo 4"/>
+            <groupingId value="example"/>
+        </resource>
+
+        <resource>
+            <reference>
+                <reference value="MedicationAdministration/medicationadministration-example-hypo-hypo1"/>
+            </reference>
+            <name value="MedicationAdministration - Hypo Medication Administration Example Hypo 1"/>
+            <description value="MedicationAdministration - Example Hypo Medication Administration Hypo 1"/>
+            <groupingId value="example"/>
+        </resource>
+
+        <resource>
+            <reference>
+                <reference value="Medication/medication-example-hypo-sameresultdiffday1"/>
+            </reference>
+            <name value="Medication - Hypo Medication Example Sameresultdiffday 1"/>
+            <description value="Medication - Example Hypo Medication Sameresultdiffday 1"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Medication/medication-example-hypo-sameresultdiffday2"/>
+            </reference>
+            <name value="Medication - Hypo Medication Example Sameresultdiffday 2"/>
+            <description value="Medication - Example Hypo Medication Sameresultdiffday 2"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Medication/medication-example-hypo-hypo1"/>
+            </reference>
+            <name value="Medication - Hypo Medication Example Hypo 1"/>
+            <description value="Medication - Example Hypo Medication Hypo 1"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Medication/medication-example-hypo-hypo2"/>
+            </reference>
+            <name value="Medication - Hypo Medication Example Hypo 2"/>
+            <description value="Medication - Example Hypo Medication Hypo 2"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Medication/medication-example-hypo-hypo3"/>
+            </reference>
+            <name value="Medication - Hypo Medication Example Hypo 3"/>
+            <description value="Medication - Example Hypo Medication Hypo 3"/>
+            <groupingId value="example"/>
+        </resource>
+        <resource>
+            <reference>
+                <reference value="Medication/medication-example-hypo-hypo4"/>
+            </reference>
+            <name value="Medication - Hypo Medication Example Hypo 4"/>
+            <description value="Medication - Example Hypo Medication Hypo 4"/>
+            <groupingId value="example"/>
+        </resource>
+        
+        <resource>
+            <reference>
+                <reference value="ServiceRequest/servicerequest-example-hypo-sameresultdiffday1"/>
+            </reference>
+            <name value="ServiceRequest - Hypo ServiceRequest Example Sameresultdiffday 1"/>
+            <description value="ServiceRequest - Example Hypo ServiceRequest Sameresultdiffday 1"/>
+            <groupingId value="example"/>
+        </resource>
+
+        <resource>
+            <reference>
+                <reference value="Specimen/specimen-example-hypo-sameresultdiffday1"/>
+            </reference>
+            <name value="Specimen - Hypo Specimen Example Sameresultdiffday 1"/>
+            <description value="Specimen - Example Hypo Specimen Sameresultdiffday 1"/>
+            <groupingId value="example"/>
+        </resource>
+        
+
+
+        <!--
+        <resource>
+            <reference>
+                <reference value="Bundle/submission-example3"/>
+            </reference>
+            <name value="Submission Example 3"/>
+            <description value="Measure Bundle - Submission Example 3"/>
+            <groupingId value="example"/>
+        </resource>
+        -->
         <!--<resource>
             <reference>
                 <reference value="Bundle/submission-example2"/>

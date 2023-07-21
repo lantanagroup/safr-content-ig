@@ -1,0 +1,68 @@
+{
+    "resourceType": "Medication",
+    "id": "medication-example-hypo-hypo4",
+    "meta": {
+        "profile": [
+            "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication"
+        ]
+    },
+    "extension": [
+        {
+            "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
+            "valueString": "e11kF5DQLQwz8WrCTi-fTXUBZW8CRdsY0CXeVGHY.RA8LNuzDmn9GrZmbcWKSA1xb2ES.RitNJ5o-LqrwbAoS-zJZ9Wp8oS-UB1RNw-eZ22o3"
+        }
+    ],
+    "code": {
+        "coding": [
+            {
+                "system": "http://www.whocc.no/atc",
+                "code": "B05BA03"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "727517"
+            }
+        ],
+        "text": "dextrose 50% in water injection syringe"
+    },
+    "status": "active",
+    "form": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "385219001",
+                "display": "Solution for injection"
+            }
+        ],
+        "text": "Injection solution"
+    },
+    "ingredient": [
+        {
+            "itemCodeableConcept": {
+                "coding": [
+                    {
+                        "system": "http://www.whocc.no/atc",
+                        "code": "B05BA03"
+                    },
+                    {
+                        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                        "code": "727517"
+                    }
+                ],
+                "text": "dextrose 50% in water injection syringe"
+            },
+            "strength": {
+                "numerator": {
+                    "value": 50,
+                    "system": "http://unitsofmeasure.org",
+                    "code": "%"
+                },
+                "denominator": {
+                    "value": 50,
+                    "system": "http://unitsofmeasure.org",
+                    "code": "%"
+                }
+            }
+        }
+    ]
+}

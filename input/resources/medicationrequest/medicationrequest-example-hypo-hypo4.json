@@ -1,0 +1,146 @@
+{
+    "resourceType": "MedicationRequest",
+    "id": "medicationrequest-example-hypo-hypo4",
+    "meta": {
+        "profile": [
+            "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest"
+        ]
+    },
+    "identifier": [
+        {
+            "use": "usual",
+            "system": "urn:oid:1.2.840.114350.1.13.277.3.7.2.798268",
+            "value": "101903000"
+        }
+    ],
+    "status": "stopped",
+    "intent": "order",
+    "category": [
+        {
+            "coding": [
+                {
+                    "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-category",
+                    "code": "inpatient",
+                    "display": "Inpatient"
+                }
+            ],
+            "text": "Inpatient"
+        }
+    ],
+    "medicationReference": {
+        "extension": [
+            {
+                "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
+                "valueString": "Medication/e11kF5DQLQwz8WrCTi-fTXUBZW8CRdsY0CXeVGHY.RA8LNuzDmn9GrZmbcWKSA1xb2ES.RitNJ5o-LqrwbAoS-zJZ9Wp8oS-UB1RNw-eZ22o3"
+            }
+        ],
+        "reference": "Medication/medication-example-hypo-hypo4",
+        "display": "dextrose 50% in water injection syringe"
+    },
+    "subject": {
+        "reference": "Patient/patient-example-hypo",
+        "display": "Hypo, Edadd"
+    },
+    "encounter": {
+        "reference": "Encounter/encounter-example-hypo-hypo",
+        "display": "Hospital Encounter"
+    },
+    "authoredOn": "2022-08-17T17:06:15Z",
+    "requester": {
+        "type": "Practitioner",
+        "display": "Faculty Physician Um_Cln, MD"
+    },
+    "recorder": {
+        "type": "Practitioner",
+        "display": "Faculty Physician Um_Cln, MD"
+    },
+    "courseOfTherapyType": {
+        "coding": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy",
+                "code": "acute",
+                "display": "Short course (acute) therapy"
+            }
+        ],
+        "text": "Short course (acute) therapy"
+    },
+    "dosageInstruction": [
+        {
+            "text": "25 mL, Intravenous, PRN, other, blood glucose < 70 mg/dL\nFor patients unresponsive and/or unable to eat (per protocol)\nStarting on Wed 8/17/22 at 1305, Until Mon 8/22/22 at 1610",
+            "timing": {
+                "repeat": {
+                    "boundsPeriod": {
+                        "start": "2022-08-17T17:05:00Z",
+                        "end": "2022-08-22T20:10:09Z"
+                    },
+                    "frequency": 1,
+                    "period": 1,
+                    "periodUnit": "d"
+                },
+                "code": {
+                    "text": "PRN"
+                }
+            },
+            "asNeededBoolean": true,
+            "route": {
+                "coding": [
+                    {
+                        "system": "http://snomed.info/sct",
+                        "code": "47625008",
+                        "display": "Intravenous use"
+                    }
+                ],
+                "text": "Intravenous"
+            },
+            "doseAndRate": [
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                                "code": "calculated",
+                                "display": "Calculated"
+                            }
+                        ],
+                        "text": "calculated"
+                    },
+                    "doseQuantity": {
+                        "value": 25,
+                        "unit": "mL",
+                        "system": "http://unitsofmeasure.org",
+                        "code": "mL"
+                    }
+                },
+                {
+                    "type": {
+                        "text": "Administered Amount"
+                    },
+                    "doseQuantity": {
+                        "value": 25,
+                        "unit": "mL",
+                        "system": "http://unitsofmeasure.org",
+                        "code": "mL"
+                    }
+                },
+                {
+                    "type": {
+                        "coding": [
+                            {
+                                "system": "http://terminology.hl7.org/CodeSystem/dose-rate-type",
+                                "code": "ordered",
+                                "display": "Ordered"
+                            }
+                        ],
+                        "text": "ordered"
+                    },
+                    "doseQuantity": {
+                        "value": 25,
+                        "unit": "mL",
+                        "system": "http://unitsofmeasure.org",
+                        "code": "mL"
+                    }
+                }
+            ]
+        }
+    ]
+}

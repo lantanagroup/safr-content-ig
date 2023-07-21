@@ -1,0 +1,45 @@
+{
+    "resourceType": "Organization",
+    "id": "organization-example-submitting-organization",
+    "meta": {
+        "profile": [
+            "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submitting-organization"
+        ]
+    },
+    "identifier": [
+        {
+            "system": "https://www.cdc.gov/nhsn/OrgID",
+            "value": "ExampleNHSNSubmitterOrgID"
+        }
+    ],
+    "active": true,
+    "type": [
+        {
+            "coding": [
+                {
+                    "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                    "code": "prov",
+                    "display": "Healthcare Provider"
+                }
+            ]
+        }
+    ],
+    "name": "Example NHSN Submitter",
+    "address": [
+        {
+            "extension": [
+                {
+                    "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+                    "valueCode": "unknown"
+                }
+            ]
+        }
+    ],
+    "telecom": [
+        {
+            "system": "phone",
+            "value": "5555555551",
+            "rank": 1
+        }
+    ]
+}

@@ -1,0 +1,39 @@
+{
+    "resourceType": "List",
+    "id": "list-example-patients-of-interest",
+    "meta": {
+        "profile": [
+            "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/poi-list"
+        ]
+    },
+    "extension": [
+        {
+            "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-patient-list-applicable-period-extension",
+            "valuePeriod": {
+                "start": "2022-08-01T00:00:00.000Z",
+                "end": "2022-08-31T23:59:59.000Z"
+            }
+        }
+    ],
+    "identifier": [
+        {
+            "system": "https://nhsnlink.org",
+            "value": "nhsnglycemiccontrolhypoglycemicinitialpopulation"
+        }
+    ],
+    "status": "current",
+    "mode": "changes",
+    "date": "2021-07-28T00:00:00Z",
+    "entry": [
+        {
+            "item": {
+                "reference": "Patient/patient-example-sameresultdiffday"
+            }
+        },
+        {
+            "item": {
+                "reference": "Patient/patient-example-hypo"
+            }
+        }
+    ]
+}

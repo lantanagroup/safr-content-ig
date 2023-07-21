@@ -1,0 +1,222 @@
+{
+    "resourceType": "Encounter",
+    "id": "encounter-example-hypo-hypo",
+    "meta": {
+        "profile": [
+            "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter"
+        ]
+    },
+    "identifier": [
+        {
+            "use": "usual",
+            "system": "urn:oid:1.2.840.114350.1.13.277.3.7.3.698084.8",
+            "value": "1000510425"
+        }
+    ],
+    "status": "finished",
+    "_status": {
+        "extension": [
+            {
+                "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-element-value-extension",
+                "valueString": "TRIAGED"
+            }
+        ]
+    },
+    "class": {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "IMP",
+        "display": "inpatient encounter"
+    },
+    "type": [
+        {
+            "coding": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "2421000175108",
+                    "display": "Acute care inpatient service"
+                }
+            ],
+            "text": "Acute care inpatient"
+        }
+    ],
+    "subject": {
+        "reference": "Patient/patient-example-hypo",
+        "display": "Hypo, Edadd"
+    },
+    "participant": [
+        {
+            "type": [
+                {
+                    "coding": [
+                        {
+                            "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                            "code": "ADM",
+                            "display": "admitter"
+                        }
+                    ],
+                    "text": "admitter"
+                }
+            ],
+            "individual": {
+                "type": "Practitioner",
+                "display": "Faculty Physician Um_Cln, MD"
+            }
+        },
+        {
+            "type": [
+                {
+                    "coding": [
+                        {
+                            "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                            "code": "DIS",
+                            "display": "discharger"
+                        }
+                    ],
+                    "text": "discharger"
+                }
+            ],
+            "individual": {
+                "type": "Practitioner",
+                "display": "Faculty Physician Um_Cln, MD"
+            }
+        },
+        {
+            "type": [
+                {
+                    "coding": [
+                        {
+                            "system": "http://terminology.hl7.org/CodeSystem/v3-ParticipationType",
+                            "code": "ATND",
+                            "display": "attender"
+                        }
+                    ],
+                    "text": "attender"
+                }
+            ],
+            "period": {
+                "start": "2022-08-17T16:59:38Z",
+                "end": "2022-08-22T19:09:00Z"
+            },
+            "individual": {
+                "type": "Practitioner",
+                "display": "Faculty Physician Um_Cln, MD"
+            }
+        }
+    ],
+    "period": {
+        "start": "2022-08-17T16:25:00Z",
+        "end": "2022-08-22T19:09:00Z"
+    },
+    "reasonCode": [
+        {
+            "coding": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "80394007",
+                    "display": "Hyperglycemia (disorder)"
+                }
+            ],
+            "text": "Hyperglycemia"
+        }
+    ],
+    "diagnosis": [
+        {
+            "condition": {
+                "display": "Hyperglycemia"
+            }
+        }
+    ],
+    "account": [
+        {
+            "identifier": {
+                "system": "urn:oid:1.2.840.114350.1.13.277.3.7.2.726582",
+                "value": "100066850"
+            },
+            "display": "HYPO,EDADD"
+        }
+    ],
+    "hospitalization": {
+        "admitSource": {
+            "coding": [
+                {
+                    "system": "http://terminology.hl7.org/CodeSystem/admit-source",
+                    "code": "nursing",
+                    "display": "From nursing home"
+                }
+            ],
+            "text": "From nursing home"
+        },
+        "dischargeDisposition": {
+            "coding": [
+                {
+                    "system": "http://terminology.hl7.org/CodeSystem/discharge-disposition",
+                    "code": "snf",
+                    "display": "Skilled nursing facility"
+                }
+            ],
+            "text": "Skilled nursing facility"
+        }
+    },
+    "location": [
+        {
+            "location": {
+                "display": "UH Adult Emergency Department"
+            },
+            "period": {
+                "start": "2022-08-17T16:25:00Z",
+                "end": "2022-08-17T17:01:00Z"
+            }
+        },
+        {
+            "location": {
+                "display": "UH 7C MED ACUTE CARE"
+            },
+            "period": {
+                "start": "2022-08-17T17:01:00Z",
+                "end": "2022-08-22T19:09:00Z"
+            }
+        },
+        {
+            "location": {
+                "display": "7153"
+            },
+            "physicalType": {
+                "coding": [
+                    {
+                        "system": "http://terminology.hl7.org/CodeSystem/location-physical-type",
+                        "code": "ro",
+                        "display": "Room"
+                    }
+                ],
+                "text": "Room"
+            },
+            "period": {
+                "start": "2022-08-17T16:25:00Z",
+                "end": "2022-08-17T17:01:00Z"
+            }
+        },
+        {
+            "location": {
+                "identifier": {
+                    "system": "urn:oid:1.2.840.114350.1.13.277.3.7.2.666968",
+                    "value": "1445"
+                },
+                "display": "7153 / 01"
+            },
+            "physicalType": {
+                "coding": [
+                    {
+                        "system": "http://terminology.hl7.org/CodeSystem/location-physical-type",
+                        "code": "bd",
+                        "display": "Bed"
+                    }
+                ],
+                "text": "Bed"
+            },
+            "period": {
+                "start": "2022-08-17T17:01:00Z",
+                "end": "2022-08-22T19:09:00Z"
+            }
+        }
+    ]
+}

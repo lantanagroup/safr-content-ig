@@ -1,0 +1,60 @@
+{
+    "resourceType": "Condition",
+    "id": "condition-example-diagnosis-sameresultdiffday1",
+    "meta": {
+        "profile": [
+            "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition"
+        ]
+    },
+    "extension": [
+        {
+            "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
+            "valueString": "eDBsPVmO1ldptMGm1Wd3Ad6T5xbPltA3nSEJTmvuzohITBZPF3cSD1V49M3K2xNGQ3"
+        }
+    ],
+    "verificationStatus": {
+        "coding": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+                "version": "4.0.0",
+                "code": "confirmed",
+                "display": "Confirmed"
+            }
+        ],
+        "text": "Confirmed"
+    },
+    "category": [
+        {
+            "coding": [
+                {
+                    "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                    "code": "encounter-diagnosis",
+                    "display": "Encounter Diagnosis"
+                }
+            ],
+            "text": "Encounter Diagnosis"
+        }
+    ],
+    "code": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "28876000",
+                "display": "Disease condition determination, uncontrolled (finding)"
+            },
+            {
+                "system": "http://hl7.org/fhir/sid/icd-9-cm",
+                "code": "790.29",
+                "display": "Uncontrolled blood glucose"
+            }
+        ],
+        "text": "Uncontrolled blood glucose"
+    },
+    "subject": {
+        "reference": "Patient/patient-example-sameresultdiffday",
+        "display": "Hypo, Sameresultdiffday"
+    },
+    "encounter": {
+        "display": "Hospital Encounter"
+    }
+}

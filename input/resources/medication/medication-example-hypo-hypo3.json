@@ -1,0 +1,118 @@
+{
+    "resourceType": "Medication",
+    "id": "medication-example-hypo-hypo3",
+    "meta": {
+        "profile": [
+            "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication"
+        ]
+    },
+    "extension": [
+        {
+            "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension",
+            "valueString": "eZeW55xkBH0DrR0Xj004fNid0iluLJl6nT2adScy2TI9SbXSOBJPdED7Qjms.Fj48j0.MQxtisgjhubwnqaIImzMAo7axKzx4khlfA7xEkUU3"
+        }
+    ],
+    "code": {
+        "coding": [
+            {
+                "system": "http://www.whocc.no/atc",
+                "code": "A10AE04"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "261551"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "274783"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "285018"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "311041"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "1736859"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "2377130"
+            },
+            {
+                "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                "code": "2377134"
+            }
+        ],
+        "text": "Insulin glargine (LANTUS) 100 unit/mL injection"
+    },
+    "status": "active",
+    "form": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "385219001",
+                "display": "Solution for injection"
+            }
+        ],
+        "text": "Injection solution"
+    },
+    "ingredient": [
+        {
+            "itemCodeableConcept": {
+                "coding": [
+                    {
+                        "system": "http://www.whocc.no/atc",
+                        "code": "A10AE04"
+                    },
+                    {
+                        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                        "code": "261551"
+                    },
+                    {
+                        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                        "code": "274783"
+                    },
+                    {
+                        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                        "code": "285018"
+                    },
+                    {
+                        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                        "code": "311041"
+                    },
+                    {
+                        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                        "code": "1736859"
+                    },
+                    {
+                        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                        "code": "2377130"
+                    },
+                    {
+                        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                        "code": "2377134"
+                    }
+                ],
+                "text": "Insulin glargine (LANTUS) 100 unit/mL injection"
+            },
+            "strength": {
+                "numerator": {
+                    "value": 100,
+                    "unit": "unit/mL",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "U/mL"
+                },
+                "denominator": {
+                    "value": 100,
+                    "unit": "unit/mL",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "U/mL"
+                }
+            }
+        }
+    ]
+}
