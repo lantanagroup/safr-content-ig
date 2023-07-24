@@ -101,12 +101,13 @@
         <grouping id="ext-libs">
             <name value="Knowledge Artifacts: External Libraries"/>
         </grouping>
-        <grouping id="example">
-            <name value="Knowledge Artifacts: Examples"/>
-        </grouping>
         <grouping id="extensions">
             <name value="Extensions"/>
         </grouping>
+        <grouping id="example">
+            <name value="Knowledge Artifacts: Examples"/>
+        </grouping>
+
 
         <!-- <grouping id="prequal">
             <name value="Pre-Qualification"/>
@@ -255,22 +256,22 @@
             <description value="The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."/>
             <groupingId value="measures"/>
         </resource>
-        <resource>
+        <!--<resource>
             <reference>
                 <reference value="Measure/NHSNdQMAcuteCareHospitalInitialPopulation"/>
             </reference>
             <name value="NHSN dQM Acute Care Hospital Initial Population"/>
             <description value="dQM Measure for Inpatients (Acute) Care setting"/>
             <groupingId value="measures"/>
-        </resource>
-        <resource>
+        </resource>-->
+        <!--<resource>
             <reference>
                 <reference value="Measure/NHSNRespiratoryPathogenSurveillanceInitialPopulation"/>
             </reference>
             <name value="NHSN Respiratory Pathogen Surveillance Initial Population"/>
             <description value="dQM Measure for Respiratory Pathogen Surveillance"/>
             <groupingId value="measures"/>
-        </resource>
+        </resource>-->
         <resource>
             <reference>
                 <reference value="Library/SharedResourceCreation"/>
@@ -287,6 +288,7 @@
             <description value="Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure"/>
             <groupingId value="libs"/>
         </resource>
+        <!--
         <resource>
             <reference>
                 <reference value="Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation"/>
@@ -295,6 +297,8 @@
             <description value="Library of NHSN Respiratory Pathogen Surveillance Initial Population Measure"/>
             <groupingId value="libs"/>
         </resource>
+        -->
+        <!--
         <resource>
             <reference>
                 <reference value="Library/NHSNdQMAcuteCareHospitalInitialPopulation"/>
@@ -303,7 +307,7 @@
             <description value="Library of NHSN dQM Acute Care Hospital Initial Population Measure"/>
             <groupingId value="libs"/>
         </resource>
-
+        -->
 
         <resource>
             <reference>
@@ -388,6 +392,16 @@
             <description value="Measure Report - Subject List Example 1"/>
             <groupingId value="example"/>
         </resource>
+        <!--
+        <resource>
+            <reference>
+                <reference value="MeasureReport/measurereport-example-subjectlist2"/>
+            </reference>
+            <name value="MeasureReport - Example Subject List 2"/>
+            <description value="Measure Report - Subject List Example 2"/>
+            <groupingId value="example"/>
+        </resource>
+        -->
         <resource>
             <reference>
                 <reference value="List/list-example-individual-measurereport-list"/>

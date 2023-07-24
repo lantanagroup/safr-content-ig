@@ -27,3 +27,5 @@ Thumbs.db
 /bundles/plandefinition/ColorectalCancerScreeningCDS/ColorectalCancerScreeningCDS-files
 /input-cache
 input/tests/results/
+
+.index.json
