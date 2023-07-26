@@ -90,10 +90,8 @@ define &quot;MedicationRequests&quot;:
             </extension>
             <extension url="statement">
                <valueString value="define &quot;Inpatient Encounter&quot;:
-  ([Encounter: class in {&quot;inpatient encounter&quot;, &quot;inpatient acute&quot;, &quot;inpatient non-acute&quot;, &quot;short stay&quot;, &quot;emergency&quot;, &quot;observation encounter&quot;}]
-    union [Encounter: &quot;Encounter Inpatient&quot;]) Encounters
-    where Encounters.status in {'in-progress', 'finished', 'triaged'}
-    and Encounters.period overlaps &quot;Measurement Period&quot;"></valueString>
+  [Encounter: class in {&quot;inpatient encounter&quot;, &quot;inpatient acute&quot;, &quot;inpatient non-acute&quot;, &quot;short stay&quot;, &quot;emergency&quot;, &quot;observation encounter&quot;}]
+    union [Encounter: &quot;Encounter Inpatient&quot;]"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="1"></valueInteger>
@@ -184,7 +182,9 @@ define &quot;MedicationRequests&quot;:
 define &quot;Initial Population&quot;:
   (&quot;Inpatient Encounter&quot;
   union &quot;Patient Hospital Locations&quot;) InpatientEncounters
-  where exists( 
+  where InpatientEncounters.status in {'in-progress', 'finished', 'triaged'}
+    and InpatientEncounters.period overlaps &quot;Measurement Period&quot;
+    and exists( 
     &quot;Antidiabetic Drugs Administered or Ordered&quot; ADD
     where Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn)
       during &quot;HospitalizationWithObservationOrEmergency&quot;(InpatientEncounters)
@@ -451,9 +451,9 @@ define &quot;SDE Service Request&quot;:
             <extension url="statement">
                <valueString value="define &quot;SDE Location&quot;:
   [Location] Locations
-  where exists(Locations.type types
+  where /*exists(Locations.type types
     where types in &quot;Inpatient, Emergency, and Observation Locations&quot;)
-  and exists(&quot;Initial Population&quot;)
+  and*/ exists(&quot;Initial Population&quot;)
   return SharedResource.LocationResource(Locations)"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -546,13 +546,13 @@ define &quot;SDE Chief Complaint&quot;:
          </type>
          <relatedArtifact>
             <type value="depends-on"></type>
-            <display value="Library FHIRHelpers"></display>
-            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1"></resource>
+            <display value="Library Global"></display>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
-            <display value="Library Global"></display>
-            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/MATGlobalCommonFunctionsFHIR4|6.1.000"></resource>
+            <display value="Library FHIRHelpers"></display>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -813,7 +813,6 @@ define &quot;SDE Chief Complaint&quot;:
             <type value="Location"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
             <mustSupport value="id"></mustSupport>
-            <mustSupport value="type"></mustSupport>
          </dataRequirement>
          <dataRequirement>
             <type value="MedicationAdministration"></type>
@@ -889,7 +888,7 @@ define &quot;SDE Chief Complaint&quot;:
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-06-28T11:37:02-08:00"></date>
+   <date value="2023-07-26T05:59:14-08:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."></description>
    <purpose value="This site allows NHSN to view Measure-specification content in the dQMs under development by Lantana Consulting Group. Note that this site undergoes constant revision and is not intended to serve as an implementation guide."></purpose>

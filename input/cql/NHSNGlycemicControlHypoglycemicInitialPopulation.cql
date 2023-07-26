@@ -1,4 +1,4 @@
-library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.012'
+library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.013'
 
 using FHIR version '4.0.1'
 
@@ -50,7 +50,7 @@ code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" disp
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 
 parameter "Measurement Period" Interval<DateTime>
- default Interval[@2023-03-01T00:00:00.0, @2023-03-31T00:00:00.0)
+ default Interval[@2022-01-01T00:00:00.0, @2022-01-31T23:59:00.0)
 
 context Patient
 
@@ -60,17 +60,17 @@ context Patient
 define "Initial Population":
   ("Inpatient Encounter"
   union "Patient Hospital Locations") InpatientEncounters
-  where exists( 
+  where InpatientEncounters.status in {'in-progress', 'finished', 'triaged'}
+    and InpatientEncounters.period overlaps "Measurement Period"
+    and exists( 
     "Antidiabetic Drugs Administered or Ordered" ADD
     where Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn)
       during "HospitalizationWithObservationOrEmergency"(InpatientEncounters)
     and Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn) during "Measurement Period")
 
 define "Inpatient Encounter":
-  ([Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "short stay", "emergency", "observation encounter"}]
-    union [Encounter: "Encounter Inpatient"]) Encounters
-    where Encounters.status in {'in-progress', 'finished', 'triaged'}
-    and Encounters.period overlaps "Measurement Period"
+  [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "short stay", "emergency", "observation encounter"}]
+    union [Encounter: "Encounter Inpatient"]
   
 define "Patient Hospital Locations":
   [Encounter] Encounters
@@ -167,9 +167,9 @@ define "SDE Initial Population Encounters":
 
 define "SDE Location":
   [Location] Locations
-  where exists(Locations.type types
+  where /*exists(Locations.type types
     where types in "Inpatient, Emergency, and Observation Locations")
-  and exists("Initial Population")
+  and*/ exists("Initial Population")
   return SharedResource.LocationResource(Locations)
 
 //To capture information about the Medication
