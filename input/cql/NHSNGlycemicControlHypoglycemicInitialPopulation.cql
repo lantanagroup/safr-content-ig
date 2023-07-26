@@ -1,4 +1,4 @@
-library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.013'
+library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.014'
 
 using FHIR version '4.0.1'
 
@@ -69,7 +69,7 @@ define "Initial Population":
     and Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn) during "Measurement Period")
 
 define "Inpatient Encounter":
-  [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "short stay", "emergency", "observation encounter"}]
+  [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "short stay"}]
     union [Encounter: "Encounter Inpatient"]
   
 define "Patient Hospital Locations":
