@@ -706,7 +706,7 @@ define &quot;SDE Condition&quot;:
    <name value="NHSNdQMAcuteCareHospitalInitialPopulation"></name>
    <title value="NHSN dQM Acute Care Hospital Initial Population"></title>
    <experimental value="false"></experimental>
-   <date value="2023-08-01T16:43:30-05:00"></date>
+   <date value="2023-08-01T17:52:34-05:00"></date>
    <description value="dQM Measure for Inpatients (Acute) Care setting"></description>
    <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNdQMAcuteCareHospitalInitialPopulation"></library>
    <scoring>
