@@ -684,6 +684,9 @@ define &quot;SDE Condition&quot;:
          </dataRequirement>
       </Library>
    </contained>
+   <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-populationBasis">
+      <valueCode value="Encounter"></valueCode>
+   </extension>
    <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem">
       <valueReference>
          <reference value="Device/cqf-tooling"></reference>
