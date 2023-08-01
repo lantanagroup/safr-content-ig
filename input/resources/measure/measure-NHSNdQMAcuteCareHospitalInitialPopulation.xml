@@ -127,7 +127,9 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
                <valueString value="Qualifying Location During Measurement Period"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Qualifying Location During Measurement Period&quot;:
+               <valueString value="/*((end of QualifyingEncounters.period is not null and QualifyingEncounters.period overlaps &quot;Measurement Period&quot;)
+    or (QualifyingEncounters.period starts before &quot;Measurement Period&quot; or QualifyingEncounters.period starts during &quot;Measurement Period&quot;))*/
+define &quot;Qualifying Location During Measurement Period&quot;:
   &quot;Encounters&quot; Encounters
   where exists(
     Encounters.location EncounterLocation
@@ -701,7 +703,7 @@ define &quot;SDE Condition&quot;:
    <name value="NHSNdQMAcuteCareHospitalInitialPopulation"></name>
    <title value="NHSN dQM Acute Care Hospital Initial Population"></title>
    <experimental value="false"></experimental>
-   <date value="2023-06-09T13:37:53-05:00"></date>
+   <date value="2023-08-01T16:43:30-05:00"></date>
    <description value="dQM Measure for Inpatients (Acute) Care setting"></description>
    <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNdQMAcuteCareHospitalInitialPopulation"></library>
    <scoring>

@@ -286,6 +286,7 @@ define &quot;SDE RSV DiagnosticReport Result from Lab&quot;:
   union [Observation: &quot;RSV (Tests for RSV Antigen)&quot;]   
   ) Observations
     where exists(Observations.category Category where Category ~ &quot;laboratory&quot;)
+      and Observations.status in {'final','registered','preliminary','partial'}
       and exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -460,6 +461,7 @@ define &quot;COVID And Influenza Observation&quot;:
   union [Observation: &quot;COVID_19 (Tests for SARS_CoV_2 Antigen)&quot;]
   ) Observations
     where exists(Observations.category Category where Category ~ &quot;laboratory&quot;)
+      and Observations.status in {'final','registered','preliminary','partial'}
       and exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -1574,7 +1576,7 @@ define &quot;SDE All Observations&quot;:
    <title value="NHSN Respiratory Pathogen Surveillance Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-06-09T13:37:53-05:00"></date>
+   <date value="2023-08-01T16:43:30-05:00"></date>
    <description value="dQM Measure for Respiratory Pathogen Surveillance"></description>
    <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation"></library>
    <scoring>

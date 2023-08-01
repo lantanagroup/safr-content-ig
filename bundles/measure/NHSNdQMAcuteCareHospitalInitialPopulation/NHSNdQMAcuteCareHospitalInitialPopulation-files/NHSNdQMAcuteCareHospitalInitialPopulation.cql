@@ -41,6 +41,9 @@ union [Encounter: "Observation Services"]
 union [Encounter: class in {"emergency", "inpatient acute", "inpatient encounter", "inpatient non-acute", "short stay"}]) QualifyingEncounters
   where QualifyingEncounters .status in {'in-progress', 'finished', 'triaged'}
     and QualifyingEncounters.period overlaps "Measurement Period"
+    
+    /*((end of QualifyingEncounters.period is not null and QualifyingEncounters.period overlaps "Measurement Period")
+    or (QualifyingEncounters.period starts before "Measurement Period" or QualifyingEncounters.period starts during "Measurement Period"))*/
 
 define "Qualifying Location During Measurement Period":
   "Encounters" Encounters
