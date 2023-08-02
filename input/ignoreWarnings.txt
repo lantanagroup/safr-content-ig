@@ -11,6 +11,14 @@ The HTML fragment 'globals-table.xhtml' is not included anywhere in the produced
 # Incorrectly formed invariant in CQF Measures 3.0.0 specification
 Rule cqm-4: 'Group population criteria SHOULD be simple expression names found within the primary library for the measure. The criteria SHOULD NOT include a namespace.' Failed
 
+# Ignore example unknown code system
+INFORMATION: Bundle/submission-example1: Bundle.entry[22].resource/*Encounter/encounter-example-hypo-hypo*/.class.extension[0].value.ofType(Coding): Code System URI 'http://example.com/CodeSystem/encounter-class' is unknown so the code cannot be validated
+
+# Informational notice that an extension does not match a slice of a specific profile (though it matches the slice in the other included profile)
+INFORMATION: Measure/NHSNGlycemicControlHypoglycemicInitialPopulation: Measure.extension[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm|3.0.0
+INFORMATION: Measure/NHSNGlycemicControlHypoglycemicInitialPopulation: Measure.extension[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm|3.0.0
+
+
 # Warnings about CodeSystems that need to be fixed with the source CodeSystem
 WARNING: Bundle/submission-example1: Bundle.entry[8].resource/*Condition/condition-example-diagnosis-sameresultdiffday2*/.code.coding[1]: The system "Uncontrolled blood glucose" http://hl7.org/fhir/sid/icd-9-cm was found but did not contain enough information to properly validate the code (mode = fragment) (from Tx-Server) for 'http://hl7.org/fhir/sid/icd-9-cm#790.29'
 WARNING: Bundle/submission-example1: Bundle.entry[8].resource/*Condition/condition-example-diagnosis-sameresultdiffday2*/.code: The system "Uncontrolled blood glucose" http://hl7.org/fhir/sid/icd-9-cm was found but did not contain enough information to properly validate the code (mode = fragment) (from Tx-Server)

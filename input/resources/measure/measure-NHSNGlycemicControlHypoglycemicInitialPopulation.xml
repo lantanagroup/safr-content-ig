@@ -1,8 +1,8 @@
 <Measure xmlns="http://hl7.org/fhir">
    <id value="NHSNGlycemicControlHypoglycemicInitialPopulation"></id>
    <meta>
-      <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm"></profile>
       <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm"></profile>
+      <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm"></profile>
    </meta>
    <contained>
       <Library xmlns="http://hl7.org/fhir">
@@ -869,6 +869,9 @@ define &quot;SDE Chief Complaint&quot;:
          </dataRequirement>
       </Library>
    </contained>
+   <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-populationBasis">
+      <valueCode value="Encounter"></valueCode>
+   </extension>
    <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-softwaresystem">
       <valueReference>
          <reference value="Device/cqf-tooling"></reference>
@@ -878,9 +881,6 @@ define &quot;SDE Chief Complaint&quot;:
       <valueReference>
          <reference value="#effective-data-requirements"></reference>
       </valueReference>
-   </extension>
-   <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-populationBasis">
-      <valueCode value="Encounter"></valueCode>
    </extension>
    <url value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation"></url>
    <identifier>

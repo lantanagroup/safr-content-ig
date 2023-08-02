@@ -6,7 +6,7 @@
     <extension url="https://open.epic.com/fhir/extensions/specialty">
         <valueCodeableConcept>
             <coding>
-                <system value="urn:oid:1.2.840.114350.1.72.1.7.7.10.688867.4150" />
+                <system value="urn:oid:2.16.840.1.113883.19.5.1.6888" />
                 <code value="21" />
                 <display value="Surgery" />
             </coding>

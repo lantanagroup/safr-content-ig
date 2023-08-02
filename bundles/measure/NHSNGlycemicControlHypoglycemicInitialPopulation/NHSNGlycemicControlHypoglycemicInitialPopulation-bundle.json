@@ -3,7 +3,7 @@
     "id": "NHSNGlycemicControlHypoglycemicInitialPopulation-bundle",
     "identifier": {
         "system": "https://nhsnlink.org",
-        "value": "NHSNdQMAcuteCareHospitalInitialPopulation-bundle-bundle-bundle-bundle"
+        "value": "NHSNGlycemicControlHypoglycemicInitialPopulation-bundle"
     },
     "type": "transaction",
     "timestamp": "2023-06-28T15:37:05.037-04:00",
