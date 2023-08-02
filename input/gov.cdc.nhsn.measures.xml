@@ -862,6 +862,11 @@
                 <generation value="html"/>
             </page>
             <page>
+                <nameUrl value="must_support.html"/>
+                <title value="Must Support"/>
+                <generation value="html"/>
+            </page>
+            <page>
                 <nameUrl value="downloads.html"/>
                 <title value="Useful Downloads"/>
                 <generation value="html"/>
