@@ -22,21 +22,21 @@ stages:
     pool:
       vmImage: ubuntu-latest
     steps:
-    # - task: Docker@2
-    #   inputs:
-    #     containerRegistry: 'LCG Docker HUB'
-    #     repository: 'lantanagroup/measure-builder'
-    #     command: 'buildAndPush'
-    #     Dockerfile: '**/Dockerfile.builder'
-    #     tags: |
-    #       latest
-    #       $(Build.BuildId)
     - task: Docker@2
       inputs:
-        containerRegistry: 'LCG ACR'
-        repository: 'lantanagroup.azurecr.io/measure-builder'
+        containerRegistry: 'LCG Docker HUB'
+        repository: 'lantanagroup/measure-builder'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile.builder'
         tags: |
           latest
           $(Build.BuildId)
+    # - task: Docker@2
+    #   inputs:
+    #     containerRegistry: 'LCG ACR'
+    #     repository: 'lantanagroup.azurecr.io/measure-builder'
+    #     command: 'buildAndPush'
+    #     Dockerfile: '**/Dockerfile.builder'
+    #     tags: |
+    #       latest
+    #       $(Build.BuildId)
