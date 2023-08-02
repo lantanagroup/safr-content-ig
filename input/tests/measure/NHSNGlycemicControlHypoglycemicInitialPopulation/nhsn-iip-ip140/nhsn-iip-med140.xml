@@ -28,7 +28,7 @@
    </code>
    <form>
       <coding>
-         <system value="urn:oid:1.2.840.114350.1.13.310.3.7.4.698288.310"/>
+         <system value="urn:oid:2.16.840.1.113883.19.5.1.698.31"/>
          <code value="Strp"/>
          <display value="Strip"/>
       </coding>

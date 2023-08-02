@@ -101,11 +101,11 @@
         <grouping id="ext-libs">
             <name value="Knowledge Artifacts: External Libraries"/>
         </grouping>
-        <grouping id="example">
-            <name value="Knowledge Artifacts: Examples"/>
-        </grouping>
         <grouping id="extensions">
             <name value="Extensions"/>
+        </grouping>
+        <grouping id="example">
+            <name value="Knowledge Artifacts: Examples"/>
         </grouping>
 
         <!-- <grouping id="prequal">
