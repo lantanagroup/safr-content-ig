@@ -101,11 +101,11 @@
         <grouping id="ext-libs">
             <name value="Knowledge Artifacts: External Libraries"/>
         </grouping>
-        <grouping id="example">
-            <name value="Knowledge Artifacts: Examples"/>
-        </grouping>
         <grouping id="extensions">
             <name value="Extensions"/>
+        </grouping>
+        <grouping id="example">
+            <name value="Knowledge Artifacts: Examples"/>
         </grouping>
 
         <!-- <grouping id="prequal">
@@ -845,6 +845,11 @@
             <page>
                 <nameUrl value="index.html"/>
                 <title value="NHSN Measures"/>
+                <generation value="html"/>
+            </page>
+            <page>
+                <nameUrl value="must_support.html"/>
+                <title value="Must Support"/>
                 <generation value="html"/>
             </page>
             <page>

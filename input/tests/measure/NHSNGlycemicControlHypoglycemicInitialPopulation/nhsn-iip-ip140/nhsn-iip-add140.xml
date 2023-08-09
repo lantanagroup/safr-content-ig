@@ -7,7 +7,7 @@
    </meta>
    <identifier>
       <use value="usual"/>
-      <system value="urn:oid:1.2.840.114350.1.13.310.3.7.2.798268"/>
+      <system value="urn:oid:2.16.840.1.113883.19.5.1.2.798"/>
       <value value="336609292"/>
    </identifier>
    <status value="active"/>
@@ -61,7 +61,7 @@
       <asNeededBoolean value="true"/>
       <route>
          <coding>
-            <system value="urn:oid:1.2.840.114350.1.13.310.3.7.4.798268.7025"/>
+            <system value="urn:oid:2.16.840.1.113883.19.5.1.4.798"/>
             <code value="24"/>
             <display value="Misc.(Non-Drug; Combo Route)"/>
          </coding>
