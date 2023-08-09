@@ -25,27 +25,18 @@
                 <profile value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-received-date-extension"/>
             </type>
         </element>
-        <element id="List.extension">
+        <element id="List.extension:patient-list-applicable-period">
+            <extension url="http://hl7.org/fhir/us/core/StructureDefinition/uscdi-requirement">
+                <valueBoolean value="true"/>
+            </extension>
             <path value="List.extension"/>
-            <min value="1"/>
+            <sliceName value="patient-list-applicable-period"/>
+            <short value="The reporting period associated with the census List"/>
+            <min value="0"/>
             <max value="1"/>
             <type>
                 <code value="Extension"/>
-            </type>
-        </element>
-        <element id="List.extension.extension">
-            <path value="List.extension.extension"/>
-            <max value="0"/>
-        </element>
-        <element id="List.extension.url">
-            <path value="List.extension.url"/>
-            <fixedUri value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-patient-list-applicable-period-extension"/>
-        </element>
-        <element id="List.extension.value[x]">
-            <path value="List.extension.value[x]"/>
-            <min value="1"/>
-            <type>
-                <code value="Period"/>
+                <profile value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-patient-list-applicable-period-extension"/>
             </type>
         </element>
         <element id="List.identifier">
