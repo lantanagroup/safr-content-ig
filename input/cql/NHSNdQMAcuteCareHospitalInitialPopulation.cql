@@ -1,11 +1,11 @@
-library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.002'
+library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.003'
 
 using FHIR version '4.0.1'
 
 include FHIRHelpers version '4.0.1' called FHIRHelpers
 include MATGlobalCommonFunctionsFHIR4 version '6.1.000' called Global
 include SupplementalDataElementsFHIR4 version '2.0.000' called SDE
-include SharedResourceCreation version '0.1.001' called SharedResource
+include SharedResourceCreation version '0.1.002' called SharedResource
 
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
 codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category'
@@ -66,46 +66,55 @@ define "Encounters":
 define "SDE Condition":
   [Condition] Conditions 
   where exists("Initial Population")
-  return SharedResource.ConditionResource(Conditions)
+  return SharedResource.ConditionResource(Conditions,
+  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition')
 
 define "SDE Device":
   [Device] Devices 
   where exists("Initial Population")
-  return SharedResource.DeviceResource(Devices)
+  return SharedResource.DeviceResource(Devices,
+  'http://hl7.org/fhir/StructureDefinition/device')
 
 define "SDE DiagnosticReport":
   [DiagnosticReport] DiagnosticReports
   where exists("Initial Population")
-  return SharedResource.DiagnosticReportResource(DiagnosticReports)
+  return SharedResource.DiagnosticReportResource(DiagnosticReports,
+  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab')
 
 define "SDE Encounter": 
   "Encounters" Encounters
   where exists("Initial Population")
-  return SharedResource.EncounterResource(Encounters)
+  return SharedResource.EncounterResource(Encounters,
+  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter')
 
 define "SDE Initial Population Encounters":
   "Initial Population" IP
-  return SharedResource.EncounterResource(IP)
+  return SharedResource.EncounterResource(IP,
+  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter')
 
 define "SDE Location":
   [Location] Locations
   where exists("Initial Population")
-  return SharedResource.LocationResource(Locations)
+  return SharedResource.LocationResource(Locations,
+  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-location')
  
 define "SDE Medication Administration":
   [MedicationAdministration] MedicationAdministrations 
   where exists("Initial Population")
-  return SharedResource.MedicationAdministrationResource(MedicationAdministrations)
+  return SharedResource.MedicationAdministrationResource(MedicationAdministrations,
+  'http://hl7.org/fhir/StructureDefinition/medicationadministration')
  
 define "SDE Medication Request":
   [MedicationRequest] MedicationRequests 
   where exists("Initial Population")
-  return SharedResource.MedicationRequestResource(MedicationRequests)
+  return SharedResource.MedicationRequestResource(MedicationRequests,
+  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest')
 
 define "SDE Medication":
   [Medication] Medication
   where exists("Initial Population")
-  return SharedResource.MedicationResource(Medication)
+  return SharedResource.MedicationResource(Medication,
+  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication')
 
 define "SDE Observation Category":
   [Observation] Observations 
@@ -116,23 +125,28 @@ define "SDE Observation Category":
     or (exists(Observations.category Category where Category ~ "imaging"))
     or (exists(Observations.category Category where Category ~ "procedure")))
     and exists("Initial Population")
-  return SharedResource.ObservationResource(Observations)
+  return SharedResource.ObservationResource(Observations,
+  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab')
 
 define "SDE Coverage": 
 	[Coverage] Coverages
   where exists("Initial Population")
-  return SharedResource.CoverageResource(Coverages)
+  return SharedResource.CoverageResource(Coverages,
+  'http://hl7.org/fhir/StructureDefinition/coverage')
 
 define "SDE Procedure":
   [Procedure] Procedures 
   where exists("Initial Population")
-  return SharedResource.ProcedureResource(Procedures)
+  return SharedResource.ProcedureResource(Procedures,
+  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure')
 
 define "SDE Specimen":
   [Specimen] Specimen
   where exists("Initial Population")
-  return SharedResource.SpecimenResource(Specimen)
+  return SharedResource.SpecimenResource(Specimen,
+  'http://hl7.org/fhir/StructureDefinition/specimen')
 
 define "SDE Minimal Patient":
   Patient p
-  return SharedResource.PatientResource(p)
+  return SharedResource.PatientResource(p,
+  'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/cross-measure-patient')

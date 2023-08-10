@@ -1,4 +1,4 @@
-library SharedResourceCreation version '0.1.001'
+library SharedResourceCreation version '0.1.002'
 
 using FHIR version '4.0.1'
 
@@ -19,11 +19,18 @@ define function "GetPatientExtensions"(domainResource DomainResource):
     or E.url = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'
   return E
 
-define function "MedicationRequestResource"(medicationRequest MedicationRequest):
+define function "MedicationRequestResource"(medicationRequest MedicationRequest, profileURL String):
   medicationRequest m
   return MedicationRequest{
     id: FHIR.id {value: 'LCR-' + m.id},
-    meta: m.meta,
+    meta: FHIR.Meta{
+      extension: m.meta.extension,
+      versionId: m.meta.versionId,
+      lastUpdated: m.meta.lastUpdated,
+      profile: {FHIR.canonical{value: profileURL}},
+      security: m.meta.security,
+      tag: m.meta.tag
+    },
     extension: m.extension,
     identifier: m.identifier,
     status: m.status,
@@ -59,11 +66,18 @@ define function "MedicationRequestResource"(medicationRequest MedicationRequest)
     eventHistory: m.eventHistory
   }
 
-define function "MedicationAdministrationResource"(medicationAdministration MedicationAdministration):
+define function "MedicationAdministrationResource"(medicationAdministration MedicationAdministration, profileURL String):
   medicationAdministration m
   return MedicationAdministration{
     id: FHIR.id {value: 'LCR-' + m.id},
-    meta: m.meta,
+    meta: FHIR.Meta{
+      extension: m.meta.extension,
+      versionId: m.meta.versionId,
+      lastUpdated: m.meta.lastUpdated,
+      profile: {FHIR.canonical{value: profileURL}},
+      security: m.meta.security,
+      tag: m.meta.tag
+    },
     extension: m.extension,
     identifier: m.identifier,
     instantiates: m.instantiates,
@@ -86,11 +100,18 @@ define function "MedicationAdministrationResource"(medicationAdministration Medi
     eventHistory: m.eventHistory
   }
 
-define function "MedicationResource"(medication Medication):
+define function "MedicationResource"(medication Medication, profileURL String):
   medication m
   return Medication{
     id: FHIR.id {value: 'LCR-' + m.id},
-    meta: m.meta,
+    meta: FHIR.Meta{
+      extension: m.meta.extension,
+      versionId: m.meta.versionId,
+      lastUpdated: m.meta.lastUpdated,
+      profile: {FHIR.canonical{value: profileURL}},
+      security: m.meta.security,
+      tag: m.meta.tag
+    },
     extension: m.extension,
     identifier: m.identifier,
     code: m.code,
@@ -102,11 +123,18 @@ define function "MedicationResource"(medication Medication):
     batch: m.batch
   }
 
-define function "ConditionResource"(condition Condition):
+define function "ConditionResource"(condition Condition, profileURL String):
   condition c
   return Condition{
     id: FHIR.id {value: 'LCR-' + c.id},
-    meta: c.meta,
+    meta: FHIR.Meta{
+      extension: c.meta.extension,
+      versionId: c.meta.versionId,
+      lastUpdated: c.meta.lastUpdated,
+      profile: {FHIR.canonical{value: profileURL}},
+      security: c.meta.security,
+      tag: c.meta.tag
+    },
     extension: c.extension,
     identifier: c.identifier,
     clinicalStatus: c.clinicalStatus,
@@ -127,11 +155,18 @@ define function "ConditionResource"(condition Condition):
     note: c.note
   }
 
-define function "EncounterResource"(encounter Encounter):
+define function "EncounterResource"(encounter Encounter, profileURL String):
   encounter e
   return Encounter{
     id: FHIR.id{value: 'LCR-' + e.id},
-    meta: e.meta,
+    meta: FHIR.Meta{
+      extension: e.meta.extension,
+      versionId: e.meta.versionId,
+      lastUpdated: e.meta.lastUpdated,
+      profile: {FHIR.canonical{value: profileURL}},
+      security: e.meta.security,
+      tag: e.meta.tag
+    },
     extension: e.extension,
     identifier: e.identifier,
     status: e.status,
@@ -158,11 +193,18 @@ define function "EncounterResource"(encounter Encounter):
     partOf: e.partOf
   }
 
-define function "PatientResource"(patient Patient):
+define function "PatientResource"(patient Patient, profileURL String):
   patient p
   return Patient{
     id: FHIR.id{value: 'LCR-' + p.id},
-    meta: p.meta,
+    meta: FHIR.Meta{
+      extension: p.meta.extension,
+      versionId: p.meta.versionId,
+      lastUpdated: p.meta.lastUpdated,
+      profile: {FHIR.canonical{value: profileURL}},
+      security: p.meta.security,
+      tag: p.meta.tag
+    },
     extension: GetPatientExtensions(p) union GetIdExtensions(p),
     identifier: p.identifier,
     active: p.active,
@@ -177,11 +219,18 @@ define function "PatientResource"(patient Patient):
     link: p.link
   }
 
-define function "ObservationResource"(observation Observation):
+define function "ObservationResource"(observation Observation, profileURL String):
   observation o
   return Observation{
     id: FHIR.id {value: 'LCR-' + o.id},
-    meta: o.meta,
+    meta: FHIR.Meta{
+      extension: o.meta.extension,
+      versionId: o.meta.versionId,
+      lastUpdated: o.meta.lastUpdated,
+      profile: {FHIR.canonical{value: profileURL}},
+      security: o.meta.security,
+      tag: o.meta.tag
+    },
     extension: o.extension,
     identifier: o.identifier,
     basedOn: o.basedOn,
@@ -209,11 +258,18 @@ define function "ObservationResource"(observation Observation):
     component: o.component
   }
 
-define function "ServiceRequestResource"(serviceRequest ServiceRequest):
+define function "ServiceRequestResource"(serviceRequest ServiceRequest, profileURL String):
   serviceRequest sR
   return ServiceRequest{
     id: FHIR.id {value: 'LCR-' + sR.id},
-    meta: sR.meta,
+    meta: FHIR.Meta{
+      extension: sR.meta.extension,
+      versionId: sR.meta.versionId,
+      lastUpdated: sR.meta.lastUpdated,
+      profile: {FHIR.canonical{value: profileURL}},
+      security: sR.meta.security,
+      tag: sR.meta.tag
+    },
     extension: sR.extension,
     identifier: sR.identifier,
     instantiatesCanonical: sR.instantiatesCanonical,
@@ -250,11 +306,18 @@ define function "ServiceRequestResource"(serviceRequest ServiceRequest):
     relevantHistory: sR.relevantHistory
   }
 
-define function "SpecimenResource"(specimen Specimen):
+define function "SpecimenResource"(specimen Specimen, profileURL String):
   specimen s
   return Specimen{
     id: FHIR.id {value: 'LCR-' + s.id},
-    meta: s.meta,
+    meta: FHIR.Meta{
+      extension: s.meta.extension,
+      versionId: s.meta.versionId,
+      lastUpdated: s.meta.lastUpdated,
+      profile: {FHIR.canonical{value: profileURL}},
+      security: s.meta.security,
+      tag: s.meta.tag
+    },
     extension: s.extension,
     identifier: s.identifier,
     accessionIdentifier: s.accessionIdentifier,
@@ -271,11 +334,18 @@ define function "SpecimenResource"(specimen Specimen):
     note: s.note
   }
 
-define function "CoverageResource"(coverage Coverage):
+define function "CoverageResource"(coverage Coverage, profileURL String):
   coverage c
   return Coverage{
     id: FHIR.id{value: 'LCR-' + c.id},
-    meta: c.meta,
+    meta: FHIR.Meta{
+      extension: c.meta.extension,
+      versionId: c.meta.versionId,
+      lastUpdated: c.meta.lastUpdated,
+      profile: {FHIR.canonical{value: profileURL}},
+      security: c.meta.security,
+      tag: c.meta.tag
+    },
     extension: c.extension,
     identifier: c.identifier,
     status: c.status,
@@ -296,11 +366,18 @@ define function "CoverageResource"(coverage Coverage):
     contract: c.contract
   }
 
-define function "ProcedureResource"(procedure Procedure):
+define function "ProcedureResource"(procedure Procedure, profileURL String):
   procedure p
   return Procedure{
     id: FHIR.id {value: 'LCR-' + p.id},
-    meta: p.meta,
+    meta: FHIR.Meta{
+      extension: p.meta.extension,
+      versionId: p.meta.versionId,
+      lastUpdated: p.meta.lastUpdated,
+      profile: {FHIR.canonical{value: profileURL}},
+      security: p.meta.security,
+      tag: p.meta.tag
+    },
     extension: p.extension,
     identifier: p.identifier,
     instantiatesCanonical: p.instantiatesCanonical,
@@ -331,11 +408,18 @@ define function "ProcedureResource"(procedure Procedure):
     usedCode: p.usedCode
   }
 
-define function "LocationResource"(location Location):
+define function "LocationResource"(location Location, profileURL String):
   location l
   return Location{
     id: FHIR.id {value: 'LCR-' + l.id},
-    meta: l.meta,
+    meta: FHIR.Meta{
+      extension: l.meta.extension,
+      versionId: l.meta.versionId,
+      lastUpdated: l.meta.lastUpdated,
+      profile: {FHIR.canonical{value: profileURL}},
+      security: l.meta.security,
+      tag: l.meta.tag
+    },
     extension: l.extension,
     identifier: l.identifier,
     status: l.status,
@@ -356,11 +440,18 @@ define function "LocationResource"(location Location):
     endpoint: l.endpoint
   }
 
-define function "DiagnosticReportResource"(diagnosticReport DiagnosticReport):
+define function "DiagnosticReportResource"(diagnosticReport DiagnosticReport, profileURL String):
   diagnosticReport d
   return DiagnosticReport{
     id: FHIR.id{value: 'LCR-' + d.id},
-    meta: d.meta,
+    meta: FHIR.Meta{
+      extension: d.meta.extension,
+      versionId: d.meta.versionId,
+      lastUpdated: d.meta.lastUpdated,
+      profile: {FHIR.canonical{value: profileURL}},
+      security: d.meta.security,
+      tag: d.meta.tag
+    },
     extension: d.extension,
     identifier: d.identifier,
     basedOn: d.basedOn,
@@ -382,11 +473,18 @@ define function "DiagnosticReportResource"(diagnosticReport DiagnosticReport):
     presentedForm: d.presentedForm
   }
 
-define function "DeviceResource"(device Device):
+define function "DeviceResource"(device Device, profileURL String):
   device d
   return Device{
     id: FHIR.id{value: 'LCR-' + d.id},
-    meta: d.meta,
+    meta: FHIR.Meta{
+      extension: d.meta.extension,
+      versionId: d.meta.versionId,
+      lastUpdated: d.meta.lastUpdated,
+      profile: {FHIR.canonical{value: profileURL}},
+      security: d.meta.security,
+      tag: d.meta.tag
+    },
     extension: d.extension,
     identifier: d.identifier,
     definition: d.definition,

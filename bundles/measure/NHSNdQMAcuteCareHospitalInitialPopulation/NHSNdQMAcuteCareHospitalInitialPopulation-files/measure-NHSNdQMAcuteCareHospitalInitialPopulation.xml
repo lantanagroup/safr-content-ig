@@ -168,7 +168,8 @@ define &quot;Qualifying Location During Measurement Period&quot;:
                <valueString value="define &quot;SDE Encounter&quot;: 
   &quot;Encounters&quot; Encounters
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.EncounterResource(Encounters)"></valueString>
+  return SharedResource.EncounterResource(Encounters,
+  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter')"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="4"></valueInteger>
@@ -185,7 +186,8 @@ define &quot;Qualifying Location During Measurement Period&quot;:
                <valueString value="define &quot;SDE Medication Request&quot;:
   [MedicationRequest] MedicationRequests 
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.MedicationRequestResource(MedicationRequests)"></valueString>
+  return SharedResource.MedicationRequestResource(MedicationRequests,
+  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest')"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="5"></valueInteger>
@@ -202,7 +204,8 @@ define &quot;Qualifying Location During Measurement Period&quot;:
                <valueString value="define &quot;SDE Coverage&quot;: 
 	[Coverage] Coverages
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.CoverageResource(Coverages)"></valueString>
+  return SharedResource.CoverageResource(Coverages,
+  'http://hl7.org/fhir/StructureDefinition/coverage')"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="6"></valueInteger>
@@ -219,7 +222,8 @@ define &quot;Qualifying Location During Measurement Period&quot;:
                <valueString value="define &quot;SDE Procedure&quot;:
   [Procedure] Procedures 
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.ProcedureResource(Procedures)"></valueString>
+  return SharedResource.ProcedureResource(Procedures,
+  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure')"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="7"></valueInteger>
@@ -236,7 +240,8 @@ define &quot;Qualifying Location During Measurement Period&quot;:
                <valueString value="define &quot;SDE Device&quot;:
   [Device] Devices 
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.DeviceResource(Devices)"></valueString>
+  return SharedResource.DeviceResource(Devices,
+  'http://hl7.org/fhir/StructureDefinition/device')"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="8"></valueInteger>
@@ -253,7 +258,8 @@ define &quot;Qualifying Location During Measurement Period&quot;:
                <valueString value="define &quot;SDE Medication Administration&quot;:
   [MedicationAdministration] MedicationAdministrations 
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.MedicationAdministrationResource(MedicationAdministrations)"></valueString>
+  return SharedResource.MedicationAdministrationResource(MedicationAdministrations,
+  'http://hl7.org/fhir/StructureDefinition/medicationadministration')"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="9"></valueInteger>
@@ -276,7 +282,8 @@ define &quot;Qualifying Location During Measurement Period&quot;:
     or (exists(Observations.category Category where Category ~ &quot;imaging&quot;))
     or (exists(Observations.category Category where Category ~ &quot;procedure&quot;)))
     and exists(&quot;Initial Population&quot;)
-  return SharedResource.ObservationResource(Observations)"></valueString>
+  return SharedResource.ObservationResource(Observations,
+  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab')"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="10"></valueInteger>
@@ -292,7 +299,8 @@ define &quot;Qualifying Location During Measurement Period&quot;:
             <extension url="statement">
                <valueString value="define &quot;SDE Initial Population Encounters&quot;:
   &quot;Initial Population&quot; IP
-  return SharedResource.EncounterResource(IP)"></valueString>
+  return SharedResource.EncounterResource(IP,
+  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter')"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="11"></valueInteger>
@@ -312,7 +320,8 @@ define &quot;Qualifying Location During Measurement Period&quot;:
 define &quot;SDE Condition&quot;:
   [Condition] Conditions 
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.ConditionResource(Conditions)"></valueString>
+  return SharedResource.ConditionResource(Conditions,
+  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition')"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="12"></valueInteger>
@@ -329,7 +338,8 @@ define &quot;SDE Condition&quot;:
                <valueString value="define &quot;SDE Location&quot;:
   [Location] Locations
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.LocationResource(Locations)"></valueString>
+  return SharedResource.LocationResource(Locations,
+  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-location')"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="13"></valueInteger>
@@ -346,7 +356,8 @@ define &quot;SDE Condition&quot;:
                <valueString value="define &quot;SDE DiagnosticReport&quot;:
   [DiagnosticReport] DiagnosticReports
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.DiagnosticReportResource(DiagnosticReports)"></valueString>
+  return SharedResource.DiagnosticReportResource(DiagnosticReports,
+  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab')"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="14"></valueInteger>
@@ -362,7 +373,8 @@ define &quot;SDE Condition&quot;:
             <extension url="statement">
                <valueString value="define &quot;SDE Minimal Patient&quot;:
   Patient p
-  return SharedResource.PatientResource(p)"></valueString>
+  return SharedResource.PatientResource(p,
+  'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/cross-measure-patient')"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="15"></valueInteger>
@@ -379,7 +391,8 @@ define &quot;SDE Condition&quot;:
                <valueString value="define &quot;SDE Medication&quot;:
   [Medication] Medication
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.MedicationResource(Medication)"></valueString>
+  return SharedResource.MedicationResource(Medication,
+  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication')"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="16"></valueInteger>
@@ -396,7 +409,8 @@ define &quot;SDE Condition&quot;:
                <valueString value="define &quot;SDE Specimen&quot;:
   [Specimen] Specimen
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.SpecimenResource(Specimen)"></valueString>
+  return SharedResource.SpecimenResource(Specimen,
+  'http://hl7.org/fhir/StructureDefinition/specimen')"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="17"></valueInteger>
@@ -422,7 +436,7 @@ define &quot;SDE Condition&quot;:
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library SharedResource"></display>
-            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.001"></resource>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.002"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -706,7 +720,7 @@ define &quot;SDE Condition&quot;:
    <name value="NHSNdQMAcuteCareHospitalInitialPopulation"></name>
    <title value="NHSN dQM Acute Care Hospital Initial Population"></title>
    <experimental value="false"></experimental>
-   <date value="2023-08-01T17:52:34-05:00"></date>
+   <date value="2023-08-10T11:35:46-05:00"></date>
    <description value="dQM Measure for Inpatients (Acute) Care setting"></description>
    <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNdQMAcuteCareHospitalInitialPopulation"></library>
    <scoring>
