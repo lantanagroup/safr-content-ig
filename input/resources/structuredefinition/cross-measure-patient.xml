@@ -16,6 +16,10 @@
         <element id="Patient">
             <path value="Patient"/>
         </element>
+        <element id="Patient.id">
+            <path value="Patient.id"/>
+            <min value="1"/>
+        </element>
         <element id="Patient.meta.extension:link-received-date-extension">
             <path value="Patient.meta.extension"/>
             <sliceName value="link-received-date-extension"/>
