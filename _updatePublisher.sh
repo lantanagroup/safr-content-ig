@@ -123,7 +123,8 @@ if [[ $skipPrompts == true ]] || [[ $response =~ ^[yY].*$ ]]; then
   cp /tmp/_genonce.new _genonce.sh
   rm  /tmp/_genonce.new
 
-  curl -L $update_sh_url -o /tmp/_updatePublisher.new
-  cp /tmp/_updatePublisher.new _updatePublisher.sh
-  rm /tmp/_updatePublisher.new
+  # Must be uncommented when HL7 fixes their updatePublisher.sh file
+  #curl -L $update_sh_url -o /tmp/_updatePublisher.new
+  #cp /tmp/_updatePublisher.new _updatePublisher.sh
+  #rm /tmp/_updatePublisher.new
 fi
