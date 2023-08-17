@@ -1,4 +1,4 @@
-library NHSNRespiratoryPathogenSurveillanceInitialPopulation version '0.0.003'
+library NHSNRespiratoryPathogenSurveillanceInitialPopulation version '0.0.004'
 
 using FHIR version '4.0.1'
 
@@ -322,7 +322,7 @@ define "SDE RPS DiagnosticReport Result from Lab":
     {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab'}})
 
 //return the COVID-19 and Influenza DiagnosticReport based on the result pre admission
-define "SDE and Influenza DiagnosticReport Result from Lab":
+define "SDE COVID and Influenza DiagnosticReport Result from Lab":
   "COVID and Influenza DiagnosticReport Result from Lab" Reports
     return SharedResource.DiagnosticReportResource(Reports,
     {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab'}})
