@@ -1,4 +1,4 @@
-library SharedResourceCreation version '0.1.002'
+library SharedResourceCreation version '0.1.003'
 
 using FHIR version '4.0.1'
 
@@ -19,18 +19,22 @@ define function "GetPatientExtensions"(domainResource DomainResource):
     or E.url = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'
   return E
 
-define function "MedicationRequestResource"(medicationRequest MedicationRequest, profileURL String):
+define function "MetaElement"(resource Resource, profileURLs List<FHIR.canonical>):
+  resource r
+  return FHIR.Meta{
+    extension: r.meta.extension,
+    versionId: r.meta.versionId,
+    lastUpdated: r.meta.lastUpdated,
+    profile: profileURLs,
+    security: r.meta.security,
+    tag: r.meta.tag
+  }
+
+define function "MedicationRequestResource"(medicationRequest MedicationRequest, profileURLs List<FHIR.canonical>):
   medicationRequest m
   return MedicationRequest{
     id: FHIR.id {value: 'LCR-' + m.id},
-    meta: FHIR.Meta{
-      extension: m.meta.extension,
-      versionId: m.meta.versionId,
-      lastUpdated: m.meta.lastUpdated,
-      profile: {FHIR.canonical{value: profileURL}},
-      security: m.meta.security,
-      tag: m.meta.tag
-    },
+    meta: MetaElement(medicationRequest, profileURLs),
     extension: m.extension,
     identifier: m.identifier,
     status: m.status,
@@ -66,18 +70,11 @@ define function "MedicationRequestResource"(medicationRequest MedicationRequest,
     eventHistory: m.eventHistory
   }
 
-define function "MedicationAdministrationResource"(medicationAdministration MedicationAdministration, profileURL String):
+define function "MedicationAdministrationResource"(medicationAdministration MedicationAdministration, profileURLs List<FHIR.canonical>):
   medicationAdministration m
   return MedicationAdministration{
     id: FHIR.id {value: 'LCR-' + m.id},
-    meta: FHIR.Meta{
-      extension: m.meta.extension,
-      versionId: m.meta.versionId,
-      lastUpdated: m.meta.lastUpdated,
-      profile: {FHIR.canonical{value: profileURL}},
-      security: m.meta.security,
-      tag: m.meta.tag
-    },
+    meta: MetaElement(m, profileURLs),
     extension: m.extension,
     identifier: m.identifier,
     instantiates: m.instantiates,
@@ -100,18 +97,11 @@ define function "MedicationAdministrationResource"(medicationAdministration Medi
     eventHistory: m.eventHistory
   }
 
-define function "MedicationResource"(medication Medication, profileURL String):
+define function "MedicationResource"(medication Medication, profileURLs List<FHIR.canonical>):
   medication m
   return Medication{
     id: FHIR.id {value: 'LCR-' + m.id},
-    meta: FHIR.Meta{
-      extension: m.meta.extension,
-      versionId: m.meta.versionId,
-      lastUpdated: m.meta.lastUpdated,
-      profile: {FHIR.canonical{value: profileURL}},
-      security: m.meta.security,
-      tag: m.meta.tag
-    },
+    meta: MetaElement(m, profileURLs),
     extension: m.extension,
     identifier: m.identifier,
     code: m.code,
@@ -123,18 +113,11 @@ define function "MedicationResource"(medication Medication, profileURL String):
     batch: m.batch
   }
 
-define function "ConditionResource"(condition Condition, profileURL String):
+define function "ConditionResource"(condition Condition, profileURLs List<FHIR.canonical>):
   condition c
   return Condition{
     id: FHIR.id {value: 'LCR-' + c.id},
-    meta: FHIR.Meta{
-      extension: c.meta.extension,
-      versionId: c.meta.versionId,
-      lastUpdated: c.meta.lastUpdated,
-      profile: {FHIR.canonical{value: profileURL}},
-      security: c.meta.security,
-      tag: c.meta.tag
-    },
+    meta: MetaElement(c, profileURLs),
     extension: c.extension,
     identifier: c.identifier,
     clinicalStatus: c.clinicalStatus,
@@ -155,18 +138,11 @@ define function "ConditionResource"(condition Condition, profileURL String):
     note: c.note
   }
 
-define function "EncounterResource"(encounter Encounter, profileURL String):
+define function "EncounterResource"(encounter Encounter, profileURLs List<FHIR.canonical>):
   encounter e
   return Encounter{
     id: FHIR.id{value: 'LCR-' + e.id},
-    meta: FHIR.Meta{
-      extension: e.meta.extension,
-      versionId: e.meta.versionId,
-      lastUpdated: e.meta.lastUpdated,
-      profile: {FHIR.canonical{value: profileURL}},
-      security: e.meta.security,
-      tag: e.meta.tag
-    },
+    meta: MetaElement(e, profileURLs),
     extension: e.extension,
     identifier: e.identifier,
     status: e.status,
@@ -193,18 +169,11 @@ define function "EncounterResource"(encounter Encounter, profileURL String):
     partOf: e.partOf
   }
 
-define function "PatientResource"(patient Patient, profileURL String):
+define function "PatientResource"(patient Patient, profileURLs List<FHIR.canonical>):
   patient p
   return Patient{
     id: FHIR.id{value: 'LCR-' + p.id},
-    meta: FHIR.Meta{
-      extension: p.meta.extension,
-      versionId: p.meta.versionId,
-      lastUpdated: p.meta.lastUpdated,
-      profile: {FHIR.canonical{value: profileURL}},
-      security: p.meta.security,
-      tag: p.meta.tag
-    },
+    meta: MetaElement(p, profileURLs),
     extension: GetPatientExtensions(p) union GetIdExtensions(p),
     identifier: p.identifier,
     active: p.active,
@@ -219,18 +188,11 @@ define function "PatientResource"(patient Patient, profileURL String):
     link: p.link
   }
 
-define function "ObservationResource"(observation Observation, profileURL String):
+define function "ObservationResource"(observation Observation, profileURLs List<FHIR.canonical>):
   observation o
   return Observation{
     id: FHIR.id {value: 'LCR-' + o.id},
-    meta: FHIR.Meta{
-      extension: o.meta.extension,
-      versionId: o.meta.versionId,
-      lastUpdated: o.meta.lastUpdated,
-      profile: {FHIR.canonical{value: profileURL}},
-      security: o.meta.security,
-      tag: o.meta.tag
-    },
+    meta: MetaElement(o, profileURLs),
     extension: o.extension,
     identifier: o.identifier,
     basedOn: o.basedOn,
@@ -258,18 +220,11 @@ define function "ObservationResource"(observation Observation, profileURL String
     component: o.component
   }
 
-define function "ServiceRequestResource"(serviceRequest ServiceRequest, profileURL String):
+define function "ServiceRequestResource"(serviceRequest ServiceRequest, profileURLs List<FHIR.canonical>):
   serviceRequest sR
   return ServiceRequest{
     id: FHIR.id {value: 'LCR-' + sR.id},
-    meta: FHIR.Meta{
-      extension: sR.meta.extension,
-      versionId: sR.meta.versionId,
-      lastUpdated: sR.meta.lastUpdated,
-      profile: {FHIR.canonical{value: profileURL}},
-      security: sR.meta.security,
-      tag: sR.meta.tag
-    },
+    meta: MetaElement(sR, profileURLs),
     extension: sR.extension,
     identifier: sR.identifier,
     instantiatesCanonical: sR.instantiatesCanonical,
@@ -306,18 +261,11 @@ define function "ServiceRequestResource"(serviceRequest ServiceRequest, profileU
     relevantHistory: sR.relevantHistory
   }
 
-define function "SpecimenResource"(specimen Specimen, profileURL String):
+define function "SpecimenResource"(specimen Specimen, profileURLs List<FHIR.canonical>):
   specimen s
   return Specimen{
     id: FHIR.id {value: 'LCR-' + s.id},
-    meta: FHIR.Meta{
-      extension: s.meta.extension,
-      versionId: s.meta.versionId,
-      lastUpdated: s.meta.lastUpdated,
-      profile: {FHIR.canonical{value: profileURL}},
-      security: s.meta.security,
-      tag: s.meta.tag
-    },
+    meta: MetaElement(s, profileURLs),
     extension: s.extension,
     identifier: s.identifier,
     accessionIdentifier: s.accessionIdentifier,
@@ -334,18 +282,11 @@ define function "SpecimenResource"(specimen Specimen, profileURL String):
     note: s.note
   }
 
-define function "CoverageResource"(coverage Coverage, profileURL String):
+define function "CoverageResource"(coverage Coverage, profileURLs List<FHIR.canonical>):
   coverage c
   return Coverage{
     id: FHIR.id{value: 'LCR-' + c.id},
-    meta: FHIR.Meta{
-      extension: c.meta.extension,
-      versionId: c.meta.versionId,
-      lastUpdated: c.meta.lastUpdated,
-      profile: {FHIR.canonical{value: profileURL}},
-      security: c.meta.security,
-      tag: c.meta.tag
-    },
+    meta: MetaElement(c, profileURLs),
     extension: c.extension,
     identifier: c.identifier,
     status: c.status,
@@ -366,18 +307,11 @@ define function "CoverageResource"(coverage Coverage, profileURL String):
     contract: c.contract
   }
 
-define function "ProcedureResource"(procedure Procedure, profileURL String):
+define function "ProcedureResource"(procedure Procedure, profileURLs List<FHIR.canonical>):
   procedure p
   return Procedure{
     id: FHIR.id {value: 'LCR-' + p.id},
-    meta: FHIR.Meta{
-      extension: p.meta.extension,
-      versionId: p.meta.versionId,
-      lastUpdated: p.meta.lastUpdated,
-      profile: {FHIR.canonical{value: profileURL}},
-      security: p.meta.security,
-      tag: p.meta.tag
-    },
+    meta: MetaElement(p, profileURLs),
     extension: p.extension,
     identifier: p.identifier,
     instantiatesCanonical: p.instantiatesCanonical,
@@ -408,18 +342,11 @@ define function "ProcedureResource"(procedure Procedure, profileURL String):
     usedCode: p.usedCode
   }
 
-define function "LocationResource"(location Location, profileURL String):
+define function "LocationResource"(location Location, profileURLs List<FHIR.canonical>):
   location l
   return Location{
     id: FHIR.id {value: 'LCR-' + l.id},
-    meta: FHIR.Meta{
-      extension: l.meta.extension,
-      versionId: l.meta.versionId,
-      lastUpdated: l.meta.lastUpdated,
-      profile: {FHIR.canonical{value: profileURL}},
-      security: l.meta.security,
-      tag: l.meta.tag
-    },
+    meta: MetaElement(l, profileURLs),
     extension: l.extension,
     identifier: l.identifier,
     status: l.status,
@@ -440,18 +367,11 @@ define function "LocationResource"(location Location, profileURL String):
     endpoint: l.endpoint
   }
 
-define function "DiagnosticReportResource"(diagnosticReport DiagnosticReport, profileURL String):
+define function "DiagnosticReportResource"(diagnosticReport DiagnosticReport, profileURLs List<FHIR.canonical>):
   diagnosticReport d
   return DiagnosticReport{
     id: FHIR.id{value: 'LCR-' + d.id},
-    meta: FHIR.Meta{
-      extension: d.meta.extension,
-      versionId: d.meta.versionId,
-      lastUpdated: d.meta.lastUpdated,
-      profile: {FHIR.canonical{value: profileURL}},
-      security: d.meta.security,
-      tag: d.meta.tag
-    },
+    meta: MetaElement(d, profileURLs),
     extension: d.extension,
     identifier: d.identifier,
     basedOn: d.basedOn,
@@ -473,18 +393,11 @@ define function "DiagnosticReportResource"(diagnosticReport DiagnosticReport, pr
     presentedForm: d.presentedForm
   }
 
-define function "DeviceResource"(device Device, profileURL String):
+define function "DeviceResource"(device Device, profileURLs List<FHIR.canonical>):
   device d
   return Device{
     id: FHIR.id{value: 'LCR-' + d.id},
-    meta: FHIR.Meta{
-      extension: d.meta.extension,
-      versionId: d.meta.versionId,
-      lastUpdated: d.meta.lastUpdated,
-      profile: {FHIR.canonical{value: profileURL}},
-      security: d.meta.security,
-      tag: d.meta.tag
-    },
+    meta: MetaElement(d, profileURLs),
     extension: d.extension,
     identifier: d.identifier,
     definition: d.definition,

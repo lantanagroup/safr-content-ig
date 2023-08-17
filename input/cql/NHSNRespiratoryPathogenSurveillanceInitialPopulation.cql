@@ -1,11 +1,11 @@
-library NHSNRespiratoryPathogenSurveillanceInitialPopulation version '0.0.002'
+library NHSNRespiratoryPathogenSurveillanceInitialPopulation version '0.0.003'
 
 using FHIR version '4.0.1'
 
 include FHIRHelpers version '4.0.1' called FHIRHelpers
 include SupplementalDataElementsFHIR4 version '2.0.000' called SDE
 include MATGlobalCommonFunctionsFHIR4 version '6.1.000' called Global
-include SharedResourceCreation version '0.1.002' called SharedResource
+include SharedResourceCreation version '0.1.003' called SharedResource
 
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode' 
 codesystem "LOINC": 'http://loinc.org' 
@@ -244,94 +244,94 @@ define "SDE Minimal Patient":
   Patient p
   where exists("Initial Population")
   return SharedResource.PatientResource(p, 
-  'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/cross-measure-patient')
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/cross-measure-patient'}})
 
 define "SDE Location":
   [Location] Locations
   where exists("Initial Population")
   return SharedResource.LocationResource(Locations,
-  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-location')
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-location'}})
    
 define "SDE Encounter Discharge Dispositions":
 	"Initial Population" DischargeDispositions 
   where DischargeDispositions.hospitalization.dischargeDisposition in "Discharge Disposition"
   return SharedResource.EncounterResource(DischargeDispositions,
-  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter')
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter'}})
 
 //return the Observation during the Measurement Period
 define "SDE RPSObservation":
   "RPS Observation" Observations
     return SharedResource.ObservationResource(Observations,
-    'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab')
+    {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab'}})
 
 //return the RSV Observation Pre Admission    
 define "SDE RSV PRE Admission Observation":
   "RSV PRE Admission Observation" Observations
     return SharedResource.ObservationResource(Observations, 
-    'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab')
+    {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab'}})
 
 //return the COVID-19 and Influenza Observation Pre Admission
 define "SDE COVID And Influenza PRE Admission Observation":
   "COVID And Influenza PRE Admission Observation" Observations
     return SharedResource.ObservationResource(Observations,
-    'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab')
+    {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab'}})
 
 //return the Specimen related to the Observation during the Measurement Period
 define "SDE RPS Specimen":
   "RPS Observation" ObservationWithSpecimen
     let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
     return SharedResource.SpecimenResource(Specimen,
-    'http://hl7.org/fhir/StructureDefinition/specimen')
+    {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/specimen'}})
 
 //return the Specimen related to the RSV Observation Pre Admission
 define "SDE RSV Specimen":
   "RSV PRE Admission Observation" ObservationWithSpecimen
     let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
     return SharedResource.SpecimenResource(Specimen,
-    'http://hl7.org/fhir/StructureDefinition/specimen')
+    {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/specimen'}})
 
 //return the Specimen related to the COVID-19 And Influenza Observation Pre Admission
 define "SDE COVID And Influenza Specimen":
   "COVID And Influenza PRE Admission Observation" ObservationWithSpecimen
     let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
     return SharedResource.SpecimenResource(Specimen,
-    'http://hl7.org/fhir/StructureDefinition/specimen')
+    {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/specimen'}})
 
 //return the DiagnosticReport during the Measurement Period
 define "SDE RPS DiagnosticReport":
   "RPS DiagnosticReport" Reports
     return SharedResource.DiagnosticReportResource(Reports,
-    'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab')
+    {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab'}})
 
 //return the COVID-19 And Influenza DiagnosticReport pre admission
 define "SDE COVID And Influenza DiagnosticReport":
   "COVID And Influenza DiagnosticReport" Reports
     return SharedResource.DiagnosticReportResource(Reports,
-    'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab')
+    {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab'}})
 
 //return the RSV DiagnosticReport pre admission
 define "SDE RSV DiagnosticReport":
   "RSV DiagnosticReport" Reports
     return SharedResource.DiagnosticReportResource(Reports,
-    'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab')
+    {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab'}})
 
 //return the DiagnosticReport based on the result during the Measurement Period    
 define "SDE RPS DiagnosticReport Result from Lab":
   "RPS DiagnosticReport Result from Lab" Reports
     return SharedResource.DiagnosticReportResource(Reports,
-    'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab')
+    {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab'}})
 
 //return the COVID-19 and Influenza DiagnosticReport based on the result pre admission
 define "SDE and Influenza DiagnosticReport Result from Lab":
   "COVID and Influenza DiagnosticReport Result from Lab" Reports
     return SharedResource.DiagnosticReportResource(Reports,
-    'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab')
+    {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab'}})
 
 //return the RSV DiagnosticReport based on the result pre admission
 define "SDE RSV DiagnosticReport Result from Lab":
   "RSV DiagnosticReport Result from Lab" Reports
     return SharedResource.DiagnosticReportResource(Reports,
-    'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab')
+    {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab'}})
   
 define "SDE RPS ServiceRequest":
   ([ServiceRequest: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] 
@@ -345,14 +345,14 @@ define "SDE RPS ServiceRequest":
       and ServiceRequests.status ~ 'completed'
       and exists("Initial Population")
   return SharedResource.ServiceRequestResource(ServiceRequests,
-  'http://hl7.org/fhir/StructureDefinition/servicerequest')
+  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/servicerequest'}})
 
 define "SDE Isolation Precautions Implemented":
   [Procedure: "Transmission Based Precaution Types"] IsolationPrecautions
     where Global."Normalize Interval"(IsolationPrecautions.performed) during "Measurement Period"
     and exists("Initial Population")
   return SharedResource.ProcedureResource(IsolationPrecautions,
-  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure')
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure'}})
 
 define "SDE Covid or Influenza Medication Administered":
   "MedicationAdministrations" RPSMedAdmin
@@ -380,7 +380,7 @@ define "SDE Covid or Influenza Medication Administered":
       and exists("Initial Population")
       and Global."Normalize Interval"(RPSMedAdmin.effective) during "Measurement Period"
     return SharedResource.MedicationAdministrationResource(RPSMedAdmin,
-    'http://hl7.org/fhir/StructureDefinition/medicationadministration')
+    {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/medicationadministration'}})
 
 define "SDE Covid or Influenza Medication Ordered":
   "MedicationRequests" RPSMedRequest
@@ -407,35 +407,35 @@ define "SDE Covid or Influenza Medication Ordered":
       and exists("Initial Population")
       and Global."Normalize Interval"(RPSMedRequest.authoredOn) during "Measurement Period"
     return SharedResource.MedicationRequestResource(RPSMedRequest,
-    'http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest')
+    {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest'}})
 
 define "SDE Medication":
   ("SDE Covid or Influenza Medication Ordered"
   union "SDE Covid or Influenza Medication Administered") MedReqOrAdmin
   where MedReqOrAdmin.medication is FHIR.Reference
   return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication),
-  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication')
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication'}})
 
 //To catch all isolation precautions
 define "SDE All Observations":
   "Observations" O
   where exists("Initial Population")
   return SharedResource.ObservationResource(O,
-  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab')
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab'}})
 
 //To catch all isolation precautions
 define "SDE All ServiceRequests":
   [ServiceRequest] SR
   where exists("Initial Population")
   return SharedResource.ServiceRequestResource(SR,
-  'http://hl7.org/fhir/StructureDefinition/servicerequest')
+  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/servicerequest'}})
 
 //To catch all isolation precautions
 define "SDE All Procedures":
   [Procedure] P
   where exists("Initial Population")
   return SharedResource.ProcedureResource(P,
-  'http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure')
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure'}})
 
  
 //----------------------------------------------

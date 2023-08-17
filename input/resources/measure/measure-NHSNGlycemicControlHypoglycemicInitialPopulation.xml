@@ -211,7 +211,7 @@ define &quot;SDE Medication Request&quot;:
     and MedicationRequests.authoredOn during &quot;Measurement Period&quot;
   )
   return SharedResource.MedicationRequestResource(MedicationRequests,
-  'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest')"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="7"></valueInteger>
@@ -238,7 +238,7 @@ define &quot;SDE Coverage&quot;:
     )
   )
   return SharedResource.CoverageResource(Coverages,
-  'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-coverage')"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-coverage'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="8"></valueInteger>
@@ -261,7 +261,7 @@ define &quot;SDE Encounter Locations&quot;:
       and InitialPopulationLocation.period during InitialPopulation.period)
   )
   return SharedResource.EncounterResource(InitialPopulation, 
-  'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter')"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="9"></valueInteger>
@@ -298,7 +298,7 @@ define &quot;SDE Condition during Encounter&quot;:
     where category ~ &quot;encounter-diagnosis&quot;
   )
   return SharedResource.ConditionResource(ConditionEncounterDiagnosis,
-  'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition')"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="11"></valueInteger>
@@ -322,7 +322,7 @@ define &quot;SDE Medication Administration&quot;:
     and start of Global.&quot;Normalize Interval&quot;(MedicationAdministrations.effective) during &quot;Measurement Period&quot;
   )
   return SharedResource.MedicationAdministrationResource(MedicationAdministrations, 
-  'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationadministration')"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationadministration'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="12"></valueInteger>
@@ -339,7 +339,7 @@ define &quot;SDE Medication Administration&quot;:
                <valueString value="define &quot;SDE Initial Population Encounters&quot;:
   &quot;Initial Population&quot; IP
   return SharedResource.EncounterResource(IP,
-  'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter')"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="13"></valueInteger>
@@ -382,7 +382,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
       during InitialPopulation.period
   )
   return SharedResource.ObservationResource(Observations, 
-  'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation')"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="15"></valueInteger>
@@ -404,7 +404,7 @@ define &quot;SDE Condition&quot;:
     where Global.&quot;Normalize Interval&quot;(Conditions.onset) overlaps InitialPopulation.period
   )
   return SharedResource.ConditionResource(Conditions,
-  'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition')"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="16"></valueInteger>
@@ -423,7 +423,7 @@ define &quot;SDE Encounter Discharge Dispositions&quot;:
 	&quot;Initial Population&quot; DischargeDispositions 
   where DischargeDispositions.hospitalization.dischargeDisposition in &quot;Discharge Disposition&quot;
   return SharedResource.EncounterResource(DischargeDispositions, 
-  'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter')"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="17"></valueInteger>
@@ -445,7 +445,7 @@ define &quot;SDE Service Request&quot;:
     where ServiceRequests.authoredOn during InitialPopulation.period
   )
   return SharedResource.ServiceRequestResource(ServiceRequests,
-  'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-servicerequest')"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-servicerequest'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="18"></valueInteger>
@@ -465,7 +465,7 @@ define &quot;SDE Service Request&quot;:
     where types in &quot;Inpatient, Emergency, and Observation Locations&quot;)
   and*/ exists(&quot;Initial Population&quot;)
   return SharedResource.LocationResource(Locations,
-  'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-location')"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-location'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="19"></valueInteger>
@@ -482,7 +482,7 @@ define &quot;SDE Service Request&quot;:
                <valueString value="define &quot;SDE Minimal Patient&quot;:
   Patient p
   return SharedResource.PatientResource(p,
-  'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/cross-measure-patient')"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/cross-measure-patient'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="20"></valueInteger>
@@ -504,7 +504,7 @@ define &quot;SDE Specimen&quot;:
     where Global.&quot;Normalize Interval&quot;(Specimens.collection.collected) during InitialPopulation.period
   )
   return SharedResource.SpecimenResource(Specimens,
-  'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-specimen')"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-specimen'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="21"></valueInteger>
@@ -524,7 +524,7 @@ define &quot;SDE Medication&quot;:
   union &quot;SDE Medication Administration&quot;) MedReqOrAdmin
   where MedReqOrAdmin.medication is FHIR.Reference
   return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication),
-  'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication')"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="22"></valueInteger>
@@ -546,7 +546,7 @@ define &quot;SDE Chief Complaint&quot;:
     where InitialPopulationDiagnosis.use ~ &quot;Chief Complaint&quot;
   )
   return SharedResource.EncounterResource(IP, 
-  'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter')"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="23"></valueInteger>
@@ -572,7 +572,7 @@ define &quot;SDE Chief Complaint&quot;:
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library SharedResource"></display>
-            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.002"></resource>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.003"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -896,7 +896,7 @@ define &quot;SDE Chief Complaint&quot;:
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-08-10T08:35:46-08:00"></date>
+   <date value="2023-08-17T05:16:40-08:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."></description>
    <purpose value="This site allows NHSN to view Measure-specification content in the dQMs under development by Lantana Consulting Group. Note that this site undergoes constant revision and is not intended to serve as an implementation guide."></purpose>
