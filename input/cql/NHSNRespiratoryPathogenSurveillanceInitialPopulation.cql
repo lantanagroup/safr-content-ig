@@ -148,7 +148,7 @@ define "COVID And Influenza PRE Admission Observation":
       and start of E.period during "Measurement Period"
     )  
 
-//further RSV Observation for 8 day lookback
+//further constrain RSV observation for 8 day lookback
 define "RSV PRE Admission Observation":
   "RSV Observation" O 
   where exists(EncounterInpatient E 
@@ -180,7 +180,7 @@ define "RPS DiagnosticReport":
   "COVID And Influenza DiagnosticReport"
     union "RSV DiagnosticReport"
 
-//further constrain COVID-19 and Influenzawith with 14 day lookback 
+//further constrain COVID-19 and Influenza with 14 day lookback 
 define "COVID And Influenza DiagnosticReport PRE Admission":
   "COVID And Influenza DiagnosticReport" R 
   where exists(EncounterInpatient E 
@@ -189,7 +189,7 @@ define "COVID And Influenza DiagnosticReport PRE Admission":
       and start of E.period during "Measurement Period"
     )
 
-//further constrain RSV with 8 days lookback
+//further constrain RSV for 8 day lookback
 define "RSV DiagnosticReport PRE Admission":
   "RSV DiagnosticReport" R 
   where exists(EncounterInpatient E 
