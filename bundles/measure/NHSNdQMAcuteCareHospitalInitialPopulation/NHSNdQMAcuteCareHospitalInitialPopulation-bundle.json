@@ -6,7 +6,7 @@
         "value": "NHSNdQMAcuteCareHospitalInitialPopulation-bundle"
     },
     "type": "transaction",
-    "timestamp": "2023-08-22T12:20:05.051-04:00",
+    "timestamp": "2023-08-22T12:39:31.615-04:00",
     "entry": [
         {
             "resource": {
@@ -1941,7 +1941,7 @@
                 "title": "NHSN dQM Acute Care Hospital Initial Population",
                 "status": "draft",
                 "experimental": false,
-                "date": "2023-08-17T08:16:40-05:00",
+                "date": "2023-08-22T11:36:44-05:00",
                 "description": "dQM Measure for Inpatients (Acute) Care setting",
                 "library": [
                     "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNdQMAcuteCareHospitalInitialPopulation"
@@ -3641,6 +3641,7 @@
                 "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNdQMAcuteCareHospitalInitialPopulation",
                 "version": "0.0.004",
                 "name": "NHSNdQMAcuteCareHospitalInitialPopulation",
+                "status": "draft",
                 "type": {
                     "coding": [
                         {

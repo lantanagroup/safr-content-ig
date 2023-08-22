@@ -4,6 +4,7 @@
   "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNdQMAcuteCareHospitalInitialPopulation",
   "version": "0.0.004",
   "name": "NHSNdQMAcuteCareHospitalInitialPopulation",
+  "status": "draft",
   "type": {
     "coding": [ {
       "system": "http://terminology.hl7.org/CodeSystem/library-type",
