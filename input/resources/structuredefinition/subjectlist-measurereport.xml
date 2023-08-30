@@ -15,6 +15,26 @@
         <element id="MeasureReport">
             <path value="MeasureReport"/>
         </element>
+        <!--
+        <element id="MeasureReport.contained:individual-measure-report-list">
+            <path value="MeasureReport.contained"/>
+            <sliceName value="individual-measure-report-list"/>
+            <short value="Individual Measure Report List: a list of Individual MeasureReports, each associated with a single Summary Measure Report"/>
+            <min value="1"/>
+            <max value="1"/>
+        </element>
+        
+        <element id="MeasureReport.contained:individual-measure-report-list.resource">
+            <path value="MeasureReport.contained"/>
+            <short value="The contained Individual Measure Report List"/>
+            <min value="1"/>
+            <max value="1"/>
+            <type>
+                <code value="List"/>
+                <profile value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list"/>
+            </type>
+        </element>
+        -->
         <element id="MeasureReport.meta.extension:link-received-date-extension">
             <path value="MeasureReport.meta.extension"/>
             <sliceName value="link-received-date-extension"/>
@@ -23,6 +43,30 @@
             <type>
                 <code value="Extension"/>
                 <profile value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-received-date-extension"/>
+            </type>
+        </element>
+        <!-- individual-measure-report-list -->
+        <!-- MEASDEV-655 - Move the subject-list List in to a contained resource of the Subject-list MeasureReport -->
+        <element id="MeasureReport.contained">
+            <path value="MeasureReport.contained"/>
+            <min value="1"/>
+            <slicing>
+                <discriminator>
+                    <type value="profile"/>
+                    <path value="$this"/>
+                </discriminator>
+                <rules value="open"/>
+            </slicing>
+        </element>
+        <element id="MeasureReport.contained:ip-measurereport-list">
+            <path value="MeasureReport.contained"/>
+            <short value="The Individual MeasureReport List pointed to by MeasureReport.group.population.subjectResults"/>
+            <sliceName value="ip-measurereport-list"/>
+            <min value="1"/>
+            <max value="1"/>
+            <type>
+                <code value="Resource"/>
+                <profile value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list"/>
             </type>
         </element>
         <element id="MeasureReport.type">

@@ -123,6 +123,7 @@
             </type>
         </element>
         <!-- individual-measure-report-list -->
+        <!-- MEASDEV-655 - Move the subject-list List in to a contained resource of the Subject-list MeasureReport
         <element id="Bundle.entry:individual-measure-report-list">
             <path value="Bundle.entry"/>
             <sliceName value="individual-measure-report-list"/>
@@ -137,6 +138,7 @@
                 <profile value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list"/>
             </type>
         </element>
+        -->
         <!-- indv MRs -->
         <element id="Bundle.entry:individual-measurereport">
             <path value="Bundle.entry"/>
