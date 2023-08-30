@@ -132,6 +132,31 @@
             "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/subjectlist-measurereport"
           ]
         },
+        "contained": [
+          {
+            "resourceType": "List",
+            "meta": {
+              "profile": [
+                "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list"
+              ]
+            },
+            "id": "788ca455-e11b1a59-9876",
+            "status": "current",
+            "mode": "snapshot",
+            "entry": [
+              {
+                "item": {
+                  "reference": "MeasureReport/788ca455-e11b1a59-838c24b5"
+                }
+              },
+              {
+                "item": {
+                  "reference": "MeasureReport/788ca455-e11b1a59-2ad816ff"
+                }
+              }
+            ]
+          }
+        ],
         "status": "complete",
         "type": "subject-list",
         "measure": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation",
@@ -161,32 +186,6 @@
                 }
               }
             ]
-          }
-        ]
-      }
-    },
-    {
-      "fullUrl": "http://nhsnlink.org/fhir/List/788ca455-e11b1a59-9876",
-      "resource": {
-        "resourceType": "List",
-        "meta": {
-          "profile": [
-            "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list"
-          ]
-        },
-        "id": "788ca455-e11b1a59-9876",
-        "status": "current",
-        "mode": "snapshot",
-        "entry": [
-          {
-            "item": {
-              "reference": "MeasureReport/788ca455-e11b1a59-838c24b5"
-            }
-          },
-          {
-            "item": {
-              "reference": "MeasureReport/788ca455-e11b1a59-2ad816ff"
-            }
           }
         ]
       }
