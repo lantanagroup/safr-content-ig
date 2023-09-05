@@ -26,9 +26,6 @@
             </type>
         </element>
         <element id="List.extension:patient-list-applicable-period">
-            <extension url="http://hl7.org/fhir/us/core/StructureDefinition/uscdi-requirement">
-                <valueBoolean value="true"/>
-            </extension>
             <path value="List.extension"/>
             <sliceName value="patient-list-applicable-period"/>
             <short value="The reporting period associated with the census List"/>
