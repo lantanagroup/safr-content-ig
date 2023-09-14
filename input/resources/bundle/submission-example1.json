@@ -182,7 +182,7 @@
                 "id": "measurereport-example-subjectlist1",
                 "status": "complete",
                 "type": "subject-list",
-                "measure": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation|0.3.0",
+                "measure": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation|1.0.0",
                 "period": {
                     "start": "2022-08-01T00:00:00+00:00",
                     "end": "2022-08-31T23:59:59+00:00"
@@ -2013,7 +2013,7 @@
                 ],
                 "status": "complete",
                 "type": "individual",
-                "measure": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation|0.3.0",
+                "measure": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation|1.0.0",
                 "subject": {
                     "reference": "Patient/patient-example-sameresultdiffday"
                 },
@@ -4410,7 +4410,7 @@
                 ],
                 "status": "complete",
                 "type": "individual",
-                "measure": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation|0.3.0",
+                "measure": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation|1.0.0",
                 "subject": {
                     "reference": "Patient/patient-example-hypo"
                 },
