@@ -160,12 +160,6 @@
                         "meta": {
                             "profile": [
                                 "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list"
-                            ],
-                            "extension": [
-                                {
-                                    "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-received-date-extension",
-                                    "valueDateTime": "2023-05-23T06:07:08Z"
-                                }
                             ]
                         },
                         "id": "list-example-individual-measurereport-list",
@@ -212,38 +206,6 @@
                                 }
                             }
                         ]
-                    }
-                ]
-            }
-        },
-        {
-            "fullUrl": "http://nhsnlink.org/fhir/List/list-example-individual-measurereport-list",
-            "resource": {
-                "resourceType": "List",
-                "meta": {
-                    "profile": [
-                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list"
-                    ],
-                    "extension": [
-                        {
-                            "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-received-date-extension",
-                            "valueDateTime": "2023-05-23T06:07:08Z"
-                        }
-                    ]
-                },
-                "id": "list-example-individual-measurereport-list",
-                "status": "current",
-                "mode": "snapshot",
-                "entry": [
-                    {
-                        "item": {
-                            "reference": "MeasureReport/measurereport-example-individual-measurereport-sameresultdiffday"
-                        }
-                    },
-                    {
-                        "item": {
-                            "reference": "MeasureReport/measurereport-example-individual-measurereport-hypo"
-                        }
                     }
                 ]
             }
@@ -532,8 +494,7 @@
                                 "doseQuantity": {
                                     "value": 1,
                                     "unit": "tablet",
-                                    "system": "http://unitsofmeasure.org",
-                                    "code": "{tbl}"
+                                    "system": "http://unitsofmeasure.org"
                                 }
                             },
                             {
@@ -1617,8 +1578,7 @@
                                 "doseQuantity": {
                                     "value": 1,
                                     "unit": "tablet",
-                                    "system": "http://unitsofmeasure.org",
-                                    "code": "{tbl}"
+                                    "system": "http://unitsofmeasure.org"
                                 }
                             },
                             {

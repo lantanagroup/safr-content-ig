@@ -11,6 +11,31 @@
             }
         ]
     },
+    "contained": [
+        {
+            "resourceType": "List",
+            "meta": {
+                "profile": [
+                    "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list"
+                ]
+            },
+            "id": "list-example-individual-measurereport-list",
+            "status": "current",
+            "mode": "snapshot",
+            "entry": [
+                {
+                    "item": {
+                        "reference": "MeasureReport/measurereport-example-individual-measurereport-sameresultdiffday"
+                    }
+                },
+                {
+                    "item": {
+                        "reference": "MeasureReport/measurereport-example-individual-measurereport-hypo"
+                    }
+                }
+            ]
+        }
+    ],
     "id": "measurereport-example-subjectlist1",
     "status": "complete",
     "type": "subject-list",
@@ -34,7 +59,7 @@
                     },
                     "count": 2,
                     "subjectResults": {
-                        "reference": "List/list-example-individual-measurereport-list"
+                        "reference": "#list-example-individual-measurereport-list"
                     }
                 }
             ]

@@ -872,6 +872,11 @@
                 <generation value="html"/>
             </page>
             <page>
+                <nameUrl value="ImplementationGuide-gov.cdc.nhsn.measures.html"/>
+                <title value="NHSN Implementation Guide Resource"/>
+                <generation value="markdown"/>
+            </page>
+            <page>
                 <nameUrl value="license.html"/>
                 <title value="License"/>
                 <generation value="markdown"/>
