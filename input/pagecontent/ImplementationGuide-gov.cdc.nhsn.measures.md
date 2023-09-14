@@ -1,7 +1,7 @@
 
 |||
 |---|---|
-|*Official URL*: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ImplementationGuide/gov.cdc.nhsn.measures|*Version*: 0.3.0|
+|*Official URL*: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ImplementationGuide/gov.cdc.nhsn.measures|*Version*: 1.0.0|
 |*NPM package name*: gov.cdc.nhsn.measures|*ComputableName*: NHSNMeasures|
 |*Copyright/Legal*: [License](license.html)|
 {:.grid}
