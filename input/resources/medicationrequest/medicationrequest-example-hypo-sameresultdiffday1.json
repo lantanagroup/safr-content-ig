@@ -118,8 +118,7 @@
                     "doseQuantity": {
                         "value": 1,
                         "unit": "tablet",
-                        "system": "http://unitsofmeasure.org",
-                        "code": "{tbl}"
+                        "system": "http://unitsofmeasure.org"
                     }
                 },
                 {
