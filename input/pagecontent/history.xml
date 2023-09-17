@@ -1,0 +1,100 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R5/fhir-single.xsd">
+
+    <strong>Publication (Version) History</strong>
+
+    <div id="intro">
+        <p>This content describes the specifications for the for the Health Level Seven International® (HL7) Fast Healthcare Interoperability Resources® (FHIR) digital quality measures (dQMs) reported to the National Healthcare Safety Network (NHSN).</p>
+    </div>
+    <div id="history-data">
+        <p>The following versions have been published:</p>
+        <table class="history-grid">
+            <thead>
+                <tr style="background-color: #efefef">
+                    <th width="100px">Date</th>
+                    <th width="100px">IG Version</th>
+                    <th width="100px">FHIR Version</th>
+                    <th>Description</th>
+                    <th>Links</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background-color: #f9f9f9">
+                    <td colspan="5">
+                        <b>Current Versions</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="http://www.cdc.gov/nhsn/fhirportal/dqm/ig">2023-09-14</a>
+                    </td>
+                    <td>1.0.0</td>
+                    <td>
+                        <a href="https://hl7.org/fhir/R4">4.0.1</a>
+                    </td>
+                    <td>CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) - Version 1.0.0</td>
+                    <td>
+                        <a title="Home Page" href="http://www.cdc.gov/nhsn/fhirportal/dqm/ig">
+                            <img src="https://hl7.org/fhir/assets/images/page.png"/></a> <a title="Download" href="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/full-ig.zip">
+                            <img src="https://hl7.org/fhir/assets/images/download.gif"/></a> <a title="QA Page" href="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/qa.html">
+                            <img src="https://hl7.org/fhir/assets/images/qa.png"/></a>  <a title="NPM Package" href="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/package.tgz">
+                            <img src="https://hl7.org/fhir/assets/images/npm.png"/></a> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://measures.nhsnlink.org/">1.0.0 (staged)</a>
+                    </td>
+                    <td>(last commit)</td>
+                    <td>
+                        <a href="https://hl7.org/fhir/R4">4.0.1</a>
+                    </td>
+                    <td>CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) - Version 1.0.0 - Staged</td>
+                    <td>
+                        <a title="Home Page" href="https://measures.nhsnlink.org">
+                            <img src="https://hl7.org/fhir/assets/images/page.png"/></a> <a title="Download" href="https://measures.nhsnlink.org/full-ig.zip">
+                            <img src="https://hl7.org/fhir/assets/images/download.gif"/></a> <a title="QA Page" href="https://measures.nhsnlink.org/qa.html">
+                            <img src="https://hl7.org/fhir/assets/images/qa.png"/></a>  <a title="NPM Package" href="https://measures.nhsnlink.org/package.tgz">
+                            <img src="https://hl7.org/fhir/assets/images/npm.png"/></a> </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="https://measures-ci.nhsnlink.org/">(current)</a>
+                    </td>
+                    <td>(last commit)</td>
+                    <td>
+                        <a href="https://hl7.org/fhir/R4">4.0.1</a>
+                    </td>
+                    <td>CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) - CI Build</td>
+                    <td>
+                        <a title="Home Page" href="https://measures-ci.nhsnlink.org">
+                            <img src="https://hl7.org/fhir/assets/images/page.png"/></a> <a title="Download" href="https://measures-ci.nhsnlink.org/full-ig.zip">
+                            <img src="https://hl7.org/fhir/assets/images/download.gif"/></a> <a title="QA Page" href="https://measures-ci.nhsnlink.org/qa.html">
+                            <img src="https://hl7.org/fhir/assets/images/qa.png"/></a>  <a title="NPM Package" href="https://measures-ci.nhsnlink.org/package.tgz">
+                            <img src="https://hl7.org/fhir/assets/images/npm.png"/></a> </td>
+                </tr>
+                <tr style="background-color: #f9f9f9">
+                    <td colspan="5">
+                        <b>Version 1 Sequence</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="http://www.cdc.gov/nhsn/fhirportal/dqm/ig">2023-09-14</a>
+                    </td>
+                    <td>1.0.0</td>
+                    <td>
+                        <a href="https://hl7.org/fhir/R4">4.0.1</a>
+                    </td>
+                    <td>CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) - Version 1.0.0
+                    </td>
+                    <td>
+                        <a title="Home Page" href="http://www.cdc.gov/nhsn/fhirportal/dqm/ig">
+                            <img src="https://hl7.org/fhir/assets/images/page.png"/></a> <a title="Download" href="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/full-ig.zip">
+                            <img src="https://hl7.org/fhir/assets/images/download.gif"/></a> <a title="QA Page" href="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/qa.html">
+                            <img src="https://hl7.org/fhir/assets/images/qa.png"/></a>  <a title="NPM Package" href="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/package.tgz">
+                            <img src="https://hl7.org/fhir/assets/images/npm.png"/></a> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
