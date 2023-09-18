@@ -15,3 +15,8 @@ ERROR: MeasureReport/measurereport-example-individual-measurereport-sameresultdi
 # These Extensions are purposefully meant to be used anywhere
 WARNING: StructureDefinition/link-original-element-value-extension: StructureDefinition.context[0]: Review the extension type: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 WARNING: StructureDefinition/link-original-mapped-concept-extension: StructureDefinition.context[0]: Review the extension type: extensions should not have a context of Element unless it's really intended that they can be used anywhere
+
+
+
+
+

@@ -1,0 +1,561 @@
+canonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig
+fhirVersion: 4.0.1
+
+applyExtensionMetadataToRoot: false
+id: gov.cdc.nhsn.measures
+packageId: gov.cdc.nhsn.measures
+title: CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM)
+name: NHSNMeasures
+status: active
+date: 2023-09-14
+copyrightYear: 2023+
+version: 1.0.0-cibuild
+releaseLabel: Continuous Integration
+jurisdiction: urn:iso:std:iso:3166#US
+extension:
+  - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
+    valueCode: trial-use
+  - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm
+    valueInteger: 1
+publisher:
+  name: CDC National Healthcare Safety Network (NHSN)
+  url: http://www.cdc.gov/nhsn
+  email: nhsn@cdc.gov
+
+
+dependencies:
+  hl7.fhir.us.core: 3.1.1
+  fhir.cqf.common:
+    version: 4.0.1
+    uri: http://fhir.org/guides/cqf/common/ImplementationGuide/cqf.fhir.common
+    id: cqf
+  hl7.fhir.us.cqfmeasures: 3.0.0
+  hl7.fhir.us.davinci-deqm: 3.1.0
+  hl7.fhir.us.qicore: 4.1.1
+
+description: "This content describes the specifications for the for the Health Level Seven International® (HL7) Fast Healthcare Interoperability Resources® (FHIR) digital quality measures (dQMs) reported to the National Healthcare Safety Network (NHSN)."
+parameters:
+#  path-expansion-params: "../../input/terminology-settings.xml"
+  apply-jurisdiction: true
+  apply-publisher: true
+  path-liquid: liquid
+  excludettl: 'true'
+  excludemap: 'true'
+
+  default-contact: true
+  default-publisher: true
+  #default-jurisdiction: true
+  default-copyright: true
+  
+  special-url-base: 
+    - http://hl7.org/fhir/5.0
+    - http://hl7.org/fhir/us/davinci-deqm
+
+  special-url:
+    - http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference
+    - http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.population.description
+
+
+menu:
+  IG Home: index.html
+  Table of Contents: toc.html
+  Artifact Index: artifacts.html
+  Support:
+    FHIR Spec: http://hl7.org/fhir/R4/index.html
+    CQL Spec: http://cql.hl7.org/index.html
+    FHIR Clinical Guidelines: http://hl7.org/fhir/uv/cpg
+    Must Support: must_support.html
+    Downloads: downloads.html
+    License: license.html
+
+pages:
+  index.xml:
+    title: NHSN Measures Home
+  must_support.xml:
+    title: Must Support
+  downloads.xml:
+    title: Useful Downloads
+  license.md:
+    title: License
+  ImplementationGuide-gov.cdc.nhsn.measures.md:
+    title: NHSN Implementation Guide Resource
+  changes.xml:
+    title: IG Change History 
+  history.xml:
+    title: IG Version History Directory
+
+
+groups:
+  submission:
+    name: Current NHSN Report Submission
+    description: "Note: By default, a modifier extension may not be included in Report Submission Bundle data to NHSN until NHSN accepts the said extension's meaning is accepted by NHSN. See [Modifier Extensions](https://build.fhir.org/extensibility.html#modifierExtension) for additional information."
+    resources:
+      - StructureDefinition/nhsn-measurereport-bundle
+      - StructureDefinition/subjectlist-measurereport
+      - StructureDefinition/ip-measurereport-list
+      - StructureDefinition/poi-list
+
+  cross-measure:
+    name: Cross-Measure profiles
+    resources:
+      - StructureDefinition/cross-measure-patient
+      - StructureDefinition/nhsn-submitting-organization
+      - StructureDefinition/nhsn-submitting-device
+      
+  hypo:
+    name: Hypoglycemic Reporting profiles
+    resources:
+      - StructureDefinition/hypoglycemic-reporting-condition
+      - StructureDefinition/hypoglycemic-reporting-coverage
+      - StructureDefinition/hypoglycemic-reporting-encounter
+      - StructureDefinition/hypoglycemic-reporting-lab-observation
+      - StructureDefinition/hypoglycemic-reporting-location
+      - StructureDefinition/hypoglycemic-reporting-medication
+      - StructureDefinition/hypoglycemic-reporting-medicationadministration
+      - StructureDefinition/hypoglycemic-reporting-medicationrequest
+      - StructureDefinition/hypoglycemic-reporting-servicerequest
+      - StructureDefinition/hypoglycemic-reporting-specimen      
+
+  measures:
+    name: "Knowledge Artifacts: Measure"
+    resources:
+      - Measure/NHSNGlycemicControlHypoglycemicInitialPopulation
+      - Measure/NHSNdQMAcuteCareHospitalInitialPopulation
+      - Measure/NHSNRespiratoryPathogenSurveillanceInitialPopulation
+
+  libs:
+    name: "Knowledge Artifacts: Libraries"
+    resources:
+      - Library/SharedResourceCreation
+      - Library/NHSNGlycemicControlHypoglycemicInitialPopulation
+      - Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation
+      - Library/NHSNdQMAcuteCareHospitalInitialPopulation
+
+  ext-libs:
+    name: "Knowledge Artifacts: External Libraries"
+    resources:
+      - Library/FHIRCommon
+      - Library/FHIRHelpers
+      - Library/MATGlobalCommonFunctionsFHIR4
+      - Library/SupplementalDataElementsFHIR4
+    
+  extensions:
+    name: Extensions
+    resources:
+     - StructureDefinition/link-received-date-extension
+     - StructureDefinition/link-patient-list-applicable-period-extension
+     - StructureDefinition/link-original-resource-id-extension
+     - StructureDefinition/link-original-element-value-extension
+     - StructureDefinition/link-original-mapped-concept-extension
+     #- StructureDefinition/extension-MeasureReport.population.description
+     #- StructureDefinition/extension-MeasureReport.supplementalDataElement.reference
+     #- StructureDefinition/extension-criteriaReference
+
+  examples:
+    name: "Knowledge Artifacts: Examples"
+    resources:
+      - Device/cqf-tooling
+      - Bundle/submission-example1
+      - Organization/organization-example-submitting-organization
+      - Device/device-example-submitting-device
+      - List/list-example-patients-of-interest
+
+      - MeasureReport/measurereport-example-subjectlist1
+      - List/list-example-individual-measurereport-list
+
+
+      - MeasureReport/measurereport-example-individual-measurereport-sameresultdiffday
+      - MeasureReport/measurereport-example-individual-measurereport-hypo
+
+
+      - Patient/patient-example-sameresultdiffday
+      - Patient/patient-example-hypo
+
+      - Encounter/encounter-example-hypo-sameresultdiffday
+      - Encounter/encounter-example-hypo-hypo
+
+      - Location/location-example-hypo-encounter-location-sameresultdiffday
+
+      - Coverage/coverage-example-sameresultdiffday
+
+      - Condition/condition-example-diagnosis-sameresultdiffday1
+      - Condition/condition-example-diagnosis-sameresultdiffday2
+
+      - Condition/condition-example-diagnosis-hypo1
+      - Condition/condition-example-diagnosis-hypo2
+
+      - Observation/observation-example-hypo-lab-sameresultdiffday1
+      - Observation/observation-example-hypo-lab-sameresultdiffday2
+      - Observation/observation-example-hypo-lab-sameresultdiffday3
+      - Observation/observation-example-hypo-lab-sameresultdiffday4
+      - Observation/observation-example-hypo-lab-sameresultdiffday5
+      - Observation/observation-example-hypo-lab-sameresultdiffday6
+      - Observation/observation-example-hypo-lab-sameresultdiffday7
+      - Observation/observation-example-hypo-lab-hypo1
+      - Observation/observation-example-hypo-lab-hypo2
+      - Observation/observation-example-hypo-lab-hypo3
+      - Observation/observation-example-hypo-lab-hypo4
+      - Observation/observation-example-hypo-lab-hypo5
+      - Observation/observation-example-hypo-lab-hypo6
+      - Observation/observation-example-hypo-lab-hypo7
+      - Observation/observation-example-hypo-lab-hypo8
+
+
+      - MedicationRequest/medicationrequest-example-hypo-sameresultdiffday1
+      - MedicationRequest/medicationrequest-example-hypo-sameresultdiffday2
+      - MedicationRequest/medicationrequest-example-hypo-hypo1
+      - MedicationRequest/medicationrequest-example-hypo-hypo2
+      - MedicationRequest/medicationrequest-example-hypo-hypo3
+      - MedicationRequest/medicationrequest-example-hypo-hypo4
+
+      - MedicationAdministration/medicationadministration-example-hypo-hypo1
+
+      - Medication/medication-example-hypo-sameresultdiffday1
+      - Medication/medication-example-hypo-sameresultdiffday2
+      - Medication/medication-example-hypo-hypo1
+      - Medication/medication-example-hypo-hypo2
+      - Medication/medication-example-hypo-hypo3
+      - Medication/medication-example-hypo-hypo4
+
+      - ServiceRequest/servicerequest-example-hypo-sameresultdiffday1
+
+      - Specimen/specimen-example-hypo-sameresultdiffday1
+
+
+resources:
+   StructureDefinition/extension-MeasureReport.population.description:
+     name: Measure Report Population Description (R5 surrogate extension)
+     description: Measure Report Population Description - This extension is not defined by this IG. CQF Tooling uses this extension, but the extension is yet unpublished.
+     #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
+   
+   StructureDefinition/extension-MeasureReport.supplementalDataElement.reference:
+     name: Measure Report Supplemental Data Element Reference (R5 surrogate extension)
+     description: Measure Report Supplemental Data Element Reference - This extension is not defined by this IG.  CQF Tooling uses this extension, but the extension is yet unpublished.
+     #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
+   
+   StructureDefinition/extension-criteriaReference:
+     name: Measure Report Criteria Reference (R5 surrogate extension)
+     description: Measure Report Criteria Reference - This extension is not defined by this IG.  CQF Tooling uses this extension, but the extension is yet unpublished.
+     #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
+
+   Measure/NHSNGlycemicControlHypoglycemicInitialPopulation:
+     name: NHSN Glycemic Control, Hypoglycemia Initial Population
+     description: The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter.
+     #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
+   
+   Measure/NHSNdQMAcuteCareHospitalInitialPopulation:
+     name: NHSN dQM Acute Care Hospital Initial Population
+     description: dQM Measure for Inpatients (Acute) Care setting
+     #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
+   
+   Measure/NHSNRespiratoryPathogenSurveillanceInitialPopulation:
+     name: NHSN Respiratory Pathogen Surveillance Initial Population
+     description: dQM Measure for Respiratory Pathogen Surveillance
+     #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
+   
+   Library/SharedResourceCreation:
+     name: SharedResourceCreation
+     description: Shared Resource Creation Library
+     #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
+   
+   Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
+     name: NHSNGlycemicControlHypoglycemicInitialPopulation
+     description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
+     #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
+   
+   Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation:
+     name: NHSNRespiratoryPathogenSurveillanceInitialPopulation
+     description: Library of NHSN Respiratory Pathogen Surveillance Initial Population Measure
+     #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
+   
+   Library/NHSNdQMAcuteCareHospitalInitialPopulation:
+     name: NHSNdQMAcuteCareHospitalInitialPopulation
+     description: Library of NHSN dQM Acute Care Hospital Initial Population Measure
+     #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
+   
+   
+   
+   Library/FHIRCommon:
+     name: FHIR Common
+     description: This library defines terminologies and functions commonly used in FHIR-based CQL artifacts.
+     #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
+   
+   Library/FHIRHelpers:
+     name: FHIR Helpers
+     description: "This library defines functions to convert between FHIR data types and CQL system-defined types, as well as functions to support FHIRPath implementation. For more information, the FHIRHelpers wiki page: https://github.com/cqframework/clinical_quality_language/wiki/FHIRHelpers"
+     #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
+   
+   Library/MATGlobalCommonFunctionsFHIR4:
+     name: MAT Global Common Functions FHIR
+     description: Measure Authoring Tool (MAT) Global Common Functions FHIR.
+     #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
+   
+   Library/SupplementalDataElementsFHIR4:
+     name: Supplemental Data Elements FHIR
+     description: This measure illustrates using supplemental data elements to gather additional information about a population.
+     #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
+   
+   
+   
+   Device/cqf-tooling:
+     name: cqf-tooling
+     description: Device - Software System Example
+     #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
+   
+   Bundle/submission-example1:
+     name: Submission Example 1
+     description: Measure Bundle - Submission Example 1
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-measurereport-bundle
+   
+   Organization/organization-example-submitting-organization:
+     name: Organization - Example Submitting Organization 1
+     description: Organization - Submitting Organization Example 1
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submitting-organization
+   
+   Device/device-example-submitting-device:
+     name: Device - Example Submitting Device 1
+     description: Device - Submitting Device Example 1
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submitting-device
+   
+   List/list-example-patients-of-interest:
+     name: List - Example Patients of Interest List 1
+     description: List - Patients of Interest Example 1
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/poi-list
+   
+   
+   MeasureReport/measurereport-example-subjectlist1:
+     name: MeasureReport - Example Subject List 1
+     description: Measure Report - Subject List Example 1
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/subjectlist-measurereport
+   
+   List/list-example-individual-measurereport-list:
+     name: List - Example Individual Measure Report List 1
+     description: List - Individual Measure Report List Example 1
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list
+   
+   
+   
+   MeasureReport/measurereport-example-individual-measurereport-sameresultdiffday:
+     name: MeasureReport - Example Individual Measure Report Sameresultdiffday
+     description: Measure Report - Individual Measure Report Example Sameresultdiffday
+     exampleCanonical: http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm
+   
+   MeasureReport/measurereport-example-individual-measurereport-hypo:
+     name: MeasureReport - Example Individual Measure Report Hypo
+     description: Measure Report - Individual Measure Report Example Hypo
+     exampleCanonical: http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm
+   
+   
+   
+   Patient/patient-example-sameresultdiffday:
+     name: Patient - Cross-Measure Patient Example SameResultDiffDay
+     description: Patient - Example Measure Patient SameResultDiffDay
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/cross-measure-patient
+   
+   Patient/patient-example-hypo:
+     name: Patient - Cross-Measure Patient Example Hypo
+     description: Patient - Example Measure Patient Hypo
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/cross-measure-patient
+   
+   
+   Encounter/encounter-example-hypo-sameresultdiffday:
+     name: Encounter - Hypo Encounter Example SameResultDiffDay
+     description: Encounter - Example Hypo Encounter SameResultDiffDay
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter
+   
+   Encounter/encounter-example-hypo-hypo:
+     name: Encounter - Hypo Encounter Example Hypo
+     description: Encounter - Example Hypo Encounter Hypo
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter
+   
+   
+   Location/location-example-hypo-encounter-location-sameresultdiffday:
+     name: Location - Hypo Encounter Location Example Sameersultdiffday
+     description: Location - Example Hypo Encounter Location Sameresultdiffday
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-location
+   
+   
+   Coverage/coverage-example-sameresultdiffday:
+     name: Coverage - Coverage Example Sameresultdiffday
+     description: Coverage - Example Coverage Sameresultdiffday
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-coverage
+   
+   
+   Condition/condition-example-diagnosis-sameresultdiffday1:
+     name: Condition - Hypo Diagnosis Example Sameersultdiffday 1
+     description: Condition - Example Hypo Diagnosis Sameresultdiffday 1
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition
+   
+   Condition/condition-example-diagnosis-sameresultdiffday2:
+     name: Condition - Hypo Diagnosis Example Sameersultdiffday 2
+     description: Condition - Example Hypo Diagnosis Sameresultdiffday 2
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition
+   
+   
+   Condition/condition-example-diagnosis-hypo1:
+     name: Condition - Hypo Diagnosis Example Hypo 1
+     description: Condition - Example Hypo Diagnosis Hypo 1
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition
+   
+   Condition/condition-example-diagnosis-hypo2:
+     name: Condition - Hypo Diagnosis Example Hypo 2
+     description: Condition - Example Hypo Diagnosis Hypo 2
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition
+   
+   
+   Observation/observation-example-hypo-lab-sameresultdiffday1:
+     name: Observation - Hypo Lab Example Sameresultdiffday 1
+     description: Condition - Example Hypo Lab Sameresultdiffday 1
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+   
+   Observation/observation-example-hypo-lab-sameresultdiffday2:
+     name: Observation - Hypo Lab Example Sameresultdiffday 2
+     description: Condition - Example Hypo Lab Sameresultdiffday 2
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+   
+   Observation/observation-example-hypo-lab-sameresultdiffday3:
+     name: Observation - Hypo Lab Example Sameresultdiffday 3
+     description: Condition - Example Hypo Lab Sameresultdiffday 3
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+   
+   Observation/observation-example-hypo-lab-sameresultdiffday4:
+     name: Observation - Hypo Lab Example Sameresultdiffday 4
+     description: Condition - Example Hypo Lab Sameresultdiffday 4
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+   
+   Observation/observation-example-hypo-lab-sameresultdiffday5:
+     name: Observation - Hypo Lab Example Sameresultdiffday 5
+     description: Condition - Example Hypo Lab Sameresultdiffday 5
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+   
+   Observation/observation-example-hypo-lab-sameresultdiffday6:
+     name: Observation - Hypo Lab Example Sameresultdiffday 6
+     description: Condition - Example Hypo Lab Sameresultdiffday 6
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+   
+   Observation/observation-example-hypo-lab-sameresultdiffday7:
+     name: Observation - Hypo Lab Example Sameresultdiffday 7
+     description: Condition - Example Hypo Lab Sameresultdiffday 7
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+   
+   Observation/observation-example-hypo-lab-hypo1:
+     name: Observation - Hypo Lab Example Hypo 1
+     description: Condition - Example Hypo Lab Hypo 1
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+   
+   Observation/observation-example-hypo-lab-hypo2:
+     name: Observation - Hypo Lab Example Hypo 2
+     description: Condition - Example Hypo Lab Hypo 2
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+   
+   Observation/observation-example-hypo-lab-hypo3:
+     name: Observation - Hypo Lab Example Hypo 3
+     description: Condition - Example Hypo Lab Hypo 3
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+   
+   Observation/observation-example-hypo-lab-hypo4:
+     name: Observation - Hypo Lab Example Hypo 4
+     description: Condition - Example Hypo Lab Hypo 4
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+   
+   Observation/observation-example-hypo-lab-hypo5:
+     name: Observation - Hypo Lab Example Hypo 5
+     description: Condition - Example Hypo Lab Hypo 5
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+   
+   Observation/observation-example-hypo-lab-hypo6:
+     name: Observation - Hypo Lab Example Hypo 6
+     description: Condition - Example Hypo Lab Hypo 6
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+   
+   Observation/observation-example-hypo-lab-hypo7:
+     name: Observation - Hypo Lab Example Hypo 7
+     description: Condition - Example Hypo Lab Hypo 7
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+   
+   Observation/observation-example-hypo-lab-hypo8:
+     name: Observation - Hypo Lab Example Hypo 8
+     description: Condition - Example Hypo Lab Hypo 8
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+   
+   
+   
+   MedicationRequest/medicationrequest-example-hypo-sameresultdiffday1:
+     name: MedicationRequest - Hypo MedicationRequest Example Sameresultdiffday 1
+     description: MedicationRequest - Example Hypo MedicationRequest Sameresultdiffday 1
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest
+   
+   MedicationRequest/medicationrequest-example-hypo-sameresultdiffday2:
+     name: MedicationRequest - Hypo MedicationRequest Example Sameresultdiffday 2
+     description: MedicationRequest - Example Hypo MedicationRequest Sameresultdiffday 2
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest
+   
+   MedicationRequest/medicationrequest-example-hypo-hypo1:
+     name: MedicationRequest - Hypo MedicationRequest Example Hypo 1
+     description: MedicationRequest - Example Hypo MedicationRequest Hypo 1
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest
+   
+   MedicationRequest/medicationrequest-example-hypo-hypo2:
+     name: MedicationRequest - Hypo MedicationRequest Example Hypo 2
+     description: MedicationRequest - Example Hypo MedicationRequest Hypo 2
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest
+   
+   MedicationRequest/medicationrequest-example-hypo-hypo3:
+     name: MedicationRequest - Hypo MedicationRequest Example Hypo 3
+     description: MedicationRequest - Example Hypo MedicationRequest Hypo 3
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest
+   
+   MedicationRequest/medicationrequest-example-hypo-hypo4:
+     name: MedicationRequest - Hypo MedicationRequest Example Hypo 4
+     description: MedicationRequest - Example Hypo MedicationRequest Hypo 4
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest
+   
+   
+   MedicationAdministration/medicationadministration-example-hypo-hypo1:
+     name: MedicationAdministration - Hypo Medication Administration Example Hypo 1
+     description: MedicationAdministration - Example Hypo Medication Administration Hypo 1
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationadministration
+   
+   
+   Medication/medication-example-hypo-sameresultdiffday1:
+     name: Medication - Hypo Medication Example Sameresultdiffday 1
+     description: Medication - Example Hypo Medication Sameresultdiffday 1
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication
+   
+   Medication/medication-example-hypo-sameresultdiffday2:
+     name: Medication - Hypo Medication Example Sameresultdiffday 2
+     description: Medication - Example Hypo Medication Sameresultdiffday 2
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication
+   
+   Medication/medication-example-hypo-hypo1:
+     name: Medication - Hypo Medication Example Hypo 1
+     description: Medication - Example Hypo Medication Hypo 1
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication
+   
+   Medication/medication-example-hypo-hypo2:
+     name: Medication - Hypo Medication Example Hypo 2
+     description: Medication - Example Hypo Medication Hypo 2
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication
+   
+   Medication/medication-example-hypo-hypo3:
+     name: Medication - Hypo Medication Example Hypo 3
+     description: Medication - Example Hypo Medication Hypo 3
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication
+   
+   Medication/medication-example-hypo-hypo4:
+     name: Medication - Hypo Medication Example Hypo 4
+     description: Medication - Example Hypo Medication Hypo 4
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication
+   
+   
+   ServiceRequest/servicerequest-example-hypo-sameresultdiffday1:
+     name: ServiceRequest - Hypo ServiceRequest Example Sameresultdiffday 1
+     description: ServiceRequest - Example Hypo ServiceRequest Sameresultdiffday 1
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-servicerequest
+   
+   
+   Specimen/specimen-example-hypo-sameresultdiffday1:
+     name: Specimen - Hypo Specimen Example Sameresultdiffday 1
+     description: Specimen - Example Hypo Specimen Sameresultdiffday 1
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-specimen
+    
