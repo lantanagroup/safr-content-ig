@@ -4,6 +4,7 @@
   "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation",
   "version": "0.0.004",
   "name": "NHSNRespiratoryPathogenSurveillanceInitialPopulation",
+  "title": "NHSN Respiratory Pathogen Surveillance Initial Population",
   "status": "draft",
   "type": {
     "coding": [ {

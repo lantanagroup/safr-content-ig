@@ -1,7 +1,7 @@
 Profile: NHSNMeasureReportBundleProfileCurrent
 Parent: Bundle
 Id: nhsn-measurereport-bundle
-Title: "NHSN MeasureReport Bundle Profile (Current)"
+Title: "NHSN MeasureReport Bundle"
 Description: "This profile defines a valid Submission Report Bundle to NHSN. The Bundle is comprised of entry slices representing the data source Organization, a Patients of Interest (POI) List, one Subject List MeasureReport per reportable measure, an Individual MeasureReport List, individual MeasureReports, and the underlying patient-centric clinical information."
 * obeys bundle-no-modifier-extensions and bundle-contain-all-measurereport-references and bundle-all-measurereport-measure-contains-version
 * . ^short = "A Bundle contains a collection of Resources"

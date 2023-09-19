@@ -103,7 +103,7 @@ groups:
       - StructureDefinition/nhsn-submitting-device
       
   hypo:
-    name: Hypoglycemic Reporting profiles
+    name: Hypoglycemic Event Reporting profiles
     resources:
       - StructureDefinition/hypoglycemic-reporting-condition
       - StructureDefinition/hypoglycemic-reporting-coverage
@@ -254,22 +254,22 @@ resources:
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    Library/SharedResourceCreation:
-     name: SharedResourceCreation
+     name: Shared Resource Creation
      description: Shared Resource Creation Library
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
-     name: NHSNGlycemicControlHypoglycemicInitialPopulation
+     name: NHSN Glycemic ControlHypoglycemic Initial Population
      description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation:
-     name: NHSNRespiratoryPathogenSurveillanceInitialPopulation
+     name: NHSN Respiratory Pathogen Surveillance Initial Population
      description: Library of NHSN Respiratory Pathogen Surveillance Initial Population Measure
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    Library/NHSNdQMAcuteCareHospitalInitialPopulation:
-     name: NHSNdQMAcuteCareHospitalInitialPopulation
+     name: NHSN dQM Acute Care Hospital Initial Population
      description: Library of NHSN dQM Acute Care Hospital Initial Population Measure
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    

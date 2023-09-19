@@ -90,7 +90,7 @@
             <name value="Cross-Measure profiles"/>
         </grouping>
         <grouping id="hypo">
-            <name value="Hypoglycemic Reporting profiles"/>
+            <name value="Hypoglycemic Event Reporting profiles"/>
         </grouping>
         <grouping id="measures">
             <name value="Knowledge Artifacts: Measure"/>

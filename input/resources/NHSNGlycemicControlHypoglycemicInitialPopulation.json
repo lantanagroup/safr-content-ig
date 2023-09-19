@@ -8,6 +8,7 @@
   "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNGlycemicControlHypoglycemicInitialPopulation",
   "version": "0.0.015",
   "name": "NHSNGlycemicControlHypoglycemicInitialPopulation",
+  "title": "NHSN Glycemic Control Hypoglycemic Initial Population",
   "status": "draft",
   "type": {
     "coding": [ {
