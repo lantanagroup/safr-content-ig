@@ -521,7 +521,7 @@
                 <reference value="Observation/observation-example-hypo-lab-sameresultdiffday1"/>
             </reference>
             <name value="Observation - Hypo Lab Example Sameresultdiffday 1"/>
-            <description value="Condition - Example Hypo Lab Sameresultdiffday 1"/>
+            <description value="Observation - Example Hypo Lab Sameresultdiffday 1"/>
             <groupingId value="example"/>
         </resource>
         <resource>
@@ -529,7 +529,7 @@
                 <reference value="Observation/observation-example-hypo-lab-sameresultdiffday2"/>
             </reference>
             <name value="Observation - Hypo Lab Example Sameresultdiffday 2"/>
-            <description value="Condition - Example Hypo Lab Sameresultdiffday 2"/>
+            <description value="Observation - Example Hypo Lab Sameresultdiffday 2"/>
             <groupingId value="example"/>
         </resource>
         <resource>
@@ -537,7 +537,7 @@
                 <reference value="Observation/observation-example-hypo-lab-sameresultdiffday3"/>
             </reference>
             <name value="Observation - Hypo Lab Example Sameresultdiffday 3"/>
-            <description value="Condition - Example Hypo Lab Sameresultdiffday 3"/>
+            <description value="Observation - Example Hypo Lab Sameresultdiffday 3"/>
             <groupingId value="example"/>
         </resource>
         <resource>
@@ -545,7 +545,7 @@
                 <reference value="Observation/observation-example-hypo-lab-sameresultdiffday4"/>
             </reference>
             <name value="Observation - Hypo Lab Example Sameresultdiffday 4"/>
-            <description value="Condition - Example Hypo Lab Sameresultdiffday 4"/>
+            <description value="Observation - Example Hypo Lab Sameresultdiffday 4"/>
             <groupingId value="example"/>
         </resource>
         <resource>
@@ -553,7 +553,7 @@
                 <reference value="Observation/observation-example-hypo-lab-sameresultdiffday5"/>
             </reference>
             <name value="Observation - Hypo Lab Example Sameresultdiffday 5"/>
-            <description value="Condition - Example Hypo Lab Sameresultdiffday 5"/>
+            <description value="Observation - Example Hypo Lab Sameresultdiffday 5"/>
             <groupingId value="example"/>
         </resource>
         <resource>
@@ -561,7 +561,7 @@
                 <reference value="Observation/observation-example-hypo-lab-sameresultdiffday6"/>
             </reference>
             <name value="Observation - Hypo Lab Example Sameresultdiffday 6"/>
-            <description value="Condition - Example Hypo Lab Sameresultdiffday 6"/>
+            <description value="Observation - Example Hypo Lab Sameresultdiffday 6"/>
             <groupingId value="example"/>
         </resource>
         <resource>
@@ -569,7 +569,7 @@
                 <reference value="Observation/observation-example-hypo-lab-sameresultdiffday7"/>
             </reference>
             <name value="Observation - Hypo Lab Example Sameresultdiffday 7"/>
-            <description value="Condition - Example Hypo Lab Sameresultdiffday 7"/>
+            <description value="Observation - Example Hypo Lab Sameresultdiffday 7"/>
             <groupingId value="example"/>
         </resource>
         <resource>
@@ -577,7 +577,7 @@
                 <reference value="Observation/observation-example-hypo-lab-hypo1"/>
             </reference>
             <name value="Observation - Hypo Lab Example Hypo 1"/>
-            <description value="Condition - Example Hypo Lab Hypo 1"/>
+            <description value="Observation - Example Hypo Lab Hypo 1"/>
             <groupingId value="example"/>
         </resource>
         <resource>
@@ -585,7 +585,7 @@
                 <reference value="Observation/observation-example-hypo-lab-hypo2"/>
             </reference>
             <name value="Observation - Hypo Lab Example Hypo 2"/>
-            <description value="Condition - Example Hypo Lab Hypo 2"/>
+            <description value="Observation - Example Hypo Lab Hypo 2"/>
             <groupingId value="example"/>
         </resource>
         <resource>
@@ -593,7 +593,7 @@
                 <reference value="Observation/observation-example-hypo-lab-hypo3"/>
             </reference>
             <name value="Observation - Hypo Lab Example Hypo 3"/>
-            <description value="Condition - Example Hypo Lab Hypo 3"/>
+            <description value="Observation - Example Hypo Lab Hypo 3"/>
             <groupingId value="example"/>
         </resource>
         <resource>
@@ -601,7 +601,7 @@
                 <reference value="Observation/observation-example-hypo-lab-hypo4"/>
             </reference>
             <name value="Observation - Hypo Lab Example Hypo 4"/>
-            <description value="Condition - Example Hypo Lab Hypo 4"/>
+            <description value="Observation - Example Hypo Lab Hypo 4"/>
             <groupingId value="example"/>
         </resource>
         <resource>
@@ -609,7 +609,7 @@
                 <reference value="Observation/observation-example-hypo-lab-hypo5"/>
             </reference>
             <name value="Observation - Hypo Lab Example Hypo 5"/>
-            <description value="Condition - Example Hypo Lab Hypo 5"/>
+            <description value="Observation - Example Hypo Lab Hypo 5"/>
             <groupingId value="example"/>
         </resource>
         <resource>
@@ -617,7 +617,7 @@
                 <reference value="Observation/observation-example-hypo-lab-hypo6"/>
             </reference>
             <name value="Observation - Hypo Lab Example Hypo 6"/>
-            <description value="Condition - Example Hypo Lab Hypo 6"/>
+            <description value="Observation - Example Hypo Lab Hypo 6"/>
             <groupingId value="example"/>
         </resource>
         <resource>
@@ -625,7 +625,7 @@
                 <reference value="Observation/observation-example-hypo-lab-hypo7"/>
             </reference>
             <name value="Observation - Hypo Lab Example Hypo 7"/>
-            <description value="Condition - Example Hypo Lab Hypo 7"/>
+            <description value="Observation - Example Hypo Lab Hypo 7"/>
             <groupingId value="example"/>
         </resource>
         <resource>
@@ -633,7 +633,7 @@
                 <reference value="Observation/observation-example-hypo-lab-hypo8"/>
             </reference>
             <name value="Observation - Hypo Lab Example Hypo 8"/>
-            <description value="Condition - Example Hypo Lab Hypo 8"/>
+            <description value="Observation - Example Hypo Lab Hypo 8"/>
             <groupingId value="example"/>
         </resource>
 
