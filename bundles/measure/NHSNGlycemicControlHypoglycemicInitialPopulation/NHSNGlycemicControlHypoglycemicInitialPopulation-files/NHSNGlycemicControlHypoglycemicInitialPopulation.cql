@@ -80,12 +80,6 @@ define "Patient Hospital Locations":
       and EncounterLocation.period during Encounters.period
   )
 
-define "meta":
-  "SDE Initial Population Encounters" Encounter
-  return Tuple{
-    profile: Encounter.meta.profile
-  }
-
 define "Antidiabetic Drugs Administered or Ordered":
   ("MedicationAdministrations" ADDMedAdmin
     where GetMedicationCode(ADDMedAdmin.medication) in "Antidiabetic Medications"
