@@ -5,7 +5,7 @@ FROM lantanagroup/measure-builder AS build
 
 WORKDIR /work
 COPY . .
-RUN npm install fsh-sushi
+RUN npm install -g fsh-sushi
 # Forcing script without prompts
 RUN bash _updatePublisher.sh --yes
 RUN bash _updateCQFTooling.sh --yes
