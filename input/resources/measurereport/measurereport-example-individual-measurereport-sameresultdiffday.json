@@ -205,7 +205,7 @@
     ],
     "status": "complete",
     "type": "individual",
-    "measure": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation|0.3.0",
+    "measure": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation|1.0.0",
     "subject": {
         "reference": "Patient/patient-example-sameresultdiffday"
     },

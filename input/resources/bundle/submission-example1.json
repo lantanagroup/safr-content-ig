@@ -154,16 +154,35 @@
                         }
                     ]
                 },
+                "contained": [
+                    {
+                        "resourceType": "List",
+                        "meta": {
+                            "profile": [
+                                "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list"
+                            ]
+                        },
+                        "id": "list-example-individual-measurereport-list",
+                        "status": "current",
+                        "mode": "snapshot",
+                        "entry": [
+                            {
+                                "item": {
+                                    "reference": "MeasureReport/measurereport-example-individual-measurereport-sameresultdiffday"
+                                }
+                            },
+                            {
+                                "item": {
+                                    "reference": "MeasureReport/measurereport-example-individual-measurereport-hypo"
+                                }
+                            }
+                        ]
+                    }
+                ],
                 "id": "measurereport-example-subjectlist1",
                 "status": "complete",
                 "type": "subject-list",
-                "measure": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation|0.3.0",
-                "subject": {
-                    "identifier": {
-                        "system": "https://test.com",
-                        "value": "lakjsdfljasdf"
-                    }
-                },
+                "measure": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation|1.0.0",
                 "period": {
                     "start": "2022-08-01T00:00:00+00:00",
                     "end": "2022-08-31T23:59:59+00:00"
@@ -183,42 +202,10 @@
                                 },
                                 "count": 2,
                                 "subjectResults": {
-                                    "reference": "List/list-example-individual-measurereport-list"
+                                    "reference": "#list-example-individual-measurereport-list"
                                 }
                             }
                         ]
-                    }
-                ]
-            }
-        },
-        {
-            "fullUrl": "http://nhsnlink.org/fhir/List/list-example-individual-measurereport-list",
-            "resource": {
-                "resourceType": "List",
-                "meta": {
-                    "profile": [
-                        "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list"
-                    ],
-                    "extension": [
-                        {
-                            "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-received-date-extension",
-                            "valueDateTime": "2023-05-23T06:07:08Z"
-                        }
-                    ]
-                },
-                "id": "list-example-individual-measurereport-list",
-                "status": "current",
-                "mode": "snapshot",
-                "entry": [
-                    {
-                        "item": {
-                            "reference": "MeasureReport/measurereport-example-individual-measurereport-sameresultdiffday"
-                        }
-                    },
-                    {
-                        "item": {
-                            "reference": "MeasureReport/measurereport-example-individual-measurereport-hypo"
-                        }
                     }
                 ]
             }
@@ -507,8 +494,7 @@
                                 "doseQuantity": {
                                     "value": 1,
                                     "unit": "tablet",
-                                    "system": "http://unitsofmeasure.org",
-                                    "code": "{tbl}"
+                                    "system": "http://unitsofmeasure.org"
                                 }
                             },
                             {
@@ -1592,8 +1578,7 @@
                                 "doseQuantity": {
                                     "value": 1,
                                     "unit": "tablet",
-                                    "system": "http://unitsofmeasure.org",
-                                    "code": "{tbl}"
+                                    "system": "http://unitsofmeasure.org"
                                 }
                             },
                             {
@@ -2028,7 +2013,7 @@
                 ],
                 "status": "complete",
                 "type": "individual",
-                "measure": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation|0.3.0",
+                "measure": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation|1.0.0",
                 "subject": {
                     "reference": "Patient/patient-example-sameresultdiffday"
                 },
@@ -4425,7 +4410,7 @@
                 ],
                 "status": "complete",
                 "type": "individual",
-                "measure": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation|0.3.0",
+                "measure": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation|1.0.0",
                 "subject": {
                     "reference": "Patient/patient-example-hypo"
                 },

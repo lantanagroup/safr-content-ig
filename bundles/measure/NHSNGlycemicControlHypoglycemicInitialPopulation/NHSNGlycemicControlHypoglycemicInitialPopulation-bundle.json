@@ -1101,7 +1101,7 @@
                         "value": "urn:oid:2.16.840.1.113883.4.642.3.259"
                     }
                 ],
-                "version": "0.3.0",
+                "version": "1.0.0",
                 "name": "DischargeDisposition",
                 "title": "Discharge disposition",
                 "status": "draft",
