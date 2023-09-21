@@ -4,6 +4,100 @@
       <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm"></profile>
       <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm"></profile>
    </meta>
+   <text>
+      <status value="extensions"></status>
+      <div xmlns="http://www.w3.org/1999/xhtml"> 
+         <table class="grid dict"> 
+            <tr> 
+               <th scope="row"> 
+                  <b>Name: </b> 
+               </th> 
+               <td style="padding-left: 4px;">NHSNGlycemicControlHypoglycemicInitialPopulation</td> 
+            </tr> 
+            <tr> 
+               <th scope="row"> 
+                  <b>Title: </b> 
+               </th> 
+               <td style="padding-left: 4px;">NHSN Glycemic Control, Hypoglycemia Initial Population</td> 
+            </tr> 
+            <tr> 
+               <th scope="row"> 
+                  <b>Status: </b> 
+               </th> 
+               <td style="padding-left: 4px;">draft</td> 
+            </tr> 
+            <tr> 
+               <th scope="row"> 
+                  <b>Measure Description: </b> 
+               </th> 
+               <td style="padding-left: 4px;">The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter.</td> 
+            </tr> 
+            <tr> 
+               <th scope="row"> 
+                  <b>Background and Rationale: </b> 
+               </th> 
+               <td style="padding-left: 4px;">The NHSN Glycemic Control Module supports an electronic health record (EHR)- and vendor-neutral standard for reporting patient-level, linked medication and blood-glucose data for inpatients. The NHSN application uses these data to calculate inpatient medication-related hypoglycemia events, which are then returned as reports to the facility. The module’s primary objective is to provide glycemic control measurement to U.S. hospitals to improve glycemic management and patient safety. As NSHN collects additional data, an additional objective will be to establish inter-facility benchmarking of glycemic-control metrics across U.S. hospitals and evaluate national-level trends of glycemic control metrics over time. The IP dQM provides the initial population, FHIR line-level data, and supplement data necessary for calculating the module metrics.</td> 
+            </tr> 
+            <tr> 
+               <th scope="row"> 
+                  <b>Initial Population: </b> 
+               </th> 
+               <td>All inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter.</td> 
+            </tr> 
+            <tr> 
+               <th scope="row"> 
+                  <b>Supplemental Data: </b> 
+               </th> 
+               <td style="padding-left: 4px;"> 
+                  <ul> 
+                     <li>SDE Chief Complaint</li> 
+                     <li>SDE Condition</li> 
+                     <li>SDE Condition during Encounter</li> 
+                     <li>SDE Encounter Discharge Dispositions</li> 
+                     <li>SDE Encounter Locations</li> 
+                     <li>SDE Medication Administration</li> 
+                     <li>SDE Medication Request</li> 
+                     <li>SDE Blood Glucose Observation</li> 
+                     <li>SDE Coverage</li> 
+                     <li>SDE Specimen</li> 
+                     <li>SDE Minimal Patient</li> 
+                     <li>SDE Initial Population Encounters</li> 
+                     <li>SDE Medication</li> 
+                     <li>SDE Service Request</li> 
+                     <li>SDE Location</li> 
+                  </ul> 
+               </td> 
+            </tr> 
+            <tr> 
+               <th scope="row"> 
+                  <b>Copyright: </b> 
+               </th> 
+               <td style="padding-left: 4px;">The Measure specifications contain limited proprietary coding for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.</td> 
+            </tr> 
+            <tr> 
+               <th scope="row"> 
+                  <b>Disclaimer: </b> 
+               </th> 
+               <td style="padding-left: 4px;">This performance measure is not a clinical guideline, does not establish a standard of medical care and has not been tested for all potential applications.  THE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.  This measure and specifications are subject to further revisions.</td> 
+            </tr> 
+            <tr> 
+               <th scope="row"> 
+                  <b>Related Artifacts: </b> 
+               </th> 
+               <td style="padding-left: 4px;"> 
+                  <p> 
+                     <b>Documentation</b> 
+                  </p> 
+                  <ul> 
+                     <li> NHSN Protocol Documentation [Placeholder],  
+                        <a href="https://www.cdc.gov/nhsn/index.html">https://www.cdc.gov/nhsn/index.html</a> 
+                     </li> 
+                  </ul> 
+               </td> 
+            </tr> 
+         </table> 
+      </div>
+   </text>
    <contained>
       <Library xmlns="http://hl7.org/fhir">
          <id value="effective-data-requirements"></id>
@@ -896,7 +990,7 @@ define &quot;SDE Chief Complaint&quot;:
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-08-22T08:39:29-08:00"></date>
+   <date value="2023-09-20T04:55:57-08:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."></description>
    <purpose value="This site allows NHSN to view Measure-specification content in the dQMs under development by Lantana Consulting Group. Note that this site undergoes constant revision and is not intended to serve as an implementation guide."></purpose>

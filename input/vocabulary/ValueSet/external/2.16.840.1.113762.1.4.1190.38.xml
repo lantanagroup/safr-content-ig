@@ -227,7 +227,7 @@
    <status value="active"/>
    <date value="2022-02-10T01:02:28-05:00"/>
    <publisher value="HL7 Terminology"/>
-   <description value="Blood Glucose LOINC Terms for the NHSN ADE – Hypoglycemia Module"/>
+   <description value="Blood Glucose LOINC Terms for the NHSN ADE - Hypoglycemia Module"/>
    <expansion>
       <identifier value="urn:uuid:62c58d8b-7617-482a-96cd-e84fb703d2ed"/>
       <timestamp value="2022-03-09T10:16:01-05:00"/>
