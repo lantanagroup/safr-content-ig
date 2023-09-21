@@ -147,9 +147,14 @@ groups:
      - StructureDefinition/link-original-resource-id-extension
      - StructureDefinition/link-original-element-value-extension
      - StructureDefinition/link-original-mapped-concept-extension
-     #- StructureDefinition/extension-MeasureReport.population.description
-     #- StructureDefinition/extension-MeasureReport.supplementalDataElement.reference
-     #- StructureDefinition/extension-criteriaReference
+     
+  ext-extensions:
+    name: "Extensions: Externally Defined"
+    description: "Extensions are externally defined artifacts that are not yet published."
+    resources:
+     - StructureDefinition/extension-MeasureReport.population.description
+     - StructureDefinition/extension-MeasureReport.supplementalDataElement.reference
+     - StructureDefinition/extension-criteriaReference
 
   examples:
     name: "Knowledge Artifacts: Examples"
