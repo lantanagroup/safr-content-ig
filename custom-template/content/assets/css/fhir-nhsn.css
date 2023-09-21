@@ -99,3 +99,27 @@ active color
 
 h2{color: var(--section-header-text-color);}
 h3, h4, h5, h6{color: var(--subsection-header-text-color);}
+
+
+a.named {
+  color: black;
+  text-decoration: none;
+}
+
+a.named:link {
+  color: black;
+  text-decoration: none;
+}
+
+a.named:visited {
+  color: black;
+  text-decoration: none;
+}
+a.named:hover {
+  color: black;
+  text-decoration: none;
+}
+a.named:active {
+  color: black;
+  text-decoration: none;
+}
