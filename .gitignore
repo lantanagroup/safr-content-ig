@@ -3,6 +3,7 @@
 temp
 template
 output
+fsh-generated
 
 # Don't commit this because it's so large #
 ###########################################
@@ -11,6 +12,9 @@ output
 # Windows generated files #
 ###########################
 Thumbs.db
+
+.index.db
+.index.json
 
 # VS Code generated files
 .vscode
