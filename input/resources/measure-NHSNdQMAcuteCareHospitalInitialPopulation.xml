@@ -935,4 +935,17 @@ define &quot;SDE Condition&quot;:
          <expression value="SDE Initial Population Encounters"></expression>
       </criteria>
    </supplementalData>
+   <supplementalData id="sde-service-request">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE Service Request"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE Service Request"></expression>
+      </criteria>
+   </supplementalData>
 </Measure>

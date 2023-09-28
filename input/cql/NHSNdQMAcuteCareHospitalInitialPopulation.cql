@@ -79,7 +79,8 @@ define "SDE DiagnosticReport":
   [DiagnosticReport] DiagnosticReports
   where exists("Initial Population")
   return SharedResource.DiagnosticReportResource(DiagnosticReports,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab'},
+  FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note'}})
 
 define "SDE Encounter": 
   "Encounters" Encounters
@@ -145,6 +146,12 @@ define "SDE Specimen":
   where exists("Initial Population")
   return SharedResource.SpecimenResource(Specimen,
   {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/specimen'}})
+
+define "SDE Service Request":
+  [ServiceRequest] ServiceRequests
+  where exists("Initial Population")
+  return SharedResource.ServiceRequestResource(ServiceRequests,
+  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/servicerequest'}})
 
 define "SDE Minimal Patient":
   Patient p
