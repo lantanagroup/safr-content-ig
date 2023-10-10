@@ -105,7 +105,7 @@ define "SDE DiagnosticReport All":
   [DiagnosticReport] DiagnosticReports
   where exists("Initial Population")
   return SharedResource.DiagnosticReportResource(DiagnosticReports,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/device'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/diagnosticreport'}})
 
 define "SDE Encounter": 
   "Encounters" Encounters
