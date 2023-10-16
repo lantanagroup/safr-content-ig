@@ -1,4 +1,4 @@
-library SharedResourceCreation version '0.1.003'
+library SharedResourceCreation version '0.1.004'
 
 using FHIR version '4.0.1'
 
