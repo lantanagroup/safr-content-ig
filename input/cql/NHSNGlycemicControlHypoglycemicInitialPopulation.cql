@@ -50,7 +50,7 @@ code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" disp
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 
 parameter "Measurement Period" Interval<DateTime>
- default Interval[@2022-01-01T00:00:00.0, @2022-01-31T23:59:00.0)
+ default Interval[@2023-10-01T00:00:00.0, @2023-10-31T23:59:00.0)
 
 context Patient
 
@@ -59,7 +59,7 @@ context Patient
 //
 define "Initial Population":
   ("Inpatient Encounter"
-  union "Patient Hospital Locations") InpatientEncounters
+  union "Encounters with Patient Hospital Locations") InpatientEncounters
   where InpatientEncounters.status in {'in-progress', 'finished', 'triaged'}
     and InpatientEncounters.period overlaps "Measurement Period"
     and exists( 
@@ -72,7 +72,7 @@ define "Inpatient Encounter":
   [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "short stay"}]
     union [Encounter: "Encounter Inpatient"]
   
-define "Patient Hospital Locations":
+define "Encounters with Patient Hospital Locations":
   [Encounter] Encounters
   where exists(
     Encounters.location EncounterLocation

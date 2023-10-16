@@ -45,22 +45,8 @@
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
             <valueCoding>
                <system value="http://terminology.hl7.org/CodeSystem/observation-category"></system>
-               <code value="laboratory"></code>
-               <display value="Laboratory"></display>
-            </valueCoding>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
-            <valueCoding>
-               <system value="http://terminology.hl7.org/CodeSystem/observation-category"></system>
                <code value="social-history"></code>
                <display value="Social History"></display>
-            </valueCoding>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
-            <valueCoding>
-               <system value="http://terminology.hl7.org/CodeSystem/observation-category"></system>
-               <code value="vital-signs"></code>
-               <display value="Vital Signs"></display>
             </valueCoding>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
@@ -112,7 +98,7 @@
 union   [Encounter: &quot;Emergency Department Visit&quot;]
 union [Encounter: &quot;Observation Services&quot;]
 union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, &quot;inpatient encounter&quot;, &quot;inpatient non-acute&quot;, &quot;short stay&quot;}]) QualifyingEncounters
-  where QualifyingEncounters .status in {'in-progress', 'finished', 'triaged'}
+  where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged'}
     and QualifyingEncounters.period overlaps &quot;Measurement Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -204,8 +190,7 @@ define &quot;Qualifying Location During Measurement Period&quot;:
                <valueString value="define &quot;SDE Coverage&quot;: 
 	[Coverage] Coverages
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.CoverageResource(Coverages,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/coverage'}})"></valueString>
+  return SharedResource.CoverageResourceBaseFHIR(Coverages)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="6"></valueInteger>
@@ -240,8 +225,7 @@ define &quot;Qualifying Location During Measurement Period&quot;:
                <valueString value="define &quot;SDE Device&quot;:
   [Device] Devices 
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.DeviceResource(Devices,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/device'}})"></valueString>
+  return SharedResource.DeviceResourceBaseFHIR(Devices)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="8"></valueInteger>
@@ -258,8 +242,7 @@ define &quot;Qualifying Location During Measurement Period&quot;:
                <valueString value="define &quot;SDE Medication Administration&quot;:
   [MedicationAdministration] MedicationAdministrations 
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.MedicationAdministrationResource(MedicationAdministrations,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/medicationadministration'}})"></valueString>
+  return SharedResource.MedicationAdministrationResourceBaseFHIR(MedicationAdministrations)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="9"></valueInteger>
@@ -273,17 +256,15 @@ define &quot;Qualifying Location During Measurement Period&quot;:
                <valueString value="SDE Observation Category"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Observation Category&quot;:
+               <valueString value="//No individual profiles in USCore 3.1.1 that cover these categories.  Defaulting to base FHIR profile
+define &quot;SDE Observation Category&quot;:
   [Observation] Observations 
-  where ((exists(Observations.category Category where Category ~ &quot;laboratory&quot;))
-    or (exists(Observations.category Category where Category ~ &quot;social-history&quot;))
-    or (exists(Observations.category Category where Category ~ &quot;vital-signs&quot;))
+  where ((exists(Observations.category Category where Category ~ &quot;social-history&quot;))
     or (exists(Observations.category Category where Category ~ &quot;survey&quot;))
     or (exists(Observations.category Category where Category ~ &quot;imaging&quot;))
     or (exists(Observations.category Category where Category ~ &quot;procedure&quot;)))
     and exists(&quot;Initial Population&quot;)
-  return SharedResource.ObservationResource(Observations,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab'}})"></valueString>
+  return SharedResource.ObservationResourceBaseFHIR(Observations)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="10"></valueInteger>
@@ -350,14 +331,13 @@ define &quot;SDE Condition&quot;:
                <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="SDE DiagnosticReport"></valueString>
+               <valueString value="SDE Service Request"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE DiagnosticReport&quot;:
-  [DiagnosticReport] DiagnosticReports
+               <valueString value="define &quot;SDE Service Request&quot;:
+  [ServiceRequest] ServiceRequests
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.DiagnosticReportResource(DiagnosticReports,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab'}})"></valueString>
+  return SharedResource.ServiceRequestResourceBaseFHIR(ServiceRequests)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="14"></valueInteger>
@@ -409,8 +389,7 @@ define &quot;SDE Condition&quot;:
                <valueString value="define &quot;SDE Specimen&quot;:
   [Specimen] Specimen
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.SpecimenResource(Specimen,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/specimen'}})"></valueString>
+  return SharedResource.SpecimenResourceBaseFHIR(Specimen)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="17"></valueInteger>
@@ -553,11 +532,11 @@ define &quot;SDE Condition&quot;:
             <type value="Location"></type>
          </parameter>
          <parameter>
-            <name value="SDE DiagnosticReport"></name>
+            <name value="SDE Service Request"></name>
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
-            <type value="DiagnosticReport"></type>
+            <type value="ServiceRequest"></type>
          </parameter>
          <parameter>
             <name value="SDE Minimal Patient"></name>
@@ -681,8 +660,8 @@ define &quot;SDE Condition&quot;:
             <profile value="http://hl7.org/fhir/StructureDefinition/Condition"></profile>
          </dataRequirement>
          <dataRequirement>
-            <type value="DiagnosticReport"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/DiagnosticReport"></profile>
+            <type value="ServiceRequest"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/ServiceRequest"></profile>
          </dataRequirement>
          <dataRequirement>
             <type value="Patient"></type>
@@ -721,7 +700,7 @@ define &quot;SDE Condition&quot;:
    <title value="NHSN dQM Acute Care Hospital Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-09-20T07:55:57-05:00"></date>
+   <date value="2023-10-16T11:00:47-05:00"></date>
    <description value="dQM Measure for Inpatients (Acute) Care setting"></description>
    <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNdQMAcuteCareHospitalInitialPopulation"></library>
    <scoring>

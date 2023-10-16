@@ -201,8 +201,7 @@ define &quot;Initial Population&quot;:
       and RPSMedAdmin.status ~ 'completed'
       and exists(&quot;Initial Population&quot;)
       and Global.&quot;Normalize Interval&quot;(RPSMedAdmin.effective) during &quot;Measurement Period&quot;
-    return SharedResource.MedicationAdministrationResource(RPSMedAdmin,
-    {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/medicationadministration'}})"></valueString>
+    return SharedResource.MedicationAdministrationResourceBaseFHIR(RPSMedAdmin)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="7"></valueInteger>
@@ -348,8 +347,7 @@ define &quot;RSV PRE Admission Observation&quot;:
 define &quot;SDE RSV Specimen&quot;:
   &quot;RSV PRE Admission Observation&quot; ObservationWithSpecimen
     let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
-    return SharedResource.SpecimenResource(Specimen,
-    {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/specimen'}})"></valueString>
+    return SharedResource.SpecimenResourceBaseFHIR(Specimen)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="15"></valueInteger>
@@ -509,8 +507,7 @@ define &quot;COVID And Influenza PRE Admission Observation&quot;:
 define &quot;SDE COVID And Influenza Specimen&quot;:
   &quot;COVID And Influenza PRE Admission Observation&quot; ObservationWithSpecimen
     let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
-    return SharedResource.SpecimenResource(Specimen,
-    {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/specimen'}})"></valueString>
+    return SharedResource.SpecimenResourceBaseFHIR(Specimen)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="23"></valueInteger>
@@ -544,8 +541,7 @@ define &quot;SDE COVID And Influenza Specimen&quot;:
 define &quot;SDE RPS Specimen&quot;:
   &quot;RPS Observation&quot; ObservationWithSpecimen
     let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
-    return SharedResource.SpecimenResource(Specimen,
-    {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/specimen'}})"></valueString>
+    return SharedResource.SpecimenResourceBaseFHIR(Specimen)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="25"></valueInteger>
@@ -618,8 +614,7 @@ define &quot;SDE RPSObservation&quot;:
 define &quot;SDE All ServiceRequests&quot;:
   [ServiceRequest] SR
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.ServiceRequestResource(SR,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/servicerequest'}})"></valueString>
+  return SharedResource.ServiceRequestResourceBaseFHIR(SR)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="29"></valueInteger>
@@ -702,8 +697,7 @@ define &quot;SDE COVID And Influenza PRE Admission Observation&quot;:
     where ServiceRequests.intent ~ 'order'
       and ServiceRequests.status ~ 'completed'
       and exists(&quot;Initial Population&quot;)
-  return SharedResource.ServiceRequestResource(ServiceRequests,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/servicerequest'}})"></valueString>
+  return SharedResource.ServiceRequestResourceBaseFHIR(ServiceRequests)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="33"></valueInteger>
@@ -1599,7 +1593,7 @@ define &quot;SDE All Observations&quot;:
    <title value="NHSN Respiratory Pathogen Surveillance Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-09-20T07:55:57-05:00"></date>
+   <date value="2023-10-16T11:00:47-05:00"></date>
    <description value="dQM Measure for Respiratory Pathogen Surveillance"></description>
    <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation"></library>
    <scoring>

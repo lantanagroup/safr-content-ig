@@ -1,4 +1,4 @@
-library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.004'
+library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.005'
 
 using FHIR version '4.0.1'
 
@@ -9,11 +9,14 @@ include SharedResourceCreation version '0.1.003' called SharedResource
 
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
 codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category'
+codesystem "LOINC": 'http://loinc.org' 
+codesystem "V2-0074": 'http://terminology.hl7.org/CodeSystem/v2-0074'
 
 valueset "Inpatient, Emergency, and Observation Locations": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
 valueset "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292'
 valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
 valueset "Observation Services": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143'
+
 
 code "emergency": 'EMER' from "ActCode" display 'emergency'
 code "inpatient acute": 'ACUTE' from "ActCode" display 'inpatient acute'
@@ -22,12 +25,19 @@ code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
 code "short stay": 'SS' from "ActCode" display 'short stay'
 
+//code for Observation Category
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 code "social-history": 'social-history' from "Observation Category" display 'Social History'
 code "vital-signs": 'vital-signs' from "Observation Category" display 'Vital Signs'
 code "imaging": 'imaging' from "Observation Category" display 'Imaging'
 code "procedure": 'procedure' from "Observation Category" display 'Procedure'
 code "survey": 'survey' from "Observation Category" display 'Survey'
+
+//code for Diagnositic Report Category
+code "LAB": 'LAB' from "V2-0074" display 'Laboratory'
+code "Radiology": 'LP29684-5' from "LOINC" display 'Radiology'
+code "Pathology": 'LP7839-6' from "LOINC" display 'Pathology'
+code "Cardiology": 'LP29708-2' from "LOINC" display 'Cardiology'
 
 parameter "Measurement Period" 
     default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
@@ -39,7 +49,7 @@ define "Qualifying Encounter During Measurement Period":
 union   [Encounter: "Emergency Department Visit"]
 union [Encounter: "Observation Services"]
 union [Encounter: class in {"emergency", "inpatient acute", "inpatient encounter", "inpatient non-acute", "short stay"}]) QualifyingEncounters
-  where QualifyingEncounters .status in {'in-progress', 'finished', 'triaged'}
+  where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged'}
     and QualifyingEncounters.period overlaps "Measurement Period"
     
     /*((end of QualifyingEncounters.period is not null and QualifyingEncounters.period overlaps "Measurement Period")
@@ -72,14 +82,28 @@ define "SDE Condition":
 define "SDE Device":
   [Device] Devices 
   where exists("Initial Population")
-  return SharedResource.DeviceResource(Devices,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/device'}})
+  return SharedResource.DeviceResourceBaseFHIR(Devices)
 
-define "SDE DiagnosticReport":
+define "SDE DiagnosticReport Lab":
   [DiagnosticReport] DiagnosticReports
-  where exists("Initial Population")
+  where (exists(DiagnosticReports.category Category where Category ~ "LAB")
+    and exists("Initial Population"))
   return SharedResource.DiagnosticReportResource(DiagnosticReports,
   {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab'}})
+ 
+define "SDE DiagnosticReport Note":
+  [DiagnosticReport] DiagnosticReports
+  where ((exists(DiagnosticReports.category Category where Category ~ "Radiology"))
+    or exists((DiagnosticReports.category Category where Category ~ "Pathology"))
+    or exists((DiagnosticReports.category Category where Category ~ "Cardiology")))
+    and exists("Initial Population")
+  return SharedResource.DiagnosticReportResource(DiagnosticReports,
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note'}})
+
+define "SDE DiagnosticReport All":
+  [DiagnosticReport] DiagnosticReports
+  where exists("Initial Population")
+  return SharedResource.DiagnosticReportResourceBaseFHIR(DiagnosticReports)
 
 define "SDE Encounter": 
   "Encounters" Encounters
@@ -101,8 +125,7 @@ define "SDE Location":
 define "SDE Medication Administration":
   [MedicationAdministration] MedicationAdministrations 
   where exists("Initial Population")
-  return SharedResource.MedicationAdministrationResource(MedicationAdministrations,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/medicationadministration'}})
+  return SharedResource.MedicationAdministrationResourceBaseFHIR(MedicationAdministrations)
  
 define "SDE Medication Request":
   [MedicationRequest] MedicationRequests 
@@ -116,23 +139,41 @@ define "SDE Medication":
   return SharedResource.MedicationResource(Medication,
   {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication'}})
 
-define "SDE Observation Category":
+//Us Code 6.1.0 Observation profile, but it does not have profile for procedure
+//http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-social-history
+//http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-survey
+//http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-imaging
+//http://hl7.org/fhir/us/core/StructureDefinition/us-core-vital-signs
+
+
+define "SDE Observation Lab Category":
   [Observation] Observations 
-  where ((exists(Observations.category Category where Category ~ "laboratory"))
-    or (exists(Observations.category Category where Category ~ "social-history"))
-    or (exists(Observations.category Category where Category ~ "vital-signs"))
-    or (exists(Observations.category Category where Category ~ "survey"))
-    or (exists(Observations.category Category where Category ~ "imaging"))
-    or (exists(Observations.category Category where Category ~ "procedure")))
+  where (exists(Observations.category Category where Category ~ "laboratory"))
     and exists("Initial Population")
   return SharedResource.ObservationResource(Observations,
   {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab'}})
 
+define "SDE Observation Vital Signs Category":
+  [Observation] Observations 
+  where (exists(Observations.category Category where Category ~ "vital-signs"))
+    and exists("Initial Population")
+  return SharedResource.ObservationResource(Observations,
+  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/vitalsigns'}})
+
+//No individual profiles in USCore 3.1.1 that cover these categories.  Defaulting to base FHIR profile
+define "SDE Observation Category":
+  [Observation] Observations 
+  where ((exists(Observations.category Category where Category ~ "social-history"))
+    or (exists(Observations.category Category where Category ~ "survey"))
+    or (exists(Observations.category Category where Category ~ "imaging"))
+    or (exists(Observations.category Category where Category ~ "procedure")))
+    and exists("Initial Population")
+  return SharedResource.ObservationResourceBaseFHIR(Observations)
+
 define "SDE Coverage": 
 	[Coverage] Coverages
   where exists("Initial Population")
-  return SharedResource.CoverageResource(Coverages,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/coverage'}})
+  return SharedResource.CoverageResourceBaseFHIR(Coverages)
 
 define "SDE Procedure":
   [Procedure] Procedures 
@@ -143,8 +184,12 @@ define "SDE Procedure":
 define "SDE Specimen":
   [Specimen] Specimen
   where exists("Initial Population")
-  return SharedResource.SpecimenResource(Specimen,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/specimen'}})
+  return SharedResource.SpecimenResourceBaseFHIR(Specimen)
+
+define "SDE Service Request":
+  [ServiceRequest] ServiceRequests
+  where exists("Initial Population")
+  return SharedResource.ServiceRequestResourceBaseFHIR(ServiceRequests)
 
 define "SDE Minimal Patient":
   Patient p

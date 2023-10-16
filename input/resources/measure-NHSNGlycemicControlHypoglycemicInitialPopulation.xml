@@ -102,10 +102,10 @@ define &quot;MedicationRequests&quot;:
                <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="Patient Hospital Locations"></valueString>
+               <valueString value="Encounters with Patient Hospital Locations"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Patient Hospital Locations&quot;:
+               <valueString value="define &quot;Encounters with Patient Hospital Locations&quot;:
   [Encounter] Encounters
   where exists(
     Encounters.location EncounterLocation
@@ -181,7 +181,7 @@ define &quot;MedicationRequests&quot;:
 //
 define &quot;Initial Population&quot;:
   (&quot;Inpatient Encounter&quot;
-  union &quot;Patient Hospital Locations&quot;) InpatientEncounters
+  union &quot;Encounters with Patient Hospital Locations&quot;) InpatientEncounters
   where InpatientEncounters.status in {'in-progress', 'finished', 'triaged'}
     and InpatientEncounters.period overlaps &quot;Measurement Period&quot;
     and exists( 
@@ -896,7 +896,7 @@ define &quot;SDE Chief Complaint&quot;:
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-09-20T04:55:57-08:00"></date>
+   <date value="2023-10-16T08:00:47-08:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."></description>
    <purpose value="This site allows NHSN to view Measure-specification content in the dQMs under development by Lantana Consulting Group. Note that this site undergoes constant revision and is not intended to serve as an implementation guide."></purpose>

@@ -82,8 +82,7 @@ define "SDE Condition":
 define "SDE Device":
   [Device] Devices 
   where exists("Initial Population")
-  return SharedResource.DeviceResource(Devices,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/device'}})
+  return SharedResource.DeviceResourceBaseFHIR(Devices)
 
 define "SDE DiagnosticReport Lab":
   [DiagnosticReport] DiagnosticReports
@@ -104,8 +103,7 @@ define "SDE DiagnosticReport Note":
 define "SDE DiagnosticReport All":
   [DiagnosticReport] DiagnosticReports
   where exists("Initial Population")
-  return SharedResource.DiagnosticReportResource(DiagnosticReports,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/diagnosticreport'}})
+  return SharedResource.DiagnosticReportResourceBaseFHIR(DiagnosticReports)
 
 define "SDE Encounter": 
   "Encounters" Encounters
@@ -127,8 +125,7 @@ define "SDE Location":
 define "SDE Medication Administration":
   [MedicationAdministration] MedicationAdministrations 
   where exists("Initial Population")
-  return SharedResource.MedicationAdministrationResource(MedicationAdministrations,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/medicationadministration'}})
+  return SharedResource.MedicationAdministrationResourceBaseFHIR(MedicationAdministrations)
  
 define "SDE Medication Request":
   [MedicationRequest] MedicationRequests 
@@ -156,24 +153,27 @@ define "SDE Observation Lab Category":
   return SharedResource.ObservationResource(Observations,
   {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab'}})
 
+define "SDE Observation Vital Signs Category":
+  [Observation] Observations 
+  where (exists(Observations.category Category where Category ~ "vital-signs"))
+    and exists("Initial Population")
+  return SharedResource.ObservationResource(Observations,
+  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/vitalsigns'}})
 
+//No individual profiles in USCore 3.1.1 that cover these categories.  Defaulting to base FHIR profile
 define "SDE Observation Category":
   [Observation] Observations 
   where ((exists(Observations.category Category where Category ~ "social-history"))
-    or (exists(Observations.category Category where Category ~ "vital-signs"))
     or (exists(Observations.category Category where Category ~ "survey"))
     or (exists(Observations.category Category where Category ~ "imaging"))
     or (exists(Observations.category Category where Category ~ "procedure")))
     and exists("Initial Population")
-  return SharedResource.ObservationResource(Observations,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/observation'}})
-
+  return SharedResource.ObservationResourceBaseFHIR(Observations)
 
 define "SDE Coverage": 
 	[Coverage] Coverages
   where exists("Initial Population")
-  return SharedResource.CoverageResource(Coverages,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/coverage'}})
+  return SharedResource.CoverageResourceBaseFHIR(Coverages)
 
 define "SDE Procedure":
   [Procedure] Procedures 
@@ -184,14 +184,12 @@ define "SDE Procedure":
 define "SDE Specimen":
   [Specimen] Specimen
   where exists("Initial Population")
-  return SharedResource.SpecimenResource(Specimen,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/specimen'}})
+  return SharedResource.SpecimenResourceBaseFHIR(Specimen)
 
 define "SDE Service Request":
   [ServiceRequest] ServiceRequests
   where exists("Initial Population")
-  return SharedResource.ServiceRequestResource(ServiceRequests,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/servicerequest'}})
+  return SharedResource.ServiceRequestResourceBaseFHIR(ServiceRequests)
 
 define "SDE Minimal Patient":
   Patient p

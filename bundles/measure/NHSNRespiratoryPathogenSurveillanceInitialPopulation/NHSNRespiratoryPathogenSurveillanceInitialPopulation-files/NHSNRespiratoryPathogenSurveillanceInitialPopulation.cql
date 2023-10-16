@@ -280,22 +280,19 @@ define "SDE COVID And Influenza PRE Admission Observation":
 define "SDE RPS Specimen":
   "RPS Observation" ObservationWithSpecimen
     let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
-    return SharedResource.SpecimenResource(Specimen,
-    {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/specimen'}})
+    return SharedResource.SpecimenResourceBaseFHIR(Specimen)
 
 //return the Specimen related to the RSV Observation Pre Admission
 define "SDE RSV Specimen":
   "RSV PRE Admission Observation" ObservationWithSpecimen
     let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
-    return SharedResource.SpecimenResource(Specimen,
-    {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/specimen'}})
+    return SharedResource.SpecimenResourceBaseFHIR(Specimen)
 
 //return the Specimen related to the COVID-19 And Influenza Observation Pre Admission
 define "SDE COVID And Influenza Specimen":
   "COVID And Influenza PRE Admission Observation" ObservationWithSpecimen
     let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
-    return SharedResource.SpecimenResource(Specimen,
-    {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/specimen'}})
+    return SharedResource.SpecimenResourceBaseFHIR(Specimen)
 
 //return the DiagnosticReport during the Measurement Period
 define "SDE RPS DiagnosticReport":
@@ -344,8 +341,7 @@ define "SDE RPS ServiceRequest":
     where ServiceRequests.intent ~ 'order'
       and ServiceRequests.status ~ 'completed'
       and exists("Initial Population")
-  return SharedResource.ServiceRequestResource(ServiceRequests,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/servicerequest'}})
+  return SharedResource.ServiceRequestResourceBaseFHIR(ServiceRequests)
 
 define "SDE Isolation Precautions Implemented":
   [Procedure: "Transmission Based Precaution Types"] IsolationPrecautions
@@ -379,8 +375,7 @@ define "SDE Covid or Influenza Medication Administered":
       and RPSMedAdmin.status ~ 'completed'
       and exists("Initial Population")
       and Global."Normalize Interval"(RPSMedAdmin.effective) during "Measurement Period"
-    return SharedResource.MedicationAdministrationResource(RPSMedAdmin,
-    {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/medicationadministration'}})
+    return SharedResource.MedicationAdministrationResourceBaseFHIR(RPSMedAdmin)
 
 define "SDE Covid or Influenza Medication Ordered":
   "MedicationRequests" RPSMedRequest
@@ -427,8 +422,7 @@ define "SDE All Observations":
 define "SDE All ServiceRequests":
   [ServiceRequest] SR
   where exists("Initial Population")
-  return SharedResource.ServiceRequestResource(SR,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/servicerequest'}})
+  return SharedResource.ServiceRequestResourceBaseFHIR(SR)
 
 //To catch all isolation precautions
 define "SDE All Procedures":
