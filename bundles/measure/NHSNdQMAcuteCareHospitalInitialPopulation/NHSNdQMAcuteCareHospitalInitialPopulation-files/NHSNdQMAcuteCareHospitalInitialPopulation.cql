@@ -1,4 +1,4 @@
-library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.005'
+library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.006'
 
 using FHIR version '4.0.1'
 
