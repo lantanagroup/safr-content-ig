@@ -4,6 +4,7 @@
   "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNGlycemicControlHypoglycemicInitialPopulation",
   "version": "0.0.016",
   "name": "NHSNGlycemicControlHypoglycemicInitialPopulation",
+  "status": "draft",
   "type": {
     "coding": [ {
       "system": "http://terminology.hl7.org/CodeSystem/library-type",

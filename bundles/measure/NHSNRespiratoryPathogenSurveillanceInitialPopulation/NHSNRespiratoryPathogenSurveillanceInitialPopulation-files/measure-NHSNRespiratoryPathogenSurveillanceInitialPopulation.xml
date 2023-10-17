@@ -1593,7 +1593,7 @@ define &quot;SDE All Observations&quot;:
    <title value="NHSN Respiratory Pathogen Surveillance Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-10-16T11:40:49-05:00"></date>
+   <date value="2023-10-16T19:05:26-05:00"></date>
    <description value="dQM Measure for Respiratory Pathogen Surveillance"></description>
    <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation"></library>
    <scoring>
