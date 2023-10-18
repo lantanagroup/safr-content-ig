@@ -33,7 +33,7 @@ code "imaging": 'imaging' from "Observation Category" display 'Imaging'
 code "procedure": 'procedure' from "Observation Category" display 'Procedure'
 code "survey": 'survey' from "Observation Category" display 'Survey'
 
-//code for Diagnositic Report Category
+//code for Diagnostic Report Category
 code "LAB": 'LAB' from "V2-0074" display 'Laboratory'
 code "Radiology": 'LP29684-5' from "LOINC" display 'Radiology'
 code "Pathology": 'LP7839-6' from "LOINC" display 'Pathology'
