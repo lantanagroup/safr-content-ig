@@ -50,12 +50,9 @@ union   [Encounter: "Emergency Department Visit"]
 union [Encounter: "Observation Services"]
 union [Encounter: class in {"emergency", "inpatient acute", "inpatient encounter", "inpatient non-acute", "short stay"}]) QualifyingEncounters
   where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged'}
-    and QualifyingEncounters.period overlaps "Measurement Period"
-    
-    /*((end of QualifyingEncounters.period is not null and QualifyingEncounters.period overlaps "Measurement Period")
-    or (QualifyingEncounters.period starts before "Measurement Period" or QualifyingEncounters.period starts during "Measurement Period"))*/
+    and QualifyingEncounters.period overlaps "Measurement Period" 
 
-define "Qualifying Location During Measurement Period":
+define "Encounters with Patient Hospital Locations":
   "Encounters" Encounters
   where exists(
     Encounters.location EncounterLocation
@@ -65,14 +62,16 @@ define "Qualifying Location During Measurement Period":
 
 define "Initial Population":
   "Qualifying Encounter During Measurement Period"
-  union "Qualifying Location During Measurement Period"
+  union "Encounters with Patient Hospital Locations"
 
 define "Encounters":
   [Encounter]
 
-//============================
+//============================================================================
 //Supplemental Data Element
-//============================
+//When FHIR.canonical present, those are the Profiles are from US Core 3.1.1
+//When FHIR.canonical not present, those are the Profiles are from FHIR Base
+//============================================================================
 define "SDE Condition":
   [Condition] Conditions 
   where exists("Initial Population")
@@ -139,13 +138,6 @@ define "SDE Medication":
   return SharedResource.MedicationResource(Medication,
   {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication'}})
 
-//Us Code 6.1.0 Observation profile, but it does not have profile for procedure
-//http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-social-history
-//http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-survey
-//http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-imaging
-//http://hl7.org/fhir/us/core/StructureDefinition/us-core-vital-signs
-
-
 define "SDE Observation Lab Category":
   [Observation] Observations 
   where (exists(Observations.category Category where Category ~ "laboratory"))
@@ -153,6 +145,7 @@ define "SDE Observation Lab Category":
   return SharedResource.ObservationResource(Observations,
   {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab'}})
 
+//For Fhir Base, Vital Signs Observation has its own profile
 define "SDE Observation Vital Signs Category":
   [Observation] Observations 
   where (exists(Observations.category Category where Category ~ "vital-signs"))
