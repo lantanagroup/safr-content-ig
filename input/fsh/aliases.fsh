@@ -41,6 +41,7 @@ Alias: $v2-0488 = http://terminology.hl7.org/CodeSystem/v2-0488
 Alias: $dose-rate-type_1 = http://epic.com/CodeSystem/dose-rate-type
 Alias: $icd-10 = http://hl7.org/fhir/sid/icd-10
 Alias: $encounter-class = http://example.com/CodeSystem/encounter-class
+Alias: $encounter-status = http://hl7.org/fhir/encounter-status
 Alias: $v3-ObservationInterpretation = http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation
 Alias: $condition-category_1 = http://open.epic.com/FHIR/StructureDefinition/condition-category
 Alias: $icd-10-cm = http://hl7.org/fhir/sid/icd-10-cm

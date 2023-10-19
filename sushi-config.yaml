@@ -9,7 +9,7 @@ name: NHSNMeasures
 status: active
 date: 2023-09-14
 copyrightYear: 2023+
-version: 1.0.0-cibuild
+version: 1.0.0-cibuild  
 releaseLabel: Continuous Integration
 jurisdiction: urn:iso:std:iso:3166#US
 extension:
@@ -102,19 +102,59 @@ groups:
       - StructureDefinition/nhsn-submitting-organization
       - StructureDefinition/nhsn-submitting-device
       
-  hypo:
-    name: Hypoglycemic Event Reporting profiles
+  ach:
+    name: Acute Care Hospital Reporting Profiles
     resources:
-      - StructureDefinition/hypoglycemic-reporting-condition
-      - StructureDefinition/hypoglycemic-reporting-coverage
-      - StructureDefinition/hypoglycemic-reporting-encounter
-      - StructureDefinition/hypoglycemic-reporting-lab-observation
-      - StructureDefinition/hypoglycemic-reporting-location
-      - StructureDefinition/hypoglycemic-reporting-medication
-      - StructureDefinition/hypoglycemic-reporting-medicationadministration
-      - StructureDefinition/hypoglycemic-reporting-medicationrequest
-      - StructureDefinition/hypoglycemic-reporting-servicerequest
-      - StructureDefinition/hypoglycemic-reporting-specimen      
+      - StructureDefinition/acute-care-hospital-reporting-encounter
+      - StructureDefinition/acute-care-hospital-reporting-location
+      - StructureDefinition/acute-care-hospital-reporting-lab-observation
+      - StructureDefinition/acute-care-hospital-reporting-observation
+      - StructureDefinition/acute-care-hospital-reporting-servicerequest
+      - StructureDefinition/acute-care-hospital-reporting-specimen
+      - StructureDefinition/acute-care-hospital-reporting-condition
+      - StructureDefinition/acute-care-hospital-reporting-procedure
+      - StructureDefinition/acute-care-hospital-reporting-coverage
+      - StructureDefinition/acute-care-hospital-reporting-implantable-device
+      - StructureDefinition/acute-care-hospital-reporting-device
+      - StructureDefinition/acute-care-hospital-reporting-lab-diagnostic-report
+      - StructureDefinition/acute-care-hospital-reporting-note-diagnostic-report
+      - StructureDefinition/acute-care-hospital-reporting-medication
+      - StructureDefinition/acute-care-hospital-reporting-medicationadministration
+      - StructureDefinition/acute-care-hospital-reporting-medicationrequest
+      
+  rps:
+    name: Respiratory Pathogen Surveillance Event Profiles
+    resources:
+      - StructureDefinition/respiratory-pathogen-surveillance-event-encounter
+      - StructureDefinition/respiratory-pathogen-surveillance-event-location
+      - StructureDefinition/respiratory-pathogen-surveillance-event-lab-observation
+      - StructureDefinition/respiratory-pathogen-surveillance-event-servicerequest
+      - StructureDefinition/respiratory-pathogen-surveillance-event-specimen
+      - StructureDefinition/respiratory-pathogen-surveillance-event-procedure
+      - StructureDefinition/respiratory-pathogen-surveillance-event-lab-diagnostic-report
+      - StructureDefinition/respiratory-pathogen-surveillance-event-medication
+      - StructureDefinition/respiratory-pathogen-surveillance-event-medicationadministration
+      - StructureDefinition/respiratory-pathogen-surveillance-event-medicationrequest
+
+  valuesets:
+    name: "Terminology: Profile ValueSets"
+    resources:
+      - ValueSet/acute-care-hospital-encounter-status
+      - ValueSet/respiratory-pathogen-surveillance-event-encounter-status
+
+  #hypo:
+  #  name: Hypoglycemic Event Reporting profiles
+  #  resources:
+  #    - StructureDefinition/hypoglycemic-reporting-condition
+  #    - StructureDefinition/hypoglycemic-reporting-coverage
+  #    - StructureDefinition/hypoglycemic-reporting-encounter
+  #    - StructureDefinition/hypoglycemic-reporting-lab-observation
+  #    - StructureDefinition/hypoglycemic-reporting-location
+  #    - StructureDefinition/hypoglycemic-reporting-medication
+  #    - StructureDefinition/hypoglycemic-reporting-medicationadministration
+  #   - StructureDefinition/hypoglycemic-reporting-medicationrequest
+  #    - StructureDefinition/hypoglycemic-reporting-servicerequest
+  #    - StructureDefinition/hypoglycemic-reporting-specimen      
 
   measures:
     name: "Knowledge Artifacts: Measure"
@@ -127,7 +167,7 @@ groups:
     name: "Knowledge Artifacts: Libraries"
     resources:
       - Library/SharedResourceCreation
-      - Library/NHSNGlycemicControlHypoglycemicInitialPopulation
+      #- Library/NHSNGlycemicControlHypoglycemicInitialPopulation
       - Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation
       - Library/NHSNdQMAcuteCareHospitalInitialPopulation
 
@@ -243,9 +283,9 @@ resources:
      description: Measure Report Criteria Reference - This extension is not defined by this IG.  CQF Tooling uses this extension, but the extension is yet unpublished.
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
 
-   Measure/NHSNGlycemicControlHypoglycemicInitialPopulation:
-     name: NHSN Glycemic Control, Hypoglycemia Initial Population
-     description: The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter.
+   #Measure/NHSNGlycemicControlHypoglycemicInitialPopulation:
+   #  name: NHSN Glycemic Control, Hypoglycemia Initial Population
+   #  description: The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter.
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    Measure/NHSNdQMAcuteCareHospitalInitialPopulation:
@@ -263,9 +303,9 @@ resources:
      description: Shared Resource Creation Library
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
-   Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
-     name: NHSN Glycemic ControlHypoglycemic Initial Population
-     description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
+   #Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
+   #  name: NHSN Glycemic ControlHypoglycemic Initial Population
+   #  description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation:
