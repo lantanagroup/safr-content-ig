@@ -8738,10 +8738,13 @@
                 "status": "draft",
                 "experimental": false,
                 "date": "2023-10-16T11:40:49-05:00",
-                "description": "dQM Measure for Respiratory Pathogen Surveillance",
+                "description": "The RPS Initial Population includes all encounters for patients of any age with an inpatient, observation, or short stay status during the measurement period.",
+                "purpose": "This site allows NHSN to view Measure-specification content in the dQMs under development by Lantana Consulting Group. Note that this site undergoes constant revision and is not intended to serve as an implementation guide.",
+                "copyright": "The Measure specifications contain limited proprietary coding for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.",
                 "library": [
                     "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation"
                 ],
+                "disclaimer": "This performance measure is not a clinical guideline, does not establish a standard of medical care and has not been tested for all potential applications.\nTHE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.\nThis measure and specifications are subject to further revisions.",
                 "scoring": {
                     "coding": [
                         {
@@ -8761,6 +8764,17 @@
                             }
                         ]
                     }
+                ],
+                "rationale": "The NHSN Respiratory Pathogens Surveillance (RPS) module enables the measurement of facility and unit-specific incidence and prevalence of Coronavirus 2019 (COVID-19), Influenza, and Respiratory Syncytial Virus (RSV) disease among patients admitted to the hospital (inpatient, observation, or short stay status), and specific associated patient outcomes. \nThe RPS module supports an electronic health record (EHR)-/vendor-neutral standard for reporting patient-level data on hospitalized patients with a respiratory illness due to one or more of the pathogens under surveillance. \nData collected via the RPS module may be used both by facilities for quality improvement and patient care planning purposes, as well as by local, state, and federal public health agencies in coordination and response to public health outbreaks. \nThe RPS module is ultimately intended to offer a mechanism by which ongoing monitoring of infectious respiratory viral illness among hospitalized patients may be accomplished with minimal human resource expenditure via 100% electronically automated data capture. This initial version of the module is based on electronic data capture and upload of demographic, administrative, and clinical data from the facility’s electronic source systems such as the electronic health record (EHR), patient registration system (admission, discharge, and transfer [ADT] data), laboratory information system, and pharmacy electronic medication administration system. Facilities will have access to their data via the analysis functions of NHSN. ",
+                "definition": [
+                    "Antidiabetic Drug Days (ADD): Aggregate number of inpatient encounter days within the facility in which at least one injectable or oral ADD was received. All patients who received ADDs during the hospitalization contribute to the initial population regardless of whether the patient experienced a hypoglycemic event.",
+                    "Emergency Department (ED) or Observation (OBS) encounters: ED or observation encounters that ended within an hour of the inpatient admission are included when calculating the start and stop times of the hospitalization. Only Metric 1 includes ED  and OBS encounters.",
+                    "Hypoglycemia Day: An inpatient day with at least one documented hypoglycemia event.",
+                    "Hypoglycemia Event includes the following during an inpatient hospitalization: A hypoglycemic blood glucose (BG) result during the encounter and ADD administered within 24 hours prior to the start of the hypoglycemic BG result and no subsequent test for blood glucose with a result ≥80 mg/dL within five minutes of the start of the initial low blood glucose test.",
+                    "Inpatient Encounter: A hospitalization in any inpatient facility that meets the criteria for reporting to the NHSN Glycemic Control Hypoglycemia Module (refer to CDC Locations and Descriptions manual).",
+                    "Measurement Period: From the first day of each calendar month through the last day of that calendar month. Mild hypoglycemia: Blood glucose 54 mg/dL to 69 mg/dL as identified on central laboratory device (CLD) or prescription point-of-care (POC) device.",
+                    "Moderate hypoglycemia: Blood glucose 40 mg/dL to 53 mg/dL as identified on CLD or prescription POC device.",
+                    "Severe hypoglycemia Blood glucose < 40 mg/dL as identified on CLD or prescription POC device."
                 ],
                 "group": [
                     {
