@@ -69,8 +69,8 @@ define "Encounters":
 
 //============================================================================
 //Supplemental Data Element
-//When FHIR.canonical present, those are the Profiles are from US Core 3.1.1
-//When FHIR.canonical not present, those are the Profiles are from FHIR Base
+//When FHIR.canonical value is present, US Core 3.1.1 profiles are used
+//When FHIR.canonical value is not present, FHIR Base profiles are used
 //============================================================================
 define "SDE Condition":
   [Condition] Conditions 
@@ -145,7 +145,7 @@ define "SDE Observation Lab Category":
   return SharedResource.ObservationResource(Observations,
   {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab'}})
 
-//For Fhir Base, Vital Signs Observation has its own profile
+//Vital Signs Observation has its own profile in FHIR Base
 define "SDE Observation Vital Signs Category":
   [Observation] Observations 
   where (exists(Observations.category Category where Category ~ "vital-signs"))
@@ -153,7 +153,7 @@ define "SDE Observation Vital Signs Category":
   return SharedResource.ObservationResource(Observations,
   {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/vitalsigns'}})
 
-//No individual profiles in USCore 3.1.1 that cover these categories.  Defaulting to base FHIR profile
+//Defaulting to base FHIR profile as there are no individual profiles in US Core 3.1.1 that cover these Observation categories
 define "SDE Observation Category":
   [Observation] Observations 
   where ((exists(Observations.category Category where Category ~ "social-history"))
