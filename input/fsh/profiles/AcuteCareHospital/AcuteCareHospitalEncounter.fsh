@@ -10,6 +10,8 @@ Description: "TO BE REPLACED - This profile contains Required and Must Support d
   * type MS
   * period MS
 * status from AcuteCareHospitalEncounterStatus (required) // MEASDEV-703
+* status ^short = "triaged | in-progress | finished"
+* status ^definition = "triaged | in-progress | finished."
 * classHistory MS
 * period 1..
 * diagnosis MS

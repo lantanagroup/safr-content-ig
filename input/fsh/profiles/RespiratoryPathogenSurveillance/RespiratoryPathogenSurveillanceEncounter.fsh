@@ -10,6 +10,8 @@ Description: "This profile contains Required and Must Support data elements for 
   * type MS
   * period MS
 * status from RespiratoryPathogenSurveillanceEventEncounterStatus (required)
+* status ^short = "triaged | in-progress | onleave | finished"
+* status ^definition = "triaged | in-progress | onleave | finished."
 * statusHistory.status 1.. // TODO Verify this is actually required when statusHistory is not nor is MS as per the DD
 * classHistory MS
 * period 1..
