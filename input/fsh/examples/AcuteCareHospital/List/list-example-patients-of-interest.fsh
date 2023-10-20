@@ -5,7 +5,7 @@ Usage: #example
 * extension.valuePeriod.start = "2022-08-01T00:00:00.000Z"
 * extension.valuePeriod.end = "2022-08-31T23:59:59.000Z"
 * identifier.system = "https://nhsnlink.org"
-* identifier.value = "nhsnglycemiccontrolhypoglycemicinitialpopulation"
+* identifier.value = "NHSNdQMAcuteCareHospitalInitialPopulation"
 * status = #current
 * mode = #changes
 * date = "2021-07-28T00:00:00Z"
