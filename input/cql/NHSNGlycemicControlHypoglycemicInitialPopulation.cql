@@ -1,4 +1,4 @@
-library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.016'
+library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.017'
 
 using FHIR version '4.0.1'
 
@@ -50,7 +50,7 @@ code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" disp
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 
 parameter "Measurement Period" Interval<DateTime>
- default Interval[@2023-10-01T00:00:00.0, @2023-10-31T23:59:00.0)
+ default Interval[@2022-01-01T00:00:00.0, @2022-01-31T23:59:00.0)
 
 context Patient
 
@@ -246,9 +246,6 @@ define "MedicationRequests":
 define "MedicationAdministrations":
   [MedicationAdministration]
 
-define "Medications":
-  [Medication]
-
 define "Specimens":
   [Specimen]
 
@@ -269,8 +266,8 @@ define function "GetMedicationCode"(choice Choice<FHIR.CodeableConcept, FHIR.Ref
   end
 
 define function "GetMedication"(reference Reference ):
-  First (
-    "Medications" M where M.id = Global.GetId(reference.reference)
+  singleton from (
+    [Medication: id in {Global.GetId(reference.reference)}]
   )
 
 define function "HospitalizationWithObservationOrEmergency"(TheEncounter FHIR.Encounter ):
@@ -289,8 +286,8 @@ define function "HospitalizationWithObservationOrEmergency"(TheEncounter FHIR.En
     return Interval[Coalesce(start of EDVisit.period, VisitStart), end of Visit.period]
 
 define function "GetSpecimen"(reference Reference):
-  First (
-    "Specimens" S where S.id = Global.GetId(reference.reference)
+  singleton from (
+    [Specimen: id in {Global.GetId(reference.reference)}]
   )
 
 define function "GetMedicationFrom"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):

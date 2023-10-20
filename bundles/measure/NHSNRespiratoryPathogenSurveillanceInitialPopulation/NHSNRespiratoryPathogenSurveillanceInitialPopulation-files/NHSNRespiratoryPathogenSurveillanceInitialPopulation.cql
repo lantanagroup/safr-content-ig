@@ -1,4 +1,4 @@
-library NHSNRespiratoryPathogenSurveillanceInitialPopulation version '0.0.006'
+library NHSNRespiratoryPathogenSurveillanceInitialPopulation version '0.0.007'
 
 using FHIR version '4.0.1'
 
@@ -435,9 +435,6 @@ define "SDE All Procedures":
 //----------------------------------------------
 //Retrieve Resources
 //----------------------------------------------
-define "Specimens":
-  [Specimen]
-
 define "DiagnosticReports":
   [DiagnosticReport]
    
@@ -447,9 +444,6 @@ define "MedicationRequests":
 define "MedicationAdministrations":
   [MedicationAdministration]
 
-define "Medications":
-  [Medication]
-
 define "Observations":
   [Observation]
 
@@ -457,9 +451,9 @@ define "Observations":
 //functions
 //-----------------------------------------------------
 define function "GetMedication"(reference Reference ):
-  First (
-    "Medications" M where M.id = Global.GetId(reference.reference)
-  )  
+  singleton from (
+    [Medication: id in {Global.GetId(reference.reference)}]
+  )
 
 define function "GetMedicationCode"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):
   case
@@ -480,8 +474,8 @@ define function "GetMedicationFrom"(choice Choice<FHIR.CodeableConcept, FHIR.Ref
   end
 
 define function GetObservation(reference Reference):
-  First (
-    "Observations" O where O.id = Global.GetId(reference.reference)
+  singleton from (
+    [Observation: id in {Global.GetId(reference.reference)}]
   )
 
 define function GetObservations(reference List<Reference>):
@@ -489,7 +483,7 @@ define function GetObservations(reference List<Reference>):
     return GetObservation(reference)
 
 define function "GetSpecimen"(reference Reference):
-  First (
-    "Specimens" S where S.id = Global.GetId(reference.reference)
+  singleton from (
+    [Specimen: id in {Global.GetId(reference.reference)}]
   )
 

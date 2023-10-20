@@ -110,12 +110,10 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
                <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="Qualifying Location During Measurement Period"></valueString>
+               <valueString value="Encounters with Patient Hospital Locations"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="/*((end of QualifyingEncounters.period is not null and QualifyingEncounters.period overlaps &quot;Measurement Period&quot;)
-    or (QualifyingEncounters.period starts before &quot;Measurement Period&quot; or QualifyingEncounters.period starts during &quot;Measurement Period&quot;))*/
-define &quot;Qualifying Location During Measurement Period&quot;:
+               <valueString value="define &quot;Encounters with Patient Hospital Locations&quot;:
   &quot;Encounters&quot; Encounters
   where exists(
     Encounters.location EncounterLocation
@@ -137,7 +135,7 @@ define &quot;Qualifying Location During Measurement Period&quot;:
             <extension url="statement">
                <valueString value="define &quot;Initial Population&quot;:
   &quot;Qualifying Encounter During Measurement Period&quot;
-  union &quot;Qualifying Location During Measurement Period&quot;"></valueString>
+  union &quot;Encounters with Patient Hospital Locations&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="3"></valueInteger>
@@ -256,7 +254,7 @@ define &quot;Qualifying Location During Measurement Period&quot;:
                <valueString value="SDE Observation Category"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//No individual profiles in USCore 3.1.1 that cover these categories.  Defaulting to base FHIR profile
+               <valueString value="//Defaulting to base FHIR profile as there are no individual profiles in US Core 3.1.1 that cover these Observation categories
 define &quot;SDE Observation Category&quot;:
   [Observation] Observations 
   where ((exists(Observations.category Category where Category ~ &quot;social-history&quot;))
@@ -295,9 +293,11 @@ define &quot;SDE Observation Category&quot;:
                <valueString value="SDE Condition"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//============================
+               <valueString value="//============================================================================
 //Supplemental Data Element
-//============================
+//When FHIR.canonical value is present, US Core 3.1.1 profiles are used
+//When FHIR.canonical value is not present, FHIR Base profiles are used
+//============================================================================
 define &quot;SDE Condition&quot;:
   [Condition] Conditions 
   where exists(&quot;Initial Population&quot;)
@@ -629,6 +629,13 @@ define &quot;SDE Condition&quot;:
             <type value="Location"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
             <mustSupport value="id"></mustSupport>
+            <codeFilter>
+               <path value="id"></path>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Location"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
          </dataRequirement>
          <dataRequirement>
             <type value="MedicationRequest"></type>
@@ -700,7 +707,7 @@ define &quot;SDE Condition&quot;:
    <title value="NHSN dQM Acute Care Hospital Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-10-16T19:05:25-05:00"></date>
+   <date value="2023-10-20T11:32:21-05:00"></date>
    <description value="dQM Measure for Inpatients (Acute) Care setting"></description>
    <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNdQMAcuteCareHospitalInitialPopulation"></library>
    <scoring>

@@ -137,21 +137,6 @@ define &quot;MedicationRequests&quot;:
                <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="Medications"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;Medications&quot;:
-  [Medication]"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="4"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
                <valueString value="Antidiabetic Drugs Administered or Ordered"></valueString>
             </extension>
             <extension url="statement">
@@ -165,7 +150,7 @@ define &quot;MedicationRequests&quot;:
   )"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="5"></valueInteger>
+               <valueInteger value="4"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -191,7 +176,7 @@ define &quot;Initial Population&quot;:
     and Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn) during &quot;Measurement Period&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="6"></valueInteger>
+               <valueInteger value="5"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -214,7 +199,7 @@ define &quot;SDE Medication Request&quot;:
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="7"></valueInteger>
+               <valueInteger value="6"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -241,7 +226,7 @@ define &quot;SDE Coverage&quot;:
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-coverage'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="8"></valueInteger>
+               <valueInteger value="7"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -264,7 +249,7 @@ define &quot;SDE Encounter Locations&quot;:
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="9"></valueInteger>
+               <valueInteger value="8"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -279,7 +264,7 @@ define &quot;SDE Encounter Locations&quot;:
   [Condition]"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="10"></valueInteger>
+               <valueInteger value="9"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -301,7 +286,7 @@ define &quot;SDE Condition during Encounter&quot;:
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="11"></valueInteger>
+               <valueInteger value="10"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -325,7 +310,7 @@ define &quot;SDE Medication Administration&quot;:
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationadministration'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="12"></valueInteger>
+               <valueInteger value="11"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -342,22 +327,7 @@ define &quot;SDE Medication Administration&quot;:
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="13"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="Specimens"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;Specimens&quot;:
-  [Specimen]"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="14"></valueInteger>
+               <valueInteger value="12"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -385,7 +355,7 @@ define &quot;SDE Blood Glucose Observation&quot;:
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="15"></valueInteger>
+               <valueInteger value="13"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -407,7 +377,7 @@ define &quot;SDE Condition&quot;:
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="16"></valueInteger>
+               <valueInteger value="14"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -426,7 +396,7 @@ define &quot;SDE Encounter Discharge Dispositions&quot;:
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="17"></valueInteger>
+               <valueInteger value="15"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -448,7 +418,7 @@ define &quot;SDE Service Request&quot;:
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-servicerequest'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="18"></valueInteger>
+               <valueInteger value="16"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -468,7 +438,7 @@ define &quot;SDE Service Request&quot;:
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-location'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="19"></valueInteger>
+               <valueInteger value="17"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -485,7 +455,22 @@ define &quot;SDE Service Request&quot;:
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/cross-measure-patient'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="20"></valueInteger>
+               <valueInteger value="18"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Specimens"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Specimens&quot;:
+  [Specimen]"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="19"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -507,7 +492,7 @@ define &quot;SDE Specimen&quot;:
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-specimen'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="21"></valueInteger>
+               <valueInteger value="20"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -527,7 +512,7 @@ define &quot;SDE Medication&quot;:
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="22"></valueInteger>
+               <valueInteger value="21"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -549,7 +534,7 @@ define &quot;SDE Chief Complaint&quot;:
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="23"></valueInteger>
+               <valueInteger value="22"></valueInteger>
             </extension>
          </extension>
          <status value="active"></status>
@@ -818,6 +803,13 @@ define &quot;SDE Chief Complaint&quot;:
             <type value="Location"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
             <mustSupport value="id"></mustSupport>
+            <codeFilter>
+               <path value="id"></path>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Location"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
          </dataRequirement>
          <dataRequirement>
             <type value="MedicationAdministration"></type>
@@ -830,6 +822,9 @@ define &quot;SDE Chief Complaint&quot;:
             <type value="Medication"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Medication"></profile>
             <mustSupport value="id"></mustSupport>
+            <codeFilter>
+               <path value="id"></path>
+            </codeFilter>
          </dataRequirement>
          <dataRequirement>
             <type value="Coverage"></type>
@@ -846,6 +841,13 @@ define &quot;SDE Chief Complaint&quot;:
             <type value="Specimen"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Specimen"></profile>
             <mustSupport value="id"></mustSupport>
+            <codeFilter>
+               <path value="id"></path>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Specimen"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Specimen"></profile>
             <mustSupport value="collection"></mustSupport>
             <mustSupport value="collection.collected"></mustSupport>
          </dataRequirement>
@@ -896,7 +898,7 @@ define &quot;SDE Chief Complaint&quot;:
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-10-16T16:05:25-08:00"></date>
+   <date value="2023-10-20T08:32:21-08:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."></description>
    <purpose value="This site allows NHSN to view Measure-specification content in the dQMs under development by Lantana Consulting Group. Note that this site undergoes constant revision and is not intended to serve as an implementation guide."></purpose>
