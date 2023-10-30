@@ -49,7 +49,7 @@ define "Qualifying Encounter During Measurement Period":
 union   [Encounter: "Emergency Department Visit"]
 union [Encounter: "Observation Services"]
 union [Encounter: class in {"emergency", "inpatient acute", "inpatient encounter", "inpatient non-acute", "short stay"}]) QualifyingEncounters
-  where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged'}
+  where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
     and QualifyingEncounters.period overlaps "Measurement Period" 
 
 define "Encounters with Patient Hospital Locations":
