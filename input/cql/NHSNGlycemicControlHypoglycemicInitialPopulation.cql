@@ -60,7 +60,7 @@ context Patient
 define "Initial Population":
   ("Inpatient Encounter"
   union "Encounters with Patient Hospital Locations") InpatientEncounters
-  where InpatientEncounters.status in {'in-progress', 'finished', 'triaged'}
+  where InpatientEncounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
     and InpatientEncounters.period overlaps "Measurement Period"
     and exists( 
     "Antidiabetic Drugs Administered or Ordered" ADD
