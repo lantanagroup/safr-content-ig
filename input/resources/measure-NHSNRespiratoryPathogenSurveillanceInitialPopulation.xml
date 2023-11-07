@@ -73,8 +73,10 @@
             </extension>
             <extension url="statement">
                <valueString value="define &quot;EncounterInpatient&quot;:
-  [Encounter: &quot;Encounter Inpatient&quot;]
-    union [Encounter: class in {&quot;inpatient encounter&quot;, &quot;inpatient acute&quot;, &quot;inpatient non-acute&quot;, &quot;short stay&quot;}]"></valueString>
+  ([Encounter: &quot;Encounter Inpatient&quot;]
+    union [Encounter: class in {&quot;inpatient encounter&quot;, &quot;inpatient acute&quot;, &quot;inpatient non-acute&quot;, &quot;short stay&quot;}]) Encounters
+  where Encounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
+    and Encounters.period overlaps &quot;Measurement Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="1"></valueInteger>
@@ -89,8 +91,10 @@
             </extension>
             <extension url="statement">
                <valueString value="define &quot;EncounterObservation&quot;:
-  [Encounter: &quot;Observation Services&quot;]
-    union [Encounter: class in {&quot;observation encounter&quot;}]"></valueString>
+  ([Encounter: &quot;Observation Services&quot;]
+    union [Encounter: class in {&quot;observation encounter&quot;}]) Encounters
+  where Encounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
+    and Encounters.period overlaps &quot;Measurement Period&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="2"></valueInteger>
@@ -101,37 +105,21 @@
                <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="Qualifying Encounter During Measurement Period"></valueString>
+               <valueString value="Encounters with Patient Hospital Locations"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Qualifying Encounter During Measurement Period&quot;:
-  ( &quot;EncounterInpatient&quot;
-  union &quot;EncounterObservation&quot;) QualifyingEncounters
-  where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged', 'onleave'}
-    and QualifyingEncounters.period overlaps &quot;Measurement Period&quot;"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="3"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="Qualifying Location During Measurement Period"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;Qualifying Location During Measurement Period&quot;:
+               <valueString value="define &quot;Encounters with Patient Hospital Locations&quot;:
   [Encounter] Encounters
   where exists(
     Encounters.location EncounterLocation
     where Global.GetLocation(EncounterLocation.location).type in &quot;Inpatient, Emergency, and Observation Locations&quot;
       and EncounterLocation.period overlaps Encounters.period
+      and Encounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error' }
+      and Encounters.period overlaps &quot;Measurement Period&quot;
   )"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="4"></valueInteger>
+               <valueInteger value="3"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -146,11 +134,12 @@
 // Initial Population
 //----------------------------------
 define &quot;Initial Population&quot;:
-  &quot;Qualifying Encounter During Measurement Period&quot;
-  union &quot;Qualifying Location During Measurement Period&quot;"></valueString>
+  EncounterInpatient
+  union EncounterObservation
+  union &quot;Encounters with Patient Hospital Locations&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="5"></valueInteger>
+               <valueInteger value="4"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -189,7 +178,7 @@ define &quot;Initial Population&quot;:
     return SharedResource.MedicationAdministrationResourceBaseFHIR(RPSMedAdmin)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="6"></valueInteger>
+               <valueInteger value="5"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -207,7 +196,7 @@ define &quot;DiagnosticReports&quot;:
   [DiagnosticReport]"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="7"></valueInteger>
+               <valueInteger value="6"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -226,7 +215,7 @@ define &quot;DiagnosticReports&quot;:
       and exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="8"></valueInteger>
+               <valueInteger value="7"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -244,7 +233,7 @@ define &quot;SDE RSV DiagnosticReport Result from Lab&quot;:
     {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="9"></valueInteger>
+               <valueInteger value="8"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -264,7 +253,7 @@ define &quot;SDE RSV DiagnosticReport Result from Lab&quot;:
       and exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="10"></valueInteger>
+               <valueInteger value="9"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -287,7 +276,7 @@ define &quot;RSV PRE Admission Observation&quot;:
     )"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="11"></valueInteger>
+               <valueInteger value="10"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -305,7 +294,7 @@ define &quot;SDE RSV Specimen&quot;:
     return SharedResource.SpecimenResourceBaseFHIR(Specimen)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="12"></valueInteger>
+               <valueInteger value="11"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -327,7 +316,7 @@ define &quot;COVID and Influenza DiagnosticReport Result from Lab&quot;:
       and exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="13"></valueInteger>
+               <valueInteger value="12"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -343,7 +332,7 @@ define &quot;COVID and Influenza DiagnosticReport Result from Lab&quot;:
     union &quot;RSV DiagnosticReport Result from Lab&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="14"></valueInteger>
+               <valueInteger value="13"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -361,7 +350,7 @@ define &quot;SDE RPS DiagnosticReport Result from Lab&quot;:
     {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="15"></valueInteger>
+               <valueInteger value="14"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -379,7 +368,7 @@ define &quot;SDE RSV PRE Admission Observation&quot;:
     {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="16"></valueInteger>
+               <valueInteger value="15"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -398,7 +387,7 @@ define &quot;SDE RSV PRE Admission Observation&quot;:
   {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="17"></valueInteger>
+               <valueInteger value="16"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -424,7 +413,7 @@ define &quot;COVID And Influenza Observation&quot;:
       and exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="18"></valueInteger>
+               <valueInteger value="17"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -438,7 +427,7 @@ define &quot;COVID And Influenza Observation&quot;:
                <valueString value="//further constrain COVID-19 and Influenza Observations for 14 day lookback
 define &quot;COVID And Influenza PRE Admission Observation&quot;:
   &quot;COVID And Influenza Observation&quot; O 
-   where exists(EncounterInpatient E 
+   where exists( EncounterInpatient E 
     where (
       Global.&quot;Normalize Interval&quot;(O.effective) 14 days or less on or before start of E.period
       or Global.&quot;Normalize Interval&quot;(GetSpecimen(O.specimen).collection.collected) 14 days or less on or before start of E.period
@@ -447,7 +436,7 @@ define &quot;COVID And Influenza PRE Admission Observation&quot;:
     )"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="19"></valueInteger>
+               <valueInteger value="18"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -465,7 +454,7 @@ define &quot;SDE COVID And Influenza Specimen&quot;:
     return SharedResource.SpecimenResourceBaseFHIR(Specimen)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="20"></valueInteger>
+               <valueInteger value="19"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -481,7 +470,7 @@ define &quot;SDE COVID And Influenza Specimen&quot;:
   union &quot;COVID And Influenza Observation&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="21"></valueInteger>
+               <valueInteger value="20"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -499,7 +488,7 @@ define &quot;SDE RPS Specimen&quot;:
     return SharedResource.SpecimenResourceBaseFHIR(Specimen)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="22"></valueInteger>
+               <valueInteger value="21"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -518,7 +507,7 @@ define &quot;SDE RPS Specimen&quot;:
       and Reports.status in {'final','registered','preliminary','partial'}"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="23"></valueInteger>
+               <valueInteger value="22"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -536,7 +525,7 @@ define &quot;SDE RSV DiagnosticReport&quot;:
     {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="24"></valueInteger>
+               <valueInteger value="23"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -554,7 +543,7 @@ define &quot;SDE RPSObservation&quot;:
     {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="25"></valueInteger>
+               <valueInteger value="24"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -572,7 +561,7 @@ define &quot;SDE All ServiceRequests&quot;:
   return SharedResource.ServiceRequestResourceBaseFHIR(SR)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="26"></valueInteger>
+               <valueInteger value="25"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -594,7 +583,7 @@ define &quot;COVID And Influenza DiagnosticReport&quot;:
       and Reports.status in {'final','registered','preliminary','partial'}"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="27"></valueInteger>
+               <valueInteger value="26"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -612,7 +601,7 @@ define &quot;SDE COVID And Influenza DiagnosticReport&quot;:
     {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="28"></valueInteger>
+               <valueInteger value="27"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -630,7 +619,7 @@ define &quot;SDE COVID And Influenza PRE Admission Observation&quot;:
     {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="29"></valueInteger>
+               <valueInteger value="28"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -655,7 +644,7 @@ define &quot;SDE COVID And Influenza PRE Admission Observation&quot;:
   return SharedResource.ServiceRequestResourceBaseFHIR(ServiceRequests)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="30"></valueInteger>
+               <valueInteger value="29"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -673,7 +662,7 @@ define &quot;SDE COVID and Influenza DiagnosticReport Result from Lab&quot;:
     {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="31"></valueInteger>
+               <valueInteger value="30"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -692,7 +681,7 @@ define &quot;SDE All Procedures&quot;:
   {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="32"></valueInteger>
+               <valueInteger value="31"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -710,7 +699,7 @@ define &quot;SDE All Procedures&quot;:
   {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-location'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="33"></valueInteger>
+               <valueInteger value="32"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -728,7 +717,7 @@ define &quot;SDE All Procedures&quot;:
   {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="34"></valueInteger>
+               <valueInteger value="33"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -744,7 +733,7 @@ define &quot;SDE All Procedures&quot;:
     union &quot;RSV DiagnosticReport&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="35"></valueInteger>
+               <valueInteger value="34"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -762,7 +751,7 @@ define &quot;SDE RPS DiagnosticReport&quot;:
     {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="36"></valueInteger>
+               <valueInteger value="35"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -777,7 +766,7 @@ define &quot;SDE RPS DiagnosticReport&quot;:
   [MedicationRequest]"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="37"></valueInteger>
+               <valueInteger value="36"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -816,7 +805,7 @@ define &quot;SDE RPS DiagnosticReport&quot;:
     {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="38"></valueInteger>
+               <valueInteger value="37"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -837,7 +826,7 @@ define &quot;SDE Minimal Patient&quot;:
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/cross-measure-patient'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="39"></valueInteger>
+               <valueInteger value="38"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -852,7 +841,7 @@ define &quot;SDE Minimal Patient&quot;:
   [Observation]"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="40"></valueInteger>
+               <valueInteger value="39"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -871,7 +860,7 @@ define &quot;SDE All Observations&quot;:
   {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="41"></valueInteger>
+               <valueInteger value="40"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -890,7 +879,7 @@ define &quot;SDE All Observations&quot;:
   {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="42"></valueInteger>
+               <valueInteger value="41"></valueInteger>
             </extension>
          </extension>
          <status value="active"></status>
@@ -1329,6 +1318,7 @@ define &quot;SDE All Observations&quot;:
             <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
             <mustSupport value="location"></mustSupport>
             <mustSupport value="period"></mustSupport>
+            <mustSupport value="status"></mustSupport>
          </dataRequirement>
          <dataRequirement>
             <type value="Location"></type>
@@ -1578,12 +1568,12 @@ define &quot;SDE All Observations&quot;:
       <system value="https://nhsnlink.org"></system>
       <value value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></value>
    </identifier>
-   <version value="0.000.01"></version>
+   <version value="0.0.007"></version>
    <name value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></name>
    <title value="NHSN Respiratory Pathogen Surveillance Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-10-20T11:32:21-05:00"></date>
+   <date value="2023-11-07T17:32:00-05:00"></date>
    <description value="dQM Measure for Respiratory Pathogen Surveillance"></description>
    <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation"></library>
    <scoring>

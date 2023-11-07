@@ -877,12 +877,12 @@ define &quot;SDE Condition&quot;:
       <system value="https://nhsnlink.org"></system>
       <value value="NHSNdQMAcuteCareHospitalInitialPopulation"></value>
    </identifier>
-   <version value="0.000.01"></version>
+   <version value="0.0.007"></version>
    <name value="NHSNdQMAcuteCareHospitalInitialPopulation"></name>
    <title value="NHSN dQM Acute Care Hospital Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-11-07T11:23:14-05:00"></date>
+   <date value="2023-11-07T17:32:00-05:00"></date>
    <description value="dQM Measure for Inpatients (Acute) Care setting"></description>
    <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNdQMAcuteCareHospitalInitialPopulation"></library>
    <scoring>
