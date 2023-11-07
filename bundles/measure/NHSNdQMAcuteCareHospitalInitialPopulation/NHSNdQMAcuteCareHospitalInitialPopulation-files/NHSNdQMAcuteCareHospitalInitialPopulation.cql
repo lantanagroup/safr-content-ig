@@ -1,4 +1,4 @@
-library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.006'
+library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.007'
 
 using FHIR version '4.0.1'
 
@@ -49,23 +49,21 @@ define "Qualifying Encounter During Measurement Period":
 union   [Encounter: "Emergency Department Visit"]
 union [Encounter: "Observation Services"]
 union [Encounter: class in {"emergency", "inpatient acute", "inpatient encounter", "inpatient non-acute", "short stay"}]) QualifyingEncounters
-  where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged'}
+  where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
     and QualifyingEncounters.period overlaps "Measurement Period" 
 
 define "Encounters with Patient Hospital Locations":
-  "Encounters" Encounters
+  [Encounter] Encounters
   where exists(
     Encounters.location EncounterLocation
     where Global.GetLocation(EncounterLocation.location).type in "Inpatient, Emergency, and Observation Locations"
       and EncounterLocation.period overlaps Encounters.period
+      and Encounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
   )
 
 define "Initial Population":
   "Qualifying Encounter During Measurement Period"
   union "Encounters with Patient Hospital Locations"
-
-define "Encounters":
-  [Encounter]
 
 //============================================================================
 //Supplemental Data Element
@@ -105,7 +103,7 @@ define "SDE DiagnosticReport All":
   return SharedResource.DiagnosticReportResourceBaseFHIR(DiagnosticReports)
 
 define "SDE Encounter": 
-  "Encounters" Encounters
+  [Encounter] Encounters
   where exists("Initial Population")
   return SharedResource.EncounterResource(Encounters,
   {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter'}})

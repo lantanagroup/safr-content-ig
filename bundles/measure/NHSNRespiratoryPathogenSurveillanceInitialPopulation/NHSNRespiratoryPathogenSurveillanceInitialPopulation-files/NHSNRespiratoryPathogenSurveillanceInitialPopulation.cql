@@ -86,30 +86,32 @@ context Patient
 // Initial Population
 //----------------------------------
 define "Initial Population":
-  "Qualifying Encounter During Measurement Period"
-  union "Qualifying Location During Measurement Period"
+  EncounterInpatient
+  union EncounterObservation
+  union "Encounters with Patient Hospital Locations"
 
 define "EncounterInpatient":
-  [Encounter: "Encounter Inpatient"]
-    union [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "short stay"}]
+  ([Encounter: "Encounter Inpatient"]
+    union [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "short stay"}]) Encounters
+  where Encounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
+    and Encounters.period overlaps "Measurement Period"
 
 define "EncounterObservation":
-  [Encounter: "Observation Services"]
-    union [Encounter: class in {"observation encounter"}]
+  ([Encounter: "Observation Services"]
+    union [Encounter: class in {"observation encounter"}]) Encounters
+  where Encounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
+    and Encounters.period overlaps "Measurement Period"
 
-define "Qualifying Location During Measurement Period":
+define "Encounters with Patient Hospital Locations":
   [Encounter] Encounters
   where exists(
     Encounters.location EncounterLocation
     where Global.GetLocation(EncounterLocation.location).type in "Inpatient, Emergency, and Observation Locations"
       and EncounterLocation.period overlaps Encounters.period
+      and Encounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error' }
+      and Encounters.period overlaps "Measurement Period"
   )
 
-define "Qualifying Encounter During Measurement Period":
-  ( "EncounterInpatient"
-  union "EncounterObservation") QualifyingEncounters
-  where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged', 'onleave'}
-    and QualifyingEncounters.period overlaps "Measurement Period"
 
 //-----------------------------------------------
 // Logic related to Laboratory
@@ -140,7 +142,7 @@ define "RPS Observation":
 //further constrain COVID-19 and Influenza Observations for 14 day lookback
 define "COVID And Influenza PRE Admission Observation":
   "COVID And Influenza Observation" O 
-   where exists(EncounterInpatient E 
+   where exists( EncounterInpatient E 
     where (
       Global."Normalize Interval"(O.effective) 14 days or less on or before start of E.period
       or Global."Normalize Interval"(GetSpecimen(O.specimen).collection.collected) 14 days or less on or before start of E.period
