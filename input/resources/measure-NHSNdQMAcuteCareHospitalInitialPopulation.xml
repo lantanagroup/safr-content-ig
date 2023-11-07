@@ -765,17 +765,43 @@ define &quot;SDE Condition&quot;:
          <expression value="SDE Device"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData id="sde-diagnosticreport">
+   <supplementalData id="sde-diagnosticreport-lab">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
          </coding>
       </usage>
-      <description value="SDE DiagnosticReport"></description>
+      <description value="SDE DiagnosticReport Lab"></description>
       <criteria>
          <language value="text/cql-identifier"></language>
-         <expression value="SDE DiagnosticReport"></expression>
+         <expression value="SDE DiagnosticReport Lab"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-diagnosticreport-note">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE DiagnosticReport Note"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE DiagnosticReport Note"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-diagnosticreport-all">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE DiagnosticReport All"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE DiagnosticReport All"></expression>
       </criteria>
    </supplementalData>
    <supplementalData id="sde-encounter">
@@ -789,6 +815,19 @@ define &quot;SDE Condition&quot;:
       <criteria>
          <language value="text/cql-identifier"></language>
          <expression value="SDE Encounter"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-initial-population-encounters">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE Initial Population Encounters"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE Initial Population Encounters"></expression>
       </criteria>
    </supplementalData>
    <supplementalData id="sde-location">
@@ -843,14 +882,40 @@ define &quot;SDE Condition&quot;:
          <expression value="SDE Medication"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData id="sde-observation">
+   <supplementalData id="sde-observation-lab-category">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
          </coding>
       </usage>
-      <description value="SDE Observation"></description>
+      <description value="SDE Observation Lab Category"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE Observation Lab Category"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-observation-vital-signs-category">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE Observation Vital Signs Category"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE Observation Vital Signs Category"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-observation-category">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE Observation Category"></description>
       <criteria>
          <language value="text/cql-identifier"></language>
          <expression value="SDE Observation Category"></expression>
@@ -895,32 +960,6 @@ define &quot;SDE Condition&quot;:
          <expression value="SDE Specimen"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData id="sde-minimal-patient">
-      <usage>
-         <coding>
-            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
-            <code value="supplemental-data"></code>
-         </coding>
-      </usage>
-      <description value="SDE Minimal Patient"></description>
-      <criteria>
-         <language value="text/cql-identifier"></language>
-         <expression value="SDE Minimal Patient"></expression>
-      </criteria>
-   </supplementalData>
-   <supplementalData id="sde-initial-population-encounters">
-      <usage>
-         <coding>
-            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
-            <code value="supplemental-data"></code>
-         </coding>
-      </usage>
-      <description value="SDE Initial Population Encounters"></description>
-      <criteria>
-         <language value="text/cql-identifier"></language>
-         <expression value="SDE Initial Population Encounters"></expression>
-      </criteria>
-   </supplementalData>
    <supplementalData id="sde-service-request">
       <usage>
          <coding>
@@ -934,4 +973,17 @@ define &quot;SDE Condition&quot;:
          <expression value="SDE Service Request"></expression>
       </criteria>
    </supplementalData>
+   <supplementalData id="sde-minimal-patient">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE Minimal Patient"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE Minimal Patient"></expression>
+      </criteria>
+   </supplementalData> 
 </Measure>
