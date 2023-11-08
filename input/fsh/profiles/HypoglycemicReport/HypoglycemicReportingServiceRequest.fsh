@@ -1,4 +1,3 @@
-/*
 Profile: HypoglycemicReportingServiceRequest
 Parent: ServiceRequest
 Id: hypoglycemic-reporting-servicerequest
@@ -21,4 +20,3 @@ Description: "This profile contains Required and Must Support data elements for 
 * authoredOn 1..
 * reasonReference MS
 * specimen MS
-*/

@@ -1,4 +1,3 @@
-/*
 Profile: HypoglycemicReportingCondition
 Parent: USCoreCondition
 Id: hypoglycemic-reporting-condition
@@ -10,4 +9,3 @@ Description: "This profile contains Required and Must Support data elements for 
 * onset[x] MS
 * abatement[x] MS
 * recordedDate MS
-*/

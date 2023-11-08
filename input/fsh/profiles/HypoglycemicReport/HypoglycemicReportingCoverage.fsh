@@ -1,4 +1,3 @@
-/*
 Profile: HypoglycemicReportingCoverage
 Parent: Coverage
 Id: hypoglycemic-reporting-coverage
@@ -14,4 +13,3 @@ Description: "This profile contains Required and Must Support data elements for 
 * dependent MS
 * relationship MS
 * period MS
-*/

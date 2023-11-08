@@ -61,7 +61,7 @@ parameters:
   - input/resources/library
   - input/resources/measure
 
-  
+
 menu:
   IG Home: index.html
   Table of Contents: toc.html
@@ -142,25 +142,25 @@ groups:
       - StructureDefinition/respiratory-pathogen-surveillance-event-medicationadministration
       - StructureDefinition/respiratory-pathogen-surveillance-event-medicationrequest
 
+  hypo:
+    name: Hypoglycemic Event Reporting profiles
+    resources:
+      - StructureDefinition/hypoglycemic-reporting-condition
+      - StructureDefinition/hypoglycemic-reporting-coverage
+      - StructureDefinition/hypoglycemic-reporting-encounter
+      - StructureDefinition/hypoglycemic-reporting-lab-observation
+      - StructureDefinition/hypoglycemic-reporting-location
+      - StructureDefinition/hypoglycemic-reporting-medication
+      - StructureDefinition/hypoglycemic-reporting-medicationadministration
+      - StructureDefinition/hypoglycemic-reporting-medicationrequest
+      - StructureDefinition/hypoglycemic-reporting-servicerequest
+      - StructureDefinition/hypoglycemic-reporting-specimen      
+
   valuesets:
     name: "Terminology: Profile ValueSets"
     resources:
       - ValueSet/acute-care-hospital-encounter-status
       - ValueSet/respiratory-pathogen-surveillance-event-encounter-status
-
-  #hypo:
-  #  name: Hypoglycemic Event Reporting profiles
-  #  resources:
-  #    - StructureDefinition/hypoglycemic-reporting-condition
-  #    - StructureDefinition/hypoglycemic-reporting-coverage
-  #    - StructureDefinition/hypoglycemic-reporting-encounter
-  #    - StructureDefinition/hypoglycemic-reporting-lab-observation
-  #    - StructureDefinition/hypoglycemic-reporting-location
-  #    - StructureDefinition/hypoglycemic-reporting-medication
-  #    - StructureDefinition/hypoglycemic-reporting-medicationadministration
-  #   - StructureDefinition/hypoglycemic-reporting-medicationrequest
-  #    - StructureDefinition/hypoglycemic-reporting-servicerequest
-  #    - StructureDefinition/hypoglycemic-reporting-specimen      
 
   measures:
     name: "Knowledge Artifacts: Measure"
@@ -173,7 +173,7 @@ groups:
     name: "Knowledge Artifacts: Libraries"
     resources:
       - Library/SharedResourceCreation
-      #- Library/NHSNGlycemicControlHypoglycemicInitialPopulation
+      - Library/NHSNGlycemicControlHypoglycemicInitialPopulation
       - Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation
       - Library/NHSNdQMAcuteCareHospitalInitialPopulation
 
