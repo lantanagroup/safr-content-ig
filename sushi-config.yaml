@@ -46,6 +46,7 @@ parameters:
   default-publisher: true
   #default-jurisdiction: true
   default-copyright: true
+
   
   special-url-base: 
     - http://hl7.org/fhir/5.0
@@ -55,7 +56,12 @@ parameters:
     - http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference
     - http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.population.description
 
+  path-resource: 
+  - input/resources/device
+  - input/resources/library
+  - input/resources/measure
 
+  
 menu:
   IG Home: index.html
   Table of Contents: toc.html
