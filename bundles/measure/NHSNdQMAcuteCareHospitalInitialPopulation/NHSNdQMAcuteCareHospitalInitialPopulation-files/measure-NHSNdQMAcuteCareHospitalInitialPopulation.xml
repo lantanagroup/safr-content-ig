@@ -145,8 +145,9 @@ union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, 
   where exists(
     Encounters.location EncounterLocation
     where Global.GetLocation(EncounterLocation.location).type in &quot;Inpatient, Emergency, and Observation Locations&quot;
-      and EncounterLocation.period overlaps Encounters.period
+      //and EncounterLocation.period overlaps Encounters.period
       and Encounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
+      and Encounters.period overlaps &quot;Measurement Period&quot;
   )"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -792,8 +793,8 @@ define &quot;SDE Condition&quot;:
             <type value="Encounter"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
             <mustSupport value="location"></mustSupport>
-            <mustSupport value="period"></mustSupport>
             <mustSupport value="status"></mustSupport>
+            <mustSupport value="period"></mustSupport>
          </dataRequirement>
          <dataRequirement>
             <type value="Location"></type>
@@ -882,7 +883,7 @@ define &quot;SDE Condition&quot;:
    <title value="NHSN dQM Acute Care Hospital Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-11-07T17:45:19-05:00"></date>
+   <date value="2023-11-15T16:54:10-05:00"></date>
    <description value="dQM Measure for Inpatients (Acute) Care setting"></description>
    <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNdQMAcuteCareHospitalInitialPopulation"></library>
    <scoring>
