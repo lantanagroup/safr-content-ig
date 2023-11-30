@@ -1,6 +1,6 @@
 Profile: AcuteCareHospitalReportingSpecimen
 Parent: Specimen
-Id: acute-care-hospital-reporting-specimen
+Id: ach-reporting-specimen
 Title: "Acute Care Hospital Reporting Specimen"
 Description: "TO BE REPLACED - This profile contains Required and Must Support data elements for reporting blood glucose specimen information to the NHSN Glycemic Control, Hypoglycemia Module. This profile is based on the [HL7 FHIR R4 Specimen Profile v4.0.1](http://hl7.org/fhir/R4/specimen.html)."
 * ^status = #active

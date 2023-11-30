@@ -111,37 +111,24 @@ groups:
   ach:
     name: Acute Care Hospital Reporting Profiles
     resources:
-      - StructureDefinition/acute-care-hospital-reporting-encounter
-      - StructureDefinition/acute-care-hospital-reporting-location
-      - StructureDefinition/acute-care-hospital-reporting-lab-observation
-      - StructureDefinition/acute-care-hospital-reporting-observation
-      - StructureDefinition/acute-care-hospital-reporting-servicerequest
-      - StructureDefinition/acute-care-hospital-reporting-specimen
-      - StructureDefinition/acute-care-hospital-reporting-condition
-      - StructureDefinition/acute-care-hospital-reporting-procedure
-      - StructureDefinition/acute-care-hospital-reporting-coverage
-      - StructureDefinition/acute-care-hospital-reporting-implantable-device
-      - StructureDefinition/acute-care-hospital-reporting-device
-      - StructureDefinition/acute-care-hospital-reporting-lab-diagnostic-report
-      - StructureDefinition/acute-care-hospital-reporting-note-diagnostic-report
-      - StructureDefinition/acute-care-hospital-reporting-medication
-      - StructureDefinition/acute-care-hospital-reporting-medicationadministration
-      - StructureDefinition/acute-care-hospital-reporting-medicationrequest
+      - StructureDefinition/ach-reporting-encounter
+      - StructureDefinition/ach-reporting-location
+      - StructureDefinition/ach-reporting-lab-observation
+      - StructureDefinition/ach-reporting-vitals-observation
+      - StructureDefinition/ach-reporting-observation
+      - StructureDefinition/ach-reporting-servicerequest
+      - StructureDefinition/ach-reporting-specimen
+      - StructureDefinition/ach-reporting-condition
+      - StructureDefinition/ach-reporting-procedure
+      - StructureDefinition/ach-reporting-coverage
+      - StructureDefinition/ach-reporting-implantable-device
+      - StructureDefinition/ach-reporting-device
+      - StructureDefinition/ach-reporting-lab-diagnostic-report
+      - StructureDefinition/ach-reporting-note-diagnostic-report
+      - StructureDefinition/ach-reporting-medication
+      - StructureDefinition/ach-reporting-medicationadministration
+      - StructureDefinition/ach-reporting-medicationrequest
       
-  rps:
-    name: Respiratory Pathogen Surveillance Event Profiles
-    resources:
-      - StructureDefinition/respiratory-pathogen-surveillance-event-encounter
-      - StructureDefinition/respiratory-pathogen-surveillance-event-location
-      - StructureDefinition/respiratory-pathogen-surveillance-event-lab-observation
-      - StructureDefinition/respiratory-pathogen-surveillance-event-servicerequest
-      - StructureDefinition/respiratory-pathogen-surveillance-event-specimen
-      - StructureDefinition/respiratory-pathogen-surveillance-event-procedure
-      - StructureDefinition/respiratory-pathogen-surveillance-event-lab-diagnostic-report
-      - StructureDefinition/respiratory-pathogen-surveillance-event-medication
-      - StructureDefinition/respiratory-pathogen-surveillance-event-medicationadministration
-      - StructureDefinition/respiratory-pathogen-surveillance-event-medicationrequest
-
   hypo:
     name: Hypoglycemic Event Reporting profiles
     resources:
@@ -156,11 +143,27 @@ groups:
       - StructureDefinition/hypoglycemic-reporting-servicerequest
       - StructureDefinition/hypoglycemic-reporting-specimen      
 
+  rps:
+    name: Respiratory Pathogen Surveillance Event Profiles
+    resources:
+      - StructureDefinition/rps-encounter
+      - StructureDefinition/rps-location
+      - StructureDefinition/rps-lab-observation
+      - StructureDefinition/rps-servicerequest
+      - StructureDefinition/rps-specimen
+      - StructureDefinition/rps-procedure
+      - StructureDefinition/rps-lab-diagnostic-report
+      - StructureDefinition/rps-medication
+      - StructureDefinition/rps-medicationadministration
+      - StructureDefinition/rps-medicationrequest
+
+
+
   valuesets:
     name: "Terminology: Profile ValueSets"
     resources:
-      - ValueSet/acute-care-hospital-encounter-status
-      - ValueSet/respiratory-pathogen-surveillance-event-encounter-status
+      - ValueSet/ach-encounter-status
+      - ValueSet/rps-encounter-status
 
   measures:
     name: "Knowledge Artifacts: Measure"

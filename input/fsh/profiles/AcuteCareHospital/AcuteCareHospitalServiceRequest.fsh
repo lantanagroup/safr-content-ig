@@ -1,6 +1,6 @@
 Profile: AcuteCareHospitalReportingServiceRequest
 Parent: ServiceRequest
-Id: acute-care-hospital-reporting-servicerequest
+Id: ach-reporting-servicerequest
 Title: "Acute Care Hospital Reporting ServiceRequest"
 Description: "TO BE REPLACED - This profile contains Required and Must Support data elements for reporting blood glucose order information to the NHSN Glycemic Control, Hypoglycemia Module. This profile is based on the [HL7 FHIR R4 ServiceRequest Profile v4.0.1](http://hl7.org/fhir/R4/servicerequest.html)."
 * ^status = #active

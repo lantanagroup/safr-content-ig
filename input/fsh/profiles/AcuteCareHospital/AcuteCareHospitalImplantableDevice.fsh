@@ -1,6 +1,6 @@
 Profile: AcuteCareHospitalImplantableDevice
 Parent: USCoreImplantableDeviceProfile
-Id: acute-care-hospital-reporting-implantable-device
+Id: ach-reporting-implantable-device
 Title: "Acute Care Hospital Implantable Device"
 Description: "TO BE REPLACED - This profile includes the name and version of the device or software submitting the report Bundle, and may include other information about the device."
 * ^status = #active

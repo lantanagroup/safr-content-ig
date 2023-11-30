@@ -1,6 +1,6 @@
 Profile: RespiratoryPathogenSurveillanceEventEncounter
 Parent: USCoreEncounterProfile
-Id: respiratory-pathogen-surveillance-event-encounter
+Id: rps-encounter
 Title: "Respiratory Pathogen Surveillance Event Report Encounter"
 Description: "This profile contains Required and Must Support data elements for reporting encounter information to the NHSN Respiratory Pathogens Surveillance (RPS) Module. This profile is based on the [HL7 US Core Encounter Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-encounter.html)."
 * id 1..
