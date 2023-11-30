@@ -11,17 +11,17 @@ fsh-generated
 
 # Windows generated files #
 ###########################
-Thumbs.db
+**/Thumbs.db
 
-.index.db
-.index.json
+**/.index.db
+**/.index.json
 
 # VS Code generated files
 .vscode
 
 # OS generated files #
 ######################
-.DS_Store
+**/.DS_Store
 .DS_Store?
 
 # backup files #
