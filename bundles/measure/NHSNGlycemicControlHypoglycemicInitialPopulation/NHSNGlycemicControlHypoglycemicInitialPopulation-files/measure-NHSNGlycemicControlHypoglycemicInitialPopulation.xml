@@ -142,11 +142,11 @@ define &quot;MedicationRequests&quot;:
             <extension url="statement">
                <valueString value="define &quot;Antidiabetic Drugs Administered or Ordered&quot;:
   (&quot;MedicationAdministrations&quot; ADDMedAdmin
-    where GetMedicationCode(ADDMedAdmin.medication) in &quot;Antidiabetic Medications&quot;
+    where GetMedicationCode(ADDMedAdmin.medication) in &quot;Diabetes Medications&quot;
       and ADDMedAdmin.status ~ 'completed')
   union (
     &quot;MedicationRequests&quot; MedicationRequests
-      where GetMedicationCode(MedicationRequests.medication) in &quot;Antidiabetic Medications&quot;
+      where GetMedicationCode(MedicationRequests.medication) in &quot;Diabetes Medications&quot;
   )"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -586,7 +586,7 @@ define &quot;SDE Chief Complaint&quot;:
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
-            <display value="Value set Antidiabetic Medications"></display>
+            <display value="Value set Diabetes Medications"></display>
             <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58"></resource>
          </relatedArtifact>
          <relatedArtifact>
@@ -898,7 +898,7 @@ define &quot;SDE Chief Complaint&quot;:
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2023-11-07T14:32:00-08:00"></date>
+   <date value="2023-11-15T13:54:10-08:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."></description>
    <purpose value="This site allows NHSN to view Measure-specification content in the dQMs under development by Lantana Consulting Group. Note that this site undergoes constant revision and is not intended to serve as an implementation guide."></purpose>

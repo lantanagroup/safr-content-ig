@@ -1,4 +1,4 @@
-library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.017'
+library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.018'
 
 using FHIR version '4.0.1'
 
@@ -17,7 +17,7 @@ codesystem "Condition Category": 'http://terminology.hl7.org/CodeSystem/conditio
 // Value Sets Used in the Measure
 //
 valueset "Discharge Disposition": 'http://terminology.hl7.org/ValueSet/encounter-discharge-disposition'
-valueset "Antidiabetic Medications": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58'
+valueset "Diabetes Medications": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58'
 
 //Glucose Lab Tests
 valueset "Blood Glucose Laboratory and Point of Care Tests": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.38'
@@ -82,11 +82,11 @@ define "Encounters with Patient Hospital Locations":
 
 define "Antidiabetic Drugs Administered or Ordered":
   ("MedicationAdministrations" ADDMedAdmin
-    where GetMedicationCode(ADDMedAdmin.medication) in "Antidiabetic Medications"
+    where GetMedicationCode(ADDMedAdmin.medication) in "Diabetes Medications"
       and ADDMedAdmin.status ~ 'completed')
   union (
     "MedicationRequests" MedicationRequests
-      where GetMedicationCode(MedicationRequests.medication) in "Antidiabetic Medications"
+      where GetMedicationCode(MedicationRequests.medication) in "Diabetes Medications"
   )
 
 //

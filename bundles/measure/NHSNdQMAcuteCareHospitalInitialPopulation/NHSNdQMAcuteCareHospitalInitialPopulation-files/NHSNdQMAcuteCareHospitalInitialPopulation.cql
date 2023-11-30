@@ -57,8 +57,9 @@ define "Encounters with Patient Hospital Locations":
   where exists(
     Encounters.location EncounterLocation
     where Global.GetLocation(EncounterLocation.location).type in "Inpatient, Emergency, and Observation Locations"
-      and EncounterLocation.period overlaps Encounters.period
+      //and EncounterLocation.period overlaps Encounters.period
       and Encounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
+      and Encounters.period overlaps "Measurement Period"
   )
 
 define "Initial Population":
