@@ -31,3 +31,7 @@ Thumbs.db
 /bundles/plandefinition/ColorectalCancerScreeningCDS/ColorectalCancerScreeningCDS-files
 /input-cache
 input/tests/results/
+
+# Node files
+node_modules/
+.idea/
