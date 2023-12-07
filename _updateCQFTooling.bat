@@ -28,19 +28,12 @@ IF NOT EXIST "%input_cache_path%%tooling_jar%" (
 
 :create
 ECHO Will place refresh jar here: %input_cache_path%%tooling_jar%
-SET /p create="Ok? (Y/N)"
-IF /I "%create%"=="Y" (
-	MKDIR "%input_cache_path%" 2> NUL
-	GOTO:download
-)
-GOTO:done
+MKDIR "%input_cache_path%" 2> NUL
+GOTO:download
 
 :upgrade
-SET /p overwrite="Overwrite %jarlocation%? (Y/N)"
-IF /I "%overwrite%"=="Y" (
-	GOTO:download
-)
-GOTO:done
+ECHO Overwriting jar
+GOTO:download
 
 :download
 ECHO Downloading most recent refresh to %jarlocationname% - it's ~70 MB, so this may take a bit
@@ -57,7 +50,7 @@ GOTO done
 
 :win10
 POWERSHELL -command "if ('System.Net.WebClient' -as [type]) {(new-object System.Net.WebClient).DownloadFile('%dlurl%','%jarlocation%') } else { Invoke-WebRequest -Uri '%dlurl%' -Outfile '%jarlocation%' }"
-ECHO Download complete.
+ECHO Download complete of %dlurl%
 GOTO done
 
 :win7
