@@ -1,5 +1,5 @@
 ValueSet: AcuteCareHospitalEncounterStatus
-Id: acute-care-hospital-encounter-status
+Id: ach-encounter-status
 Title: "Acute Care Hospital Encounter Status"
 Description: "Acute Care Hospital Encounter Status"
 * $encounter-status#in-progress	"In Progress"

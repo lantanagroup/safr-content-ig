@@ -1,6 +1,6 @@
 Profile: RespiratoryPathogenSurveillanceEventSpecimen
 Parent: Specimen
-Id: respiratory-pathogen-surveillance-event-specimen
+Id: rps-specimen
 Title: "Respiratory Pathogen Surveillance Event Specimen"
 Description: "This profile contains Required and Must Support data elements for reporting COVID-19, Influenza, and Respiratory Syncytial Virus (RSV) specimen information to the NHSN Respiratory Pathogens Surveillance (RPS) Module. This profile is based on the [HL7 FHIR R4 Specimen Profile v4.0.1](http://hl7.org/fhir/R4/specimen.html)."
 * ^status = #active

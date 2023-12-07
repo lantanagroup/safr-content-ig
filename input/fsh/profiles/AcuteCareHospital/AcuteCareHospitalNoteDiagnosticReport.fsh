@@ -1,6 +1,6 @@
 Profile: AcuteCareHospitalNoteDiagnosticReport
 Parent: USCoreDiagnosticReportProfileNoteExchange
-Id: acute-care-hospital-reporting-note-diagnostic-report
+Id: ach-reporting-note-diagnostic-report
 Title: "Acute Care Hospital Note Doagnostic Report"
 Description: "TO BE REPLACED - This profile includes the name and version of the device or software submitting the report Bundle, and may include other information about the device."
 * ^status = #active

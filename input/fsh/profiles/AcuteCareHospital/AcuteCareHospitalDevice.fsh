@@ -1,6 +1,6 @@
 Profile: AcuteCareHospitalDevice
 Parent: Device
-Id: acute-care-hospital-reporting-device
+Id: ach-reporting-device
 Title: "Acute Care Hospital Device"
 Description: "TO BE REPLACED - This profile includes the name and version of the device or software submitting the report Bundle, and may include other information about the device."
 * ^status = #active
