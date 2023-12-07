@@ -28,5 +28,3 @@ IF EXIST "%input_cache_path%\%tooling_jar%" (
 ) ELSE (
 	ECHO IG Refresh NOT FOUND in input-cache or parent folder.  Please run _updateCQFTooling.  Aborting...
 )
-
-PAUSE
