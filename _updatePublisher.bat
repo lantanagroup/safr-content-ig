@@ -18,6 +18,10 @@ SET update_sh_url=%scriptdlroot%/_updatePublisher.sh
 IF "%~1"=="/f" SET skipPrompts=y
 
 
+IF "%skipPrompts%"=="y" (
+    GOTO processflags
+)
+
 ECHO.
 ECHO Checking internet connection...
 PING tx.fhir.org -4 -n 1 -w 1000 | FINDSTR TTL && GOTO isonline
