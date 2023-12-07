@@ -50,7 +50,7 @@ GOTO done
 
 :win10
 POWERSHELL -command "if ('System.Net.WebClient' -as [type]) {(new-object System.Net.WebClient).DownloadFile('%dlurl%','%jarlocation%') } else { Invoke-WebRequest -Uri '%dlurl%' -Outfile '%jarlocation%' }"
-ECHO Download complete of %dlurl%
+ECHO Download complete
 GOTO done
 
 :win7
