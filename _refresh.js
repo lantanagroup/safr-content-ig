@@ -86,6 +86,13 @@ function check() {
             bundle.id = bundle.id.substring(0, bundle.id.length - 7);
             changed = true;
         }
+        bundle.entry
+            .filter(function (e) { return e.resource.resourceType === 'Library' && !e.resource.status; })
+            .forEach(function (e) {
+            console.log("Library/".concat(e.resource.id, " does not have a status, defaulting to \"active\""));
+            e.resource.status = 'draft';
+            changed = true;
+        });
         var measureEntry = bundle.entry.find(function (e) { return e.resource.resourceType === 'Measure' && e.resource.id === bundleId; });
         var measure = measureEntry.resource;
         var libraryUrl = measure.library[0];
@@ -196,5 +203,13 @@ function run() {
         });
     });
 }
-run().then(function () { return console.log('Done'); });
+run()
+    .then(function () {
+    console.log('Done');
+    process.exit(0);
+})
+    .catch(function (err) {
+    console.error(err);
+    process.exit(1);
+});
 //# sourceMappingURL=_refresh.js.map

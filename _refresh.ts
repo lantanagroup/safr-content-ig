@@ -57,6 +57,14 @@ function check() {
             changed = true;
         }
 
+        bundle.entry
+            .filter(e => e.resource.resourceType === 'Library' && !e.resource.status)
+            .forEach(e => {
+                console.log(`Library/${e.resource.id} does not have a status, defaulting to "active"`);
+                e.resource.status = 'draft';
+                changed = true;
+            });
+
         const measureEntry = bundle.entry.find((e: any) => e.resource.resourceType === 'Measure' && e.resource.id === bundleId);
         const measure = measureEntry.resource;
         const libraryUrl = measure.library[0];
@@ -113,7 +121,6 @@ async function put() {
 
     const server = process.argv[index+1];
 
-
     const bundleFolders = fs.readdirSync(measurePath);
 
     for (let bundleId of bundleFolders) {
@@ -137,4 +144,12 @@ async function run() {
     await put();
 }
 
-run().then(() => console.log('Done'));
+run()
+    .then(() => {
+        console.log('Done');
+        process.exit(0);
+    })
+    .catch((err) => {
+        console.error(err);
+        process.exit(1);
+    });
