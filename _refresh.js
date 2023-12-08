@@ -36,15 +36,21 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var node_child_process_1 = require("node:child_process");
+var child_process_1 = require("child_process");
 var fs = require("fs");
 var path = require("path");
 var request = require("request");
-var refreshScript = process.argv[2];
+var script = process.argv[2];
 var measurePath = 'bundles/measure';
 function refresh() {
     return new Promise(function (resolve, reject) {
-        var proc = (0, node_child_process_1.spawn)(refreshScript);
+        var proc;
+        if (script === 'sh') {
+            proc = (0, child_process_1.spawn)('bash', ['_refresh.sh']);
+        }
+        else if (script === 'bat') {
+            proc = (0, child_process_1.spawn)('_refresh.bat');
+        }
         proc.stdout.on('data', function (data) {
             console.log(data.toString());
         });

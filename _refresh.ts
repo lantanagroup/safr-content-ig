@@ -1,14 +1,21 @@
-import {spawn} from 'node:child_process';
+import {spawn} from 'child_process';
 import * as fs from 'fs';
 import * as path from "path";
 import * as request from 'request';
 
-const refreshScript = process.argv[2];
+const script = process.argv[2];
 const measurePath = 'bundles/measure';
 
 function refresh() {
     return new Promise((resolve, reject) => {
-        const proc = spawn(refreshScript);
+        let proc;
+
+        if (script === 'sh') {
+            proc = spawn('bash', ['_refresh.sh']);
+        } else if (script === 'bat') {
+            proc = spawn('_refresh.bat');
+        }
+
         proc.stdout.on('data', (data) => {
             console.log(data.toString());
         });

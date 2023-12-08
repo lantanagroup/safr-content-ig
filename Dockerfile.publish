@@ -1,0 +1,15 @@
+FROM lantanagroup/measure-builder:fsh AS build
+#FROM ubuntu AS build
+#RUN apt-get update && apt-get install -y --no-install-recommends ruby-full build-essential zlib1g-dev git python3 bash curl openjdk-11-jdk
+#RUN gem install jekyll bundler
+
+WORKDIR /work
+COPY *.bat .
+COPY *.sh .
+# Forcing script without prompts
+RUN bash _updatePublisher.sh --yes
+RUN bash _updateCQFTooling.sh --yes
+COPY . .
+RUN bash _genonce.sh
+RUN npm ci
+RUN node _refresh.js sh --put https://ehr-test.nhsnlink.org/fhir

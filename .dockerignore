@@ -1,8 +1,8 @@
 bundles/
 temp/
-temp/
 template/
-bundles/
+input-cache/
+node_modules/
 .vscode
 .git
 .gitignore
