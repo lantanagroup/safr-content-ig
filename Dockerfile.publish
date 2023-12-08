@@ -4,8 +4,8 @@ FROM lantanagroup/measure-builder:fsh AS build
 #RUN gem install jekyll bundler
 
 WORKDIR /work
-COPY *.bat .
-COPY *.sh .
+COPY *.bat /work/
+COPY *.sh /work/
 # Forcing script without prompts
 RUN bash _updatePublisher.sh --yes
 RUN bash _updateCQFTooling.sh --yes
