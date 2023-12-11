@@ -35,8 +35,11 @@ function refresh() {
 
 function check() {
     if (!fs.existsSync(measurePath)) {
+        console.log(`Measure path ${measurePath} doesn't exist`);
         return false;
     }
+
+    console.log(`Performing checks on ${measurePath}`);
 
     const bundleFolders = fs.readdirSync(measurePath);
 
@@ -45,8 +48,11 @@ function check() {
         let changed = false;
 
         if (!fs.existsSync(bundlePath)) {
+            console.log(`Bundle path ${bundlePath} does not exist. Skipping.`);
             continue;
         }
+
+        console.log(`Checking bundle ${bundleId}`);
 
         const bundleContent = fs.readFileSync(bundlePath).toString();
         const bundle = JSON.parse(bundleContent);
@@ -76,13 +82,16 @@ function check() {
         }
 
         if (!library.dataRequirement) {
-            console.error(`Library ${libraryUrl} doesn't have dataRequirement!`);
+            console.log(`Library ${libraryUrl} doesn't have dataRequirement!`);
             return false;
         }
 
         if (changed) {
+            console.log(`Bundle ${bundle.id} has changed. Saving updated bundle.`);
             fs.writeFileSync(bundlePath, JSON.stringify(bundle));
         }
+
+        console.log(`Check for ${bundle.id} passed`);
     }
 
     return true;
@@ -134,9 +143,15 @@ async function put() {
 async function run() {
     await refresh();
 
+    let checkCount = 0;
     while (!check()) {
-        console.log('Check failed... re-refreshing');
+        if (checkCount === 10) {
+            throw new Error('Checked 10 times, without success. Stopping');
+        }
+
+        console.log(`Check ${checkCount} failed... re-refreshing`);
         await refresh();
+        checkCount++;
     }
 
     console.log('Checks passed on the bundles');
