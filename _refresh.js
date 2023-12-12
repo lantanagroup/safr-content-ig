@@ -70,15 +70,19 @@ function refresh() {
 }
 function check() {
     if (!fs.existsSync(measurePath)) {
+        console.log("Measure path ".concat(measurePath, " doesn't exist"));
         return false;
     }
+    console.log("Performing checks on ".concat(measurePath));
     var bundleFolders = fs.readdirSync(measurePath);
     var _loop_1 = function (bundleId) {
         var bundlePath = path.join(measurePath, bundleId, bundleId + '-bundle.json');
         var changed = false;
         if (!fs.existsSync(bundlePath)) {
+            console.log("Bundle path ".concat(bundlePath, " does not exist. Skipping."));
             return "continue";
         }
+        console.log("Checking bundle ".concat(bundleId));
         var bundleContent = fs.readFileSync(bundlePath).toString();
         var bundle = JSON.parse(bundleContent);
         if (bundle.id.endsWith('-bundle')) {
@@ -102,12 +106,14 @@ function check() {
             throw new Error("Library ".concat(libraryUrl, " not found!"));
         }
         if (!library.dataRequirement) {
-            console.error("Library ".concat(libraryUrl, " doesn't have dataRequirement!"));
+            console.log("Library ".concat(libraryUrl, " doesn't have dataRequirement!"));
             return { value: false };
         }
         if (changed) {
+            console.log("Bundle ".concat(bundle.id, " has changed. Saving updated bundle."));
             fs.writeFileSync(bundlePath, JSON.stringify(bundle));
         }
+        console.log("Check for ".concat(bundle.id, " passed"));
     };
     for (var _i = 0, bundleFolders_1 = bundleFolders; _i < bundleFolders_1.length; _i++) {
         var bundleId = bundleFolders_1[_i];
@@ -180,18 +186,24 @@ function put() {
 }
 function run() {
     return __awaiter(this, void 0, void 0, function () {
+        var checkCount;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, refresh()];
                 case 1:
                     _a.sent();
+                    checkCount = 0;
                     _a.label = 2;
                 case 2:
                     if (!!check()) return [3 /*break*/, 4];
-                    console.log('Check failed... re-refreshing');
+                    if (checkCount === 10) {
+                        throw new Error('Checked 10 times, without success. Stopping');
+                    }
+                    console.log("Check ".concat(checkCount, " failed... re-refreshing"));
                     return [4 /*yield*/, refresh()];
                 case 3:
                     _a.sent();
+                    checkCount++;
                     return [3 /*break*/, 2];
                 case 4:
                     console.log('Checks passed on the bundles');
