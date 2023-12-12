@@ -883,8 +883,23 @@ define &quot;SDE Condition&quot;:
    <status value="draft"></status>
    <experimental value="false"></experimental>
    <date value="2023-11-07T17:32:00-05:00"></date>
-   <description value="dQM Measure for Inpatients (Acute) Care setting"></description>
+   <publisher value="Lantana Consulting Group"></publisher>
+   <description value="The Acute Care Hospital Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."></description>
+   <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>
+   <relatedArtifact>
+      <type value="documentation"></type>
+      <display value="https://www.cdc.gov/nhsn/index.html [placeholder for link to protocol on CDC website] "></display>
+      <url value="https://www.cdc.gov/nhsn/index.html"></url>
+      <document>
+         <url value="https://www.cdc.gov/nhsn/index.html"></url>
+      </document>
+   </relatedArtifact>
    <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNdQMAcuteCareHospitalInitialPopulation"></library>
+   <disclaimer value="This performance measure is not a clinical guideline, does not establish a standard of medical care and has not been tested for all potential applications.
+   
+   THE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.
+   
+   This measure and specifications are subject to further revisions."></disclaimer>
    <scoring>
       <coding>
          <system value="http://terminology.hl7.org/CodeSystem/measure-scoring"></system>
