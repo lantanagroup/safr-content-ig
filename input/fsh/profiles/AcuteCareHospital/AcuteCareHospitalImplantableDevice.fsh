@@ -1,3 +1,7 @@
+/*
+Removed per MEASDEV-790
+
+
 Profile: AcuteCareHospitalImplantableDevice
 Parent: USCoreImplantableDeviceProfile
 Id: ach-reporting-implantable-device
@@ -9,3 +13,4 @@ Description: "TO BE REPLACED - This profile includes the name and version of the
 * udiCarrier.entryType MS
 * status MS
 * deviceName MS
+*/

@@ -13,6 +13,10 @@ Description: "TO BE REPLACED - This profile includes the name and version of the
   * entryType MS
 * status MS
 * distinctIdentifier MS
+* manufactureDate MS
+* expirationDate MS
+* lotNumber MS
+* serialNumber MS
 * deviceName MS
 * type 1..
 * patient 1..
