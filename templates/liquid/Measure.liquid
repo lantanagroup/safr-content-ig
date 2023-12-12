@@ -236,7 +236,7 @@
         {% if Measure.rationale.exists() %}
         <tr>
             <th scope="row"><b>Background and Rationale: </b></th>
-            <td style="padding-left: 4px;">{{Measure.rationale.escape('html')}}</td>
+            <td style="padding-left: 4px;">{{Measure.rationale}}</td>
         </tr>
         {% endif %}
         <!-- Removed per MEASDEV-518 - HYPO: Measure Specific FHIR IG Narrative
