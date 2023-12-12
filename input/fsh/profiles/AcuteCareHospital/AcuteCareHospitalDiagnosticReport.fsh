@@ -2,7 +2,7 @@ Profile: AcuteCareHospitalDiagnosticReport
 Parent: DiagnosticReport
 Id: ach-reporting-diagnostic-report
 Title: "Acute Care Hospital General Diagnostic Report"
-Description: "TO BE REPLACED - This profile includes the name and version of the device or software submitting the report Bundle, and may include other information about the device."
+Description: "This profile contains Required and Must Support data elements for reporting general diagnostic report information to the NHSN Acute Care Hospital (ACH) Digital Quality Measures. This profile is based on the [HL7 FHIR® R4 DiagnosticReport Resource v4.0.1](https://hl7.org/fhir/R4/diagnosticreport.html)."
 * ^status = #active
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1

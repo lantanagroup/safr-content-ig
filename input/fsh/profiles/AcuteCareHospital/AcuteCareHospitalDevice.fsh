@@ -2,7 +2,7 @@ Profile: AcuteCareHospitalDevice
 Parent: Device
 Id: ach-reporting-device
 Title: "Acute Care Hospital Device"
-Description: "TO BE REPLACED - This profile includes the name and version of the device or software submitting the report Bundle, and may include other information about the device."
+Description: "This profile contains Required and Must Support data elements for reporting device information to the NHSN Acute Care Hospital (ACH) Digital Quality Measures. This profile covers both implantable and other types of devices and is based on the [HL7 FHIR® R4 Device Resource v4.0.1](https://hl7.org/fhir/R4/device.html)."
 * ^status = #active
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
