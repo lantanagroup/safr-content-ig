@@ -12,4 +12,6 @@ RUN bash _updateCQFTooling.sh --yes
 COPY . .
 RUN bash _genonce.sh
 RUN npm ci
+
 RUN node _refresh.js sh --put https://ehr-test.nhsnlink.org/fhir
+#CMD ["node", "_refresh.js", "sh", "--put", "https://ehr-test.nhsnlink.org/fhir"]
