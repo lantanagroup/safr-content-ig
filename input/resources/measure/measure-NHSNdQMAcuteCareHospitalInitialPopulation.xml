@@ -914,15 +914,7 @@ define &quot;SDE Condition&quot;:
          <display value="Outcome"></display>
       </coding>
    </type>
-   <rationale value="The NHSN Acute Care Hospital dQM allows for facilities to report line level patient data electronically to NHSN for the following modules that are reported monthly:  
-
-* Glycemic Control, Hypoglycemia 
-* Healthcare facility-onset, antibiotic-Treated Clostridioides difficile (C. difficile) Infection (HT-CDI) 
-* Hospital-Onset Bacteremia &amp; Fungemia (HOB) 
-* Venous Thromboembolism (VTE) 
-* Late Onset Sepsis / Meningitis 
-
-*Please see [Acute Care / Critical Access Hospitals (ACH) | NHSN | CDC](https://www.cdc.gov/nhsn/acute-care-hospital/index.html) for the individual measure protocols "></rationale>
+   <rationale value="The NHSN Acute Care Hospital dQM allows for facilities to report line level patient data electronically to NHSN for the following modules that are reported monthly: Glycemic Control, Hypoglycemia; Healthcare facility-onset, antibiotic-Treated Clostridioides difficile (C. difficile) Infection (HT-CDI); Hospital-Onset Bacteremia &amp; Fungemia (HOB); Venous Thromboembolism (VTE); Late Onset Sepsis / Meningitis. *Please see [Acute Care / Critical Access Hospitals (ACH) | NHSN | CDC](https://www.cdc.gov/nhsn/acute-care-hospital/index.html) for the individual measure protocols."></rationale>
    <group>
       <population>
          <code>
@@ -932,6 +924,7 @@ define &quot;SDE Condition&quot;:
                <display value="Initial Population"></display>
             </coding>
          </code>
+         <description value="All encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."></description>
          <criteria>
             <language value="text/cql-identifier"></language>
             <expression value="Initial Population"></expression>
