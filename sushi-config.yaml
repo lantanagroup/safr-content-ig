@@ -121,7 +121,7 @@ groups:
       - StructureDefinition/ach-reporting-condition
       - StructureDefinition/ach-reporting-procedure
       - StructureDefinition/ach-reporting-coverage
-      - StructureDefinition/ach-reporting-implantable-device
+      #- StructureDefinition/ach-reporting-implantable-device
       - StructureDefinition/ach-reporting-device
       - StructureDefinition/ach-reporting-lab-diagnostic-report
       - StructureDefinition/ach-reporting-note-diagnostic-report
