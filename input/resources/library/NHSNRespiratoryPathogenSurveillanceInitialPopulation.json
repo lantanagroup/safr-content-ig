@@ -1,9 +1,9 @@
 {
   "resourceType": "Library",
-  "id": "NHSNRespiratoryPathogenSurveillanceInitialPopulation",
-  "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation",
+  "id": "NHSNRespiratoryPathogensSurveillanceInitialPopulation",
+  "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation",
   "version": "0.0.007",
-  "name": "NHSNRespiratoryPathogenSurveillanceInitialPopulation",
+  "name": "NHSNRespiratoryPathogensSurveillanceInitialPopulation",
   "type": {
     "coding": [ {
       "system": "http://terminology.hl7.org/CodeSystem/library-type",

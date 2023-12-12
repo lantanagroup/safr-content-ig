@@ -1,7 +1,7 @@
-ValueSet: RespiratoryPathogenSurveillanceEventEncounterStatus
+ValueSet: RespiratoryPathogensSurveillanceEventEncounterStatus
 Id: rps-encounter-status
-Title: "Respiratory Pathogen Surveillance Event Encounter Status"
-Description: "Respiratory Pathogen Surveillance Event Encounter Status"
+Title: "Respiratory Pathogens Surveillance Event Encounter Status"
+Description: "Respiratory Pathogens Surveillance Event Encounter Status"
 * $encounter-status#in-progress	"In Progress"
 * $encounter-status#finished "Finished"
 * $encounter-status#triaged "Triaged" 

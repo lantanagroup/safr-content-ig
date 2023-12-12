@@ -1,6 +1,6 @@
 {
     "resourceType": "Bundle",
-    "id": "NHSNRespiratoryPathogenSurveillanceInitialPopulation",
+    "id": "NHSNRespiratoryPathogensSurveillanceInitialPopulation",
     "identifier": {
         "system": "https://nhsnlink.org",
         "value": "NHSNdQMAcuteCareHospitalInitialPopulation-bundle-bundle-bundle-bundle-bundle-bundle-bundle"
@@ -3393,10 +3393,10 @@
         {
             "resource": {
                 "resourceType": "Library",
-                "id": "NHSNRespiratoryPathogenSurveillanceInitialPopulation",
-                "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation",
+                "id": "NHSNRespiratoryPathogensSurveillanceInitialPopulation",
+                "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation",
                 "version": "0.0.007",
-                "name": "NHSNRespiratoryPathogenSurveillanceInitialPopulation",
+                "name": "NHSNRespiratoryPathogensSurveillanceInitialPopulation",
                 "type": {
                     "coding": [
                         {
@@ -4481,7 +4481,7 @@
             },
             "request": {
                 "method": "PUT",
-                "url": "Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                "url": "Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation"
             }
         },
         {
@@ -6893,7 +6893,7 @@
         {
             "resource": {
                 "resourceType": "Measure",
-                "id": "NHSNRespiratoryPathogenSurveillanceInitialPopulation",
+                "id": "NHSNRespiratoryPathogensSurveillanceInitialPopulation",
                 "meta": {
                     "profile": [
                         "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm",
@@ -6958,7 +6958,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -6979,7 +6979,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7000,7 +7000,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7021,7 +7021,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7042,7 +7042,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7063,7 +7063,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7084,7 +7084,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7105,7 +7105,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7126,7 +7126,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7147,7 +7147,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7168,7 +7168,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7189,7 +7189,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7210,7 +7210,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7231,7 +7231,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7252,7 +7252,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7273,7 +7273,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7294,7 +7294,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7315,7 +7315,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7336,7 +7336,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7357,7 +7357,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7378,7 +7378,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7399,7 +7399,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7420,7 +7420,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7441,7 +7441,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7462,7 +7462,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7483,7 +7483,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7504,7 +7504,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7525,7 +7525,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7546,7 +7546,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7567,7 +7567,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7588,7 +7588,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7609,7 +7609,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7630,7 +7630,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7651,7 +7651,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7672,7 +7672,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7693,7 +7693,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7714,7 +7714,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7735,7 +7735,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7756,7 +7756,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7777,7 +7777,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7798,7 +7798,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -7819,7 +7819,7 @@
                                 "extension": [
                                     {
                                         "url": "libraryName",
-                                        "valueString": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                                        "valueString": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                                     },
                                     {
                                         "url": "name",
@@ -8723,22 +8723,22 @@
                         }
                     }
                 ],
-                "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNRespiratoryPathogenSurveillanceInitialPopulation",
+                "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation",
                 "identifier": [
                     {
                         "system": "https://nhsnlink.org",
-                        "value": "NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                        "value": "NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                     }
                 ],
                 "version": "0.0.007",
-                "name": "NHSNRespiratoryPathogenSurveillanceInitialPopulation",
-                "title": "NHSN Respiratory Pathogen Surveillance Initial Population",
+                "name": "NHSNRespiratoryPathogensSurveillanceInitialPopulation",
+                "title": "NHSN Respiratory Pathogens Surveillance Initial Population",
                 "status": "draft",
                 "experimental": false,
                 "date": "2023-11-15T16:52:47-05:00",
-                "description": "dQM Measure for Respiratory Pathogen Surveillance",
+                "description": "dQM Measure for Respiratory Pathogens Surveillance",
                 "library": [
-                    "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                    "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation"
                 ],
                 "scoring": {
                     "coding": [
@@ -9200,7 +9200,7 @@
             },
             "request": {
                 "method": "PUT",
-                "url": "Measure/NHSNRespiratoryPathogenSurveillanceInitialPopulation"
+                "url": "Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation"
             }
         },
         {

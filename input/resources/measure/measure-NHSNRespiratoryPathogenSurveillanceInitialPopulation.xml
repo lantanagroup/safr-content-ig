@@ -1,5 +1,5 @@
 <Measure xmlns="http://hl7.org/fhir">
-   <id value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></id>
+   <id value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></id>
    <meta>
       <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm"></profile>
       <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm"></profile>
@@ -51,7 +51,7 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="MedicationAdministrations"></valueString>
@@ -66,7 +66,7 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="EncounterInpatient"></valueString>
@@ -84,7 +84,7 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="EncounterObservation"></valueString>
@@ -102,7 +102,7 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="Encounters with Patient Hospital Locations"></valueString>
@@ -124,7 +124,7 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="Initial Population"></valueString>
@@ -144,7 +144,7 @@ define &quot;Initial Population&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Covid or Influenza Medication Administered"></valueString>
@@ -183,7 +183,7 @@ define &quot;Initial Population&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="DiagnosticReports"></valueString>
@@ -201,7 +201,7 @@ define &quot;DiagnosticReports&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="RSV DiagnosticReport Result from Lab"></valueString>
@@ -220,7 +220,7 @@ define &quot;DiagnosticReports&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE RSV DiagnosticReport Result from Lab"></valueString>
@@ -238,7 +238,7 @@ define &quot;SDE RSV DiagnosticReport Result from Lab&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="RSV Observation"></valueString>
@@ -258,7 +258,7 @@ define &quot;SDE RSV DiagnosticReport Result from Lab&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="RSV PRE Admission Observation"></valueString>
@@ -281,7 +281,7 @@ define &quot;RSV PRE Admission Observation&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE RSV Specimen"></valueString>
@@ -299,7 +299,7 @@ define &quot;SDE RSV Specimen&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="COVID and Influenza DiagnosticReport Result from Lab"></valueString>
@@ -321,7 +321,7 @@ define &quot;COVID and Influenza DiagnosticReport Result from Lab&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="RPS DiagnosticReport Result from Lab"></valueString>
@@ -337,7 +337,7 @@ define &quot;COVID and Influenza DiagnosticReport Result from Lab&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE RPS DiagnosticReport Result from Lab"></valueString>
@@ -355,7 +355,7 @@ define &quot;SDE RPS DiagnosticReport Result from Lab&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE RSV PRE Admission Observation"></valueString>
@@ -373,7 +373,7 @@ define &quot;SDE RSV PRE Admission Observation&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Isolation Precautions Implemented"></valueString>
@@ -392,7 +392,7 @@ define &quot;SDE RSV PRE Admission Observation&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="COVID And Influenza Observation"></valueString>
@@ -418,7 +418,7 @@ define &quot;COVID And Influenza Observation&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="COVID And Influenza PRE Admission Observation"></valueString>
@@ -441,7 +441,7 @@ define &quot;COVID And Influenza PRE Admission Observation&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE COVID And Influenza Specimen"></valueString>
@@ -459,7 +459,7 @@ define &quot;SDE COVID And Influenza Specimen&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="RPS Observation"></valueString>
@@ -475,7 +475,7 @@ define &quot;SDE COVID And Influenza Specimen&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE RPS Specimen"></valueString>
@@ -493,7 +493,7 @@ define &quot;SDE RPS Specimen&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="RSV DiagnosticReport"></valueString>
@@ -512,7 +512,7 @@ define &quot;SDE RPS Specimen&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE RSV DiagnosticReport"></valueString>
@@ -530,7 +530,7 @@ define &quot;SDE RSV DiagnosticReport&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE RPSObservation"></valueString>
@@ -548,7 +548,7 @@ define &quot;SDE RPSObservation&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE All ServiceRequests"></valueString>
@@ -566,7 +566,7 @@ define &quot;SDE All ServiceRequests&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="COVID And Influenza DiagnosticReport"></valueString>
@@ -588,7 +588,7 @@ define &quot;COVID And Influenza DiagnosticReport&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE COVID And Influenza DiagnosticReport"></valueString>
@@ -606,7 +606,7 @@ define &quot;SDE COVID And Influenza DiagnosticReport&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE COVID And Influenza PRE Admission Observation"></valueString>
@@ -624,7 +624,7 @@ define &quot;SDE COVID And Influenza PRE Admission Observation&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE RPS ServiceRequest"></valueString>
@@ -649,7 +649,7 @@ define &quot;SDE COVID And Influenza PRE Admission Observation&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE COVID and Influenza DiagnosticReport Result from Lab"></valueString>
@@ -667,7 +667,7 @@ define &quot;SDE COVID and Influenza DiagnosticReport Result from Lab&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE All Procedures"></valueString>
@@ -686,7 +686,7 @@ define &quot;SDE All Procedures&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Location"></valueString>
@@ -704,7 +704,7 @@ define &quot;SDE All Procedures&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Encounter Discharge Dispositions"></valueString>
@@ -722,7 +722,7 @@ define &quot;SDE All Procedures&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="RPS DiagnosticReport"></valueString>
@@ -738,7 +738,7 @@ define &quot;SDE All Procedures&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE RPS DiagnosticReport"></valueString>
@@ -756,7 +756,7 @@ define &quot;SDE RPS DiagnosticReport&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="MedicationRequests"></valueString>
@@ -771,7 +771,7 @@ define &quot;SDE RPS DiagnosticReport&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Covid or Influenza Medication Ordered"></valueString>
@@ -810,7 +810,7 @@ define &quot;SDE RPS DiagnosticReport&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Minimal Patient"></valueString>
@@ -831,7 +831,7 @@ define &quot;SDE Minimal Patient&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="Observations"></valueString>
@@ -846,7 +846,7 @@ define &quot;SDE Minimal Patient&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE All Observations"></valueString>
@@ -865,7 +865,7 @@ define &quot;SDE All Observations&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></valueString>
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Medication"></valueString>
@@ -1563,19 +1563,19 @@ define &quot;SDE All Observations&quot;:
          <reference value="#effective-data-requirements"></reference>
       </valueReference>
    </extension>
-   <url value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNRespiratoryPathogenSurveillanceInitialPopulation"></url>
+   <url value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation"></url>
    <identifier>
       <system value="https://nhsnlink.org"></system>
-      <value value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></value>
+      <value value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></value>
    </identifier>
    <version value="0.0.007"></version>
-   <name value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"></name>
-   <title value="NHSN Respiratory Pathogen Surveillance Initial Population"></title>
+   <name value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></name>
+   <title value="NHSN Respiratory Pathogens Surveillance Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
    <date value="2023-11-07T17:32:00-05:00"></date>
-   <description value="dQM Measure for Respiratory Pathogen Surveillance"></description>
-   <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation"></library>
+   <description value="dQM Measure for Respiratory Pathogens Surveillance"></description>
+   <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation"></library>
    <scoring>
       <coding>
          <system value="http://terminology.hl7.org/CodeSystem/measure-scoring"></system>

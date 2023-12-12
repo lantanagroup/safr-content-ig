@@ -1,7 +1,7 @@
-Profile: RespiratoryPathogenSurveillanceEventEncounter
+Profile: RespiratoryPathogensSurveillanceEventEncounter
 Parent: USCoreEncounterProfile
 Id: rps-encounter
-Title: "Respiratory Pathogen Surveillance Event Report Encounter"
+Title: "Respiratory Pathogens Surveillance Event Report Encounter"
 Description: "This profile contains Required and Must Support data elements for reporting encounter information to the NHSN Respiratory Pathogens Surveillance (RPS) Module. This profile is based on the [HL7 US Core Encounter Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-encounter.html)."
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
@@ -9,7 +9,7 @@ Description: "This profile contains Required and Must Support data elements for 
   * use MS
   * type MS
   * period MS
-* status from RespiratoryPathogenSurveillanceEventEncounterStatus (required)
+* status from RespiratoryPathogensSurveillanceEventEncounterStatus (required)
 * status ^short = "triaged | in-progress | onleave | finished"
 * status ^definition = "triaged | in-progress | onleave | finished."
 * statusHistory.status 1.. // TODO Verify this is actually required when statusHistory is not nor is MS as per the DD

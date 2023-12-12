@@ -123,6 +123,7 @@ groups:
       - StructureDefinition/ach-reporting-coverage
       #- StructureDefinition/ach-reporting-implantable-device
       - StructureDefinition/ach-reporting-device
+      - StructureDefinition/ach-reporting-diagnostic-report
       - StructureDefinition/ach-reporting-lab-diagnostic-report
       - StructureDefinition/ach-reporting-note-diagnostic-report
       - StructureDefinition/ach-reporting-medication
@@ -144,7 +145,7 @@ groups:
       - StructureDefinition/hypoglycemic-reporting-specimen      
 
   rps:
-    name: Respiratory Pathogen Surveillance Event Profiles
+    name: Respiratory Pathogens Surveillance Event Profiles
     resources:
       - StructureDefinition/rps-encounter
       - StructureDefinition/rps-location
@@ -170,14 +171,14 @@ groups:
     resources:
       - Measure/NHSNGlycemicControlHypoglycemicInitialPopulation
       - Measure/NHSNdQMAcuteCareHospitalInitialPopulation
-      - Measure/NHSNRespiratoryPathogenSurveillanceInitialPopulation
+      - Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation
 
   libs:
     name: "Knowledge Artifacts: Libraries"
     resources:
       - Library/SharedResourceCreation
       - Library/NHSNGlycemicControlHypoglycemicInitialPopulation
-      - Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation
+      - Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation
       - Library/NHSNdQMAcuteCareHospitalInitialPopulation
 
   ext-libs:
@@ -302,9 +303,9 @@ resources:
      description: dQM Measure for Inpatients (Acute) Care setting
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
-   Measure/NHSNRespiratoryPathogenSurveillanceInitialPopulation:
-     name: NHSN Respiratory Pathogen Surveillance Initial Population
-     description: dQM Measure for Respiratory Pathogen Surveillance
+   Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation:
+     name: NHSN Respiratory Pathogens Surveillance Initial Population
+     description: dQM Measure for Respiratory Pathogens Surveillance
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    Library/SharedResourceCreation:
@@ -317,9 +318,9 @@ resources:
    #  description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
-   Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation:
-     name: NHSN Respiratory Pathogen Surveillance Initial Population
-     description: Library of NHSN Respiratory Pathogen Surveillance Initial Population Measure
+   Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation:
+     name: NHSN Respiratory Pathogens Surveillance Initial Population
+     description: Library of NHSN Respiratory Pathogens Surveillance Initial Population Measure
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    Library/NHSNdQMAcuteCareHospitalInitialPopulation:

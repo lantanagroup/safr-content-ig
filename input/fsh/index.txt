@@ -97,14 +97,14 @@ Influenza_(Tests_for_influenza_A_or_B_virus_Nucleic_Acid)                       
 Influenza_(influenza_A_or_B_virus_in_Lab_Results)                                             ValueSet    valuesets\Influenza_(influenza_A_or_B_virus_in_Lab_Results).fsh
 Inline-Instance-for-NHSNGlycemicControlHypoglycemicInitialPopulation-1                        Instance    instances\Inline-Instance-for-NHSNGlycemicControlHypoglycemicInitialPopulation-1.fsh
 Inline-Instance-for-NHSNGlycemicControlHypoglycemicInitialPopulation-8                        Instance    instances\Inline-Instance-for-NHSNGlycemicControlHypoglycemicInitialPopulation-8.fsh
-Inline-Instance-for-NHSNRespiratoryPathogenSurveillanceInitialPopulation-1                    Instance    instances\Inline-Instance-for-NHSNRespiratoryPathogenSurveillanceInitialPopulation-1.fsh
-Inline-Instance-for-NHSNRespiratoryPathogenSurveillanceInitialPopulation-11                   Instance    instances\Inline-Instance-for-NHSNRespiratoryPathogenSurveillanceInitialPopulation-11.fsh
+Inline-Instance-for-NHSNRespiratoryPathogensSurveillanceInitialPopulation-1                    Instance    instances\Inline-Instance-for-NHSNRespiratoryPathogensSurveillanceInitialPopulation-1.fsh
+Inline-Instance-for-NHSNRespiratoryPathogensSurveillanceInitialPopulation-11                   Instance    instances\Inline-Instance-for-NHSNRespiratoryPathogensSurveillanceInitialPopulation-11.fsh
 Inline-Instance-for-NHSNdQMAcuteCareHospitalInitialPopulation-1                               Instance    instances\Inline-Instance-for-NHSNdQMAcuteCareHospitalInitialPopulation-1.fsh
 Inline-Instance-for-measurereport-example-subjectlist1-1                                      Instance    instances\Inline-Instance-for-measurereport-example-subjectlist1-1.fsh
 Inline-Instance-for-submission-example1-21                                                    Instance    instances\Inline-Instance-for-submission-example1-21.fsh
 Inline-Instance-for-submission-example1-35                                                    Instance    instances\Inline-Instance-for-submission-example1-35.fsh
 Inline-Instance-for-submission-example1-37                                                    Instance    instances\Inline-Instance-for-submission-example1-37.fsh
-Inline-Instance-for-valuesets-NHSNRespiratoryPathogenSurveillanceInitialPopulation-bundle-39  Instance    instances\Inline-Instance-for-valuesets-NHSNRespiratoryPathogenSurveillanceInitialPopulation-bundle-39.fsh
+Inline-Instance-for-valuesets-NHSNRespiratoryPathogensSurveillanceInitialPopulation-bundle-39  Instance    instances\Inline-Instance-for-valuesets-NHSNRespiratoryPathogensSurveillanceInitialPopulation-bundle-39.fsh
 Inpatient,_Emergency,_and_Observation_Locations                                               ValueSet    valuesets\Inpatient,_Emergency,_and_Observation_Locations.fsh
 LIVD_SARS_CoV2_Test_Result_Codes                                                              ValueSet    valuesets\LIVD_SARS_CoV2_Test_Result_Codes.fsh
 Lab_Tests_for_Clostridioides_difficile_Infection                                              ValueSet    valuesets\Lab_Tests_for_Clostridioides_difficile_Infection.fsh
@@ -118,9 +118,9 @@ NHSNGlycemicControlHypoglycemicInitialPopulation-of-Bundle                      
 NHSNGlycemicControlHypoglycemicInitialPopulation-of-Library                                   Instance    instances\NHSNGlycemicControlHypoglycemicInitialPopulation-of-Library.fsh
 NHSNGlycemicControlHypoglycemicInitialPopulation-of-Measure                                   Instance    instances\NHSNGlycemicControlHypoglycemicInitialPopulation-of-Measure.fsh
 NHSNMeasureReportBundleProfileCurrent                                                         Profile     profiles\NHSNMeasureReportBundleProfileCurrent.fsh
-NHSNRespiratoryPathogenSurveillanceInitialPopulation-of-Bundle                                Instance    instances\NHSNRespiratoryPathogenSurveillanceInitialPopulation-of-Bundle.fsh
-NHSNRespiratoryPathogenSurveillanceInitialPopulation-of-Library                               Instance    instances\NHSNRespiratoryPathogenSurveillanceInitialPopulation-of-Library.fsh
-NHSNRespiratoryPathogenSurveillanceInitialPopulation-of-Measure                               Instance    instances\NHSNRespiratoryPathogenSurveillanceInitialPopulation-of-Measure.fsh
+NHSNRespiratoryPathogensSurveillanceInitialPopulation-of-Bundle                                Instance    instances\NHSNRespiratoryPathogensSurveillanceInitialPopulation-of-Bundle.fsh
+NHSNRespiratoryPathogensSurveillanceInitialPopulation-of-Library                               Instance    instances\NHSNRespiratoryPathogensSurveillanceInitialPopulation-of-Library.fsh
+NHSNRespiratoryPathogensSurveillanceInitialPopulation-of-Measure                               Instance    instances\NHSNRespiratoryPathogensSurveillanceInitialPopulation-of-Measure.fsh
 NHSNSubmittingDevice                                                                          Profile     profiles\NHSNSubmittingDevice.fsh
 NHSNdQMAcuteCareHospitalInitialPopulation-of-Bundle                                           Instance    instances\NHSNdQMAcuteCareHospitalInitialPopulation-of-Bundle.fsh
 NHSNdQMAcuteCareHospitalInitialPopulation-of-Library                                          Instance    instances\NHSNdQMAcuteCareHospitalInitialPopulation-of-Library.fsh
@@ -515,5 +515,5 @@ submission-example1                                                             
 submission-example2                                                                           Instance    instances\submission-example2.fsh
 submission-example3                                                                           Instance    instances\submission-example3.fsh
 valuesets-NHSNGlycemicControlHypoglycemicInitialPopulation-bundle                             Instance    instances\valuesets-NHSNGlycemicControlHypoglycemicInitialPopulation-bundle.fsh
-valuesets-NHSNRespiratoryPathogenSurveillanceInitialPopulation-bundle                         Instance    instances\valuesets-NHSNRespiratoryPathogenSurveillanceInitialPopulation-bundle.fsh
+valuesets-NHSNRespiratoryPathogensSurveillanceInitialPopulation-bundle                         Instance    instances\valuesets-NHSNRespiratoryPathogensSurveillanceInitialPopulation-bundle.fsh
 valuesets-NHSNdQMAcuteCareHospitalInitialPopulation-bundle                                    Instance    instances\valuesets-NHSNdQMAcuteCareHospitalInitialPopulation-bundle.fsh

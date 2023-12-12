@@ -1,7 +1,7 @@
-Profile: RespiratoryPathogenSurveillanceEventServiceRequest
+Profile: RespiratoryPathogensSurveillanceEventServiceRequest
 Parent: ServiceRequest
 Id: rps-servicerequest
-Title: "Respiratory Pathogen Surveillance Event ServiceRequest"
+Title: "Respiratory Pathogens Surveillance Event ServiceRequest"
 Description: "This profile contains Required and Must Support data elements for reporting COVID-19, Influenza, and Respiratory Syncytial Virus (RSV) laboratory order information to the NHSN Respiratory Pathogens Surveillance (RPS) Module. This profile is based on the [HL7 FHIR R4 ServiceRequest Profile v4.0.1](http://hl7.org/fhir/R4/servicerequest.html)."
 * ^status = #active
 * id 1..

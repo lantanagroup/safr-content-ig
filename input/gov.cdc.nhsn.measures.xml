@@ -265,10 +265,10 @@
         </resource>
         <resource>
             <reference>
-                <reference value="Measure/NHSNRespiratoryPathogenSurveillanceInitialPopulation"/>
+                <reference value="Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation"/>
             </reference>
-            <name value="NHSN Respiratory Pathogen Surveillance Initial Population"/>
-            <description value="dQM Measure for Respiratory Pathogen Surveillance"/>
+            <name value="NHSN Respiratory Pathogens Surveillance Initial Population"/>
+            <description value="dQM Measure for Respiratory Pathogens Surveillance"/>
             <groupingId value="measures"/>
         </resource>
         <resource>
@@ -289,10 +289,10 @@
         </resource>
         <resource>
             <reference>
-                <reference value="Library/NHSNRespiratoryPathogenSurveillanceInitialPopulation"/>
+                <reference value="Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation"/>
             </reference>
-            <name value="NHSNRespiratoryPathogenSurveillanceInitialPopulation"/>
-            <description value="Library of NHSN Respiratory Pathogen Surveillance Initial Population Measure"/>
+            <name value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"/>
+            <description value="Library of NHSN Respiratory Pathogens Surveillance Initial Population Measure"/>
             <groupingId value="libs"/>
         </resource>
         <resource>
