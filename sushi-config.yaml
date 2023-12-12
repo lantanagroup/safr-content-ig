@@ -38,7 +38,7 @@ parameters:
 #  path-expansion-params: "../../input/terminology-settings.xml"
   apply-jurisdiction: true
   apply-publisher: true
-  path-liquid: liquid
+  path-liquid: templates\liquid
   excludettl: 'true'
   excludemap: 'true'
 
