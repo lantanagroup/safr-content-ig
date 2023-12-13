@@ -18,11 +18,14 @@
   <a name="description"></a>
   <h3>Description</h3>
   <p>
-    These specifications are for the content contained within the encounters identified as meeting the criteria for the dQM Initial 
-    Population (IP). The dQM IP defines the cohort population for which NHSN analysts determine the denominator and calculate events 
-    per the metrics defined in each NHSN protocol. The IP can vary between dQMs and may include all inpatient, emergency department, 
-    and observation encounters. NHSNLink (or other compiling system) gathers the line-level data for calculating the NHSN metrics 
-    along with data needed for stratification, risk adjustment, or benchmarking once the encounter meets the criteria for the IP.
+    These specifications are for the content contained within the encounters identified as meeting 
+    the criteria for the dQM Initial Population. The dQM IP defines the cohort population from 
+    which NHSN analysts determine the denominator and calculate events per the metrics defined 
+    in each NHSN protocol. The Initial Population can vary between dQMs and may include all 
+    inpatient, emergency department, and observation encounters. NHSNLink (or other compiling 
+    system) gathers the line-level data for calculating the NHSN metrics along with data needed 
+    for stratification, risk adjustment, or benchmarking once the encounter meets the criteria for 
+    the Initial Population. 
   </p>
   <h3>References</h3>
   <ol>
