@@ -140,7 +140,12 @@ function putBundle(server, bundle) {
                             reject(err);
                         }
                         else {
-                            console.log("Successfully put ".concat(bundle.id, " on the server, now has version id ").concat(body.meta.versionId));
+                            if (body.meta) {
+                                console.log("Successfully put ".concat(bundle.id, " on the server, now has version id ").concat(body.meta.versionId));
+                            }
+                            else {
+                                console.log("Successfully put ".concat(bundle.id, " on the server"));
+                            }
                             resolve(body);
                         }
                     });

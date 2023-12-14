@@ -111,7 +111,11 @@ async function putBundle(server, bundle) {
             if (err) {
                 reject(err);
             } else {
-                console.log(`Successfully put ${bundle.id} on the server, now has version id ${body.meta.versionId}`);
+                if (body.meta) {
+                    console.log(`Successfully put ${bundle.id} on the server, now has version id ${body.meta.versionId}`);
+                } else {
+                    console.log(`Successfully put ${bundle.id} on the server`);
+                }
                 resolve(body);
             }
         });
