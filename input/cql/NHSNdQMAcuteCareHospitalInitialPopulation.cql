@@ -1,4 +1,4 @@
-library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.007'
+library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.008'
 
 using FHIR version '4.0.1'
 
@@ -74,19 +74,20 @@ define "SDE Condition":
   [Condition] Conditions 
   where exists("Initial Population")
   return SharedResource.ConditionResource(Conditions,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-condition'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-condition'}})
 
 define "SDE Device":
   [Device] Devices 
   where exists("Initial Population")
-  return SharedResource.DeviceResourceBaseFHIR(Devices)
+  return SharedResource.DeviceResource(Devices,
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-device'}})
 
 define "SDE DiagnosticReport Lab":
   [DiagnosticReport] DiagnosticReports
   where (exists(DiagnosticReports.category Category where Category ~ "LAB")
     and exists("Initial Population"))
   return SharedResource.DiagnosticReportResource(DiagnosticReports,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-diagnosticreport-lab'}})
  
 define "SDE DiagnosticReport Note":
   [DiagnosticReport] DiagnosticReports
@@ -95,53 +96,54 @@ define "SDE DiagnosticReport Note":
     or exists((DiagnosticReports.category Category where Category ~ "Cardiology")))
     and exists("Initial Population")
   return SharedResource.DiagnosticReportResource(DiagnosticReports,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-diagnosticreport-note'}})
 
-define "SDE DiagnosticReport All":
+define "SDE DiagnosticReport Others":
   [DiagnosticReport] DiagnosticReports
-  where exists("Initial Population")
-  return SharedResource.DiagnosticReportResourceBaseFHIR(DiagnosticReports)
+  where not ((exists(DiagnosticReports.category Category where Category ~ "Radiology"))
+    or exists((DiagnosticReports.category Category where Category ~ "Pathology"))
+    or exists((DiagnosticReports.category Category where Category ~ "Cardiology"))
+    or exists(DiagnosticReports.category Category where Category ~ "LAB"))
+    and exists("Initial Population")
+  return SharedResource.DiagnosticReportResource(DiagnosticReports,
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-diagnosticreport'}})
 
 define "SDE Encounter": 
   [Encounter] Encounters
   where exists("Initial Population")
   return SharedResource.EncounterResource(Encounters,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter'}})
-
-define "SDE Initial Population Encounters":
-  "Initial Population" IP
-  return SharedResource.EncounterResource(IP,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-encounter'}})
 
 define "SDE Location":
   [Location] Locations
   where exists("Initial Population")
   return SharedResource.LocationResource(Locations,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-location'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-location'}})
  
 define "SDE Medication Administration":
   [MedicationAdministration] MedicationAdministrations 
   where exists("Initial Population")
-  return SharedResource.MedicationAdministrationResourceBaseFHIR(MedicationAdministrations)
+  return SharedResource.MedicationAdministrationResource(MedicationAdministrations,
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-medicationadministration'}})
  
 define "SDE Medication Request":
   [MedicationRequest] MedicationRequests 
   where exists("Initial Population")
   return SharedResource.MedicationRequestResource(MedicationRequests,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-medicationrequest'}})
 
 define "SDE Medication":
   [Medication] Medication
   where exists("Initial Population")
   return SharedResource.MedicationResource(Medication,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-medication'}})
 
 define "SDE Observation Lab Category":
   [Observation] Observations 
   where (exists(Observations.category Category where Category ~ "laboratory"))
     and exists("Initial Population")
   return SharedResource.ObservationResource(Observations,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-observation-lab'}})
 
 //Vital Signs Observation has its own profile in FHIR Base
 define "SDE Observation Vital Signs Category":
@@ -149,7 +151,7 @@ define "SDE Observation Vital Signs Category":
   where (exists(Observations.category Category where Category ~ "vital-signs"))
     and exists("Initial Population")
   return SharedResource.ObservationResource(Observations,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/StructureDefinition/vitalsigns'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-observation-vitals'}})
 
 //Defaulting to base FHIR profile as there are no individual profiles in US Core 3.1.1 that cover these Observation categories
 define "SDE Observation Category":
@@ -159,28 +161,32 @@ define "SDE Observation Category":
     or (exists(Observations.category Category where Category ~ "imaging"))
     or (exists(Observations.category Category where Category ~ "procedure")))
     and exists("Initial Population")
-  return SharedResource.ObservationResourceBaseFHIR(Observations)
+  return SharedResource.ObservationResource(Observations,
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-observation'}})
 
 define "SDE Coverage": 
 	[Coverage] Coverages
   where exists("Initial Population")
-  return SharedResource.CoverageResourceBaseFHIR(Coverages)
+  return SharedResource.CoverageResource(Coverages,
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-coverage'}})
 
 define "SDE Procedure":
   [Procedure] Procedures 
   where exists("Initial Population")
   return SharedResource.ProcedureResource(Procedures,
-  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-procedure'}})
 
 define "SDE Specimen":
   [Specimen] Specimen
   where exists("Initial Population")
-  return SharedResource.SpecimenResourceBaseFHIR(Specimen)
+  return SharedResource.SpecimenResource(Specimen,
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-specimen'}})
 
 define "SDE Service Request":
   [ServiceRequest] ServiceRequests
   where exists("Initial Population")
-  return SharedResource.ServiceRequestResourceBaseFHIR(ServiceRequests)
+  return SharedResource.ServiceRequestResource(ServiceRequests,
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-servicerequest'}})
 
 define "SDE Minimal Patient":
   Patient p
