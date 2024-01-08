@@ -1,3 +1,4 @@
+/*
 Profile: HypoglycemicReportingLocation
 Parent: USCoreLocation
 Id: hypoglycemic-reporting-location
@@ -8,3 +9,4 @@ Description: "This profile contains Required and Must Support data elements for 
 * alias MS
 * type 1..
 * partOf MS
+*/

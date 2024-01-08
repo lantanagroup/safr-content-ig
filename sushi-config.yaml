@@ -113,8 +113,8 @@ groups:
     resources:
       - StructureDefinition/ach-reporting-encounter
       - StructureDefinition/ach-reporting-location
-      - StructureDefinition/ach-reporting-lab-observation
-      - StructureDefinition/ach-reporting-vitals-observation
+      - StructureDefinition/ach-reporting-observation-lab
+      - StructureDefinition/ach-reporting-observation-vitals
       - StructureDefinition/ach-reporting-observation
       - StructureDefinition/ach-reporting-servicerequest
       - StructureDefinition/ach-reporting-specimen
@@ -123,40 +123,40 @@ groups:
       - StructureDefinition/ach-reporting-coverage
       #- StructureDefinition/ach-reporting-implantable-device
       - StructureDefinition/ach-reporting-device
-      - StructureDefinition/ach-reporting-diagnostic-report
-      - StructureDefinition/ach-reporting-lab-diagnostic-report
-      - StructureDefinition/ach-reporting-note-diagnostic-report
+      - StructureDefinition/ach-reporting-diagnosticreport
+      - StructureDefinition/ach-reporting-diagnosticreport-lab
+      - StructureDefinition/ach-reporting-diagnosticreport-note
       - StructureDefinition/ach-reporting-medication
       - StructureDefinition/ach-reporting-medicationadministration
       - StructureDefinition/ach-reporting-medicationrequest
       
-  hypo:
-    name: Hypoglycemic Event Reporting profiles
-    resources:
-      - StructureDefinition/hypoglycemic-reporting-condition
-      - StructureDefinition/hypoglycemic-reporting-coverage
-      - StructureDefinition/hypoglycemic-reporting-encounter
-      - StructureDefinition/hypoglycemic-reporting-lab-observation
-      - StructureDefinition/hypoglycemic-reporting-location
-      - StructureDefinition/hypoglycemic-reporting-medication
-      - StructureDefinition/hypoglycemic-reporting-medicationadministration
-      - StructureDefinition/hypoglycemic-reporting-medicationrequest
-      - StructureDefinition/hypoglycemic-reporting-servicerequest
-      - StructureDefinition/hypoglycemic-reporting-specimen      
+  #hypo:
+  #  name: Hypoglycemic Event Reporting profiles
+  #  resources:
+  #    - StructureDefinition/hypoglycemic-reporting-condition
+  #    - StructureDefinition/hypoglycemic-reporting-coverage
+  #    - StructureDefinition/hypoglycemic-reporting-encounter
+  #    - StructureDefinition/hypoglycemic-reporting-lab-observation
+  #    - StructureDefinition/hypoglycemic-reporting-location
+  #    - StructureDefinition/hypoglycemic-reporting-medication
+  #    - StructureDefinition/hypoglycemic-reporting-medicationadministration
+  #    - StructureDefinition/hypoglycemic-reporting-medicationrequest
+  #    - StructureDefinition/hypoglycemic-reporting-servicerequest
+  #    - StructureDefinition/hypoglycemic-reporting-specimen      
 
   rps:
-    name: Respiratory Pathogens Surveillance Event Profiles
+    name: Respiratory Pathogens Surveillance Event Reporting Profiles
     resources:
-      - StructureDefinition/rps-encounter
-      - StructureDefinition/rps-location
-      - StructureDefinition/rps-lab-observation
-      - StructureDefinition/rps-servicerequest
-      - StructureDefinition/rps-specimen
-      - StructureDefinition/rps-procedure
-      - StructureDefinition/rps-lab-diagnostic-report
-      - StructureDefinition/rps-medication
-      - StructureDefinition/rps-medicationadministration
-      - StructureDefinition/rps-medicationrequest
+      - StructureDefinition/rps-reporting-encounter
+      - StructureDefinition/rps-reporting-location
+      - StructureDefinition/rps-reporting-lab-observation
+      - StructureDefinition/rps-reporting-servicerequest
+      - StructureDefinition/rps-reporting-specimen
+      - StructureDefinition/rps-reporting-procedure
+      - StructureDefinition/rps-reporting-lab-diagnostic-report
+      - StructureDefinition/rps-reporting-medication
+      - StructureDefinition/rps-reporting-medicationadministration
+      - StructureDefinition/rps-reporting-medicationrequest
 
 
 
@@ -164,12 +164,14 @@ groups:
     name: "Terminology: Profile ValueSets"
     resources:
       - ValueSet/ach-encounter-status
-      - ValueSet/rps-encounter-status
+      - ValueSet/ach-encounter-class
+      - ValueSet/rps-reporting-encounter-status
+      - ValueSet/rps-reporting-encounter-class
 
   measures:
     name: "Knowledge Artifacts: Measure"
     resources:
-      - Measure/NHSNGlycemicControlHypoglycemicInitialPopulation
+#      - Measure/NHSNGlycemicControlHypoglycemicInitialPopulation
       - Measure/NHSNdQMAcuteCareHospitalInitialPopulation
       - Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation
 
@@ -177,7 +179,7 @@ groups:
     name: "Knowledge Artifacts: Libraries"
     resources:
       - Library/SharedResourceCreation
-      - Library/NHSNGlycemicControlHypoglycemicInitialPopulation
+#      - Library/NHSNGlycemicControlHypoglycemicInitialPopulation
       - Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation
       - Library/NHSNdQMAcuteCareHospitalInitialPopulation
 
@@ -395,10 +397,10 @@ resources:
      description: Measure Report - Individual Measure Report Example Sameresultdiffday
      exampleCanonical: http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm
    
-   MeasureReport/measurereport-example-individual-measurereport-hypo:
-     name: MeasureReport - Example Individual Measure Report Hypo
-     description: Measure Report - Individual Measure Report Example Hypo
-     exampleCanonical: http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm
+#   MeasureReport/measurereport-example-individual-measurereport-hypo:
+#     name: MeasureReport - Example Individual Measure Report Hypo
+#     description: Measure Report - Individual Measure Report Example Hypo
+#     exampleCanonical: http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm
    
    
    

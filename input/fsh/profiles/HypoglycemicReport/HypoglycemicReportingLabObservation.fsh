@@ -1,3 +1,4 @@
+/*
 Profile: HypoglycemicReportingLabObservation
 Parent: USCoreLaboratoryResultObservationProfile
 Id: hypoglycemic-reporting-lab-observation
@@ -11,7 +12,16 @@ Description: "This profile contains Required and Must Support data elements for 
 * interpretation MS
 * bodySite MS
 * method MS
+* referenceRange MS
+  * low MS
+  * high MS
+  * age MS
 * specimen MS
 * component MS
   * value[x] MS
   * interpretation MS
+  * referenceRange MS
+    * low MS
+    * high MS
+    * age MS
+    */

@@ -15,9 +15,16 @@ Description: "This profile contains Required and Must Support data elements for 
 * interpretation MS
 * bodySite MS
 * method MS
+* referenceRange MS
+  * low MS
+  * high MS
+  * age MS
 * hasMember MS
 * component MS
   * code MS  // TODO verify is this really MS? DD has it as MS, but in general Required elements are not marked as MS
   * value[x] MS
   * interpretation MS 
   * referenceRange MS  // TODO verify is component.referenceRange really MS when referenceRange is not?
+    * low MS
+    * high MS
+    * age MS

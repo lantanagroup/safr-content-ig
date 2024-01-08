@@ -1,3 +1,4 @@
+/*
 Profile: HypoglycemicReportMedicationRequest
 Parent: USCoreMedicationRequestProfile
 Id: hypoglycemic-reporting-medicationrequest
@@ -20,3 +21,4 @@ Description: "This profile contains Required and Must Support data elements for 
   * doseAndRate MS
     * type MS
     * dose[x] MS
+    */

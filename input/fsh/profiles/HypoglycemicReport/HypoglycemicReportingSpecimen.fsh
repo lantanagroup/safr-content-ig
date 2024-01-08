@@ -1,4 +1,4 @@
-Profile: HypoglycemicReportingSpecimen
+/*Profile: HypoglycemicReportingSpecimen
 Parent: Specimen
 Id: hypoglycemic-reporting-specimen
 Title: "Hypoglycemic Event Specimen"
@@ -12,3 +12,4 @@ Description: "This profile contains Required and Must Support data elements for 
 * collection 1..
   * collected[x] 1..
   * bodySite MS
+  */

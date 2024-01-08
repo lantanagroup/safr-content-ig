@@ -1,3 +1,4 @@
+/*
 Profile: HypoglycemicReportEncounter
 Parent: USCoreEncounterProfile
 Id: hypoglycemic-reporting-encounter
@@ -23,3 +24,4 @@ Description: "This profile contains Required and Must Support data elements for 
   * ^short = "List of locations where the patient has been. Used in part to discern whether the patient is Inpatient, Emergency and or Observation status."
   * status MS
   * period 1..
+  */
