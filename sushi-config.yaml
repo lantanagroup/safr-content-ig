@@ -130,19 +130,19 @@ groups:
       - StructureDefinition/ach-reporting-medicationadministration
       - StructureDefinition/ach-reporting-medicationrequest
       
-  #hypo:
-  #  name: Hypoglycemic Event Reporting profiles
-  #  resources:
-  #    - StructureDefinition/hypoglycemic-reporting-condition
-  #    - StructureDefinition/hypoglycemic-reporting-coverage
-  #    - StructureDefinition/hypoglycemic-reporting-encounter
-  #    - StructureDefinition/hypoglycemic-reporting-lab-observation
-  #    - StructureDefinition/hypoglycemic-reporting-location
-  #    - StructureDefinition/hypoglycemic-reporting-medication
-  #    - StructureDefinition/hypoglycemic-reporting-medicationadministration
-  #    - StructureDefinition/hypoglycemic-reporting-medicationrequest
-  #    - StructureDefinition/hypoglycemic-reporting-servicerequest
-  #    - StructureDefinition/hypoglycemic-reporting-specimen      
+  hypo:
+    name: Hypoglycemic Event Reporting profiles
+    resources:
+      - StructureDefinition/hypoglycemic-reporting-condition
+      - StructureDefinition/hypoglycemic-reporting-coverage
+      - StructureDefinition/hypoglycemic-reporting-encounter
+      - StructureDefinition/hypoglycemic-reporting-lab-observation
+      - StructureDefinition/hypoglycemic-reporting-location
+      - StructureDefinition/hypoglycemic-reporting-medication
+      - StructureDefinition/hypoglycemic-reporting-medicationadministration
+      - StructureDefinition/hypoglycemic-reporting-medicationrequest
+      - StructureDefinition/hypoglycemic-reporting-servicerequest
+      - StructureDefinition/hypoglycemic-reporting-specimen      
 
   rps:
     name: Respiratory Pathogens Surveillance Event Reporting Profiles
@@ -171,7 +171,7 @@ groups:
   measures:
     name: "Knowledge Artifacts: Measure"
     resources:
-#      - Measure/NHSNGlycemicControlHypoglycemicInitialPopulation
+      - Measure/NHSNGlycemicControlHypoglycemicInitialPopulation
       - Measure/NHSNdQMAcuteCareHospitalInitialPopulation
       - Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation
 
@@ -179,7 +179,7 @@ groups:
     name: "Knowledge Artifacts: Libraries"
     resources:
       - Library/SharedResourceCreation
-#      - Library/NHSNGlycemicControlHypoglycemicInitialPopulation
+      - Library/NHSNGlycemicControlHypoglycemicInitialPopulation
       - Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation
       - Library/NHSNdQMAcuteCareHospitalInitialPopulation
 
@@ -295,9 +295,9 @@ resources:
      description: Measure Report Criteria Reference - This extension is not defined by this IG.  CQF Tooling uses this extension, but the extension is yet unpublished.
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
 
-   #Measure/NHSNGlycemicControlHypoglycemicInitialPopulation:
-   #  name: NHSN Glycemic Control, Hypoglycemia Initial Population
-   #  description: The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter.
+   Measure/NHSNGlycemicControlHypoglycemicInitialPopulation:
+     name: NHSN Glycemic Control, Hypoglycemia Initial Population
+     description: The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter.
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    Measure/NHSNdQMAcuteCareHospitalInitialPopulation:
@@ -315,9 +315,9 @@ resources:
      description: Shared Resource Creation Library
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
-   #Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
-   #  name: NHSN Glycemic ControlHypoglycemic Initial Population
-   #  description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
+   Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
+     name: NHSN Glycemic ControlHypoglycemic Initial Population
+     description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation:

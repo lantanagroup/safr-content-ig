@@ -1,4 +1,4 @@
-/*
+
 Profile: HypoglycemicReportingMedicationAdministration
 Parent: MedicationAdministration
 Id: hypoglycemic-reporting-medicationadministration
@@ -15,4 +15,3 @@ Description: "This profile contains Required and Must Support data elements for 
   * route 1..
   * method MS
   * dose 1..
-  */
