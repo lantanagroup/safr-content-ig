@@ -9,7 +9,6 @@ Description: "This profile contains Required and Must Support data elements for 
 * effective[x] 1..
 * issued MS
 * interpretation MS
-* note MS
 * bodySite MS
 * method MS
 * specimen MS
