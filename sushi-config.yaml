@@ -153,7 +153,7 @@ groups:
       - StructureDefinition/rps-reporting-servicerequest
       - StructureDefinition/rps-reporting-specimen
       - StructureDefinition/rps-reporting-procedure
-      - StructureDefinition/rps-reporting-diagnostic-report-lab
+      - StructureDefinition/rps-reporting-diagnosticreport-lab
       - StructureDefinition/rps-reporting-medication
       - StructureDefinition/rps-reporting-medicationadministration
       - StructureDefinition/rps-reporting-medicationrequest
