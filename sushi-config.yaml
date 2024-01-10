@@ -136,7 +136,7 @@ groups:
       - StructureDefinition/hypoglycemic-reporting-condition
       - StructureDefinition/hypoglycemic-reporting-coverage
       - StructureDefinition/hypoglycemic-reporting-encounter
-      - StructureDefinition/hypoglycemic-reporting-lab-observation
+      - StructureDefinition/hypoglycemic-reporting-observation-lab
       - StructureDefinition/hypoglycemic-reporting-location
       - StructureDefinition/hypoglycemic-reporting-medication
       - StructureDefinition/hypoglycemic-reporting-medicationadministration
@@ -149,11 +149,11 @@ groups:
     resources:
       - StructureDefinition/rps-reporting-encounter
       - StructureDefinition/rps-reporting-location
-      - StructureDefinition/rps-reporting-lab-observation
+      - StructureDefinition/rps-reporting-observation-lab
       - StructureDefinition/rps-reporting-servicerequest
       - StructureDefinition/rps-reporting-specimen
       - StructureDefinition/rps-reporting-procedure
-      - StructureDefinition/rps-reporting-lab-diagnostic-report
+      - StructureDefinition/rps-reporting-diagnostic-report-lab
       - StructureDefinition/rps-reporting-medication
       - StructureDefinition/rps-reporting-medicationadministration
       - StructureDefinition/rps-reporting-medicationrequest
@@ -463,77 +463,77 @@ resources:
    Observation/observation-example-hypo-lab-sameresultdiffday1:
      name: Observation - Hypo Lab Example Sameresultdiffday 1
      description: Observation - Example Hypo Lab Sameresultdiffday 1
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
    Observation/observation-example-hypo-lab-sameresultdiffday2:
      name: Observation - Hypo Lab Example Sameresultdiffday 2
      description: Observation - Example Hypo Lab Sameresultdiffday 2
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
    Observation/observation-example-hypo-lab-sameresultdiffday3:
      name: Observation - Hypo Lab Example Sameresultdiffday 3
      description: Observation - Example Hypo Lab Sameresultdiffday 3
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
    Observation/observation-example-hypo-lab-sameresultdiffday4:
      name: Observation - Hypo Lab Example Sameresultdiffday 4
      description: Observation - Example Hypo Lab Sameresultdiffday 4
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
    Observation/observation-example-hypo-lab-sameresultdiffday5:
      name: Observation - Hypo Lab Example Sameresultdiffday 5
      description: Observation - Example Hypo Lab Sameresultdiffday 5
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
    Observation/observation-example-hypo-lab-sameresultdiffday6:
      name: Observation - Hypo Lab Example Sameresultdiffday 6
      description: Observation - Example Hypo Lab Sameresultdiffday 6
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
    Observation/observation-example-hypo-lab-sameresultdiffday7:
      name: Observation - Hypo Lab Example Sameresultdiffday 7
      description: Observation - Example Hypo Lab Sameresultdiffday 7
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
    Observation/observation-example-hypo-lab-hypo1:
      name: Observation - Hypo Lab Example Hypo 1
      description: Observation - Example Hypo Lab Hypo 1
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
    Observation/observation-example-hypo-lab-hypo2:
      name: Observation - Hypo Lab Example Hypo 2
      description: Observation - Example Hypo Lab Hypo 2
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
    Observation/observation-example-hypo-lab-hypo3:
      name: Observation - Hypo Lab Example Hypo 3
      description: Observation - Example Hypo Lab Hypo 3
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
    Observation/observation-example-hypo-lab-hypo4:
      name: Observation - Hypo Lab Example Hypo 4
      description: Observation - Example Hypo Lab Hypo 4
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
    Observation/observation-example-hypo-lab-hypo5:
      name: Observation - Hypo Lab Example Hypo 5
      description: Observation - Example Hypo Lab Hypo 5
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
    Observation/observation-example-hypo-lab-hypo6:
      name: Observation - Hypo Lab Example Hypo 6
      description: Observation - Example Hypo Lab Hypo 6
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
    Observation/observation-example-hypo-lab-hypo7:
      name: Observation - Hypo Lab Example Hypo 7
      description: Observation - Example Hypo Lab Hypo 7
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
    Observation/observation-example-hypo-lab-hypo8:
      name: Observation - Hypo Lab Example Hypo 8
      description: Observation - Example Hypo Lab Hypo 8
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
    
    

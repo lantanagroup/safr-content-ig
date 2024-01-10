@@ -103,7 +103,7 @@ define "SDE Blood Glucose Observation":
       during InitialPopulation.period
   )
   return SharedResource.ObservationResource(Observations, 
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-lab-observation'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab'}})
 
 //To capture the patient's chief complaint
 define "SDE Chief Complaint":
