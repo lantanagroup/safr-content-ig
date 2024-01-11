@@ -16,7 +16,6 @@ ValueSet: RespiratoryPathogensSurveillanceEventEncounterClass
 Id: rps-reporting-encounter-class
 Title: "Respiratory Pathogens Surveillance Encounter Class ValueSet"
 Description: "Respiratory Pathogens Surveillance Encounter Class ValueSet"
-* $v3-ActCode#EMER	"emergency"
 * $v3-ActCode#ACUTE	"inpatient acute"
 * $v3-ActCode#IMP	"inpatient encounter"
 * $v3-ActCode#NONAC	"inpatient non-acute"
