@@ -1,5 +1,5 @@
 ValueSet: RespiratoryPathogensSurveillanceEventEncounterStatus
-Id: rps-reporting-encounter-status
+Id: rps-encounter-status
 Title: "Respiratory Pathogens Surveillance Event Encounter Status"
 Description: "Respiratory Pathogens Surveillance Event Encounter Status"
 * $encounter-status#in-progress	"In Progress"
@@ -13,7 +13,7 @@ Description: "Respiratory Pathogens Surveillance Event Encounter Status"
 
 
 ValueSet: RespiratoryPathogensSurveillanceEventEncounterClass
-Id: rps-reporting-encounter-class
+Id: rps-encounter-class
 Title: "Respiratory Pathogens Surveillance Encounter Class ValueSet"
 Description: "Respiratory Pathogens Surveillance Encounter Class ValueSet"
 * $v3-ActCode#ACUTE	"inpatient acute"

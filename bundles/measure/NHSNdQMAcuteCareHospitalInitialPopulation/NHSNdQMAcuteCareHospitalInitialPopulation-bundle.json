@@ -1291,7 +1291,7 @@
                                     },
                                     {
                                         "url": "statement",
-                                        "valueString": "define \"SDE Encounter\": \n  [Encounter] Encounters\n  where exists(\"Initial Population\")\n  return SharedResource.EncounterResource(Encounters,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-encounter'}})"
+                                        "valueString": "define \"SDE Encounter\": \n  [Encounter] Encounters\n  where exists(\"Initial Population\")\n  return SharedResource.EncounterResource(Encounters,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-encounter'}})"
                                     },
                                     {
                                         "url": "displaySequence",
@@ -1312,7 +1312,7 @@
                                     },
                                     {
                                         "url": "statement",
-                                        "valueString": "define \"SDE Medication Request\":\n  [MedicationRequest] MedicationRequests \n  where exists(\"Initial Population\")\n  return SharedResource.MedicationRequestResource(MedicationRequests,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-medicationrequest'}})"
+                                        "valueString": "define \"SDE Medication Request\":\n  [MedicationRequest] MedicationRequests \n  where exists(\"Initial Population\")\n  return SharedResource.MedicationRequestResource(MedicationRequests,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-medicationrequest'}})"
                                     },
                                     {
                                         "url": "displaySequence",
@@ -1333,7 +1333,7 @@
                                     },
                                     {
                                         "url": "statement",
-                                        "valueString": "define \"SDE Coverage\": \n\t[Coverage] Coverages\n  where exists(\"Initial Population\")\n  return SharedResource.CoverageResource(Coverages,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-coverage'}})"
+                                        "valueString": "define \"SDE Coverage\": \n\t[Coverage] Coverages\n  where exists(\"Initial Population\")\n  return SharedResource.CoverageResource(Coverages,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-coverage'}})"
                                     },
                                     {
                                         "url": "displaySequence",
@@ -1354,7 +1354,7 @@
                                     },
                                     {
                                         "url": "statement",
-                                        "valueString": "define \"SDE Procedure\":\n  [Procedure] Procedures \n  where exists(\"Initial Population\")\n  return SharedResource.ProcedureResource(Procedures,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-procedure'}})"
+                                        "valueString": "define \"SDE Procedure\":\n  [Procedure] Procedures \n  where exists(\"Initial Population\")\n  return SharedResource.ProcedureResource(Procedures,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-procedure'}})"
                                     },
                                     {
                                         "url": "displaySequence",
@@ -1375,7 +1375,7 @@
                                     },
                                     {
                                         "url": "statement",
-                                        "valueString": "define \"SDE Device\":\n  [Device] Devices \n  where exists(\"Initial Population\")\n  return SharedResource.DeviceResource(Devices,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-device'}})"
+                                        "valueString": "define \"SDE Device\":\n  [Device] Devices \n  where exists(\"Initial Population\")\n  return SharedResource.DeviceResource(Devices,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-device'}})"
                                     },
                                     {
                                         "url": "displaySequence",
@@ -1396,7 +1396,7 @@
                                     },
                                     {
                                         "url": "statement",
-                                        "valueString": "define \"SDE Observation Lab Category\":\n  [Observation] Observations \n  where (exists(Observations.category Category where Category ~ \"laboratory\"))\n    and exists(\"Initial Population\")\n  return SharedResource.ObservationResource(Observations,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-observation-lab'}})"
+                                        "valueString": "define \"SDE Observation Lab Category\":\n  [Observation] Observations \n  where (exists(Observations.category Category where Category ~ \"laboratory\"))\n    and exists(\"Initial Population\")\n  return SharedResource.ObservationResource(Observations,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-observation-lab'}})"
                                     },
                                     {
                                         "url": "displaySequence",
@@ -1417,7 +1417,7 @@
                                     },
                                     {
                                         "url": "statement",
-                                        "valueString": "//Vital Signs Observation has its own profile in FHIR Base\ndefine \"SDE Observation Vital Signs Category\":\n  [Observation] Observations \n  where (exists(Observations.category Category where Category ~ \"vital-signs\"))\n    and exists(\"Initial Population\")\n  return SharedResource.ObservationResource(Observations,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-observation-vitals'}})"
+                                        "valueString": "//Vital Signs Observation has its own profile in FHIR Base\ndefine \"SDE Observation Vital Signs Category\":\n  [Observation] Observations \n  where (exists(Observations.category Category where Category ~ \"vital-signs\"))\n    and exists(\"Initial Population\")\n  return SharedResource.ObservationResource(Observations,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-observation-vitals'}})"
                                     },
                                     {
                                         "url": "displaySequence",
@@ -1438,7 +1438,7 @@
                                     },
                                     {
                                         "url": "statement",
-                                        "valueString": "define \"SDE DiagnosticReport Others\":\n  [DiagnosticReport] DiagnosticReports\n  where not ((exists(DiagnosticReports.category Category where Category ~ \"Radiology\"))\n    or exists((DiagnosticReports.category Category where Category ~ \"Pathology\"))\n    or exists((DiagnosticReports.category Category where Category ~ \"Cardiology\"))\n    or exists(DiagnosticReports.category Category where Category ~ \"LAB\"))\n    and exists(\"Initial Population\")\n  return SharedResource.DiagnosticReportResource(DiagnosticReports,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-diagnosticreport'}})"
+                                        "valueString": "define \"SDE DiagnosticReport Others\":\n  [DiagnosticReport] DiagnosticReports\n  where not ((exists(DiagnosticReports.category Category where Category ~ \"Radiology\"))\n    or exists((DiagnosticReports.category Category where Category ~ \"Pathology\"))\n    or exists((DiagnosticReports.category Category where Category ~ \"Cardiology\"))\n    or exists(DiagnosticReports.category Category where Category ~ \"LAB\"))\n    and exists(\"Initial Population\")\n  return SharedResource.DiagnosticReportResource(DiagnosticReports,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport'}})"
                                     },
                                     {
                                         "url": "displaySequence",
@@ -1459,7 +1459,7 @@
                                     },
                                     {
                                         "url": "statement",
-                                        "valueString": "define \"SDE Medication Administration\":\n  [MedicationAdministration] MedicationAdministrations \n  where exists(\"Initial Population\")\n  return SharedResource.MedicationAdministrationResource(MedicationAdministrations,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-medicationadministration'}})"
+                                        "valueString": "define \"SDE Medication Administration\":\n  [MedicationAdministration] MedicationAdministrations \n  where exists(\"Initial Population\")\n  return SharedResource.MedicationAdministrationResource(MedicationAdministrations,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-medicationadministration'}})"
                                     },
                                     {
                                         "url": "displaySequence",
@@ -1480,7 +1480,7 @@
                                     },
                                     {
                                         "url": "statement",
-                                        "valueString": "//Defaulting to base FHIR profile as there are no individual profiles in US Core 3.1.1 that cover these Observation categories\ndefine \"SDE Observation Category\":\n  [Observation] Observations \n  where ((exists(Observations.category Category where Category ~ \"social-history\"))\n    or (exists(Observations.category Category where Category ~ \"survey\"))\n    or (exists(Observations.category Category where Category ~ \"imaging\"))\n    or (exists(Observations.category Category where Category ~ \"procedure\")))\n    and exists(\"Initial Population\")\n  return SharedResource.ObservationResource(Observations,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-observation'}})"
+                                        "valueString": "//Defaulting to base FHIR profile as there are no individual profiles in US Core 3.1.1 that cover these Observation categories\ndefine \"SDE Observation Category\":\n  [Observation] Observations \n  where ((exists(Observations.category Category where Category ~ \"social-history\"))\n    or (exists(Observations.category Category where Category ~ \"survey\"))\n    or (exists(Observations.category Category where Category ~ \"imaging\"))\n    or (exists(Observations.category Category where Category ~ \"procedure\")))\n    and exists(\"Initial Population\")\n  return SharedResource.ObservationResource(Observations,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-observation'}})"
                                     },
                                     {
                                         "url": "displaySequence",
@@ -1501,7 +1501,7 @@
                                     },
                                     {
                                         "url": "statement",
-                                        "valueString": "//============================================================================\n//Supplemental Data Element\n//When FHIR.canonical value is present, US Core 3.1.1 profiles are used\n//When FHIR.canonical value is not present, FHIR Base profiles are used\n//============================================================================\ndefine \"SDE Condition\":\n  [Condition] Conditions \n  where exists(\"Initial Population\")\n  return SharedResource.ConditionResource(Conditions,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-condition'}})"
+                                        "valueString": "//============================================================================\n//Supplemental Data Element\n//When FHIR.canonical value is present, US Core 3.1.1 profiles are used\n//When FHIR.canonical value is not present, FHIR Base profiles are used\n//============================================================================\ndefine \"SDE Condition\":\n  [Condition] Conditions \n  where exists(\"Initial Population\")\n  return SharedResource.ConditionResource(Conditions,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-condition'}})"
                                     },
                                     {
                                         "url": "displaySequence",
@@ -1522,7 +1522,7 @@
                                     },
                                     {
                                         "url": "statement",
-                                        "valueString": "define \"SDE DiagnosticReport Lab\":\n  [DiagnosticReport] DiagnosticReports\n  where (exists(DiagnosticReports.category Category where Category ~ \"LAB\")\n    and exists(\"Initial Population\"))\n  return SharedResource.DiagnosticReportResource(DiagnosticReports,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-diagnosticreport-lab'}})"
+                                        "valueString": "define \"SDE DiagnosticReport Lab\":\n  [DiagnosticReport] DiagnosticReports\n  where (exists(DiagnosticReports.category Category where Category ~ \"LAB\")\n    and exists(\"Initial Population\"))\n  return SharedResource.DiagnosticReportResource(DiagnosticReports,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport-lab'}})"
                                     },
                                     {
                                         "url": "displaySequence",
@@ -1543,7 +1543,7 @@
                                     },
                                     {
                                         "url": "statement",
-                                        "valueString": "define \"SDE Location\":\n  [Location] Locations\n  where exists(\"Initial Population\")\n  return SharedResource.LocationResource(Locations,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-location'}})"
+                                        "valueString": "define \"SDE Location\":\n  [Location] Locations\n  where exists(\"Initial Population\")\n  return SharedResource.LocationResource(Locations,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-location'}})"
                                     },
                                     {
                                         "url": "displaySequence",
@@ -1564,7 +1564,7 @@
                                     },
                                     {
                                         "url": "statement",
-                                        "valueString": "define \"SDE Service Request\":\n  [ServiceRequest] ServiceRequests\n  where exists(\"Initial Population\")\n  return SharedResource.ServiceRequestResource(ServiceRequests,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-servicerequest'}})"
+                                        "valueString": "define \"SDE Service Request\":\n  [ServiceRequest] ServiceRequests\n  where exists(\"Initial Population\")\n  return SharedResource.ServiceRequestResource(ServiceRequests,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-servicerequest'}})"
                                     },
                                     {
                                         "url": "displaySequence",
@@ -1585,7 +1585,7 @@
                                     },
                                     {
                                         "url": "statement",
-                                        "valueString": "define \"SDE DiagnosticReport Note\":\n  [DiagnosticReport] DiagnosticReports\n  where ((exists(DiagnosticReports.category Category where Category ~ \"Radiology\"))\n    or exists((DiagnosticReports.category Category where Category ~ \"Pathology\"))\n    or exists((DiagnosticReports.category Category where Category ~ \"Cardiology\")))\n    and exists(\"Initial Population\")\n  return SharedResource.DiagnosticReportResource(DiagnosticReports,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-diagnosticreport-note'}})"
+                                        "valueString": "define \"SDE DiagnosticReport Note\":\n  [DiagnosticReport] DiagnosticReports\n  where ((exists(DiagnosticReports.category Category where Category ~ \"Radiology\"))\n    or exists((DiagnosticReports.category Category where Category ~ \"Pathology\"))\n    or exists((DiagnosticReports.category Category where Category ~ \"Cardiology\")))\n    and exists(\"Initial Population\")\n  return SharedResource.DiagnosticReportResource(DiagnosticReports,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport-note'}})"
                                     },
                                     {
                                         "url": "displaySequence",
@@ -1627,7 +1627,7 @@
                                     },
                                     {
                                         "url": "statement",
-                                        "valueString": "define \"SDE Medication\":\n  [Medication] Medication\n  where exists(\"Initial Population\")\n  return SharedResource.MedicationResource(Medication,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-medication'}})"
+                                        "valueString": "define \"SDE Medication\":\n  [Medication] Medication\n  where exists(\"Initial Population\")\n  return SharedResource.MedicationResource(Medication,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-medication'}})"
                                     },
                                     {
                                         "url": "displaySequence",
@@ -1648,7 +1648,7 @@
                                     },
                                     {
                                         "url": "statement",
-                                        "valueString": "define \"SDE Specimen\":\n  [Specimen] Specimen\n  where exists(\"Initial Population\")\n  return SharedResource.SpecimenResource(Specimen,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-specimen'}})"
+                                        "valueString": "define \"SDE Specimen\":\n  [Specimen] Specimen\n  where exists(\"Initial Population\")\n  return SharedResource.SpecimenResource(Specimen,\n  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-specimen'}})"
                                     },
                                     {
                                         "url": "displaySequence",

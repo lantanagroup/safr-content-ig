@@ -162,7 +162,7 @@
                <valueString value="SDE Encounter"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Encounter&quot;: &#xa;  [Encounter] Encounters&#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.EncounterResource(Encounters,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-encounter'}})"/>
+               <valueString value="define &quot;SDE Encounter&quot;: &#xa;  [Encounter] Encounters&#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.EncounterResource(Encounters,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-encounter'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="3"/>
@@ -176,7 +176,7 @@
                <valueString value="SDE Medication Request"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Medication Request&quot;:&#xa;  [MedicationRequest] MedicationRequests &#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.MedicationRequestResource(MedicationRequests,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-medicationrequest'}})"/>
+               <valueString value="define &quot;SDE Medication Request&quot;:&#xa;  [MedicationRequest] MedicationRequests &#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.MedicationRequestResource(MedicationRequests,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-medicationrequest'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="4"/>
@@ -190,7 +190,7 @@
                <valueString value="SDE Coverage"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Coverage&quot;: &#xa;&#x9;[Coverage] Coverages&#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.CoverageResource(Coverages,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-coverage'}})"/>
+               <valueString value="define &quot;SDE Coverage&quot;: &#xa;&#x9;[Coverage] Coverages&#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.CoverageResource(Coverages,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-coverage'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="5"/>
@@ -204,7 +204,7 @@
                <valueString value="SDE Procedure"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Procedure&quot;:&#xa;  [Procedure] Procedures &#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.ProcedureResource(Procedures,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-procedure'}})"/>
+               <valueString value="define &quot;SDE Procedure&quot;:&#xa;  [Procedure] Procedures &#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.ProcedureResource(Procedures,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-procedure'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="6"/>
@@ -218,7 +218,7 @@
                <valueString value="SDE Device"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Device&quot;:&#xa;  [Device] Devices &#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.DeviceResource(Devices,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-device'}})"/>
+               <valueString value="define &quot;SDE Device&quot;:&#xa;  [Device] Devices &#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.DeviceResource(Devices,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-device'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="7"/>
@@ -232,7 +232,7 @@
                <valueString value="SDE Observation Lab Category"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Observation Lab Category&quot;:&#xa;  [Observation] Observations &#xa;  where (exists(Observations.category Category where Category ~ &quot;laboratory&quot;))&#xa;    and exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.ObservationResource(Observations,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-observation-lab'}})"/>
+               <valueString value="define &quot;SDE Observation Lab Category&quot;:&#xa;  [Observation] Observations &#xa;  where (exists(Observations.category Category where Category ~ &quot;laboratory&quot;))&#xa;    and exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.ObservationResource(Observations,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-observation-lab'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="8"/>
@@ -246,7 +246,7 @@
                <valueString value="SDE Observation Vital Signs Category"/>
             </extension>
             <extension url="statement">
-               <valueString value="//Vital Signs Observation has its own profile in FHIR Base&#xa;define &quot;SDE Observation Vital Signs Category&quot;:&#xa;  [Observation] Observations &#xa;  where (exists(Observations.category Category where Category ~ &quot;vital-signs&quot;))&#xa;    and exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.ObservationResource(Observations,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-observation-vitals'}})"/>
+               <valueString value="//Vital Signs Observation has its own profile in FHIR Base&#xa;define &quot;SDE Observation Vital Signs Category&quot;:&#xa;  [Observation] Observations &#xa;  where (exists(Observations.category Category where Category ~ &quot;vital-signs&quot;))&#xa;    and exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.ObservationResource(Observations,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-observation-vitals'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="9"/>
@@ -260,7 +260,7 @@
                <valueString value="SDE DiagnosticReport Others"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE DiagnosticReport Others&quot;:&#xa;  [DiagnosticReport] DiagnosticReports&#xa;  where not ((exists(DiagnosticReports.category Category where Category ~ &quot;Radiology&quot;))&#xa;    or exists((DiagnosticReports.category Category where Category ~ &quot;Pathology&quot;))&#xa;    or exists((DiagnosticReports.category Category where Category ~ &quot;Cardiology&quot;))&#xa;    or exists(DiagnosticReports.category Category where Category ~ &quot;LAB&quot;))&#xa;    and exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.DiagnosticReportResource(DiagnosticReports,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-diagnosticreport'}})"/>
+               <valueString value="define &quot;SDE DiagnosticReport Others&quot;:&#xa;  [DiagnosticReport] DiagnosticReports&#xa;  where not ((exists(DiagnosticReports.category Category where Category ~ &quot;Radiology&quot;))&#xa;    or exists((DiagnosticReports.category Category where Category ~ &quot;Pathology&quot;))&#xa;    or exists((DiagnosticReports.category Category where Category ~ &quot;Cardiology&quot;))&#xa;    or exists(DiagnosticReports.category Category where Category ~ &quot;LAB&quot;))&#xa;    and exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.DiagnosticReportResource(DiagnosticReports,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="10"/>
@@ -274,7 +274,7 @@
                <valueString value="SDE Medication Administration"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Medication Administration&quot;:&#xa;  [MedicationAdministration] MedicationAdministrations &#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.MedicationAdministrationResource(MedicationAdministrations,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-medicationadministration'}})"/>
+               <valueString value="define &quot;SDE Medication Administration&quot;:&#xa;  [MedicationAdministration] MedicationAdministrations &#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.MedicationAdministrationResource(MedicationAdministrations,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-medicationadministration'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="11"/>
@@ -288,7 +288,7 @@
                <valueString value="SDE Observation Category"/>
             </extension>
             <extension url="statement">
-               <valueString value="//Defaulting to base FHIR profile as there are no individual profiles in US Core 3.1.1 that cover these Observation categories&#xa;define &quot;SDE Observation Category&quot;:&#xa;  [Observation] Observations &#xa;  where ((exists(Observations.category Category where Category ~ &quot;social-history&quot;))&#xa;    or (exists(Observations.category Category where Category ~ &quot;survey&quot;))&#xa;    or (exists(Observations.category Category where Category ~ &quot;imaging&quot;))&#xa;    or (exists(Observations.category Category where Category ~ &quot;procedure&quot;)))&#xa;    and exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.ObservationResource(Observations,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-observation'}})"/>
+               <valueString value="//Defaulting to base FHIR profile as there are no individual profiles in US Core 3.1.1 that cover these Observation categories&#xa;define &quot;SDE Observation Category&quot;:&#xa;  [Observation] Observations &#xa;  where ((exists(Observations.category Category where Category ~ &quot;social-history&quot;))&#xa;    or (exists(Observations.category Category where Category ~ &quot;survey&quot;))&#xa;    or (exists(Observations.category Category where Category ~ &quot;imaging&quot;))&#xa;    or (exists(Observations.category Category where Category ~ &quot;procedure&quot;)))&#xa;    and exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.ObservationResource(Observations,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-observation'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="12"/>
@@ -302,7 +302,7 @@
                <valueString value="SDE Condition"/>
             </extension>
             <extension url="statement">
-               <valueString value="//============================================================================&#xa;//Supplemental Data Element&#xa;//When FHIR.canonical value is present, US Core 3.1.1 profiles are used&#xa;//When FHIR.canonical value is not present, FHIR Base profiles are used&#xa;//============================================================================&#xa;define &quot;SDE Condition&quot;:&#xa;  [Condition] Conditions &#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.ConditionResource(Conditions,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-condition'}})"/>
+               <valueString value="//============================================================================&#xa;//Supplemental Data Element&#xa;//When FHIR.canonical value is present, US Core 3.1.1 profiles are used&#xa;//When FHIR.canonical value is not present, FHIR Base profiles are used&#xa;//============================================================================&#xa;define &quot;SDE Condition&quot;:&#xa;  [Condition] Conditions &#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.ConditionResource(Conditions,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-condition'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="13"/>
@@ -316,7 +316,7 @@
                <valueString value="SDE DiagnosticReport Lab"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE DiagnosticReport Lab&quot;:&#xa;  [DiagnosticReport] DiagnosticReports&#xa;  where (exists(DiagnosticReports.category Category where Category ~ &quot;LAB&quot;)&#xa;    and exists(&quot;Initial Population&quot;))&#xa;  return SharedResource.DiagnosticReportResource(DiagnosticReports,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-diagnosticreport-lab'}})"/>
+               <valueString value="define &quot;SDE DiagnosticReport Lab&quot;:&#xa;  [DiagnosticReport] DiagnosticReports&#xa;  where (exists(DiagnosticReports.category Category where Category ~ &quot;LAB&quot;)&#xa;    and exists(&quot;Initial Population&quot;))&#xa;  return SharedResource.DiagnosticReportResource(DiagnosticReports,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport-lab'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="14"/>
@@ -330,7 +330,7 @@
                <valueString value="SDE Location"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Location&quot;:&#xa;  [Location] Locations&#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.LocationResource(Locations,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-location'}})"/>
+               <valueString value="define &quot;SDE Location&quot;:&#xa;  [Location] Locations&#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.LocationResource(Locations,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-location'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="15"/>
@@ -344,7 +344,7 @@
                <valueString value="SDE Service Request"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Service Request&quot;:&#xa;  [ServiceRequest] ServiceRequests&#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.ServiceRequestResource(ServiceRequests,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-servicerequest'}})"/>
+               <valueString value="define &quot;SDE Service Request&quot;:&#xa;  [ServiceRequest] ServiceRequests&#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.ServiceRequestResource(ServiceRequests,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-servicerequest'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="16"/>
@@ -358,7 +358,7 @@
                <valueString value="SDE DiagnosticReport Note"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE DiagnosticReport Note&quot;:&#xa;  [DiagnosticReport] DiagnosticReports&#xa;  where ((exists(DiagnosticReports.category Category where Category ~ &quot;Radiology&quot;))&#xa;    or exists((DiagnosticReports.category Category where Category ~ &quot;Pathology&quot;))&#xa;    or exists((DiagnosticReports.category Category where Category ~ &quot;Cardiology&quot;)))&#xa;    and exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.DiagnosticReportResource(DiagnosticReports,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-diagnosticreport-note'}})"/>
+               <valueString value="define &quot;SDE DiagnosticReport Note&quot;:&#xa;  [DiagnosticReport] DiagnosticReports&#xa;  where ((exists(DiagnosticReports.category Category where Category ~ &quot;Radiology&quot;))&#xa;    or exists((DiagnosticReports.category Category where Category ~ &quot;Pathology&quot;))&#xa;    or exists((DiagnosticReports.category Category where Category ~ &quot;Cardiology&quot;)))&#xa;    and exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.DiagnosticReportResource(DiagnosticReports,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport-note'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="17"/>
@@ -386,7 +386,7 @@
                <valueString value="SDE Medication"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Medication&quot;:&#xa;  [Medication] Medication&#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.MedicationResource(Medication,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-medication'}})"/>
+               <valueString value="define &quot;SDE Medication&quot;:&#xa;  [Medication] Medication&#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.MedicationResource(Medication,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-medication'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="19"/>
@@ -400,7 +400,7 @@
                <valueString value="SDE Specimen"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Specimen&quot;:&#xa;  [Specimen] Specimen&#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.SpecimenResource(Specimen,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-reporting-specimen'}})"/>
+               <valueString value="define &quot;SDE Specimen&quot;:&#xa;  [Specimen] Specimen&#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.SpecimenResource(Specimen,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-specimen'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="20"/>
