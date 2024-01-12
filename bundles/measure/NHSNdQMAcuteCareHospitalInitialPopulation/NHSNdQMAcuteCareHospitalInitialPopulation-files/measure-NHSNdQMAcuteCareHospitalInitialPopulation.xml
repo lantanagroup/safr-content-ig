@@ -120,7 +120,7 @@
                <valueString value="Qualifying Encounter During Measurement Period"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Qualifying Encounter During Measurement Period&quot;:&#xa; ( [Encounter: &quot;Encounter Inpatient&quot;]&#xa;union   [Encounter: &quot;Emergency Department Visit&quot;]&#xa;union [Encounter: &quot;Observation Services&quot;]&#xa;union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, &quot;inpatient encounter&quot;, &quot;inpatient non-acute&quot;, &quot;short stay&quot;}]) QualifyingEncounters&#xa;  where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}&#xa;    and QualifyingEncounters.period overlaps &quot;Measurement Period&quot;"/>
+               <valueString value="define &quot;Qualifying Encounter During Measurement Period&quot;:&#xa; ( [Encounter: &quot;Encounter Inpatient&quot;]&#xa;  union [Encounter: &quot;Emergency Department Visit&quot;]&#xa;  union [Encounter: &quot;Observation Services&quot;]&#xa;  union [Encounter: class in {&quot;emergency&quot;, &quot;inpatient acute&quot;, &quot;inpatient encounter&quot;, &quot;inpatient non-acute&quot;, &quot;short stay&quot;}]) QualifyingEncounters&#xa;  where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}&#xa;    and QualifyingEncounters.period overlaps &quot;Measurement Period&quot;"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="0"/>
@@ -134,7 +134,7 @@
                <valueString value="Encounters with Patient Hospital Locations"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Encounters with Patient Hospital Locations&quot;:&#xa;  [Encounter] Encounters&#xa;  where exists(&#xa;    Encounters.location EncounterLocation&#xa;    where Global.GetLocation(EncounterLocation.location).type in &quot;Inpatient, Emergency, and Observation Locations&quot;&#xa;      and EncounterLocation.period overlaps Encounters.period&#xa;      and Encounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}&#xa;  )"/>
+               <valueString value="//potentially an issue as this may pull ALL EXISTING ENCOUNTERS (no period to look against)&#xa;define &quot;Encounters with Patient Hospital Locations&quot;:&#xa;  [Encounter] Encounters&#xa;  where exists(&#xa;    Encounters.location EncounterLocation&#xa;    where Global.GetLocation(EncounterLocation.location).type in &quot;Inpatient, Emergency, and Observation Locations&quot;&#xa;      and EncounterLocation.period overlaps Encounters.period&#xa;  )&#xa;  and Encounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="1"/>
@@ -148,7 +148,7 @@
                <valueString value="Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Initial Population&quot;:&#xa;  &quot;Qualifying Encounter During Measurement Period&quot;&#xa;  union &quot;Encounters with Patient Hospital Locations&quot;"/>
+               <valueString value="// and Encounters.period overlaps &quot;Measurement Period&quot; (?)&#xa;&#xa;define &quot;Initial Population&quot;:&#xa;  &quot;Qualifying Encounter During Measurement Period&quot;&#xa;  union &quot;Encounters with Patient Hospital Locations&quot;"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="2"/>
@@ -714,6 +714,7 @@
                <valueInteger value="42"/>
             </extension>
          </extension>
+         <name value="EffectiveDataRequirements"/>
          <status value="active"/>
          <type>
             <coding>
@@ -1491,7 +1492,7 @@
    <title value="NHSN dQM Acute Care Hospital Initial Population"/>
    <status value="draft"/>
    <experimental value="false"/>
-   <date value="2024-01-09T14:23:18-05:00"/>
+   <date value="2024-01-12T14:51:25-05:00"/>
    <publisher value="Lantana Consulting Group"/>
    <description value="The Acute Care Hospital Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."/>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."/>

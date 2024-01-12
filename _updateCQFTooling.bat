@@ -1,7 +1,7 @@
 @ECHO OFF
 
-SET "dlurl=https://oss.sonatype.org/service/local/artifact/maven/redirect?r=snapshots&g=org.opencds.cqf&a=tooling-cli&v=3.0.0-SNAPSHOT"
-SET tooling_jar=tooling-cli-3.0.0-SNAPSHOT.jar
+SET "dlurl=https://oss.sonatype.org/service/local/artifact/maven/redirect?r=snapshots&g=org.opencds.cqf&a=tooling-cli&v=3.1.0-SNAPSHOT"
+SET tooling_jar=tooling-cli-3.1.0-SNAPSHOT.jar
 SET input_cache_path=%~dp0input-cache\
 
 FOR %%x IN ("%CD%") DO SET upper_path=%%~dpx

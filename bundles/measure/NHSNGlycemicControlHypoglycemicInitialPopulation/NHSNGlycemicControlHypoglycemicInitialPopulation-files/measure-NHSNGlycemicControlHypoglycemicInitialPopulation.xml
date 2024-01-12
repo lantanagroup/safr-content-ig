@@ -749,6 +749,7 @@
                <valueInteger value="48"/>
             </extension>
          </extension>
+         <name value="EffectiveDataRequirements"/>
          <status value="active"/>
          <type>
             <coding>
@@ -1458,7 +1459,7 @@
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"/>
    <status value="draft"/>
    <experimental value="false"/>
-   <date value="2024-01-09T11:23:18-08:00"/>
+   <date value="2024-01-12T11:51:25-08:00"/>
    <publisher value="Lantana Consulting Group"/>
    <description value="The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."/>
    <purpose value="This site allows NHSN to view Measure-specification content in the dQMs under development by Lantana Consulting Group. Note that this site undergoes constant revision and is not intended to serve as an implementation guide."/>

@@ -7,8 +7,6 @@
       "EnableDateRangeOptimization"
 ],
    "formats":[
-     "XML",
-     "JSON"
    ],
    "validateUnits":true,
    "verifyOnly":false,
