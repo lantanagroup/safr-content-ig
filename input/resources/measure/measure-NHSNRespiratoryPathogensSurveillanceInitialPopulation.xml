@@ -1001,6 +1001,7 @@
                <valueInteger value="67"/>
             </extension>
          </extension>
+         <name value="EffectiveDataRequirements"/>
          <status value="active"/>
          <type>
             <coding>
@@ -2581,7 +2582,7 @@
    <title value="NHSN Respiratory Pathogens Surveillance Initial Population"/>
    <status value="draft"/>
    <experimental value="false"/>
-   <date value="2024-01-09T14:23:18-05:00"/>
+   <date value="2024-01-12T14:51:25-05:00"/>
    <publisher value="Lantana Consulting Group"/>
    <description value="The Respiratory Pathogens Surveillance Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period."/>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."/>
