@@ -111,24 +111,24 @@ groups:
   ach:
     name: Acute Care Hospital Reporting Profiles
     resources:
-      - StructureDefinition/ach-reporting-encounter
-      - StructureDefinition/ach-reporting-location
-      - StructureDefinition/ach-reporting-observation-lab
-      - StructureDefinition/ach-reporting-observation-vitals
-      - StructureDefinition/ach-reporting-observation
-      - StructureDefinition/ach-reporting-servicerequest
-      - StructureDefinition/ach-reporting-specimen
-      - StructureDefinition/ach-reporting-condition
-      - StructureDefinition/ach-reporting-procedure
-      - StructureDefinition/ach-reporting-coverage
-      #- StructureDefinition/ach-reporting-implantable-device
-      - StructureDefinition/ach-reporting-device
-      - StructureDefinition/ach-reporting-diagnosticreport
-      - StructureDefinition/ach-reporting-diagnosticreport-lab
-      - StructureDefinition/ach-reporting-diagnosticreport-note
-      - StructureDefinition/ach-reporting-medication
-      - StructureDefinition/ach-reporting-medicationadministration
-      - StructureDefinition/ach-reporting-medicationrequest
+      - StructureDefinition/ach-encounter
+      - StructureDefinition/ach-location
+      - StructureDefinition/ach-observation-lab
+      - StructureDefinition/ach-observation-vitals
+      - StructureDefinition/ach-observation
+      - StructureDefinition/ach-servicerequest
+      - StructureDefinition/ach-specimen
+      - StructureDefinition/ach-condition
+      - StructureDefinition/ach-procedure
+      - StructureDefinition/ach-coverage
+      #- StructureDefinition/ach-implantable-device
+      - StructureDefinition/ach-device
+      - StructureDefinition/ach-diagnosticreport
+      - StructureDefinition/ach-diagnosticreport-lab
+      - StructureDefinition/ach-diagnosticreport-note
+      - StructureDefinition/ach-medication
+      - StructureDefinition/ach-medicationadministration
+      - StructureDefinition/ach-medicationrequest
       
   hypo:
     name: Hypoglycemic Event Reporting profiles
@@ -147,16 +147,16 @@ groups:
   rps:
     name: Respiratory Pathogens Surveillance Event Reporting Profiles
     resources:
-      - StructureDefinition/rps-reporting-encounter
-      - StructureDefinition/rps-reporting-location
-      - StructureDefinition/rps-reporting-observation-lab
-      - StructureDefinition/rps-reporting-servicerequest
-      - StructureDefinition/rps-reporting-specimen
-      - StructureDefinition/rps-reporting-procedure
-      - StructureDefinition/rps-reporting-diagnosticreport-lab
-      - StructureDefinition/rps-reporting-medication
-      - StructureDefinition/rps-reporting-medicationadministration
-      - StructureDefinition/rps-reporting-medicationrequest
+      - StructureDefinition/rps-encounter
+      - StructureDefinition/rps-location
+      - StructureDefinition/rps-observation-lab
+      - StructureDefinition/rps-servicerequest
+      - StructureDefinition/rps-specimen
+      - StructureDefinition/rps-procedure
+      - StructureDefinition/rps-diagnosticreport-lab
+      - StructureDefinition/rps-medication
+      - StructureDefinition/rps-medicationadministration
+      - StructureDefinition/rps-medicationrequest
 
 
 
@@ -165,8 +165,8 @@ groups:
     resources:
       - ValueSet/ach-encounter-status
       - ValueSet/ach-encounter-class
-      - ValueSet/rps-reporting-encounter-status
-      - ValueSet/rps-reporting-encounter-class
+      - ValueSet/rps-encounter-status
+      - ValueSet/rps-encounter-class
 
   measures:
     name: "Knowledge Artifacts: Measure"
