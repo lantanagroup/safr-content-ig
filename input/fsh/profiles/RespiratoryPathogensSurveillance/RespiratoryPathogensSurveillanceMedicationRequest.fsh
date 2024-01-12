@@ -1,6 +1,6 @@
 Profile: RespiratoryPathogensSurveillanceEventMedicationRequest
 Parent: USCoreMedicationRequestProfile
-Id: rps-reporting-medicationrequest
+Id: rps-medicationrequest
 Title: "RPS Event MedicationRequest"
 Description: "This profile contains Required and Must Support data elements for reporting medication request (order) information to the NHSN Respiratory Pathogens Surveillance (RPS) Module. This profile is based on the [HL7 FHIR® US Core MedicationRequest Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-medicationrequest.html)."
 * id 1..

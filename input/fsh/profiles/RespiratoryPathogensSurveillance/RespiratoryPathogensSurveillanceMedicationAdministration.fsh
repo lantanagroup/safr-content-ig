@@ -1,6 +1,6 @@
 Profile: RespiratoryPathogensSurveillanceEventMedicationAdministration
 Parent: MedicationAdministration
-Id: rps-reporting-medicationadministration
+Id: rps-medicationadministration
 Title: "RPS Event MedicationAdministration"
 Description: "This profile contains Required and Must Support data elements for reporting medication administration information to the NHSN Respiratory Pathogens Surveillance (RPS) Module. This profile is based on the [HL7 FHIR R4 MedicationAdministration Resource v4.0.1](http://hl7.org/fhir/R4/medicationadministration.html)."
 * ^status = #active
