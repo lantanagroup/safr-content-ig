@@ -73,7 +73,7 @@ define "Inpatient Encounter":
     union [Encounter: "Encounter Inpatient"]
   
 define "Encounters with Patient Hospital Locations":
-  [Encounter] Encounters
+  "Encounters" Encounters
   where exists(
     Encounters.location EncounterLocation
     where Global.GetLocation(EncounterLocation.location).type in "Inpatient, Emergency, and Observation Locations"
@@ -88,6 +88,18 @@ define "Antidiabetic Drugs Administered or Ordered":
     "MedicationRequests" MedicationRequests
       where GetMedicationCode(MedicationRequests.medication) in "Diabetes Medications"
   )
+
+define "Encounters overlap Measurement Period":
+  "Encounters" Encounters
+  where Encounters.period overlaps "Measurement Period"
+
+define "Get Locations from Encounters in Measurement Period":
+  flatten("Encounters overlap Measurement Period" Encounters
+  let locationElements: Encounters.location
+  return
+    locationElements LE
+    let locationReference: LE.location
+    return Global.GetLocation(locationReference))
 
 //
 //Supplemental Data Elements
@@ -174,10 +186,8 @@ define "SDE Initial Population Encounters":
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})
 
 define "SDE Location":
-  [Location] Locations
-  where /*exists(Locations.type types
-    where types in "Inpatient, Emergency, and Observation Locations")
-  and*/ exists("Initial Population")
+  "Get Locations from Encounters in Measurement Period" Locations
+  where exists("Initial Population")
   return SharedResource.LocationResource(Locations,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-location'}})
 
@@ -240,6 +250,9 @@ define "SDE Specimen":
 //
 // Retrieve Resources
 //
+define "Encounters":
+  [Encounter]
+
 define "MedicationRequests":
   [MedicationRequest]
 
