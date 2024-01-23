@@ -46,24 +46,41 @@ context Patient
 
 define "Qualifying Encounter During Measurement Period":
  ( [Encounter: "Encounter Inpatient"]
-union   [Encounter: "Emergency Department Visit"]
-union [Encounter: "Observation Services"]
-union [Encounter: class in {"emergency", "inpatient acute", "inpatient encounter", "inpatient non-acute", "short stay"}]) QualifyingEncounters
+  union [Encounter: "Emergency Department Visit"]
+  union [Encounter: "Observation Services"]
+  union [Encounter: class in {"emergency", "inpatient acute", "inpatient encounter", "inpatient non-acute", "short stay"}]) QualifyingEncounters
   where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
     and QualifyingEncounters.period overlaps "Measurement Period" 
 
+//potentially an issue as this may pull ALL EXISTING ENCOUNTERS (no period to look against)
 define "Encounters with Patient Hospital Locations":
-  [Encounter] Encounters
+  "Encounters" Encounters
   where exists(
     Encounters.location EncounterLocation
     where Global.GetLocation(EncounterLocation.location).type in "Inpatient, Emergency, and Observation Locations"
       and EncounterLocation.period overlaps Encounters.period
-      and Encounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
   )
+  and Encounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
+  // and Encounters.period overlaps "Measurement Period" (?)
 
 define "Initial Population":
   "Qualifying Encounter During Measurement Period"
   union "Encounters with Patient Hospital Locations"
+
+define "Encounters":
+  [Encounter]
+
+define "Encounters overlap Measurement Period":
+  "Encounters" Encounters
+  where Encounters.period overlaps "Measurement Period"
+
+define "Get Locations from Encounters in Measurement Period":
+  flatten("Encounters overlap Measurement Period" Encounters
+  let locationElements: Encounters.location
+  return
+    locationElements LE
+    let locationReference: LE.location
+    return Global.GetLocation(locationReference))
 
 //============================================================================
 //Supplemental Data Element
@@ -115,7 +132,7 @@ define "SDE Encounter":
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-encounter'}})
 
 define "SDE Location":
-  [Location] Locations
+  "Get Locations from Encounters in Measurement Period" Locations
   where exists("Initial Population")
   return SharedResource.LocationResource(Locations,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-location'}})
