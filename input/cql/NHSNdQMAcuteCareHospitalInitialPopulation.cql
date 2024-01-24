@@ -136,6 +136,7 @@ define "SDE Encounter":
 define "SDE Location":
   "Get Locations from Encounters in Measurement Period" Locations
   where exists("Initial Population")
+  and Locations is not null
   return SharedResource.LocationResource(Locations,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-location'}})
  
