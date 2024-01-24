@@ -91,7 +91,8 @@ define "Get Locations from IP Encounters in Measurement Period":
 //============================================================================
 define "SDE Condition":
   [Condition] Conditions 
-  where exists("Initial Population")
+  where exists("Initial Population" IP
+    where Global."Normalize Interval"(Conditions.onset) overlaps IP.period)
   return SharedResource.ConditionResource(Conditions,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-condition'}})
 
@@ -104,7 +105,8 @@ define "SDE Device":
 define "SDE DiagnosticReport Lab":
   [DiagnosticReport] DiagnosticReports
   where (exists(DiagnosticReports.category Category where Category ~ "LAB")
-    and exists("Initial Population"))
+    and exists("Initial Population" IP
+      where Global."Normalize Interval"(DiagnosticReports.effective) overlaps IP.period))
   return SharedResource.DiagnosticReportResource(DiagnosticReports,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport-lab'}})
  
@@ -113,7 +115,8 @@ define "SDE DiagnosticReport Note":
   where ((exists(DiagnosticReports.category Category where Category ~ "Radiology"))
     or exists((DiagnosticReports.category Category where Category ~ "Pathology"))
     or exists((DiagnosticReports.category Category where Category ~ "Cardiology")))
-    and exists("Initial Population")
+    and exists("Initial Population" IP
+      where Global."Normalize Interval"(DiagnosticReports.effective) overlaps IP.period)
   return SharedResource.DiagnosticReportResource(DiagnosticReports,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport-note'}})
 
@@ -123,13 +126,15 @@ define "SDE DiagnosticReport Others":
     or exists((DiagnosticReports.category Category where Category ~ "Pathology"))
     or exists((DiagnosticReports.category Category where Category ~ "Cardiology"))
     or exists(DiagnosticReports.category Category where Category ~ "LAB"))
-    and exists("Initial Population")
+    and exists("Initial Population" IP
+      where Global."Normalize Interval"(DiagnosticReports.effective) overlaps IP.period)
   return SharedResource.DiagnosticReportResource(DiagnosticReports,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport'}})
 
 define "SDE Encounter": 
   [Encounter] Encounters
-  where exists("Initial Population")
+  where exists("Initial Population" IP
+    where Encounters.period overlaps IP.period)
   return SharedResource.EncounterResource(Encounters,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-encounter'}})
 
@@ -142,31 +147,32 @@ define "SDE Location":
  
 define "SDE Medication Administration":
   [MedicationAdministration] MedicationAdministrations 
-  where exists("Initial Population")
+  where exists("Initial Population" IP
+    where Global."Normalize Interval"(MedicationAdministrations.effective) overlaps IP.period)
   return SharedResource.MedicationAdministrationResource(MedicationAdministrations,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-medicationadministration'}})
  
 define "SDE Medication Request":
   [MedicationRequest] MedicationRequests 
-  where exists("Initial Population")
+  where exists("Initial Population" IP
+    where MedicationRequests.authoredOn during IP.period)
   return SharedResource.MedicationRequestResource(MedicationRequests,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-medicationrequest'}})
+
 
 define "SDE Medication":
   ("SDE Medication Request"
   union "SDE Medication Administration") MedReqOrAdmin
   where MedReqOrAdmin.medication is FHIR.Reference
-  and exists(
-    "Initial Population" IP
-    where Global."Normalize Interval"(Coalesce(MedReqOrAdmin.effective, MedReqOrAdmin.authoredOn)) overlaps IP.period
-  )
+  and exists("Initial Population") //No longer need to check for timing here because it's checked in SDE Medication Request/Administriation
   return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication),
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-medication'}})
 
 define "SDE Observation Lab Category":
   [Observation] Observations 
   where (exists(Observations.category Category where Category ~ "laboratory"))
-    and exists("Initial Population")
+    and exists("Initial Population" IP
+      where Global."Normalize Interval"(Observations.effective) overlaps IP.period)
   return SharedResource.ObservationResource(Observations,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-observation-lab'}})
 
@@ -174,7 +180,8 @@ define "SDE Observation Lab Category":
 define "SDE Observation Vital Signs Category":
   [Observation] Observations 
   where (exists(Observations.category Category where Category ~ "vital-signs"))
-    and exists("Initial Population")
+    and exists("Initial Population" IP
+      where Global."Normalize Interval"(Observations.effective) overlaps IP.period)
   return SharedResource.ObservationResource(Observations,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-observation-vitals'}})
 
@@ -185,31 +192,38 @@ define "SDE Observation Category":
     or (exists(Observations.category Category where Category ~ "survey"))
     or (exists(Observations.category Category where Category ~ "imaging"))
     or (exists(Observations.category Category where Category ~ "procedure")))
-    and exists("Initial Population")
+    and exists("Initial Population" IP
+      where Global."Normalize Interval"(Observations.effective) overlaps IP.period)
   return SharedResource.ObservationResource(Observations,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-observation'}})
 
 define "SDE Coverage": 
 	[Coverage] Coverages
-  where exists("Initial Population")
+  where exists("Initial Population" IP
+    where Coverages.period overlaps IP.period)
   return SharedResource.CoverageResource(Coverages,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-coverage'}})
 
 define "SDE Procedure":
   [Procedure] Procedures 
-  where exists("Initial Population")
+  where exists("Initial Population" IP
+    where Global."Normalize Interval"(Procedures.performed) overlaps IP.period)
   return SharedResource.ProcedureResource(Procedures,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-procedure'}})
 
 define "SDE Specimen":
-  [Specimen] Specimen
-  where exists("Initial Population")
-  return SharedResource.SpecimenResource(Specimen,
+  [Specimen] Specimens
+  where exists(
+    "Initial Population" InitialPopulation
+    where Global."Normalize Interval"(Specimens.collection.collected) during InitialPopulation.period
+  )
+  return SharedResource.SpecimenResource(Specimens,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-specimen'}})
 
 define "SDE Service Request":
   [ServiceRequest] ServiceRequests
-  where exists("Initial Population")
+  where exists("Initial Population" IP
+    where ServiceRequests.authoredOn during IP.period)
   return SharedResource.ServiceRequestResource(ServiceRequests,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-servicerequest'}})
 
