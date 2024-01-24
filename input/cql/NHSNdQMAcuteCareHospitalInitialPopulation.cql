@@ -44,7 +44,7 @@ parameter "Measurement Period"
 
 context Patient 
 
-define "Qualifying Encounter During Measurement Period":
+define "Qualifying Encounters During Measurement Period":
  ( [Encounter: "Encounter Inpatient"]
   union [Encounter: "Emergency Department Visit"]
   union [Encounter: "Observation Services"]
@@ -64,18 +64,20 @@ define "Encounters with Patient Hospital Locations":
   // and Encounters.period overlaps "Measurement Period" (?)
 
 define "Initial Population":
-  "Qualifying Encounter During Measurement Period"
+  "Qualifying Encounters During Measurement Period"
   union "Encounters with Patient Hospital Locations"
 
 define "Encounters":
   [Encounter]
 
-define "Encounters overlap Measurement Period":
-  "Encounters" Encounters
-  where Encounters.period overlaps "Measurement Period"
+//Double checking for IP's period during MP as IP is created out of qualifying encounters, which checks for it, 
+//and encounter's locations, which doesn't
+define "IP Encounters Overlap Measurement Period":
+  "Initial Population" IP
+  where IP.period overlaps "Measurement Period"
 
 define "Get Locations from Encounters in Measurement Period":
-  flatten("Encounters overlap Measurement Period" Encounters
+  flatten("IP Encounters Overlap Measurement Period" Encounters
   let locationElements: Encounters.location
   return
     locationElements LE

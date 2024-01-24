@@ -89,13 +89,9 @@ define "Antidiabetic Drugs Administered or Ordered":
       where GetMedicationCode(MedicationRequests.medication) in "Diabetes Medications"
   )
 
-define "Encounters overlap Measurement Period":
-  "Encounters" Encounters
-  where Encounters.period overlaps "Measurement Period"
-
-define "Get Locations from Encounters in Measurement Period":
-  flatten("Encounters overlap Measurement Period" Encounters
-  let locationElements: Encounters.location
+define "Get Locations from Initial Population":
+  flatten("Initial Population" IP
+  let locationElements: IP.location
   return
     locationElements LE
     let locationReference: LE.location
@@ -186,16 +182,17 @@ define "SDE Initial Population Encounters":
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})
 
 define "SDE Location":
-  "Get Locations from Encounters in Measurement Period" Locations
+  "Get Locations from Initial Population" Locations
   where exists("Initial Population")
   return SharedResource.LocationResource(Locations,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-location'}})
 
 //To capture information about the Medication
 define "SDE Medication":
-  ("SDE Medication Request"
-  union "SDE Medication Administration") MedReqOrAdmin
+  ("MedicationRequests"
+  union "MedicationAdministrations") MedReqOrAdmin
   where MedReqOrAdmin.medication is FHIR.Reference
+  and Global."Normalize Interval"(Coalesce(MedReqOrAdmin.authoredOn, MedReqOrAdmin.effective)) overlaps "Measurement Period"
   return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication),
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication'}})
 
