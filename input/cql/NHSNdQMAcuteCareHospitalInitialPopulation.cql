@@ -153,9 +153,14 @@ define "SDE Medication Request":
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-medicationrequest'}})
 
 define "SDE Medication":
-  [Medication] Medication
-  where exists("Initial Population")
-  return SharedResource.MedicationResource(Medication,
+  ("SDE Medication Request"
+  union "SDE Medication Administration") MedReqOrAdmin
+  where MedReqOrAdmin.medication is FHIR.Reference
+  and exists(
+    "Initial Population" IP
+    where Global."Normalize Interval"(Coalesce(MedReqOrAdmin.effective, MedReqOrAdmin.authoredOn)) overlaps IP.period
+  )
+  return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication),
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-medication'}})
 
 define "SDE Observation Lab Category":
@@ -212,3 +217,19 @@ define "SDE Minimal Patient":
   Patient p
   return SharedResource.PatientResource(p,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/cross-measure-patient'}})
+
+//
+//Functions
+//
+define function "GetMedicationFrom"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):
+  case
+    when choice is FHIR.Reference then
+      GetMedication(choice as FHIR.Reference)
+    else
+      null
+  end
+
+define function "GetMedication"(reference Reference ):
+  singleton from (
+    [Medication: id in {Global.GetId(reference.reference)}]
+  )

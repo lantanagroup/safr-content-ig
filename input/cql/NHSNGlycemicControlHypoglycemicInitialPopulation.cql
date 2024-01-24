@@ -190,10 +190,9 @@ define "SDE Location":
 
 //To capture information about the Medication
 define "SDE Medication":
-  ("MedicationRequests"
-  union "MedicationAdministrations") MedReqOrAdmin
+  ("SDE Medication Request"
+  union "SDE Medication Administration") MedReqOrAdmin
   where MedReqOrAdmin.medication is FHIR.Reference
-  and Global."Normalize Interval"(Coalesce(MedReqOrAdmin.authoredOn, MedReqOrAdmin.effective)) overlaps "Measurement Period"
   return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication),
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication'}})
 
