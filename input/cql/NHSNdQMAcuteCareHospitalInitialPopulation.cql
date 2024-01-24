@@ -76,7 +76,7 @@ define "IP Encounters Overlap Measurement Period":
   "Initial Population" IP
   where IP.period overlaps "Measurement Period"
 
-define "Get Locations from Encounters in Measurement Period":
+define "Get Locations from IP Encounters in Measurement Period":
   flatten("IP Encounters Overlap Measurement Period" Encounters
   let locationElements: Encounters.location
   return
@@ -134,7 +134,7 @@ define "SDE Encounter":
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-encounter'}})
 
 define "SDE Location":
-  "Get Locations from Encounters in Measurement Period" Locations
+  "Get Locations from IP Encounters in Measurement Period" Locations
   where exists("Initial Population")
   and Locations is not null
   return SharedResource.LocationResource(Locations,
