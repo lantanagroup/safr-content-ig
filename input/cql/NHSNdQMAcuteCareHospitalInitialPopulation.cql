@@ -215,7 +215,7 @@ define "SDE Specimen":
   [Specimen] Specimens
   where exists(
     "Initial Population" IP
-    where Global."Normalize Interval"(Specimens.collection.collected) during IP.period
+    where Global."Normalize Interval"(Specimens.collection.collected) overlaps IP.period
   )
   return SharedResource.SpecimenResource(Specimens,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-specimen'}})
