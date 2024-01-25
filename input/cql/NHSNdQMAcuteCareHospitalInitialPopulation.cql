@@ -214,8 +214,8 @@ define "SDE Procedure":
 define "SDE Specimen":
   [Specimen] Specimens
   where exists(
-    "Initial Population" InitialPopulation
-    where Global."Normalize Interval"(Specimens.collection.collected) during InitialPopulation.period
+    "Initial Population" IP
+    where Global."Normalize Interval"(Specimens.collection.collected) during IP.period
   )
   return SharedResource.SpecimenResource(Specimens,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-specimen'}})
