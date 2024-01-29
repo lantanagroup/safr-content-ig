@@ -58,6 +58,34 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
             <valueCoding>
+               <system value="http://loinc.org"/>
+               <code value="LP29684-5"/>
+               <display value="Radiology"/>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://loinc.org"/>
+               <code value="LP7839-6"/>
+               <display value="Pathology"/>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://loinc.org"/>
+               <code value="LP29708-2"/>
+               <display value="Cardiology"/>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+               <code value="LAB"/>
+               <display value="Laboratory"/>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
+            <valueCoding>
                <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
                <code value="social-history"/>
                <display value="Social History"/>
@@ -82,34 +110,6 @@
                <system value="http://terminology.hl7.org/CodeSystem/observation-category"/>
                <code value="procedure"/>
                <display value="Procedure"/>
-            </valueCoding>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
-            <valueCoding>
-               <system value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
-               <code value="LAB"/>
-               <display value="Laboratory"/>
-            </valueCoding>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
-            <valueCoding>
-               <system value="http://loinc.org"/>
-               <code value="LP29684-5"/>
-               <display value="Radiology"/>
-            </valueCoding>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
-            <valueCoding>
-               <system value="http://loinc.org"/>
-               <code value="LP7839-6"/>
-               <display value="Pathology"/>
-            </valueCoding>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
-            <valueCoding>
-               <system value="http://loinc.org"/>
-               <code value="LP29708-2"/>
-               <display value="Cardiology"/>
             </valueCoding>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -176,7 +176,7 @@
                <valueString value="SDE Encounter"/>
             </extension>
             <extension url="statement">
-               <valueString value="/* This seems unnecessary.  The other DxReport SDEs pull the exact same resources.  We can just ignore this&#xa;define &quot;SDE DiagnosticReport Others&quot;:&#xa;  [DiagnosticReport] DiagnosticReports&#xa;  where not ((exists(DiagnosticReports.category Category where Category ~ &quot;Radiology&quot;))&#xa;    or exists((DiagnosticReports.category Category where Category ~ &quot;Pathology&quot;))&#xa;    or exists((DiagnosticReports.category Category where Category ~ &quot;Cardiology&quot;))&#xa;    or exists(DiagnosticReports.category Category where Category ~ &quot;LAB&quot;))&#xa;    and exists(&quot;Initial Population&quot; IP&#xa;      where Global.&quot;Normalize Interval&quot;(DiagnosticReports.effective) overlaps IP.period)&#xa;  return SharedResource.DiagnosticReportResource(DiagnosticReports,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport'}})&#xa;*/&#xa;&#xa;define &quot;SDE Encounter&quot;: &#xa;  &quot;Encounters&quot; Encounters&#xa;  where exists(&#xa;    &quot;Initial Population&quot; IP&#xa;    where Encounters.period overlaps IP.period)&#xa;  return EncounterResource(Encounters,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-encounter'}})"/>
+               <valueString value="define &quot;SDE Encounter&quot;: &#xa;  &quot;Encounters&quot; Encounters&#xa;  where exists(&#xa;    &quot;Initial Population&quot; IP&#xa;    where Encounters.period overlaps IP.period)&#xa;  return EncounterResource(Encounters,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-encounter'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="4"/>
@@ -285,13 +285,27 @@
                <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"/>
             </extension>
             <extension url="name">
+               <valueString value="SDE DiagnosticReport Others"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;SDE DiagnosticReport Others&quot;:&#xa;  [DiagnosticReport] DiagnosticReports&#xa;  where not ((exists(DiagnosticReports.category Category where Category ~ &quot;Radiology&quot;))&#xa;    or exists((DiagnosticReports.category Category where Category ~ &quot;Pathology&quot;))&#xa;    or exists((DiagnosticReports.category Category where Category ~ &quot;Cardiology&quot;))&#xa;    or exists(DiagnosticReports.category Category where Category ~ &quot;LAB&quot;))&#xa;    and exists(&quot;Initial Population&quot; IP&#xa;      where Global.&quot;Normalize Interval&quot;(DiagnosticReports.effective) overlaps IP.period)&#xa;  return SharedResource.DiagnosticReportResource(DiagnosticReports,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport'}})"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="12"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"/>
+            </extension>
+            <extension url="name">
                <valueString value="SDE Medication Administration"/>
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Medication Administration&quot;:&#xa;  [MedicationAdministration] MedicationAdministrations &#xa;  where exists(&#xa;    &quot;Initial Population&quot; IP&#xa;    where Global.&quot;Normalize Interval&quot;(MedicationAdministrations.effective) overlaps IP.period)&#xa;  return MedicationAdministrationResource(MedicationAdministrations,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-medicationadministration'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="12"/>
+               <valueInteger value="13"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -305,7 +319,7 @@
                <valueString value="//Defaulting to base FHIR profile as there are no individual profiles in US Core 3.1.1 that cover these Observation categories&#xa;define &quot;SDE Observation Category&quot;:&#xa;  &quot;Observations&quot; Observations &#xa;  where ((exists(Observations.category Category where Category ~ &quot;social-history&quot;))&#xa;    or (exists(Observations.category Category where Category ~ &quot;survey&quot;))&#xa;    or (exists(Observations.category Category where Category ~ &quot;imaging&quot;))&#xa;    or (exists(Observations.category Category where Category ~ &quot;procedure&quot;)))&#xa;    and exists(&#xa;      &quot;Initial Population&quot; IP&#xa;      where Global.&quot;Normalize Interval&quot;(Observations.effective) overlaps IP.period)&#xa;  return ObservationResource(Observations,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-observation'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="13"/>
+               <valueInteger value="14"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -319,7 +333,7 @@
                <valueString value="//============================================================================&#xa;//Supplemental Data Element&#xa;//When FHIR.canonical value is present, US Core 3.1.1 profiles are used&#xa;//When FHIR.canonical value is not present, FHIR Base profiles are used&#xa;//============================================================================&#xa;define &quot;SDE Condition&quot;:&#xa;  [Condition] Conditions &#xa;  where exists(&#xa;    &quot;Initial Population&quot; IP&#xa;    where Global.&quot;Normalize Interval&quot;(Conditions.onset) overlaps IP.period)&#xa;  return ConditionResource(Conditions,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-condition'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="14"/>
+               <valueInteger value="15"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -333,7 +347,7 @@
                <valueString value="define &quot;DiagnosticReports&quot;:&#xa;  [DiagnosticReport]"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="15"/>
+               <valueInteger value="16"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -347,7 +361,7 @@
                <valueString value="define &quot;SDE DiagnosticReport Lab&quot;:&#xa;  &quot;DiagnosticReports&quot; DiagnosticReports&#xa;  where (exists(DiagnosticReports.category Category where Category ~ &quot;LAB&quot;)&#xa;    and exists(&#xa;      &quot;Initial Population&quot; IP&#xa;      where Global.&quot;Normalize Interval&quot;(DiagnosticReports.effective) overlaps IP.period))&#xa;  return DiagnosticReportLabResource(DiagnosticReports,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport-lab'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="16"/>
+               <valueInteger value="17"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -361,7 +375,7 @@
                <valueString value="//Double checking for IP's period during MP as IP is created out of qualifying encounters, which checks for it, &#xa;//and encounter's locations, which doesn't&#xa;define &quot;IP Encounters Overlap Measurement Period&quot;:&#xa;  &quot;Initial Population&quot; IP&#xa;  where IP.period overlaps &quot;Measurement Period&quot;"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="17"/>
+               <valueInteger value="18"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -375,7 +389,7 @@
                <valueString value="define &quot;Get Locations from IP Encounters in Measurement Period&quot;:&#xa;  flatten(&quot;IP Encounters Overlap Measurement Period&quot; Encounters&#xa;  let locationElements: Encounters.location&#xa;  return&#xa;    locationElements LE&#xa;    let locationReference: LE.location&#xa;    return Global.GetLocation(locationReference))"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="18"/>
+               <valueInteger value="19"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -389,7 +403,7 @@
                <valueString value="define &quot;SDE Location&quot;:&#xa;  &quot;Get Locations from IP Encounters in Measurement Period&quot; Locations&#xa;  where exists(&quot;Initial Population&quot;)&#xa;  and Locations is not null&#xa;  return LocationResource(Locations,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-location'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="19"/>
+               <valueInteger value="20"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -403,7 +417,7 @@
                <valueString value="define &quot;SDE Service Request&quot;:&#xa;  [ServiceRequest] ServiceRequests&#xa;  where exists(&quot;Initial Population&quot; IP&#xa;    where ServiceRequests.authoredOn during IP.period)&#xa;  return ServiceRequestResource(ServiceRequests,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-servicerequest'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="20"/>
+               <valueInteger value="21"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -417,7 +431,7 @@
                <valueString value="define &quot;SDE DiagnosticReport Note&quot;:&#xa;  &quot;DiagnosticReports&quot; DiagnosticReports&#xa;  where ((exists(DiagnosticReports.category Category where Category ~ &quot;Radiology&quot;))&#xa;    or exists((DiagnosticReports.category Category where Category ~ &quot;Pathology&quot;))&#xa;    or exists((DiagnosticReports.category Category where Category ~ &quot;Cardiology&quot;)))&#xa;    and exists(&#xa;      &quot;Initial Population&quot; IP&#xa;      where Global.&quot;Normalize Interval&quot;(DiagnosticReports.effective) overlaps IP.period)&#xa;  return DiagnosticReportResource(DiagnosticReports,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport-note'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="21"/>
+               <valueInteger value="22"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -431,7 +445,7 @@
                <valueString value="define &quot;SDE Minimal Patient&quot;:&#xa;  Patient p&#xa;  return PatientResource(p,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/cross-measure-patient'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="22"/>
+               <valueInteger value="23"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -445,7 +459,7 @@
                <valueString value="define &quot;SDE Medication&quot;:&#xa;  (&quot;SDE Medication Request&quot;&#xa;  union &quot;SDE Medication Administration&quot;) MedReqOrAdmin&#xa;  where MedReqOrAdmin.medication is FHIR.Reference&#xa;  and exists(&quot;Initial Population&quot;) //No longer need to check for timing here because it's checked in SDE Medication Request/Administriation&#xa;  return MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication),&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-medication'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="23"/>
+               <valueInteger value="24"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -459,7 +473,7 @@
                <valueString value="define &quot;SDE Specimen&quot;:&#xa;  [Specimen] Specimens&#xa;  where exists(&#xa;    &quot;Initial Population&quot; IP&#xa;    where Global.&quot;Normalize Interval&quot;(Specimens.collection.collected) overlaps IP.period&#xa;  )&#xa;  return SpecimenResource(Specimens,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-specimen'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="24"/>
+               <valueInteger value="25"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -473,7 +487,7 @@
                <valueString value="define function ToString(value EncounterStatus): value.value"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="25"/>
+               <valueInteger value="26"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -487,7 +501,7 @@
                <valueString value="define function ToInterval(period FHIR.Period):&#xa;    if period is null then&#xa;        null&#xa;    else&#xa;        if period.&quot;start&quot; is null then&#xa;            Interval(period.&quot;start&quot;.value, period.&quot;end&quot;.value]&#xa;        else&#xa;            Interval[period.&quot;start&quot;.value, period.&quot;end&quot;.value]"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="26"/>
+               <valueInteger value="27"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -498,10 +512,10 @@
                <valueString value="GetLocation"/>
             </extension>
             <extension url="statement">
-               <valueString value="// Returns the location for the given location reference&#xa;&#xa;/*Returns the Location resource specified by the given reference*/&#xa;define function &quot;GetLocation&quot;(reference Reference ):&#xa;  singleton from (&#xa;    [Location] L where L.id = GetId(reference.reference)&#xa;  )"/>
+               <valueString value="// Returns the location for the given location reference&#xa;&#xa;/*Returns the Location resource specified by the given reference*/&#xa;define function &quot;GetLocation&quot;(reference Reference ):&#xa;  singleton from (&#xa;&#x9;[Location: id in {GetId(reference.reference)}]&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="27"/>
+               <valueInteger value="28"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -515,7 +529,7 @@
                <valueString value="/*Returns the tail of the given uri (i.e. everything after the last slash in the URI).*/&#xa;define function &quot;GetId&quot;(uri String ):&#xa;  Last(Split(uri, '/'))"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="28"/>
+               <valueInteger value="29"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -529,7 +543,7 @@
                <valueString value="define function ToConcept(concept FHIR.CodeableConcept):&#xa;    if concept is null then&#xa;        null&#xa;    else&#xa;        System.Concept {&#xa;            codes: concept.coding C return ToCode(C),&#xa;            display: concept.text.value&#xa;        }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="29"/>
+               <valueInteger value="30"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -543,7 +557,7 @@
                <valueString value="define function EncounterResource(encounter Encounter, profileURLs List&lt;FHIR.canonical>):&#xa;  encounter e&#xa;  return Encounter{&#xa;    id: FHIR.id{value: 'LCR-' + e.id},&#xa;    meta: SharedResource.MetaElement(e, profileURLs),&#xa;    extension: e.extension,&#xa;    identifier: EncounterIdentifier(e.identifier),&#xa;    status: e.status,&#xa;    statusHistory: EncounterStatusHistory(e.statusHistory),&#xa;    class: e.class,&#xa;    classHistory: EncounterClassHistory(e.classHistory),&#xa;    type: e.type,&#xa;    serviceType: e.serviceType,&#xa;    priority: e.priority,&#xa;    subject: e.subject,&#xa;    participant: EncounterParticipant(e.participant),&#xa;    period: e.period,&#xa;    length: e.length,&#xa;    reasonCode: e.reasonCode,&#xa;    reasonReference: e.reasonReference,&#xa;    diagnosis: EncounterDiagnosis(e.diagnosis),&#xa;    account: e.account,&#xa;    hospitalization: EncounterHospitalization(e.hospitalization),&#xa;    location: EncounterLocation(e.location),&#xa;    partOf: e.partOf&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="30"/>
+               <valueInteger value="31"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -557,7 +571,7 @@
                <valueString value="define function &quot;MetaElement&quot;(resource Resource, profileURLs List&lt;FHIR.canonical>):&#xa;  resource r&#xa;  return FHIR.Meta{&#xa;    extension: r.meta.extension,&#xa;    versionId: r.meta.versionId,&#xa;    lastUpdated: r.meta.lastUpdated,&#xa;    profile: profileURLs,&#xa;    security: r.meta.security,&#xa;    tag: r.meta.tag&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="31"/>
+               <valueInteger value="32"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -571,7 +585,7 @@
                <valueString value="define function EncounterIdentifier(identifier List&lt;FHIR.Identifier>):&#xa;  identifier i&#xa;  return FHIR.Identifier{&#xa;    use: i.use,&#xa;    type: i.type,&#xa;    system: i.system,&#xa;    value: i.value,&#xa;    period: i.period&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="32"/>
+               <valueInteger value="33"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -585,7 +599,7 @@
                <valueString value="define function EncounterStatusHistory(statusHistory List&lt;FHIR.Encounter.StatusHistory>):&#xa;  statusHistory sH&#xa;  return FHIR.Encounter.StatusHistory{&#xa;    status: sH.status,&#xa;    period: sH.period&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="33"/>
+               <valueInteger value="34"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -599,7 +613,7 @@
                <valueString value="define function EncounterClassHistory(classHistory List&lt;FHIR.Encounter.ClassHistory>):&#xa;  classHistory cH&#xa;  return FHIR.Encounter.ClassHistory{&#xa;    class: cH.class,&#xa;    period: cH.period&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="34"/>
+               <valueInteger value="35"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -613,7 +627,7 @@
                <valueString value="define function EncounterParticipant(participant List&lt;FHIR.Encounter.Participant>):&#xa;  participant p&#xa;  return FHIR.Encounter.Participant{&#xa;    type: p.type,&#xa;    period: p.period,&#xa;    individual: p.individual&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="35"/>
+               <valueInteger value="36"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -627,7 +641,7 @@
                <valueString value="define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis>):&#xa;  diagnosis d&#xa;  return FHIR.Encounter.Diagnosis{&#xa;    condition: d.condition,&#xa;    use: d.use,&#xa;    rank: d.rank&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="36"/>
+               <valueInteger value="37"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -641,7 +655,7 @@
                <valueString value="define function EncounterHospitalization(hospitalization FHIR.Encounter.Hospitalization):&#xa;  hospitalization h&#xa;  return FHIR.Encounter.Hospitalization{&#xa;    preAdmissionIdentifier: h.preAdmissionIdentifier,&#xa;    origin: h.origin,&#xa;    admitSource: h.admitSource,&#xa;    reAdmission: h.reAdmission,&#xa;    dietPreference: h.dietPreference,&#xa;    specialCourtesy: h.specialCourtesy,&#xa;    specialArrangement: h.specialArrangement,&#xa;    destination: h.destination,&#xa;    dischargeDisposition: h.dischargeDisposition&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="37"/>
+               <valueInteger value="38"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -655,7 +669,7 @@
                <valueString value="define function EncounterLocation(location List&lt;FHIR.Encounter.Location>):&#xa;  location l&#xa;  return FHIR.Encounter.Location{&#xa;    location: l.location,&#xa;    status: l.status,&#xa;    physicalType: l.physicalType,&#xa;    period: l.period&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="38"/>
+               <valueInteger value="39"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -669,7 +683,7 @@
                <valueString value="define function ToDateTime(value dateTime): value.value"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="39"/>
+               <valueInteger value="40"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -683,7 +697,7 @@
                <valueString value="define function MedicationRequestResource(medicationRequest MedicationRequest, profileURLs List&lt;FHIR.canonical>):&#xa;  medicationRequest m&#xa;  return MedicationRequest{&#xa;    id: FHIR.id {value: 'LCR-' + m.id},&#xa;    extension: m.extension,&#xa;    meta: SharedResource.MetaElement(medicationRequest, profileURLs),&#xa;    status: m.status,&#xa;    statusReason: m.statusReason,&#xa;    intent: m.intent,&#xa;    category: m.category,&#xa;    priority: m.priority,&#xa;    doNotPerform: m.doNotPerform,&#xa;    reported: m.reported,&#xa;    medication: m.medication,&#xa;    subject: m.subject,&#xa;    encounter: m.encounter,&#xa;    authoredOn: m.authoredOn,&#xa;    requester: m.requester,&#xa;    recorder: m.recorder,&#xa;    reasonCode: m.reasonCode,&#xa;    reasonReference: m.reasonReference,&#xa;    instantiatesCanonical: m.instantiatesCanonical,&#xa;    instantiatesUri: m.instantiatesUri,&#xa;    courseOfTherapyType: m.courseOfTherapyType,&#xa;    dosageInstruction: MedicationRequestDosageInstruction(m.dosageInstruction)&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="40"/>
+               <valueInteger value="41"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -697,7 +711,7 @@
                <valueString value="define function MedicationRequestDosageInstruction(dosageInstruction List&lt;FHIR.Dosage>):&#xa;  dosageInstruction dI&#xa;  return FHIR.Dosage{&#xa;    text: dI.text,&#xa;    patientInstruction: dI.patientInstruction,&#xa;    timing: dI.timing,&#xa;    asNeeded: dI.asNeeded,&#xa;    site: dI.site,&#xa;    route: dI.route,&#xa;    method: dI.method,&#xa;    doseAndRate: MedicationRequestDoseAndRate(dI.doseAndRate)&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="41"/>
+               <valueInteger value="42"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -711,7 +725,7 @@
                <valueString value="define function MedicationRequestDoseAndRate(doseAndRate List&lt;FHIR.Dosage.DoseAndRate>):&#xa;  doseAndRate dR&#xa;  return FHIR.Dosage.DoseAndRate{&#xa;    type: dR.type,&#xa;    dose: dR.dose,&#xa;    rate: dR.rate&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="42"/>
+               <valueInteger value="43"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -725,7 +739,7 @@
                <valueString value="define function CoverageResource(coverage Coverage, profileURLs List&lt;FHIR.canonical>):&#xa;  coverage c&#xa;  return Coverage{&#xa;    id: FHIR.id{value: 'LCR-' + c.id},&#xa;    meta: SharedResource.MetaElement(c, profileURLs),&#xa;    extension: c.extension,&#xa;    status: c.status,&#xa;    type: c.type,&#xa;    policyHolder: c.policyHolder,&#xa;    subscriber: c.subscriber,&#xa;    subscriberId: c.subscriberId,&#xa;    beneficiary: c.beneficiary,&#xa;    dependent: c.dependent,&#xa;    relationship: c.relationship,&#xa;    period: c.period,&#xa;    payor: c.payor,&#xa;    class: CoverageClass(c.class),&#xa;    order: c.order,&#xa;    network: c.network,&#xa;    subrogation: c.subrogation,&#xa;    contract: c.contract&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="43"/>
+               <valueInteger value="44"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -739,7 +753,7 @@
                <valueString value="define function CoverageClass(class List&lt;FHIR.Coverage.Class>):&#xa;  class c&#xa;  return FHIR.Coverage.Class{&#xa;    value: c.value,&#xa;    name: c.name&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="44"/>
+               <valueInteger value="45"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -753,7 +767,7 @@
                <valueString value="define function ProcedureResource(procedure Procedure, profileURLs List&lt;FHIR.canonical>):&#xa;  procedure p&#xa;  return Procedure{&#xa;    id: FHIR.id {value: 'LCR-' + p.id},&#xa;    meta: SharedResource.MetaElement(p, profileURLs),&#xa;    extension: p.extension,&#xa;    instantiatesCanonical: p.instantiatesCanonical,&#xa;    instantiatesUri: p.instantiatesUri,&#xa;    basedOn: p.basedOn,&#xa;    partOf: p.partOf,&#xa;    status: p.status,&#xa;    statusReason: p.statusReason,&#xa;    category: p.category,&#xa;    code: p.code,&#xa;    subject: p.subject,&#xa;    encounter: p.encounter,&#xa;    performed: p.performed,&#xa;    recorder: p.recorder,&#xa;    asserter: p.asserter,&#xa;    performer: ProcedurePerformer(p.performer),&#xa;    location: p.location,&#xa;    reasonCode: p.reasonCode,&#xa;    reasonReference: p.reasonReference,&#xa;    bodySite: p.bodySite,&#xa;    outcome: p.outcome,&#xa;    report: p.report,&#xa;    complication: p.complication,&#xa;    complicationDetail: p.complicationDetail,&#xa;    followUp: p.followUp,&#xa;    note: p.note,&#xa;    focalDevice: ProcedureFocalDevice(p.focalDevice),&#xa;    usedReference: p.usedReference,&#xa;    usedCode: p.usedCode&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="45"/>
+               <valueInteger value="46"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -767,7 +781,7 @@
                <valueString value="define function ProcedurePerformer(performer List&lt;FHIR.Procedure.Performer>):&#xa;  performer p&#xa;  return FHIR.Procedure.Performer{&#xa;    function: p.function,&#xa;    actor: p.actor,&#xa;    onBehalfOf: p.onBehalfOf&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="46"/>
+               <valueInteger value="47"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -781,7 +795,7 @@
                <valueString value="define function ProcedureFocalDevice(device List&lt;FHIR.Procedure.FocalDevice>):&#xa;  device d&#xa;  return FHIR.Procedure.FocalDevice{&#xa;    action: d.action,&#xa;    manipulated: d.manipulated&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="47"/>
+               <valueInteger value="48"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -795,7 +809,7 @@
                <valueString value="define function DeviceResource(device Device, profileURLs List&lt;FHIR.canonical>):&#xa;  device d&#xa;  return Device{&#xa;    id: FHIR.id{value: 'LCR-' + d.id},&#xa;    meta: SharedResource.MetaElement(d, profileURLs),&#xa;    extension: d.extension,&#xa;    definition: d.definition,&#xa;    udiCarrier: DeviceUdiCarrier(d.udiCarrier),&#xa;    status: d.status,&#xa;    statusReason: d.statusReason,&#xa;    distinctIdentifier: d.distinctIdentifier,&#xa;    manufacturer: d.manufacturer,&#xa;    manufactureDate: d.manufactureDate,&#xa;    expirationDate: d.expirationDate,&#xa;    lotNumber: d.lotNumber,&#xa;    serialNumber: d.serialNumber,&#xa;    deviceName: DeviceDeviceName(d.deviceName),&#xa;    modelNumber: d.modelNumber,&#xa;    partNumber: d.partNumber,&#xa;    type: d.type,&#xa;    specialization: DeviceSpecialization(d.specialization),&#xa;    version: DeviceVersion(d.version),&#xa;    property: DeviceProperty(d.property),&#xa;    patient: d.patient,&#xa;    owner: d.owner,&#xa;    contact: d.contact,&#xa;    location: d.location,&#xa;    url: d.url,&#xa;    note: d.note,&#xa;    safety: d.safety,&#xa;    parent: d.parent&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="48"/>
+               <valueInteger value="49"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -809,7 +823,7 @@
                <valueString value="define function DeviceUdiCarrier(udiCarrier List&lt;FHIR.Device.UdiCarrier>):&#xa;  udiCarrier u&#xa;  return FHIR.Device.UdiCarrier{&#xa;    deviceIdentifier: u.deviceIdentifier,&#xa;    issuer: u.issuer,&#xa;    jurisdiction: u.jurisdiction,&#xa;    carrierAIDC: u.carrierAIDC,&#xa;    carrierHRF: u.carrierHRF,&#xa;    entryType: u.entryType&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="49"/>
+               <valueInteger value="50"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -823,7 +837,7 @@
                <valueString value="define function DeviceDeviceName(deviceName List&lt;FHIR.Device.DeviceName>):&#xa;  deviceName d&#xa;  return FHIR.Device.DeviceName{&#xa;    name: d.name,&#xa;    type: d.type&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="50"/>
+               <valueInteger value="51"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -837,7 +851,7 @@
                <valueString value="define function DeviceSpecialization(specialization List&lt;FHIR.Device.Specialization>):&#xa;  specialization s&#xa;  return FHIR.Device.Specialization{&#xa;    systemType: s.systemType,&#xa;    version: s.version&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="51"/>
+               <valueInteger value="52"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -851,7 +865,7 @@
                <valueString value="define function DeviceVersion(version List&lt;FHIR.Device.Version>):&#xa;  version v&#xa;  return FHIR.Device.Version{&#xa;    type: v.type,&#xa;    component: v.component,&#xa;    value: v.value&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="52"/>
+               <valueInteger value="53"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -865,7 +879,7 @@
                <valueString value="define function DeviceProperty(deviceProperty List&lt;FHIR.Device.Property>):&#xa;  deviceProperty d&#xa;  return FHIR.Device.Property{&#xa;    type: d.type,&#xa;    valueQuantity: d.valueQuantity,&#xa;    valueCode: d.valueCode&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="53"/>
+               <valueInteger value="54"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -879,7 +893,7 @@
                <valueString value="define function ObservationLabResource(observation Observation, profileURLs List&lt;FHIR.canonical>):&#xa;  observation o&#xa;  return Observation{&#xa;    id: FHIR.id {value: 'LCR-' + o.id},&#xa;    meta: SharedResource.MetaElement(o, profileURLs),&#xa;    extension: o.extension,&#xa;    basedOn: o.basedOn,&#xa;    partOf: o.partOf,&#xa;    status: o.status,&#xa;    category: ObservationLabCategory(o.category),&#xa;    code: o.code,&#xa;    subject: o.subject,&#xa;    focus: o.focus,&#xa;    encounter: o.encounter,&#xa;    effective: o.effective,&#xa;    issued: o.issued,&#xa;    performer: o.performer,&#xa;    value: o.value,&#xa;    dataAbsentReason: o.dataAbsentReason,&#xa;    interpretation: o.interpretation,&#xa;    note: o.note,&#xa;    bodySite: o.bodySite,&#xa;    method: o.method,&#xa;    specimen: o.specimen,&#xa;    device: o.device,&#xa;    referenceRange: ObservationReferenceRange(o.referenceRange),&#xa;    hasMember: o.hasMember,&#xa;    derivedFrom: o.derivedFrom,&#xa;    component: ObservationComponent(o.component)&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="54"/>
+               <valueInteger value="55"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -893,7 +907,7 @@
                <valueString value="define function ObservationLabCategory(category List&lt;CodeableConcept>):&#xa;  category c&#xa;  return CodeableConcept{&#xa;    coding: ObservationLabCoding(c.coding),&#xa;    text: c.text&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="55"/>
+               <valueInteger value="56"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -907,7 +921,7 @@
                <valueString value="define function ObservationLabCoding(coding List&lt;Coding>):&#xa;  coding c&#xa;  return Coding{&#xa;    id: c.id,&#xa;    extension: c.extension,&#xa;    system: c.system,&#xa;    version: c.version,&#xa;    code: c.code,&#xa;    display: c.display,&#xa;    userSelected: c.userSelected&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="56"/>
+               <valueInteger value="57"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -921,7 +935,7 @@
                <valueString value="define function ObservationReferenceRange(referenceRange List&lt;FHIR.Observation.ReferenceRange>):&#xa;  referenceRange rR&#xa;  return FHIR.Observation.ReferenceRange{&#xa;    low: rR.low,&#xa;    high: rR.high,&#xa;    type: rR.type,&#xa;    appliesTo: rR.appliesTo,&#xa;    age: rR.age,&#xa;    text: rR.text&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="57"/>
+               <valueInteger value="58"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -935,7 +949,7 @@
                <valueString value="define function ObservationComponent(component List&lt;FHIR.Observation.Component>):&#xa;  component c&#xa;  return FHIR.Observation.Component{&#xa;    code: c.code,&#xa;    value: c.value,&#xa;    dataAbsentReason: c.dataAbsentReason,&#xa;    interpretation: c.interpretation,&#xa;    referenceRange: c.referenceRange&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="58"/>
+               <valueInteger value="59"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -949,7 +963,7 @@
                <valueString value="define function ObservationVitalSignsResource(observation Observation, profileURLs List&lt;FHIR.canonical>):&#xa;  observation o&#xa;  return Observation{&#xa;    id: FHIR.id {value: 'LCR-' + o.id},&#xa;    meta: SharedResource.MetaElement(o, profileURLs),&#xa;    extension: o.extension,&#xa;    partOf: o.partOf,&#xa;    status: o.status,&#xa;    category: ObservationVitalSignsCategory(o.category),&#xa;    code: o.code,&#xa;    subject: o.subject,&#xa;    focus: o.focus,&#xa;    encounter: o.encounter,&#xa;    effective: o.effective,&#xa;    issued: o.issued,&#xa;    performer: o.performer,&#xa;    value: o.value,&#xa;    dataAbsentReason: o.dataAbsentReason,&#xa;    interpretation: o.interpretation,&#xa;    note: o.note,&#xa;    bodySite: o.bodySite,&#xa;    method: o.method,&#xa;    specimen: o.specimen,&#xa;    device: o.device,&#xa;    referenceRange: ObservationReferenceRange(o.referenceRange),&#xa;    hasMember: o.hasMember,&#xa;    derivedFrom: o.derivedFrom,&#xa;    component: ObservationVitalSignsComponent(o.component)&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="59"/>
+               <valueInteger value="60"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -963,7 +977,7 @@
                <valueString value="define function ObservationVitalSignsCategory(category List&lt;CodeableConcept>):&#xa;  category c&#xa;  return CodeableConcept{&#xa;    coding: ObservationVitalSignsCoding(c.coding),&#xa;    text: c.text&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="60"/>
+               <valueInteger value="61"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -977,7 +991,7 @@
                <valueString value="define function ObservationVitalSignsCoding(coding List&lt;Coding>):&#xa;  coding c&#xa;  return Coding{&#xa;    system: c.system,&#xa;    version: c.version,&#xa;    code: c.code,&#xa;    display: c.display,&#xa;    userSelected: c.userSelected&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="61"/>
+               <valueInteger value="62"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -991,7 +1005,21 @@
                <valueString value="define function ObservationVitalSignsComponent(component List&lt;FHIR.Observation.Component>):&#xa;  component c&#xa;  return FHIR.Observation.Component{&#xa;    code: c.code,&#xa;    value: c.value,&#xa;    dataAbsentReason: c.dataAbsentReason,&#xa;    interpretation: c.interpretation,&#xa;    referenceRange: ObservationReferenceRange(c.referenceRange)&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="62"/>
+               <valueInteger value="63"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="DiagnosticReportResource"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function &quot;DiagnosticReportResource&quot;(diagnosticReport DiagnosticReport, profileURLs List&lt;FHIR.canonical>):&#xa;  diagnosticReport d&#xa;  return DiagnosticReport{&#xa;    id: FHIR.id{value: 'LCR-' + d.id},&#xa;    meta: MetaElement(d, profileURLs),&#xa;    extension: d.extension,&#xa;    identifier: d.identifier,&#xa;    basedOn: d.basedOn,&#xa;    status: d.status,&#xa;    category: d.category,&#xa;    code: d.code,&#xa;    subject: d.subject,&#xa;    encounter: d.encounter,&#xa;    effective: d.effective,&#xa;    issued: d.issued,&#xa;    performer: d.performer,&#xa;    resultsInterpreter: d.resultsInterpreter,&#xa;    specimen: d.specimen,&#xa;    result: d.result,&#xa;    imagingStudy: d.imagingStudy,&#xa;    media: d.media,&#xa;    conclusion: d.conclusion,&#xa;    conclusionCode: d.conclusionCode,&#xa;    presentedForm: d.presentedForm&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="64"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1005,7 +1033,7 @@
                <valueString value="define function MedicationAdministrationResource(medicationAdministration MedicationAdministration, profileURLs List&lt;FHIR.canonical>):&#xa;  medicationAdministration m&#xa;  return MedicationAdministration{&#xa;    id: FHIR.id {value: 'LCR-' + m.id},&#xa;    meta: SharedResource.MetaElement(m, profileURLs),&#xa;    extension: m.extension,&#xa;    instantiates: m.instantiates,&#xa;    partOf: m.partOf,&#xa;    status: m.status,&#xa;    statusReason: m.statusReason,&#xa;    category: m.category,&#xa;    medication: m.medication,&#xa;    subject: m.subject,&#xa;    context: m.context,&#xa;    supportingInformation: m.supportingInformation,&#xa;    effective: m.effective,&#xa;    performer: MedicationAdministrationPerformer(m.performer),&#xa;    reasonCode: m.reasonCode,&#xa;    reasonReference: m.reasonReference,&#xa;    request: m.request,&#xa;    device: m.device,&#xa;    note: m.note,&#xa;    dosage: MedicationAdministrationDosage(m.dosage),&#xa;    eventHistory: m.eventHistory&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="63"/>
+               <valueInteger value="65"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1019,7 +1047,7 @@
                <valueString value="define function MedicationAdministrationPerformer(performer List&lt;FHIR.MedicationAdministration.Performer>):&#xa;  performer p&#xa;  return FHIR.MedicationAdministration.Performer{&#xa;    function: p.function,&#xa;    actor: p.actor&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="64"/>
+               <valueInteger value="66"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1033,7 +1061,7 @@
                <valueString value="define function MedicationAdministrationDosage(dosage FHIR.MedicationAdministration.Dosage):&#xa;  dosage d&#xa;  return FHIR.MedicationAdministration.Dosage{&#xa;    text: d.text,&#xa;    site: d.site,&#xa;    route: d.route,&#xa;    method: d.method,&#xa;    dose: d.dose,&#xa;    rate: d.rate&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="65"/>
+               <valueInteger value="67"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1047,7 +1075,7 @@
                <valueString value="define function ObservationResource(observation Observation, profileURLs List&lt;FHIR.canonical>):&#xa;  observation o&#xa;  return Observation{&#xa;    id: FHIR.id {value: 'LCR-' + o.id},&#xa;    meta: SharedResource.MetaElement(o, profileURLs),&#xa;    extension: o.extension,&#xa;    partOf: o.partOf,&#xa;    status: o.status,&#xa;    category: o.category,&#xa;    code: o.code,&#xa;    subject: o.subject,&#xa;    focus: o.focus,&#xa;    encounter: o.encounter,&#xa;    effective: o.effective,&#xa;    issued: o.issued,&#xa;    performer: o.performer,&#xa;    value: o.value,&#xa;    dataAbsentReason: o.dataAbsentReason,&#xa;    interpretation: o.interpretation,&#xa;    note: o.note,&#xa;    bodySite: o.bodySite,&#xa;    method: o.method,&#xa;    specimen: o.specimen,&#xa;    device: o.device,&#xa;    referenceRange: ObservationReferenceRange(o.referenceRange),&#xa;    hasMember: o.hasMember,&#xa;    derivedFrom: o.derivedFrom,&#xa;    component: ObservationComponent(o.component)&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="66"/>
+               <valueInteger value="68"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1061,7 +1089,7 @@
                <valueString value="define function ConditionResource(condition Condition, profileURLs List&lt;FHIR.canonical>):&#xa;  condition c&#xa;  return Condition{&#xa;    id: FHIR.id {value: 'LCR-' + c.id},&#xa;    meta: SharedResource.MetaElement(c, profileURLs),&#xa;    extension: c.extension,&#xa;    clinicalStatus: c.clinicalStatus,&#xa;    verificationStatus: c.verificationStatus,&#xa;    category: c.category,&#xa;    severity: c.severity,&#xa;    code: c.code,&#xa;    bodySite: c.bodySite,&#xa;    subject: c.subject,&#xa;    encounter: c.encounter,&#xa;    onset: c.onset,&#xa;    abatement: c.abatement,&#xa;    recordedDate: c.recordedDate,&#xa;    stage: ConditionStage(c.stage),&#xa;    evidence: ConditionEvidence(c.evidence),&#xa;    note: c.note&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="67"/>
+               <valueInteger value="69"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1075,7 +1103,7 @@
                <valueString value="//&#xa;//Measure Specific Resource Creation Functions&#xa;//&#xa;define function ConditionStage(stage List&lt;FHIR.Condition.Stage>):&#xa;  stage s&#xa;  return FHIR.Condition.Stage{&#xa;    summary: s.summary,&#xa;    assessment: s.assessment,&#xa;    type: s.type&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="68"/>
+               <valueInteger value="70"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1089,7 +1117,7 @@
                <valueString value="define function ConditionEvidence(evidence List&lt;FHIR.Condition.Evidence>):&#xa;  evidence e&#xa;  return FHIR.Condition.Evidence{&#xa;    code: e.code,&#xa;    detail: e.detail&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="69"/>
+               <valueInteger value="71"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1103,7 +1131,7 @@
                <valueString value="define function DiagnosticReportLabResource(diagnosticReport DiagnosticReport, profileURLs List&lt;FHIR.canonical>):&#xa;  diagnosticReport d&#xa;  return DiagnosticReport{&#xa;    id: FHIR.id{value: 'LCR-' + d.id},&#xa;    meta: SharedResource.MetaElement(d, profileURLs),&#xa;    extension: d.extension,&#xa;    text: d.text,&#xa;    basedOn: d.basedOn,&#xa;    status: d.status,&#xa;    category: DiagnosticReportCategory(d.category),&#xa;    code: d.code,&#xa;    subject: d.subject,&#xa;    encounter: d.encounter,&#xa;    effective: d.effective,&#xa;    issued: d.issued,&#xa;    performer: d.performer,&#xa;    resultsInterpreter: d.resultsInterpreter,&#xa;    specimen: d.specimen,&#xa;    result: d.result,&#xa;    conclusion: d.conclusion,&#xa;    conclusionCode: d.conclusionCode&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="70"/>
+               <valueInteger value="72"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1117,7 +1145,7 @@
                <valueString value="define function DiagnosticReportCategory(category List&lt;CodeableConcept>):&#xa;  category c&#xa;  return CodeableConcept{&#xa;    coding: DiagnosticReportCoding(c.coding)&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="71"/>
+               <valueInteger value="73"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1131,7 +1159,7 @@
                <valueString value="define function DiagnosticReportCoding(coding List&lt;Coding>):&#xa;  coding c&#xa;  return Coding{&#xa;    system: c.system,&#xa;    version: c.version,&#xa;    code: c.code,&#xa;    display: c.display,&#xa;    userSelected: c.userSelected&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="72"/>
+               <valueInteger value="74"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1145,7 +1173,7 @@
                <valueString value="define function LocationResource(location Location, profileURLs List&lt;FHIR.canonical>):&#xa;  location l&#xa;  return Location{&#xa;    id: FHIR.id {value: 'LCR-' + l.id},&#xa;    meta: SharedResource.MetaElement(l, profileURLs),&#xa;    extension: l.extension,&#xa;    identifier: l.identifier,&#xa;    status: l.status,&#xa;    operationalStatus: l.operationalStatus,&#xa;    name: l.name,&#xa;    alias: l.alias,&#xa;    description: l.description,&#xa;    mode: l.mode,&#xa;    type: l.type,&#xa;    telecom: l.telecom,&#xa;    address: LocationAddress(l.address),&#xa;    physicalType: l.physicalType,&#xa;    position: LocationPosition(l.position),&#xa;    managingOrganization: l.managingOrganization,&#xa;    partOf: l.partOf,&#xa;    hoursOfOperation: LocationHoursOfOperation(l.hoursOfOperation),&#xa;    availabilityExceptions: l.availabilityExceptions,&#xa;    endpoint: l.endpoint&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="73"/>
+               <valueInteger value="75"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1159,7 +1187,7 @@
                <valueString value="define function LocationAddress(address FHIR.Address):&#xa;  address a&#xa;  return FHIR.Address{&#xa;    use: a.use,&#xa;    type: a.type,&#xa;    text: a.text,&#xa;    line: a.line,&#xa;    city: a.city,&#xa;    district: a.district,&#xa;    state: a.state,&#xa;    postalCode: a.postalCode,&#xa;    country: a.country,&#xa;    period: a.period&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="74"/>
+               <valueInteger value="76"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1173,7 +1201,7 @@
                <valueString value="define function LocationPosition(position FHIR.Location.Position):&#xa;  position p&#xa;  return FHIR.Location.Position{&#xa;    longitude: p.longitude,&#xa;    latitude: p.latitude,&#xa;    altitude: p.altitude&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="75"/>
+               <valueInteger value="77"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1187,7 +1215,7 @@
                <valueString value="define function LocationHoursOfOperation(hoursOfOperation List&lt;FHIR.Location.HoursOfOperation>):&#xa;  hoursOfOperation hOO&#xa;  return FHIR.Location.HoursOfOperation{&#xa;    daysOfWeek: hOO.daysOfWeek,&#xa;    allDay: hOO.allDay,&#xa;    openingTime: hOO.openingTime,&#xa;    closingTime: hOO.closingTime&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="76"/>
+               <valueInteger value="78"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1201,7 +1229,7 @@
                <valueString value="define function ServiceRequestResource(serviceRequest ServiceRequest, profileURLs List&lt;FHIR.canonical>):&#xa;  serviceRequest sR&#xa;  return ServiceRequest{&#xa;    id: FHIR.id {value: 'LCR-' + sR.id},&#xa;    meta: SharedResource.MetaElement(sR, profileURLs),&#xa;    extension: sR.extension,&#xa;    instantiatesCanonical: sR.instantiatesCanonical,&#xa;    instantiatesUri: sR.instantiatesUri,&#xa;    basedOn: sR.basedOn,&#xa;    replaces: sR.replaces,&#xa;    requisition: sR.requisition,&#xa;    status: sR.status,&#xa;    intent: sR.intent,&#xa;    category: sR.category,&#xa;    priority: sR.priority,&#xa;    doNotPerform: sR.doNotPerform,&#xa;    code: sR.code,&#xa;    orderDetail: sR.orderDetail,&#xa;    quantity: sR.quantity,&#xa;    subject: sR.subject,&#xa;    encounter: sR.encounter,&#xa;    occurrence: sR.occurrence,&#xa;    asNeeded: sR.asNeeded,&#xa;    authoredOn: sR.authoredOn,&#xa;    requester: sR.requester,&#xa;    performerType: sR.performerType,&#xa;    performer: sR.performer,&#xa;    locationCode: sR.locationCode,&#xa;    locationReference: sR.locationReference,&#xa;    reasonCode: sR.reasonCode,&#xa;    reasonReference: sR.reasonReference,&#xa;    insurance: sR.insurance,&#xa;    supportingInfo: sR.supportingInfo,&#xa;    specimen: sR.specimen,&#xa;    bodySite: sR.bodySite,&#xa;    note: sR.note,&#xa;    patientInstruction: sR.patientInstruction,&#xa;    relevantHistory: sR.relevantHistory&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="77"/>
+               <valueInteger value="79"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1215,7 +1243,7 @@
                <valueString value="define function DiagnosticReportResource(diagnosticReport DiagnosticReport, profileURLs List&lt;FHIR.canonical>):&#xa;  diagnosticReport d&#xa;  return DiagnosticReport{&#xa;    id: FHIR.id{value: 'LCR-' + d.id},&#xa;    meta: SharedResource.MetaElement(d, profileURLs),&#xa;    extension: d.extension,&#xa;    text: d.text,&#xa;    basedOn: d.basedOn,&#xa;    status: d.status,&#xa;    category: d.category,&#xa;    code: d.code,&#xa;    subject: d.subject,&#xa;    encounter: d.encounter,&#xa;    effective: d.effective,&#xa;    issued: d.issued,&#xa;    performer: d.performer,&#xa;    resultsInterpreter: d.resultsInterpreter,&#xa;    specimen: d.specimen,&#xa;    result: d.result,&#xa;    conclusion: d.conclusion,&#xa;    conclusionCode: d.conclusionCode&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="78"/>
+               <valueInteger value="80"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1229,7 +1257,7 @@
                <valueString value="define function PatientResource(patient Patient, profileURLs List&lt;FHIR.canonical>):&#xa;  patient p&#xa;  return Patient{&#xa;    id: FHIR.id{value: 'LCR-' + p.id},&#xa;    meta: SharedResource.MetaElement(p, profileURLs),&#xa;    extension: SharedResource.GetPatientExtensions(p) union SharedResource.GetIdExtensions(p),&#xa;    identifier: PatientIdentifier(p.identifier),&#xa;    active: p.active,&#xa;    name: PatientName(p.name),&#xa;    telecom: PatientTelecom(p.telecom),&#xa;    gender: p.gender,&#xa;    birthDate: p.birthDate,&#xa;    deceased: p.deceased,&#xa;    address: PatientAddress(p.address),&#xa;    maritalStatus: p.maritalStatus,&#xa;    multipleBirth: p.multipleBirth,&#xa;    photo: p.photo,&#xa;    contact: PatientContact(p.contact),&#xa;    communication: PatientCommunication(p.communication),&#xa;    generalPractitioner: p.generalPractitioner,&#xa;    managingOrganization: p.managingOrganization,&#xa;    link: PatientLink(p.link)&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="79"/>
+               <valueInteger value="81"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1243,7 +1271,7 @@
                <valueString value="define function &quot;GetPatientExtensions&quot;(domainResource DomainResource):&#xa;  domainResource.extension E&#xa;  where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'&#xa;    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'&#xa;    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'&#xa;    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity'&#xa;    or E.url = 'http://hl7.org/fhir/StructureDefinition/patient-genderIdentity'&#xa;    or E.url = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'&#xa;  return E"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="80"/>
+               <valueInteger value="82"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1257,7 +1285,7 @@
                <valueString value="define function &quot;GetIdExtensions&quot;(domainResource DomainResource):&#xa;  domainResource.extension E&#xa;  where E.url = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'&#xa;  return E"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="81"/>
+               <valueInteger value="83"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1271,7 +1299,7 @@
                <valueString value="define function PatientIdentifier(identifier List&lt;FHIR.Identifier>):&#xa;  identifier i&#xa;  return FHIR.Identifier{&#xa;    id: i.id,&#xa;    extension: i.extension,&#xa;    use: i.use,&#xa;    type: i.type,&#xa;    system: i.system,&#xa;    value: i.value,&#xa;    period: i.period,&#xa;    assigner: i.assigner&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="82"/>
+               <valueInteger value="84"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1285,7 +1313,7 @@
                <valueString value="define function PatientName(name List&lt;FHIR.HumanName>):&#xa;  name n&#xa;  return FHIR.HumanName{&#xa;    id: n.id,&#xa;    extension: n.extension,&#xa;    use: n.use,&#xa;    text: n.text,&#xa;    family: n.family,&#xa;    given: n.given,&#xa;    prefix: n.prefix,&#xa;    suffix: n.suffix,&#xa;    period: n.period&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="83"/>
+               <valueInteger value="85"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1299,7 +1327,7 @@
                <valueString value="define function PatientTelecom(telecom List&lt;FHIR.ContactPoint>):&#xa;  telecom t&#xa;  return FHIR.ContactPoint{&#xa;    system: t.system,&#xa;    value: t.value,&#xa;    use: t.use,&#xa;    rank: t.rank,&#xa;    period: t.period&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="84"/>
+               <valueInteger value="86"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1313,7 +1341,7 @@
                <valueString value="define function PatientAddress(address List&lt;FHIR.Address>):&#xa;  address a&#xa;  return FHIR.Address{&#xa;    id: a.id,&#xa;    extension: a.extension,&#xa;    use: a.use,&#xa;    type: a.type,&#xa;    text: a.text,&#xa;    line: a.line,&#xa;    city: a.city,&#xa;    district: a.district,&#xa;    state: a.state,&#xa;    postalCode: a.postalCode,&#xa;    country: a.country,&#xa;    period: a.period&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="85"/>
+               <valueInteger value="87"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1327,7 +1355,7 @@
                <valueString value="define function PatientContact(contact List&lt;FHIR.Patient.Contact>):&#xa;  contact c&#xa;  return FHIR.Patient.Contact{&#xa;    id: c.id,&#xa;    extension: c.extension,&#xa;    relationship: c.relationship,&#xa;    name: c.name,&#xa;    telecom: c.telecom,&#xa;    address: c.address,&#xa;    gender: c.gender,&#xa;    organization: c.organization,&#xa;    period: c.period&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="86"/>
+               <valueInteger value="88"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1341,7 +1369,7 @@
                <valueString value="define function PatientCommunication(communication List&lt;FHIR.Patient.Communication>):&#xa;  communication c&#xa;  return FHIR.Patient.Communication{&#xa;    id: c.id,&#xa;    extension: c.extension,&#xa;    language: c.language,&#xa;    preferred: c.preferred&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="87"/>
+               <valueInteger value="89"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1355,7 +1383,7 @@
                <valueString value="define function PatientLink(link List&lt;FHIR.Patient.Link>):&#xa;  link l&#xa;  return FHIR.Patient.Link{&#xa;    id: l.id,&#xa;    extension: l.extension,&#xa;    modifierExtension: l.modifierExtension,&#xa;    other: l.other,&#xa;    type: l.type&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="88"/>
+               <valueInteger value="90"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1369,7 +1397,7 @@
                <valueString value="define function MedicationResource(medication Medication, profileURLs List&lt;FHIR.canonical>):&#xa;  medication m&#xa;  return Medication{&#xa;    id: FHIR.id {value: 'LCR-' + m.id},&#xa;    meta: SharedResource.MetaElement(m, profileURLs),&#xa;    extension: m.extension,&#xa;    code: m.code,&#xa;    status: m.status,&#xa;    manufacturer: m.manufacturer,&#xa;    form: m.form,&#xa;    amount: m.amount,&#xa;    ingredient: MedicationIngredient(m.ingredient),&#xa;    batch: MedicationBatch(m.batch)&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="89"/>
+               <valueInteger value="91"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1383,7 +1411,7 @@
                <valueString value="define function MedicationIngredient(ingredient List&lt;FHIR.Medication.Ingredient>):&#xa;  ingredient i&#xa;  return FHIR.Medication.Ingredient{&#xa;    item: i.item,&#xa;    strength: i.strength&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="90"/>
+               <valueInteger value="92"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1397,7 +1425,7 @@
                <valueString value="define function MedicationBatch(batch FHIR.Medication.Batch):&#xa;  batch b&#xa;  return FHIR.Medication.Batch{&#xa;    lotNumber: b.lotNumber,&#xa;    expirationDate: b.expirationDate&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="91"/>
+               <valueInteger value="93"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1411,7 +1439,7 @@
                <valueString value="//&#xa;//Functions&#xa;//&#xa;define function &quot;GetMedicationFrom&quot;(choice Choice&lt;FHIR.CodeableConcept, FHIR.Reference>):&#xa;  case&#xa;    when choice is FHIR.Reference then&#xa;      GetMedication(choice as FHIR.Reference)&#xa;    else&#xa;      null&#xa;  end"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="92"/>
+               <valueInteger value="94"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1425,7 +1453,7 @@
                <valueString value="define function &quot;GetMedication&quot;(reference Reference ):&#xa;  singleton from (&#xa;    [Medication: id in {Global.GetId(reference.reference)}]&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="93"/>
+               <valueInteger value="95"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1439,7 +1467,7 @@
                <valueString value="define function SpecimenResource(specimen Specimen, profileURLs List&lt;FHIR.canonical>):&#xa;  specimen s&#xa;  return Specimen{&#xa;    id: FHIR.id {value: 'LCR-' + s.id},&#xa;    meta: SharedResource.MetaElement(s, profileURLs),&#xa;    extension: s.extension,&#xa;    identifier: s.identifier,&#xa;    accessionIdentifier: s.accessionIdentifier,&#xa;    status: s.status,&#xa;    type: s.type,&#xa;    subject: s.subject,&#xa;    receivedTime: s.receivedTime,&#xa;    parent: s.parent,&#xa;    request: s.request,&#xa;    collection: SpecimenCollection(s.collection),&#xa;    processing: SpecimenProcessing(s.processing),&#xa;    container: SpecimenContainer(s.container),&#xa;    condition: s.condition,&#xa;    note: s.note&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="94"/>
+               <valueInteger value="96"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1453,7 +1481,7 @@
                <valueString value="define function SpecimenCollection(collection FHIR.Specimen.Collection):&#xa;  collection c&#xa;  return FHIR.Specimen.Collection{&#xa;    collector: c.collector,&#xa;    collected: c.collected,&#xa;    //duration: c.duration, Does not parse for some reason? Need to bring up with SmileCDR&#xa;    quantity: c.quantity,&#xa;    method: c.method,&#xa;    bodySite: c.bodySite,&#xa;    fastingStatus: c.fastingStatus&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="95"/>
+               <valueInteger value="97"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1467,7 +1495,7 @@
                <valueString value="define function SpecimenProcessing(processing List&lt;FHIR.Specimen.Processing>):&#xa;  processing p&#xa;  return FHIR.Specimen.Processing{&#xa;    description: p.description,&#xa;    procedure: p.procedure,&#xa;    additive: p.additive,&#xa;    time: p.time&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="96"/>
+               <valueInteger value="98"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1481,7 +1509,7 @@
                <valueString value="define function SpecimenContainer(container List&lt;FHIR.Specimen.Container>):&#xa;  container c&#xa;  return FHIR.Specimen.Container{&#xa;    description: c.description,&#xa;    type: c.type,&#xa;    capacity: c.capacity,&#xa;    specimenQuantity: c.specimenQuantity,&#xa;    additive: c.additive&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="97"/>
+               <valueInteger value="99"/>
             </extension>
          </extension>
          <name value="EffectiveDataRequirements"/>
@@ -1519,13 +1547,13 @@
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"/>
-            <display value="Code system V2-0074"/>
-            <resource value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
+            <display value="Code system LOINC"/>
+            <resource value="http://loinc.org"/>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"/>
-            <display value="Code system LOINC"/>
-            <resource value="http://loinc.org"/>
+            <display value="Code system V2-0074"/>
+            <resource value="http://terminology.hl7.org/CodeSystem/v2-0074"/>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"/>
@@ -1602,6 +1630,13 @@
             <min value="0"/>
             <max value="*"/>
             <type value="Observation"/>
+         </parameter>
+         <parameter>
+            <name value="SDE DiagnosticReport Others"/>
+            <use value="out"/>
+            <min value="0"/>
+            <max value="*"/>
+            <type value="DiagnosticReport"/>
          </parameter>
          <parameter>
             <name value="SDE Medication Administration"/>
@@ -1867,6 +1902,9 @@
             <mustSupport value="hoursOfOperation"/>
             <mustSupport value="availabilityExceptions"/>
             <mustSupport value="endpoint"/>
+            <codeFilter>
+               <path value="id"/>
+            </codeFilter>
          </dataRequirement>
          <dataRequirement>
             <type value="MedicationRequest"/>
@@ -2008,6 +2046,31 @@
             <mustSupport value="component"/>
          </dataRequirement>
          <dataRequirement>
+            <type value="DiagnosticReport"/>
+            <profile value="http://hl7.org/fhir/StructureDefinition/DiagnosticReport"/>
+            <mustSupport value="category"/>
+            <mustSupport value="effective"/>
+            <mustSupport value="id"/>
+            <mustSupport value="extension"/>
+            <mustSupport value="identifier"/>
+            <mustSupport value="basedOn"/>
+            <mustSupport value="status"/>
+            <mustSupport value="code"/>
+            <mustSupport value="subject"/>
+            <mustSupport value="encounter"/>
+            <mustSupport value="issued"/>
+            <mustSupport value="performer"/>
+            <mustSupport value="resultsInterpreter"/>
+            <mustSupport value="specimen"/>
+            <mustSupport value="result"/>
+            <mustSupport value="imagingStudy"/>
+            <mustSupport value="media"/>
+            <mustSupport value="conclusion"/>
+            <mustSupport value="conclusionCode"/>
+            <mustSupport value="presentedForm"/>
+            <mustSupport value="text"/>
+         </dataRequirement>
+         <dataRequirement>
             <type value="MedicationAdministration"/>
             <profile value="http://hl7.org/fhir/StructureDefinition/MedicationAdministration"/>
             <mustSupport value="effective"/>
@@ -2050,27 +2113,6 @@
             <mustSupport value="stage"/>
             <mustSupport value="evidence"/>
             <mustSupport value="note"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="DiagnosticReport"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/DiagnosticReport"/>
-            <mustSupport value="id"/>
-            <mustSupport value="extension"/>
-            <mustSupport value="text"/>
-            <mustSupport value="basedOn"/>
-            <mustSupport value="status"/>
-            <mustSupport value="category"/>
-            <mustSupport value="code"/>
-            <mustSupport value="subject"/>
-            <mustSupport value="encounter"/>
-            <mustSupport value="effective"/>
-            <mustSupport value="issued"/>
-            <mustSupport value="performer"/>
-            <mustSupport value="resultsInterpreter"/>
-            <mustSupport value="specimen"/>
-            <mustSupport value="result"/>
-            <mustSupport value="conclusion"/>
-            <mustSupport value="conclusionCode"/>
          </dataRequirement>
          <dataRequirement>
             <type value="ServiceRequest"/>
@@ -2192,7 +2234,7 @@
    <title value="NHSN dQM Acute Care Hospital Initial Population"/>
    <status value="draft"/>
    <experimental value="false"/>
-   <date value="2024-01-26T06:50:49-05:00"/>
+   <date value="2024-01-29T12:47:02-05:00"/>
    <publisher value="Lantana Consulting Group"/>
    <description value="The Acute Care Hospital Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."/>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."/>
@@ -2287,6 +2329,19 @@
       <criteria>
          <language value="text/cql-identifier"/>
          <expression value="SDE DiagnosticReport Note"/>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-diagnosticreport-others">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"/>
+            <code value="supplemental-data"/>
+         </coding>
+      </usage>
+      <description value="SDE DiagnosticReport Others"/>
+      <criteria>
+         <language value="text/cql-identifier"/>
+         <expression value="SDE DiagnosticReport Others"/>
       </criteria>
    </supplementalData>
    <supplementalData id="sde-encounter">

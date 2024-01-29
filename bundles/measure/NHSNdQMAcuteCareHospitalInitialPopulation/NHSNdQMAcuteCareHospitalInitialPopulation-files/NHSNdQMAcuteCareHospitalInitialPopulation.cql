@@ -131,7 +131,6 @@ define "SDE DiagnosticReport Note":
   return DiagnosticReportResource(DiagnosticReports,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport-note'}})
 
-/* This seems unnecessary.  The other DxReport SDEs pull the exact same resources.  We can just ignore this
 define "SDE DiagnosticReport Others":
   [DiagnosticReport] DiagnosticReports
   where not ((exists(DiagnosticReports.category Category where Category ~ "Radiology"))
@@ -142,7 +141,6 @@ define "SDE DiagnosticReport Others":
       where Global."Normalize Interval"(DiagnosticReports.effective) overlaps IP.period)
   return SharedResource.DiagnosticReportResource(DiagnosticReports,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport'}})
-*/
 
 define "SDE Encounter": 
   "Encounters" Encounters
