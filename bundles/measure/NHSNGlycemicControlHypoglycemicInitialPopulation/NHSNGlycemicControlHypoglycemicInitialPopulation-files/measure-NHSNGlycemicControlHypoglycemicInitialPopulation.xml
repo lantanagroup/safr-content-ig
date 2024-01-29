@@ -71,7 +71,7 @@
                <valueString value="MedicationRequests"/>
             </extension>
             <extension url="statement">
-               <valueString value="//&#xa;// Retrieve Resources&#xa;//&#xa;define &quot;MedicationRequests&quot;:&#xa;  [MedicationRequest]"/>
+               <valueString value="define &quot;MedicationRequests&quot;:&#xa;  [MedicationRequest]"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="0"/>
@@ -96,13 +96,27 @@
                <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"/>
             </extension>
             <extension url="name">
-               <valueString value="Encounters with Patient Hospital Locations"/>
+               <valueString value="Encounters"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Encounters with Patient Hospital Locations&quot;:&#xa;  [Encounter] Encounters&#xa;  where exists(&#xa;    Encounters.location EncounterLocation&#xa;    where Global.GetLocation(EncounterLocation.location).type in &quot;Inpatient, Emergency, and Observation Locations&quot;&#xa;      and EncounterLocation.period during Encounters.period&#xa;  )"/>
+               <valueString value="//&#xa;// Retrieve Resources&#xa;//&#xa;define &quot;Encounters&quot;:&#xa;  [Encounter]"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="2"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="Encounters with Patient Hospital Locations"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Encounters with Patient Hospital Locations&quot;:&#xa;  &quot;Encounters&quot; Encounters&#xa;  where exists(&#xa;    Encounters.location EncounterLocation&#xa;    where Global.GetLocation(EncounterLocation.location).type in &quot;Inpatient, Emergency, and Observation Locations&quot;&#xa;      and EncounterLocation.period during Encounters.period&#xa;  )"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="3"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -116,7 +130,7 @@
                <valueString value="define &quot;MedicationAdministrations&quot;:&#xa;  [MedicationAdministration]"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="3"/>
+               <valueInteger value="4"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -130,7 +144,7 @@
                <valueString value="define &quot;Antidiabetic Drugs Administered or Ordered&quot;:&#xa;  (&quot;MedicationAdministrations&quot; ADDMedAdmin&#xa;    where GetMedicationCode(ADDMedAdmin.medication) in &quot;Diabetes Medications&quot;&#xa;      and ADDMedAdmin.status ~ 'completed')&#xa;  union (&#xa;    &quot;MedicationRequests&quot; MedicationRequests&#xa;      where GetMedicationCode(MedicationRequests.medication) in &quot;Diabetes Medications&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="4"/>
+               <valueInteger value="5"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -144,7 +158,7 @@
                <valueString value="//&#xa;// Initial Population&#xa;//&#xa;define &quot;Initial Population&quot;:&#xa;  (&quot;Inpatient Encounter&quot;&#xa;  union &quot;Encounters with Patient Hospital Locations&quot;) InpatientEncounters&#xa;  where InpatientEncounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}&#xa;    and InpatientEncounters.period overlaps &quot;Measurement Period&quot;&#xa;    and exists( &#xa;    &quot;Antidiabetic Drugs Administered or Ordered&quot; ADD&#xa;    where Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn)&#xa;      during &quot;HospitalizationWithObservationOrEmergency&quot;(InpatientEncounters)&#xa;    and Coalesce(start of Global.&quot;Normalize Interval&quot;(ADD.effective), ADD.authoredOn) during &quot;Measurement Period&quot;)"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="5"/>
+               <valueInteger value="6"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -155,10 +169,10 @@
                <valueString value="SDE Medication Request"/>
             </extension>
             <extension url="statement">
-               <valueString value="//To capture information about the medication order&#xa;define &quot;SDE Medication Request&quot;:&#xa;&#x9;&quot;MedicationRequests&quot; MedicationRequests&#xa;  where exists(&#xa;    &quot;Initial Population&quot; InitialPopulation&#xa;&#x9;  where MedicationRequests.authoredOn during &quot;HospitalizationWithObservationOrEmergency&quot;(InitialPopulation)&#xa;    and MedicationRequests.authoredOn during &quot;Measurement Period&quot;&#xa;  )&#xa;  return SharedResource.MedicationRequestResource(MedicationRequests,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest'}})"/>
+               <valueString value="//To capture information about the medication order&#xa;define &quot;SDE Medication Request&quot;:&#xa;&#x9;&quot;MedicationRequests&quot; MedicationRequests&#xa;  where exists(&#xa;    &quot;Initial Population&quot; InitialPopulation&#xa;&#x9;  where MedicationRequests.authoredOn during &quot;HospitalizationWithObservationOrEmergency&quot;(InitialPopulation)&#xa;  )&#xa;  return SharedResource.MedicationRequestResource(MedicationRequests,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="6"/>
+               <valueInteger value="7"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -172,7 +186,7 @@
                <valueString value="//To capture Coverage information&#xa;define &quot;SDE Coverage&quot;: &#xa;&#x9;[Coverage] Coverages&#xa;  where exists(&#xa;    &quot;Initial Population&quot; InitialPopulation&#xa;    where start of Coverages.period before day of end of InitialPopulation.period&#xa;    and (end of Coverages.period is null&#xa;      or (end of Coverages.period is not null&#xa;        and end of Coverages.period on or after day of end of InitialPopulation.period&#xa;      )&#xa;    )&#xa;  )&#xa;  return SharedResource.CoverageResource(Coverages,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-coverage'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="7"/>
+               <valueInteger value="8"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -186,7 +200,7 @@
                <valueString value="//To capture the Locations where the Encounter took place&#xa;define &quot;SDE Encounter Locations&quot;:&#xa;  &quot;Initial Population&quot; InitialPopulation &#xa;  where exists ( &#xa;    InitialPopulation.location InitialPopulationLocation&#xa;    where (Global.GetLocation(InitialPopulationLocation.location).type in &quot;Inpatient, Emergency, and Observation Locations&quot;&#xa;      and InitialPopulationLocation.period during InitialPopulation.period)&#xa;  )&#xa;  return SharedResource.EncounterResource(InitialPopulation, &#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="8"/>
+               <valueInteger value="9"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -200,7 +214,7 @@
                <valueString value="define &quot;Conditions&quot;:&#xa;  [Condition]"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="9"/>
+               <valueInteger value="10"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -214,7 +228,7 @@
                <valueString value="//To capture the Encounter diagnosis&#xa;define &quot;SDE Condition during Encounter&quot;:&#xa;  &quot;Conditions&quot; ConditionEncounterDiagnosis&#xa;  where exists(&#xa;    ConditionEncounterDiagnosis.category category&#xa;    where category ~ &quot;encounter-diagnosis&quot;&#xa;  )&#xa;  return SharedResource.ConditionResource(ConditionEncounterDiagnosis,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="10"/>
+               <valueInteger value="11"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -225,10 +239,10 @@
                <valueString value="SDE Medication Administration"/>
             </extension>
             <extension url="statement">
-               <valueString value="//To capture information on when the Medication was given&#xa;define &quot;SDE Medication Administration&quot;:&#xa;&#x9;&quot;MedicationAdministrations&quot; MedicationAdministrations&#xa;  where exists(&#xa;    &quot;Initial Population&quot; InitialPopulation&#xa;    where start of Global.&quot;Normalize Interval&quot;(MedicationAdministrations.effective) &#xa;      during &quot;HospitalizationWithObservationOrEmergency&quot;(InitialPopulation)&#xa;    and start of Global.&quot;Normalize Interval&quot;(MedicationAdministrations.effective) during &quot;Measurement Period&quot;&#xa;  )&#xa;  return SharedResource.MedicationAdministrationResource(MedicationAdministrations, &#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationadministration'}})"/>
+               <valueString value="//To capture information on when the Medication was given&#xa;define &quot;SDE Medication Administration&quot;:&#xa;&#x9;&quot;MedicationAdministrations&quot; MedicationAdministrations&#xa;  where exists(&#xa;    &quot;Initial Population&quot; InitialPopulation&#xa;    where Global.&quot;Normalize Interval&quot;(MedicationAdministrations.effective) &#xa;      overlaps &quot;HospitalizationWithObservationOrEmergency&quot;(InitialPopulation)&#xa;  )&#xa;  return SharedResource.MedicationAdministrationResource(MedicationAdministrations, &#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationadministration'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="11"/>
+               <valueInteger value="12"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -242,7 +256,7 @@
                <valueString value="define &quot;SDE Initial Population Encounters&quot;:&#xa;  &quot;Initial Population&quot; IP&#xa;  return SharedResource.EncounterResource(IP,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="12"/>
+               <valueInteger value="13"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -256,7 +270,7 @@
                <valueString value="//&#xa;//Supplemental Data Elements&#xa;//&#xa;&#xa;//Blood glucose testing during the initial population period&#xa;define &quot;SDE Blood Glucose Observation&quot;:&#xa;&#x9;[Observation: &quot;Blood Glucose Laboratory and Point of Care Tests&quot;] Observations &#xa;  where exists(&#xa;    &quot;Initial Population&quot; InitialPopulation&#xa;    where start of Global.&quot;Normalize Interval&quot;(Observations.effective) during InitialPopulation.period&#xa;    or Global.&quot;Normalize Interval&quot;(GetSpecimen(Observations.specimen).collection.collected) &#xa;      during InitialPopulation.period&#xa;  )&#xa;  return SharedResource.ObservationResource(Observations, &#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="13"/>
+               <valueInteger value="14"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -270,7 +284,7 @@
                <valueString value="//To capture any active Conditions the patient has&#xa;define &quot;SDE Condition&quot;:&#xa;  &quot;Conditions&quot; Conditions&#xa;  where exists(&#xa;    &quot;Initial Population&quot; InitialPopulation&#xa;    where Global.&quot;Normalize Interval&quot;(Conditions.onset) overlaps InitialPopulation.period&#xa;  )&#xa;  return SharedResource.ConditionResource(Conditions,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="14"/>
+               <valueInteger value="15"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -284,7 +298,7 @@
                <valueString value="//To capture the discharge disposition&#xa;define &quot;SDE Encounter Discharge Dispositions&quot;:&#xa;&#x9;&quot;Initial Population&quot; DischargeDispositions &#xa;  where DischargeDispositions.hospitalization.dischargeDisposition in &quot;Discharge Disposition&quot;&#xa;  return SharedResource.EncounterResource(DischargeDispositions, &#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="15"/>
+               <valueInteger value="16"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -298,7 +312,21 @@
                <valueString value="//To capture blood glucose testing orders&#xa;define &quot;SDE Service Request&quot;:&#xa;  [ServiceRequest] ServiceRequests&#xa;  where exists(&#xa;    &quot;Initial Population&quot; InitialPopulation&#xa;    where ServiceRequests.authoredOn during InitialPopulation.period&#xa;  )&#xa;  return SharedResource.ServiceRequestResource(ServiceRequests,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-servicerequest'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="16"/>
+               <valueInteger value="17"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="Get Locations from Initial Population"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Get Locations from Initial Population&quot;:&#xa;  flatten(&quot;Initial Population&quot; IP&#xa;  let locationElements: IP.location&#xa;  return&#xa;    locationElements LE&#xa;    let locationReference: LE.location&#xa;    return Global.GetLocation(locationReference))"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="18"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -309,10 +337,10 @@
                <valueString value="SDE Location"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Location&quot;:&#xa;  [Location] Locations&#xa;  where /*exists(Locations.type types&#xa;    where types in &quot;Inpatient, Emergency, and Observation Locations&quot;)&#xa;  and*/ exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.LocationResource(Locations,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-location'}})"/>
+               <valueString value="define &quot;SDE Location&quot;:&#xa;  &quot;Get Locations from Initial Population&quot; Locations&#xa;  where exists(&quot;Initial Population&quot;)&#xa;  and Locations is not null&#xa;  return SharedResource.LocationResource(Locations,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-location'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="17"/>
+               <valueInteger value="19"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -326,7 +354,7 @@
                <valueString value="define &quot;SDE Minimal Patient&quot;:&#xa;  Patient p&#xa;  return SharedResource.PatientResource(p,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/cross-measure-patient'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="18"/>
+               <valueInteger value="20"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -340,7 +368,7 @@
                <valueString value="define &quot;Specimens&quot;:&#xa;  [Specimen]"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="19"/>
+               <valueInteger value="21"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -354,7 +382,7 @@
                <valueString value="//To capture the blood glucose specimen information&#xa;define &quot;SDE Specimen&quot;:&#xa;  &quot;Specimens&quot; Specimens&#xa;  where exists(&#xa;    &quot;Initial Population&quot; InitialPopulation&#xa;    where Global.&quot;Normalize Interval&quot;(Specimens.collection.collected) during InitialPopulation.period&#xa;  )&#xa;  return SharedResource.SpecimenResource(Specimens,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-specimen'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="20"/>
+               <valueInteger value="22"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -368,7 +396,7 @@
                <valueString value="//To capture information about the Medication&#xa;define &quot;SDE Medication&quot;:&#xa;  (&quot;SDE Medication Request&quot;&#xa;  union &quot;SDE Medication Administration&quot;) MedReqOrAdmin&#xa;  where MedReqOrAdmin.medication is FHIR.Reference&#xa;  return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication),&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="21"/>
+               <valueInteger value="23"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -382,7 +410,7 @@
                <valueString value="//To capture the patient's chief complaint&#xa;define &quot;SDE Chief Complaint&quot;:&#xa;  &quot;Initial Population&quot; IP&#xa;  where exists(&#xa;    IP.diagnosis InitialPopulationDiagnosis&#xa;    where InitialPopulationDiagnosis.use ~ &quot;Chief Complaint&quot;&#xa;  )&#xa;  return SharedResource.EncounterResource(IP, &#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="22"/>
+               <valueInteger value="24"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -393,10 +421,10 @@
                <valueString value="GetLocation"/>
             </extension>
             <extension url="statement">
-               <valueString value="// Returns the location for the given location reference&#xa;&#xa;/*Returns the Location resource specified by the given reference*/&#xa;define function &quot;GetLocation&quot;(reference Reference ):&#xa;  singleton from (&#xa;    [Location: id in {GetId(reference.reference)}]&#xa;  )"/>
+               <valueString value="// Returns the location for the given location reference&#xa;&#xa;/*Returns the Location resource specified by the given reference*/&#xa;define function &quot;GetLocation&quot;(reference Reference ):&#xa;  singleton from (&#xa;&#x9;[Location: id in {GetId(reference.reference)}]&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="23"/>
+               <valueInteger value="25"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -410,7 +438,7 @@
                <valueString value="/*Returns the tail of the given uri (i.e. everything after the last slash in the URI).*/&#xa;define function &quot;GetId&quot;(uri String ):&#xa;  Last(Split(uri, '/'))"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="24"/>
+               <valueInteger value="26"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -424,7 +452,7 @@
                <valueString value="define function ToString(value string): value.value"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="25"/>
+               <valueInteger value="27"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -438,7 +466,7 @@
                <valueString value="define function ToConcept(concept FHIR.CodeableConcept):&#xa;    if concept is null then&#xa;        null&#xa;    else&#xa;        System.Concept {&#xa;            codes: concept.coding C return ToCode(C),&#xa;            display: concept.text.value&#xa;        }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="26"/>
+               <valueInteger value="28"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -452,7 +480,7 @@
                <valueString value="define function ToInterval(period FHIR.Period):&#xa;    if period is null then&#xa;        null&#xa;    else&#xa;        if period.&quot;start&quot; is null then&#xa;            Interval(period.&quot;start&quot;.value, period.&quot;end&quot;.value]&#xa;        else&#xa;            Interval[period.&quot;start&quot;.value, period.&quot;end&quot;.value]"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="27"/>
+               <valueInteger value="29"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -466,7 +494,7 @@
                <valueString value="//&#xa;//Functions&#xa;//&#xa;define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConcept, FHIR.Reference>):&#xa;  case&#xa;    when choice is FHIR.CodeableConcept then&#xa;      choice as FHIR.CodeableConcept&#xa;    when choice is FHIR.Reference then&#xa;      GetMedication(choice as FHIR.Reference).code&#xa;    else&#xa;      null as FHIR.CodeableConcept&#xa;  end"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="28"/>
+               <valueInteger value="30"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -480,7 +508,7 @@
                <valueString value="define function &quot;GetMedication&quot;(reference Reference ):&#xa;  singleton from (&#xa;    [Medication: id in {Global.GetId(reference.reference)}]&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="29"/>
+               <valueInteger value="31"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -494,7 +522,7 @@
                <valueString value="define function ToDateTime(value dateTime): value.value"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="30"/>
+               <valueInteger value="32"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -508,7 +536,7 @@
                <valueString value="define function &quot;HospitalizationWithObservationOrEmergency&quot;(TheEncounter FHIR.Encounter ):&#xa;  TheEncounter Visit&#xa;    let ObsVisit: Last([Encounter: &quot;Observation Services&quot;] LastObs&#xa;        where LastObs.class ~ &quot;observation encounter&quot;&#xa;          and LastObs.period ends 1 hour or less on or before start of Visit.period&#xa;  &#x9;&#x9;&#x9;&#x9;sort by end of period&#xa;    ),&#xa;    VisitStart: Coalesce(start of ObsVisit.period, start of Visit.period),&#xa;    EDVisit: Last([Encounter: &quot;Emergency Department Visit&quot;] LastED&#xa;        where LastED.class ~ &quot;emergency&quot;&#xa;          and LastED.period ends 1 hour or less on or before start of Visit.period&#xa;  &#x9;&#x9;&#x9;&#x9;sort by end of period&#xa;    )&#xa;    return Interval[Coalesce(start of EDVisit.period, VisitStart), end of Visit.period]"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="31"/>
+               <valueInteger value="33"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -522,7 +550,7 @@
                <valueString value="define function ToCode(coding FHIR.Coding):&#xa;    if coding is null then&#xa;        null&#xa;    else&#xa;        System.Code {&#xa;          code: coding.code.value,&#xa;          system: coding.system.value,&#xa;          version: coding.version.value,&#xa;          display: coding.display.value&#xa;        }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="32"/>
+               <valueInteger value="34"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -536,7 +564,7 @@
                <valueString value="define function &quot;MedicationRequestResource&quot;(medicationRequest MedicationRequest, profileURLs List&lt;FHIR.canonical>):&#xa;  medicationRequest m&#xa;  return MedicationRequest{&#xa;    id: FHIR.id {value: 'LCR-' + m.id},&#xa;    meta: MetaElement(medicationRequest, profileURLs),&#xa;    extension: m.extension,&#xa;    identifier: m.identifier,&#xa;    status: m.status,&#xa;    statusReason: m.statusReason,&#xa;    intent: m.intent,&#xa;    category: m.category,&#xa;    priority: m.priority,&#xa;    doNotPerform: m.doNotPerform,&#xa;    reported: m.reported,&#xa;    medication: m.medication,&#xa;    subject: m.subject,&#xa;    encounter: m.encounter,&#xa;    supportingInformation: m.supportingInformation,&#xa;    authoredOn: m.authoredOn,&#xa;    requester: m.requester,&#xa;    performer: m.performer,&#xa;    performerType: m.performerType,&#xa;    recorder: m.recorder,&#xa;    reasonCode: m.reasonCode,&#xa;    reasonReference: m.reasonReference,&#xa;    instantiatesCanonical: m.instantiatesCanonical,&#xa;    instantiatesUri: m.instantiatesUri,&#xa;    basedOn: m.basedOn,&#xa;    groupIdentifier: m.groupIdentifier,&#xa;    courseOfTherapyType: m.courseOfTherapyType,&#xa;    insurance: m.insurance,&#xa;    note: m.note,&#xa;    dosageInstruction: m.dosageInstruction,&#xa;    dispenseRequest: m.dispenseRequest,&#xa;    substitution: m.substitution,&#xa;    priorPrescription: m.priorPrescription,&#xa;    detectedIssue: m.detectedIssue,&#xa;    eventHistory: m.eventHistory&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="33"/>
+               <valueInteger value="35"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -550,7 +578,7 @@
                <valueString value="define function &quot;MetaElement&quot;(resource Resource, profileURLs List&lt;FHIR.canonical>):&#xa;  resource r&#xa;  return FHIR.Meta{&#xa;    extension: r.meta.extension,&#xa;    versionId: r.meta.versionId,&#xa;    lastUpdated: r.meta.lastUpdated,&#xa;    profile: profileURLs,&#xa;    security: r.meta.security,&#xa;    tag: r.meta.tag&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="34"/>
+               <valueInteger value="36"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -564,7 +592,7 @@
                <valueString value="define function &quot;CoverageResource&quot;(coverage Coverage, profileURLs List&lt;FHIR.canonical>):&#xa;  coverage c&#xa;  return Coverage{&#xa;    id: FHIR.id{value: 'LCR-' + c.id},&#xa;    meta: MetaElement(c, profileURLs),&#xa;    extension: c.extension,&#xa;    identifier: c.identifier,&#xa;    status: c.status,&#xa;    type: c.type,&#xa;    policyHolder: c.policyHolder,&#xa;    subscriber: c.subscriber,&#xa;    subscriberId: c.subscriberId,&#xa;    beneficiary: c.beneficiary,&#xa;    dependent: c.dependent,&#xa;    relationship: c.relationship,&#xa;    period: c.period,&#xa;    payor: c.payor,&#xa;    class: c.class,&#xa;    order: c.order,&#xa;    network: c.network,&#xa;    costToBeneficiary: c.costToBeneficiary,&#xa;    subrogation: c.subrogation,&#xa;    contract: c.contract&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="35"/>
+               <valueInteger value="37"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -578,7 +606,7 @@
                <valueString value="define function &quot;EncounterResource&quot;(encounter Encounter, profileURLs List&lt;FHIR.canonical>):&#xa;  encounter e&#xa;  return Encounter{&#xa;    id: FHIR.id{value: 'LCR-' + e.id},&#xa;    meta: MetaElement(e, profileURLs),&#xa;    extension: e.extension,&#xa;    identifier: e.identifier,&#xa;    status: e.status,&#xa;    statusHistory: e.statusHistory,&#xa;    class: e.class,&#xa;    classHistory: e.classHistory,&#xa;    type: e.type,&#xa;    serviceType: e.serviceType,&#xa;    priority: e.priority,&#xa;    subject: e.subject,&#xa;    episodeOfCare: e.episodeOfCare,&#xa;    basedOn: e.basedOn,&#xa;    participant: e.participant,&#xa;    appointment: e.appointment,&#xa;    period: e.period,&#xa;    length: e.length,&#xa;    reasonCode: e.reasonCode,&#xa;    reasonReference: e.reasonReference,&#xa;    diagnosis: e.diagnosis,&#xa;    account: e.account,&#xa;    hospitalization: e.hospitalization,&#xa;    location: e.location,&#xa;    serviceProvider: e.serviceProvider,&#xa;    partOf: e.partOf&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="36"/>
+               <valueInteger value="38"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -592,7 +620,7 @@
                <valueString value="define function &quot;ConditionResource&quot;(condition Condition, profileURLs List&lt;FHIR.canonical>):&#xa;  condition c&#xa;  return Condition{&#xa;    id: FHIR.id {value: 'LCR-' + c.id},&#xa;    meta: MetaElement(c, profileURLs),&#xa;    extension: c.extension,&#xa;    identifier: c.identifier,&#xa;    clinicalStatus: c.clinicalStatus,&#xa;    verificationStatus: c.verificationStatus,&#xa;    category: c.category,&#xa;    severity: c.severity,&#xa;    code: c.code,&#xa;    bodySite: c.bodySite,&#xa;    subject: c.subject,&#xa;    encounter: c.encounter,&#xa;    onset: c.onset,&#xa;    abatement: c.abatement,&#xa;    recordedDate: c.recordedDate,&#xa;    recorder: c.recorder,&#xa;    asserter: c.asserter,&#xa;    stage: c.stage,&#xa;    evidence: c.evidence,&#xa;    note: c.note&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="37"/>
+               <valueInteger value="39"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -606,7 +634,7 @@
                <valueString value="define function &quot;MedicationAdministrationResource&quot;(medicationAdministration MedicationAdministration, profileURLs List&lt;FHIR.canonical>):&#xa;  medicationAdministration m&#xa;  return MedicationAdministration{&#xa;    id: FHIR.id {value: 'LCR-' + m.id},&#xa;    meta: MetaElement(m, profileURLs),&#xa;    extension: m.extension,&#xa;    identifier: m.identifier,&#xa;    instantiates: m.instantiates,&#xa;    partOf: m.partOf,&#xa;    status: m.status,&#xa;    statusReason: m.statusReason,&#xa;    category: m.category,&#xa;    medication: m.medication,&#xa;    subject: m.subject,&#xa;    context: m.context,&#xa;    supportingInformation: m.supportingInformation,&#xa;    effective: m.effective,&#xa;    performer: m.performer,&#xa;    reasonCode: m.reasonCode,&#xa;    reasonReference: m.reasonReference,&#xa;    request: m.request,&#xa;    device: m.device,&#xa;    note: m.note,&#xa;    dosage: m.dosage,&#xa;    eventHistory: m.eventHistory&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="38"/>
+               <valueInteger value="40"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -620,7 +648,7 @@
                <valueString value="define function &quot;GetSpecimen&quot;(reference Reference):&#xa;  singleton from (&#xa;    [Specimen: id in {Global.GetId(reference.reference)}]&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="39"/>
+               <valueInteger value="41"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -634,7 +662,7 @@
                <valueString value="define function &quot;ObservationResource&quot;(observation Observation, profileURLs List&lt;FHIR.canonical>):&#xa;  observation o&#xa;  return Observation{&#xa;    id: FHIR.id {value: 'LCR-' + o.id},&#xa;    meta: MetaElement(o, profileURLs),&#xa;    extension: o.extension,&#xa;    identifier: o.identifier,&#xa;    basedOn: o.basedOn,&#xa;    partOf: o.partOf,&#xa;    status: o.status,&#xa;    category: o.category,&#xa;    code: o.code,&#xa;    subject: o.subject,&#xa;    focus: o.focus,&#xa;    encounter: o.encounter,&#xa;    effective: o.effective,&#xa;    issued: o.issued,&#xa;    performer: o.performer,&#xa;    value: o.value,&#xa;    dataAbsentReason: o.dataAbsentReason,&#xa;    interpretation: o.interpretation,&#xa;    note: o.note,&#xa;    bodySite: o.bodySite,&#xa;    method: o.method,&#xa;    specimen: o.specimen,&#xa;    device: o.device,&#xa;    referenceRange: o.referenceRange,&#xa;    hasMember: o.hasMember,&#xa;    derivedFrom: o.derivedFrom,&#xa;    component: o.component&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="40"/>
+               <valueInteger value="42"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -648,7 +676,7 @@
                <valueString value="define function &quot;ServiceRequestResource&quot;(serviceRequest ServiceRequest, profileURLs List&lt;FHIR.canonical>):&#xa;  serviceRequest sR&#xa;  return ServiceRequest{&#xa;    id: FHIR.id {value: 'LCR-' + sR.id},&#xa;    meta: MetaElement(sR, profileURLs),&#xa;    extension: sR.extension,&#xa;    identifier: sR.identifier,&#xa;    instantiatesCanonical: sR.instantiatesCanonical,&#xa;    instantiatesUri: sR.instantiatesUri,&#xa;    basedOn: sR.basedOn,&#xa;    replaces: sR.replaces,&#xa;    requisition: sR.requisition,&#xa;    status: sR.status,&#xa;    intent: sR.intent,&#xa;    category: sR.category,&#xa;    priority: sR.priority,&#xa;    doNotPerform: sR.doNotPerform,&#xa;    code: sR.code,&#xa;    orderDetail: sR.orderDetail,&#xa;    quantity: sR.quantity,&#xa;    subject: sR.subject,&#xa;    encounter: sR.encounter,&#xa;    occurrence: sR.occurrence,&#xa;    asNeeded: sR.asNeeded,&#xa;    authoredOn: sR.authoredOn,&#xa;    requester: sR.requester,&#xa;    performerType: sR.performerType,&#xa;    performer: sR.performer,&#xa;    locationCode: sR.locationCode,&#xa;    locationReference: sR.locationReference,&#xa;    reasonCode: sR.reasonCode,&#xa;    reasonReference: sR.reasonReference,&#xa;    insurance: sR.insurance,&#xa;    supportingInfo: sR.supportingInfo,&#xa;    specimen: sR.specimen,&#xa;    bodySite: sR.bodySite,&#xa;    note: sR.note,&#xa;    patientInstruction: sR.patientInstruction,&#xa;    relevantHistory: sR.relevantHistory&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="41"/>
+               <valueInteger value="43"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -662,7 +690,7 @@
                <valueString value="define function &quot;LocationResource&quot;(location Location, profileURLs List&lt;FHIR.canonical>):&#xa;  location l&#xa;  return Location{&#xa;    id: FHIR.id {value: 'LCR-' + l.id},&#xa;    meta: MetaElement(l, profileURLs),&#xa;    extension: l.extension,&#xa;    identifier: l.identifier,&#xa;    status: l.status,&#xa;    operationalStatus: l.operationalStatus,&#xa;    name: l.name,&#xa;    alias: l.alias,&#xa;    description: l.description,&#xa;    mode: l.mode,&#xa;    type: l.type,&#xa;    telecom: l.telecom,&#xa;    address: l.address,&#xa;    physicalType: l.physicalType,&#xa;    position: l.position,&#xa;    managingOrganization: l.managingOrganization,&#xa;    partOf: l.partOf,&#xa;    hoursOfOperation: l.hoursOfOperation,&#xa;    availabilityExceptions: l.availabilityExceptions,&#xa;    endpoint: l.endpoint&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="42"/>
+               <valueInteger value="44"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -676,7 +704,7 @@
                <valueString value="define function &quot;PatientResource&quot;(patient Patient, profileURLs List&lt;FHIR.canonical>):&#xa;  patient p&#xa;  return Patient{&#xa;    id: FHIR.id{value: 'LCR-' + p.id},&#xa;    meta: MetaElement(p, profileURLs),&#xa;    extension: GetPatientExtensions(p) union GetIdExtensions(p),&#xa;    identifier: p.identifier,&#xa;    active: p.active,&#xa;    name: p.name,&#xa;    telecom: p.telecom,&#xa;    gender: p.gender,&#xa;    birthDate: p.birthDate,&#xa;    deceased: p.deceased,&#xa;    address: p.address,&#xa;    contact: p.contact,&#xa;    communication: p.communication,&#xa;    link: p.link&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="43"/>
+               <valueInteger value="45"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -690,7 +718,7 @@
                <valueString value="define function &quot;GetPatientExtensions&quot;(domainResource DomainResource):&#xa;  domainResource.extension E&#xa;  where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'&#xa;    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'&#xa;    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'&#xa;    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity'&#xa;    or E.url = 'http://hl7.org/fhir/StructureDefinition/patient-genderIdentity'&#xa;    or E.url = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'&#xa;  return E"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="44"/>
+               <valueInteger value="46"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -704,7 +732,7 @@
                <valueString value="define function &quot;GetIdExtensions&quot;(domainResource DomainResource):&#xa;  domainResource.extension E&#xa;  where E.url = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'&#xa;  return E"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="45"/>
+               <valueInteger value="47"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -718,7 +746,7 @@
                <valueString value="define function &quot;SpecimenResource&quot;(specimen Specimen, profileURLs List&lt;FHIR.canonical>):&#xa;  specimen s&#xa;  return Specimen{&#xa;    id: FHIR.id {value: 'LCR-' + s.id},&#xa;    meta: MetaElement(s, profileURLs),&#xa;    extension: s.extension,&#xa;    identifier: s.identifier,&#xa;    accessionIdentifier: s.accessionIdentifier,&#xa;    status: s.status,&#xa;    type: s.type,&#xa;    subject: s.subject,&#xa;    receivedTime: s.receivedTime,&#xa;    parent: s.parent,&#xa;    request: s.request,&#xa;    collection: s.collection,&#xa;    processing: s.processing,&#xa;    container: s.container,&#xa;    condition: s.condition,&#xa;    note: s.note&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="46"/>
+               <valueInteger value="48"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -732,7 +760,7 @@
                <valueString value="define function &quot;MedicationResource&quot;(medication Medication, profileURLs List&lt;FHIR.canonical>):&#xa;  medication m&#xa;  return Medication{&#xa;    id: FHIR.id {value: 'LCR-' + m.id},&#xa;    meta: MetaElement(m, profileURLs),&#xa;    extension: m.extension,&#xa;    identifier: m.identifier,&#xa;    code: m.code,&#xa;    status: m.status,&#xa;    manufacturer: m.manufacturer,&#xa;    form: m.form,&#xa;    amount: m.amount,&#xa;    ingredient: m.ingredient,&#xa;    batch: m.batch&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="47"/>
+               <valueInteger value="49"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -746,7 +774,7 @@
                <valueString value="define function &quot;GetMedicationFrom&quot;(choice Choice&lt;FHIR.CodeableConcept, FHIR.Reference>):&#xa;  case&#xa;    when choice is FHIR.Reference then&#xa;      GetMedication(choice as FHIR.Reference)&#xa;    else&#xa;      null&#xa;  end"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="48"/>
+               <valueInteger value="50"/>
             </extension>
          </extension>
          <name value="EffectiveDataRequirements"/>
@@ -1137,7 +1165,6 @@
          <dataRequirement>
             <type value="Encounter"/>
             <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"/>
-            <mustSupport value="location"/>
             <mustSupport value="period"/>
             <mustSupport value="status"/>
             <mustSupport value="id"/>
@@ -1160,6 +1187,7 @@
             <mustSupport value="diagnosis"/>
             <mustSupport value="account"/>
             <mustSupport value="hospitalization"/>
+            <mustSupport value="location"/>
             <mustSupport value="serviceProvider"/>
             <mustSupport value="partOf"/>
             <mustSupport value="hospitalization.dischargeDisposition"/>
@@ -1189,29 +1217,6 @@
             <codeFilter>
                <path value="id"/>
             </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-            <mustSupport value="id"/>
-            <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
-            <mustSupport value="status"/>
-            <mustSupport value="operationalStatus"/>
-            <mustSupport value="name"/>
-            <mustSupport value="alias"/>
-            <mustSupport value="description"/>
-            <mustSupport value="mode"/>
-            <mustSupport value="type"/>
-            <mustSupport value="telecom"/>
-            <mustSupport value="address"/>
-            <mustSupport value="physicalType"/>
-            <mustSupport value="position"/>
-            <mustSupport value="managingOrganization"/>
-            <mustSupport value="partOf"/>
-            <mustSupport value="hoursOfOperation"/>
-            <mustSupport value="availabilityExceptions"/>
-            <mustSupport value="endpoint"/>
          </dataRequirement>
          <dataRequirement>
             <type value="MedicationAdministration"/>
@@ -1459,7 +1464,7 @@
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"/>
    <status value="draft"/>
    <experimental value="false"/>
-   <date value="2024-01-12T11:51:25-08:00"/>
+   <date value="2024-01-29T14:51:45-08:00"/>
    <publisher value="Lantana Consulting Group"/>
    <description value="The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."/>
    <purpose value="This site allows NHSN to view Measure-specification content in the dQMs under development by Lantana Consulting Group. Note that this site undergoes constant revision and is not intended to serve as an implementation guide."/>

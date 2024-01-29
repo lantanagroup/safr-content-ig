@@ -201,9 +201,8 @@ define "SDE Medication Administration":
 	"MedicationAdministrations" MedicationAdministrations
   where exists(
     "Initial Population" InitialPopulation
-    where start of Global."Normalize Interval"(MedicationAdministrations.effective) 
-      during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
-    and start of Global."Normalize Interval"(MedicationAdministrations.effective) during "Measurement Period"
+    where Global."Normalize Interval"(MedicationAdministrations.effective) 
+      overlaps "HospitalizationWithObservationOrEmergency"(InitialPopulation)
   )
   return SharedResource.MedicationAdministrationResource(MedicationAdministrations, 
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationadministration'}})
@@ -214,7 +213,6 @@ define "SDE Medication Request":
   where exists(
     "Initial Population" InitialPopulation
 	  where MedicationRequests.authoredOn during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
-    and MedicationRequests.authoredOn during "Measurement Period"
   )
   return SharedResource.MedicationRequestResource(MedicationRequests,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest'}})
