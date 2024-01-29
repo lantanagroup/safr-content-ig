@@ -2289,6 +2289,19 @@
          <expression value="SDE DiagnosticReport Note"/>
       </criteria>
    </supplementalData>
+   <supplementalData id="sde-diagnosticreport-others">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"/>
+            <code value="supplemental-data"/>
+         </coding>
+      </usage>
+      <description value="SDE DiagnosticReport Others"/>
+      <criteria>
+         <language value="text/cql-identifier"/>
+         <expression value="SDE DiagnosticReport Others"/>
+      </criteria>
+   </supplementalData>
    <supplementalData id="sde-encounter">
       <usage>
          <coding>
