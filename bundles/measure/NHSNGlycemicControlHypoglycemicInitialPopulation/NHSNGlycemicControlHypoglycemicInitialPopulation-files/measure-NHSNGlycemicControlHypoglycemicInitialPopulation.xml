@@ -1459,12 +1459,12 @@
       <system value="https://nhsnlink.org"/>
       <value value="nhsnglycemiccontrolhypoglycemicinitialpopulation"/>
    </identifier>
-   <version value="0.0.018"/>
+   <version value="0.0.019"/>
    <name value="NHSNGlycemicControlHypoglycemicInitialPopulation"/>
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"/>
    <status value="draft"/>
    <experimental value="false"/>
-   <date value="2024-01-30T08:25:11-08:00"/>
+   <date value="2024-01-30T09:09:54-08:00"/>
    <publisher value="Lantana Consulting Group"/>
    <description value="The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."/>
    <purpose value="This site allows NHSN to view Measure-specification content in the dQMs under development by Lantana Consulting Group. Note that this site undergoes constant revision and is not intended to serve as an implementation guide."/>

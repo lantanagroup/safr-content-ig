@@ -2228,12 +2228,12 @@
       <system value="https://nhsnlink.org"/>
       <value value="NHSNdQMAcuteCareHospitalInitialPopulation"/>
    </identifier>
-   <version value="0.0.008"/>
+   <version value="0.0.009"/>
    <name value="NHSNdQMAcuteCareHospitalInitialPopulation"/>
    <title value="NHSN dQM Acute Care Hospital Initial Population"/>
    <status value="draft"/>
    <experimental value="false"/>
-   <date value="2024-01-30T11:25:11-05:00"/>
+   <date value="2024-01-30T12:09:54-05:00"/>
    <publisher value="Lantana Consulting Group"/>
    <description value="The Acute Care Hospital Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."/>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."/>
