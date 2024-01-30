@@ -673,7 +673,7 @@
                <valueString value="GetLocation"/>
             </extension>
             <extension url="statement">
-               <valueString value="// Returns the location for the given location reference&#xa;&#xa;/*Returns the Location resource specified by the given reference*/&#xa;define function &quot;GetLocation&quot;(reference Reference ):&#xa;  singleton from (&#xa;    [Location: id in {GetId(reference.reference)}]&#xa;  )"/>
+               <valueString value="// Returns the location for the given location reference&#xa;&#xa;/*Returns the Location resource specified by the given reference*/&#xa;define function &quot;GetLocation&quot;(reference Reference ):&#xa;  singleton from (&#xa;&#x9;[Location: id in {GetId(reference.reference)}]&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="44"/>
@@ -2582,7 +2582,7 @@
    <title value="NHSN Respiratory Pathogens Surveillance Initial Population"/>
    <status value="draft"/>
    <experimental value="false"/>
-   <date value="2024-01-12T14:51:25-05:00"/>
+   <date value="2024-01-30T11:25:11-05:00"/>
    <publisher value="Lantana Consulting Group"/>
    <description value="The Respiratory Pathogens Surveillance Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period."/>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."/>

@@ -1128,7 +1128,7 @@
                <valueString value="DiagnosticReportLabResource"/>
             </extension>
             <extension url="statement">
-               <valueString value="define function DiagnosticReportLabResource(diagnosticReport DiagnosticReport, profileURLs List&lt;FHIR.canonical>):&#xa;  diagnosticReport d&#xa;  return DiagnosticReport{&#xa;    id: FHIR.id{value: 'LCR-' + d.id},&#xa;    meta: SharedResource.MetaElement(d, profileURLs),&#xa;    extension: d.extension,&#xa;    text: d.text,&#xa;    basedOn: d.basedOn,&#xa;    status: d.status,&#xa;    category: DiagnosticReportCategory(d.category),&#xa;    code: d.code,&#xa;    subject: d.subject,&#xa;    encounter: d.encounter,&#xa;    effective: d.effective,&#xa;    issued: d.issued,&#xa;    performer: d.performer,&#xa;    resultsInterpreter: d.resultsInterpreter,&#xa;    specimen: d.specimen,&#xa;    result: d.result,&#xa;    conclusion: d.conclusion,&#xa;    conclusionCode: d.conclusionCode&#xa;  }"/>
+               <valueString value="define function DiagnosticReportLabResource(diagnosticReport DiagnosticReport, profileURLs List&lt;FHIR.canonical>):&#xa;  diagnosticReport d&#xa;  return DiagnosticReport{&#xa;    id: FHIR.id{value: 'LCR-' + d.id},&#xa;    meta: SharedResource.MetaElement(d, profileURLs),&#xa;    extension: d.extension,&#xa;    basedOn: d.basedOn,&#xa;    status: d.status,&#xa;    category: DiagnosticReportCategory(d.category),&#xa;    code: d.code,&#xa;    subject: d.subject,&#xa;    encounter: d.encounter,&#xa;    effective: d.effective,&#xa;    issued: d.issued,&#xa;    performer: d.performer,&#xa;    resultsInterpreter: d.resultsInterpreter,&#xa;    specimen: d.specimen,&#xa;    result: d.result,&#xa;    conclusion: d.conclusion,&#xa;    conclusionCode: d.conclusionCode&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="72"/>
@@ -1240,7 +1240,7 @@
                <valueString value="DiagnosticReportResource"/>
             </extension>
             <extension url="statement">
-               <valueString value="define function DiagnosticReportResource(diagnosticReport DiagnosticReport, profileURLs List&lt;FHIR.canonical>):&#xa;  diagnosticReport d&#xa;  return DiagnosticReport{&#xa;    id: FHIR.id{value: 'LCR-' + d.id},&#xa;    meta: SharedResource.MetaElement(d, profileURLs),&#xa;    extension: d.extension,&#xa;    text: d.text,&#xa;    basedOn: d.basedOn,&#xa;    status: d.status,&#xa;    category: d.category,&#xa;    code: d.code,&#xa;    subject: d.subject,&#xa;    encounter: d.encounter,&#xa;    effective: d.effective,&#xa;    issued: d.issued,&#xa;    performer: d.performer,&#xa;    resultsInterpreter: d.resultsInterpreter,&#xa;    specimen: d.specimen,&#xa;    result: d.result,&#xa;    conclusion: d.conclusion,&#xa;    conclusionCode: d.conclusionCode&#xa;  }"/>
+               <valueString value="define function DiagnosticReportResource(diagnosticReport DiagnosticReport, profileURLs List&lt;FHIR.canonical>):&#xa;  diagnosticReport d&#xa;  return DiagnosticReport{&#xa;    id: FHIR.id{value: 'LCR-' + d.id},&#xa;    meta: SharedResource.MetaElement(d, profileURLs),&#xa;    extension: d.extension,&#xa;    basedOn: d.basedOn,&#xa;    status: d.status,&#xa;    category: d.category,&#xa;    code: d.code,&#xa;    subject: d.subject,&#xa;    encounter: d.encounter,&#xa;    effective: d.effective,&#xa;    issued: d.issued,&#xa;    performer: d.performer,&#xa;    resultsInterpreter: d.resultsInterpreter,&#xa;    specimen: d.specimen,&#xa;    result: d.result,&#xa;    conclusion: d.conclusion,&#xa;    conclusionCode: d.conclusionCode&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="80"/>
@@ -2068,7 +2068,6 @@
             <mustSupport value="conclusion"/>
             <mustSupport value="conclusionCode"/>
             <mustSupport value="presentedForm"/>
-            <mustSupport value="text"/>
          </dataRequirement>
          <dataRequirement>
             <type value="MedicationAdministration"/>
@@ -2234,7 +2233,7 @@
    <title value="NHSN dQM Acute Care Hospital Initial Population"/>
    <status value="draft"/>
    <experimental value="false"/>
-   <date value="2024-01-29T12:47:02-05:00"/>
+   <date value="2024-01-30T11:25:11-05:00"/>
    <publisher value="Lantana Consulting Group"/>
    <description value="The Acute Care Hospital Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."/>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."/>

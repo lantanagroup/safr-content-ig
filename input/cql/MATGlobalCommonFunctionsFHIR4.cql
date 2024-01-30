@@ -276,13 +276,13 @@ define function "EncounterDiagnosis"(Encounter Encounter ):
 
 define function "PrincipalDiagnosis"(Encounter Encounter ):
   (singleton from (Encounter.diagnosis D where FHIRHelpers.ToInteger(D.rank) = 1)) PD
-  		return singleton from ([Condition: id in {"GetId"(PD.condition.reference)}])
+	return singleton from ([Condition: id in {"GetId"(PD.condition.reference)}])
   // Returns the location for the given location reference
 
 /*Returns the Location resource specified by the given reference*/
 define function "GetLocation"(reference Reference ):
   singleton from (
-    [Location: id in {GetId(reference.reference)}]
+	[Location: id in {GetId(reference.reference)}]
   )
 
 /*NOTE: Extensions are not the preferred approach, but are used as a way to access
@@ -341,7 +341,7 @@ define function "GetMedicationCode"(request MedicationRequest ):
   if request.medication is CodeableConcept then
   	  request.medication as CodeableConcept
   	else
-  	  (singleton from ([Medication: id in {GetId((request.medication as Reference).reference)}])).code
+		(singleton from ([Medication: id in {GetId((request.medication as Reference).reference)}])).code
 
 /*Given an interval, return true if the interval has a starting boundary specified (i.e. the start of the interval is not null and not the minimum DateTime value)*/
 define function "HasStart"(period Interval<DateTime> ):
