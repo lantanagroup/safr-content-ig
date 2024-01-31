@@ -1,4 +1,4 @@
-library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.018'
+library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.019'
 
 using FHIR version '4.0.1'
 
@@ -73,7 +73,7 @@ define "Inpatient Encounter":
     union [Encounter: "Encounter Inpatient"]
   
 define "Encounters with Patient Hospital Locations":
-  [Encounter] Encounters
+  "Encounters" Encounters
   where exists(
     Encounters.location EncounterLocation
     where Global.GetLocation(EncounterLocation.location).type in "Inpatient, Emergency, and Observation Locations"
@@ -88,6 +88,14 @@ define "Antidiabetic Drugs Administered or Ordered":
     "MedicationRequests" MedicationRequests
       where GetMedicationCode(MedicationRequests.medication) in "Diabetes Medications"
   )
+
+define "Get Locations from Initial Population":
+  flatten("Initial Population" IP
+  let locationElements: IP.location
+  return
+    locationElements LE
+    let locationReference: LE.location
+    return Global.GetLocation(locationReference))
 
 //
 //Supplemental Data Elements
@@ -174,10 +182,9 @@ define "SDE Initial Population Encounters":
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})
 
 define "SDE Location":
-  [Location] Locations
-  where /*exists(Locations.type types
-    where types in "Inpatient, Emergency, and Observation Locations")
-  and*/ exists("Initial Population")
+  "Get Locations from Initial Population" Locations
+  where exists("Initial Population")
+  and Locations is not null
   return SharedResource.LocationResource(Locations,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-location'}})
 
@@ -194,9 +201,8 @@ define "SDE Medication Administration":
 	"MedicationAdministrations" MedicationAdministrations
   where exists(
     "Initial Population" InitialPopulation
-    where start of Global."Normalize Interval"(MedicationAdministrations.effective) 
-      during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
-    and start of Global."Normalize Interval"(MedicationAdministrations.effective) during "Measurement Period"
+    where Global."Normalize Interval"(MedicationAdministrations.effective) 
+      overlaps "HospitalizationWithObservationOrEmergency"(InitialPopulation)
   )
   return SharedResource.MedicationAdministrationResource(MedicationAdministrations, 
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationadministration'}})
@@ -207,7 +213,6 @@ define "SDE Medication Request":
   where exists(
     "Initial Population" InitialPopulation
 	  where MedicationRequests.authoredOn during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
-    and MedicationRequests.authoredOn during "Measurement Period"
   )
   return SharedResource.MedicationRequestResource(MedicationRequests,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest'}})
@@ -240,6 +245,9 @@ define "SDE Specimen":
 //
 // Retrieve Resources
 //
+define "Encounters":
+  [Encounter]
+
 define "MedicationRequests":
   [MedicationRequest]
 
