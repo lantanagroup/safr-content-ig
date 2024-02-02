@@ -10,8 +10,54 @@ OR (Encounter.location:Location.type in http://cts.nlm.nih.gov/fhir/ValueSet/2.1
 Invariant: encounter-ach-initial-population
 Description: "Encounter: (class must be from ACH encounter class) or (type from 'Encounter Inpatient', 'Emergency Department Visit', or 'Observation Services') or (Encounter location type from 'Inpatient, Emergency, and Observation Locations')"
 Severity: #error
-Expression: "class.where(coding.memberOf('http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ValueSet/ach-encounter-class')).exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307')).exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292')).exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143')).exists() or where(location.location.resolve().where(type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265').exists())))"
+Expression: "class.memberOf('http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ValueSet/ach-encounter-class').exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307')).exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292')).exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143')).exists() or where(location.location.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists())"
 
+
+/* Invariant tests
+Invariant: encounter-ach-initial-population1
+Description: "Encounter: (class must be from ACH encounter class) "
+Severity: #error
+//Expression: "class.where(coding.memberOf('http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ValueSet/ach-encounter-class')).exists()"
+Expression: "class.memberOf('http://terminology.hl7.org/ValueSet/v3-ActEncounterCode').exists()"
+
+Invariant: encounter-ach-initial-population2
+Description: "Encounter: (type from 'Encounter Inpatient', 'Emergency Department Visit', or 'Observation Services')"
+Severity: #error
+Expression: "type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307')).exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292')).exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143')).exists()"
+
+
+Invariant: encounter-ach-initial-population3
+Description: "Encounter: (Encounter location type from 'Inpatient, Emergency, and Observation Locations')"
+Severity: #error
+Expression: "where(location.location.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists())"
+
+
+
+
+// a does not seem to fail when it should
+Invariant: encounter-ach-initial-population3a
+Description: "Encounter: (Encounter location type from 'Inpatient, Emergency, and Observation Locations')"
+Severity: #error
+Expression: "where(location.location.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists()).exists()"
+
+
+Invariant: encounter-ach-initial-population3b
+Description: "Encounter: (Encounter location type from 'Inpatient, Emergency, and Observation Locations')"
+Severity: #error
+Expression: "where(location.location.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists())"
+
+
+Invariant: encounter-ach-initial-population3c
+Description: "Encounter: (Encounter location type from 'Inpatient, Emergency, and Observation Locations')"
+Severity: #error
+Expression: "location.location.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists()"
+
+
+Invariant: location-ach-initial-population-direct
+Description: "Encounter: (Encounter location type from 'Inpatient, Emergency, and Observation Locations')"
+Severity: #error
+Expression: "type.where(coding.memberOf('http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType')).exists()"
+*/
 /*
  Medication terminology Invariant:
  BindingMedication.code required to RxNorm (Any RxNorm, can’t use US Core RxNorm VS which restricts) (verify this allows additional codings)
