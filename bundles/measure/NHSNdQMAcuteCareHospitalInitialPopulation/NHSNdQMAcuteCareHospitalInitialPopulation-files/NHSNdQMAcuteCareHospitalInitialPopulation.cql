@@ -1,4 +1,4 @@
-library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.009'
+library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.010'
 
 using FHIR version '4.0.1'
 
@@ -42,7 +42,7 @@ code "Pathology": 'LP7839-6' from "LOINC" display 'Pathology'
 code "Cardiology": 'LP29708-2' from "LOINC" display 'Cardiology'
 
 parameter "Measurement Period" 
-    default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
+    default Interval[@2024-01-01T00:00:00.0, @2024-01-31T00:00:00.0)
 
 context Patient 
 
@@ -99,9 +99,7 @@ define "Get Locations from IP Encounters in Measurement Period":
 //============================================================================
 define "SDE Condition":
   [Condition] Conditions 
-  where exists(
-    "Initial Population" IP
-    where Global."Normalize Interval"(Conditions.onset) overlaps IP.period)
+  where exists("Initial Population")
   return ConditionResource(Conditions,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-condition'}})
 

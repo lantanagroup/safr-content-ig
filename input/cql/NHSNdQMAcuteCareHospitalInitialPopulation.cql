@@ -1,4 +1,4 @@
-library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.009'
+library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.010'
 
 using FHIR version '4.0.1'
 
@@ -97,9 +97,7 @@ define "Get Locations from IP Encounters in Measurement Period":
 //============================================================================
 define "SDE Condition":
   [Condition] Conditions 
-  where exists(
-    "Initial Population" IP
-    where Global."Normalize Interval"(Conditions.onset) overlaps IP.period)
+  where exists("Initial Population")
   return ConditionResource(Conditions,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-condition'}})
 
