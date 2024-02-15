@@ -330,7 +330,7 @@
                <valueString value="SDE Condition"/>
             </extension>
             <extension url="statement">
-               <valueString value="//============================================================================&#xa;//Supplemental Data Element&#xa;//When FHIR.canonical value is present, US Core 3.1.1 profiles are used&#xa;//When FHIR.canonical value is not present, FHIR Base profiles are used&#xa;//============================================================================&#xa;define &quot;SDE Condition&quot;:&#xa;  [Condition] Conditions &#xa;  where exists(&#xa;    &quot;Initial Population&quot; IP&#xa;    where Global.&quot;Normalize Interval&quot;(Conditions.onset) overlaps IP.period)&#xa;  return ConditionResource(Conditions,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-condition'}})"/>
+               <valueString value="//============================================================================&#xa;//Supplemental Data Element&#xa;//When FHIR.canonical value is present, US Core 3.1.1 profiles are used&#xa;//When FHIR.canonical value is not present, FHIR Base profiles are used&#xa;//============================================================================&#xa;define &quot;SDE Condition&quot;:&#xa;  [Condition] Conditions &#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return ConditionResource(Conditions,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-condition'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="15"/>
@@ -2096,7 +2096,6 @@
          <dataRequirement>
             <type value="Condition"/>
             <profile value="http://hl7.org/fhir/StructureDefinition/Condition"/>
-            <mustSupport value="onset"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
             <mustSupport value="clinicalStatus"/>
@@ -2107,6 +2106,7 @@
             <mustSupport value="bodySite"/>
             <mustSupport value="subject"/>
             <mustSupport value="encounter"/>
+            <mustSupport value="onset"/>
             <mustSupport value="abatement"/>
             <mustSupport value="recordedDate"/>
             <mustSupport value="stage"/>
@@ -2233,7 +2233,7 @@
    <title value="NHSN dQM Acute Care Hospital Initial Population"/>
    <status value="draft"/>
    <experimental value="false"/>
-   <date value="2024-01-30T12:09:54-05:00"/>
+   <date value="2024-02-15T10:54:37-05:00"/>
    <publisher value="Lantana Consulting Group"/>
    <description value="The Acute Care Hospital Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."/>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."/>
