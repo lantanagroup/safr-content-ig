@@ -17,7 +17,7 @@ valueset "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.1
 valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
 valueset "Observation Services": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143'
 
-
+//create a valueset for this block
 code "emergency": 'EMER' from "ActCode" display 'emergency'
 code "inpatient acute": 'ACUTE' from "ActCode" display 'inpatient acute'
 code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
@@ -40,7 +40,7 @@ code "Pathology": 'LP7839-6' from "LOINC" display 'Pathology'
 code "Cardiology": 'LP29708-2' from "LOINC" display 'Cardiology'
 
 parameter "Measurement Period" 
-    default Interval[@2022-01-01T00:00:00.0, @2022-02-01T00:00:00.0)
+    default Interval[@2024-01-01T00:00:00.0, @2024-01-31T00:00:00.0)
 
 context Patient 
 
