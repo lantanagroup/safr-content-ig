@@ -9,6 +9,6 @@ Description: "This profile contains Required and Must Support data elements for 
 // * status  TODO verify is binding needed as stated in DD:w The following constraints are written into the CQL: 'final','registered','preliminary','partial'
 * encounter MS
 * specimen MS
-* performer MS // TODO verify this is really MS as stated in DD
+//* performer MS // TODO verify this is really MS as stated in DD - Per MEASDEV-841 it is not MS
 * conclusion MS
 * conclusionCode MS
