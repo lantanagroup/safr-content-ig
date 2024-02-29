@@ -5,7 +5,7 @@ using FHIR version '4.0.1'
 include FHIRHelpers version '4.0.1' called FHIRHelpers
 include SupplementalDataElementsFHIR4 version '2.0.000' called SDE
 include MATGlobalCommonFunctionsFHIR4 version '6.1.000' called Global
-include SharedResourceCreation version '0.1.004' called SharedResource
+include SharedResourceCreation version '0.1.005' called SharedResource
 
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode' 
 codesystem "LOINC": 'http://loinc.org' 
@@ -262,19 +262,19 @@ define "SDE Encounter Discharge Dispositions":
 //return the Observation during the Measurement Period
 define "SDE RPSObservation":
   "RPS Observation" Observations
-    return SharedResource.ObservationResource(Observations,
+    return SharedResource.ObservationLabResource(Observations,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation-lab'}})
 
 //return the RSV Observation Pre Admission    
 define "SDE RSV PRE Admission Observation":
   "RSV PRE Admission Observation" Observations
-    return SharedResource.ObservationResource(Observations, 
+    return SharedResource.ObservationLabResource(Observations, 
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation-lab'}})
 
 //return the COVID-19 and Influenza Observation Pre Admission
 define "SDE COVID And Influenza PRE Admission Observation":
   "COVID And Influenza PRE Admission Observation" Observations
-    return SharedResource.ObservationResource(Observations,
+    return SharedResource.ObservationLabResource(Observations,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation-lab'}})
 
 //return the Specimen related to the Observation during the Measurement Period
@@ -301,37 +301,37 @@ define "SDE COVID And Influenza Specimen":
 //return the DiagnosticReport during the Measurement Period
 define "SDE RPS DiagnosticReport":
   "RPS DiagnosticReport" Reports
-    return SharedResource.DiagnosticReportResource(Reports,
+    return SharedResource.DiagnosticReportLabResource(Reports,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})
 
 //return the COVID-19 And Influenza DiagnosticReport pre admission
 define "SDE COVID And Influenza DiagnosticReport":
   "COVID And Influenza DiagnosticReport" Reports
-    return SharedResource.DiagnosticReportResource(Reports,
+    return SharedResource.DiagnosticReportLabResource(Reports,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})
 
 //return the RSV DiagnosticReport pre admission
 define "SDE RSV DiagnosticReport":
   "RSV DiagnosticReport" Reports
-    return SharedResource.DiagnosticReportResource(Reports,
+    return SharedResource.DiagnosticReportLabResource(Reports,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})
 
 //return the DiagnosticReport based on the result during the Measurement Period    
 define "SDE RPS DiagnosticReport Result from Lab":
   "RPS DiagnosticReport Result from Lab" Reports
-    return SharedResource.DiagnosticReportResource(Reports,
+    return SharedResource.DiagnosticReportLabResource(Reports,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})
 
 //return the COVID-19 and Influenza DiagnosticReport based on the result pre admission
 define "SDE COVID and Influenza DiagnosticReport Result from Lab":
   "COVID and Influenza DiagnosticReport Result from Lab" Reports
-    return SharedResource.DiagnosticReportResource(Reports,
+    return SharedResource.DiagnosticReportLabResource(Reports,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})
 
 //return the RSV DiagnosticReport based on the result pre admission
 define "SDE RSV DiagnosticReport Result from Lab":
   "RSV DiagnosticReport Result from Lab" Reports
-    return SharedResource.DiagnosticReportResource(Reports,
+    return SharedResource.DiagnosticReportLabResource(Reports,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})
   
 define "SDE RPS ServiceRequest":
@@ -421,7 +421,7 @@ define "SDE Medication":
 define "SDE All Observations":
   [Observation] O
   where exists("Initial Population")
-  return SharedResource.ObservationResource(O,
+  return SharedResource.ObservationLabResource(O,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation'}})
 
 //To catch all isolation precautions
