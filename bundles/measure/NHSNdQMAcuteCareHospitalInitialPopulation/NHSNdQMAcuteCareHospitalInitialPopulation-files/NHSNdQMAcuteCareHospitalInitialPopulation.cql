@@ -259,7 +259,8 @@ define function "GetMedicationFrom"(choice Choice<FHIR.CodeableConcept, FHIR.Ref
 
 define function "GetMedication"(reference Reference ):
   singleton from (
-    [Medication: id in {Global.GetId(reference.reference)}]
+    [Medication] Medications
+    where Medications.id = Global.GetId(reference.reference)
   )
 
 //

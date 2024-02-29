@@ -421,24 +421,10 @@
                <valueString value="GetLocation"/>
             </extension>
             <extension url="statement">
-               <valueString value="// Returns the location for the given location reference&#xa;&#xa;/*Returns the Location resource specified by the given reference*/&#xa;define function &quot;GetLocation&quot;(reference Reference ):&#xa;  singleton from (&#xa;&#x9;[Location: id in {GetId(reference.reference)}]&#xa;  )"/>
+               <valueString value="// Returns the location for the given location reference&#xa;&#xa;/*Returns the Location resource specified by the given reference*/&#xa;define function &quot;GetLocation&quot;(reference Reference ):&#xa;  singleton from (&#xa;&#x9;[Location] Locations&#xa;&#x9;where Locations.id = GetId(reference.reference)&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="25"/>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="MATGlobalCommonFunctionsFHIR4"/>
-            </extension>
-            <extension url="name">
-               <valueString value="GetId"/>
-            </extension>
-            <extension url="statement">
-               <valueString value="/*Returns the tail of the given uri (i.e. everything after the last slash in the URI).*/&#xa;define function &quot;GetId&quot;(uri String ):&#xa;  Last(Split(uri, '/'))"/>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="26"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -450,6 +436,20 @@
             </extension>
             <extension url="statement">
                <valueString value="define function ToString(value string): value.value"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="26"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="MATGlobalCommonFunctionsFHIR4"/>
+            </extension>
+            <extension url="name">
+               <valueString value="GetId"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="/*Returns the tail of the given uri (i.e. everything after the last slash in the URI).*/&#xa;define function &quot;GetId&quot;(uri String ):&#xa;  Last(Split(uri, '/'))"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="27"/>
@@ -1642,9 +1642,6 @@
             <mustSupport value="hoursOfOperation"/>
             <mustSupport value="availabilityExceptions"/>
             <mustSupport value="endpoint"/>
-            <codeFilter>
-               <path value="id"/>
-            </codeFilter>
          </dataRequirement>
          <dataRequirement>
             <type value="MedicationAdministration"/>
@@ -1863,7 +1860,7 @@
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"/>
    <status value="draft"/>
    <experimental value="false"/>
-   <date value="2024-02-29T14:15:09-08:00"/>
+   <date value="2024-02-29T14:44:38-08:00"/>
    <publisher value="Lantana Consulting Group"/>
    <description value="The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."/>
    <purpose value="This site allows NHSN to view Measure-specification content in the dQMs under development by Lantana Consulting Group. Note that this site undergoes constant revision and is not intended to serve as an implementation guide."/>

@@ -512,7 +512,7 @@
                <valueString value="GetLocation"/>
             </extension>
             <extension url="statement">
-               <valueString value="// Returns the location for the given location reference&#xa;&#xa;/*Returns the Location resource specified by the given reference*/&#xa;define function &quot;GetLocation&quot;(reference Reference ):&#xa;  singleton from (&#xa;&#x9;[Location: id in {GetId(reference.reference)}]&#xa;  )"/>
+               <valueString value="// Returns the location for the given location reference&#xa;&#xa;/*Returns the Location resource specified by the given reference*/&#xa;define function &quot;GetLocation&quot;(reference Reference ):&#xa;  singleton from (&#xa;&#x9;[Location] Locations&#xa;&#x9;where Locations.id = GetId(reference.reference)&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="28"/>
@@ -1436,7 +1436,7 @@
                <valueString value="GetMedication"/>
             </extension>
             <extension url="statement">
-               <valueString value="define function &quot;GetMedication&quot;(reference Reference ):&#xa;  singleton from (&#xa;    [Medication: id in {Global.GetId(reference.reference)}]&#xa;  )"/>
+               <valueString value="define function &quot;GetMedication&quot;(reference Reference ):&#xa;  singleton from (&#xa;    [Medication] Medications&#xa;    where Medications.id = Global.GetId(reference.reference)&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="94"/>
@@ -1887,9 +1887,6 @@
             <mustSupport value="hoursOfOperation"/>
             <mustSupport value="availabilityExceptions"/>
             <mustSupport value="endpoint"/>
-            <codeFilter>
-               <path value="id"/>
-            </codeFilter>
          </dataRequirement>
          <dataRequirement>
             <type value="MedicationRequest"/>
@@ -2165,9 +2162,6 @@
             <mustSupport value="amount"/>
             <mustSupport value="ingredient"/>
             <mustSupport value="batch"/>
-            <codeFilter>
-               <path value="id"/>
-            </codeFilter>
          </dataRequirement>
          <dataRequirement>
             <type value="Specimen"/>
@@ -2214,7 +2208,7 @@
    <title value="NHSN dQM Acute Care Hospital Initial Population"/>
    <status value="draft"/>
    <experimental value="false"/>
-   <date value="2024-02-29T17:15:09-05:00"/>
+   <date value="2024-02-29T17:44:38-05:00"/>
    <publisher value="Lantana Consulting Group"/>
    <description value="The Acute Care Hospital Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."/>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."/>

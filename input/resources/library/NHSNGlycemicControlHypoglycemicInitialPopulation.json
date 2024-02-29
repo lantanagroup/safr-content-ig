@@ -354,10 +354,7 @@
   }, {
     "type": "Location",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
-    "mustSupport": [ "id", "extension", "status", "operationalStatus", "name", "alias", "description", "mode", "type", "telecom", "address", "physicalType", "position", "managingOrganization", "partOf", "hoursOfOperation", "availabilityExceptions", "endpoint" ],
-    "codeFilter": [ {
-      "path": "id"
-    } ]
+    "mustSupport": [ "id", "extension", "status", "operationalStatus", "name", "alias", "description", "mode", "type", "telecom", "address", "physicalType", "position", "managingOrganization", "partOf", "hoursOfOperation", "availabilityExceptions", "endpoint" ]
   }, {
     "type": "MedicationAdministration",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/MedicationAdministration" ],
