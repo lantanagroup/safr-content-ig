@@ -1,4 +1,4 @@
-Instance: location-example-hyp-emergency
+Instance: location-example-hypo-emergency
 InstanceOf: AcuteCareHospitalReportingLocation
 Usage: #inline
 * identifier.use = #usual

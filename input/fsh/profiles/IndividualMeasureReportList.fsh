@@ -1,7 +1,7 @@
 Profile: IndividualMeasureReportList
 Parent: List
 Id: ip-measurereport-list
-Title: "Individual MeasureReport List"
+Title: "NHSN Individual MeasureReport List"
 Description: "An Individual MeasureReport List contains references to all Individual MeasureReports for a given NHSN measure; each MeasureReport pertains to an individual patient within the Initial Population of a given measure."
 * ^status = #active
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1

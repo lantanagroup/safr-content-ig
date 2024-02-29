@@ -93,8 +93,8 @@ Usage: #example
 * entry[=].resource = servicerequest-example-hypo-sameresultdiffday1
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Specimen/specimen-example-hypo-sameresultdiffday1"
 * entry[=].resource = specimen-example-hypo-sameresultdiffday1
-* entry[+].fullUrl = "http://nhsnlink.org/fhir/Location/location-example-hyp-emergency"
-* entry[=].resource = location-example-hyp-emergency
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Location/location-example-hypo-emergency"
+* entry[=].resource = location-example-hypo-emergency
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Location/location-example-hypo-cardiology"
 * entry[=].resource = location-example-hypo-cardiology
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Location/location-example-hypo-hospital"
