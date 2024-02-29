@@ -1,11 +1,11 @@
-library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.019'
+library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.020'
 
 using FHIR version '4.0.1'
 
 include FHIRHelpers version '4.0.1' called FHIRHelpers
 include SupplementalDataElementsFHIR4 version '2.0.000' called SDE
 include MATGlobalCommonFunctionsFHIR4 version '6.1.000' called Global
-include SharedResourceCreation version '0.1.004' called SharedResource
+include SharedResourceCreation version '0.1.005' called SharedResource
 
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode' 
 codesystem "Diagnosis Role": 'http://terminology.hl7.org/CodeSystem/diagnosis-role'
@@ -110,7 +110,7 @@ define "SDE Blood Glucose Observation":
     or Global."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) 
       during InitialPopulation.period
   )
-  return SharedResource.ObservationResource(Observations, 
+  return SharedResource.ObservationLabResource(Observations, 
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab'}})
 
 //To capture the patient's chief complaint
@@ -275,7 +275,8 @@ define function "GetMedicationCode"(choice Choice<FHIR.CodeableConcept, FHIR.Ref
 
 define function "GetMedication"(reference Reference ):
   singleton from (
-    [Medication: id in {Global.GetId(reference.reference)}]
+    [Medication] Medications
+    where Medications.id = Global.GetId(reference.reference)
   )
 
 define function "HospitalizationWithObservationOrEmergency"(TheEncounter FHIR.Encounter ):
@@ -295,7 +296,8 @@ define function "HospitalizationWithObservationOrEmergency"(TheEncounter FHIR.En
 
 define function "GetSpecimen"(reference Reference):
   singleton from (
-    [Specimen: id in {Global.GetId(reference.reference)}]
+    [Specimen] Specimens
+    where Specimens.id = Global.GetId(reference.reference)
   )
 
 define function "GetMedicationFrom"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):

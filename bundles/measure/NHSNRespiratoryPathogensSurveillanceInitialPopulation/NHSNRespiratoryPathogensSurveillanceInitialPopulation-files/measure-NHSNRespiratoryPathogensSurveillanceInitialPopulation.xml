@@ -141,7 +141,7 @@
                <valueString value="SDE RSV DiagnosticReport Result from Lab"/>
             </extension>
             <extension url="statement">
-               <valueString value="//return the RSV DiagnosticReport based on the result pre admission&#xa;define &quot;SDE RSV DiagnosticReport Result from Lab&quot;:&#xa;  &quot;RSV DiagnosticReport Result from Lab&quot; Reports&#xa;    return SharedResource.DiagnosticReportResource(Reports,&#xa;    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})"/>
+               <valueString value="//return the RSV DiagnosticReport based on the result pre admission&#xa;define &quot;SDE RSV DiagnosticReport Result from Lab&quot;:&#xa;  &quot;RSV DiagnosticReport Result from Lab&quot; Reports&#xa;    return SharedResource.DiagnosticReportLabResource(Reports,&#xa;    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="6"/>
@@ -225,7 +225,7 @@
                <valueString value="SDE RPS DiagnosticReport Result from Lab"/>
             </extension>
             <extension url="statement">
-               <valueString value="//return the DiagnosticReport based on the result during the Measurement Period    &#xa;define &quot;SDE RPS DiagnosticReport Result from Lab&quot;:&#xa;  &quot;RPS DiagnosticReport Result from Lab&quot; Reports&#xa;    return SharedResource.DiagnosticReportResource(Reports,&#xa;    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})"/>
+               <valueString value="//return the DiagnosticReport based on the result during the Measurement Period    &#xa;define &quot;SDE RPS DiagnosticReport Result from Lab&quot;:&#xa;  &quot;RPS DiagnosticReport Result from Lab&quot; Reports&#xa;    return SharedResource.DiagnosticReportLabResource(Reports,&#xa;    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="12"/>
@@ -239,7 +239,7 @@
                <valueString value="SDE RSV PRE Admission Observation"/>
             </extension>
             <extension url="statement">
-               <valueString value="//return the RSV Observation Pre Admission    &#xa;define &quot;SDE RSV PRE Admission Observation&quot;:&#xa;  &quot;RSV PRE Admission Observation&quot; Observations&#xa;    return SharedResource.ObservationResource(Observations, &#xa;    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation-lab'}})"/>
+               <valueString value="//return the RSV Observation Pre Admission    &#xa;define &quot;SDE RSV PRE Admission Observation&quot;:&#xa;  &quot;RSV PRE Admission Observation&quot; Observations&#xa;    return SharedResource.ObservationLabResource(Observations, &#xa;    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation-lab'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="13"/>
@@ -351,7 +351,7 @@
                <valueString value="SDE RSV DiagnosticReport"/>
             </extension>
             <extension url="statement">
-               <valueString value="//return the RSV DiagnosticReport pre admission&#xa;define &quot;SDE RSV DiagnosticReport&quot;:&#xa;  &quot;RSV DiagnosticReport&quot; Reports&#xa;    return SharedResource.DiagnosticReportResource(Reports,&#xa;    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})"/>
+               <valueString value="//return the RSV DiagnosticReport pre admission&#xa;define &quot;SDE RSV DiagnosticReport&quot;:&#xa;  &quot;RSV DiagnosticReport&quot; Reports&#xa;    return SharedResource.DiagnosticReportLabResource(Reports,&#xa;    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="21"/>
@@ -365,7 +365,7 @@
                <valueString value="SDE RPSObservation"/>
             </extension>
             <extension url="statement">
-               <valueString value="//return the Observation during the Measurement Period&#xa;define &quot;SDE RPSObservation&quot;:&#xa;  &quot;RPS Observation&quot; Observations&#xa;    return SharedResource.ObservationResource(Observations,&#xa;    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation-lab'}})"/>
+               <valueString value="//return the Observation during the Measurement Period&#xa;define &quot;SDE RPSObservation&quot;:&#xa;  &quot;RPS Observation&quot; Observations&#xa;    return SharedResource.ObservationLabResource(Observations,&#xa;    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation-lab'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="22"/>
@@ -407,7 +407,7 @@
                <valueString value="SDE COVID And Influenza DiagnosticReport"/>
             </extension>
             <extension url="statement">
-               <valueString value="//return the COVID-19 And Influenza DiagnosticReport pre admission&#xa;define &quot;SDE COVID And Influenza DiagnosticReport&quot;:&#xa;  &quot;COVID And Influenza DiagnosticReport&quot; Reports&#xa;    return SharedResource.DiagnosticReportResource(Reports,&#xa;    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})"/>
+               <valueString value="//return the COVID-19 And Influenza DiagnosticReport pre admission&#xa;define &quot;SDE COVID And Influenza DiagnosticReport&quot;:&#xa;  &quot;COVID And Influenza DiagnosticReport&quot; Reports&#xa;    return SharedResource.DiagnosticReportLabResource(Reports,&#xa;    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="25"/>
@@ -421,7 +421,7 @@
                <valueString value="SDE COVID And Influenza PRE Admission Observation"/>
             </extension>
             <extension url="statement">
-               <valueString value="//return the COVID-19 and Influenza Observation Pre Admission&#xa;define &quot;SDE COVID And Influenza PRE Admission Observation&quot;:&#xa;  &quot;COVID And Influenza PRE Admission Observation&quot; Observations&#xa;    return SharedResource.ObservationResource(Observations,&#xa;    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation-lab'}})"/>
+               <valueString value="//return the COVID-19 and Influenza Observation Pre Admission&#xa;define &quot;SDE COVID And Influenza PRE Admission Observation&quot;:&#xa;  &quot;COVID And Influenza PRE Admission Observation&quot; Observations&#xa;    return SharedResource.ObservationLabResource(Observations,&#xa;    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation-lab'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="26"/>
@@ -449,7 +449,7 @@
                <valueString value="SDE COVID and Influenza DiagnosticReport Result from Lab"/>
             </extension>
             <extension url="statement">
-               <valueString value="//return the COVID-19 and Influenza DiagnosticReport based on the result pre admission&#xa;define &quot;SDE COVID and Influenza DiagnosticReport Result from Lab&quot;:&#xa;  &quot;COVID and Influenza DiagnosticReport Result from Lab&quot; Reports&#xa;    return SharedResource.DiagnosticReportResource(Reports,&#xa;    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})"/>
+               <valueString value="//return the COVID-19 and Influenza DiagnosticReport based on the result pre admission&#xa;define &quot;SDE COVID and Influenza DiagnosticReport Result from Lab&quot;:&#xa;  &quot;COVID and Influenza DiagnosticReport Result from Lab&quot; Reports&#xa;    return SharedResource.DiagnosticReportLabResource(Reports,&#xa;    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="28"/>
@@ -519,7 +519,7 @@
                <valueString value="SDE RPS DiagnosticReport"/>
             </extension>
             <extension url="statement">
-               <valueString value="//return the DiagnosticReport during the Measurement Period&#xa;define &quot;SDE RPS DiagnosticReport&quot;:&#xa;  &quot;RPS DiagnosticReport&quot; Reports&#xa;    return SharedResource.DiagnosticReportResource(Reports,&#xa;    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})"/>
+               <valueString value="//return the DiagnosticReport during the Measurement Period&#xa;define &quot;SDE RPS DiagnosticReport&quot;:&#xa;  &quot;RPS DiagnosticReport&quot; Reports&#xa;    return SharedResource.DiagnosticReportLabResource(Reports,&#xa;    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="33"/>
@@ -561,7 +561,7 @@
                <valueString value="SDE All Observations"/>
             </extension>
             <extension url="statement">
-               <valueString value="//To catch all isolation precautions&#xa;define &quot;SDE All Observations&quot;:&#xa;  [Observation] O&#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.ObservationResource(O,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation'}})"/>
+               <valueString value="//To catch all isolation precautions&#xa;define &quot;SDE All Observations&quot;:&#xa;  [Observation] O&#xa;  where exists(&quot;Initial Population&quot;)&#xa;  return SharedResource.ObservationLabResource(O,&#xa;  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation'}})"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="36"/>
@@ -687,7 +687,7 @@
                <valueString value="MedicationAdministrationResource"/>
             </extension>
             <extension url="statement">
-               <valueString value="define function &quot;MedicationAdministrationResource&quot;(medicationAdministration MedicationAdministration, profileURLs List&lt;FHIR.canonical>):&#xa;  medicationAdministration m&#xa;  return MedicationAdministration{&#xa;    id: FHIR.id {value: 'LCR-' + m.id},&#xa;    meta: MetaElement(m, profileURLs),&#xa;    extension: m.extension,&#xa;    identifier: m.identifier,&#xa;    instantiates: m.instantiates,&#xa;    partOf: m.partOf,&#xa;    status: m.status,&#xa;    statusReason: m.statusReason,&#xa;    category: m.category,&#xa;    medication: m.medication,&#xa;    subject: m.subject,&#xa;    context: m.context,&#xa;    supportingInformation: m.supportingInformation,&#xa;    effective: m.effective,&#xa;    performer: m.performer,&#xa;    reasonCode: m.reasonCode,&#xa;    reasonReference: m.reasonReference,&#xa;    request: m.request,&#xa;    device: m.device,&#xa;    note: m.note,&#xa;    dosage: m.dosage,&#xa;    eventHistory: m.eventHistory&#xa;  }"/>
+               <valueString value="define function MedicationAdministrationResource(medicationAdministration MedicationAdministration, profileURLs List&lt;FHIR.canonical>):&#xa;  medicationAdministration m&#xa;  return MedicationAdministration{&#xa;    id: FHIR.id {value: 'LCR-' + m.id},&#xa;    meta: MetaElement(m, profileURLs),&#xa;    extension: m.extension,&#xa;    instantiates: m.instantiates,&#xa;    partOf: m.partOf,&#xa;    status: m.status,&#xa;    statusReason: m.statusReason,&#xa;    category: m.category,&#xa;    medication: m.medication,&#xa;    subject: m.subject,&#xa;    context: m.context,&#xa;    supportingInformation: m.supportingInformation,&#xa;    effective: m.effective,&#xa;    performer: MedicationAdministrationPerformer(m.performer),&#xa;    reasonCode: m.reasonCode,&#xa;    reasonReference: m.reasonReference,&#xa;    request: m.request,&#xa;    device: m.device,&#xa;    note: m.note,&#xa;    dosage: MedicationAdministrationDosage(m.dosage),&#xa;    eventHistory: m.eventHistory&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="45"/>
@@ -709,6 +709,34 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="MedicationAdministrationPerformer"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function MedicationAdministrationPerformer(performer List&lt;FHIR.MedicationAdministration.Performer>):&#xa;  performer p&#xa;  return FHIR.MedicationAdministration.Performer{&#xa;    function: p.function,&#xa;    actor: p.actor&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="47"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="MedicationAdministrationDosage"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function MedicationAdministrationDosage(dosage FHIR.MedicationAdministration.Dosage):&#xa;  dosage d&#xa;  return FHIR.MedicationAdministration.Dosage{&#xa;    text: d.text,&#xa;    site: d.site,&#xa;    route: d.route,&#xa;    method: d.method,&#xa;    dose: d.dose,&#xa;    rate: d.rate&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="48"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
                <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"/>
             </extension>
             <extension url="name">
@@ -718,7 +746,7 @@
                <valueString value="define function GetObservations(reference List&lt;Reference>):&#xa;  reference reference&#xa;    return GetObservation(reference)"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="47"/>
+               <valueInteger value="49"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -732,7 +760,7 @@
                <valueString value="define function GetObservation(reference Reference):&#xa;  singleton from (&#xa;    [Observation: id in {Global.GetId(reference.reference)}]&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="48"/>
+               <valueInteger value="50"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -740,13 +768,41 @@
                <valueString value="SharedResourceCreation"/>
             </extension>
             <extension url="name">
-               <valueString value="DiagnosticReportResource"/>
+               <valueString value="DiagnosticReportLabResource"/>
             </extension>
             <extension url="statement">
-               <valueString value="define function &quot;DiagnosticReportResource&quot;(diagnosticReport DiagnosticReport, profileURLs List&lt;FHIR.canonical>):&#xa;  diagnosticReport d&#xa;  return DiagnosticReport{&#xa;    id: FHIR.id{value: 'LCR-' + d.id},&#xa;    meta: MetaElement(d, profileURLs),&#xa;    extension: d.extension,&#xa;    identifier: d.identifier,&#xa;    basedOn: d.basedOn,&#xa;    status: d.status,&#xa;    category: d.category,&#xa;    code: d.code,&#xa;    subject: d.subject,&#xa;    encounter: d.encounter,&#xa;    effective: d.effective,&#xa;    issued: d.issued,&#xa;    performer: d.performer,&#xa;    resultsInterpreter: d.resultsInterpreter,&#xa;    specimen: d.specimen,&#xa;    result: d.result,&#xa;    imagingStudy: d.imagingStudy,&#xa;    media: d.media,&#xa;    conclusion: d.conclusion,&#xa;    conclusionCode: d.conclusionCode,&#xa;    presentedForm: d.presentedForm&#xa;  }"/>
+               <valueString value="define function DiagnosticReportLabResource(diagnosticReport DiagnosticReport, profileURLs List&lt;FHIR.canonical>):&#xa;  diagnosticReport d&#xa;  return DiagnosticReport{&#xa;    id: FHIR.id{value: 'LCR-' + d.id},&#xa;    meta: MetaElement(d, profileURLs),&#xa;    extension: d.extension,&#xa;    basedOn: d.basedOn,&#xa;    status: d.status,&#xa;    category: DiagnosticReportCategory(d.category),&#xa;    code: d.code,&#xa;    subject: d.subject,&#xa;    encounter: d.encounter,&#xa;    effective: d.effective,&#xa;    issued: d.issued,&#xa;    performer: d.performer,&#xa;    resultsInterpreter: d.resultsInterpreter,&#xa;    specimen: d.specimen,&#xa;    result: d.result,&#xa;    conclusion: d.conclusion,&#xa;    conclusionCode: d.conclusionCode&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="49"/>
+               <valueInteger value="51"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="DiagnosticReportCategory"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function DiagnosticReportCategory(category List&lt;CodeableConcept>):&#xa;  category c&#xa;  return CodeableConcept{&#xa;    coding: DiagnosticReportCoding(c.coding)&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="52"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="DiagnosticReportCoding"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function DiagnosticReportCoding(coding List&lt;Coding>):&#xa;  coding c&#xa;  return Coding{&#xa;    system: c.system,&#xa;    version: c.version,&#xa;    code: c.code,&#xa;    display: c.display,&#xa;    userSelected: c.userSelected&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="53"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -760,7 +816,7 @@
                <valueString value="define function &quot;GetSpecimen&quot;(reference Reference):&#xa;  singleton from (&#xa;    [Specimen: id in {Global.GetId(reference.reference)}]&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="50"/>
+               <valueInteger value="54"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -771,63 +827,7 @@
                <valueString value="SpecimenResource"/>
             </extension>
             <extension url="statement">
-               <valueString value="define function &quot;SpecimenResource&quot;(specimen Specimen, profileURLs List&lt;FHIR.canonical>):&#xa;  specimen s&#xa;  return Specimen{&#xa;    id: FHIR.id {value: 'LCR-' + s.id},&#xa;    meta: MetaElement(s, profileURLs),&#xa;    extension: s.extension,&#xa;    identifier: s.identifier,&#xa;    accessionIdentifier: s.accessionIdentifier,&#xa;    status: s.status,&#xa;    type: s.type,&#xa;    subject: s.subject,&#xa;    receivedTime: s.receivedTime,&#xa;    parent: s.parent,&#xa;    request: s.request,&#xa;    collection: s.collection,&#xa;    processing: s.processing,&#xa;    container: s.container,&#xa;    condition: s.condition,&#xa;    note: s.note&#xa;  }"/>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="51"/>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="SharedResourceCreation"/>
-            </extension>
-            <extension url="name">
-               <valueString value="ObservationResource"/>
-            </extension>
-            <extension url="statement">
-               <valueString value="define function &quot;ObservationResource&quot;(observation Observation, profileURLs List&lt;FHIR.canonical>):&#xa;  observation o&#xa;  return Observation{&#xa;    id: FHIR.id {value: 'LCR-' + o.id},&#xa;    meta: MetaElement(o, profileURLs),&#xa;    extension: o.extension,&#xa;    identifier: o.identifier,&#xa;    basedOn: o.basedOn,&#xa;    partOf: o.partOf,&#xa;    status: o.status,&#xa;    category: o.category,&#xa;    code: o.code,&#xa;    subject: o.subject,&#xa;    focus: o.focus,&#xa;    encounter: o.encounter,&#xa;    effective: o.effective,&#xa;    issued: o.issued,&#xa;    performer: o.performer,&#xa;    value: o.value,&#xa;    dataAbsentReason: o.dataAbsentReason,&#xa;    interpretation: o.interpretation,&#xa;    note: o.note,&#xa;    bodySite: o.bodySite,&#xa;    method: o.method,&#xa;    specimen: o.specimen,&#xa;    device: o.device,&#xa;    referenceRange: o.referenceRange,&#xa;    hasMember: o.hasMember,&#xa;    derivedFrom: o.derivedFrom,&#xa;    component: o.component&#xa;  }"/>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="52"/>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="SharedResourceCreation"/>
-            </extension>
-            <extension url="name">
-               <valueString value="ProcedureResource"/>
-            </extension>
-            <extension url="statement">
-               <valueString value="define function &quot;ProcedureResource&quot;(procedure Procedure, profileURLs List&lt;FHIR.canonical>):&#xa;  procedure p&#xa;  return Procedure{&#xa;    id: FHIR.id {value: 'LCR-' + p.id},&#xa;    meta: MetaElement(p, profileURLs),&#xa;    extension: p.extension,&#xa;    identifier: p.identifier,&#xa;    instantiatesCanonical: p.instantiatesCanonical,&#xa;    instantiatesUri: p.instantiatesUri,&#xa;    basedOn: p.basedOn,&#xa;    partOf: p.partOf,&#xa;    status: p.status,&#xa;    statusReason: p.statusReason,&#xa;    category: p.category,&#xa;    code: p.code,&#xa;    subject: p.subject,&#xa;    encounter: p.encounter,&#xa;    performed: p.performed,&#xa;    recorder: p.recorder,&#xa;    asserter: p.asserter,&#xa;    performer: p.performer,&#xa;    location: p.location,&#xa;    reasonCode: p.reasonCode,&#xa;    reasonReference: p.reasonReference,&#xa;    bodySite: p.bodySite,&#xa;    outcome: p.outcome,&#xa;    report: p.report,&#xa;    complication: p.complication,&#xa;    followUp: p.followUp,&#xa;    note: p.note,&#xa;    focalDevice: p.focalDevice,&#xa;    usedReference: p.usedReference,&#xa;    usedCode: p.usedCode&#xa;  }"/>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="53"/>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="SharedResourceCreation"/>
-            </extension>
-            <extension url="name">
-               <valueString value="ServiceRequestResource"/>
-            </extension>
-            <extension url="statement">
-               <valueString value="define function &quot;ServiceRequestResource&quot;(serviceRequest ServiceRequest, profileURLs List&lt;FHIR.canonical>):&#xa;  serviceRequest sR&#xa;  return ServiceRequest{&#xa;    id: FHIR.id {value: 'LCR-' + sR.id},&#xa;    meta: MetaElement(sR, profileURLs),&#xa;    extension: sR.extension,&#xa;    identifier: sR.identifier,&#xa;    instantiatesCanonical: sR.instantiatesCanonical,&#xa;    instantiatesUri: sR.instantiatesUri,&#xa;    basedOn: sR.basedOn,&#xa;    replaces: sR.replaces,&#xa;    requisition: sR.requisition,&#xa;    status: sR.status,&#xa;    intent: sR.intent,&#xa;    category: sR.category,&#xa;    priority: sR.priority,&#xa;    doNotPerform: sR.doNotPerform,&#xa;    code: sR.code,&#xa;    orderDetail: sR.orderDetail,&#xa;    quantity: sR.quantity,&#xa;    subject: sR.subject,&#xa;    encounter: sR.encounter,&#xa;    occurrence: sR.occurrence,&#xa;    asNeeded: sR.asNeeded,&#xa;    authoredOn: sR.authoredOn,&#xa;    requester: sR.requester,&#xa;    performerType: sR.performerType,&#xa;    performer: sR.performer,&#xa;    locationCode: sR.locationCode,&#xa;    locationReference: sR.locationReference,&#xa;    reasonCode: sR.reasonCode,&#xa;    reasonReference: sR.reasonReference,&#xa;    insurance: sR.insurance,&#xa;    supportingInfo: sR.supportingInfo,&#xa;    specimen: sR.specimen,&#xa;    bodySite: sR.bodySite,&#xa;    note: sR.note,&#xa;    patientInstruction: sR.patientInstruction,&#xa;    relevantHistory: sR.relevantHistory&#xa;  }"/>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="54"/>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="SharedResourceCreation"/>
-            </extension>
-            <extension url="name">
-               <valueString value="LocationResource"/>
-            </extension>
-            <extension url="statement">
-               <valueString value="define function &quot;LocationResource&quot;(location Location, profileURLs List&lt;FHIR.canonical>):&#xa;  location l&#xa;  return Location{&#xa;    id: FHIR.id {value: 'LCR-' + l.id},&#xa;    meta: MetaElement(l, profileURLs),&#xa;    extension: l.extension,&#xa;    identifier: l.identifier,&#xa;    status: l.status,&#xa;    operationalStatus: l.operationalStatus,&#xa;    name: l.name,&#xa;    alias: l.alias,&#xa;    description: l.description,&#xa;    mode: l.mode,&#xa;    type: l.type,&#xa;    telecom: l.telecom,&#xa;    address: l.address,&#xa;    physicalType: l.physicalType,&#xa;    position: l.position,&#xa;    managingOrganization: l.managingOrganization,&#xa;    partOf: l.partOf,&#xa;    hoursOfOperation: l.hoursOfOperation,&#xa;    availabilityExceptions: l.availabilityExceptions,&#xa;    endpoint: l.endpoint&#xa;  }"/>
+               <valueString value="define function SpecimenResource(specimen Specimen, profileURLs List&lt;FHIR.canonical>):&#xa;  specimen s&#xa;  return Specimen{&#xa;    id: FHIR.id {value: 'LCR-' + s.id},&#xa;    meta: MetaElement(s, profileURLs),&#xa;    extension: s.extension,&#xa;    identifier: s.identifier,&#xa;    accessionIdentifier: s.accessionIdentifier,&#xa;    status: s.status,&#xa;    type: s.type,&#xa;    subject: s.subject,&#xa;    receivedTime: s.receivedTime,&#xa;    parent: s.parent,&#xa;    request: s.request,&#xa;    collection: SpecimenCollection(s.collection),&#xa;    processing: SpecimenProcessing(s.processing),&#xa;    container: SpecimenContainer(s.container),&#xa;    condition: s.condition,&#xa;    note: s.note&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="55"/>
@@ -838,13 +838,335 @@
                <valueString value="SharedResourceCreation"/>
             </extension>
             <extension url="name">
-               <valueString value="EncounterResource"/>
+               <valueString value="SpecimenCollection"/>
             </extension>
             <extension url="statement">
-               <valueString value="define function &quot;EncounterResource&quot;(encounter Encounter, profileURLs List&lt;FHIR.canonical>):&#xa;  encounter e&#xa;  return Encounter{&#xa;    id: FHIR.id{value: 'LCR-' + e.id},&#xa;    meta: MetaElement(e, profileURLs),&#xa;    extension: e.extension,&#xa;    identifier: e.identifier,&#xa;    status: e.status,&#xa;    statusHistory: e.statusHistory,&#xa;    class: e.class,&#xa;    classHistory: e.classHistory,&#xa;    type: e.type,&#xa;    serviceType: e.serviceType,&#xa;    priority: e.priority,&#xa;    subject: e.subject,&#xa;    episodeOfCare: e.episodeOfCare,&#xa;    basedOn: e.basedOn,&#xa;    participant: e.participant,&#xa;    appointment: e.appointment,&#xa;    period: e.period,&#xa;    length: e.length,&#xa;    reasonCode: e.reasonCode,&#xa;    reasonReference: e.reasonReference,&#xa;    diagnosis: e.diagnosis,&#xa;    account: e.account,&#xa;    hospitalization: e.hospitalization,&#xa;    location: e.location,&#xa;    serviceProvider: e.serviceProvider,&#xa;    partOf: e.partOf&#xa;  }"/>
+               <valueString value="define function SpecimenCollection(collection FHIR.Specimen.Collection):&#xa;  collection c&#xa;  return FHIR.Specimen.Collection{&#xa;    collector: c.collector,&#xa;    collected: c.collected,&#xa;    //duration: c.duration, Does not parse for some reason? Need to bring up with SmileCDR&#xa;    quantity: c.quantity,&#xa;    method: c.method,&#xa;    bodySite: c.bodySite,&#xa;    fastingStatus: c.fastingStatus&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="56"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="SpecimenProcessing"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function SpecimenProcessing(processing List&lt;FHIR.Specimen.Processing>):&#xa;  processing p&#xa;  return FHIR.Specimen.Processing{&#xa;    description: p.description,&#xa;    procedure: p.procedure,&#xa;    additive: p.additive,&#xa;    time: p.time&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="57"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="SpecimenContainer"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function SpecimenContainer(container List&lt;FHIR.Specimen.Container>):&#xa;  container c&#xa;  return FHIR.Specimen.Container{&#xa;    description: c.description,&#xa;    type: c.type,&#xa;    capacity: c.capacity,&#xa;    specimenQuantity: c.specimenQuantity,&#xa;    additive: c.additive&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="58"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="ObservationLabResource"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function ObservationLabResource(observation Observation, profileURLs List&lt;FHIR.canonical>):&#xa;  observation o&#xa;  return Observation{&#xa;    id: FHIR.id {value: 'LCR-' + o.id},&#xa;    meta: MetaElement(o, profileURLs),&#xa;    extension: o.extension,&#xa;    basedOn: o.basedOn,&#xa;    partOf: o.partOf,&#xa;    status: o.status,&#xa;    category: ObservationLabCategory(o.category),&#xa;    code: o.code,&#xa;    subject: o.subject,&#xa;    focus: o.focus,&#xa;    encounter: o.encounter,&#xa;    effective: o.effective,&#xa;    issued: o.issued,&#xa;    performer: o.performer,&#xa;    value: o.value,&#xa;    dataAbsentReason: o.dataAbsentReason,&#xa;    interpretation: o.interpretation,&#xa;    note: o.note,&#xa;    bodySite: o.bodySite,&#xa;    method: o.method,&#xa;    specimen: o.specimen,&#xa;    device: o.device,&#xa;    referenceRange: ObservationReferenceRange(o.referenceRange),&#xa;    hasMember: o.hasMember,&#xa;    derivedFrom: o.derivedFrom,&#xa;    component: ObservationComponent(o.component)&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="59"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="ObservationLabCategory"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function ObservationLabCategory(category List&lt;CodeableConcept>):&#xa;  category c&#xa;  return CodeableConcept{&#xa;    coding: ObservationLabCoding(c.coding),&#xa;    text: c.text&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="60"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="ObservationLabCoding"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function ObservationLabCoding(coding List&lt;Coding>):&#xa;  coding c&#xa;  return Coding{&#xa;    id: c.id,&#xa;    extension: c.extension,&#xa;    system: c.system,&#xa;    version: c.version,&#xa;    code: c.code,&#xa;    display: c.display,&#xa;    userSelected: c.userSelected&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="61"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="ObservationReferenceRange"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function ObservationReferenceRange(referenceRange List&lt;FHIR.Observation.ReferenceRange>):&#xa;  referenceRange rR&#xa;  return FHIR.Observation.ReferenceRange{&#xa;    low: rR.low,&#xa;    high: rR.high,&#xa;    type: rR.type,&#xa;    appliesTo: rR.appliesTo,&#xa;    age: rR.age,&#xa;    text: rR.text&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="62"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="ObservationComponent"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function ObservationComponent(component List&lt;FHIR.Observation.Component>):&#xa;  component c&#xa;  return FHIR.Observation.Component{&#xa;    code: c.code,&#xa;    value: c.value,&#xa;    dataAbsentReason: c.dataAbsentReason,&#xa;    interpretation: c.interpretation,&#xa;    referenceRange: c.referenceRange&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="63"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="ProcedureResource"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function ProcedureResource(procedure Procedure, profileURLs List&lt;FHIR.canonical>):&#xa;  procedure p&#xa;  return Procedure{&#xa;    id: FHIR.id {value: 'LCR-' + p.id},&#xa;    meta: MetaElement(p, profileURLs),&#xa;    extension: p.extension,&#xa;    instantiatesCanonical: p.instantiatesCanonical,&#xa;    instantiatesUri: p.instantiatesUri,&#xa;    basedOn: p.basedOn,&#xa;    partOf: p.partOf,&#xa;    status: p.status,&#xa;    statusReason: p.statusReason,&#xa;    category: p.category,&#xa;    code: p.code,&#xa;    subject: p.subject,&#xa;    encounter: p.encounter,&#xa;    performed: p.performed,&#xa;    recorder: p.recorder,&#xa;    asserter: p.asserter,&#xa;    performer: ProcedurePerformer(p.performer),&#xa;    location: p.location,&#xa;    reasonCode: p.reasonCode,&#xa;    reasonReference: p.reasonReference,&#xa;    bodySite: p.bodySite,&#xa;    outcome: p.outcome,&#xa;    report: p.report,&#xa;    complication: p.complication,&#xa;    complicationDetail: p.complicationDetail,&#xa;    followUp: p.followUp,&#xa;    note: p.note,&#xa;    focalDevice: ProcedureFocalDevice(p.focalDevice),&#xa;    usedReference: p.usedReference,&#xa;    usedCode: p.usedCode&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="64"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="ProcedurePerformer"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function ProcedurePerformer(performer List&lt;FHIR.Procedure.Performer>):&#xa;  performer p&#xa;  return FHIR.Procedure.Performer{&#xa;    function: p.function,&#xa;    actor: p.actor,&#xa;    onBehalfOf: p.onBehalfOf&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="65"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="ProcedureFocalDevice"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function ProcedureFocalDevice(device List&lt;FHIR.Procedure.FocalDevice>):&#xa;  device d&#xa;  return FHIR.Procedure.FocalDevice{&#xa;    action: d.action,&#xa;    manipulated: d.manipulated&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="66"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="ServiceRequestResource"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function ServiceRequestResource(serviceRequest ServiceRequest, profileURLs List&lt;FHIR.canonical>):&#xa;  serviceRequest sR&#xa;  return ServiceRequest{&#xa;    id: FHIR.id {value: 'LCR-' + sR.id},&#xa;    meta: MetaElement(sR, profileURLs),&#xa;    extension: sR.extension,&#xa;    instantiatesCanonical: sR.instantiatesCanonical,&#xa;    instantiatesUri: sR.instantiatesUri,&#xa;    basedOn: sR.basedOn,&#xa;    replaces: sR.replaces,&#xa;    requisition: sR.requisition,&#xa;    status: sR.status,&#xa;    intent: sR.intent,&#xa;    category: sR.category,&#xa;    priority: sR.priority,&#xa;    doNotPerform: sR.doNotPerform,&#xa;    code: sR.code,&#xa;    orderDetail: sR.orderDetail,&#xa;    quantity: sR.quantity,&#xa;    subject: sR.subject,&#xa;    encounter: sR.encounter,&#xa;    occurrence: sR.occurrence,&#xa;    asNeeded: sR.asNeeded,&#xa;    authoredOn: sR.authoredOn,&#xa;    requester: sR.requester,&#xa;    performerType: sR.performerType,&#xa;    performer: sR.performer,&#xa;    locationCode: sR.locationCode,&#xa;    locationReference: sR.locationReference,&#xa;    reasonCode: sR.reasonCode,&#xa;    reasonReference: sR.reasonReference,&#xa;    insurance: sR.insurance,&#xa;    supportingInfo: sR.supportingInfo,&#xa;    specimen: sR.specimen,&#xa;    bodySite: sR.bodySite,&#xa;    note: sR.note,&#xa;    patientInstruction: sR.patientInstruction,&#xa;    relevantHistory: sR.relevantHistory&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="67"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="LocationResource"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function LocationResource(location Location, profileURLs List&lt;FHIR.canonical>):&#xa;  location l&#xa;  return Location{&#xa;    id: FHIR.id {value: 'LCR-' + l.id},&#xa;    meta: MetaElement(l, profileURLs),&#xa;    extension: l.extension,&#xa;    status: l.status,&#xa;    operationalStatus: l.operationalStatus,&#xa;    name: l.name,&#xa;    alias: l.alias,&#xa;    description: l.description,&#xa;    mode: l.mode,&#xa;    type: l.type,&#xa;    telecom: l.telecom,&#xa;    address: LocationAddress(l.address),&#xa;    physicalType: l.physicalType,&#xa;    position: LocationPosition(l.position),&#xa;    managingOrganization: l.managingOrganization,&#xa;    partOf: l.partOf,&#xa;    hoursOfOperation: LocationHoursOfOperation(l.hoursOfOperation),&#xa;    availabilityExceptions: l.availabilityExceptions,&#xa;    endpoint: l.endpoint&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="68"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="LocationAddress"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function LocationAddress(address FHIR.Address):&#xa;  address a&#xa;  return FHIR.Address{&#xa;    use: a.use,&#xa;    type: a.type,&#xa;    text: a.text,&#xa;    line: a.line,&#xa;    city: a.city,&#xa;    district: a.district,&#xa;    state: a.state,&#xa;    postalCode: a.postalCode,&#xa;    country: a.country,&#xa;    period: a.period&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="69"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="LocationPosition"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function LocationPosition(position FHIR.Location.Position):&#xa;  position p&#xa;  return FHIR.Location.Position{&#xa;    longitude: p.longitude,&#xa;    latitude: p.latitude,&#xa;    altitude: p.altitude&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="70"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="LocationHoursOfOperation"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function LocationHoursOfOperation(hoursOfOperation List&lt;FHIR.Location.HoursOfOperation>):&#xa;  hoursOfOperation hOO&#xa;  return FHIR.Location.HoursOfOperation{&#xa;    daysOfWeek: hOO.daysOfWeek,&#xa;    allDay: hOO.allDay,&#xa;    openingTime: hOO.openingTime,&#xa;    closingTime: hOO.closingTime&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="71"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="EncounterResource"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function EncounterResource(encounter Encounter, profileURLs List&lt;FHIR.canonical>):&#xa;  encounter e&#xa;  return Encounter{&#xa;    id: FHIR.id{value: 'LCR-' + e.id},&#xa;    meta: MetaElement(e, profileURLs),&#xa;    extension: e.extension,&#xa;    identifier: EncounterIdentifier(e.identifier),&#xa;    status: e.status,&#xa;    statusHistory: EncounterStatusHistory(e.statusHistory),&#xa;    class: e.class,&#xa;    classHistory: EncounterClassHistory(e.classHistory),&#xa;    type: e.type,&#xa;    serviceType: e.serviceType,&#xa;    priority: e.priority,&#xa;    subject: e.subject,&#xa;    participant: EncounterParticipant(e.participant),&#xa;    period: e.period,&#xa;    length: e.length,&#xa;    reasonCode: e.reasonCode,&#xa;    reasonReference: e.reasonReference,&#xa;    diagnosis: EncounterDiagnosis(e.diagnosis),&#xa;    account: e.account,&#xa;    hospitalization: EncounterHospitalization(e.hospitalization),&#xa;    location: EncounterLocation(e.location),&#xa;    partOf: e.partOf&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="72"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="EncounterIdentifier"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function EncounterIdentifier(identifier List&lt;FHIR.Identifier>):&#xa;  identifier i&#xa;  return FHIR.Identifier{&#xa;    use: i.use,&#xa;    type: i.type,&#xa;    system: i.system,&#xa;    value: i.value,&#xa;    period: i.period&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="73"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="EncounterStatusHistory"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function EncounterStatusHistory(statusHistory List&lt;FHIR.Encounter.StatusHistory>):&#xa;  statusHistory sH&#xa;  return FHIR.Encounter.StatusHistory{&#xa;    status: sH.status,&#xa;    period: sH.period&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="74"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="EncounterClassHistory"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function EncounterClassHistory(classHistory List&lt;FHIR.Encounter.ClassHistory>):&#xa;  classHistory cH&#xa;  return FHIR.Encounter.ClassHistory{&#xa;    class: cH.class,&#xa;    period: cH.period&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="75"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="EncounterParticipant"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function EncounterParticipant(participant List&lt;FHIR.Encounter.Participant>):&#xa;  participant p&#xa;  return FHIR.Encounter.Participant{&#xa;    type: p.type,&#xa;    period: p.period,&#xa;    individual: p.individual&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="76"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="EncounterDiagnosis"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis>):&#xa;  diagnosis d&#xa;  return FHIR.Encounter.Diagnosis{&#xa;    condition: d.condition,&#xa;    use: d.use,&#xa;    rank: d.rank&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="77"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="EncounterHospitalization"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function EncounterHospitalization(hospitalization FHIR.Encounter.Hospitalization):&#xa;  hospitalization h&#xa;  return FHIR.Encounter.Hospitalization{&#xa;    preAdmissionIdentifier: h.preAdmissionIdentifier,&#xa;    origin: h.origin,&#xa;    admitSource: h.admitSource,&#xa;    reAdmission: h.reAdmission,&#xa;    dietPreference: h.dietPreference,&#xa;    specialCourtesy: h.specialCourtesy,&#xa;    specialArrangement: h.specialArrangement,&#xa;    destination: h.destination,&#xa;    dischargeDisposition: h.dischargeDisposition&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="78"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="EncounterLocation"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function EncounterLocation(location List&lt;FHIR.Encounter.Location>):&#xa;  location l&#xa;  return FHIR.Encounter.Location{&#xa;    location: l.location,&#xa;    status: l.status,&#xa;    physicalType: l.physicalType,&#xa;    period: l.period&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="79"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -858,7 +1180,7 @@
                <valueString value="/**&#xa;* Normalizes the input argument to an interval representation.&#xa;* The input can be provided as a dateTime, Period, Timing, instant, string, Age, or Range.&#xa;* The intent of this function is to provide a clear and concise mechanism to treat single&#xa;* elements that have multiple possible representations as intervals so that logic doesn't have to account&#xa;* for the variability. More complex calculations (such as medication request period or dispense period&#xa;* calculation) need specific guidance and consideration. That guidance may make use of this function, but&#xa;* the focus of this function is on single element calculations where the semantics are unambiguous.&#xa;* If the input is a dateTime, the result a DateTime Interval beginning and ending on that dateTime.&#xa;* If the input is a Period, the result is a DateTime Interval.&#xa;* If the input is a Timing, an error is raised indicating a single interval cannot be computed from a Timing.&#xa;* If the input is an instant, the result is a DateTime Interval beginning and ending on that instant.&#xa;* If the input is a string, an error is raised indicating a single interval cannot be computed from a string.&#xa;* If the input is an Age, the result is a DateTime Interval beginning when the patient was the given Age,&#xa;and ending immediately prior to when the patient was the given Age plus one year.&#xa;* If the input is a Range, the result is a DateTime Interval beginning when the patient was the Age given&#xa;by the low end of the Range, and ending immediately prior to when the patient was the Age given by the&#xa;high end of the Range plus one year.*/&#xa;define function &quot;Normalize Interval&quot;(choice Choice&lt;FHIR.dateTime, FHIR.Period, FHIR.Timing, FHIR.instant, FHIR.string, FHIR.Age, FHIR.Range> ):&#xa;  case&#xa;  &#x9;  when choice is FHIR.dateTime then&#xa;  &#x9;Interval[FHIRHelpers.ToDateTime(choice as FHIR.dateTime), FHIRHelpers.ToDateTime(choice as FHIR.dateTime)]&#xa;  &#x9;&#x9;when choice is FHIR.Period then&#xa;  &#x9;&#x9;FHIRHelpers.ToInterval(choice as FHIR.Period)&#xa;  &#x9;&#x9;when choice is FHIR.instant then&#xa;  &#x9;&#x9;&#x9;Interval[FHIRHelpers.ToDateTime(choice as FHIR.instant), FHIRHelpers.ToDateTime(choice as FHIR.instant)]&#xa;  &#x9;&#x9;when choice is FHIR.Age then&#xa;  &#x9;&#x9;  Interval[FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(choice as FHIR.Age),&#xa;  &#x9;&#x9;&#x9;  FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity(choice as FHIR.Age) + 1 year)&#xa;  &#x9;&#x9;when choice is FHIR.Range then&#xa;  &#x9;&#x9;  Interval[FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity((choice as FHIR.Range).low),&#xa;  &#x9;&#x9;&#x9;  FHIRHelpers.ToDate(Patient.birthDate) + FHIRHelpers.ToQuantity((choice as FHIR.Range).high) + 1 year)&#xa;  &#x9;&#x9;when choice is FHIR.Timing then&#xa;  &#x9;&#x9;  Message(null as Interval&lt;DateTime>, true, '1', 'Error', 'Cannot compute a single interval from a Timing type')&#xa;    when choice is FHIR.string then&#xa;      Message(null as Interval&lt;DateTime>, true, '1', 'Error', 'Cannot compute an interval from a String value')&#xa;  &#x9;&#x9;else&#xa;  &#x9;&#x9;&#x9;null as Interval&lt;DateTime>&#xa;  &#x9;end"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="57"/>
+               <valueInteger value="80"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -872,7 +1194,7 @@
                <valueString value="define function ToDateTime(value dateTime): value.value"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="58"/>
+               <valueInteger value="81"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -886,7 +1208,7 @@
                <valueString value="define function ToDate(value date): value.value"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="59"/>
+               <valueInteger value="82"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -900,7 +1222,7 @@
                <valueString value="define function ToQuantity(quantity FHIR.Quantity):&#xa;    case&#xa;        when quantity is null then null&#xa;        when quantity.value is null then null&#xa;        when quantity.comparator is not null then&#xa;            Message(null, true, 'FHIRHelpers.ToQuantity.ComparatorQuantityNotSupported', 'Error', 'FHIR Quantity value has a comparator and cannot be converted to a System.Quantity value.')&#xa;        when quantity.system is null or quantity.system.value = 'http://unitsofmeasure.org'&#xa;              or quantity.system.value = 'http://hl7.org/fhirpath/CodeSystem/calendar-units' then&#xa;            System.Quantity { value: quantity.value.value, unit: ToCalendarUnit(Coalesce(quantity.code.value, quantity.unit.value, '1')) }&#xa;        else&#xa;            Message(null, true, 'FHIRHelpers.ToQuantity.InvalidFHIRQuantity', 'Error', 'Invalid FHIR Quantity code: ' &amp; quantity.unit.value &amp; ' (' &amp; quantity.system.value &amp; '|' &amp; quantity.code.value &amp; ')')&#xa;    end"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="60"/>
+               <valueInteger value="83"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -914,7 +1236,7 @@
                <valueString value="define function ToCalendarUnit(unit System.String):&#xa;    case unit&#xa;        when 'ms' then 'millisecond'&#xa;        when 's' then 'second'&#xa;        when 'min' then 'minute'&#xa;        when 'h' then 'hour'&#xa;        when 'd' then 'day'&#xa;        when 'wk' then 'week'&#xa;        when 'mo' then 'month'&#xa;        when 'a' then 'year'&#xa;        else unit&#xa;    end"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="61"/>
+               <valueInteger value="84"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -925,10 +1247,38 @@
                <valueString value="MedicationRequestResource"/>
             </extension>
             <extension url="statement">
-               <valueString value="define function &quot;MedicationRequestResource&quot;(medicationRequest MedicationRequest, profileURLs List&lt;FHIR.canonical>):&#xa;  medicationRequest m&#xa;  return MedicationRequest{&#xa;    id: FHIR.id {value: 'LCR-' + m.id},&#xa;    meta: MetaElement(medicationRequest, profileURLs),&#xa;    extension: m.extension,&#xa;    identifier: m.identifier,&#xa;    status: m.status,&#xa;    statusReason: m.statusReason,&#xa;    intent: m.intent,&#xa;    category: m.category,&#xa;    priority: m.priority,&#xa;    doNotPerform: m.doNotPerform,&#xa;    reported: m.reported,&#xa;    medication: m.medication,&#xa;    subject: m.subject,&#xa;    encounter: m.encounter,&#xa;    supportingInformation: m.supportingInformation,&#xa;    authoredOn: m.authoredOn,&#xa;    requester: m.requester,&#xa;    performer: m.performer,&#xa;    performerType: m.performerType,&#xa;    recorder: m.recorder,&#xa;    reasonCode: m.reasonCode,&#xa;    reasonReference: m.reasonReference,&#xa;    instantiatesCanonical: m.instantiatesCanonical,&#xa;    instantiatesUri: m.instantiatesUri,&#xa;    basedOn: m.basedOn,&#xa;    groupIdentifier: m.groupIdentifier,&#xa;    courseOfTherapyType: m.courseOfTherapyType,&#xa;    insurance: m.insurance,&#xa;    note: m.note,&#xa;    dosageInstruction: m.dosageInstruction,&#xa;    dispenseRequest: m.dispenseRequest,&#xa;    substitution: m.substitution,&#xa;    priorPrescription: m.priorPrescription,&#xa;    detectedIssue: m.detectedIssue,&#xa;    eventHistory: m.eventHistory&#xa;  }"/>
+               <valueString value="define function MedicationRequestResource(medicationRequest MedicationRequest, profileURLs List&lt;FHIR.canonical>):&#xa;  medicationRequest m&#xa;  return MedicationRequest{&#xa;    id: FHIR.id {value: 'LCR-' + m.id},&#xa;    meta: MetaElement(medicationRequest, profileURLs),&#xa;    extension: m.extension,&#xa;    status: m.status,&#xa;    statusReason: m.statusReason,&#xa;    intent: m.intent,&#xa;    category: m.category,&#xa;    priority: m.priority,&#xa;    doNotPerform: m.doNotPerform,&#xa;    reported: m.reported,&#xa;    medication: m.medication,&#xa;    subject: m.subject,&#xa;    encounter: m.encounter,&#xa;    authoredOn: m.authoredOn,&#xa;    requester: m.requester,&#xa;    recorder: m.recorder,&#xa;    reasonCode: m.reasonCode,&#xa;    reasonReference: m.reasonReference,&#xa;    instantiatesCanonical: m.instantiatesCanonical,&#xa;    instantiatesUri: m.instantiatesUri,&#xa;    courseOfTherapyType: m.courseOfTherapyType,&#xa;    dosageInstruction: MedicationRequestDosageInstruction(m.dosageInstruction)&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="62"/>
+               <valueInteger value="85"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="MedicationRequestDosageInstruction"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function MedicationRequestDosageInstruction(dosageInstruction List&lt;FHIR.Dosage>):&#xa;  dosageInstruction dI&#xa;  return FHIR.Dosage{&#xa;    text: dI.text,&#xa;    patientInstruction: dI.patientInstruction,&#xa;    timing: dI.timing,&#xa;    asNeeded: dI.asNeeded,&#xa;    site: dI.site,&#xa;    route: dI.route,&#xa;    method: dI.method,&#xa;    doseAndRate: MedicationRequestDoseAndRate(dI.doseAndRate)&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="86"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="MedicationRequestDoseAndRate"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function MedicationRequestDoseAndRate(doseAndRate List&lt;FHIR.Dosage.DoseAndRate>):&#xa;  doseAndRate dR&#xa;  return FHIR.Dosage.DoseAndRate{&#xa;    type: dR.type,&#xa;    dose: dR.dose,&#xa;    rate: dR.rate&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="87"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -939,10 +1289,10 @@
                <valueString value="PatientResource"/>
             </extension>
             <extension url="statement">
-               <valueString value="define function &quot;PatientResource&quot;(patient Patient, profileURLs List&lt;FHIR.canonical>):&#xa;  patient p&#xa;  return Patient{&#xa;    id: FHIR.id{value: 'LCR-' + p.id},&#xa;    meta: MetaElement(p, profileURLs),&#xa;    extension: GetPatientExtensions(p) union GetIdExtensions(p),&#xa;    identifier: p.identifier,&#xa;    active: p.active,&#xa;    name: p.name,&#xa;    telecom: p.telecom,&#xa;    gender: p.gender,&#xa;    birthDate: p.birthDate,&#xa;    deceased: p.deceased,&#xa;    address: p.address,&#xa;    contact: p.contact,&#xa;    communication: p.communication,&#xa;    link: p.link&#xa;  }"/>
+               <valueString value="define function PatientResource(patient Patient, profileURLs List&lt;FHIR.canonical>):&#xa;  patient p&#xa;  return Patient{&#xa;    id: FHIR.id{value: 'LCR-' + p.id},&#xa;    meta: MetaElement(p, profileURLs),&#xa;    extension: GetPatientExtensions(p) union GetIdExtensions(p),&#xa;    identifier: PatientIdentifier(p.identifier),&#xa;    active: p.active,&#xa;    name: PatientName(p.name),&#xa;    telecom: PatientTelecom(p.telecom),&#xa;    gender: p.gender,&#xa;    birthDate: p.birthDate,&#xa;    deceased: p.deceased,&#xa;    address: PatientAddress(p.address),&#xa;    maritalStatus: p.maritalStatus,&#xa;    multipleBirth: p.multipleBirth,&#xa;    photo: p.photo,&#xa;    contact: PatientContact(p.contact),&#xa;    communication: PatientCommunication(p.communication),&#xa;    generalPractitioner: p.generalPractitioner,&#xa;    managingOrganization: p.managingOrganization,&#xa;    link: PatientLink(p.link)&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="63"/>
+               <valueInteger value="88"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -956,7 +1306,7 @@
                <valueString value="define function &quot;GetPatientExtensions&quot;(domainResource DomainResource):&#xa;  domainResource.extension E&#xa;  where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'&#xa;    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'&#xa;    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'&#xa;    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity'&#xa;    or E.url = 'http://hl7.org/fhir/StructureDefinition/patient-genderIdentity'&#xa;    or E.url = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'&#xa;  return E"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="64"/>
+               <valueInteger value="89"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -970,7 +1320,105 @@
                <valueString value="define function &quot;GetIdExtensions&quot;(domainResource DomainResource):&#xa;  domainResource.extension E&#xa;  where E.url = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'&#xa;  return E"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="65"/>
+               <valueInteger value="90"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="PatientIdentifier"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function PatientIdentifier(identifier List&lt;FHIR.Identifier>):&#xa;  identifier i&#xa;  return FHIR.Identifier{&#xa;    id: i.id,&#xa;    extension: i.extension,&#xa;    use: i.use,&#xa;    type: i.type,&#xa;    system: i.system,&#xa;    value: i.value,&#xa;    period: i.period,&#xa;    assigner: i.assigner&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="91"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="PatientName"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function PatientName(name List&lt;FHIR.HumanName>):&#xa;  name n&#xa;  return FHIR.HumanName{&#xa;    id: n.id,&#xa;    extension: n.extension,&#xa;    use: n.use,&#xa;    text: n.text,&#xa;    family: n.family,&#xa;    given: n.given,&#xa;    prefix: n.prefix,&#xa;    suffix: n.suffix,&#xa;    period: n.period&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="92"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="PatientTelecom"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function PatientTelecom(telecom List&lt;FHIR.ContactPoint>):&#xa;  telecom t&#xa;  return FHIR.ContactPoint{&#xa;    system: t.system,&#xa;    value: t.value,&#xa;    use: t.use,&#xa;    rank: t.rank,&#xa;    period: t.period&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="93"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="PatientAddress"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function PatientAddress(address List&lt;FHIR.Address>):&#xa;  address a&#xa;  return FHIR.Address{&#xa;    id: a.id,&#xa;    extension: a.extension,&#xa;    use: a.use,&#xa;    type: a.type,&#xa;    text: a.text,&#xa;    line: a.line,&#xa;    city: a.city,&#xa;    district: a.district,&#xa;    state: a.state,&#xa;    postalCode: a.postalCode,&#xa;    country: a.country,&#xa;    period: a.period&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="94"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="PatientContact"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function PatientContact(contact List&lt;FHIR.Patient.Contact>):&#xa;  contact c&#xa;  return FHIR.Patient.Contact{&#xa;    id: c.id,&#xa;    extension: c.extension,&#xa;    relationship: c.relationship,&#xa;    name: c.name,&#xa;    telecom: c.telecom,&#xa;    address: c.address,&#xa;    gender: c.gender,&#xa;    organization: c.organization,&#xa;    period: c.period&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="95"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="PatientCommunication"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function PatientCommunication(communication List&lt;FHIR.Patient.Communication>):&#xa;  communication c&#xa;  return FHIR.Patient.Communication{&#xa;    id: c.id,&#xa;    extension: c.extension,&#xa;    language: c.language,&#xa;    preferred: c.preferred&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="96"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="PatientLink"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function PatientLink(link List&lt;FHIR.Patient.Link>):&#xa;  link l&#xa;  return FHIR.Patient.Link{&#xa;    id: l.id,&#xa;    extension: l.extension,&#xa;    modifierExtension: l.modifierExtension,&#xa;    other: l.other,&#xa;    type: l.type&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="97"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -981,10 +1429,38 @@
                <valueString value="MedicationResource"/>
             </extension>
             <extension url="statement">
-               <valueString value="define function &quot;MedicationResource&quot;(medication Medication, profileURLs List&lt;FHIR.canonical>):&#xa;  medication m&#xa;  return Medication{&#xa;    id: FHIR.id {value: 'LCR-' + m.id},&#xa;    meta: MetaElement(m, profileURLs),&#xa;    extension: m.extension,&#xa;    identifier: m.identifier,&#xa;    code: m.code,&#xa;    status: m.status,&#xa;    manufacturer: m.manufacturer,&#xa;    form: m.form,&#xa;    amount: m.amount,&#xa;    ingredient: m.ingredient,&#xa;    batch: m.batch&#xa;  }"/>
+               <valueString value="define function MedicationResource(medication Medication, profileURLs List&lt;FHIR.canonical>):&#xa;  medication m&#xa;  return Medication{&#xa;    id: FHIR.id {value: 'LCR-' + m.id},&#xa;    meta: MetaElement(m, profileURLs),&#xa;    extension: m.extension,&#xa;    code: m.code,&#xa;    status: m.status,&#xa;    manufacturer: m.manufacturer,&#xa;    form: m.form,&#xa;    amount: m.amount,&#xa;    ingredient: MedicationIngredient(m.ingredient),&#xa;    batch: MedicationBatch(m.batch)&#xa;  }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="66"/>
+               <valueInteger value="98"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="MedicationIngredient"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function MedicationIngredient(ingredient List&lt;FHIR.Medication.Ingredient>):&#xa;  ingredient i&#xa;  return FHIR.Medication.Ingredient{&#xa;    item: i.item,&#xa;    strength: i.strength&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="99"/>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="SharedResourceCreation"/>
+            </extension>
+            <extension url="name">
+               <valueString value="MedicationBatch"/>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function MedicationBatch(batch FHIR.Medication.Batch):&#xa;  batch b&#xa;  return FHIR.Medication.Batch{&#xa;    lotNumber: b.lotNumber,&#xa;    expirationDate: b.expirationDate&#xa;  }"/>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="100"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -998,7 +1474,7 @@
                <valueString value="define function &quot;GetMedicationFrom&quot;(choice Choice&lt;FHIR.CodeableConcept, FHIR.Reference>):&#xa;  case&#xa;    when choice is FHIR.Reference then&#xa;      GetMedication(choice as FHIR.Reference)&#xa;    else&#xa;      null&#xa;  end"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="67"/>
+               <valueInteger value="101"/>
             </extension>
          </extension>
          <name value="EffectiveDataRequirements"/>
@@ -1022,7 +1498,7 @@
          <relatedArtifact>
             <type value="depends-on"/>
             <display value="Library SharedResource"/>
-            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.004"/>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.005"/>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"/>
@@ -1364,7 +1840,6 @@
             <profile value="http://hl7.org/fhir/StructureDefinition/Medication"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="code"/>
             <mustSupport value="status"/>
             <mustSupport value="manufacturer"/>
@@ -1391,10 +1866,7 @@
             <mustSupport value="serviceType"/>
             <mustSupport value="priority"/>
             <mustSupport value="subject"/>
-            <mustSupport value="episodeOfCare"/>
-            <mustSupport value="basedOn"/>
             <mustSupport value="participant"/>
-            <mustSupport value="appointment"/>
             <mustSupport value="length"/>
             <mustSupport value="reasonCode"/>
             <mustSupport value="reasonReference"/>
@@ -1402,7 +1874,6 @@
             <mustSupport value="account"/>
             <mustSupport value="hospitalization"/>
             <mustSupport value="location"/>
-            <mustSupport value="serviceProvider"/>
             <mustSupport value="partOf"/>
             <mustSupport value="hospitalization.dischargeDisposition"/>
             <codeFilter>
@@ -1425,10 +1896,7 @@
             <mustSupport value="serviceType"/>
             <mustSupport value="priority"/>
             <mustSupport value="subject"/>
-            <mustSupport value="episodeOfCare"/>
-            <mustSupport value="basedOn"/>
             <mustSupport value="participant"/>
-            <mustSupport value="appointment"/>
             <mustSupport value="length"/>
             <mustSupport value="reasonCode"/>
             <mustSupport value="reasonReference"/>
@@ -1436,7 +1904,6 @@
             <mustSupport value="account"/>
             <mustSupport value="hospitalization"/>
             <mustSupport value="location"/>
-            <mustSupport value="serviceProvider"/>
             <mustSupport value="partOf"/>
             <mustSupport value="hospitalization.dischargeDisposition"/>
             <codeFilter>
@@ -1478,10 +1945,7 @@
             <mustSupport value="serviceType"/>
             <mustSupport value="priority"/>
             <mustSupport value="subject"/>
-            <mustSupport value="episodeOfCare"/>
-            <mustSupport value="basedOn"/>
             <mustSupport value="participant"/>
-            <mustSupport value="appointment"/>
             <mustSupport value="length"/>
             <mustSupport value="reasonCode"/>
             <mustSupport value="reasonReference"/>
@@ -1489,7 +1953,6 @@
             <mustSupport value="account"/>
             <mustSupport value="hospitalization"/>
             <mustSupport value="location"/>
-            <mustSupport value="serviceProvider"/>
             <mustSupport value="partOf"/>
             <mustSupport value="hospitalization.dischargeDisposition"/>
             <codeFilter>
@@ -1512,10 +1975,7 @@
             <mustSupport value="serviceType"/>
             <mustSupport value="priority"/>
             <mustSupport value="subject"/>
-            <mustSupport value="episodeOfCare"/>
-            <mustSupport value="basedOn"/>
             <mustSupport value="participant"/>
-            <mustSupport value="appointment"/>
             <mustSupport value="length"/>
             <mustSupport value="reasonCode"/>
             <mustSupport value="reasonReference"/>
@@ -1523,7 +1983,6 @@
             <mustSupport value="account"/>
             <mustSupport value="hospitalization"/>
             <mustSupport value="location"/>
-            <mustSupport value="serviceProvider"/>
             <mustSupport value="partOf"/>
             <mustSupport value="hospitalization.dischargeDisposition"/>
             <codeFilter>
@@ -1551,17 +2010,13 @@
             <mustSupport value="serviceType"/>
             <mustSupport value="priority"/>
             <mustSupport value="subject"/>
-            <mustSupport value="episodeOfCare"/>
-            <mustSupport value="basedOn"/>
             <mustSupport value="participant"/>
-            <mustSupport value="appointment"/>
             <mustSupport value="length"/>
             <mustSupport value="reasonCode"/>
             <mustSupport value="reasonReference"/>
             <mustSupport value="diagnosis"/>
             <mustSupport value="account"/>
             <mustSupport value="hospitalization"/>
-            <mustSupport value="serviceProvider"/>
             <mustSupport value="partOf"/>
             <mustSupport value="hospitalization.dischargeDisposition"/>
          </dataRequirement>
@@ -1570,7 +2025,6 @@
             <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="status"/>
             <mustSupport value="operationalStatus"/>
             <mustSupport value="name"/>
@@ -1596,7 +2050,6 @@
             <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="status"/>
             <mustSupport value="operationalStatus"/>
             <mustSupport value="name"/>
@@ -1622,7 +2075,6 @@
             <mustSupport value="effective"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="instantiates"/>
             <mustSupport value="partOf"/>
             <mustSupport value="statusReason"/>
@@ -1650,7 +2102,6 @@
             <mustSupport value="specimen.collection"/>
             <mustSupport value="specimen.collection.collected"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="basedOn"/>
             <mustSupport value="partOf"/>
             <mustSupport value="code"/>
@@ -1686,7 +2137,6 @@
             <mustSupport value="specimen.collection.collected"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="basedOn"/>
             <mustSupport value="partOf"/>
             <mustSupport value="subject"/>
@@ -1722,7 +2172,6 @@
             <mustSupport value="specimen.collection.collected"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="basedOn"/>
             <mustSupport value="partOf"/>
             <mustSupport value="subject"/>
@@ -1758,7 +2207,6 @@
             <mustSupport value="specimen.collection.collected"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="basedOn"/>
             <mustSupport value="partOf"/>
             <mustSupport value="subject"/>
@@ -1794,7 +2242,6 @@
             <mustSupport value="specimen.collection.collected"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="basedOn"/>
             <mustSupport value="partOf"/>
             <mustSupport value="subject"/>
@@ -1830,7 +2277,6 @@
             <mustSupport value="specimen.collection.collected"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="basedOn"/>
             <mustSupport value="partOf"/>
             <mustSupport value="subject"/>
@@ -1866,7 +2312,6 @@
             <mustSupport value="specimen.collection.collected"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="basedOn"/>
             <mustSupport value="partOf"/>
             <mustSupport value="subject"/>
@@ -1901,7 +2346,6 @@
             <mustSupport value="specimen.collection.collected"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="basedOn"/>
             <mustSupport value="partOf"/>
             <mustSupport value="code"/>
@@ -1928,7 +2372,6 @@
             <mustSupport value="code"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="basedOn"/>
             <mustSupport value="status"/>
             <mustSupport value="category"/>
@@ -1940,11 +2383,8 @@
             <mustSupport value="resultsInterpreter"/>
             <mustSupport value="specimen"/>
             <mustSupport value="result"/>
-            <mustSupport value="imagingStudy"/>
-            <mustSupport value="media"/>
             <mustSupport value="conclusion"/>
             <mustSupport value="conclusionCode"/>
-            <mustSupport value="presentedForm"/>
             <codeFilter>
                <path value="code"/>
                <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1312"/>
@@ -1956,7 +2396,6 @@
             <mustSupport value="code"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="basedOn"/>
             <mustSupport value="status"/>
             <mustSupport value="category"/>
@@ -1968,11 +2407,8 @@
             <mustSupport value="resultsInterpreter"/>
             <mustSupport value="specimen"/>
             <mustSupport value="result"/>
-            <mustSupport value="imagingStudy"/>
-            <mustSupport value="media"/>
             <mustSupport value="conclusion"/>
             <mustSupport value="conclusionCode"/>
-            <mustSupport value="presentedForm"/>
             <codeFilter>
                <path value="code"/>
                <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1311"/>
@@ -1984,7 +2420,6 @@
             <mustSupport value="code"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="basedOn"/>
             <mustSupport value="status"/>
             <mustSupport value="category"/>
@@ -1996,11 +2431,8 @@
             <mustSupport value="resultsInterpreter"/>
             <mustSupport value="specimen"/>
             <mustSupport value="result"/>
-            <mustSupport value="imagingStudy"/>
-            <mustSupport value="media"/>
             <mustSupport value="conclusion"/>
             <mustSupport value="conclusionCode"/>
-            <mustSupport value="presentedForm"/>
             <codeFilter>
                <path value="code"/>
                <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1142"/>
@@ -2012,7 +2444,6 @@
             <mustSupport value="code"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="basedOn"/>
             <mustSupport value="status"/>
             <mustSupport value="category"/>
@@ -2024,11 +2455,8 @@
             <mustSupport value="resultsInterpreter"/>
             <mustSupport value="specimen"/>
             <mustSupport value="result"/>
-            <mustSupport value="imagingStudy"/>
-            <mustSupport value="media"/>
             <mustSupport value="conclusion"/>
             <mustSupport value="conclusionCode"/>
-            <mustSupport value="presentedForm"/>
             <codeFilter>
                <path value="code"/>
                <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1158"/>
@@ -2040,7 +2468,6 @@
             <mustSupport value="code"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="basedOn"/>
             <mustSupport value="status"/>
             <mustSupport value="category"/>
@@ -2052,11 +2479,8 @@
             <mustSupport value="resultsInterpreter"/>
             <mustSupport value="specimen"/>
             <mustSupport value="result"/>
-            <mustSupport value="imagingStudy"/>
-            <mustSupport value="media"/>
             <mustSupport value="conclusion"/>
             <mustSupport value="conclusionCode"/>
-            <mustSupport value="presentedForm"/>
             <codeFilter>
                <path value="code"/>
                <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.336"/>
@@ -2068,7 +2492,6 @@
             <mustSupport value="code"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="basedOn"/>
             <mustSupport value="status"/>
             <mustSupport value="category"/>
@@ -2080,11 +2503,8 @@
             <mustSupport value="resultsInterpreter"/>
             <mustSupport value="specimen"/>
             <mustSupport value="result"/>
-            <mustSupport value="imagingStudy"/>
-            <mustSupport value="media"/>
             <mustSupport value="conclusion"/>
             <mustSupport value="conclusionCode"/>
-            <mustSupport value="presentedForm"/>
             <codeFilter>
                <path value="code"/>
                <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.337"/>
@@ -2097,7 +2517,6 @@
             <mustSupport value="status"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="basedOn"/>
             <mustSupport value="category"/>
             <mustSupport value="code"/>
@@ -2108,11 +2527,8 @@
             <mustSupport value="performer"/>
             <mustSupport value="resultsInterpreter"/>
             <mustSupport value="specimen"/>
-            <mustSupport value="imagingStudy"/>
-            <mustSupport value="media"/>
             <mustSupport value="conclusion"/>
             <mustSupport value="conclusionCode"/>
-            <mustSupport value="presentedForm"/>
          </dataRequirement>
          <dataRequirement>
             <type value="Specimen"/>
@@ -2143,7 +2559,6 @@
             <mustSupport value="performed"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="instantiatesCanonical"/>
             <mustSupport value="instantiatesUri"/>
             <mustSupport value="basedOn"/>
@@ -2163,6 +2578,7 @@
             <mustSupport value="outcome"/>
             <mustSupport value="report"/>
             <mustSupport value="complication"/>
+            <mustSupport value="complicationDetail"/>
             <mustSupport value="followUp"/>
             <mustSupport value="note"/>
             <mustSupport value="focalDevice"/>
@@ -2178,7 +2594,6 @@
             <profile value="http://hl7.org/fhir/StructureDefinition/Procedure"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="instantiatesCanonical"/>
             <mustSupport value="instantiatesUri"/>
             <mustSupport value="basedOn"/>
@@ -2200,6 +2615,7 @@
             <mustSupport value="outcome"/>
             <mustSupport value="report"/>
             <mustSupport value="complication"/>
+            <mustSupport value="complicationDetail"/>
             <mustSupport value="followUp"/>
             <mustSupport value="note"/>
             <mustSupport value="focalDevice"/>
@@ -2211,7 +2627,6 @@
             <profile value="http://hl7.org/fhir/StructureDefinition/ServiceRequest"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="instantiatesCanonical"/>
             <mustSupport value="instantiatesUri"/>
             <mustSupport value="basedOn"/>
@@ -2251,7 +2666,6 @@
             <mustSupport value="code"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="instantiatesCanonical"/>
             <mustSupport value="instantiatesUri"/>
             <mustSupport value="basedOn"/>
@@ -2294,7 +2708,6 @@
             <mustSupport value="code"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="instantiatesCanonical"/>
             <mustSupport value="instantiatesUri"/>
             <mustSupport value="basedOn"/>
@@ -2337,7 +2750,6 @@
             <mustSupport value="code"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="instantiatesCanonical"/>
             <mustSupport value="instantiatesUri"/>
             <mustSupport value="basedOn"/>
@@ -2380,7 +2792,6 @@
             <mustSupport value="code"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="instantiatesCanonical"/>
             <mustSupport value="instantiatesUri"/>
             <mustSupport value="basedOn"/>
@@ -2423,7 +2834,6 @@
             <mustSupport value="code"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="instantiatesCanonical"/>
             <mustSupport value="instantiatesUri"/>
             <mustSupport value="basedOn"/>
@@ -2466,7 +2876,6 @@
             <mustSupport value="code"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="instantiatesCanonical"/>
             <mustSupport value="instantiatesUri"/>
             <mustSupport value="basedOn"/>
@@ -2515,8 +2924,13 @@
             <mustSupport value="birthDate"/>
             <mustSupport value="deceased"/>
             <mustSupport value="address"/>
+            <mustSupport value="maritalStatus"/>
+            <mustSupport value="multipleBirth"/>
+            <mustSupport value="photo"/>
             <mustSupport value="contact"/>
             <mustSupport value="communication"/>
+            <mustSupport value="generalPractitioner"/>
+            <mustSupport value="managingOrganization"/>
             <mustSupport value="link"/>
          </dataRequirement>
          <dataRequirement>
@@ -2526,7 +2940,6 @@
             <mustSupport value="authoredOn"/>
             <mustSupport value="id"/>
             <mustSupport value="extension"/>
-            <mustSupport value="identifier"/>
             <mustSupport value="status"/>
             <mustSupport value="statusReason"/>
             <mustSupport value="intent"/>
@@ -2536,26 +2949,14 @@
             <mustSupport value="reported"/>
             <mustSupport value="subject"/>
             <mustSupport value="encounter"/>
-            <mustSupport value="supportingInformation"/>
             <mustSupport value="requester"/>
-            <mustSupport value="performer"/>
-            <mustSupport value="performerType"/>
             <mustSupport value="recorder"/>
             <mustSupport value="reasonCode"/>
             <mustSupport value="reasonReference"/>
             <mustSupport value="instantiatesCanonical"/>
             <mustSupport value="instantiatesUri"/>
-            <mustSupport value="basedOn"/>
-            <mustSupport value="groupIdentifier"/>
             <mustSupport value="courseOfTherapyType"/>
-            <mustSupport value="insurance"/>
-            <mustSupport value="note"/>
             <mustSupport value="dosageInstruction"/>
-            <mustSupport value="dispenseRequest"/>
-            <mustSupport value="substitution"/>
-            <mustSupport value="priorPrescription"/>
-            <mustSupport value="detectedIssue"/>
-            <mustSupport value="eventHistory"/>
          </dataRequirement>
       </Library>
    </contained>
@@ -2582,7 +2983,7 @@
    <title value="NHSN Respiratory Pathogens Surveillance Initial Population"/>
    <status value="draft"/>
    <experimental value="false"/>
-   <date value="2024-01-30T12:09:55-05:00"/>
+   <date value="2024-02-29T17:15:09-05:00"/>
    <publisher value="Lantana Consulting Group"/>
    <description value="The Respiratory Pathogens Surveillance Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period."/>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."/>
@@ -2610,7 +3011,7 @@
          <display value="Outcome"/>
       </coding>
    </type>
-   <rationale value="The NHSN Respiratory Pathogens Surveillance (RPS) module enables the measurement of facility and unit-specific incidence and prevalence of Coronavirus 2019 (COVID-19), Influenza, and Respiratory Syncytial Virus (RSV) disease among patients admitted to the hospital (inpatient, observation, or short stay status), and specific associated patient outcomes.   \nThe RPS module supports an electronic health record (EHR)-/vendor-neutral standard for reporting patient-level data on hospitalized patients with a respiratory illness due to one or more of the pathogens under surveillance.   Data collected via the RPS module may be used by facilities for quality improvement and patient care planning purposes, as well as by local, state, and federal public health agencies in coordination and response to public health outbreaks.   The RPS module offers a mechanism for ongoing monitoring of infectious respiratory viral illness among hospitalized patients with minimal human resource expenditure via 100% electronically automated data capture. This initial version of the module is based on electronic data capture and upload of demographic, administrative, and clinical data from the facility’s electronic source systems such as the electronic health record (EHR), patient registration system (admission, discharge, and transfer [ADT] data), laboratory information system, and pharmacy electronic medication administration system. Facilities will have access to their data via the analysis functions of NHSN. "/>
+   <rationale value="The NHSN Respiratory Pathogens Surveillance (RPS) module enables the measurement of facility and unit-specific incidence and prevalence of Coronavirus 2019 (COVID-19), Influenza, and Respiratory Syncytial Virus (RSV) disease among patients admitted to the hospital (inpatient, observation, or short stay status), and specific associated patient outcomes.  The RPS module supports an electronic health record (EHR)-/vendor-neutral standard for reporting patient-level data on hospitalized patients with a respiratory illness due to one or more of the pathogens under surveillance.   Data collected via the RPS module may be used by facilities for quality improvement and patient care planning purposes, as well as by local, state, and federal public health agencies in coordination and response to public health outbreaks.   The RPS module offers a mechanism for ongoing monitoring of infectious respiratory viral illness among hospitalized patients with minimal human resource expenditure via 100% electronically automated data capture. This initial version of the module is based on electronic data capture and upload of demographic, administrative, and clinical data from the facility’s electronic source systems such as the electronic health record (EHR), patient registration system (admission, discharge, and transfer [ADT] data), laboratory information system, and pharmacy electronic medication administration system. Facilities will have access to their data via the analysis functions of NHSN. "/>
    <group>
       <population>
          <code>
