@@ -159,7 +159,7 @@ groups:
       - StructureDefinition/rps-medication
       - StructureDefinition/rps-medicationadministration
       - StructureDefinition/rps-medicationrequest
-
+      - StructureDefinition/rps-observation-r4
 
 
   valuesets:
@@ -264,6 +264,10 @@ groups:
       - Observation/observation-example-hypo-lab-hypo6
       - Observation/observation-example-hypo-lab-hypo7
       - Observation/observation-example-hypo-lab-hypo8
+      - Observation/observation-example-rps-initialpopulationpass-initial
+      - Observation/observation-example-rps-negativepcr-followup
+      - Observation/observation-example-rps-negativepcr-initial
+      - Observation/observation-example-rps-rsvlabbtg
 
 
       - MedicationRequest/medicationrequest-example-hypo-sameresultdiffday1
@@ -543,6 +547,34 @@ resources:
      description: Observation - Example Hypo Lab Hypo 8
      exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
+   Observation/observation-example-rps-initialpopulationpass-initial:
+     name: Observation - RPS Example Initial Population Pass - Initial
+     description: Observation - Example Initial Population Pass - Initial
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation-r4
+     
+   Observation/observation-example-rps-negativepcr-initial:
+     name: Observation - RPS Example Negative PCR - Initial
+     description: Observation - Example Negative PCR - Initial
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation-r4
+     
+   Observation/observation-example-rps-negativepcr-followup:
+     name: Observation - RPS Example Negative PCR - Follow Up
+     description: Observation - Example Negative PCR - Follow Up
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation-r4
+     
+   Observation/observation-example-rps-rsvlabbtg:
+     name: Observation - RPS Example RSV Lab BTG
+     description: Observation - Example RSV Lab BTG
+     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation-r4
+   
+   
+   
+   
+   
+         - Observation/observation-example-rps-initialpopulationpass-initial
+      - Observation/observation-example-rps-negativepcr-followup
+      - Observation/observation-example-rps-negativepcr-initial
+      - Observation/observation-example-rps-rsvlabbtg
    
    
    MedicationRequest/medicationrequest-example-hypo-sameresultdiffday1:
