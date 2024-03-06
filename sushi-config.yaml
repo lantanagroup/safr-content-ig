@@ -229,9 +229,9 @@ groups:
 
       - Patient/patient-example-sameresultdiffday
       - Patient/patient-example-hypo
-      - Patient/patient-example-ach-ach-pass1
-      - Patient/patient-example-ach-ach-pass2
-      - Patient/patient-example-ach-ach-pass3
+      #- Patient/patient-example-ach-ach-pass1
+      #- Patient/patient-example-ach-ach-pass2
+      #- Patient/patient-example-ach-ach-pass3
 
       - Encounter/encounter-example-hypo-sameresultdiffday
       - Encounter/encounter-example-hypo-hypo
@@ -239,9 +239,9 @@ groups:
       - Location/location-example-hypo-encounter-location-sameresultdiffday
 
       - Coverage/coverage-example-sameresultdiffday
-      - Coverage/coverage-example-ach-pass1
-      - Coverage/coverage-example-ach-pass2
-      - Coverage/coverage-example-ach-pass3
+      #- Coverage/coverage-example-ach-pass1
+      #- Coverage/coverage-example-ach-pass2
+      #- Coverage/coverage-example-ach-pass3
 
       - Condition/condition-example-diagnosis-sameresultdiffday1
       - Condition/condition-example-diagnosis-sameresultdiffday2
