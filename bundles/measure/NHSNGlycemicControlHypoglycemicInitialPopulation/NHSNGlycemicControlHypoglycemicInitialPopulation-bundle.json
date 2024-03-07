@@ -1,12 +1,8 @@
 {
   "resourceType": "Bundle",
   "id": "NHSNGlycemicControlHypoglycemicInitialPopulation",
-  "identifier": {
-    "system": "https://nhsnlink.org",
-    "value": "NHSNdQMAcuteCareHospitalInitialPopulation-bundle"
-  },
   "type": "transaction",
-  "timestamp": "2024-02-29T17:44:41.835-05:00",
+  "timestamp": "2024-03-07T17:03:59.187-05:00",
   "entry": [
     {
       "resource": {
@@ -4402,7 +4398,7 @@
         "title": "NHSN Glycemic Control, Hypoglycemia Initial Population",
         "status": "draft",
         "experimental": false,
-        "date": "2024-02-29T14:43:55-08:00",
+        "date": "2024-02-29T14:44:38-08:00",
         "publisher": "Lantana Consulting Group",
         "description": "The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter.",
         "purpose": "This site allows NHSN to view Measure-specification content in the dQMs under development by Lantana Consulting Group. Note that this site undergoes constant revision and is not intended to serve as an implementation guide.",
@@ -4456,6 +4452,7 @@
           {
             "population": [
               {
+                "id": "initial-population",
                 "code": {
                   "coding": [
                     {

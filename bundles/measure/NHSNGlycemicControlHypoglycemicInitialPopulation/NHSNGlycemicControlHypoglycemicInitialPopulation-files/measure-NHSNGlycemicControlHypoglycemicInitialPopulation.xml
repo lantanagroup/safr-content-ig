@@ -1900,6 +1900,7 @@
    <definition value="Severe hypoglycemia Blood glucose &lt; 40 mg/dL as identified on CLD or prescription POC device."/>
    <group>
       <population>
+         <id value="initial-population"/>
          <code>
             <coding>
                <system value="http://terminology.hl7.org/CodeSystem/measure-population"/>

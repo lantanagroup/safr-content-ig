@@ -1,12 +1,8 @@
 {
   "resourceType": "Bundle",
   "id": "NHSNdQMAcuteCareHospitalInitialPopulation",
-  "identifier": {
-    "system": "https://nhsnlink.org",
-    "value": "NHSNdQMAcuteCareHospitalInitialPopulation-bundle"
-  },
   "type": "transaction",
-  "timestamp": "2024-02-29T17:44:41.835-05:00",
+  "timestamp": "2024-03-07T17:03:59.187-05:00",
   "entry": [
     {
       "resource": {
@@ -3202,7 +3198,7 @@
                   },
                   {
                     "url": "statement",
-                    "valueString": "define function \"GetMedication\"(reference Reference ):\n  singleton from (\n    [Medication: id in {Global.GetId(reference.reference)}]\n  )"
+                    "valueString": "define function \"GetMedication\"(reference Reference ):\n  singleton from (\n    [Medication] Medications\n    where Medications.id = Global.GetId(reference.reference)\n  )"
                   },
                   {
                     "url": "displaySequence",
@@ -4043,11 +4039,6 @@
                   "amount",
                   "ingredient",
                   "batch"
-                ],
-                "codeFilter": [
-                  {
-                    "path": "id"
-                  }
                 ]
               },
               {
@@ -4108,7 +4099,7 @@
         "title": "NHSN dQM Acute Care Hospital Initial Population",
         "status": "draft",
         "experimental": false,
-        "date": "2024-02-29T17:43:55-05:00",
+        "date": "2024-02-29T17:44:38-05:00",
         "publisher": "Lantana Consulting Group",
         "description": "The Acute Care Hospital Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period.",
         "copyright": "Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.",
@@ -4151,6 +4142,7 @@
           {
             "population": [
               {
+                "id": "initial-population",
                 "code": {
                   "coding": [
                     {
