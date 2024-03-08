@@ -473,6 +473,7 @@ define function MedicationRequestResource(medicationRequest MedicationRequest, p
     dosageInstruction: MedicationRequestDosageInstruction(m.dosageInstruction)
   }
 
+/* No longer needed but saving in case it's useful later
 define function PatientIdentifier(identifier List<FHIR.Identifier>):
   identifier i
   return FHIR.Identifier{
@@ -484,7 +485,7 @@ define function PatientIdentifier(identifier List<FHIR.Identifier>):
     value: i.value,
     period: i.period,
     assigner: i.assigner
-  }
+  }*/
 
 define function PatientName(name List<FHIR.HumanName>):
   name n
@@ -566,7 +567,7 @@ define function PatientResource(patient Patient, profileURLs List<FHIR.canonical
     id: FHIR.id{value: 'LCR-' + p.id},
     meta: MetaElement(p, profileURLs),
     extension: GetPatientExtensions(p) union GetIdExtensions(p),
-    identifier: PatientIdentifier(p.identifier),
+    identifier: p.identifier,
     active: p.active,
     name: PatientName(p.name),
     telecom: PatientTelecom(p.telecom),
