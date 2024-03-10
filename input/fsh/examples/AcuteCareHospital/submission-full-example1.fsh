@@ -1,4 +1,4 @@
-Instance: submission-example1
+Instance: submission-full-example1
 InstanceOf: NHSNMeasureReportBundleProfileCurrent
 Usage: #example
 * identifier.system = "urn:ietf:rfc:3986"
