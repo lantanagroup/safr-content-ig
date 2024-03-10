@@ -1,6 +1,6 @@
 Instance: observation-example-ach-pass2-vitals-weight
 InstanceOf: AcuteCareHospitalReportingLabObservation
-Usage: #example
+Usage: #inline
 * status = #final
 * category = $observation-category#vital-signs "Vital Signs"
 * category.text = "Vital Signs"

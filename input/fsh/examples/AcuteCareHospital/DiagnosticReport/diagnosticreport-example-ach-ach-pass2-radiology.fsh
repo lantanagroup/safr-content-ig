@@ -1,6 +1,6 @@
 Instance: diagnosticreport-example-ach-ach-pass2-radiology
 InstanceOf: AcuteCareHospitalNoteDiagnosticReport
-Usage: #example
+Usage: #inline
 * status = #final
 * category = $loinc#LP29684-5 "Radiology"
 * category.text = "Radiology"

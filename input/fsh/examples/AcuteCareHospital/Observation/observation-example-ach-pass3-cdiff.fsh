@@ -1,6 +1,6 @@
 Instance: observation-example-ach-pass3-cdiff
 InstanceOf: AcuteCareHospitalReportingLabObservation
-Usage: #example
+Usage: #inline
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-ach-pass3-cdiff)
 * category = $observation-category#laboratory "Laboratory"

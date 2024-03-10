@@ -1,6 +1,6 @@
 Instance: servicerequest-example-ach-ach-pass1-csf
 InstanceOf: AcuteCareHospitalReportingServiceRequest
-Usage: #example
+Usage: #inline
 * identifier.use = #usual
 * identifier.type = $v2-0203#PLAC "Placer Identifier"
 * identifier.type.text = "Placer Identifier"

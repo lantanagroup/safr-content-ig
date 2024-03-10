@@ -1,6 +1,6 @@
 Instance: coverage-example-ach-pass2
 InstanceOf: AcuteCareHospitalReportingCoverage
-Usage: #example
+Usage: #inline
 * identifier.type = $v2-0203#MB "Member Number"
 * identifier.system = "http://example.org/fhir/memberidentifier"
 * identifier.value = "93565936"

@@ -1,6 +1,6 @@
 Instance: medicationrequest-example-ach-pass3-metronidazole
 InstanceOf: AcuteCareHospitalReportingMedicationRequest
-Usage: #example
+Usage: #inline
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"
 * identifier.value = "101888832"

@@ -1,6 +1,6 @@
 Instance: observation-example-ach-pass1-csf
 InstanceOf: AcuteCareHospitalReportingLabObservation
-Usage: #example
+Usage: #inline
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-ach-pass1-csf)
 * category = $observation-category#laboratory "Laboratory"
