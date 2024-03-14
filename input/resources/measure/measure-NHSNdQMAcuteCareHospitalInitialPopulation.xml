@@ -2203,7 +2203,7 @@
       <system value="https://nhsnlink.org"/>
       <value value="NHSNdQMAcuteCareHospitalInitialPopulation"/>
    </identifier>
-   <version value="0.0.011"/>
+   <version value="0.0.012"/>
    <name value="NHSNdQMAcuteCareHospitalInitialPopulation"/>
    <title value="NHSN dQM Acute Care Hospital Initial Population"/>
    <status value="draft"/>

@@ -1,4 +1,4 @@
-library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.011'
+library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.012'
 
 using FHIR version '4.0.1'
 
@@ -52,7 +52,6 @@ define "Qualifying Encounters During Measurement Period":
   where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
     and QualifyingEncounters.period overlaps "Measurement Period" 
 
-//potentially an issue as this may pull ALL EXISTING ENCOUNTERS (no period to look against)
 define "Encounters with Patient Hospital Locations":
   "Encounters" Encounters
   where exists(
@@ -61,7 +60,7 @@ define "Encounters with Patient Hospital Locations":
       and EncounterLocation.period overlaps Encounters.period
   )
   and Encounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
-  // and Encounters.period overlaps "Measurement Period" (?)
+  and Encounters.period overlaps "Measurement Period"
 
 define "Initial Population":
   "Qualifying Encounters During Measurement Period"
