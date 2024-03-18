@@ -1,4 +1,4 @@
-library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.013'
+library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.014'
 
 using FHIR version '4.0.1'
 
@@ -135,7 +135,7 @@ define "SDE Encounter":
   where exists(
     "Initial Population" IP
     where Encounters.period overlaps IP.period)
-  return SharedResource.EncounterResource(Encounters,
+  return EncounterResource(Encounters,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-encounter'}})
 
 define "SDE Location":
@@ -353,6 +353,32 @@ define function DiagnosticReportResource(diagnosticReport DiagnosticReport, prof
     result: d.result,
     conclusion: d.conclusion,
     conclusionCode: d.conclusionCode
+  }
+
+define function EncounterResource(encounter Encounter, profileURLs List<FHIR.canonical>):
+  encounter e
+  return Encounter{
+    id: FHIR.id{value: 'LCR-' + e.id},
+    meta: SharedResource.MetaElement(e, profileURLs),
+    extension: e.extension,
+    identifier: SharedResource.EncounterIdentifier(e.identifier),
+    status: e.status,
+    statusHistory: SharedResource.EncounterStatusHistory(e.statusHistory),
+    class: e.class,
+    classHistory: SharedResource.EncounterClassHistory(e.classHistory),
+    type: e.type,
+    serviceType: e.serviceType,
+    priority: e.priority,
+    subject: e.subject,
+    period: e.period,
+    length: e.length,
+    reasonCode: e.reasonCode,
+    reasonReference: e.reasonReference,
+    diagnosis: SharedResource.EncounterDiagnosis(e.diagnosis),
+    account: e.account,
+    hospitalization: SharedResource.EncounterHospitalization(e.hospitalization),
+    location: SharedResource.EncounterLocation(e.location),
+    partOf: e.partOf
   }
 
 define function ObservationResource(observation Observation, profileURLs List<FHIR.canonical>):
