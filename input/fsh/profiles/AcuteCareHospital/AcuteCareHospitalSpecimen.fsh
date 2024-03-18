@@ -12,3 +12,5 @@ Description: "This profile contains Required and Must Support data elements for 
 * type 1..
 * collection 1..
   * collected[x] 1..
+  * bodySite 1..
+  
