@@ -16,7 +16,7 @@ valueset "Inpatient, Emergency, and Observation Locations": 'http://cts.nlm.nih.
 valueset "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292'
 valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
 valueset "Observation Services": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143'
-valueset "Encounter Class Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.274'
+valueset "NHSN Inpatient Encounter Class Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.274'
 
 //code for Observation Category
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
@@ -41,7 +41,7 @@ define "Qualifying Encounters During Measurement Period":
  ( [Encounter: "Encounter Inpatient"]
   union [Encounter: "Emergency Department Visit"]
   union [Encounter: "Observation Services"]
-  union [Encounter: class in "Encounter Class Codes"]) QualifyingEncounters
+  union [Encounter: class in "NHSN Inpatient Encounter Class Codes"]) QualifyingEncounters
   where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
     and QualifyingEncounters.period overlaps "Measurement Period" 
 
