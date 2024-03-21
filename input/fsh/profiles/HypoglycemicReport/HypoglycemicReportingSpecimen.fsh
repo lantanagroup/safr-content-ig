@@ -10,5 +10,5 @@ Description: "This profile contains Required and Must Support data elements for 
 * accessionIdentifier MS
 * type 1..
 * collection 1..
-  * collected[x] 1..
-  * bodySite MS
+* collection.collected[x] 1..
+* collection.bodySite MS

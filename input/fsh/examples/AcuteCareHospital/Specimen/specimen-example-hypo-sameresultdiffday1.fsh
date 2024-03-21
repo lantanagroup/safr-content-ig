@@ -12,3 +12,4 @@ Usage: #example
 * subject.display = "Hypo, Sameresultdiffday"
 * receivedTime = "2023-01-04T22:06:00Z"
 * collection.collectedDateTime = "2023-01-04T20:39:00Z"
+* collection.bodySite = $sct#181261002 "Entire rectum (body structure)"
