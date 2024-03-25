@@ -173,7 +173,7 @@ groups:
       - ValueSet/rps-encounter-class
 
   measures:
-    name: "Knowledge Artifacts: Measure"
+    name: "Knowledge Artifacts: Digital Quality Measure"
     resources:
       - Measure/NHSNGlycemicControlHypoglycemicInitialPopulation
       - Measure/NHSNdQMAcuteCareHospitalInitialPopulation
@@ -321,7 +321,7 @@ resources:
    
    Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation:
      name: NHSN Respiratory Pathogens Surveillance Initial Population
-     description: dQM Measure for Respiratory Pathogens Surveillance
+     description: The Respiratory Pathogens Surveillance Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    Library/SharedResourceCreation:
