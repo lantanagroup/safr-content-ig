@@ -2960,7 +2960,7 @@
    <experimental value="false"/>
    <date value="2024-02-29T17:44:38-05:00"/>
    <publisher value="Lantana Consulting Group"/>
-   <description value="The Respiratory Pathogens Surveillance Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period."/>
+   <description value="All encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period. "/>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."/>
    <relatedArtifact>
       <type value="documentation"/>
@@ -2997,7 +2997,7 @@
                <display value="Initial Population"/>
             </coding>
          </code>
-         <description value="The RPS Initial Population includes all encounters for patients of any age with an inpatient, observation, or short stay status during the measurement period."/>
+         <description value="The Respiratory Pathogens Surveillance Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period."/>
          <criteria>
             <language value="text/cql-identifier"/>
             <expression value="Initial Population"/>
