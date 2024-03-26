@@ -22,6 +22,15 @@ Usage: #inline
 //* id = "list-example-individual-measurereport-list"
 * status = #current
 * mode = #snapshot
-* entry[+].item = Reference(measurereport-example-individual-ach-ach-pass1)
-* entry[+].item = Reference(measurereport-example-individual-ach-ach-pass2)
-* entry[+].item = Reference(measurereport-example-individual-ach-ach-pass3)
+//* entry[+].item = Reference(measurereport-example-individual-ach-ach-pass1)
+//* entry[+].item = Reference(measurereport-example-individual-ach-ach-pass2)
+//* entry[+].item = Reference(measurereport-example-individual-ach-ach-pass3)
+* entry[+].item
+  * identifier.system = "http://example.org/fhir/measurereport/id"
+  * identifier.value = "123456789-pass1"
+* entry[+].item
+  * identifier.system = "http://example.org/fhir/measurereport/id"
+  * identifier.value = "123456789-pass2"
+* entry[+].item
+  * identifier.system = "http://example.org/fhir/measurereport/id"
+  * identifier.value = "123456789-pass3"
