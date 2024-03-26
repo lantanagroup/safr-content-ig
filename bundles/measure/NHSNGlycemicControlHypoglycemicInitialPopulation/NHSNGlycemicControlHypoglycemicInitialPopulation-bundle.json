@@ -2,7 +2,7 @@
   "resourceType": "Bundle",
   "id": "NHSNGlycemicControlHypoglycemicInitialPopulation",
   "type": "transaction",
-  "timestamp": "2024-03-08T12:22:49.689-05:00",
+  "timestamp": "2024-03-26T00:02:12.059-04:00",
   "entry": [
     {
       "resource": {
@@ -11696,6 +11696,7 @@
         "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation",
         "version": "0.1.005",
         "name": "SharedResourceCreation",
+        "status": "draft",
         "type": {
           "coding": [
             {
@@ -11914,6 +11915,7 @@
         "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNGlycemicControlHypoglycemicInitialPopulation",
         "version": "0.0.020",
         "name": "NHSNGlycemicControlHypoglycemicInitialPopulation",
+        "status": "draft",
         "type": {
           "coding": [
             {

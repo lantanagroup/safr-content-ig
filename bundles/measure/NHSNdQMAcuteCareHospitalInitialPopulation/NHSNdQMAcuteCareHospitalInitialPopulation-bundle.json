@@ -2,7 +2,7 @@
   "resourceType": "Bundle",
   "id": "NHSNdQMAcuteCareHospitalInitialPopulation",
   "type": "transaction",
-  "timestamp": "2024-03-20T12:48:18.650-04:00",
+  "timestamp": "2024-03-26T00:02:12.059-04:00",
   "entry": [
     {
       "resource": {
@@ -6099,6 +6099,7 @@
         "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation",
         "version": "0.1.005",
         "name": "SharedResourceCreation",
+        "status": "draft",
         "type": {
           "coding": [
             {
@@ -6317,6 +6318,7 @@
         "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNdQMAcuteCareHospitalInitialPopulation",
         "version": "0.0.014",
         "name": "NHSNdQMAcuteCareHospitalInitialPopulation",
+        "status": "draft",
         "type": {
           "coding": [
             {

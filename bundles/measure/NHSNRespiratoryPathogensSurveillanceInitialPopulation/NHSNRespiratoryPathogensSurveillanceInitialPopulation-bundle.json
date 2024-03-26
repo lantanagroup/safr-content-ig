@@ -2,7 +2,7 @@
   "resourceType": "Bundle",
   "id": "NHSNRespiratoryPathogensSurveillanceInitialPopulation",
   "type": "transaction",
-  "timestamp": "2024-03-08T12:22:49.689-05:00",
+  "timestamp": "2024-03-26T00:02:12.059-04:00",
   "entry": [
     {
       "resource": {
@@ -10353,7 +10353,7 @@
         "experimental": false,
         "date": "2024-02-29T17:44:38-05:00",
         "publisher": "Lantana Consulting Group",
-        "description": "The Respiratory Pathogens Surveillance Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.",
+        "description": "All encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period. ",
         "copyright": "Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets.",
         "relatedArtifact": [
           {
@@ -10404,7 +10404,7 @@
                     }
                   ]
                 },
-                "description": "The RPS Initial Population includes all encounters for patients of any age with an inpatient, observation, or short stay status during the measurement period.",
+                "description": "The Respiratory Pathogens Surveillance Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.",
                 "criteria": {
                   "language": "text/cql-identifier",
                   "expression": "Initial Population"
@@ -12516,6 +12516,7 @@
         "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation",
         "version": "0.1.005",
         "name": "SharedResourceCreation",
+        "status": "draft",
         "type": {
           "coding": [
             {
