@@ -10,8 +10,10 @@ Description: "This profile contains Required and Must Support data elements for 
 * issued MS
 * interpretation MS
 * bodySite MS
+* method from http://hl7.org/fhir/ValueSet/observation-methods (extensible)
 * method MS
 * specimen MS
 * component MS
+  * code from http://hl7.org/fhir/R4/valueset-observation-codes.html (extensible)
   * value[x] MS
   * interpretation MS
