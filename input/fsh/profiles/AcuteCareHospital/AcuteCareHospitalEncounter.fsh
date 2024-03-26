@@ -29,11 +29,15 @@ Description: "This profile contains Required and Must Support data elements for 
 * hospitalization
   * origin MS
   * admitSource MS
+  * reAdmission from http://terminology.hl7.org/ValueSet/v2-0092 (preferred)
   * reAdmission MS
+  * dietPreference from http://hl7.org/fhir/ValueSet/encounter-diet (preferred)
   * dietPreference MS
+  * dischargeDisposition from http://hl7.org/fhir/R4/ValueSet/encounter-discharge-disposition (preferred)
 * location 1..
   * ^short = "List of locations where the patient has been. Used in part to discern whether the patient is Inpatient, Emergency and or Observation status."
   * status MS
+  * physicalType from http://hl7.org/fhir/R4/valueset-location-physical-type.html (extensible)
   * physicalType MS
   * period 1..
 

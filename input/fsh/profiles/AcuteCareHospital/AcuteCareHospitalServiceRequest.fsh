@@ -6,9 +6,11 @@ Description: "This profile contains Required and Must Support data elements for 
 * ^status = #active
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
+* category from http://hl7.org/fhir/ValueSet/servicerequest-category (extensible)
 * category MS
 * priority MS
 * doNotPerform MS
+* code from http://hl7.org/fhir/ValueSet/procedure-code (extensible)
 * code MS
 //  * ^binding.extension.url = "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"
 //  * ^binding.extension.valueString = "ServiceRequestCode"

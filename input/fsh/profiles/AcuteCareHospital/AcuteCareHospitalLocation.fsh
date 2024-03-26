@@ -7,6 +7,7 @@ Description: "This profile contains Required and Must Support data elements for 
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 * alias MS
 * address.use MS
+* physicalType from http://hl7.org/fhir/ValueSet/location-physical-type (extensible)
 * physicalType MS
 * type 1..
 * partOf MS

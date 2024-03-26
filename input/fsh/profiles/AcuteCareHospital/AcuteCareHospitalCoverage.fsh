@@ -6,6 +6,7 @@ Description: "This profile contains Required and Must Support data elements for 
 * ^status = #active
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
+* type from https://vsac.nlm.nih.gov/valueset/2.16.840.1.114222.4.11.3591/expansion (extensible)
 * type MS
 * policyHolder MS
 * subscriber MS
