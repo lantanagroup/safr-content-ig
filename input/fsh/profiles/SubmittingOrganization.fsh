@@ -12,7 +12,7 @@ Description: "This profile includes the name and identifier of the organization 
   * ^slicing.description = "Slice based on system pattern"
   * ^slicing.rules = #open
 * identifier contains cdc_org_id 1..1 MS
-* identifier[cdc_org_id] ^short = "CDC Org ID"
+* identifier[nhsnorg_id] ^short = "NHSN Org ID"
   * system 1..
   * system = "https://www.cdc.gov/nhsn/OrgID"
   * value 1.. MS
