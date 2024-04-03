@@ -9,5 +9,7 @@ Description: "This profile contains Required and Must Support data elements for 
 * encounter MS
 * location MS
 * reasonCode MS
+* reasonCode from http://hl7.org/fhir/ValueSet/procedure-reason (extensible)
 * reasonReference MS
 * bodySite MS
+* bodySite from http://hl7.org/fhir/ValueSet/body-site (extensible)

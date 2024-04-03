@@ -6,13 +6,17 @@ Description: "This profile contains Required and Must Support data elements for 
 * ^status = #active
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
+* statusReason from http://hl7.org/fhir/ValueSet/reason-medication-not-given-codes (extensible)
 * statusReason MS
+* category from http://hl7.org/fhir/R4/valueset-medication-admin-category.html (extensible)
 * category MS
+* medication[x] from http://www.nlm.nih.gov/research/umls/rxnorm (extensible)
 * context MS
 * reasonCode MS
 * reasonReference MS
 * request MS
 * dosage 1..
+  * route from http://hl7.org/fhir/ValueSet/route-codes (extensible)
   * route 1..
   * method MS
   * dose 1..
