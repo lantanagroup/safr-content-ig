@@ -58,20 +58,12 @@
                         "display": "inpatient acute"
                     },
                     {
-                        "code": "EMER",
-                        "display": "emergency"
-                    },
-                    {
                         "code": "IMP",
                         "display": "inpatient encounter"
                     },
                     {
                         "code": "NONAC",
                         "display": "inpatient non-acute"
-                    },
-                    {
-                        "code": "OBSENC",
-                        "display": "observation encounter"
                     },
                     {
                         "code": "SS",

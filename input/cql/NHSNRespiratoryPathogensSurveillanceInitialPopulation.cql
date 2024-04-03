@@ -67,15 +67,14 @@ valueset "Oseltamivir": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.
 //Isolation Precautions
 valueset "Transmission Based Precaution Types": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.10.20.22.5.300'
 
+//Encounter Class Codes
+valueset "NHSN Inpatient Encounter Class Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.274'
+
 //Observation Category Codes
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 
-//Encounter Class Codes
-code "inpatient acute": 'ACUTE' from "ActCode" display 'inpatient acute'
-code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
-code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
+//Observation Encounter Class Code
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
-code "short stay": 'SS' from "ActCode" display 'short stay'
 
 parameter "Measurement Period" 
   default Interval[@2022-01-01T00:00:00.0, @2022-01-02T00:00:00.0)
@@ -92,7 +91,7 @@ define "Initial Population":
 
 define "EncounterInpatient":
   ([Encounter: "Encounter Inpatient"]
-    union [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "short stay"}]) Encounters
+    union [Encounter: class in "NHSN Inpatient Encounter Class Codes"]) Encounters
   where Encounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
     and Encounters.period overlaps "Measurement Period"
 

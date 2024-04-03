@@ -1,4 +1,4 @@
-library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.020'
+library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.021'
 
 using FHIR version '4.0.1'
 
@@ -30,18 +30,17 @@ valueset "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.1
 valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
 valueset "Observation Services": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143'
 
+//Encounter Class
+valueset "NHSN Inpatient Encounter Class Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.274'
+
 //
 // Codes Used in the Measure
 //
 code "Chief Complaint": 'CC' from "Diagnosis Role" display 'Chief complaint'
 
-//Encounter Class Codes
+//Emergency and Observation Encounter Class Codes
 code "emergency": 'EMER' from "ActCode" display 'emergency'
-code "inpatient acute": 'ACUTE' from "ActCode" display 'inpatient acute'
-code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
-code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
-code "short stay": 'SS' from "ActCode" display 'short stay'
 
 //Encounter Diagnosis Codes
 code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display 'Encounter Diagnosis'
@@ -69,7 +68,7 @@ define "Initial Population":
     and Coalesce(start of Global."Normalize Interval"(ADD.effective), ADD.authoredOn) during "Measurement Period")
 
 define "Inpatient Encounter":
-  [Encounter: class in {"inpatient encounter", "inpatient acute", "inpatient non-acute", "short stay"}]
+  [Encounter: class in "NHSN Inpatient Encounter Class Codes"]
     union [Encounter: "Encounter Inpatient"]
   
 define "Encounters with Patient Hospital Locations":
