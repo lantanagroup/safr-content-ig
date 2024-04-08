@@ -97,7 +97,7 @@ define "SDE Condition":
   where exists(
     "Initial Population" IP
     //Check for Problem List Conditions that were recorded before or during IP
-    /*where (
+    where (
       (Conditions.recordedDate before start of IP.period
         or Conditions.recordedDate during IP.period)
       and exists(Conditions.category categories
@@ -111,7 +111,7 @@ define "SDE Condition":
       )
       and exists (Conditions.category categories
         where categories ~ "encounter-diagnosis")
-    )*/
+    )
   )
   return SharedResource.ConditionResource(Conditions,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-condition'}})
