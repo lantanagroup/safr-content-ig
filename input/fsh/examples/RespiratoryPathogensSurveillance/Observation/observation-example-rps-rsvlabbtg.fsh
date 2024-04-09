@@ -1,5 +1,7 @@
 Instance: observation-example-rps-rsvlabbtg
 InstanceOf: RespiratoryPathogensSurveillanceEventObservation
+Title: "Observation - RPS Observation Example RSV Lab BTG"
+Description: "Observation - Example RPS Observation RSV Lab BTG"
 Usage: #example
 * status = #final
 * category = $observation-category#laboratory "Laboratory"
@@ -10,8 +12,8 @@ Usage: #example
 * subject.display = "RPS, RSVLabBTG"
 * encounter.reference = "Encounter/encounter-example-hypo-hypo"
 * encounter.display = "Hospital Encounter"
-* effectiveDateTime = "2023-01-01T12:15:00Z"
-* issued = "2023-01-01T12:15:00Z"
+* effectiveDateTime = "2024-01-01T12:15:00Z"
+* issued = "2024-01-01T12:15:00Z"
 * valueCodeableConcept.coding.system = $sct
 * valueCodeableConcept.coding.code = #720735008
 * valueCodeableConcept.coding.display = "Presumptive positive"

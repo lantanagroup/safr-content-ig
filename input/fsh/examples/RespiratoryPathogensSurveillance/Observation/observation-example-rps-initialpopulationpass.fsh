@@ -1,5 +1,7 @@
-Instance: observation-example-rps-initialpopulationpass-initial
+Instance: observation-example-rps-initialpopulationpass
 InstanceOf: RespiratoryPathogensSurveillanceEventObservation
+Title: "Observation - RPS Observation Example Initial Population Pass"
+Description: "Observation - Example RPS Observation Initial Population Pass"
 Usage: #example
 * status = #final
 * category = $observation-category#laboratory "Laboratory"
@@ -8,7 +10,7 @@ Usage: #example
 * code.text = "SARS-CoV-2 RNA Resp Ql NAA+probe"
 * subject.reference = "Patient/patient-example-rps-initialpopulationpass"
 * subject.display = "RPS, InitialPopulationPass"
-* encounter.reference = "Encounter/encounter-example-hypo-hypo"
+* encounter.reference = "Encounter/encounter-example-rps-initialpopulationpass-1"
 * encounter.display = "Hospital Encounter"
 * effectiveDateTime = "2023-01-01T15:04:25Z"
 * issued = "2023-01-01T15:04:25Z"
