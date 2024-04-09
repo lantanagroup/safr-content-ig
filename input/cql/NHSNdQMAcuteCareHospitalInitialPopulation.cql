@@ -1,4 +1,4 @@
-library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.011'
+library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.014'
 
 using FHIR version '4.0.1'
 
@@ -11,19 +11,13 @@ codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
 codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category'
 codesystem "LOINC": 'http://loinc.org' 
 codesystem "V2-0074": 'http://terminology.hl7.org/CodeSystem/v2-0074'
+codesystem "Condition Category": 'http://terminology.hl7.org/CodeSystem/condition-category'
 
 valueset "Inpatient, Emergency, and Observation Locations": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
 valueset "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292'
 valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
 valueset "Observation Services": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143'
-
-//create a valueset for this block
-code "emergency": 'EMER' from "ActCode" display 'emergency'
-code "inpatient acute": 'ACUTE' from "ActCode" display 'inpatient acute'
-code "inpatient encounter": 'IMP' from "ActCode" display 'inpatient encounter'
-code "inpatient non-acute": 'NONAC' from "ActCode" display 'inpatient non-acute'
-code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
-code "short stay": 'SS' from "ActCode" display 'short stay'
+valueset "NHSN Inpatient Encounter Class Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.274'
 
 //code for Observation Category
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
@@ -33,14 +27,20 @@ code "imaging": 'imaging' from "Observation Category" display 'Imaging'
 code "procedure": 'procedure' from "Observation Category" display 'Procedure'
 code "survey": 'survey' from "Observation Category" display 'Survey'
 
+code "problem-list-item": 'problem-list-item' from "Condition Category" display 'Problem List Item'
+code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display 'Encounter Diagnosis'
+
 //code for Diagnostic Report Category
 code "LAB": 'LAB' from "V2-0074" display 'Laboratory'
 code "Radiology": 'LP29684-5' from "LOINC" display 'Radiology'
 code "Pathology": 'LP7839-6' from "LOINC" display 'Pathology'
 code "Cardiology": 'LP29708-2' from "LOINC" display 'Cardiology'
 
+//code for Emergency Encounter Class
+code "emergency": 'EMER' from "ActCode" display 'emergency'
+
 parameter "Measurement Period" 
-    default Interval[@2024-01-01T00:00:00.0, @2024-01-31T00:00:00.0)
+    default Interval[@2024-03-01T00:00:00.0, @2024-03-31T00:00:00.0)
 
 context Patient 
 
@@ -48,11 +48,11 @@ define "Qualifying Encounters During Measurement Period":
  ( [Encounter: "Encounter Inpatient"]
   union [Encounter: "Emergency Department Visit"]
   union [Encounter: "Observation Services"]
-  union [Encounter: class in {"emergency", "inpatient acute", "inpatient encounter", "inpatient non-acute", "short stay"}]) QualifyingEncounters
+  union [Encounter: class in "NHSN Inpatient Encounter Class Codes"]
+  union [Encounter: class ~ "emergency"]) QualifyingEncounters
   where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
     and QualifyingEncounters.period overlaps "Measurement Period" 
 
-//potentially an issue as this may pull ALL EXISTING ENCOUNTERS (no period to look against)
 define "Encounters with Patient Hospital Locations":
   "Encounters" Encounters
   where exists(
@@ -61,7 +61,7 @@ define "Encounters with Patient Hospital Locations":
       and EncounterLocation.period overlaps Encounters.period
   )
   and Encounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
-  // and Encounters.period overlaps "Measurement Period" (?)
+  and Encounters.period overlaps "Measurement Period"
 
 define "Initial Population":
   "Qualifying Encounters During Measurement Period"
@@ -70,21 +70,18 @@ define "Initial Population":
 define "Encounters":
   [Encounter]
 
+define "Conditions":
+  [Condition]
+
 define "DiagnosticReports":
   [DiagnosticReport]
 
 define "Observations":
   [Observation]
 
-//Double checking for IP's period during MP as IP is created out of qualifying encounters, which checks for it, 
-//and encounter's locations, which doesn't
-define "IP Encounters Overlap Measurement Period":
-  "Initial Population" IP
-  where IP.period overlaps "Measurement Period"
-
 define "Get Locations from IP Encounters in Measurement Period":
-  flatten("IP Encounters Overlap Measurement Period" Encounters
-  let locationElements: Encounters.location
+  flatten("Initial Population" IP
+  let locationElements: IP.location
   return
     locationElements LE
     let locationReference: LE.location
@@ -96,8 +93,26 @@ define "Get Locations from IP Encounters in Measurement Period":
 //When FHIR.canonical value is not present, FHIR Base profiles are used
 //============================================================================
 define "SDE Condition":
-  [Condition] Conditions 
-  where exists("Initial Population")
+  "Conditions" Conditions 
+  where exists(
+    "Initial Population" IP
+    //Check for Problem List Conditions that were recorded before or during IP
+    where (
+      (Conditions.recordedDate before start of IP.period
+        or Conditions.recordedDate during IP.period)
+      and exists(Conditions.category categories
+        where categories ~ "problem-list-item"))
+    //Check for Encounter Diagnosis Conditions that reference an IP encounter
+    or (
+      (exists(IP.diagnosis Diagnoses
+          where GetCondition(Diagnoses.condition).id = Conditions.id
+        )
+        or GetEncounter(Conditions.encounter).id = IP.id
+      )
+      and exists (Conditions.category categories
+        where categories ~ "encounter-diagnosis")
+    )
+  )
   return SharedResource.ConditionResource(Conditions,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-condition'}})
 
@@ -143,7 +158,7 @@ define "SDE Encounter":
   where exists(
     "Initial Population" IP
     where Encounters.period overlaps IP.period)
-  return SharedResource.EncounterResource(Encounters,
+  return EncounterResource(Encounters,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-encounter'}})
 
 define "SDE Location":
@@ -257,10 +272,22 @@ define function "GetMedicationFrom"(choice Choice<FHIR.CodeableConcept, FHIR.Ref
       null
   end
 
-define function "GetMedication"(reference Reference ):
+define function "GetMedication"(reference Reference):
   singleton from (
     [Medication] Medications
     where Medications.id = Global.GetId(reference.reference)
+  )
+
+define function "GetCondition"(reference Reference):
+  singleton from (
+    "Conditions" Conditions
+    where Conditions.id = Global.GetId(reference.reference)
+  )
+
+define function "GetEncounter"(reference Reference):
+  singleton from (
+    "Encounters" Encounters
+    where Encounters.id = Global.GetId(reference.reference)
   )
 
 //
@@ -361,6 +388,32 @@ define function DiagnosticReportResource(diagnosticReport DiagnosticReport, prof
     result: d.result,
     conclusion: d.conclusion,
     conclusionCode: d.conclusionCode
+  }
+
+define function EncounterResource(encounter Encounter, profileURLs List<FHIR.canonical>):
+  encounter e
+  return Encounter{
+    id: FHIR.id{value: 'LCR-' + e.id},
+    meta: SharedResource.MetaElement(e, profileURLs),
+    extension: e.extension,
+    identifier: SharedResource.EncounterIdentifier(e.identifier),
+    status: e.status,
+    statusHistory: SharedResource.EncounterStatusHistory(e.statusHistory),
+    class: e.class,
+    classHistory: SharedResource.EncounterClassHistory(e.classHistory),
+    type: e.type,
+    serviceType: e.serviceType,
+    priority: e.priority,
+    subject: e.subject,
+    period: e.period,
+    length: e.length,
+    reasonCode: e.reasonCode,
+    reasonReference: e.reasonReference,
+    diagnosis: SharedResource.EncounterDiagnosis(e.diagnosis),
+    account: e.account,
+    hospitalization: SharedResource.EncounterHospitalization(e.hospitalization),
+    location: SharedResource.EncounterLocation(e.location),
+    partOf: e.partOf
   }
 
 define function ObservationResource(observation Observation, profileURLs List<FHIR.canonical>):

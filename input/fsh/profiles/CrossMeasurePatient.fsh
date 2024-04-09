@@ -5,6 +5,8 @@ Title: "Cross-Measure Patient Profile"
 Description: "This profile contains NHSN-specific Required and Must-Support elements for reporting Patient information on public-health surveillance measures to NHSN (https://www.cdc.gov/nhsn/index.html)."
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
+* extension[us-core-race] ^short = "US Core Race Extension (If present, must include at least one of the required codes. Preferably this would include at least a code in the ombCategory slice.)"
+* extension[us-core-ethnicity] ^short = "US Core Race Extension (If present, must include at least one of the required codes. Preferably this would include at least a code in the ombCategory slice.)"
 * identifier 1..
   * use MS
   * type MS
