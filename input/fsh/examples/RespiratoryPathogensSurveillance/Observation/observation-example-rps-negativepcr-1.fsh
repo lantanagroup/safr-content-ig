@@ -1,5 +1,7 @@
-Instance: observation-example-rps-negativepcr-initial
+Instance: observation-example-rps-negativepcr-1
 InstanceOf: RespiratoryPathogensSurveillanceEventObservation
+Title: "Observation - RPS Observation Example Negative PCR 1"
+Description: "Observation - Example RPS Observation Negative PCR 1"
 Usage: #example
 * status = #final
 * category = $observation-category#laboratory "Laboratory"
@@ -8,7 +10,7 @@ Usage: #example
 * code.text = "SARS-CoV+SARS-CoV-2 Ag Resp Ql IA.rapid"
 * subject.reference = "Patient/patient-example-rps-negativepcr"
 * subject.display = "RPS, NegativePCR"
-* encounter.reference = "Encounter/encounter-example-hypo-hypo"
+* encounter.reference = "Encounter/encounter-example-rps-negativepcr-1"
 * encounter.display = "Hospital Encounter"
 * effectiveDateTime = "2023-01-01T08:30:00Z"
 * issued = "2023-01-01T08:30:00Z"

@@ -1,5 +1,7 @@
 Instance: condition-example-diagnosis-rps-rsvlabbtg
 InstanceOf: Condition
+Title: "Condition - RPS Condition Example RSV Lab BTG"
+Description: "Condition - Example RPS Condition RSV Lab BTG"
 Usage: #example
 * extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"
 * extension.valueString = "eloBHVi6UskNwFJ55XgUq294CfCWyE3tytd.P4NomlhQprDjGoqWBeK2-ed8C2oMs3"

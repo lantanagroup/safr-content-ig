@@ -212,8 +212,8 @@ groups:
      - StructureDefinition/extension-MeasureReport.supplementalDataElement.reference
      - StructureDefinition/extension-criteriaReference
 
-  examples:
-    name: "Knowledge Artifacts: Examples"
+  ach-examples:
+    name: "Knowledge Artifacts: ACH Examples"
     resources:
       - Device/cqf-tooling
       - Bundle/submission-example1
@@ -266,11 +266,6 @@ groups:
       - Observation/observation-example-hypo-lab-hypo6
       - Observation/observation-example-hypo-lab-hypo7
       - Observation/observation-example-hypo-lab-hypo8
-      - Observation/observation-example-rps-initialpopulationpass-initial
-      - Observation/observation-example-rps-negativepcr-initial
-      - Observation/observation-example-rps-negativepcr-followup
-      - Observation/observation-example-rps-rsvlabbtg
-
 
       - MedicationRequest/medicationrequest-example-hypo-sameresultdiffday1
       - MedicationRequest/medicationrequest-example-hypo-sameresultdiffday2
@@ -291,6 +286,65 @@ groups:
       - ServiceRequest/servicerequest-example-hypo-sameresultdiffday1
 
       - Specimen/specimen-example-hypo-sameresultdiffday1
+      
+
+  rps-examples:
+    name: "Knowledge Artifacts: RPS Examples"
+    resources:
+
+      - Patient/patient-example-rps-influenzatherapeutic
+      - Patient/patient-example-rps-initialpopulationpass
+      - Patient/patient-example-rps-negativepcr
+      - Patient/patient-example-rps-rsvlabbtg
+
+      - Encounter/encounter-example-rps-influenzatherapeutic
+      - Encounter/encounter-example-rps-initialpopulationpass-1
+      - Encounter/encounter-example-rps-initialpopulationpass-2
+      - Encounter/encounter-example-rps-negativepcr-1
+      - Encounter/encounter-example-rps-negativepcr-2
+      - Encounter/encounter-example-rps-rsvlabbtg
+
+      - Coverage/coverage-example-rps-influenzatherapeutic
+      - Coverage/coverage-example-rps-initialpopulationpass
+      - Coverage/coverage-example-rps-negativepcr
+      - Coverage/coverage-example-rps-rsvlabbtg
+
+      - Condition/condition-example-diagnosis-rps-influenzatherapeutic
+      - Condition/condition-example-diagnosis-rps-initialpopulationpass
+      - Condition/condition-example-diagnosis-rps-negativepcr
+      - Condition/condition-example-diagnosis-rps-rsvlabbtg
+      
+      - Immunization/immunization-example-rps-influenzatherapeutic
+      
+      - Observation/observation-example-rps-initialpopulationpass
+      - Observation/observation-example-rps-negativepcr-1
+      - Observation/observation-example-rps-negativepcr-2
+      - Observation/observation-example-rps-rsvlabbtg
+
+      - MedicationRequest/medicationrequest-example-rps-influenzatherapeutic
+      - MedicationRequest/medicationrequest-example-rps-initialpopulationpass
+      - MedicationRequest/medicationrequest-example-rps-negativepcr
+      - MedicationRequest/medicationrequest-example-rps-rsvlabbtg-1
+      - MedicationRequest/medicationrequest-example-rps-rsvlabbtg-2
+
+      - MedicationAdministration/medicationadministration-example-rps-influenzatherapeutic
+      - MedicationAdministration/medicationadministration-example-rps-initialpopulationpass-1
+      - MedicationAdministration/medicationadministration-example-rps-initialpopulationpass-2
+      - MedicationAdministration/medicationadministration-example-rps-negativepcr
+      - MedicationAdministration/medicationadministration-example-rps-rsvlabbtg-1
+      - MedicationAdministration/medicationadministration-example-rps-rsvlabbtg-2
+
+      - Medication/medication-example-rps-influenzatherapeutic
+      - Medication/medication-example-rps-initialpopulationpass-1
+      - Medication/medication-example-rps-initialpopulationpass-2
+      - Medication/medication-example-rps-rsvlabbtg-1
+      - Medication/medication-example-rps-rsvlabbtg-2
+      - Medication/medication-example-rps-negativepcr
+
+      - Specimen/specimen-example-rps-initialpopulationpass
+      - Specimen/specimen-example-rps-negativepcr-1
+      - Specimen/specimen-example-rps-negativepcr-2
+      - Specimen/specimen-example-rps-rsvlabbtg
 
 
 resources:

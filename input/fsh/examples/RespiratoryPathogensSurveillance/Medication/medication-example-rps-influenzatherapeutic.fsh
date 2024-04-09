@@ -1,5 +1,7 @@
-Instance: medication-example-rps-initialpopulationpass
+Instance: medication-example-rps-influenzatherapeutic
 InstanceOf: RespiratoryPathogensSurveillanceEventMedication
+Title: "Medication - RPS Medication Example Influenza Therapeutic"
+Description: "Medication - Example RPS Medication Influenza Therapeutic"
 Usage: #example
 * extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"
 * extension.valueString = "eZeW55xkBH0DrR0Xj004fNlA99h1sjXKwuhGs.PNpjjUi.Dh2-U-oGW0c9xZjPn2b29S.YZMgFiH.76i57tFS1PARcjzOMkC6TPHQQXiH6vA3"

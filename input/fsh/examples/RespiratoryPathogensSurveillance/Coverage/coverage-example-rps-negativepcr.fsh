@@ -1,5 +1,7 @@
-Instance: coverage-example-rps-negativePCR
+Instance: coverage-example-rps-negativepcr
 InstanceOf: Coverage
+Title: "Coverage - RPS Condition Example Negative PCR"
+Description: "Coverage - Example RPS Condition Negative PCR"
 Usage: #example
 * identifier.type = $v2-0203#MB "Member Number"
 * identifier.system = "http://example.org/fhir/memberidentifier"

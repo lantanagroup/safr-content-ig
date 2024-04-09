@@ -1,5 +1,7 @@
 Instance: patient-example-rps-rsvlabbtg
 InstanceOf: CrossMeasurePatient
+Title: "Patient - RPS Patient Example RSV Lab BTG"
+Description: "Patient - Example RPS Patient RSV Lab BTG"
 Usage: #example
 * extension[0].url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
 * extension[=].extension[0].url = "ombCategory"

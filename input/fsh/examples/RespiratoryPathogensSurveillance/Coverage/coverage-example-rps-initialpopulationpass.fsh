@@ -1,5 +1,7 @@
 Instance: coverage-example-rps-initialpopulationpass
 InstanceOf: Coverage
+Title: "Coverage - RPS Condition Example Initial Population Pass"
+Description: "Coverage - Example RPS Condition Initial Population Pass"
 Usage: #example
 * identifier.type = $v2-0203#MB "Member Number"
 * identifier.system = "http://example.org/fhir/memberidentifier"

@@ -1,5 +1,7 @@
 Instance: specimen-example-rps-negativepcr-2
 InstanceOf: RespiratoryPathogensSurveillanceEventSpecimen
+Title: "Specimen - RPS Specimen Example Negative PCR 2"
+Description: "Specimen - Example RPS Specimen Negative PCR 2"
 Usage: #example
 
 * type = $v2-0487#NASDR "Drainage, Nasal"

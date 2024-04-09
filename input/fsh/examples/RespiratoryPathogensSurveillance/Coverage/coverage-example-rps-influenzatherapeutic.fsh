@@ -1,5 +1,7 @@
 Instance: coverage-example-rps-influenzatherapeutic
 InstanceOf: Coverage
+Title: "Coverage - RPS Condition Example Influenza Therapeutic"
+Description: "Coverage - Example RPS Condition Influenza Therapeutic"
 Usage: #example
 * identifier.type = $v2-0203#MB "Member Number"
 * identifier.system = "http://example.org/fhir/memberidentifier"

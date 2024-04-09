@@ -1,5 +1,7 @@
 Instance: encounter-example-rps-initialpopulationpass-1
 InstanceOf: RespiratoryPathogensSurveillanceEventEncounter
+Title: "Encounter - RPS Encounter Example Initial Population Pass 1"
+Description: "Encounter - Example RPS Encounter Initial Population Pass 1"
 Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.698.8"

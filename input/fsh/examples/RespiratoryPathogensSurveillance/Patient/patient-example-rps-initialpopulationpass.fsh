@@ -1,5 +1,7 @@
 Instance: patient-example-rps-initialpopulationpass
 InstanceOf: CrossMeasurePatient
+Title: "Patient - RPS Patient Example Initial Population Pass"
+Description: "Patient - Example RPS Patient Initial Population Pass"
 Usage: #example
 * extension[0].url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
 * extension[=].extension[0].url = "ombCategory"

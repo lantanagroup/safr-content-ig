@@ -1,5 +1,7 @@
 Instance: patient-example-rps-influenzatherapeutic
 InstanceOf: CrossMeasurePatient
+Title: "Patient - RPS Patient Example Influenza Therapeutic"
+Description: "Patient - Example RPS Patient Influenza Therapeutic"
 Usage: #example
 * extension[0].url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
 * extension[=].extension[0].url = "ombCategory"
