@@ -296,8 +296,8 @@ groups:
       #- ServiceRequest/servicerequest-example-ach-ach-pass3-cdiff
       #- Specimen/specimen-example-ach-ach-pass3-stool
 
-  ach-examples:
-    name: "Knowledge Artifacts: ACH Examples"
+  examples:
+    name: "Knowledge Artifacts: Examples"
     resources:
       - Device/cqf-tooling
       - Bundle/submission-full-example1
@@ -331,7 +331,6 @@ groups:
       - Location/location-example-hypo-encounter-location-ach-medsurg
       - Location/location-example-hypo-nicu-level-iii
       
-
       - Coverage/coverage-example-sameresultdiffday
 
       - Condition/condition-example-diagnosis-sameresultdiffday1
@@ -383,16 +382,9 @@ groups:
       - Medication/medication-example-metronidazole
       - Medication/medication-example-vancomycin-15
 
-
-
       - ServiceRequest/servicerequest-example-hypo-sameresultdiffday1
 
       - Specimen/specimen-example-hypo-sameresultdiffday1
-      
-
-  rps-examples:
-    name: "Knowledge Artifacts: RPS Examples"
-    resources:
 
       - Patient/patient-example-rps-influenzatherapeutic
       - Patient/patient-example-rps-initialpopulationpass
@@ -726,25 +718,6 @@ resources:
      description: Observation - Example Hypo Lab Hypo 8
      exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
         
-   Observation/observation-example-rps-initialpopulationpass-initial:
-     name: Observation - RPS Example Initial Population Pass - Initial
-     description: Observation - RPS Example Initial Population Pass - Initial
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation
-        
-   Observation/observation-example-rps-negativepcr-initial:
-     name: Observation - RPS Example Negative PCR - Initial
-     description: Observation - RPS Example Negative PCR - Initial
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation
-        
-   Observation/observation-example-rps-negativepcr-followup:
-     name: Observation - RPS Example Negative PCR - Followup
-     description: Observation - RPS Example Negative PCR - Followup
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation
-        
-   Observation/observation-example-rps-rsvlabbtg:
-     name: Observation - RPS Example RSV Lab BTG
-     description: Observation - RPS Example RSV Lab BTG
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation
    
    
    
