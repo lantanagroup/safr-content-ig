@@ -43,7 +43,7 @@ Description: "This profile contains Required and Must Support data elements for 
 
 
   // TODO MEASDEV-703
-  /* Add invariant to address Initial Population (IP) requirement
+  /* Add invariant to address Initial Population requirement
   (Encounter.class = EMER, IMP, ACUTE, NONAC, or SS [Short Stay]) 
     OR ((Encounter.type = Emergency Hospital admission, Hospital admission, or elective hospital admission [http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307])
     OR (Encounter.type = Emergency department patient visit [http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292])

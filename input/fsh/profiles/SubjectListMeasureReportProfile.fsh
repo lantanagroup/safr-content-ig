@@ -2,7 +2,7 @@ Profile: SubjectListMeasureReportProfile
 Parent: MeasureReport
 Id: subjectlist-measurereport
 Title: "Subject-List MeasureReport Profile"
-Description: "A Subject-List MeasureReport contains the count of subjects (i.e. patients) in the Initial Population (IP). It also references the Individual MeasureReport List."
+Description: "A Subject-List MeasureReport contains the count of subjects (i.e. patients) in the Initial Population. It also references the Individual MeasureReport List."
 * ^status = #active
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 * contained ^slicing.discriminator.type = #profile

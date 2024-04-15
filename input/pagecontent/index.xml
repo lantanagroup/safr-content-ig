@@ -19,7 +19,7 @@
   <h3>Description</h3>
   <p>
     These specifications are for the content contained within the encounters identified as meeting 
-    the criteria for the dQM Initial Population. The dQM IP defines the cohort population from 
+    the criteria for the dQM Initial Population. The dQM Initial Population defines the cohort population from 
     which NHSN analysts determine the denominator and calculate events per the metrics defined 
     in each NHSN protocol. The Initial Population can vary between dQMs and may include all 
     inpatient, emergency department, and observation encounters. NHSNLink (or other compiling 
@@ -40,13 +40,13 @@
   <a name="scope"></a>
   <h3>Scope</h3>
   <p>
-    This document represents the content for the Fast Healthcare Interoperability Resources (FHIR) specifications for the initial population (IP) measure that informs 
+    This document represents the content for the Fast Healthcare Interoperability Resources (FHIR) specifications for the initial population measure that informs 
     CDC's NHSN Glycemic Control, Hypoglycemia module (1). This page is under construction and is in draft format.</p>
   <a name="purpose"></a>
   <h3>Purpose</h3>
   <p>
-    The specification described here is for the initial population (IP) DQM. The IP dQM provides the necessary Fast Healthcare Interoperability Resources (FHIR) line-level 
-    data necessary for calculating CDC's NHSN Glycemic Control, Hypoglycemia module metrics (1). The IP measure is defined as all inpatient encounters, as well as emergency 
+    The specification described here is for the initial population DQM. The initial population dQM provides the necessary Fast Healthcare Interoperability Resources (FHIR) line-level 
+    data necessary for calculating CDC's NHSN Glycemic Control, Hypoglycemia module metrics (1). The initial population measure is defined as all inpatient encounters, as well as emergency 
     department (ED) and Observation (OBS) encounters that end within 1 hour of the start of the inpatient encounter, for patients of all ages where at least one antidiabetic 
     drug (ADD) was ordered or administered during the encounter that is during the performance period. 
   </p>
@@ -56,13 +56,13 @@
     The NHSN Glycemic Control, Hypoglycemia module provides a mechanism for facilities to report inpatient medication-related hypoglycemia events, and to provide analytic 
     reports based on these data to inform glycemic control quality improvement efforts and patient safety events. The primary objective of the NHSN Glycemic Control, 
     Hypoglycemia module is to facilitate measurement and benchmarking of medication-related hypoglycemia events within a facility. As additional data are collected by NHSN, 
-    an additional objective will be to facilitate inter-facility benchmarking and evaluate national-level trends of medication-related hypoglycemia over time. The IP dQM 
+    an additional objective will be to facilitate inter-facility benchmarking and evaluate national-level trends of medication-related hypoglycemia over time. The initial population dQM 
     provides the FHIR line-level data necessary for calculating the module metrics.   
   </p>
   <a name="settings_and_patient_locations"></a>
   <h3>Settings and Patient Locations</h3>
   <p>
-    The IP dQM provides the FHIR line-level data necessary for the NHSN Glycemic Control, Hypoglycemia module. This is for all patients ordered or administered ADDs from 
+    The initial population dQM provides the FHIR line-level data necessary for the NHSN Glycemic Control, Hypoglycemia module. This is for all patients ordered or administered ADDs from 
     all inpatient locations for inpatient facilities enrolled in NHSN and using the Medication Safety Component, except for long-term care facilities (LTCFs) and outpatient 
     dialysis facilities. ED and OBS encounters are also collected if they end within an hour of the inpatient admission (hospitalization). All participating facilities must 
     have the ability to report data electronically to NHSN using the required HL7 FHIR specifications (2).  

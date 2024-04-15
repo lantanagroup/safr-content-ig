@@ -214,7 +214,7 @@ groups:
 
   ach-examples:
     name: "Knowledge Artifacts: ACH Examples"
-    description: "Resource examples for ACH IP Measure."
+    description: "Resource examples for ACH Initial Population Measure."
     resources:
       - Bundle/bundle-example-ach-header
       

@@ -6,7 +6,7 @@ Description: "A Patients of Interest List defines all individual Patients consid
 * ^status = #active
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 * extension contains PatientListApplicablePeriod named patient-list-applicable-period 0..1
-* extension[patient-list-applicable-period] ^short = "The reporting period associated with the census List"
+* extension[patient-list-applicable-period] ^short = "The reporting period associated with the patients of interest List"
 * identifier 1..
 * entry.item only Reference(USCorePatientProfile)
   * ^short = "Patient Of Interest reference"
