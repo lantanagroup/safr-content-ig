@@ -10,6 +10,7 @@ Description: "This profile contains Required and Must Support data elements for 
 * priority MS
 * doNotPerform MS
 * reasonCode MS
+* reasonReference MS
 * instantiatesCanonical MS
 * instantiatesUri MS
 * dosageInstruction
