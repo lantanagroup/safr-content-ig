@@ -2,7 +2,7 @@
   "resourceType": "Bundle",
   "id": "NHSNRespiratoryPathogensSurveillanceInitialPopulation",
   "type": "transaction",
-  "timestamp": "2024-04-03T12:56:31.836-04:00",
+  "timestamp": "2024-04-23T10:25:33.273-04:00",
   "entry": [
     {
       "resource": {
@@ -2064,7 +2064,7 @@
             "use": "out",
             "min": 0,
             "max": "*",
-            "type": "Coverage"
+            "type": "Resource"
           },
           {
             "name": "SDE Race",
@@ -2099,7 +2099,8 @@
               "http://hl7.org/fhir/StructureDefinition/Coverage"
             ],
             "mustSupport": [
-              "type"
+              "type",
+              "period"
             ],
             "codeFilter": [
               {
@@ -2112,7 +2113,7 @@
         "content": [
           {
             "contentType": "text/cql",
-            "data": "bGlicmFyeSBTdXBwbGVtZW50YWxEYXRhRWxlbWVudHNGSElSNCB2ZXJzaW9uICcyLjAuMDAwJw0KDQovKkB1cGRhdGU6IEBAQlRSIDIwMjAtMDMtMzEgLT4NCkluY3JlbWVudGVkIHZlcnNpb24gdG8gMi4wLjANClVwZGF0ZWQgRkhJUiB2ZXJzaW9uIHRvIDQuMC4xDQpAQEAqLw0KDQp1c2luZyBGSElSIHZlcnNpb24gJzQuMC4xJw0KDQppbmNsdWRlIEZISVJIZWxwZXJzIHZlcnNpb24gJzQuMC4xJyBjYWxsZWQgRkhJUkhlbHBlcnMNCg0KdmFsdWVzZXQgIkV0aG5pY2l0eSI6ICdodHRwOi8vY3RzLm5sbS5uaWguZ292L2ZoaXIvVmFsdWVTZXQvMi4xNi44NDAuMS4xMTQyMjIuNC4xMS44MzcnIA0KdmFsdWVzZXQgIk9OQyBBZG1pbmlzdHJhdGl2ZSBTZXgiOiAnaHR0cDovL2N0cy5ubG0ubmloLmdvdi9maGlyL1ZhbHVlU2V0LzIuMTYuODQwLjEuMTEzNzYyLjEuNC4xJyANCnZhbHVlc2V0ICJQYXllciI6ICdodHRwOi8vY3RzLm5sbS5uaWguZ292L2ZoaXIvVmFsdWVTZXQvMi4xNi44NDAuMS4xMTQyMjIuNC4xMS4zNTkxJyANCnZhbHVlc2V0ICJSYWNlIjogJ2h0dHA6Ly9jdHMubmxtLm5paC5nb3YvZmhpci9WYWx1ZVNldC8yLjE2Ljg0MC4xLjExNDIyMi40LjExLjgzNicgDQoNCmNvbnRleHQgUGF0aWVudA0KDQpkZWZpbmUgIlNERSBFdGhuaWNpdHkiOg0KICAoZmxhdHRlbiAoDQogICAgICBQYXRpZW50LmV4dGVuc2lvbiBFeHRlbnNpb24NCiAgICAgICAgd2hlcmUgRXh0ZW5zaW9uLnVybCA9ICdodHRwOi8vaGw3Lm9yZy9maGlyL3VzL2NvcmUvU3RydWN0dXJlRGVmaW5pdGlvbi91cy1jb3JlLWV0aG5pY2l0eScNCiAgICAgICAgICByZXR1cm4gRXh0ZW5zaW9uLmV4dGVuc2lvbg0KICAgICkpIEUNCiAgICAgIHdoZXJlIEUudXJsID0gJ29tYkNhdGVnb3J5Jw0KICAgICAgICBvciBFLnVybCA9ICdkZXRhaWxlZCcNCiAgICAgIHJldHVybiBFLnZhbHVlIGFzIENvZGluZw0KDQpkZWZpbmUgIlNERSBQYXllciI6DQogIFtDb3ZlcmFnZTogdHlwZSBpbiAiUGF5ZXIiXSBQYXllcg0KDQpkZWZpbmUgIlNERSBSYWNlIjoNCiAgKGZsYXR0ZW4gKA0KICAgICAgUGF0aWVudC5leHRlbnNpb24gRXh0ZW5zaW9uDQogICAgICAgIHdoZXJlIEV4dGVuc2lvbi51cmwgPSAnaHR0cDovL2hsNy5vcmcvZmhpci91cy9jb3JlL1N0cnVjdHVyZURlZmluaXRpb24vdXMtY29yZS1yYWNlJw0KICAgICAgICAgIHJldHVybiBFeHRlbnNpb24uZXh0ZW5zaW9uDQogICAgKSkgRQ0KICAgICAgd2hlcmUgRS51cmwgPSAnb21iQ2F0ZWdvcnknDQogICAgICAgIG9yIEUudXJsID0gJ2RldGFpbGVkJw0KICAgICAgcmV0dXJuIEUudmFsdWUgYXMgQ29kaW5nDQoNCmRlZmluZSAiU0RFIFNleCI6DQogIGNhc2UNCiAgICAgIHdoZW4gUGF0aWVudC5nZW5kZXIgPSAnbWFsZScgdGhlbiBDb2RlIHsgY29kZTogJ00nLCBzeXN0ZW06ICdodHRwOi8vaGw3Lm9yZy9maGlyL3YzL0FkbWluaXN0cmF0aXZlR2VuZGVyJywgZGlzcGxheTogJ01hbGUnIH0NCiAgICAgIHdoZW4gUGF0aWVudC5nZW5kZXIgPSAnZmVtYWxlJyB0aGVuIENvZGUgeyBjb2RlOiAnRicsIHN5c3RlbTogJ2h0dHA6Ly9obDcub3JnL2ZoaXIvdjMvQWRtaW5pc3RyYXRpdmVHZW5kZXInLCBkaXNwbGF5OiAnRmVtYWxlJyB9DQogICAgICBlbHNlIG51bGwNCiAgICBlbmQNCg0K"
+            "data": "bGlicmFyeSBTdXBwbGVtZW50YWxEYXRhRWxlbWVudHNGSElSNCB2ZXJzaW9uICcyLjAuMDAwJw0KDQovKkB1cGRhdGU6IEBAQlRSIDIwMjAtMDMtMzEgLT4NCkluY3JlbWVudGVkIHZlcnNpb24gdG8gMi4wLjANClVwZGF0ZWQgRkhJUiB2ZXJzaW9uIHRvIDQuMC4xDQpAQEAqLw0KDQp1c2luZyBGSElSIHZlcnNpb24gJzQuMC4xJw0KDQppbmNsdWRlIEZISVJIZWxwZXJzIHZlcnNpb24gJzQuMC4xJyBjYWxsZWQgRkhJUkhlbHBlcnMNCg0KdmFsdWVzZXQgIkV0aG5pY2l0eSI6ICdodHRwOi8vY3RzLm5sbS5uaWguZ292L2ZoaXIvVmFsdWVTZXQvMi4xNi44NDAuMS4xMTQyMjIuNC4xMS44MzcnIA0KdmFsdWVzZXQgIk9OQyBBZG1pbmlzdHJhdGl2ZSBTZXgiOiAnaHR0cDovL2N0cy5ubG0ubmloLmdvdi9maGlyL1ZhbHVlU2V0LzIuMTYuODQwLjEuMTEzNzYyLjEuNC4xJyANCnZhbHVlc2V0ICJQYXllciI6ICdodHRwOi8vY3RzLm5sbS5uaWguZ292L2ZoaXIvVmFsdWVTZXQvMi4xNi44NDAuMS4xMTQyMjIuNC4xMS4zNTkxJyANCnZhbHVlc2V0ICJSYWNlIjogJ2h0dHA6Ly9jdHMubmxtLm5paC5nb3YvZmhpci9WYWx1ZVNldC8yLjE2Ljg0MC4xLjExNDIyMi40LjExLjgzNicgDQoNCmNvbnRleHQgUGF0aWVudA0KDQpkZWZpbmUgIlNERSBFdGhuaWNpdHkiOg0KICAoZmxhdHRlbiAoDQogICAgICBQYXRpZW50LmV4dGVuc2lvbiBFeHRlbnNpb24NCiAgICAgICAgd2hlcmUgRXh0ZW5zaW9uLnVybCA9ICdodHRwOi8vaGw3Lm9yZy9maGlyL3VzL2NvcmUvU3RydWN0dXJlRGVmaW5pdGlvbi91cy1jb3JlLWV0aG5pY2l0eScNCiAgICAgICAgICByZXR1cm4gRXh0ZW5zaW9uLmV4dGVuc2lvbg0KICAgICkpIEUNCiAgICAgIHdoZXJlIEUudXJsID0gJ29tYkNhdGVnb3J5Jw0KICAgICAgICBvciBFLnVybCA9ICdkZXRhaWxlZCcNCiAgICAgIHJldHVybiBFLnZhbHVlIGFzIENvZGluZw0KDQpkZWZpbmUgIlNERSBQYXllciI6DQogIFtDb3ZlcmFnZTogdHlwZSBpbiAiUGF5ZXIiXSBQYXllcg0KICAgICAgICByZXR1cm4gew0KICAgICAgICAgIGNvZGU6IFBheWVyLnR5cGUsDQogICAgICAgICAgcGVyaW9kOiBQYXllci5wZXJpb2QNCiAgICAgICAgfQ0KDQpkZWZpbmUgIlNERSBSYWNlIjoNCiAgKGZsYXR0ZW4gKA0KICAgICAgUGF0aWVudC5leHRlbnNpb24gRXh0ZW5zaW9uDQogICAgICAgIHdoZXJlIEV4dGVuc2lvbi51cmwgPSAnaHR0cDovL2hsNy5vcmcvZmhpci91cy9jb3JlL1N0cnVjdHVyZURlZmluaXRpb24vdXMtY29yZS1yYWNlJw0KICAgICAgICAgIHJldHVybiBFeHRlbnNpb24uZXh0ZW5zaW9uDQogICAgKSkgRQ0KICAgICAgd2hlcmUgRS51cmwgPSAnb21iQ2F0ZWdvcnknDQogICAgICAgIG9yIEUudXJsID0gJ2RldGFpbGVkJw0KICAgICAgcmV0dXJuIEUudmFsdWUgYXMgQ29kaW5nDQoNCmRlZmluZSAiU0RFIFNleCI6DQogIGNhc2UNCiAgICAgIHdoZW4gUGF0aWVudC5nZW5kZXIgPSAnbWFsZScgdGhlbiBDb2RlIHsgY29kZTogJ00nLCBzeXN0ZW06ICdodHRwOi8vaGw3Lm9yZy9maGlyL3YzL0FkbWluaXN0cmF0aXZlR2VuZGVyJywgZGlzcGxheTogJ01hbGUnIH0NCiAgICAgIHdoZW4gUGF0aWVudC5nZW5kZXIgPSAnZmVtYWxlJyB0aGVuIENvZGUgeyBjb2RlOiAnRicsIHN5c3RlbTogJ2h0dHA6Ly9obDcub3JnL2ZoaXIvdjMvQWRtaW5pc3RyYXRpdmVHZW5kZXInLCBkaXNwbGF5OiAnRmVtYWxlJyB9DQogICAgICBlbHNlIG51bGwNCiAgICBlbmQNCg0K"
           }
         ]
       },
@@ -14708,7 +14709,7 @@
     {
       "resource": {
         "resourceType": "ValueSet",
-        "id": "2.16.840.1.113883.3.3616.200.110.102.2054-20220729",
+        "id": "2.16.840.1.113883.3.3616.200.110.102.2054",
         "meta": {
           "versionId": "11",
           "lastUpdated": "2022-07-29T01:06:04.000-04:00",
@@ -14810,7 +14811,7 @@
       },
       "request": {
         "method": "PUT",
-        "url": "ValueSet/2.16.840.1.113883.3.3616.200.110.102.2054-20220729/_history/11"
+        "url": "ValueSet/2.16.840.1.113883.3.3616.200.110.102.2054/_history/11"
       }
     }
   ]
