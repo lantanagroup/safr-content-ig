@@ -1,11 +1,11 @@
 Instance: observation-example-rps-rsvlabbtg
-InstanceOf: RespiratoryPathogensSurveillanceEventObservation
+InstanceOf: RespiratoryPathogensSurveillanceEventLabObservation
 Title: "Observation - RPS Observation Example RSV Lab BTG"
 Description: "Observation - Example RPS Observation RSV Lab BTG"
 Usage: #example
 * status = #final
-* category = $observation-category#laboratory "Laboratory"
-* category.text = "Laboratory"
+* category[Laboratory] = $observation-category#laboratory "Laboratory"
+* category[Laboratory].text = "Laboratory"
 * code = $loinc#31949-1 "Respiratory syncytial virus Ag [Presence] in Throat"
 * code.text = "RSV Ag Ql (Throat)"
 * subject.reference = "Patient/patient-example-rps-rsvlabbtg"

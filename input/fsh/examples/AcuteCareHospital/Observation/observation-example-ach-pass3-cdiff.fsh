@@ -3,8 +3,8 @@ InstanceOf: AcuteCareHospitalReportingLabObservation
 Usage: #inline
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-ach-pass3-cdiff)
-* category = $observation-category#laboratory "Laboratory"
-* category.text = "Laboratory"
+* category[Laboratory] = $observation-category#laboratory "Laboratory"
+* category[Laboratory].text = "Laboratory"
 * code = $sct#5933001 "Clostridioides difficile (organism)"
 * code.text = "C. Diff."
 * subject = Reference(patient-example-ach-ach-pass3)

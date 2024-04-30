@@ -1,5 +1,5 @@
 Instance: observation-example-ach-pass1-gestational-age
-InstanceOf: AcuteCareHospitalReportingLabObservation
+InstanceOf: AcuteCareHospitalReportingObservation
 Usage: #inline
 //https://build.fhir.org/ig/HL7/fhir-qi-core/Observation-example-gestation.json.html
 * status = #final

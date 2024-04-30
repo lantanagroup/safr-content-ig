@@ -1,9 +1,9 @@
 Instance: observation-example-ach-pass3-vitals-weight
-InstanceOf: AcuteCareHospitalReportingLabObservation
+InstanceOf: AcuteCareHospitalReportingVitalsObservation
 Usage: #inline
 * status = #final
-* category = $observation-category#vital-signs "Vital Signs"
-* category.text = "Vital Signs"
+* category[VSCat] = $observation-category#vital-signs "Vital Signs"
+* category[VSCat].text = "Vital Signs"
 * code = $loinc#29463-7 "Body weight"
 * code.text = "Weight"
 * subject = Reference(patient-example-ach-ach-pass3)

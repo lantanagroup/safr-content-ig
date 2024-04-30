@@ -3,8 +3,8 @@ InstanceOf: AcuteCareHospitalReportingLabObservation
 Usage: #inline
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-ach-pass1-csf)
-* category = $observation-category#laboratory "Laboratory"
-* category.text = "Laboratory"
+* category[Laboratory] = $observation-category#laboratory "Laboratory"
+* category[Laboratory].text = "Laboratory"
 * code = $loinc#61402-4 "Serratia marcescens DNA [Presence] in Specimen by NAA with probe detection"
 * code.text = "Serratia marcescens DNA"
 * subject = Reference(patient-example-ach-ach-pass1)
