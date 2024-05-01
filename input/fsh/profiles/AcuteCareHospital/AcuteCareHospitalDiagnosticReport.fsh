@@ -14,9 +14,9 @@ Description: "This profile contains Required and Must Support data elements for 
 * code from report-codes (extensible)
 * subject 1.. MS
 * encounter MS
-* effective[x] MS
+* effective[x] 1..1 MS
 * issued MS
-* performer MS
+//* performer MS
 * conclusionCode MS
-* presentedForm MS
+//* presentedForm MS
 
