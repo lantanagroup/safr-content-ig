@@ -1,5 +1,7 @@
 Instance: list-example-patients-of-interest
 InstanceOf: PatientsOfInterestList
+Title: "List - Example Patients of Interest List 1"
+Description: "List - Patients of Interest Example 1"
 Usage: #example
 * extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-patient-list-applicable-period-extension"
 * extension.valuePeriod.start = "2022-08-01T00:00:00.000Z"

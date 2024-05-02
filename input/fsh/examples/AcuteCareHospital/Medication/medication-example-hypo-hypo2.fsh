@@ -1,5 +1,7 @@
 Instance: medication-example-hypo-hypo2
 InstanceOf: AcuteCareHospitalReportingMedication
+Title: "Medication - Hypo Medication Example Hypo 2"
+Description: "Medication - Example Hypo Medication Hypo 2"
 Usage: #example
 * extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"
 * extension.valueString = "eDqE6JdEkh8mZo4TPwrQ9EeahisqKXGVniOD2rN80PE2EUeGATq60KM.KVXjzcHYMVMeCDuUpqdqoATqaUjUNVXwPRyqWkRVYyVVq2UgaecU3"

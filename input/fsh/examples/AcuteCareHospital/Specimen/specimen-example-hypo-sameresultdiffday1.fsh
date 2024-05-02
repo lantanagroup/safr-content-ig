@@ -1,5 +1,7 @@
 Instance: specimen-example-hypo-sameresultdiffday1
 InstanceOf: AcuteCareHospitalReportingSpecimen
+Title: "Specimen - Hypo Specimen Example Sameresultdiffday 1"
+Description: "Specimen - Example Hypo Specimen Sameresultdiffday 1"
 Usage: #example
 * identifier[0].system = "urn:oid:2.16.840.1.113883.19.5.1.798.32"
 * identifier[=].value = "C10408290"

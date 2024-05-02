@@ -1,5 +1,7 @@
 Instance: patient-example-sameresultdiffday
 InstanceOf: CrossMeasurePatient
+Title: "Patient - Cross-Measure Patient Example SameResultDiffDay"
+Description: "Patient - Example Measure Patient SameResultDiffDay"
 Usage: #example
 * meta.extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-received-date-extension"
 * meta.extension.valueDateTime = "2023-05-23T06:07:08Z"

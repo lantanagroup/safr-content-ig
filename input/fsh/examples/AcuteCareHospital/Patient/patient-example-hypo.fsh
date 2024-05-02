@@ -1,5 +1,7 @@
 Instance: patient-example-hypo
 InstanceOf: CrossMeasurePatient
+Title: "Patient - Cross-Measure Patient Example Hypo"
+Description: "Patient - Example Measure Patient Hypo"
 Usage: #example
 * extension[0].url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
 * extension[=].extension[0].url = "ombCategory"

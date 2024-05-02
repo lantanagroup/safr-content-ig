@@ -1,5 +1,7 @@
 Instance: encounter-example-hypo-hypo
 InstanceOf: AcuteCareHospitalReportingEncounter
+Title: "Encounter - Hypo Encounter Example Hypo"
+Description: "Encounter - Example Hypo Encounter Hypo"
 Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.698.8"

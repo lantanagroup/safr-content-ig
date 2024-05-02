@@ -212,6 +212,13 @@ groups:
      - StructureDefinition/extension-MeasureReport.supplementalDataElement.reference
      - StructureDefinition/extension-criteriaReference
 
+  general-examples:
+    name: "Knowledge Artifacts: General Examples"
+    resources:
+      - Device/cqf-tooling
+      - Organization/organization-example-submitting-organization
+      - Device/device-example-submitting-device
+
   ach-examples:
     name: "Knowledge Artifacts: ACH Examples"
     description: "Resource examples for ACH Initial Population Measure."
@@ -219,90 +226,85 @@ groups:
       - Bundle/bundle-example-ach-header
       
       - Bundle/bundle-example-ach-subject-ach-pass1
-      #- MeasureReport/measurereport-example-individual-ach-ach-pass1
-      #- Patient/patient-example-ach-ach-pass1
-      #- Encounter/encounter-example-ach-ach-pass1
-      #- Coverage/coverage-example-ach-pass1
-      #- Condition/condition-example-diagnosis-ach-pass1
-      #- Device/device-example-ach-ach-pass1-central-line
-      #- MedicationAdministration/medicationadministration-example-ach-pass1-vancomycin
-      #- MedicationRequest/medicationrequest-example-ach-pass1-vancomycin
-      #- Observation/observation-example-ach-pass1-blood
-      #- Observation/observation-example-ach-pass1-csf
-      #- Observation/observation-example-ach-pass1-gestational-age
-      #- Observation/observation-example-ach-pass1-vitals-weight
-      #- Procedure/procedure-example-ach-ach-pass1-central-line
-      #- Procedure/procedure-example-ach-ach-pass1-lumbar
-      #- ServiceRequest/servicerequest-example-ach-ach-pass1-blood
-      #- ServiceRequest/servicerequest-example-ach-ach-pass1-csf
-      #- Specimen/specimen-example-ach-ach-pass1-blood
-      #- Specimen/specimen-example-ach-ach-pass1-csf
+      - MeasureReport/measurereport-example-individual-ach-ach-pass1
+      - Patient/patient-example-ach-ach-pass1
+      - Encounter/encounter-example-ach-ach-pass1
+      - Coverage/coverage-example-ach-pass1
+      - Condition/condition-example-diagnosis-ach-pass1
+      - Device/device-example-ach-ach-pass1-central-line
+      - MedicationAdministration/medicationadministration-example-ach-pass1-vancomycin
+      - MedicationRequest/medicationrequest-example-ach-pass1-vancomycin
+      - Observation/observation-example-ach-pass1-blood
+      - Observation/observation-example-ach-pass1-csf
+      - Observation/observation-example-ach-pass1-gestational-age
+      - Observation/observation-example-ach-pass1-vitals-weight
+      - Procedure/procedure-example-ach-ach-pass1-central-line
+      - Procedure/procedure-example-ach-ach-pass1-lumbar
+      - ServiceRequest/servicerequest-example-ach-ach-pass1-blood
+      - ServiceRequest/servicerequest-example-ach-ach-pass1-csf
+      - Specimen/specimen-example-ach-ach-pass1-blood
+      - Specimen/specimen-example-ach-ach-pass1-csf
 
       - Bundle/bundle-example-ach-subject-ach-pass2
-      #- MeasureReport/measurereport-example-individual-ach-ach-pass2
-      #- Patient/patient-example-ach-ach-pass2
-      #- Encounter/encounter-example-ach-ach-pass2-emergency
-      #- Encounter/encounter-example-ach-ach-pass2-inpatient
-      #- Coverage/coverage-example-ach-pass2
-      #- Condition/condition-example-diagnosis-ach-pass2-problem
-      #- Condition/condition-example-diagnosis-ach-pass2
-      #- Device/device-example-ach-ach-pass2-compress-hose
-      #- DiagnosticReport/diagnosticreport-example-ach-ach-pass2-radiology
-      #- MedicationAdministration/medicationadministration-example-ach-pass2-dex4
-      #- MedicationAdministration/medicationadministration-example-ach-pass2-heparin-1
-      #- MedicationAdministration/medicationadministration-example-ach-pass2-heparin-2
-      #- MedicationAdministration/medicationadministration-example-ach-pass2-insulin-lispro-1
-      #- MedicationAdministration/medicationadministration-example-ach-pass2-insulin-lispro-2
-      #- MedicationAdministration/medicationadministration-example-ach-pass2-insulin-lispro-3
-      #- MedicationAdministration/medicationadministration-example-ach-pass2-insulin-lispro-4
-      #- MedicationRequest/medicationrequest-example-ach-pass2-dex4-tablet
-      #- MedicationRequest/medicationrequest-example-ach-pass2-heparin
-      #- MedicationRequest/medicationrequest-example-ach-pass2-insulin-lispro
-      #- MedicationRequest/medicationrequest-example-ach-pass2-metformin
-      #- Observation/observation-example-ach-pass2-aptt
-      #- Observation/observation-example-ach-pass2-poc-1
-      #- Observation/observation-example-ach-pass2-poc-2
-      #- Observation/observation-example-ach-pass2-hemo-a1c
-      #- Observation/observation-example-ach-pass2-hemo
-      #- Observation/observation-example-ach-pass2-vitals-weight
-      #- Procedure/procedure-example-ach-ach-pass2-ivcf
-      #- ServiceRequest/servicerequest-example-ach-ach-pass2-aptt
-      #- ServiceRequest/servicerequest-example-ach-ach-pass2-glucose
-      #- ServiceRequest/servicerequest-example-ach-ach-pass2-hemo-a1c
-      #- ServiceRequest/servicerequest-example-ach-ach-pass2-hemo
-      #- Specimen/specimen-example-ach-ach-pass2-blood-1
-      #- Specimen/specimen-example-ach-ach-pass2-blood-2
+      - MeasureReport/measurereport-example-individual-ach-ach-pass2
+      - Patient/patient-example-ach-ach-pass2
+      - Encounter/encounter-example-ach-ach-pass2-emergency
+      - Encounter/encounter-example-ach-ach-pass2-inpatient
+      - Coverage/coverage-example-ach-pass2
+      - Condition/condition-example-diagnosis-ach-pass2-problem
+      - Condition/condition-example-diagnosis-ach-pass2
+      - Device/device-example-ach-ach-pass2-compress-hose
+      - DiagnosticReport/diagnosticreport-example-ach-ach-pass2-radiology
+      - MedicationAdministration/medicationadministration-example-ach-pass2-dex4
+      - MedicationAdministration/medicationadministration-example-ach-pass2-heparin-1
+      - MedicationAdministration/medicationadministration-example-ach-pass2-heparin-2
+      - MedicationAdministration/medicationadministration-example-ach-pass2-insulin-lispro-1
+      - MedicationAdministration/medicationadministration-example-ach-pass2-insulin-lispro-2
+      - MedicationAdministration/medicationadministration-example-ach-pass2-insulin-lispro-3
+      - MedicationAdministration/medicationadministration-example-ach-pass2-insulin-lispro-4
+      - MedicationRequest/medicationrequest-example-ach-pass2-dex4-tablet
+      - MedicationRequest/medicationrequest-example-ach-pass2-heparin
+      - MedicationRequest/medicationrequest-example-ach-pass2-insulin-lispro
+      - MedicationRequest/medicationrequest-example-ach-pass2-metformin
+      - Observation/observation-example-ach-pass2-aptt
+      - Observation/observation-example-ach-pass2-poc-1
+      - Observation/observation-example-ach-pass2-poc-2
+      - Observation/observation-example-ach-pass2-hemo-a1c
+      - Observation/observation-example-ach-pass2-hemo
+      - Observation/observation-example-ach-pass2-vitals-weight
+      - Procedure/procedure-example-ach-ach-pass2-ivcf
+      - ServiceRequest/servicerequest-example-ach-ach-pass2-aptt
+      - ServiceRequest/servicerequest-example-ach-ach-pass2-glucose
+      - ServiceRequest/servicerequest-example-ach-ach-pass2-hemo-a1c
+      - ServiceRequest/servicerequest-example-ach-ach-pass2-hemo
+      - Specimen/specimen-example-ach-ach-pass2-blood-1
+      - Specimen/specimen-example-ach-ach-pass2-blood-2
 
       - Bundle/bundle-example-ach-subject-ach-pass3
-      #- MeasureReport/measurereport-example-individual-ach-ach-pass3
-      #- Patient/patient-example-ach-ach-pass3
-      #- Encounter/encounter-example-ach-ach-pass3-acute
-      #- Encounter/encounter-example-ach-ach-pass3-short-stay
-      #- Coverage/coverage-example-ach-pass3
-      #- Condition/condition-example-diagnosis-ach-pass3-problem
-      #- Condition/condition-example-diagnosis-ach-pass3
-      #- Device/device-example-ach-ach-pass3-ivcs-pump
-      #- MedicationAdministration/medicationadministration-example-ach-pass3-enoxaparin
-      #- MedicationAdministration/medicationadministration-example-ach-pass3-metronidazole-1
-      #- MedicationAdministration/medicationadministration-example-ach-pass3-metronidazole-2
-      #- MedicationAdministration/medicationadministration-example-ach-pass3-metronidazole-3
-      #- MedicationRequest/medicationrequest-example-ach-pass3-cipro
-      #- MedicationRequest/medicationrequest-example-ach-pass3-enoxaparin
-      #- MedicationRequest/medicationrequest-example-ach-pass3-metronidazole
-      #- Observation/observation-example-ach-pass3-cdiff
-      #- Observation/observation-example-ach-pass3-vitals-height
-      #- Observation/observation-example-ach-pass3-vitals-weight
-      #- Procedure/procedure-example-ach-ach-pass3-transfusion
-      #- ServiceRequest/servicerequest-example-ach-ach-pass3-cdiff
-      #- Specimen/specimen-example-ach-ach-pass3-stool
+      - MeasureReport/measurereport-example-individual-ach-ach-pass3
+      - Patient/patient-example-ach-ach-pass3
+      - Encounter/encounter-example-ach-ach-pass3-acute
+      - Encounter/encounter-example-ach-ach-pass3-short-stay
+      - Coverage/coverage-example-ach-pass3
+      - Condition/condition-example-diagnosis-ach-pass3-problem
+      - Condition/condition-example-diagnosis-ach-pass3
+      - Device/device-example-ach-ach-pass3-ivcs-pump
+      - MedicationAdministration/medicationadministration-example-ach-pass3-enoxaparin
+      - MedicationAdministration/medicationadministration-example-ach-pass3-metronidazole-1
+      - MedicationAdministration/medicationadministration-example-ach-pass3-metronidazole-2
+      - MedicationAdministration/medicationadministration-example-ach-pass3-metronidazole-3
+      - MedicationRequest/medicationrequest-example-ach-pass3-cipro
+      - MedicationRequest/medicationrequest-example-ach-pass3-enoxaparin
+      - MedicationRequest/medicationrequest-example-ach-pass3-metronidazole
+      - Observation/observation-example-ach-pass3-cdiff
+      - Observation/observation-example-ach-pass3-vitals-height
+      - Observation/observation-example-ach-pass3-vitals-weight
+      - Procedure/procedure-example-ach-ach-pass3-transfusion
+      - ServiceRequest/servicerequest-example-ach-ach-pass3-cdiff
+      - Specimen/specimen-example-ach-ach-pass3-stool
 
-  examples:
-    name: "Knowledge Artifacts: Examples"
-    resources:
-      - Device/cqf-tooling
+
       - Bundle/submission-full-example1
-      - Organization/organization-example-submitting-organization
-      - Device/device-example-submitting-device
       - List/list-example-patients-of-interest
 
       - MeasureReport/measurereport-example-subjectlist1
@@ -386,6 +388,10 @@ groups:
 
       - Specimen/specimen-example-hypo-sameresultdiffday1
 
+  rps-examples:
+    name: "Knowledge Artifacts: RPS Examples"
+    description: "Resource examples for RPS Initial Population Measure."
+    resources:
       - Patient/patient-example-rps-influenzatherapeutic
       - Patient/patient-example-rps-initialpopulationpass
       - Patient/patient-example-rps-negativepcr
@@ -522,63 +528,63 @@ resources:
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
 
-   Bundle/bundle-example-ach-header:
-     name: Example ACH Submission Header Bundle
-     description: Example Separated ACH Submission Header Bundle
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submission-header-bundle
+   #Bundle/bundle-example-ach-header:
+     #name: Example ACH Submission Header Bundle
+     #description: Example Separated ACH Submission Header Bundle
+     #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submission-header-bundle
 
-   Bundle/bundle-example-ach-subject-ach-pass1:
-     name: Example ACH Submission Subject Bundle 1
-     description: Example Separated ACH Submission Subject Bundle 1 for LOS/MEN
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle
+  #  Bundle/bundle-example-ach-subject-ach-pass1:
+  #    name: Example ACH Submission Subject Bundle 1
+  #    description: Example Separated ACH Submission Subject Bundle 1 for LOS/MEN
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle
 
-   Bundle/bundle-example-ach-subject-ach-pass2:
-     name: Example ACH Submission Subject Bundle 2
-     description: Example Separated ACH Submission Subject Bundle 2 for Hypoglycemia and VTE
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle
+  #  Bundle/bundle-example-ach-subject-ach-pass2:
+  #    name: Example ACH Submission Subject Bundle 2
+  #    description: Example Separated ACH Submission Subject Bundle 2 for Hypoglycemia and VTE
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle
 
-   Bundle/bundle-example-ach-subject-ach-pass3:
-     name: Example ACH Submission Subject Bundle 3
-     description: Example Separated ACH Submission Subject Bundle 3 for CDI and VTE
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle
+  #  Bundle/bundle-example-ach-subject-ach-pass3:
+  #    name: Example ACH Submission Subject Bundle 3
+  #    description: Example Separated ACH Submission Subject Bundle 3 for CDI and VTE
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle
 
-   Bundle/submission-full-example1:
-     name: Submission Example 1
-     description: Measure Bundle - Submission Example 1
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-measurereport-bundle
+  #  Bundle/submission-full-example1:
+  #    name: Submission Example 1
+  #    description: Measure Bundle - Submission Example 1
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-measurereport-bundle
    
-   Organization/organization-example-submitting-organization:
-     name: Organization - Example Submitting Organization 1
-     description: Organization - Submitting Organization Example 1
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submitting-organization
+  #  Organization/organization-example-submitting-organization:
+  #    name: Organization - Example Submitting Organization 1
+  #    description: Organization - Submitting Organization Example 1
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submitting-organization
    
-   Device/device-example-submitting-device:
-     name: Device - Example Submitting Device 1
-     description: Device - Submitting Device Example 1
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submitting-device
+  #  Device/device-example-submitting-device:
+  #    name: Device - Example Submitting Device 1
+  #    description: Device - Submitting Device Example 1
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submitting-device
    
-   List/list-example-patients-of-interest:
-     name: List - Example Patients of Interest List 1
-     description: List - Patients of Interest Example 1
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/poi-list
-   
-   
-   MeasureReport/measurereport-example-subjectlist1:
-     name: MeasureReport - Example Subject List 1
-     description: Measure Report - Subject List Example 1
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/subjectlist-measurereport
-   
-   List/list-example-individual-measurereport-list:
-     name: List - Example Individual Measure Report List 1
-     description: List - Individual Measure Report List Example 1
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list
+  #  List/list-example-patients-of-interest:
+  #    name: List - Example Patients of Interest List 1
+  #    description: List - Patients of Interest Example 1
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/poi-list
    
    
+  #  MeasureReport/measurereport-example-subjectlist1:
+  #    name: MeasureReport - Example Subject List 1
+  #    description: Measure Report - Subject List Example 1
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/subjectlist-measurereport
    
-   MeasureReport/measurereport-example-individual-measurereport-sameresultdiffday:
-     name: MeasureReport - Example Individual Measure Report Sameresultdiffday
-     description: Measure Report - Individual Measure Report Example Sameresultdiffday
-     exampleCanonical: http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm
+  #  List/list-example-individual-measurereport-list:
+  #    name: List - Example Individual Measure Report List 1
+  #    description: List - Individual Measure Report List Example 1
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list
+   
+   
+   
+  #  MeasureReport/measurereport-example-individual-measurereport-sameresultdiffday:
+  #    name: MeasureReport - Example Individual Measure Report Sameresultdiffday
+  #    description: Measure Report - Individual Measure Report Example Sameresultdiffday
+  #    exampleCanonical: http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm
    
 #   MeasureReport/measurereport-example-individual-measurereport-hypo:
 #     name: MeasureReport - Example Individual Measure Report Hypo
@@ -587,216 +593,216 @@ resources:
    
    
    
-   Patient/patient-example-sameresultdiffday:
-     name: Patient - Cross-Measure Patient Example SameResultDiffDay
-     description: Patient - Example Measure Patient SameResultDiffDay
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/cross-measure-patient
+  #  Patient/patient-example-sameresultdiffday:
+  #    name: Patient - Cross-Measure Patient Example SameResultDiffDay
+  #    description: Patient - Example Measure Patient SameResultDiffDay
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/cross-measure-patient
    
-   Patient/patient-example-hypo:
-     name: Patient - Cross-Measure Patient Example Hypo
-     description: Patient - Example Measure Patient Hypo
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/cross-measure-patient
-   
-   
-   Encounter/encounter-example-hypo-sameresultdiffday:
-     name: Encounter - Hypo Encounter Example SameResultDiffDay
-     description: Encounter - Example Hypo Encounter SameResultDiffDay
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter
-   
-   Encounter/encounter-example-hypo-hypo:
-     name: Encounter - Hypo Encounter Example Hypo
-     description: Encounter - Example Hypo Encounter Hypo
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter
+  #  Patient/patient-example-hypo:
+  #    name: Patient - Cross-Measure Patient Example Hypo
+  #    description: Patient - Example Measure Patient Hypo
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/cross-measure-patient
    
    
-   Location/location-example-hypo-encounter-location-sameresultdiffday:
-     name: Location - Hypo Encounter Location Example Sameersultdiffday
-     description: Location - Example Hypo Encounter Location Sameresultdiffday
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-location
+  #  Encounter/encounter-example-hypo-sameresultdiffday:
+  #    name: Encounter - Hypo Encounter Example SameResultDiffDay
+  #    description: Encounter - Example Hypo Encounter SameResultDiffDay
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter
+   
+  #  Encounter/encounter-example-hypo-hypo:
+  #    name: Encounter - Hypo Encounter Example Hypo
+  #    description: Encounter - Example Hypo Encounter Hypo
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter
    
    
-   Coverage/coverage-example-sameresultdiffday:
-     name: Coverage - Coverage Example Sameresultdiffday
-     description: Coverage - Example Coverage Sameresultdiffday
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-coverage
+  #  Location/location-example-hypo-encounter-location-sameresultdiffday:
+  #    name: Location - Hypo Encounter Location Example Sameersultdiffday
+  #    description: Location - Example Hypo Encounter Location Sameresultdiffday
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-location
    
    
-   Condition/condition-example-diagnosis-sameresultdiffday1:
-     name: Condition - Hypo Diagnosis Example Sameersultdiffday 1
-     description: Condition - Example Hypo Diagnosis Sameresultdiffday 1
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition
-   
-   Condition/condition-example-diagnosis-sameresultdiffday2:
-     name: Condition - Hypo Diagnosis Example Sameersultdiffday 2
-     description: Condition - Example Hypo Diagnosis Sameresultdiffday 2
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition
+  #  Coverage/coverage-example-sameresultdiffday:
+  #    name: Coverage - Coverage Example Sameresultdiffday
+  #    description: Coverage - Example Coverage Sameresultdiffday
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-coverage
    
    
-   Condition/condition-example-diagnosis-hypo1:
-     name: Condition - Hypo Diagnosis Example Hypo 1
-     description: Condition - Example Hypo Diagnosis Hypo 1
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition
+  #  Condition/condition-example-diagnosis-sameresultdiffday1:
+  #    name: Condition - Hypo Diagnosis Example Sameersultdiffday 1
+  #    description: Condition - Example Hypo Diagnosis Sameresultdiffday 1
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition
    
-   Condition/condition-example-diagnosis-hypo2:
-     name: Condition - Hypo Diagnosis Example Hypo 2
-     description: Condition - Example Hypo Diagnosis Hypo 2
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition
+  #  Condition/condition-example-diagnosis-sameresultdiffday2:
+  #    name: Condition - Hypo Diagnosis Example Sameersultdiffday 2
+  #    description: Condition - Example Hypo Diagnosis Sameresultdiffday 2
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition
    
    
-   Observation/observation-example-hypo-lab-sameresultdiffday1:
-     name: Observation - Hypo Lab Example Sameresultdiffday 1
-     description: Observation - Example Hypo Lab Sameresultdiffday 1
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
+  #  Condition/condition-example-diagnosis-hypo1:
+  #    name: Condition - Hypo Diagnosis Example Hypo 1
+  #    description: Condition - Example Hypo Diagnosis Hypo 1
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition
    
-   Observation/observation-example-hypo-lab-sameresultdiffday2:
-     name: Observation - Hypo Lab Example Sameresultdiffday 2
-     description: Observation - Example Hypo Lab Sameresultdiffday 2
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
+  #  Condition/condition-example-diagnosis-hypo2:
+  #    name: Condition - Hypo Diagnosis Example Hypo 2
+  #    description: Condition - Example Hypo Diagnosis Hypo 2
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition
    
-   Observation/observation-example-hypo-lab-sameresultdiffday3:
-     name: Observation - Hypo Lab Example Sameresultdiffday 3
-     description: Observation - Example Hypo Lab Sameresultdiffday 3
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
-   Observation/observation-example-hypo-lab-sameresultdiffday4:
-     name: Observation - Hypo Lab Example Sameresultdiffday 4
-     description: Observation - Example Hypo Lab Sameresultdiffday 4
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
+  #  Observation/observation-example-hypo-lab-sameresultdiffday1:
+  #    name: Observation - Hypo Lab Example Sameresultdiffday 1
+  #    description: Observation - Example Hypo Lab Sameresultdiffday 1
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
-   Observation/observation-example-hypo-lab-sameresultdiffday5:
-     name: Observation - Hypo Lab Example Sameresultdiffday 5
-     description: Observation - Example Hypo Lab Sameresultdiffday 5
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
+  #  Observation/observation-example-hypo-lab-sameresultdiffday2:
+  #    name: Observation - Hypo Lab Example Sameresultdiffday 2
+  #    description: Observation - Example Hypo Lab Sameresultdiffday 2
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
-   Observation/observation-example-hypo-lab-sameresultdiffday6:
-     name: Observation - Hypo Lab Example Sameresultdiffday 6
-     description: Observation - Example Hypo Lab Sameresultdiffday 6
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
+  #  Observation/observation-example-hypo-lab-sameresultdiffday3:
+  #    name: Observation - Hypo Lab Example Sameresultdiffday 3
+  #    description: Observation - Example Hypo Lab Sameresultdiffday 3
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
-   Observation/observation-example-hypo-lab-sameresultdiffday7:
-     name: Observation - Hypo Lab Example Sameresultdiffday 7
-     description: Observation - Example Hypo Lab Sameresultdiffday 7
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
+  #  Observation/observation-example-hypo-lab-sameresultdiffday4:
+  #    name: Observation - Hypo Lab Example Sameresultdiffday 4
+  #    description: Observation - Example Hypo Lab Sameresultdiffday 4
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
-   Observation/observation-example-hypo-lab-hypo1:
-     name: Observation - Hypo Lab Example Hypo 1
-     description: Observation - Example Hypo Lab Hypo 1
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
+  #  Observation/observation-example-hypo-lab-sameresultdiffday5:
+  #    name: Observation - Hypo Lab Example Sameresultdiffday 5
+  #    description: Observation - Example Hypo Lab Sameresultdiffday 5
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
-   Observation/observation-example-hypo-lab-hypo2:
-     name: Observation - Hypo Lab Example Hypo 2
-     description: Observation - Example Hypo Lab Hypo 2
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
+  #  Observation/observation-example-hypo-lab-sameresultdiffday6:
+  #    name: Observation - Hypo Lab Example Sameresultdiffday 6
+  #    description: Observation - Example Hypo Lab Sameresultdiffday 6
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
-   Observation/observation-example-hypo-lab-hypo3:
-     name: Observation - Hypo Lab Example Hypo 3
-     description: Observation - Example Hypo Lab Hypo 3
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
+  #  Observation/observation-example-hypo-lab-sameresultdiffday7:
+  #    name: Observation - Hypo Lab Example Sameresultdiffday 7
+  #    description: Observation - Example Hypo Lab Sameresultdiffday 7
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
-   Observation/observation-example-hypo-lab-hypo4:
-     name: Observation - Hypo Lab Example Hypo 4
-     description: Observation - Example Hypo Lab Hypo 4
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
+  #  Observation/observation-example-hypo-lab-hypo1:
+  #    name: Observation - Hypo Lab Example Hypo 1
+  #    description: Observation - Example Hypo Lab Hypo 1
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
-   Observation/observation-example-hypo-lab-hypo5:
-     name: Observation - Hypo Lab Example Hypo 5
-     description: Observation - Example Hypo Lab Hypo 5
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
+  #  Observation/observation-example-hypo-lab-hypo2:
+  #    name: Observation - Hypo Lab Example Hypo 2
+  #    description: Observation - Example Hypo Lab Hypo 2
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
-   Observation/observation-example-hypo-lab-hypo6:
-     name: Observation - Hypo Lab Example Hypo 6
-     description: Observation - Example Hypo Lab Hypo 6
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
+  #  Observation/observation-example-hypo-lab-hypo3:
+  #    name: Observation - Hypo Lab Example Hypo 3
+  #    description: Observation - Example Hypo Lab Hypo 3
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
-   Observation/observation-example-hypo-lab-hypo7:
-     name: Observation - Hypo Lab Example Hypo 7
-     description: Observation - Example Hypo Lab Hypo 7
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
+  #  Observation/observation-example-hypo-lab-hypo4:
+  #    name: Observation - Hypo Lab Example Hypo 4
+  #    description: Observation - Example Hypo Lab Hypo 4
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
    
-   Observation/observation-example-hypo-lab-hypo8:
-     name: Observation - Hypo Lab Example Hypo 8
-     description: Observation - Example Hypo Lab Hypo 8
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
+  #  Observation/observation-example-hypo-lab-hypo5:
+  #    name: Observation - Hypo Lab Example Hypo 5
+  #    description: Observation - Example Hypo Lab Hypo 5
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
+   
+  #  Observation/observation-example-hypo-lab-hypo6:
+  #    name: Observation - Hypo Lab Example Hypo 6
+  #    description: Observation - Example Hypo Lab Hypo 6
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
+   
+  #  Observation/observation-example-hypo-lab-hypo7:
+  #    name: Observation - Hypo Lab Example Hypo 7
+  #    description: Observation - Example Hypo Lab Hypo 7
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
+   
+  #  Observation/observation-example-hypo-lab-hypo8:
+  #    name: Observation - Hypo Lab Example Hypo 8
+  #    description: Observation - Example Hypo Lab Hypo 8
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab
         
    
    
    
-   MedicationRequest/medicationrequest-example-hypo-sameresultdiffday1:
-     name: MedicationRequest - Hypo MedicationRequest Example Sameresultdiffday 1
-     description: MedicationRequest - Example Hypo MedicationRequest Sameresultdiffday 1
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest
+  #  MedicationRequest/medicationrequest-example-hypo-sameresultdiffday1:
+  #    name: MedicationRequest - Hypo MedicationRequest Example Sameresultdiffday 1
+  #    description: MedicationRequest - Example Hypo MedicationRequest Sameresultdiffday 1
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest
    
-   MedicationRequest/medicationrequest-example-hypo-sameresultdiffday2:
-     name: MedicationRequest - Hypo MedicationRequest Example Sameresultdiffday 2
-     description: MedicationRequest - Example Hypo MedicationRequest Sameresultdiffday 2
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest
+  #  MedicationRequest/medicationrequest-example-hypo-sameresultdiffday2:
+  #    name: MedicationRequest - Hypo MedicationRequest Example Sameresultdiffday 2
+  #    description: MedicationRequest - Example Hypo MedicationRequest Sameresultdiffday 2
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest
    
-   MedicationRequest/medicationrequest-example-hypo-hypo1:
-     name: MedicationRequest - Hypo MedicationRequest Example Hypo 1
-     description: MedicationRequest - Example Hypo MedicationRequest Hypo 1
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest
+  #  MedicationRequest/medicationrequest-example-hypo-hypo1:
+  #    name: MedicationRequest - Hypo MedicationRequest Example Hypo 1
+  #    description: MedicationRequest - Example Hypo MedicationRequest Hypo 1
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest
    
-   MedicationRequest/medicationrequest-example-hypo-hypo2:
-     name: MedicationRequest - Hypo MedicationRequest Example Hypo 2
-     description: MedicationRequest - Example Hypo MedicationRequest Hypo 2
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest
+  #  MedicationRequest/medicationrequest-example-hypo-hypo2:
+  #    name: MedicationRequest - Hypo MedicationRequest Example Hypo 2
+  #    description: MedicationRequest - Example Hypo MedicationRequest Hypo 2
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest
    
-   MedicationRequest/medicationrequest-example-hypo-hypo3:
-     name: MedicationRequest - Hypo MedicationRequest Example Hypo 3
-     description: MedicationRequest - Example Hypo MedicationRequest Hypo 3
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest
+  #  MedicationRequest/medicationrequest-example-hypo-hypo3:
+  #    name: MedicationRequest - Hypo MedicationRequest Example Hypo 3
+  #    description: MedicationRequest - Example Hypo MedicationRequest Hypo 3
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest
    
-   MedicationRequest/medicationrequest-example-hypo-hypo4:
-     name: MedicationRequest - Hypo MedicationRequest Example Hypo 4
-     description: MedicationRequest - Example Hypo MedicationRequest Hypo 4
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest
-   
-   
-   MedicationAdministration/medicationadministration-example-hypo-hypo1:
-     name: MedicationAdministration - Hypo Medication Administration Example Hypo 1
-     description: MedicationAdministration - Example Hypo Medication Administration Hypo 1
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationadministration
+  #  MedicationRequest/medicationrequest-example-hypo-hypo4:
+  #    name: MedicationRequest - Hypo MedicationRequest Example Hypo 4
+  #    description: MedicationRequest - Example Hypo MedicationRequest Hypo 4
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest
    
    
-   Medication/medication-example-hypo-sameresultdiffday1:
-     name: Medication - Hypo Medication Example Sameresultdiffday 1
-     description: Medication - Example Hypo Medication Sameresultdiffday 1
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication
-   
-   Medication/medication-example-hypo-sameresultdiffday2:
-     name: Medication - Hypo Medication Example Sameresultdiffday 2
-     description: Medication - Example Hypo Medication Sameresultdiffday 2
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication
-   
-   Medication/medication-example-hypo-hypo1:
-     name: Medication - Hypo Medication Example Hypo 1
-     description: Medication - Example Hypo Medication Hypo 1
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication
-   
-   Medication/medication-example-hypo-hypo2:
-     name: Medication - Hypo Medication Example Hypo 2
-     description: Medication - Example Hypo Medication Hypo 2
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication
-   
-   Medication/medication-example-hypo-hypo3:
-     name: Medication - Hypo Medication Example Hypo 3
-     description: Medication - Example Hypo Medication Hypo 3
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication
-   
-   Medication/medication-example-hypo-hypo4:
-     name: Medication - Hypo Medication Example Hypo 4
-     description: Medication - Example Hypo Medication Hypo 4
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication
+  #  MedicationAdministration/medicationadministration-example-hypo-hypo1:
+  #    name: MedicationAdministration - Hypo Medication Administration Example Hypo 1
+  #    description: MedicationAdministration - Example Hypo Medication Administration Hypo 1
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationadministration
    
    
-   ServiceRequest/servicerequest-example-hypo-sameresultdiffday1:
-     name: ServiceRequest - Hypo ServiceRequest Example Sameresultdiffday 1
-     description: ServiceRequest - Example Hypo ServiceRequest Sameresultdiffday 1
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-servicerequest
+  #  Medication/medication-example-hypo-sameresultdiffday1:
+  #    name: Medication - Hypo Medication Example Sameresultdiffday 1
+  #    description: Medication - Example Hypo Medication Sameresultdiffday 1
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication
+   
+  #  Medication/medication-example-hypo-sameresultdiffday2:
+  #    name: Medication - Hypo Medication Example Sameresultdiffday 2
+  #    description: Medication - Example Hypo Medication Sameresultdiffday 2
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication
+   
+  #  Medication/medication-example-hypo-hypo1:
+  #    name: Medication - Hypo Medication Example Hypo 1
+  #    description: Medication - Example Hypo Medication Hypo 1
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication
+   
+  #  Medication/medication-example-hypo-hypo2:
+  #    name: Medication - Hypo Medication Example Hypo 2
+  #    description: Medication - Example Hypo Medication Hypo 2
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication
+   
+  #  Medication/medication-example-hypo-hypo3:
+  #    name: Medication - Hypo Medication Example Hypo 3
+  #    description: Medication - Example Hypo Medication Hypo 3
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication
+   
+  #  Medication/medication-example-hypo-hypo4:
+  #    name: Medication - Hypo Medication Example Hypo 4
+  #    description: Medication - Example Hypo Medication Hypo 4
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication
    
    
-   Specimen/specimen-example-hypo-sameresultdiffday1:
-     name: Specimen - Hypo Specimen Example Sameresultdiffday 1
-     description: Specimen - Example Hypo Specimen Sameresultdiffday 1
-     exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-specimen
+  #  ServiceRequest/servicerequest-example-hypo-sameresultdiffday1:
+  #    name: ServiceRequest - Hypo ServiceRequest Example Sameresultdiffday 1
+  #    description: ServiceRequest - Example Hypo ServiceRequest Sameresultdiffday 1
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-servicerequest
+   
+   
+  #  Specimen/specimen-example-hypo-sameresultdiffday1:
+  #    name: Specimen - Hypo Specimen Example Sameresultdiffday 1
+  #    description: Specimen - Example Hypo Specimen Sameresultdiffday 1
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-specimen
     

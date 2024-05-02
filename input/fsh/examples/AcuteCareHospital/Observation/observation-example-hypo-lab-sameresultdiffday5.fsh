@@ -1,5 +1,7 @@
 Instance: observation-example-hypo-lab-sameresultdiffday5
 InstanceOf: AcuteCareHospitalReportingLabObservation
+Title: "Observation - Hypo Lab Example Sameresultdiffday 5"
+Description: "Observation - Example Hypo Lab Sameresultdiffday 5"
 Usage: #example
 * extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"
 * extension.valueString = "exkEYAJJt6vAJPb5EHFZGtFJ4QplVzGaK1nZ6PeLV5oTiPGIoC1uLik7C0TcEU5Zd3"
