@@ -1,6 +1,6 @@
 Instance: observation-example-ach-pass2-poc-1
 InstanceOf: AcuteCareHospitalReportingLabObservation
-Usage: #inline
+Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-ach-pass2-glucose)
 * category[Laboratory] = $observation-category#laboratory "Laboratory"
@@ -18,7 +18,7 @@ Usage: #inline
 
 Instance: observation-example-ach-pass2-poc-2
 InstanceOf: AcuteCareHospitalReportingLabObservation
-Usage: #inline
+Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-ach-pass2-glucose)
 * category[Laboratory] = $observation-category#laboratory "Laboratory"

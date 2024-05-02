@@ -1,6 +1,6 @@
 Instance: patient-example-ach-ach-pass3
 InstanceOf: CrossMeasurePatient
-Usage: #inline
+Usage: #example
 * extension[0].url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
 * extension[=].extension[0].url = "ombCategory"
 * extension[=].extension[=].valueCoding = urn:oid:2.16.840.1.113883.6.238#2028-9 "Asian"

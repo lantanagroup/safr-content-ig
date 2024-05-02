@@ -1,6 +1,6 @@
 Instance: condition-example-diagnosis-ach-pass3
 InstanceOf: AcuteCareHospitalReportingCondition
-Usage: #inline
+Usage: #example
 * verificationStatus.coding.version = "4.0.0"
 * verificationStatus.coding = $condition-ver-status#confirmed "Confirmed"
 * verificationStatus.text = "Confirmed"

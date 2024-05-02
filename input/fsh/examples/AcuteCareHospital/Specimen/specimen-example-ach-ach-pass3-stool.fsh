@@ -1,6 +1,6 @@
 Instance: specimen-example-ach-ach-pass3-stool
 InstanceOf: AcuteCareHospitalReportingSpecimen
-Usage: #inline
+Usage: #example
 * identifier[0].system = "urn:oid:2.16.840.1.113883.19.5.1.798.32"
 * identifier[=].value = "C104082905"
 * identifier[=].assigner.display = "LIS"

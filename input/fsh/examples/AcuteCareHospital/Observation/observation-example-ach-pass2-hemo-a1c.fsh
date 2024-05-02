@@ -1,6 +1,6 @@
 Instance: observation-example-ach-pass2-hemo-a1c
 InstanceOf: AcuteCareHospitalReportingLabObservation
-Usage: #inline
+Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-ach-pass2-hemo-a1c)
 * category[Laboratory] = $observation-category#laboratory "Laboratory"

@@ -1,6 +1,6 @@
 Instance: medicationadministration-example-ach-pass2-insulin-lispro-1
 InstanceOf: AcuteCareHospitalReportingMedicationAdministration
-Usage: #inline
+Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"
 * identifier.value = "1018888942"
@@ -25,7 +25,7 @@ Usage: #inline
 
 Instance: medicationadministration-example-ach-pass2-insulin-lispro-2
 InstanceOf: AcuteCareHospitalReportingMedicationAdministration
-Usage: #inline
+Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"
 * identifier.value = "1018888943"
@@ -50,7 +50,7 @@ Usage: #inline
 
 Instance: medicationadministration-example-ach-pass2-insulin-lispro-3
 InstanceOf: AcuteCareHospitalReportingMedicationAdministration
-Usage: #inline
+Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"
 * identifier.value = "1018888944"
@@ -75,7 +75,7 @@ Usage: #inline
 
 Instance: medicationadministration-example-ach-pass2-insulin-lispro-4
 InstanceOf: AcuteCareHospitalReportingMedicationAdministration
-Usage: #inline
+Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"
 * identifier.value = "1018888945"

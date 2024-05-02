@@ -1,6 +1,6 @@
 Instance: medicationadministration-example-ach-pass3-metronidazole-1
 InstanceOf: AcuteCareHospitalReportingMedicationAdministration
-Usage: #inline
+Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"
 * identifier.value = "1018888321"
@@ -25,7 +25,7 @@ Usage: #inline
 
 Instance: medicationadministration-example-ach-pass3-metronidazole-2
 InstanceOf: AcuteCareHospitalReportingMedicationAdministration
-Usage: #inline
+Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"
 * identifier.value = "1018888322"
@@ -50,7 +50,7 @@ Usage: #inline
 
 Instance: medicationadministration-example-ach-pass3-metronidazole-3
 InstanceOf: AcuteCareHospitalReportingMedicationAdministration
-Usage: #inline
+Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"
 * identifier.value = "1018888323"

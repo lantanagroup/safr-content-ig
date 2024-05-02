@@ -1,6 +1,6 @@
 Instance: measurereport-example-individual-ach-ach-pass1
 InstanceOf: MeasureReport
-Usage: #inline
+Usage: #example
 * meta.profile = "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"
 * identifier.system = "http://example.org/fhir/measurereport/id"
 * identifier.value = "123456789-pass1"

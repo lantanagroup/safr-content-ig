@@ -1,6 +1,6 @@
 Instance: servicerequest-example-ach-ach-pass2-glucose
 InstanceOf: AcuteCareHospitalReportingServiceRequest
-Usage: #inline
+Usage: #example
 * identifier.use = #usual
 * identifier.type = $v2-0203#PLAC "Placer Identifier"
 * identifier.type.text = "Placer Identifier"

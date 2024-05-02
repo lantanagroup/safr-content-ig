@@ -1,6 +1,6 @@
 Instance: observation-example-ach-pass2-aptt
 InstanceOf: AcuteCareHospitalReportingLabObservation
-Usage: #inline
+Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-ach-pass2-aptt)
 * category[Laboratory] = $observation-category#laboratory "Laboratory"

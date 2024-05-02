@@ -18,7 +18,7 @@ Usage: #example
 
 Instance: list-example-ach-individual-measurereport-list
 InstanceOf: IndividualMeasureReportList
-Usage: #inline
+Usage: #example
 //* id = "list-example-individual-measurereport-list"
 * status = #current
 * mode = #snapshot

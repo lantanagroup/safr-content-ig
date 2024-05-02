@@ -66,7 +66,7 @@ Usage: #example
 /*
 Instance: location-example-hypo-hospital
 InstanceOf: AcuteCareHospitalReportingLocation
-Usage: #inline
+Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.6865"
 * identifier.value = "100"
@@ -83,7 +83,7 @@ Usage: #inline
 
 Instance: location-example-hypo-hospital1
 InstanceOf: AcuteCareHospitalReportingLocation
-Usage: #inline
+Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.6865"
 * identifier.value = "100"

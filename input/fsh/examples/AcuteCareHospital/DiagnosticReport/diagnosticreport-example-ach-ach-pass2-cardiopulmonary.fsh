@@ -1,6 +1,6 @@
 Instance: diagnosticreport-example-ach-ach-pass2-cardiopulmonary
 InstanceOf: AcuteCareHospitalDiagnosticReport
-Usage: #inline
+Usage: #example
 * status = #final
 * category = $loinc#LP172861-9 "Cardiopulmonary"
 * category.text = "Cardiopulmonary"

@@ -1,6 +1,6 @@
 Instance: medicationadministration-example-ach-pass2-heparin-1
 InstanceOf: AcuteCareHospitalReportingMedicationAdministration
-Usage: #inline
+Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"
 * identifier.value = "101888895"
@@ -25,7 +25,7 @@ Usage: #inline
 
 Instance: medicationadministration-example-ach-pass2-heparin-2
 InstanceOf: AcuteCareHospitalReportingMedicationAdministration
-Usage: #inline
+Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"
 * identifier.value = "101888895"
