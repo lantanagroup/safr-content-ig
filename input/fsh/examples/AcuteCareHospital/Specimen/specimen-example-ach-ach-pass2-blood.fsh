@@ -1,5 +1,7 @@
 Instance: specimen-example-ach-ach-pass2-blood-1
 InstanceOf: AcuteCareHospitalReportingSpecimen
+Title: "Specimen - Example ACH Pass2 Blood 1"
+Description: "Specimen - Example ACH Pass2 - Blood venous from blood vessel of left upper arm - First encounter collection"
 Usage: #example
 * identifier[0].system = "urn:oid:2.16.840.1.113883.19.5.1.798.32"
 * identifier[=].value = "C104082902"
@@ -17,6 +19,8 @@ Usage: #example
 
 Instance: specimen-example-ach-ach-pass2-blood-2
 InstanceOf: AcuteCareHospitalReportingSpecimen
+Title: "Specimen - Example ACH Pass2 Blood 2"
+Description: "Specimen - Example ACH Pass2 - Blood venous from blood vessel of left upper arm - Second encounter collection"
 Usage: #example
 * identifier[0].system = "urn:oid:2.16.840.1.113883.19.5.1.798.32"
 * identifier[=].value = "C104082902"

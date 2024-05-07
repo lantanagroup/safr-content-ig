@@ -1,5 +1,7 @@
 Instance: encounter-example-ach-ach-pass1
 InstanceOf: AcuteCareHospitalReportingEncounter
+Title: "Encounter - Example ACH Pass1 - Inpatient"
+Description: "Encounter - Example ACH Pass1 - Hospital Admission"
 Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.698.8"
@@ -43,7 +45,7 @@ Usage: #example
 
 
 * location[0].location.display = "ACH Neonatal critical care"
-* location[=].location = Reference(location-example-hypo-nicu-level-iii)
+* location[=].location = Reference(location-example-ach-nicu-level-iii)
 * location[=].physicalType = http://terminology.hl7.org/CodeSystem/location-physical-type#wa "Ward"
 * location[=].period.start = "2024-02-01T16:02:00-05:00"
 * location[=].period.end = "2024-02-02T16:02:00-05:00"

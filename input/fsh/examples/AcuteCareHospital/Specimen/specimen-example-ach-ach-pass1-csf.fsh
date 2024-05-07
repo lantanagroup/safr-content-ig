@@ -1,5 +1,7 @@
 Instance: specimen-example-ach-ach-pass1-csf
 InstanceOf: AcuteCareHospitalReportingSpecimen
+Title: "Specimen - Example ACH Pass1 CSF"
+Description: "Specimen - Example ACH Pass1 - Cerebral spinal fluid from superior articular process of lumbar vertebra"
 Usage: #example
 * identifier[0].system = "urn:oid:2.16.840.1.113883.19.5.1.798.32"
 * identifier[=].value = "C104082902"

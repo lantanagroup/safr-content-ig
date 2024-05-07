@@ -1,5 +1,7 @@
 Instance: location-example-hypo-emergency
 InstanceOf: AcuteCareHospitalReportingLocation
+Title: "Location - Example Hypo - Emergency"
+Description: "Location - Example Hypo - Emergency Department Pavilion"
 Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.6869"

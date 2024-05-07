@@ -1,5 +1,7 @@
 Instance: patient-example-ach-ach-pass1
 InstanceOf: CrossMeasurePatient
+Title: "Patient - Example ACH Pass1 - LOS/MEN"
+Description: "Patient - Example ACH Pass1 - Late Onset Sepsis and Meningitis (LOS/MEN)"
 Usage: #example
 * extension[0].url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
 * extension[=].extension[0].url = "ombCategory"

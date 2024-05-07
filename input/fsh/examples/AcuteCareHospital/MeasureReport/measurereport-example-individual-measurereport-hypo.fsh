@@ -1,5 +1,7 @@
 Instance: measurereport-example-individual-measurereport-hypo
 InstanceOf: MeasureReport
+Title: "MeasureReport - Example Individual Hypo - Hypo"
+Description: "MeasureReport - Example Individual Hypo - Hypoglycemia"
 Usage: #example
 * meta.profile = "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"
 //* text.status = #extensions

@@ -1,4 +1,6 @@
 Instance: location-example-hypo-cardiology
+Title: "Location - Example Hypo - Cardiology"
+Description: "Location - Example Hypo - Cardiology Department"
 InstanceOf: AcuteCareHospitalReportingLocation
 Usage: #example
 * identifier.use = #usual

@@ -1,5 +1,7 @@
 Instance: observation-example-ach-pass2-aptt
 InstanceOf: AcuteCareHospitalReportingLabObservation
+Title: "Observation - Example ACH Pass2 aPTT"
+Description: "Observation - Example ACH Pass2 Lab: aPTT in Blood by Coagulation assay"
 Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-ach-pass2-aptt)

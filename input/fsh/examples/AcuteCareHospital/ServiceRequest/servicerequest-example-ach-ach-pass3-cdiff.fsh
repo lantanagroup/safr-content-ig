@@ -1,5 +1,7 @@
 Instance: servicerequest-example-ach-ach-pass3-cdiff
 InstanceOf: AcuteCareHospitalReportingServiceRequest
+Title: "ServiceRequest - Example ACH Pass3 Cdiff"
+Description: "ServiceRequest - Example ACH Pass3 - Clostridioides difficile toxin A in Stool by Immunoassay"
 Usage: #example
 * identifier.use = #usual
 * identifier.type = $v2-0203#PLAC "Placer Identifier"

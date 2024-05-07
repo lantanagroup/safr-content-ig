@@ -1,5 +1,7 @@
 Instance: medicationadministration-example-ach-pass2-insulin-lispro-1
 InstanceOf: AcuteCareHospitalReportingMedicationAdministration
+Title: "MedicationAdministration - Example ACH Pass2 Insulin Lispro 1"
+Description: "MedicationAdministration - Example ACH Pass2 - Insulin Lispro - First Encounter Administration"
 Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"
@@ -25,6 +27,8 @@ Usage: #example
 
 Instance: medicationadministration-example-ach-pass2-insulin-lispro-2
 InstanceOf: AcuteCareHospitalReportingMedicationAdministration
+Title: "MedicationAdministration - Example ACH Pass2 Insulin Lispro 2"
+Description: "MedicationAdministration - Example ACH Pass2 - Insulin Lispro - Second Encounter Administration"
 Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"
@@ -50,6 +54,8 @@ Usage: #example
 
 Instance: medicationadministration-example-ach-pass2-insulin-lispro-3
 InstanceOf: AcuteCareHospitalReportingMedicationAdministration
+Title: "MedicationAdministration - Example ACH Pass2 Insulin Lispro 3"
+Description: "MedicationAdministration - Example ACH Pass2 - Insulin Lispro - Third Encounter Administration"
 Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"
@@ -75,6 +81,8 @@ Usage: #example
 
 Instance: medicationadministration-example-ach-pass2-insulin-lispro-4
 InstanceOf: AcuteCareHospitalReportingMedicationAdministration
+Title: "MedicationAdministration - Example ACH Pass2 Insulin Lispro 4"
+Description: "MedicationAdministration - Example ACH Pass2 Insulin Lispro 4"
 Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"

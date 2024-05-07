@@ -1,5 +1,7 @@
 Instance: servicerequest-example-ach-ach-pass1-blood
 InstanceOf: AcuteCareHospitalReportingServiceRequest
+Title: "ServiceRequest - Example ACH Pass1 Blood"
+Description: "ServiceRequest - Example ACH Pass1 Blood"
 Usage: #example
 * identifier.use = #usual
 * identifier.type = $v2-0203#PLAC "Placer Identifier"
@@ -10,6 +12,7 @@ Usage: #example
 * intent = #original-order
 * category = $sct#108252007 "Laboratory procedure"
 * category.text = "Laboratory procedure"
+// TODO, is this really a procedure code or an observation code. Orders should be for procedures. Need to verify and update appropriately.
 * code = $loinc#600-7 "Bacteria identified in Blood by Culture"
 * code.text = "Bacteria identified in Blood by Culture"
 * quantityQuantity.value = 1

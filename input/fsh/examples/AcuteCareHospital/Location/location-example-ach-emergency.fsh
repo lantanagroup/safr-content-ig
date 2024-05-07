@@ -1,5 +1,7 @@
-Instance: location-example-hypo-encounter-location-ach-emergency
+Instance: location-example-ach-emergency
 InstanceOf: AcuteCareHospitalReportingLocation
+Title: "Location - Example ACH - Emergency"
+Description: "Location - Example ACH - Emergency Department"
 Usage: #example
 * identifier.system = "http://www.example.org/location"
 * identifier.value = "2934"

@@ -1,5 +1,7 @@
 Instance: measurereport-example-individual-ach-ach-pass3
 InstanceOf: MeasureReport
+Title: "MeasureReport - Example Individual ACH Pass3 - C. diff"
+Description: "MeasureReport - Example Individual ACH Pass3 - Healthcare facility-onset, antibiotic-treated Clostridioides difficile infection / Hospital-onset bacteremia and fungemia (CDI/HOB)"
 Usage: #example
 * meta.profile = "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"
 

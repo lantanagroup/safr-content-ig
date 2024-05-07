@@ -1,5 +1,7 @@
 Instance: diagnosticreport-example-ach-ach-pass2-cardiopulmonary
 InstanceOf: AcuteCareHospitalDiagnosticReport
+Title: "DiagnosticReport - Example ACH Pass2 Cardiopulmonary"
+Description: "DiagnosticReport - Example ACH Pass2 - Cardiovascular stress testing"
 Usage: #example
 * status = #final
 * category = $loinc#LP172861-9 "Cardiopulmonary"
