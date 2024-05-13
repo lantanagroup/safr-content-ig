@@ -1,6 +1,8 @@
 Instance: specimen-example-ach-ach-pass1-blood
 InstanceOf: AcuteCareHospitalReportingSpecimen
-Usage: #inline
+Title: "Specimen - Example ACH Pass1 Blood"
+Description: "Specimen - Example ACH Pass1 - Blood venous from heel"
+Usage: #example
 * identifier[0].system = "urn:oid:2.16.840.1.113883.19.5.1.798.32"
 * identifier[=].value = "C104082901"
 * identifier[=].assigner.display = "LIS"

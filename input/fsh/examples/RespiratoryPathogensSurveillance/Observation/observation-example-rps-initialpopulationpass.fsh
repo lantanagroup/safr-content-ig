@@ -1,11 +1,11 @@
 Instance: observation-example-rps-initialpopulationpass
-InstanceOf: RespiratoryPathogensSurveillanceEventObservation
+InstanceOf: RespiratoryPathogensSurveillanceEventLabObservation
 Title: "Observation - RPS Observation Example Initial Population Pass"
 Description: "Observation - Example RPS Observation Initial Population Pass"
 Usage: #example
 * status = #final
-* category = $observation-category#laboratory "Laboratory"
-* category.text = "Laboratory"
+* category[Laboratory] = $observation-category#laboratory "Laboratory"
+* category[Laboratory].text = "Laboratory"
 * code = $loinc#94500-6 "SARS-CoV+SARS-CoV-2 (COVID-19) Ag [Presence] in Respiratory system specimen by Rapid immunoassay"
 * code.text = "SARS-CoV-2 RNA Resp Ql NAA+probe"
 * subject.reference = "Patient/patient-example-rps-initialpopulationpass"

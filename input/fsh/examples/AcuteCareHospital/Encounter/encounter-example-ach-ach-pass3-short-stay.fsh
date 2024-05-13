@@ -1,6 +1,8 @@
 Instance: encounter-example-ach-ach-pass3-short-stay
 InstanceOf: AcuteCareHospitalReportingEncounter
-Usage: #inline
+Title: "Encounter - Example ACH Pass3 - Short Stay"
+Description: "Encounter - Example ACH Pass3 - Hospital admission short stay"
+Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.698.8"
 * identifier.value = "10005104253a"
@@ -43,7 +45,7 @@ Usage: #inline
 */
 
 * location[0].location.display = "ACH Medical-Surgical Ward"
-* location[=].location = Reference(location-example-hypo-encounter-location-ach-medsurg)
+* location[=].location = Reference(location-example-ach-medsurg)
 * location[=].physicalType = http://terminology.hl7.org/CodeSystem/location-physical-type#wa "Ward"
 * location[=].period.start = "2024-02-01T14:12:00-05:00"
 * location[=].period.end = "2024-02-02T16:43:00-05:00"

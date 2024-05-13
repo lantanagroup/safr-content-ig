@@ -1,5 +1,7 @@
 Instance: medicationrequest-example-hypo-sameresultdiffday1
 InstanceOf: AcuteCareHospitalReportingMedicationRequest
+Title: "MedicationRequest - Hypo MedicationRequest Example Sameresultdiffday 1"
+Description: "MedicationRequest - Example Hypo MedicationRequest Sameresultdiffday 1"
 Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"

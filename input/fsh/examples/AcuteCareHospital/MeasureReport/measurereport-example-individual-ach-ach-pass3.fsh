@@ -1,6 +1,8 @@
 Instance: measurereport-example-individual-ach-ach-pass3
 InstanceOf: MeasureReport
-Usage: #inline
+Title: "MeasureReport - Example Individual ACH Pass3 - C. diff"
+Description: "MeasureReport - Example Individual ACH Pass3 - Healthcare facility-onset, antibiotic-treated Clostridioides difficile infection / Hospital-onset bacteremia and fungemia (CDI/HOB)"
+Usage: #example
 * meta.profile = "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"
 
 * identifier.system = "http://example.org/fhir/measurereport/id"
@@ -102,8 +104,8 @@ Usage: #inline
 * period.start = "2024-01-05T00:00:00.000+00:00"
 * period.end = "2024-02-04T00:00:00.000+00:00"
 * improvementNotation = $measure-improvement-notation#increase
-* group.measureScore.extension.url = "http://hl7.org/fhir/StructureDefinition/data-absent-reason"
-* group.measureScore.extension.valueCode = #unknown
+//* group.measureScore.extension.url = "http://hl7.org/fhir/StructureDefinition/data-absent-reason"
+//* group.measureScore.extension.valueCode = #unknown
 * group.population.extension.url = "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.population.description"
 * group.population.extension.valueString = "All inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."
 * group.population.code = $measure-population#initial-population "Initial Population"

@@ -1,6 +1,8 @@
 Instance: medicationadministration-example-ach-pass1-vancomycin
 InstanceOf: AcuteCareHospitalReportingMedicationAdministration
-Usage: #inline
+Title: "MedicationAdministration - Example ACH Pass1 Vancomycin"
+Description: "MedicationAdministration - Example ACH Pass1 - Vancomycin Injectable Solution 50MG"
+Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"
 * identifier.value = "1018888111"

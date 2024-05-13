@@ -1,6 +1,8 @@
 Instance: medicationrequest-example-ach-pass2-insulin-lispro
 InstanceOf: AcuteCareHospitalReportingMedicationRequest
-Usage: #inline
+Title: "MedicationRequest - Example ACH Pass2 Insulin Lispro"
+Description: "MedicationRequest - Example ACH Pass2 - Insulin Lispro"
+Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"
 * identifier.value = "101888894"

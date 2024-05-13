@@ -1,5 +1,7 @@
 Instance: device-example-submitting-device
 InstanceOf: NHSNSubmittingDevice
+Title: "Device - Example Submitting Device 1"
+Description: "Device - Submitting Device Example 1"
 Usage: #example
 * deviceName.name = "NHSN Link"
 * deviceName.type = #model-name

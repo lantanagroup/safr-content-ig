@@ -1,5 +1,7 @@
 Instance: servicerequest-example-hypo-sameresultdiffday1
 InstanceOf: AcuteCareHospitalReportingServiceRequest
+Title: "ServiceRequest - Hypo ServiceRequest Example Sameresultdiffday 1"
+Description: "ServiceRequest - Example Hypo ServiceRequest Sameresultdiffday 1"
 Usage: #example
 * identifier.use = #usual
 * identifier.type = $v2-0203#PLAC "Placer Identifier"

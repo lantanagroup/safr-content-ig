@@ -1,6 +1,8 @@
 Instance: encounter-example-ach-ach-pass2-inpatient
 InstanceOf: AcuteCareHospitalReportingEncounter
-Usage: #inline
+Title: "Encounter - Example ACH Pass2 - Inpatient"
+Description: "Encounter - Example ACH Pass2 - Hospital admission"
+Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.698.8"
 * identifier.value = "10005104252b"
@@ -42,7 +44,7 @@ Usage: #inline
 
 
 * location[0].location.display = "ACH Inpatient Hospital Ward"
-* location[=].location = Reference(location-example-hypo-encounter-location-ach-inpatient)
+* location[=].location = Reference(location-example-ach-inpatient)
 * location[=].physicalType = http://terminology.hl7.org/CodeSystem/location-physical-type#wa "Ward"
 * location[=].period.start = "2024-02-01T01:02:00-05:00"
 * location[=].period.end = "2024-02-02T16:22:00-05:00"

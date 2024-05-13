@@ -1,6 +1,8 @@
 Instance: specimen-example-ach-ach-pass3-stool
 InstanceOf: AcuteCareHospitalReportingSpecimen
-Usage: #inline
+Title: "Specimen - Example ACH Pass3 Stool"
+Description: "Specimen - Example ACH Pass3 - Bloody stool"
+Usage: #example
 * identifier[0].system = "urn:oid:2.16.840.1.113883.19.5.1.798.32"
 * identifier[=].value = "C104082905"
 * identifier[=].assigner.display = "LIS"

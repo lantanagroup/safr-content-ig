@@ -1,6 +1,8 @@
 Instance: servicerequest-example-ach-ach-pass2-aptt
 InstanceOf: AcuteCareHospitalReportingServiceRequest
-Usage: #inline
+Title: "ServiceRequest - Example ACH Pass2 aPTT"
+Description: "ServiceRequest - Example ACH Pass2 - aPTT in Blood by Coagulation assay"
+Usage: #example
 * identifier.use = #usual
 * identifier.type = $v2-0203#PLAC "Placer Identifier"
 * identifier.type.text = "Placer Identifier"

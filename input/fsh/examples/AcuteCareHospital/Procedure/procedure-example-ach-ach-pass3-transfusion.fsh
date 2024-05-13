@@ -1,6 +1,8 @@
 Instance: procedure-example-ach-ach-pass3-transfusion
 InstanceOf: AcuteCareHospitalReportingProcedure
-Usage: #inline
+Title: "Procedure - Example ACH Pass3 Transfusion"
+Description: "Procedure - Example ACH Pass3 - Transfusion of red blood cells"
+Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.698.8"
 * identifier.value = "100051035264"

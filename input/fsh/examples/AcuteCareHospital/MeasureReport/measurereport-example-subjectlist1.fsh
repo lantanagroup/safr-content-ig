@@ -1,5 +1,7 @@
 Instance: measurereport-example-subjectlist1
 InstanceOf: SubjectListMeasureReportProfile
+Title: "MeasureReport - Example Subject List 1"
+Description: "Measure Report - Subject List Example 1"
 Usage: #example
 * meta.extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-received-date-extension"
 * meta.extension.valueDateTime = "2023-05-23T06:07:08Z"

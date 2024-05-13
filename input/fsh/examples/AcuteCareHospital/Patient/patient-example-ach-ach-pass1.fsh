@@ -1,6 +1,8 @@
 Instance: patient-example-ach-ach-pass1
 InstanceOf: CrossMeasurePatient
-Usage: #inline
+Title: "Patient - Example ACH Pass1 - LOS/MEN"
+Description: "Patient - Example ACH Pass1 - Late Onset Sepsis and Meningitis (LOS/MEN)"
+Usage: #example
 * extension[0].url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
 * extension[=].extension[0].url = "ombCategory"
 * extension[=].extension[=].valueCoding = urn:oid:2.16.840.1.113883.6.238#2054-5 "Black or African American"

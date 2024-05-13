@@ -1,6 +1,8 @@
 Instance: medicationrequest-example-ach-pass3-cipro
 InstanceOf: AcuteCareHospitalReportingMedicationRequest
-Usage: #inline
+Title: "MedicationRequest - Example ACH Pass3 Cipro"
+Description: "MedicationRequest - Example ACH Pass3 - Ciprofloxacin 500 MG"
+Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"
 * identifier.value = "101888892"

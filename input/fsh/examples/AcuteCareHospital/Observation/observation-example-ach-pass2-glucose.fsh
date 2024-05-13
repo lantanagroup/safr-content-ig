@@ -1,10 +1,12 @@
 Instance: observation-example-ach-pass2-poc-1
 InstanceOf: AcuteCareHospitalReportingLabObservation
-Usage: #inline
+Title: "Observation - Example ACH Pass2 Poc 1"
+Description: "Observation - Example ACH Pass2 Lab: Glucose in Capillary blood by Glucometer - First Encounter Observation"
+Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-ach-pass2-glucose)
-* category = $observation-category#laboratory "Laboratory"
-* category.text = "Laboratory"
+* category[Laboratory] = $observation-category#laboratory "Laboratory"
+* category[Laboratory].text = "Laboratory"
 * code = $loinc#41653-7 "Glucose [Mass/volume] in Capillary blood by Glucometer"
 * code.text = "Glucose"
 * subject = Reference(patient-example-ach-ach-pass2)
@@ -18,11 +20,13 @@ Usage: #inline
 
 Instance: observation-example-ach-pass2-poc-2
 InstanceOf: AcuteCareHospitalReportingLabObservation
-Usage: #inline
+Title: "Observation - Example ACH Pass2 Poc 2"
+Description: "Observation - Example ACH Pass2 Lab: Glucose in Capillary blood by Glucometer - Second Encounter Observation"
+Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-ach-pass2-glucose)
-* category = $observation-category#laboratory "Laboratory"
-* category.text = "Laboratory"
+* category[Laboratory] = $observation-category#laboratory "Laboratory"
+* category[Laboratory].text = "Laboratory"
 * code = $loinc#41653-7 "Glucose [Mass/volume] in Capillary blood by Glucometer"
 * code.text = "Glucose"
 * subject = Reference(patient-example-ach-ach-pass2)

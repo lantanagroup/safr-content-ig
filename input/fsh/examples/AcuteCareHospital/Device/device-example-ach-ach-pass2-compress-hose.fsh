@@ -1,6 +1,8 @@
 Instance: device-example-ach-ach-pass2-compress-hose
 InstanceOf: AcuteCareHospitalDevice
-Usage: #inline
+Title: "Device - Example ACH Pass2 Compress Hose"
+Description: "Device - Example ACH Pass2 - Graduated compression elastic hosiery"
+Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.698.8"
 * identifier.value = "100051034"

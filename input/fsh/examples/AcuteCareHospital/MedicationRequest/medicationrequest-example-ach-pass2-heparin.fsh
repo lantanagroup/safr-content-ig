@@ -1,6 +1,8 @@
 Instance: medicationrequest-example-ach-pass2-heparin
 InstanceOf: AcuteCareHospitalReportingMedicationRequest
-Usage: #inline
+Title: "MedicationRequest - Example ACH Pass2 Heparin"
+Description: "MedicationRequest - Example ACH Pass2 - heparin sodium, 0.5 ML, porcine 10000 UNT/ML Prefilled Syringe"
+Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"
 * identifier.value = "101888895"
@@ -10,7 +12,7 @@ Usage: #inline
 * category = $medicationrequest-category#inpatient "Inpatient"
 * category.text = "Inpatient Medication"
 * medicationReference = Reference(medication-example-heparin)
-* medicationReference.display = "'0.5 ML heparin sodium, porcine 10000 UNT/ML Prefilled Syringe"
+* medicationReference.display = "0.5 ML heparin sodium, porcine 10000 UNT/ML Prefilled Syringe"
 * subject = Reference(patient-example-ach-ach-pass2)
 * subject.display = "Pass2 ACH"
 * encounter = Reference(encounter-example-ach-ach-pass2-inpatient)

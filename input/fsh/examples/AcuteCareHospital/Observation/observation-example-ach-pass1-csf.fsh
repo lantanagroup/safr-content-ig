@@ -1,10 +1,12 @@
 Instance: observation-example-ach-pass1-csf
 InstanceOf: AcuteCareHospitalReportingLabObservation
-Usage: #inline
+Title: "Observation - Example ACH Pass1 Csf"
+Description: "Observation - Example ACH Pass1 - Lab: Serratia marcescens DNA in Specimen by NAA with probe detection"
+Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-ach-pass1-csf)
-* category = $observation-category#laboratory "Laboratory"
-* category.text = "Laboratory"
+* category[Laboratory] = $observation-category#laboratory "Laboratory"
+* category[Laboratory].text = "Laboratory"
 * code = $loinc#61402-4 "Serratia marcescens DNA [Presence] in Specimen by NAA with probe detection"
 * code.text = "Serratia marcescens DNA"
 * subject = Reference(patient-example-ach-ach-pass1)

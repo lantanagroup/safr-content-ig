@@ -1,5 +1,7 @@
-Instance: location-example-hypo-encounter-location-ach-medsurg
+Instance: location-example-ach-medsurg
 InstanceOf: AcuteCareHospitalReportingLocation
+Title: "Location - Example ACH - Medsurg"
+Description: "Location - Example ACH - Medical-Surgical Ward"
 Usage: #example
 * identifier.system = "http://www.example.org/location"
 * identifier.value = "2935"

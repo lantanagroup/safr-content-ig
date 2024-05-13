@@ -1,11 +1,11 @@
 Instance: observation-example-rps-negativepcr-1
-InstanceOf: RespiratoryPathogensSurveillanceEventObservation
+InstanceOf: RespiratoryPathogensSurveillanceEventLabObservation
 Title: "Observation - RPS Observation Example Negative PCR 1"
 Description: "Observation - Example RPS Observation Negative PCR 1"
 Usage: #example
 * status = #final
-* category = $observation-category#laboratory "Laboratory"
-* category.text = "Laboratory"
+* category[Laboratory] = $observation-category#laboratory "Laboratory"
+* category[Laboratory].text = "Laboratory"
 * code = $loinc#95209-3 "SARS-CoV+SARS-CoV-2 (COVID-19) Ag [Presence] in Respiratory specimen by Rapid immunoassay"
 * code.text = "SARS-CoV+SARS-CoV-2 Ag Resp Ql IA.rapid"
 * subject.reference = "Patient/patient-example-rps-negativepcr"

@@ -1,5 +1,7 @@
 Instance: condition-example-diagnosis-sameresultdiffday2
 InstanceOf: AcuteCareHospitalReportingCondition
+Title: "Condition - Hypo Diagnosis Example Sameersultdiffday 2"
+Description: "Condition - Example Hypo Diagnosis Sameresultdiffday 2"
 Usage: #example
 * extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"
 * extension.valueString = "eDBsPVmO1ldptMGm1Wd3Ad9kAeCKM65gvk1wKr6FdHRP57K-rmJdu.P8RK0rSNtcb3"

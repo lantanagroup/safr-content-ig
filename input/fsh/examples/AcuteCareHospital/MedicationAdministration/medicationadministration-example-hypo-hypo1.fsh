@@ -1,5 +1,7 @@
 Instance: medicationadministration-example-hypo-hypo1
 InstanceOf: AcuteCareHospitalReportingMedicationAdministration
+Title: "MedicationAdministration - Hypo Medication Administration Example Hypo 1"
+Description: "MedicationAdministration - Example Hypo Medication Administration Hypo 1"
 Usage: #example
 * status = #completed
 * medicationReference.extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"

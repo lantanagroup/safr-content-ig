@@ -1,8 +1,10 @@
 Instance: organization-example-submitting-organization
 InstanceOf: SubmittingOrganization
+Title: "Organization - Example Submitting Organization 1"
+Description: "Organization - Submitting Organization Example 1"
 Usage: #example
-* identifier.system = "https://www.cdc.gov/nhsn/OrgID"
-* identifier.value = "ExampleNHSNSubmitterOrgID"
+* identifier[nhsn_org_id].system = "https://www.cdc.gov/nhsn/OrgID"
+* identifier[nhsn_org_id].value = "ExampleNHSNSubmitterOrgID"
 * active = true
 * type = $organization-type#prov "Healthcare Provider"
 * name = "Example NHSN Submitter"

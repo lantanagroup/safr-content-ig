@@ -1,5 +1,7 @@
 Instance: medicationrequest-example-hypo-hypo3
 InstanceOf: AcuteCareHospitalReportingMedicationRequest
+Title: "MedicationRequest - Hypo MedicationRequest Example Hypo 3"
+Description: "MedicationRequest - Example Hypo MedicationRequest Hypo 3"
 Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"

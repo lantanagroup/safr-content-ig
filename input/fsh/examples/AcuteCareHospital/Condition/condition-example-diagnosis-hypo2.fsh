@@ -1,5 +1,7 @@
 Instance: condition-example-diagnosis-hypo2
 InstanceOf: AcuteCareHospitalReportingCondition
+Title: "Condition - Hypo Diagnosis Example Hypo 2"
+Description: "Condition - Example Hypo Diagnosis Hypo 2"
 Usage: #example
 * extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"
 * extension.valueString = "eloBHVi6UskNwFJ55XgUq25O1kkv9.cGk8JbqbtcoHsoCe9GptkoZD1ITVouIP-4e3"

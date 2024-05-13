@@ -1,5 +1,7 @@
 Instance: observation-example-hypo-lab-hypo8
 InstanceOf: AcuteCareHospitalReportingLabObservation
+Title: "Observation - Hypo Lab Example Hypo 8"
+Description: "Observation - Example Hypo Lab Hypo 8"
 Usage: #example
 * extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"
 * extension.valueString = "egcnW6Nn2B4jBxhWCFxF2WdeZC.LNcy-w6VjkSozRY5CR5XKCi6.p9WpTzS49qvlE3"
@@ -8,8 +10,8 @@ Usage: #example
 * basedOn.identifier.value = "101889052"
 * basedOn.display = "Perform POC Glucose"
 * status = #final
-* category = $observation-category#laboratory "Laboratory"
-* category.text = "Laboratory"
+* category[Laboratory] = $observation-category#laboratory "Laboratory"
+* category[Laboratory].text = "Laboratory"
 * code = $loinc#41653-7 "Glucose [Mass/volume] in Capillary blood by Glucometer"
 * code.text = "Glucose, POC"
 * subject.reference = "Patient/patient-example-hypo"

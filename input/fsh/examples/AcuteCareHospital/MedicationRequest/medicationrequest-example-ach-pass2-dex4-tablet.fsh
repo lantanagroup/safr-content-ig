@@ -1,6 +1,8 @@
 Instance: medicationrequest-example-ach-pass2-dex4-tablet
 InstanceOf: AcuteCareHospitalReportingMedicationRequest
-Usage: #inline
+Title: "MedicationRequest - Example ACH Pass2 Dex4 Tablet"
+Description: "MedicationRequest - Example ACH Pass2 - Dex4 4 gm chewable tablet X1"
+Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"
 * identifier.value = "101888892"

@@ -1,5 +1,7 @@
 Instance: observation-example-hypo-lab-sameresultdiffday6
 InstanceOf: AcuteCareHospitalReportingLabObservation
+Title: "Observation - Hypo Lab Example Sameresultdiffday 6"
+Description: "Observation - Example Hypo Lab Sameresultdiffday 6"
 Usage: #example
 * extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"
 * extension.valueString = "e5onzgp6XJsy-YpdmlnoEXHwJgV-hmQbLD8S-XalMzJHKvjMY4r0Ptb0zM7-WZv1e3"
@@ -8,8 +10,8 @@ Usage: #example
 * basedOn.identifier.value = "101888902"
 * basedOn.display = "Perform POC Glucose"
 * status = #final
-* category = $observation-category#laboratory "Laboratory"
-* category.text = "Laboratory"
+* category[Laboratory] = $observation-category#laboratory "Laboratory"
+* category[Laboratory].text = "Laboratory"
 * code = $loinc#41653-7 "Glucose [Mass/volume] in Capillary blood by Glucometer"
 * code.text = "Glucose, POC"
 * subject.reference = "Patient/patient-example-sameresultdiffday"

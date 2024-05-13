@@ -1,10 +1,12 @@
 Instance: observation-example-ach-pass1-blood
 InstanceOf: AcuteCareHospitalReportingLabObservation
-Usage: #inline
+Title: "Observation - Example ACH Pass1 Blood"
+Description: "Observation - Example ACH Pass1 - Lab: Bacteria identified in Blood by Culture"
+Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-ach-pass1-blood)
-* category = $observation-category#laboratory "Laboratory"
-* category.text = "Laboratory"
+* category[Laboratory] = $observation-category#laboratory "Laboratory"
+* category[Laboratory].text = "Laboratory"
 * code = $loinc#600-7 "Bacteria identified in Blood by Culture"
 * code.text = "Bacteria identified in Blood by Culture"
 * subject = Reference(patient-example-ach-ach-pass1)

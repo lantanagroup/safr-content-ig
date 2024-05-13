@@ -1,6 +1,8 @@
 Instance: encounter-example-ach-ach-pass3-acute
 InstanceOf: AcuteCareHospitalReportingEncounter
-Usage: #inline
+Title: "Encounter - Example ACH Pass3 - Acute"
+Description: "Encounter - Example ACH Pass3 - Acute critical care visit"
+Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.698.8"
 * identifier.value = "10005104253a"
@@ -42,7 +44,7 @@ Usage: #inline
 
 
 * location[0].location.display = "ACH Medical Critical Care"
-* location[=].location = Reference(location-example-hypo-encounter-location-ach-crit)
+* location[=].location = Reference(location-example-ach-crit)
 * location[=].physicalType = http://terminology.hl7.org/CodeSystem/location-physical-type#wa "Ward"
 * location[=].period.start = "2024-02-02T16:43:00-05:00"
 * location[=].period.end = "2024-03-02T19:58:00-05:00"

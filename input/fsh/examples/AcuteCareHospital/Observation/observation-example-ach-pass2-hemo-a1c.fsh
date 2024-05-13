@@ -1,10 +1,12 @@
 Instance: observation-example-ach-pass2-hemo-a1c
 InstanceOf: AcuteCareHospitalReportingLabObservation
-Usage: #inline
+Title: "Observation - Example ACH Pass2 Hemo A1C"
+Description: "Observation - Example ACH Pass2 Hemo - Lab: Glucose in Capillary blood by Glucometer"
+Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-ach-pass2-hemo-a1c)
-* category = $observation-category#laboratory "Laboratory"
-* category.text = "Laboratory"
+* category[Laboratory] = $observation-category#laboratory "Laboratory"
+* category[Laboratory].text = "Laboratory"
 * code = $loinc#41653-7 "Glucose [Mass/volume] in Capillary blood by Glucometer"
 * code.text = "Glucose"
 * subject = Reference(patient-example-ach-ach-pass2)
