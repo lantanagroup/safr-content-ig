@@ -12,6 +12,7 @@ codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observ
 codesystem "LOINC": 'http://loinc.org' 
 codesystem "V2-0074": 'http://terminology.hl7.org/CodeSystem/v2-0074'
 codesystem "Condition Category": 'http://terminology.hl7.org/CodeSystem/condition-category'
+codesystem "Condition Clinical Status": 'http://terminology.hl7.org/CodeSystem/condition-clinical'
 
 valueset "Inpatient, Emergency, and Observation Locations": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
 valueset "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292'
@@ -27,6 +28,7 @@ code "imaging": 'imaging' from "Observation Category" display 'Imaging'
 code "procedure": 'procedure' from "Observation Category" display 'Procedure'
 code "survey": 'survey' from "Observation Category" display 'Survey'
 
+//code for Condition category
 code "problem-list-item": 'problem-list-item' from "Condition Category" display 'Problem List Item'
 code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display 'Encounter Diagnosis'
 
@@ -38,6 +40,9 @@ code "Cardiology": 'LP29708-2' from "LOINC" display 'Cardiology'
 
 //code for Emergency Encounter Class
 code "emergency": 'EMER' from "ActCode" display 'emergency'
+
+//code for Condition clinicalStatus
+code "active": 'active' from "Condition Clinical Status" display 'active'
 
 parameter "Measurement Period" 
     default Interval[@2024-03-01T00:00:00.0, @2024-03-31T00:00:00.0)
@@ -98,10 +103,11 @@ define "SDE Condition":
     "Initial Population" IP
     //Check for Problem List Conditions that were recorded before or during IP
     where (
-      (Conditions.recordedDate before start of IP.period
-        or Conditions.recordedDate during IP.period)
+      Conditions.recordedDate before end of IP.period
       and exists(Conditions.category categories
-        where categories ~ "problem-list-item"))
+        where categories ~ "problem-list-item")
+      and Conditions.clinicalStatus ~ "active"
+    )
     //Check for Encounter Diagnosis Conditions that reference an IP encounter
     or (
       (exists(IP.diagnosis Diagnoses
