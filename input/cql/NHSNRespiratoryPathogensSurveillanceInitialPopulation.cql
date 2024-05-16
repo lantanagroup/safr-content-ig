@@ -199,21 +199,40 @@ define "RSV DiagnosticReport PRE Admission":
       and start of E.period during "Measurement Period"
     )
 
+define "DiagnosticReport Observations":
+  "Observations" Observations
+  where exists(
+    "DiagnosticReports" DiagnosticReports
+    where exists(
+      DiagnosticReports.result references
+      where Observations.id = Global.GetId(references.reference)
+    )
+  )
+
 define "COVID and Influenza DiagnosticReport Result from Lab":
   [DiagnosticReport] Reports
-    where (GetObservations(Reports.result).code in "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"
-      or GetObservations(Reports.result).code in "COVID_19 (Tests for SARS_CoV_2 Antigen)"
-      or GetObservations(Reports.result).code in "Influenza (Tests for influenza A or B virus Nucleic Acid)"
-      or GetObservations(Reports.result).code in "Influenza (Tests for influenza A or B virus Antigen)")
+    where exists("COVID and Influenza DiagnosticReport Observations")
       and Reports.status in {'final','registered','preliminary','partial'}
       and exists("Initial Population")
+
+define "COVID and Influenza DiagnosticReport Observations":
+  "DiagnosticReport Observations" Observations
+  where Observations.code in "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"
+    or Observations.code in "COVID_19 (Tests for SARS_CoV_2 Antigen)"
+    or Observations.code in "Influenza (Tests for influenza A or B virus Nucleic Acid)"
+    or Observations.code in "Influenza (Tests for influenza A or B virus Antigen)"
+
  
 define "RSV DiagnosticReport Result from Lab":
   [DiagnosticReport] Reports
-    where (GetObservations(Reports.result).code in "RSV (Tests for RSV Nucleic Acid)"
-      or GetObservations(Reports.result).code in "RSV (Tests for RSV Antigen)")
+    where exists("RSV DiagnosticReport Observations")
       and Reports.status in {'final','registered','preliminary','partial'}
       and exists("Initial Population")
+
+define "RSV DiagnosticReport Observations":
+  "DiagnosticReport Observations" Observations
+  where Observations.code in "RSV (Tests for RSV Nucleic Acid)"
+    or Observations.code in "RSV (Tests for RSV Antigen)"
 
 define "RPS DiagnosticReport Result from Lab":
   "COVID and Influenza DiagnosticReport Result from Lab"
@@ -418,7 +437,7 @@ define "SDE Medication":
 
 //To catch all isolation precautions
 define "SDE All Observations":
-  [Observation] O
+  "Observations" O
   where exists("Initial Population")
   return SharedResource.ObservationLabResource(O,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation'}})
@@ -464,17 +483,33 @@ define function "GetMedicationFrom"(choice Choice<FHIR.CodeableConcept, FHIR.Ref
       null
   end
 
-define function GetObservation(reference Reference):
+define function "GetSpecimen"(reference FHIR.Reference):
   singleton from (
-    [Observation: id in {Global.GetId(reference.reference)}]
+    [Specimen] Specimens
+    where Specimens.id = Global.GetId(reference.reference)
   )
 
-define function GetObservations(reference List<Reference>):
-  reference reference
-    return GetObservation(reference)
-
-define function "GetSpecimen"(reference Reference):
+define function "GetEncounter"(reference FHIR.Reference):
   singleton from (
-    [Specimen: id in {Global.GetId(reference.reference)}]
+    "Encounters" Encounters
+    where Encounters.id = Global.GetId(reference.reference)
   )
 
+define function "GetCondition"(reference FHIR.Reference):
+  singleton from (
+    "Conditions" Conditions
+    where Conditions.id = Global.GetId(reference.reference)
+  )
+
+//Common Retrievals
+define "Encounters":
+  [Encounter]
+
+define "Conditions":
+  [Condition]
+
+define "Observations":
+  [Observation]
+
+define "DiagnosticReports":
+  [DiagnosticReport]

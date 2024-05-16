@@ -10,7 +10,10 @@ include SharedResourceCreation version '0.1.005' called SharedResource
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode' 
 codesystem "LOINC": 'http://loinc.org' 
 codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category' 
+codesystem "Condition Category": 'http://terminology.hl7.org/CodeSystem/condition-category'
+codesystem "Condition Clinical Status": 'http://terminology.hl7.org/CodeSystem/condition-clinical'
 codesystem "RXNORM": 'http://www.nlm.nih.gov/research/umls/rxnorm'
+
 
 valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307' 
 valueset "Inpatient, Emergency, and Observation Locations": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265' 
@@ -76,8 +79,15 @@ code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 //Observation Encounter Class Code
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
 
+//code for Condition category
+code "problem-list-item": 'problem-list-item' from "Condition Category" display 'Problem List Item'
+code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display 'Encounter Diagnosis'
+
+//code for Condition clinicalStatus
+code "active": 'active' from "Condition Clinical Status" display 'active'
+
 parameter "Measurement Period" 
-  default Interval[@2022-01-01T00:00:00.0, @2022-01-02T00:00:00.0)
+  default Interval[@2022-01-01T00:00:00.0, @2022-01-31T23:59:59.0)
 
 context Patient
 
@@ -199,21 +209,40 @@ define "RSV DiagnosticReport PRE Admission":
       and start of E.period during "Measurement Period"
     )
 
+define "DiagnosticReport Observations":
+  "Observations" Observations
+  where exists(
+    "DiagnosticReports" DiagnosticReports
+    where exists(
+      DiagnosticReports.result references
+      where Observations.id = Global.GetId(references.reference)
+    )
+  )
+
 define "COVID and Influenza DiagnosticReport Result from Lab":
   [DiagnosticReport] Reports
-    where (GetObservations(Reports.result).code in "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"
-      or GetObservations(Reports.result).code in "COVID_19 (Tests for SARS_CoV_2 Antigen)"
-      or GetObservations(Reports.result).code in "Influenza (Tests for influenza A or B virus Nucleic Acid)"
-      or GetObservations(Reports.result).code in "Influenza (Tests for influenza A or B virus Antigen)")
+    where exists("COVID and Influenza DiagnosticReport Observations")
       and Reports.status in {'final','registered','preliminary','partial'}
       and exists("Initial Population")
+
+define "COVID and Influenza DiagnosticReport Observations":
+  "DiagnosticReport Observations" Observations
+  where Observations.code in "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"
+    or Observations.code in "COVID_19 (Tests for SARS_CoV_2 Antigen)"
+    or Observations.code in "Influenza (Tests for influenza A or B virus Nucleic Acid)"
+    or Observations.code in "Influenza (Tests for influenza A or B virus Antigen)"
+
  
 define "RSV DiagnosticReport Result from Lab":
   [DiagnosticReport] Reports
-    where (GetObservations(Reports.result).code in "RSV (Tests for RSV Nucleic Acid)"
-      or GetObservations(Reports.result).code in "RSV (Tests for RSV Antigen)")
+    where exists("RSV DiagnosticReport Observations")
       and Reports.status in {'final','registered','preliminary','partial'}
       and exists("Initial Population")
+
+define "RSV DiagnosticReport Observations":
+  "DiagnosticReport Observations" Observations
+  where Observations.code in "RSV (Tests for RSV Nucleic Acid)"
+    or Observations.code in "RSV (Tests for RSV Antigen)"
 
 define "RPS DiagnosticReport Result from Lab":
   "COVID and Influenza DiagnosticReport Result from Lab"
@@ -240,6 +269,39 @@ define "RSV DiagnosticReport Result from Lab PRE Admission":
 //----------------------------------
 // SDE
 //----------------------------------
+/*define "SDE Condition":
+  "Conditions" Conditions 
+  where exists(
+    "Initial Population" IP
+    //Check for Problem List Conditions that were recorded before or during IP
+    where (
+      Conditions.recordedDate before end of IP.period
+      and exists(Conditions.category categories
+        where categories ~ "problem-list-item")
+      and Conditions.clinicalStatus ~ "active"
+    )
+    //Check for Encounter Diagnosis Conditions that reference an IP encounter
+    or (
+      (exists(IP.diagnosis Diagnoses
+          where GetCondition(Diagnoses.condition).id = Conditions.id
+        )
+        or GetEncounter(Conditions.encounter).id = IP.id
+      )
+      and exists (Conditions.category categories
+        where categories ~ "encounter-diagnosis")
+    )
+  )
+  return SharedResource.ConditionResource(Conditions,
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-condition'}})
+
+define "SDE Encounter": 
+  "Encounters" Encounters
+  where exists(
+    "Initial Population" IP
+    where Encounters.period overlaps IP.period)
+  return SharedResource.EncounterResource(Encounters,
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-encounter'}})*/
+
 define "SDE Minimal Patient":
   Patient p
   where exists("Initial Population")
@@ -418,7 +480,7 @@ define "SDE Medication":
 
 //To catch all isolation precautions
 define "SDE All Observations":
-  [Observation] O
+  "Observations" O
   where exists("Initial Population")
   return SharedResource.ObservationLabResource(O,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation'}})
@@ -464,17 +526,33 @@ define function "GetMedicationFrom"(choice Choice<FHIR.CodeableConcept, FHIR.Ref
       null
   end
 
-define function GetObservation(reference Reference):
+define function "GetSpecimen"(reference FHIR.Reference):
   singleton from (
-    [Observation: id in {Global.GetId(reference.reference)}]
+    [Specimen] Specimens
+    where Specimens.id = Global.GetId(reference.reference)
   )
 
-define function GetObservations(reference List<Reference>):
-  reference reference
-    return GetObservation(reference)
-
-define function "GetSpecimen"(reference Reference):
+define function "GetEncounter"(reference FHIR.Reference):
   singleton from (
-    [Specimen: id in {Global.GetId(reference.reference)}]
+    "Encounters" Encounters
+    where Encounters.id = Global.GetId(reference.reference)
   )
 
+define function "GetCondition"(reference FHIR.Reference):
+  singleton from (
+    "Conditions" Conditions
+    where Conditions.id = Global.GetId(reference.reference)
+  )
+
+//Common Retrievals
+define "Encounters":
+  [Encounter]
+
+define "Conditions":
+  [Condition]
+
+define "Observations":
+  [Observation]
+
+define "DiagnosticReports":
+  [DiagnosticReport]
