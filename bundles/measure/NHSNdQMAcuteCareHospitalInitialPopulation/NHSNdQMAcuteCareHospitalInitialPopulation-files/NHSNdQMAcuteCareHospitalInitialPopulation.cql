@@ -12,6 +12,7 @@ codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observ
 codesystem "LOINC": 'http://loinc.org' 
 codesystem "V2-0074": 'http://terminology.hl7.org/CodeSystem/v2-0074'
 codesystem "Condition Category": 'http://terminology.hl7.org/CodeSystem/condition-category'
+codesystem "Condition Clinical Status": 'http://terminology.hl7.org/CodeSystem/condition-clinical'
 
 valueset "Inpatient, Emergency, and Observation Locations": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
 valueset "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292'
@@ -27,6 +28,7 @@ code "imaging": 'imaging' from "Observation Category" display 'Imaging'
 code "procedure": 'procedure' from "Observation Category" display 'Procedure'
 code "survey": 'survey' from "Observation Category" display 'Survey'
 
+//code for Condition category
 code "problem-list-item": 'problem-list-item' from "Condition Category" display 'Problem List Item'
 code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display 'Encounter Diagnosis'
 
@@ -38,6 +40,9 @@ code "Cardiology": 'LP29708-2' from "LOINC" display 'Cardiology'
 
 //code for Emergency Encounter Class
 code "emergency": 'EMER' from "ActCode" display 'emergency'
+
+//code for Condition clinicalStatus
+code "active": 'active' from "Condition Clinical Status" display 'active'
 
 parameter "Measurement Period" 
     default Interval[@2024-03-01T00:00:00.0, @2024-03-31T00:00:00.0)
@@ -98,10 +103,13 @@ define "SDE Condition":
     "Initial Population" IP
     //Check for Problem List Conditions that were recorded before or during IP
     where (
-      (Conditions.recordedDate before start of IP.period
-        or Conditions.recordedDate during IP.period)
+      Conditions.recordedDate before end of IP.period
       and exists(Conditions.category categories
-        where categories ~ "problem-list-item"))
+        where categories ~ "problem-list-item")
+      and Conditions.clinicalStatus ~ "active"
+      //and Conditions.verificationStatus !~ "entered-in-error" (?)
+      //and Conditions.verificationStatus in {options} (?)
+    )
     //Check for Encounter Diagnosis Conditions that reference an IP encounter
     or (
       (exists(IP.diagnosis Diagnoses
@@ -114,13 +122,13 @@ define "SDE Condition":
     )
   )
   return SharedResource.ConditionResource(Conditions,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-condition'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/nhsn-dqm/StructureDefinition/ach-condition'}})
 
 define "SDE Device":
   [Device] Devices 
   where exists("Initial Population")
   return DeviceResource(Devices,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-device'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/nhsn-dqm/StructureDefinition/ach-device'}})
 
 define "SDE DiagnosticReport Lab":
   "DiagnosticReports" DiagnosticReports
@@ -129,7 +137,7 @@ define "SDE DiagnosticReport Lab":
       "Initial Population" IP
       where Global."Normalize Interval"(DiagnosticReports.effective) overlaps IP.period))
   return SharedResource.DiagnosticReportLabResource(DiagnosticReports,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport-lab'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/nhsn-dqm/StructureDefinition/ach-diagnosticreport-lab'}})
  
 define "SDE DiagnosticReport Note":
   "DiagnosticReports" DiagnosticReports
@@ -140,7 +148,7 @@ define "SDE DiagnosticReport Note":
       "Initial Population" IP
       where Global."Normalize Interval"(DiagnosticReports.effective) overlaps IP.period)
   return DiagnosticReportResource(DiagnosticReports,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport-note'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/nhsn-dqm/StructureDefinition/ach-diagnosticreport-note'}})
 
 define "SDE DiagnosticReport Others":
   [DiagnosticReport] DiagnosticReports
@@ -151,7 +159,7 @@ define "SDE DiagnosticReport Others":
     and exists("Initial Population" IP
       where Global."Normalize Interval"(DiagnosticReports.effective) overlaps IP.period)
   return DiagnosticReportResource(DiagnosticReports,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/nhsn-dqm/StructureDefinition/ach-diagnosticreport'}})
 
 define "SDE Encounter": 
   "Encounters" Encounters
@@ -159,14 +167,14 @@ define "SDE Encounter":
     "Initial Population" IP
     where Encounters.period overlaps IP.period)
   return EncounterResource(Encounters,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-encounter'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/nhsn-dqm/StructureDefinition/ach-encounter'}})
 
 define "SDE Location":
   "Get Locations from IP Encounters in Measurement Period" Locations
   where exists("Initial Population")
   and Locations is not null
   return SharedResource.LocationResource(Locations,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-location'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/nhsn-dqm/StructureDefinition/ach-location'}})
  
 define "SDE Medication Administration":
   [MedicationAdministration] MedicationAdministrations 
@@ -174,7 +182,7 @@ define "SDE Medication Administration":
     "Initial Population" IP
     where Global."Normalize Interval"(MedicationAdministrations.effective) overlaps IP.period)
   return SharedResource.MedicationAdministrationResource(MedicationAdministrations,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-medicationadministration'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/nhsn-dqm/StructureDefinition/ach-medicationadministration'}})
  
 define "SDE Medication Request":
   [MedicationRequest] MedicationRequests 
@@ -182,7 +190,7 @@ define "SDE Medication Request":
     "Initial Population" IP
     where MedicationRequests.authoredOn during IP.period)
   return SharedResource.MedicationRequestResource(MedicationRequests,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-medicationrequest'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/nhsn-dqm/StructureDefinition/ach-medicationrequest'}})
 
 define "SDE Medication":
   ("SDE Medication Request"
@@ -190,7 +198,7 @@ define "SDE Medication":
   where MedReqOrAdmin.medication is FHIR.Reference
   and exists("Initial Population") //No longer need to check for timing here because it's checked in SDE Medication Request/Administriation
   return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication),
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-medication'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/nhsn-dqm/StructureDefinition/ach-medication'}})
 
 define "SDE Observation Lab Category":
   "Observations" Observations 
@@ -199,7 +207,7 @@ define "SDE Observation Lab Category":
       "Initial Population" IP
       where Global."Normalize Interval"(Observations.effective) overlaps IP.period)
   return SharedResource.ObservationLabResource(Observations,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-observation-lab'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/nhsn-dqm/StructureDefinition/ach-observation-lab'}})
 
 //Vital Signs Observation has its own profile in FHIR Base
 define "SDE Observation Vital Signs Category":
@@ -209,7 +217,7 @@ define "SDE Observation Vital Signs Category":
       "Initial Population" IP
       where Global."Normalize Interval"(Observations.effective) overlaps IP.period)
   return ObservationVitalSignsResource(Observations,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-observation-vitals'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/nhsn-dqm/StructureDefinition/ach-observation-vitals'}})
 
 //Defaulting to base FHIR profile as there are no individual profiles in US Core 3.1.1 that cover these Observation categories
 define "SDE Observation Category":
@@ -222,7 +230,7 @@ define "SDE Observation Category":
       "Initial Population" IP
       where Global."Normalize Interval"(Observations.effective) overlaps IP.period)
   return ObservationResource(Observations,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-observation'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/nhsn-dqm/StructureDefinition/ach-observation'}})
 
 define "SDE Coverage": 
 	[Coverage] Coverages
@@ -230,7 +238,7 @@ define "SDE Coverage":
     "Initial Population" IP
     where Coverages.period overlaps IP.period)
   return SharedResource.CoverageResource(Coverages,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-coverage'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/nhsn-dqm/StructureDefinition/ach-coverage'}})
 
 define "SDE Procedure":
   [Procedure] Procedures 
@@ -238,7 +246,7 @@ define "SDE Procedure":
     "Initial Population" IP
     where Global."Normalize Interval"(Procedures.performed) overlaps IP.period)
   return SharedResource.ProcedureResource(Procedures,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-procedure'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/nhsn-dqm/StructureDefinition/ach-procedure'}})
 
 define "SDE Specimen":
   [Specimen] Specimens
@@ -247,19 +255,19 @@ define "SDE Specimen":
     where Global."Normalize Interval"(Specimens.collection.collected) overlaps IP.period
   )
   return SharedResource.SpecimenResource(Specimens,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-specimen'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/nhsn-dqm/StructureDefinition/ach-specimen'}})
 
 define "SDE Service Request":
   [ServiceRequest] ServiceRequests
   where exists("Initial Population" IP
     where ServiceRequests.authoredOn during IP.period)
   return SharedResource.ServiceRequestResource(ServiceRequests,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-servicerequest'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/nhsn-dqm/StructureDefinition/ach-servicerequest'}})
 
 define "SDE Minimal Patient":
   Patient p
   return SharedResource.PatientResource(p,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/cross-measure-patient'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/nhsn-dqm/StructureDefinition/cross-measure-patient'}})
 
 //
 //Functions
