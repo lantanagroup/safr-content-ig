@@ -10,7 +10,10 @@ include SharedResourceCreation version '0.1.005' called SharedResource
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode' 
 codesystem "LOINC": 'http://loinc.org' 
 codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category' 
+codesystem "Condition Category": 'http://terminology.hl7.org/CodeSystem/condition-category'
+codesystem "Condition Clinical Status": 'http://terminology.hl7.org/CodeSystem/condition-clinical'
 codesystem "RXNORM": 'http://www.nlm.nih.gov/research/umls/rxnorm'
+
 
 valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307' 
 valueset "Inpatient, Emergency, and Observation Locations": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265' 
@@ -76,8 +79,15 @@ code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 //Observation Encounter Class Code
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
 
+//code for Condition category
+code "problem-list-item": 'problem-list-item' from "Condition Category" display 'Problem List Item'
+code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display 'Encounter Diagnosis'
+
+//code for Condition clinicalStatus
+code "active": 'active' from "Condition Clinical Status" display 'active'
+
 parameter "Measurement Period" 
-  default Interval[@2022-01-01T00:00:00.0, @2022-01-02T00:00:00.0)
+  default Interval[@2022-01-01T00:00:00.0, @2022-01-31T23:59:59.0)
 
 context Patient
 
@@ -259,6 +269,14 @@ define "RSV DiagnosticReport Result from Lab PRE Admission":
 //----------------------------------
 // SDE
 //----------------------------------
+define "SDE Encounter": 
+  "Encounters" Encounters
+  where exists(
+    "Initial Population" IP
+    where Encounters.period overlaps IP.period)
+  return SharedResource.EncounterResource(Encounters,
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-encounter'}})
+
 define "SDE Minimal Patient":
   Patient p
   where exists("Initial Population")

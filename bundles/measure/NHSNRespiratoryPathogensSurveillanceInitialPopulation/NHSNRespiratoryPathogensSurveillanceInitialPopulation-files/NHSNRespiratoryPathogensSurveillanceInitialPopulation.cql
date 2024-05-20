@@ -269,38 +269,13 @@ define "RSV DiagnosticReport Result from Lab PRE Admission":
 //----------------------------------
 // SDE
 //----------------------------------
-/*define "SDE Condition":
-  "Conditions" Conditions 
-  where exists(
-    "Initial Population" IP
-    //Check for Problem List Conditions that were recorded before or during IP
-    where (
-      Conditions.recordedDate before end of IP.period
-      and exists(Conditions.category categories
-        where categories ~ "problem-list-item")
-      and Conditions.clinicalStatus ~ "active"
-    )
-    //Check for Encounter Diagnosis Conditions that reference an IP encounter
-    or (
-      (exists(IP.diagnosis Diagnoses
-          where GetCondition(Diagnoses.condition).id = Conditions.id
-        )
-        or GetEncounter(Conditions.encounter).id = IP.id
-      )
-      and exists (Conditions.category categories
-        where categories ~ "encounter-diagnosis")
-    )
-  )
-  return SharedResource.ConditionResource(Conditions,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-condition'}})
-
 define "SDE Encounter": 
   "Encounters" Encounters
   where exists(
     "Initial Population" IP
     where Encounters.period overlaps IP.period)
   return SharedResource.EncounterResource(Encounters,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-encounter'}})*/
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-encounter'}})
 
 define "SDE Minimal Patient":
   Patient p
