@@ -31,6 +31,7 @@ code "survey": 'survey' from "Observation Category" display 'Survey'
 //code for Condition category
 code "problem-list-item": 'problem-list-item' from "Condition Category" display 'Problem List Item'
 code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display 'Encounter Diagnosis'
+code "health-concern": 'health-concern' from "Condition Category" display 'Health Concern'
 
 //code for Diagnostic Report Category
 code "LAB": 'LAB' from "V2-0074" display 'Laboratory'
@@ -118,7 +119,8 @@ define "SDE Condition":
         or GetEncounter(Conditions.encounter).id = IP.id
       )
       and exists (Conditions.category categories
-        where categories ~ "encounter-diagnosis")
+        where categories ~ "encounter-diagnosis"
+          or categories ~ "health-concern")
     )
   )
   return SharedResource.ConditionResource(Conditions,
