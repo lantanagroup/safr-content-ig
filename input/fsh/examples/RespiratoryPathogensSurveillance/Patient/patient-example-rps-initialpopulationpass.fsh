@@ -10,13 +10,13 @@ Usage: #example
 * extension[=].extension[=].valueString = "Asian"
 * extension[+].url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
 * extension[=].extension[0].url = "ombCategory"
-* extension[=].extension[=].valueCoding = urn:oid:2.16.840.1.113883.6.238#2186-5 "Non Hispanic or Latino"
+* extension[=].extension[=].valueCoding = urn:oid:2.16.840.1.113883.6.238#2186-5 "Not Hispanic or Latino"
 * extension[=].extension[+].url = "text"
 * extension[=].extension[=].valueString = "Non Hispanic or Latino"
 
-* extension[+].url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity"
-* extension[=].extension[0].url = "ombCategory"
-* extension[=].extension[=].valueCoding = $sct#407376001 "Male-to-female transsexual"
+//* extension[+].url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity"
+//* extension[=].extension[0].url = "ombCategory"
+//* extension[=].extension[=].valueCoding = $sct#407376001 "Male-to-female transsexual"
 * extension[=].extension[+].url = "text"
 * extension[=].extension[=].valueString = "Male-to-female transsexual"
 

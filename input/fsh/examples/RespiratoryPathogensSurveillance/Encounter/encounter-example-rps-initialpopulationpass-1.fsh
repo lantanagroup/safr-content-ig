@@ -18,7 +18,7 @@ Usage: #example
 * period.end = "2024-01-01T12:00:00Z"
 * reasonCode = $sct#267036007 "shortness of breath"
 * reasonCode.text = "Shortness of breath"
-* hospitalization.admitSource = $admit-source#emd "Emergency Department"
+* hospitalization.admitSource = $admit-source#emd "From accident/emergency department"
 * hospitalization.admitSource.text = "Emergency Department"
 * hospitalization.dischargeDisposition = $discharge-disposition#home "Home"
 * hospitalization.dischargeDisposition.text = "Home"

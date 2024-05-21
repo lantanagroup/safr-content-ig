@@ -16,7 +16,7 @@ ERROR: MeasureReport/measurereport-example-individual-measurereport-sameresultdi
 WARNING: StructureDefinition/link-original-element-value-extension: StructureDefinition.context[0]: Review the extension type: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 WARNING: StructureDefinition/link-original-mapped-concept-extension: StructureDefinition.context[0]: Review the extension type: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 
-
-
+# This is an error in the DEQM STU3 specification that was later relaxed by DEQM STU4. THe core IG Publisher produces an error if there is a measurescore for for a cohort MeasureReport 
+ERROR: Bundle/bundle-example-ach-subject-ach-pass1: Bundle.entry[0].resource.group[0]: MeasureReport.group.measureScore: minimum required = 1, but only found 0 (from http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0)
 
 

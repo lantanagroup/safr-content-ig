@@ -1,5 +1,5 @@
 Instance: observation-example-ach-pass1-gestational-age
-InstanceOf: AcuteCareHospitalReportingLabObservation
+InstanceOf: AcuteCareHospitalReportingObservation
 Title: "Observation - Example ACH Pass1 Gestational Age"
 Description: "Observation - Example ACH Pass1 - Lab: Gestational age at birth"
 Usage: #example

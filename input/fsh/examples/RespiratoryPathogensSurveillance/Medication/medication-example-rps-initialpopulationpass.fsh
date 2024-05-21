@@ -1,4 +1,4 @@
-Instance: medication-example-rps-initialpopulationpass-1
+Instance: medication-example-rps-initialpopulationpass
 InstanceOf: RespiratoryPathogensSurveillanceEventMedication
 Title: "Medication - RPS Medication Example Initial Population Pass 1"
 Description: "Medication - Example RPS Medication Initial Population Pass 1"

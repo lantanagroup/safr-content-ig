@@ -11,7 +11,7 @@ Usage: #example
 * subject.reference = "Patient/patient-example-rps-rsvlabbtg"
 * subject.display = "RPS, RSVLabBTG"
 * effectivePeriod.start = "2024-01-01T12:30:00Z"
-* effectivePeriod.end = "2022-01-02T17:30:09Z"
+* effectivePeriod.end = "2024-01-02T17:30:09Z"
 * request.reference = "MedicationRequest/medicationrequest-example-rps-rsvlabbtg-2"
 * dosage.text = "Nasal Saline spray, one spray each nostril QID"
 * dosage.route = $sct#46713006 "Nasal use"

@@ -10,11 +10,11 @@ Usage: #example
 * intent = #order
 * category = $medicationrequest-category#inpatient "Inpatient"
 * category.text = "Inpatient"
-* medicationReference.reference = "Medication/medication-example-rps-influenzatherapeudic"
+* medicationReference = Reference(medication-example-rps-influenzatherapeutic)
 * medicationReference.display = "Oseltamivir 60 mg"
-* subject.reference = "Patient/patient-example-rps-influenzatherapeudic"
-* subject.display = "RPS, InfluenzaTherapeudic"
-* encounter.reference = "Encounter/encounter-example-rps-influenzatherapeudic"
+* subject = Reference(patient-example-rps-influenzatherapeutic)
+* subject.display = "RPS, InfluenzaTherapeutic"
+* encounter = Reference(encounter-example-rps-influenzatherapeutic)
 * encounter.display = "Hospital Encounter"
 * authoredOn = "2024-01-01T11:45:15Z"
 * requester.type = "Practitioner"

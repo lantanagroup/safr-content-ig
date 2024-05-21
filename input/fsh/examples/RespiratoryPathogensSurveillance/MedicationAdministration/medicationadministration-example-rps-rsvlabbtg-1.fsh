@@ -11,7 +11,7 @@ Usage: #example
 * subject.reference = "Patient/patient-example-rps-rsvlabbtg"
 * subject.display = "RPS, RSVLabBTG"
 * effectivePeriod.start = "2024-01-01T12:30:00Z"
-* effectivePeriod.end = "2022-01-01T17:30:09Z"
+* effectivePeriod.end = "2024-01-01T17:30:09Z"
 * request.reference = "MedicationRequest/medicationrequest-example-rps-rsvlabbtg-1"
 * dosage.text = "Ribavirin inhalation solution 6g/vial via nebulizer every hour x 6"
 * dosage.route = $sct#26643006 "Oral route"

@@ -10,8 +10,8 @@ Usage: #example
 * vaccineCode.text = "Fluvax"
 * lotNumber = "AAJN11K"
 * expirationDate = "2025-02-15"
-* patient = Reference(Patient/patient-example-rps-influenzatherapeudic)
-* encounter = Reference(Encounter/encounter-example-rps-influenzatherapeudic)
+* patient = Reference(patient-example-rps-influenzatherapeutic)
+* encounter = Reference(encounter-example-rps-influenzatherapeutic)
 * occurrenceDateTime = "2024-01-02"
 * primarySource = true
 * doseQuantity = 5 'mg'

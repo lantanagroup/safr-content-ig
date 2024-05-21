@@ -18,7 +18,7 @@ Usage: #example
 * period.end = "2024-01-02T06:00:00Z"
 * reasonCode = $sct#267036007 "shortness of breath"
 * reasonCode.text = "Shortness of breath"
-* hospitalization.admitSource = $admit-source#outp "observation unit"
+* hospitalization.admitSource = $admit-source#outp "From outpatient department"
 * hospitalization.admitSource.text = "observation unit"
 * location[0].location.display = "UH Adult Emergency Department"
 * location[=].period.start = "2022-08-11T18:52:00Z"

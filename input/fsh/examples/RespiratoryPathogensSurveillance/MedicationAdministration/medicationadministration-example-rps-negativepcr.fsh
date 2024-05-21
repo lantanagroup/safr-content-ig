@@ -11,7 +11,7 @@ Usage: #example
 * subject.reference = "Patient/patient-example-rps-negativepcr"
 * subject.display = "RPS, NegativePCR"
 * effectivePeriod.start = "2024-01-02T09:00:00Z"
-* effectivePeriod.end = "2022-01-06T08:59:09Z"
+* effectivePeriod.end = "2024-01-06T08:59:09Z"
 * request.reference = "MedicationRequest/medicationrequest-example-rps-negativepcr"
 * dosage.text = "Take Molnupiravir 200 mg 4 capsules by mouth twice a day x 5 days"
 * dosage.route = $sct#385049006 "Capsule"

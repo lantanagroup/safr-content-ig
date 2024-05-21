@@ -6,7 +6,7 @@ Usage: #example
 * status = #final
 * category[Laboratory] = $observation-category#laboratory "Laboratory"
 * category[Laboratory].text = "Laboratory"
-* code = $loinc#95209-3 "SARS-CoV+SARS-CoV-2 (COVID-19) Ag [Presence] in Respiratory specimen by Rapid immunoassay"
+* code = $loinc#95209-3 "SARS-CoV+SARS-CoV-2 (COVID-19) Ag [Presence] in Respiratory system specimen by Rapid immunoassay"
 * code.text = "SARS-CoV+SARS-CoV-2 Ag Resp Ql IA.rapid"
 * subject.reference = "Patient/patient-example-rps-negativepcr"
 * subject.display = "RPS, NegativePCR"

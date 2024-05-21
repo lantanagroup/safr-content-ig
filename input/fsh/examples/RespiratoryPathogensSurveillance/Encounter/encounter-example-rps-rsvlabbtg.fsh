@@ -16,7 +16,7 @@ Usage: #example
 * subject.display = "RPS, rsvlabbtg"
 * period.start = "2024-01-01T08:00:00Z"
 * period.end = "2024-01-02T06:00:00Z"
-* reasonCode = $sct#162397003 "Sore throat"
+* reasonCode = $sct#162397003 "Throat pain"
 * reasonCode.text = "Sore throat"
 * hospitalization.admitSource = $admit-source#gp "Pediatrician's office"
 * hospitalization.admitSource.text = "Pediatrician's office"

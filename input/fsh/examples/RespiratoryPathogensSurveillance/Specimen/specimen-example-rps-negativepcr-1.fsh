@@ -10,4 +10,4 @@ Usage: #example
 * subject.display = "RPS, NegativePCR"
 * receivedTime = "2024-01-01T08:30:00Z"
 * collection.collectedDateTime = "2024-01-01T09:00:00Z"
-* collection.bodySite = $sct#1825009 "Root of nose"
+* collection.bodySite = $sct#1825009 "Entire root of nose (body structure)"

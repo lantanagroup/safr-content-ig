@@ -7,7 +7,7 @@ Usage: #example
 * identifier.system = "http://example.org/fhir/memberidentifier"
 * identifier.value = "88800933501"
 * status = #active
-* type = $v3-ActCode#3712 "PPO"
+* type = $v3-ActCode#PPO "preferred provider organization policy"
 * type.text = "PPO"
 * subscriberId = "123456789"
 * beneficiary.reference = "Patient/patient-example-rps-influenzatherapeutic"

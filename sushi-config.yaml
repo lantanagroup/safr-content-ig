@@ -36,6 +36,8 @@ dependencies:
 description: "This content describes the specifications for the for the Health Level Seven International® (HL7) Fast Healthcare Interoperability Resources® (FHIR) digital quality measures (dQMs) reported to the National Healthcare Safety Network (NHSN)."
 parameters:
 #  path-expansion-params: "../../input/terminology-settings.xml"
+  path-expansion-params: '../../exp-params.json'  #Support for US SNOMED CT - path is relative to [base]/fsh-generated/resources
+
   apply-jurisdiction: true
   apply-publisher: true
   path-liquid: templates\liquid
@@ -435,8 +437,7 @@ groups:
       - MedicationAdministration/medicationadministration-example-rps-rsvlabbtg-2
 
       - Medication/medication-example-rps-influenzatherapeutic
-      - Medication/medication-example-rps-initialpopulationpass-1
-      - Medication/medication-example-rps-initialpopulationpass-2
+      - Medication/medication-example-rps-initialpopulationpass
       - Medication/medication-example-rps-rsvlabbtg-1
       - Medication/medication-example-rps-rsvlabbtg-2
       - Medication/medication-example-rps-negativepcr

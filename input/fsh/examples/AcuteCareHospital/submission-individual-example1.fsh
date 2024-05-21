@@ -30,8 +30,8 @@ Usage: #example
 * entry[=].resource = measurereport-example-individual-ach-ach-pass1
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Patient/patient-example-ach-ach-pass1"
 * entry[=].resource = patient-example-ach-ach-pass1
-* entry[+].fullUrl = "http://nhsnlink.org/fhir/Patient/patient-example-ach-ach-pass1"
-* entry[=].resource = patient-example-ach-ach-pass1
+//* entry[+].fullUrl = "http://nhsnlink.org/fhir/Patient/patient-example-ach-ach-pass1"
+//* entry[=].resource = patient-example-ach-ach-pass1
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Encounter/encounter-example-ach-ach-pass1"
 * entry[=].resource = encounter-example-ach-ach-pass1
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Coverage/coverage-example-ach-pass1"

@@ -12,5 +12,3 @@ Usage: #example
 * form.text = "Nasal spray"
 * ingredient.itemCodeableConcept.coding[+] = $rxnorm#707359
 * ingredient.itemCodeableConcept.text = "Nasal Saline spray"
-* ingredient.strength.numerator = 1 'unit' "unit"
-* ingredient.strength.denominator = 1 'unit' "unit"

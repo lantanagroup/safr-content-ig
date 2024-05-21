@@ -13,10 +13,10 @@ Usage: #example
 * extension[=].extension[=].valueCoding = urn:oid:2.16.840.1.113883.6.238#2135-2 "Hispanic or Latino"
 * extension[=].extension[+].url = "text"
 * extension[=].extension[=].valueString = "Hispanic or Latino"
-
-* extension[+].url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity"
-* extension[=].extension[0].url = "ombCategory"
-* extension[=].extension[=].valueCoding = $sct#446151000124109 "Identifies as male gender"
+// Not supported by US Core 3.1.1, Can be added for later versions
+//* extension[+].url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity"
+//* extension[=].extension[0].url = "ombCategory"
+//* extension[=].extension[=].valueCoding = $sct#446151000124109 "Identifies as male gender"
 * extension[=].extension[+].url = "text"
 * extension[=].extension[=].valueString = "Identifies as male gender"
 

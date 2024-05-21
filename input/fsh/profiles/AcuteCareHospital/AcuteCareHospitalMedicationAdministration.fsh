@@ -10,7 +10,7 @@ Description: "This profile contains Required and Must Support data elements for 
 * statusReason MS
 * category from http://hl7.org/fhir/R4/valueset-medication-admin-category.html (extensible)
 * category MS
-* medication[x] from http://www.nlm.nih.gov/research/umls/rxnorm (extensible)
+* medication[x] from http://hl7.org/fhir/us/core/ValueSet/us-core-medication-codes (extensible)
 * context MS
 * reasonCode MS
 * reasonReference MS

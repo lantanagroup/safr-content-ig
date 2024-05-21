@@ -12,8 +12,8 @@ Usage: #example
 * class = $v3-ActCode#ACUTE "Inpatient Acute"
 * type = $sct#4525004 "Emergency department patient visit"
 * type.text = "Emergency department patient visit"
-* subject.reference = "Patient/patient-example-rps-influenzatherapeudic"
-* subject.display = "RPS, InfluenzaTherapeudic"
+* subject = Reference(patient-example-rps-influenzatherapeutic)
+* subject.display = "RPS, InfluenzaTherapeutic"
 * period.start = "2024-01-01T08:00:00Z"
 * period.end = "2024-01-04T12:00:00Z"
 * reasonCode = $sct#274640006 "Fever with chills"

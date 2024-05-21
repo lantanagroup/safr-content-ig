@@ -10,7 +10,7 @@ Usage: #example
 * intent = #order
 * category = $medicationrequest-category#inpatient "Inpatient"
 * category.text = "Inpatient"
-* medicationReference.reference = "Medication/medication-example-rps-rsvlabbtg"
+* medicationReference.reference = "Medication/medication-example-rps-rsvlabbtg-1"
 * medicationReference.display = "Ribavirin inhalation solution 6g/vial via nebulizer"
 * subject.reference = "Patient/patient-example-rps-rsvlabbtg"
 * subject.display = "RPS, RSVLabBTG"
