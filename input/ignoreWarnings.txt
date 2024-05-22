@@ -17,6 +17,9 @@ WARNING: StructureDefinition/link-original-element-value-extension: StructureDef
 WARNING: StructureDefinition/link-original-mapped-concept-extension: StructureDefinition.context[0]: Review the extension type: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 
 # This is an error in the DEQM STU3 specification that was later relaxed by DEQM STU4. THe core IG Publisher produces an error if there is a measurescore for for a cohort MeasureReport 
-ERROR: Bundle/bundle-example-ach-subject-ach-pass1: Bundle.entry[0].resource.group[0]: MeasureReport.group.measureScore: minimum required = 1, but only found 0 (from http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0)
+MeasureReport.group.measureScore: minimum required = 1, but only found 0 (from http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0)
 
-
+# Javascript needed to support custom template requirements
+The <script> containing the javascript 'try {       var curr'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 706 other files)
+The <script> containing the javascript '$(document).ready(fu'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 1542 other files)
+The <script> containing the javascript 'anchors.options.visi'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 1542 other files)

@@ -33,11 +33,11 @@ Description: "This profile contains Required and Must Support data elements for 
   * reAdmission MS
   * dietPreference from http://hl7.org/fhir/ValueSet/encounter-diet (preferred)
   * dietPreference MS
-  * dischargeDisposition from http://hl7.org/fhir/R4/ValueSet/encounter-discharge-disposition (preferred)
+  * dischargeDisposition from http://hl7.org/fhir/ValueSet/encounter-discharge-disposition (preferred)
 * location 1..
   * ^short = "List of locations where the patient has been. Used in part to discern whether the patient is Inpatient, Emergency and or Observation status."
   * status MS
-  * physicalType from http://hl7.org/fhir/R4/valueset-location-physical-type.html (extensible)
+  * physicalType from http://hl7.org/fhir/ValueSet/location-physical-type (extensible)
   * physicalType MS
   * period 1..
 

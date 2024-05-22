@@ -6,7 +6,7 @@ Description: "This profile contains Required and Must Support data elements for 
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 * partOf MS
-* code from http://hl7.org/fhir/R4/valueset-observation-vitalsignresult.html (extensible)
+* code from http://hl7.org/fhir/ValueSet/observation-vitalsignresult (extensible)
 * encounter MS
 * issued MS
 * interpretation MS

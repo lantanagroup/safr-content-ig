@@ -8,7 +8,7 @@ Description: "This profile contains Required and Must Support data elements for 
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 * statusReason from http://hl7.org/fhir/ValueSet/reason-medication-not-given-codes (extensible)
 * statusReason MS
-* category from http://hl7.org/fhir/R4/valueset-medication-admin-category.html (extensible)
+* category from http://hl7.org/fhir/ValueSet/medication-admin-category (extensible)
 * category MS
 * medication[x] from http://hl7.org/fhir/us/core/ValueSet/us-core-medication-codes (extensible)
 * context MS

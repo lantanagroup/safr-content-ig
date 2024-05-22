@@ -14,7 +14,7 @@ Usage: #example
 * medicationReference.display = "remdesivir 100 mg"
 * subject.reference = "Patient/patient-example-rps-initialpopulationpass"
 * subject.display = "RPS, InitialPopulationPass"
-* encounter.reference = "Encounter/encounter-example-rps-initialpopulationpass-inpatient"
+* encounter.reference = "Encounter/encounter-example-rps-initialpopulationpass-2"
 * encounter.display = "Hospital Encounter"
 * authoredOn = "2024-01-14T21:30:15Z"
 * requester.type = "Practitioner"

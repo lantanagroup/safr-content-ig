@@ -21,7 +21,7 @@ Description: "This profile contains Required and Must Support data elements for 
   * timing MS
   * asNeeded[x] MS
   * site MS
-  * route from http://hl7.org/fhir/R4/ValueSet/route-codes (extensible)
+  * route from http://hl7.org/fhir/ValueSet/route-codes (extensible)
   * route 1..
   * method MS
   * doseAndRate MS

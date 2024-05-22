@@ -14,6 +14,6 @@ Description: "This profile contains Required and Must Support data elements for 
 * method MS
 * specimen MS
 * component MS
-  * code from http://hl7.org/fhir/R4/valueset-observation-codes.html (extensible)
+  * code from http://hl7.org/fhir/ValueSet/observation-codes (extensible)
   * value[x] MS
   * interpretation MS

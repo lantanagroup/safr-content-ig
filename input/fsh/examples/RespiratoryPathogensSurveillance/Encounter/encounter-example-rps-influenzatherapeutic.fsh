@@ -18,7 +18,7 @@ Usage: #example
 * period.end = "2024-01-04T12:00:00Z"
 * reasonCode = $sct#274640006 "Fever with chills"
 * reasonCode.text = "Fever with chills"
-* hospitalization.admitSource = $admit-source#gp "Direct admission from doctor's office (in same system)"
+* hospitalization.admitSource = $admit-source#gp "General Practitioner referral"
 * hospitalization.admitSource.text = "Direct admission from doctor's office (in same system)"
 * hospitalization.dischargeDisposition = $discharge-disposition#home "Home"
 * hospitalization.dischargeDisposition.text = "Home"

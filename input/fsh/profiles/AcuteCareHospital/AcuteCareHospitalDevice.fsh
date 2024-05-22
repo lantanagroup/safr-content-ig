@@ -18,6 +18,6 @@ Description: "This profile contains Required and Must Support data elements for 
 * lotNumber MS
 * serialNumber MS
 * deviceName MS
-* type from https://hl7.org/fhir/R4/valueset-device-type.html (extensible)
+* type from http://hl7.org/fhir/ValueSet/device-type (extensible)
 * type 1..
 * patient 1..
