@@ -1,4 +1,4 @@
-library NHSNRespiratoryPathogensSurveillanceInitialPopulation version '0.0.009'
+library NHSNRespiratoryPathogensSurveillanceInitialPopulation version '0.0.010'
 
 using FHIR version '4.0.1'
 
@@ -10,8 +10,6 @@ include SharedResourceCreation version '0.1.005' called SharedResource
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode' 
 codesystem "LOINC": 'http://loinc.org' 
 codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category' 
-codesystem "Condition Category": 'http://terminology.hl7.org/CodeSystem/condition-category'
-codesystem "Condition Clinical Status": 'http://terminology.hl7.org/CodeSystem/condition-clinical'
 codesystem "RXNORM": 'http://www.nlm.nih.gov/research/umls/rxnorm'
 
 
@@ -78,13 +76,6 @@ code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 
 //Observation Encounter Class Code
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
-
-//code for Condition category
-code "problem-list-item": 'problem-list-item' from "Condition Category" display 'Problem List Item'
-code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display 'Encounter Diagnosis'
-
-//code for Condition clinicalStatus
-code "active": 'active' from "Condition Clinical Status" display 'active'
 
 parameter "Measurement Period" 
   default Interval[@2022-01-01T00:00:00.0, @2022-01-31T23:59:59.0)
@@ -513,18 +504,9 @@ define function "GetEncounter"(reference FHIR.Reference):
     where Encounters.id = Global.GetId(reference.reference)
   )
 
-define function "GetCondition"(reference FHIR.Reference):
-  singleton from (
-    "Conditions" Conditions
-    where Conditions.id = Global.GetId(reference.reference)
-  )
-
 //Common Retrievals
 define "Encounters":
   [Encounter]
-
-define "Conditions":
-  [Condition]
 
 define "Observations":
   [Observation]
