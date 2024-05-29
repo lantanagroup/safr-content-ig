@@ -1,4 +1,4 @@
-library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.014'
+library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.015'
 
 using FHIR version '4.0.1'
 
@@ -107,8 +107,6 @@ define "SDE Condition":
       and exists(Conditions.category categories
         where categories ~ "problem-list-item")
       and Conditions.clinicalStatus ~ "active"
-      //and Conditions.verificationStatus !~ "entered-in-error" (?)
-      //and Conditions.verificationStatus in {options} (?)
     )
     //Check for Encounter Diagnosis Conditions that reference an IP encounter
     or (
