@@ -45,7 +45,7 @@ code "emergency": 'EMER' from "ActCode" display 'emergency'
 code "active": 'active' from "Condition Clinical Status" display 'active'
 
 parameter "Measurement Period" 
-    default Interval[@2024-03-01T00:00:00.0, @2024-03-31T00:00:00.0)
+    default Interval[@2024-03-01T00:00:00.0, @2024-03-01T23:59:00.0)
 
 context Patient 
 
