@@ -45,7 +45,7 @@ Usage: #example
 * address[=].postalCode = "48813"
 * address[=].country = "US"
 
-* contact[+].relationship = #Mother
+* contact[+].relationship = $v3-RoleCode#MTH "mother"
 * contact[=].name.text = "Mother Nature"
 * contact[=].name.family = "Nature"
 * contact[=].name.given = "Mother"

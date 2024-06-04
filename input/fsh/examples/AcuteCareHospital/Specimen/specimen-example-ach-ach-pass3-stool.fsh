@@ -8,7 +8,8 @@ Usage: #example
 * identifier[=].assigner.display = "LIS"
 * identifier[+].system = "urn:oid:2.16.840.1.113883.19.5.1.798.800"
 * identifier[=].value = "C10408290:45"
-* type = $sct#429901000124102 "Bloody stool specimen (specimen)"
+//* type = $sct#429901000124102 "Bloody stool specimen (specimen)"
+* type = $v2-0487#STL "Stool = Fecal"
 * type.text = "Bloody stool"
 * subject = Reference(patient-example-ach-ach-pass3)
 * subject.display = "Pass3 ACH"

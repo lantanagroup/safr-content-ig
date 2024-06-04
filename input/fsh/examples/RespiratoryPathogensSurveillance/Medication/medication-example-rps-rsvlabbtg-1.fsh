@@ -8,9 +8,9 @@ Usage: #example
 * code.coding[+] = $rxnorm#2108389
 * code.text = "Ribavirin inhalation solution 6g/vial via nebulizer"
 * status = #active
-* form = $sct#385198000 "Nebulizer solution"
+* form = $sct#385198000 "Conventional release solution for nebuliser"
 * form.text = "Nebulizer solution"
 * ingredient.itemCodeableConcept.coding[+] = $rxnorm#2108389
 * ingredient.itemCodeableConcept.text = "Ribavirin inhalation solution 6g/vial via nebulizer"
-* ingredient.strength.numerator = 6 '6g/vial' "6g/vial"
-* ingredient.strength.denominator = 6 '6g/vial' "6g/vial"
+* ingredient.strength.numerator = 6 'g' "g"
+* ingredient.strength.denominator = 6 'g' "g"

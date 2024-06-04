@@ -8,6 +8,7 @@ Usage: #example
 * verificationStatus.coding.version = "4.0.0"
 * verificationStatus.coding = $condition-ver-status#confirmed "Confirmed"
 * verificationStatus.text = "Confirmed"
+* clinicalStatus = $condition-clinical#active "Active"
 * category = $condition-category#encounter-diagnosis "Encounter Diagnosis"
 * category.text = "Encounter Diagnosis"
 * code.coding = $icd-9-cm#R06.02 "Shortness of breath"

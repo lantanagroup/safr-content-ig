@@ -24,6 +24,7 @@ publisher:
 
 
 dependencies:
+  hl7.fhir.extensions.r5: 4.0.1
   hl7.fhir.us.core: 3.1.1
   fhir.cqf.common:
     version: 4.0.1
@@ -48,6 +49,10 @@ parameters:
   default-publisher: true
   #default-jurisdiction: true
   default-copyright: true
+  path-pages:
+    - input/pagecontent
+    - input/intro-notes
+    - input/includes
 
   
   special-url-base: 
@@ -56,7 +61,7 @@ parameters:
 
   special-url:
     - http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference
-    - http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.population.description
+#    - http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.population.description
 
   path-resource: 
   - input/resources/device
@@ -87,6 +92,8 @@ pages:
     title: License
   ImplementationGuide-gov.cdc.nhsn.measures.md:
     title: NHSN Implementation Guide Resource
+  artifact-listing.md:
+    title: Artifact Listing
   changes.xml:
     title: IG Change History 
   history.xml:
@@ -210,7 +217,7 @@ groups:
     name: "Extensions: Externally Defined"
     description: "Extensions are externally defined artifacts that are not yet published."
     resources:
-     - StructureDefinition/extension-MeasureReport.population.description
+     #- StructureDefinition/extension-MeasureReport.population.description
      - StructureDefinition/extension-MeasureReport.supplementalDataElement.reference
      - StructureDefinition/extension-criteriaReference
 
@@ -449,9 +456,9 @@ groups:
 
 
 resources:
-   StructureDefinition/extension-MeasureReport.population.description:
-     name: Measure Report Population Description (R5 surrogate extension)
-     description: Measure Report Population Description - This extension is not defined by this IG. CQF Tooling uses this extension, but the extension is yet unpublished.
+   #StructureDefinition/extension-MeasureReport.population.description:
+   #  name: Measure Report Population Description (R5 surrogate extension)
+   #  description: Measure Report Population Description - This extension is not defined by this IG. CQF Tooling uses this extension, but the extension is yet unpublished.
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    StructureDefinition/extension-MeasureReport.supplementalDataElement.reference:
