@@ -1,4 +1,4 @@
-library NHSNRespiratoryPathogensSurveillanceInitialPopulation version '0.0.010'
+library NHSNRespiratoryPathogensSurveillanceInitialPopulation version '0.0.011'
 
 using FHIR version '4.0.1'
 
@@ -78,7 +78,7 @@ code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
 
 parameter "Measurement Period" 
-  default Interval[@2022-01-01T00:00:00.0, @2022-01-31T23:59:59.0)
+  default Interval[@2022-01-01T00:00:00.0, @2022-01-01T23:59:59.0)
 
 context Patient
 
