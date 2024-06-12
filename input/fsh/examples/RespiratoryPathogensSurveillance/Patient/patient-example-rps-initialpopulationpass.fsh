@@ -17,8 +17,8 @@ Usage: #example
 //* extension[+].url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity"
 //* extension[=].extension[0].url = "ombCategory"
 //* extension[=].extension[=].valueCoding = $sct#407376001 "Male-to-female transsexual"
-* extension[=].extension[+].url = "text"
-* extension[=].extension[=].valueString = "Male-to-female transsexual"
+//* extension[=].extension[+].url = "text"
+//* extension[=].extension[=].valueString = "Male-to-female transsexual"
 
 * extension[+].url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex"
 * extension[=].valueCode = #F

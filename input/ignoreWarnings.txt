@@ -16,10 +16,41 @@ ERROR: MeasureReport/measurereport-example-individual-measurereport-sameresultdi
 WARNING: StructureDefinition/link-original-element-value-extension: StructureDefinition.context[0]: Review the extension type: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 WARNING: StructureDefinition/link-original-mapped-concept-extension: StructureDefinition.context[0]: Review the extension type: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 
-# This is an error in the DEQM STU3 specification that was later relaxed by DEQM STU4. THe core IG Publisher produces an error if there is a measurescore for for a cohort MeasureReport 
+# This is an error in the DEQM STU3 specification that was later relaxed by DEQM STU4. The core IG Publisher produces an error if there is a measurescore for for a cohort MeasureReport 
 MeasureReport.group.measureScore: minimum required = 1, but only found 0 (from http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0)
+ERROR: Bundle/bundle-example-ach-subject-ach-pass1: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
+ERROR: Bundle/bundle-example-ach-subject-ach-pass2: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
+ERROR: Bundle/bundle-example-ach-subject-ach-pass3: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
+ERROR: Bundle/submission-full-example1: Bundle.entry[3].resource/*MeasureReport/measurereport-example-subjectlist1*/.contained.entry[1].item: Unable to find a match for profile MeasureReport/measurereport-example-individual-measurereport-hypo among choices: http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm
 
-# Javascript needed to support custom template requirements
-The <script> containing the javascript 'try {       var curr'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 706 other files)
-The <script> containing the javascript '$(document).ready(fu'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 1542 other files)
-The <script> containing the javascript 'anchors.options.visi'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 1542 other files)
+# Error with FHIR validator checking Encounter based populations
+Slice 'Bundle.entry:subject-list': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submission-header-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
+Mismatch between count 2 and number of subjects 1
+
+# NHSN does not use (and my strip) performer in Observations. They are not included in samples in this IG
+Best Practice Recommendation: In general, all observations should have a performer
+
+# Custom template contains javascript required for the IG
+WARNING: C:\dev\fhir\ig\nhsn\nhsn-measures\output\Bundle-bundle-example-ach-header.change.history.html#/html/body/script at Line 211, column 4: The <script> containing the javascript 'try {       var curr'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 698 other files)
+WARNING: C:\dev\fhir\ig\nhsn\nhsn-measures\output\Bundle-bundle-example-ach-header.change.history.html#/html/body/script at Line 234, column 4: The <script> containing the javascript '$(document).ready(fu'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 1535 other files)
+WARNING: C:\dev\fhir\ig\nhsn\nhsn-measures\output\Bundle-bundle-example-ach-header.change.history.html#/html/body/script at Line 278, column 4: The <script> containing the javascript 'anchors.options.visi'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 1535 other files)
+
+# Extensions meant to have a context of Element.
+Review the extension type for link-original-mapped-concept-extension: extensions should not have a context of Element unless it's really intended that they can be used anywhere
+Review the extension type for link-original-element-value-extension: extensions should not have a context of Element unless it's really intended that they can be used anywhere
+
+
+# Code system is proper even though noted as draft.
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/observation-category|1.0.0
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/measure-population|1.0.0
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/organization-type|2.0.0
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/dose-rate-type|1.0.0
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/medicationrequest-category|1.0.0
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy|1.0.0
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/measure-scoring|3.0.0
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/location-physical-type|2.0.0
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/discharge-disposition|1.0.0
+Reference to draft CodeSystem http://hl7.org/fhir/encounter-status|4.0.1
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/condition-category|1.0.0
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/condition-ver-status|4.0.1 (from http://tx.fhir.org/r4)
+A definition for CodeSystem 'http://terminology.hl7.org/CodeSystem/ICD-9CM-diagnosiscodes' could not be found, so the code cannot be validated (from http://tx.fhir.org/r4)

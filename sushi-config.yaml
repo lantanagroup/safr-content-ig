@@ -58,10 +58,13 @@ parameters:
   special-url-base: 
     - http://hl7.org/fhir/5.0
     - http://hl7.org/fhir/us/davinci-deqm
+    - http://www.cdc.gov/nhsn/fhirportal/dqm/ig
 
   special-url:
     - http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference
 #    - http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.population.description
+
+    
 
   path-resource: 
   - input/resources/device

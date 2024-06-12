@@ -2964,7 +2964,7 @@
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."/>
    <relatedArtifact>
       <type value="documentation"/>
-      <display value="https://www.cdc.gov/nhsn/index.html [placeholder for link to protocol on CDC website] "/>
+      <display value="https://www.cdc.gov/nhsn/index.html [placeholder for link to protocol on CDC website]"/>
       <url value="https://www.cdc.gov/nhsn/index.html"/>
       <document>
          <url value="https://www.cdc.gov/nhsn/index.html"/>
