@@ -4,13 +4,6 @@ test
 <!-- Taken from xslt - If there is a description in the group, then show the descriptions table column. Not sure if this is needed
 <xsl:variable name="showDescriptions" select="count(parent::f:definition/f:resource[f:groupingId/@value=current()/@id]/f:description/@value)!=0"/> -->
 
-<h2>All</h2>
-{% for hash in site.pages %}
-  {{hash[0]}}
-{% endfor %}
-
-22
-
 {% for group in site.data.artifact-grouping.groups %}
 <h3>{{group[1].name}}</h3>
 <p>{{group[1].description | markdownify}}</p>
@@ -22,15 +15,23 @@ test
       <th>Description</th>
     </tr>
     {% for resource in group[1].resources -%}
+    {% assign artifact_name = site.data.resources[resource].title %}
+    {% if artifact_name == null or artifact_name == '' %}
+      {% assign artifact_name = resource.name %}
+    {% endif %}
+    {% assign artifact_description = site.data.resources[resource].description %}
+    {% if artifact_description == null or artifact_description == '' %}
+      {% assign artifact_description = resource.description %}
+    {% endif %}
     <!-- Get the resource information -->
     <tr>
       <td style="column-width:30%">
-        <a href="{{site.data.resources[resource].path}}">{{site.data.resources[resource].title}}</a>
+        <a href="{{site.data.resources[resource].path}}">{{artifact_name}}</a>
       </td>
       <!-- 
       <xsl:if test="$showDescriptions">-->
         <td>
-          {{site.data.resources[resource].description | markdownify}}
+          {{artifact_description | markdownify}}
           <!-- may need to pull descriptions of non-sd artifacts from the IG resource, but where can I get that? -->
         </td>
     </tr>
@@ -66,7 +67,7 @@ test
 -->
 
 
-
+<!--
 {%- for sd_hash in site.data.artifact-grouping -%}
   {%- assign sd1= sd_hash[1] -%}
   {%- unless sd1.type == "Extension" -%}
@@ -145,3 +146,4 @@ test
     {%- endfor -%}
   </ul>
 {% endfor %}
+-->
