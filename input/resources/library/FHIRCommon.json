@@ -71,7 +71,7 @@
   }, {
     "type": "depends-on",
     "display": "Library FHIRHelpers",
-    "resource": "http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"
+    "resource": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1"
   }, {
     "type": "depends-on",
     "display": "Code system LOINC",
