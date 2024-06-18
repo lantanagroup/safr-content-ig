@@ -3,6 +3,7 @@ InstanceOf: AcuteCareHospitalReportingMedication
 Title: "Medication - Hypo Medication Example Hypo 4"
 Description: "Medication - Example Hypo Medication Hypo 4"
 Usage: #example
+* meta.profile[1] = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication"
 * extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"
 * extension.valueString = "e11kF5DQLQwz8WrCTi-fTXUBZW8CRdsY0CXeVGHY.RA8LNuzDmn9GrZmbcWKSA1xb2ES.RitNJ5o-LqrwbAoS-zJZ9Wp8oS-UB1RNw-eZ22o3"
 * code.coding[0] = $atc#B05BA03

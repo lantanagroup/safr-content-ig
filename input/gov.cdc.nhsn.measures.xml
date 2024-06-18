@@ -819,14 +819,14 @@
             <groupingId value="extensions"/>
         </resource>
         -->
-        <resource>
+        <!--<resource>
             <reference>
                 <reference value="StructureDefinition/extension-MeasureReport.supplementalDataElement.reference"/>
             </reference>
             <name value="Measure Report Supplemental Data Element Reference (R5 surrogate extension)"/>
             <description value="This extension is not defined by this IG.  CQF Tooling uses this extension, but the extension is yet unpublished."/>
             <groupingId value="extensions"/>
-        </resource>
+        </resource>-->
         <resource>
             <reference>
                 <reference value="StructureDefinition/extension-criteriaReference"/>

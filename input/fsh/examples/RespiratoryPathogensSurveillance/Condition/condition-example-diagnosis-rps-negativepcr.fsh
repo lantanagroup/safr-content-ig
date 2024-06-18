@@ -11,7 +11,7 @@ Usage: #example
 * clinicalStatus = $condition-clinical#active "Active"
 * category = $condition-category#encounter-diagnosis "Encounter Diagnosis"
 * category.text = "Encounter Diagnosis"
-* code.coding = $icd-9-cm#U07.1 "COVID-19"
+* code.coding = $icd-10-cm#U07.1 "COVID-19"
 * code.text = "COVID-19"
 * subject.reference = "Patient/patient-example-rps-negativepcr"
 * subject.display = "RPS, NegativePCR"

@@ -11,7 +11,7 @@ Usage: #example
 * clinicalStatus = $condition-clinical#active "Active"
 * category = $condition-category#encounter-diagnosis "Encounter Diagnosis"
 * category.text = "Encounter Diagnosis"
-* code.coding = $icd-9-cm#R06.02 "Shortness of breath"
+* code.coding = $icd-10-cm#R06.02 "Shortness of breath"
 * code.text = "Hyperglycemia"
 * subject.reference = "Patient/patient-example-rps-initialpopulationpass"
 * subject.display = "RPS, InitialPopulationPass"

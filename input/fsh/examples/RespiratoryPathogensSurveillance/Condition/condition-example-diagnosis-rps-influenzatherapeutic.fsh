@@ -11,7 +11,7 @@ Usage: #example
 * clinicalStatus = $condition-clinical#active "Active"
 * category = $condition-category#encounter-diagnosis "Encounter Diagnosis"
 * category.text = "Encounter Diagnosis"
-* code.coding = $icd-9-cm#J09.X "Influenza Type A"
+* code.coding = $icd-10-cm#J09.X "Influenza due to identified novel influenza A virus"
 * code.text = "Influenza Type A"
 * subject.reference = "Patient/patient-example-rps-influenzatherapeutic"
 * subject.display = "RPS, InfluenzaTherapeutic"

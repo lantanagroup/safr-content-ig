@@ -3,7 +3,7 @@ InstanceOf: AcuteCareHospitalReportingLocation
 Title: "Location - Example ACH - Inpatient"
 Description: "Location - Example ACH - Inpatient Hospital Ward"
 Usage: #example
-* identifier.system = "http://www.example.org/location"
+* identifier.system = "http://www.example.com/location"
 * identifier.value = "2935"
 * status = #active
 * name = "ACH Inpatient Hospital Ward"

@@ -11,7 +11,7 @@ Usage: #example
 * clinicalStatus = $condition-clinical#active "Active"
 * category = $condition-category#encounter-diagnosis "Encounter Diagnosis"
 * category.text = "Encounter Diagnosis"
-* code.coding = $icd-9-cm#B97.4 "RSV"
+* code.coding = $icd-10-cm#B97.4 "Respiratory syncytial virus as the cause of diseases classified elsewhere"
 * code.text = "RSV"
 * subject.reference = "Patient/patient-example-rps-rsvlabbtg"
 * subject.display = "RPS, RSVLabBTG"

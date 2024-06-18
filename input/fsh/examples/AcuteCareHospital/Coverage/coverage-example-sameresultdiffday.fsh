@@ -3,6 +3,7 @@ InstanceOf: AcuteCareHospitalReportingCoverage
 Title: "Coverage - Coverage Example Sameresultdiffday"
 Description: "Coverage - Example Coverage Sameresultdiffday"
 Usage: #example
+* meta.profile[1] = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-coverage"
 * identifier.type = $v2-0203#MB "Member Number"
 * identifier.system = "http://example.org/fhir/memberidentifier"
 * identifier.value = "88800933501"

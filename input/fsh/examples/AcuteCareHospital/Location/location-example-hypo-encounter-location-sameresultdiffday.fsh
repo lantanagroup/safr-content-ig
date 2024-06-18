@@ -3,7 +3,8 @@ InstanceOf: AcuteCareHospitalReportingLocation
 Title: "Location - Hypo Encounter Location Example Sameersultdiffday"
 Description: "Location - Example Hypo Encounter Location Sameresultdiffday"
 Usage: #example
-* identifier.system = "http://www.example.org/location"
+* meta.profile[1] = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-location"
+* identifier.system = "http://www.example.com/location"
 * identifier.value = "29"
 * status = #active
 * name = "Health Level Seven International - Amherst"
