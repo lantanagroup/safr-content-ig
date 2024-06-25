@@ -1,6 +1,6 @@
 #!/bin/bash
 #DO NOT EDIT WITH WINDOWS
-tooling_jar=tooling-cli-3.0.0-SNAPSHOT.jar
+tooling_jar=tooling-cli-3.1.0-SNAPSHOT.jar
 input_cache_path=./input-cache
 resources_path=$PWD/input/resources
 ig_ini_path=ig.ini
@@ -19,3 +19,6 @@ else
 fi
 
 #sh input/pagecontent/quick-start-bundles/_refreshQuickStart.sh
+
+# Must be run in main directory!
+find bundles/ -type f -name "*-bundle.json" -exec sed -i -e "s/-bundle//g" {} \;
