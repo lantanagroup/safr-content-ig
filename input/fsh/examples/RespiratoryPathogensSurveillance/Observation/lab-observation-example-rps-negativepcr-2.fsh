@@ -1,11 +1,11 @@
-Instance: observation-example-rps-negativepcr-2
+Instance: lab-observation-example-rps-negativepcr-2
 InstanceOf: RespiratoryPathogensSurveillanceEventLabObservation
-Title: "Observation - RPS Observation Example Negative PCR 2"
-Description: "Observation - Example RPS Observation Negative PCR 2"
+Title: "Lab Observation - RPS Observation Example Negative PCR 2"
+Description: "Lab Observation - Example RPS Observation Negative PCR 2"
 Usage: #example
 * status = #final
-* category[Laboratory] = $observation-category#laboratory "Laboratory"
-* category[Laboratory].text = "Laboratory"
+* category = $observation-category#laboratory "Laboratory"
+* category.text = "Laboratory"
 * code = $loinc#94307-6 "SARS-CoV-2 (COVID-19) N gene [Presence] in Specimen by Nucleic acid amplification using CDC primer-probe set N1"
 * code.text = "SARS-CoV-2 (COVID-19) N gene NAA+probe CDC primer-probe set N1 Ql (Specimen)"
 * subject.reference = "Patient/patient-example-rps-negativepcr"
@@ -18,3 +18,4 @@ Usage: #example
 * valueCodeableConcept.coding.code = #260385009
 * valueCodeableConcept.coding.display = "Negative"
 * valueCodeableConcept.text = "Negative"
+* specimen = Reference(specimen-example-rps-negativepcr-2)

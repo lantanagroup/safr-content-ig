@@ -437,6 +437,7 @@ pages:
 #       - Observation/observation-example-rps-negativepcr-1
 #       - Observation/observation-example-rps-negativepcr-2
 #       - Observation/observation-example-rps-rsvlabbtg
+#       - Observation/observation-example-rps-initialpopulationpass-gestational-age
 
 #       - MedicationRequest/medicationrequest-example-rps-influenzatherapeutic
 #       - MedicationRequest/medicationrequest-example-rps-initialpopulationpass
