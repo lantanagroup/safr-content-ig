@@ -92,7 +92,7 @@ Usage: #example
 * entry[=].resource = condition-example-diagnosis-ach-pass2
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Device/device-example-ach-ach-pass2-compress-hose"
 * entry[=].resource = device-example-ach-ach-pass2-compress-hose
-* entry[+].fullUrl = "http://nhsnlink.org/fhir/Diagnosticreport/diagnosticreport-example-ach-ach-pass2-radiology"
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/DiagnosticReport/diagnosticreport-example-ach-ach-pass2-radiology"
 * entry[=].resource = diagnosticreport-example-ach-ach-pass2-radiology
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/MedicationAdministration/medicationadministration-example-ach-pass2-dex4"
 * entry[=].resource = medicationadministration-example-ach-pass2-dex4
@@ -130,13 +130,13 @@ Usage: #example
 * entry[=].resource = observation-example-ach-pass2-vitals-weight
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Procedure/procedure-example-ach-ach-pass2-ivcf"
 * entry[=].resource = procedure-example-ach-ach-pass2-ivcf
-* entry[+].fullUrl = "http://nhsnlink.org/fhir/Servicerequest/servicerequest-example-ach-ach-pass2-aptt"
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/ServiceRequest/servicerequest-example-ach-ach-pass2-aptt"
 * entry[=].resource = servicerequest-example-ach-ach-pass2-aptt
-* entry[+].fullUrl = "http://nhsnlink.org/fhir/Servicerequest/servicerequest-example-ach-ach-pass2-glucose"
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/ServiceRequest/servicerequest-example-ach-ach-pass2-glucose"
 * entry[=].resource = servicerequest-example-ach-ach-pass2-glucose
-* entry[+].fullUrl = "http://nhsnlink.org/fhir/Servicerequest/servicerequest-example-ach-ach-pass2-hemo-a1c"
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/ServiceRequest/servicerequest-example-ach-ach-pass2-hemo-a1c"
 * entry[=].resource = servicerequest-example-ach-ach-pass2-hemo-a1c
-* entry[+].fullUrl = "http://nhsnlink.org/fhir/Servicerequest/servicerequest-example-ach-ach-pass2-hemo"
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/ServiceRequest/servicerequest-example-ach-ach-pass2-hemo"
 * entry[=].resource = servicerequest-example-ach-ach-pass2-hemo
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Specimen/specimen-example-ach-ach-pass2-blood-1"
 * entry[=].resource = specimen-example-ach-ach-pass2-blood-1
@@ -193,7 +193,7 @@ Usage: #example
 * entry[=].resource = observation-example-ach-pass3-vitals-weight
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Procedure/procedure-example-ach-ach-pass3-transfusion"
 * entry[=].resource = procedure-example-ach-ach-pass3-transfusion
-* entry[+].fullUrl = "http://nhsnlink.org/fhir/Servicerequest/servicerequest-example-ach-ach-pass3-cdiff"
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/ServiceRequest/servicerequest-example-ach-ach-pass3-cdiff"
 * entry[=].resource = servicerequest-example-ach-ach-pass3-cdiff
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Specimen/specimen-example-ach-ach-pass3-stool"
 * entry[=].resource = specimen-example-ach-ach-pass3-stool

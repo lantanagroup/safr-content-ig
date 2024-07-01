@@ -3,6 +3,7 @@ InstanceOf: AcuteCareHospitalReportingMedicationAdministration
 Title: "MedicationAdministration - Hypo Medication Administration Example Hypo 1"
 Description: "MedicationAdministration - Example Hypo Medication Administration Hypo 1"
 Usage: #example
+* meta.profile[1] = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationadministration"
 * status = #completed
 * medicationReference.extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"
 * medicationReference.extension.valueString = "Medication/eZeW55xkBH0DrR0Xj004fNid0iluLJl6nT2adScy2TI9SbXSOBJPdED7Qjms.Fj48j0.MQxtisgjhubwnqaIImzMAo7axKzx4khlfA7xEkUU3"

@@ -54,7 +54,7 @@
       "reference": "#options"
     }
   } ],
-  "url": "http://hl7.org/fhir/Library/FHIRHelpers",
+  "url": "http://fhir.org/guides/cqf/common/Library/FHIRHelpers",
   "version": "4.0.1",
   "name": "FHIRHelpers",
   "status": "draft",

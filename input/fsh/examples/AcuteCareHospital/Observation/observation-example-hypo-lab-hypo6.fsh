@@ -3,6 +3,7 @@ InstanceOf: AcuteCareHospitalReportingLabObservation
 Title: "Observation - Hypo Lab Example Hypo 6"
 Description: "Observation - Example Hypo Lab Hypo 6"
 Usage: #example
+* meta.profile[1] = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab"
 * extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"
 * extension.valueString = "eq0EVE9XTOpd88ieWI6Er1o2vm5o6uzHK2jzWouEW72IhHfOVjl6k3owSS8WndmDL3"
 * basedOn.identifier.use = #usual

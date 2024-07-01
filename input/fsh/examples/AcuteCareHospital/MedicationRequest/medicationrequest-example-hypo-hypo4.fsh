@@ -3,6 +3,7 @@ InstanceOf: AcuteCareHospitalReportingMedicationRequest
 Title: "MedicationRequest - Hypo MedicationRequest Example Hypo 4"
 Description: "MedicationRequest - Example Hypo MedicationRequest Hypo 4"
 Usage: #example
+* meta.profile[1] = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest"
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"
 * identifier.value = "101903000"

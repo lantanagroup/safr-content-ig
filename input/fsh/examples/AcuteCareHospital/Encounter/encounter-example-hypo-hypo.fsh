@@ -3,6 +3,7 @@ InstanceOf: AcuteCareHospitalReportingEncounter
 Title: "Encounter - Hypo Encounter Example Hypo"
 Description: "Encounter - Example Hypo Encounter Hypo"
 Usage: #example
+* meta.profile[1] = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter"
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.698.8"
 * identifier.value = "1000510425"

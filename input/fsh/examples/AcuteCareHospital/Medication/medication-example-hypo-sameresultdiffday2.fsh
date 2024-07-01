@@ -3,6 +3,7 @@ InstanceOf: AcuteCareHospitalReportingMedication
 Title: "Medication - Hypo Medication Example Sameresultdiffday 2"
 Description: "Medication - Example Hypo Medication Sameresultdiffday 2"
 Usage: #example
+* meta.profile[1] = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication"
 * extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"
 * extension.valueString = "eY82JB.8ppTTV5RktPwJbpUHKAGfJmD2YuyeQZY4c6pgp3uu5d4Ip9Kje-bi3zAF2Kd.pcEag3zNHvMZ3ZAowUNmGzpyyXXZ0tImXpg90ojw3"
 * code.coding[0] = $atc#A10BB01

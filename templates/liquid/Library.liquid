@@ -399,22 +399,22 @@
                 {% for c in Library.content %}
                   {% if c.contentType = 'text/cql' %}
                     <a name="tabs-cql"> </a>
-                    <div id="tabs-cql">
+                    <div id="div-cql">
                       <div id="tbl-cql">
                         <div id="tbl-cql-inner">
                   {% elsif c.contentType = 'application/elm+json' %}
                     <a name="tabs-json"> </a>
-                    <div id="tabs-json">
+                    <div id="div-json">
                       <div id="tbl-json">
                         <div id="tbl-json-inner">
                   {% elsif c.contentType = 'application/elm+xml' %}
                     <a name="tabs-xml"> </a>
-                    <div id="tabs-xml">
+                    <div id="div-xml">
                       <div id="tbl-xml">
                         <div id="tbl-xml-inner">
                   {% else %}
                     <a name="tabs-other"> </a>
-                    <div id="tabs-other">
+                    <div id="div-other">
                       <div id="tbl-other">
                         <div id="tbl-other-inner">
                   {% endif %}

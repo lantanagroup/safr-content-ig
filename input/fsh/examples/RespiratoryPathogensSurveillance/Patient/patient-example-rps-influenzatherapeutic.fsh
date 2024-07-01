@@ -17,8 +17,8 @@ Usage: #example
 //* extension[+].url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity"
 //* extension[=].extension[0].url = "ombCategory"
 //* extension[=].extension[=].valueCoding = $sct#446151000124109 "Identifies as male gender"
-* extension[=].extension[+].url = "text"
-* extension[=].extension[=].valueString = "Identifies as male gender"
+//* extension[=].extension[+].url = "text"
+//* extension[=].extension[=].valueString = "Identifies as male gender"
 
 * extension[+].url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex"
 * extension[=].valueCode = #M
@@ -45,7 +45,7 @@ Usage: #example
 * address[=].postalCode = "48864"
 * address[=].country = "US"
 
-* contact[+].relationship = #Mother
+* contact[+].relationship = $v3-RoleCode#MTH "mother"
 * contact[=].name.text = "Mama Bear"
 * contact[=].name.family = "Bear"
 * contact[=].name.given = "Mama"

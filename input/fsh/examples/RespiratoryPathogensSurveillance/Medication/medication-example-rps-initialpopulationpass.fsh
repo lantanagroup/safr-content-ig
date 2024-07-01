@@ -9,7 +9,7 @@ Usage: #example
 * code.coding[+] = $rxnorm#2395502
 * code.text = "remdesivir 200 MG IV"
 * status = #active
-* form = $sct#421410002 "Intravenous solution"
+* form = $sct#779438003 "Product containing only heparin in parenteral dose form (medicinal product form)"
 * form.text = "Intravenous solution"
 * ingredient.itemCodeableConcept.coding[+] = $rxnorm#2284960
 * ingredient.itemCodeableConcept.coding[+] = $rxnorm#2395502

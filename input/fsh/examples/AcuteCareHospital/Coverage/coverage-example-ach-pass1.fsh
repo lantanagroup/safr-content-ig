@@ -7,7 +7,7 @@ Usage: #example
 * identifier.system = "http://example.org/fhir/memberidentifier"
 * identifier.value = "084536836"
 * status = #active
-* type = $v3-ActCode#SUBSUPP "subsidized supplemental health program"
+* type = $v3-ActCode#SUBSIDIZ "subsidized health program"
 * policyHolder.display = "Mom Parent"
 * subscriberId = "98435938934"
 * beneficiary = Reference(patient-example-ach-ach-pass1)

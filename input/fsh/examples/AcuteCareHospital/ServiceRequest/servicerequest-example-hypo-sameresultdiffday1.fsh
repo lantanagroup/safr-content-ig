@@ -3,6 +3,7 @@ InstanceOf: AcuteCareHospitalReportingServiceRequest
 Title: "ServiceRequest - Hypo ServiceRequest Example Sameresultdiffday 1"
 Description: "ServiceRequest - Example Hypo ServiceRequest Sameresultdiffday 1"
 Usage: #example
+* meta.profile[1] = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-servicerequest"
 * identifier.use = #usual
 * identifier.type = $v2-0203#PLAC "Placer Identifier"
 * identifier.type.text = "Placer Identifier"

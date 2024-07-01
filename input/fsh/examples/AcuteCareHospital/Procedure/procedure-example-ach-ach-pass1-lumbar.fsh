@@ -7,7 +7,7 @@ Usage: #example
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.698.8"
 * identifier.value = "1000510352"
 * status = #completed
-* code = $icd-10-cm#009U3ZX "Drainage of Spinal Canal, Percutaneous Approach, Diagnostic"
+* code = $icd-10-pcs#009U3ZX "Drainage of Spinal Canal, Percutaneous Approach, Diagnostic"
 * subject = Reference(patient-example-ach-ach-pass1)
 * subject.display = "Pass1 ACH"
 * encounter = Reference(encounter-example-ach-ach-pass1)

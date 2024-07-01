@@ -3,7 +3,7 @@ InstanceOf: AcuteCareHospitalReportingLocation
 Title: "Location - Example ACH - Nicu"
 Description: "Location - Example ACH - Neonatal Critical Care (Level III)"
 Usage: #example
-* identifier.system = "http://www.example.org/location"
+* identifier.system = "http://www.example.com/location"
 * identifier.value = "2933"
 * name = "ACH Neonatal critical care"
 * description = "ACH Neonatal critical care"

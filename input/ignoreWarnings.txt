@@ -16,10 +16,114 @@ ERROR: MeasureReport/measurereport-example-individual-measurereport-sameresultdi
 WARNING: StructureDefinition/link-original-element-value-extension: StructureDefinition.context[0]: Review the extension type: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 WARNING: StructureDefinition/link-original-mapped-concept-extension: StructureDefinition.context[0]: Review the extension type: extensions should not have a context of Element unless it's really intended that they can be used anywhere
 
-# This is an error in the DEQM STU3 specification that was later relaxed by DEQM STU4. THe core IG Publisher produces an error if there is a measurescore for for a cohort MeasureReport 
+# This is an error in the DEQM STU3 specification that was later relaxed by DEQM STU4. The core IG Publisher produces an error if there is a measurescore for for a cohort MeasureReport 
 MeasureReport.group.measureScore: minimum required = 1, but only found 0 (from http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0)
+ERROR: Bundle/bundle-example-ach-subject-ach-pass1: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
+ERROR: Bundle/bundle-example-ach-subject-ach-pass2: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
+ERROR: Bundle/bundle-example-ach-subject-ach-pass3: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
+ERROR: Bundle/submission-full-example1: Bundle.entry[3].resource/*MeasureReport/measurereport-example-subjectlist1*/.contained.entry[1].item: Unable to find a match for profile MeasureReport/measurereport-example-individual-measurereport-hypo among choices: http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm
+Unable to find a match for profile MeasureReport/measurereport-example-individual-measurereport-sameresultdiffday among choices: http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm
+ERROR: Bundle/submission-full-example1: Bundle.entry[3].resource.group[0].population[0].subjectResults: Unable to find a match for profile #list-example-individual-measurereport-list among choices: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list
+Slice 'Bundle.entry:subject-list': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-measurereport-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
+Slice 'MeasureReport.contained:ip-measurereport-list': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/subjectlist-measurereport|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
 
-# Javascript needed to support custom template requirements
-The <script> containing the javascript 'try {       var curr'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 706 other files)
-The <script> containing the javascript '$(document).ready(fu'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 1542 other files)
-The <script> containing the javascript 'anchors.options.visi'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 1542 other files)
+
+# Error with FHIR validator checking Encounter based populations
+Slice 'Bundle.entry:subject-list': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submission-header-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
+Mismatch between count 2 and number of subjects 1
+
+# Possible IG Publisher issue giving conflicting errors stating that Measure/group/population/id is an undefined element at the same time as declaring the element is required but not found. The Publisher seems to remove the element from the resulting resource
+Undefined element 'id' at /f:Measure/f:group/f:population
+Measure.group.population.id: minimum required = 1, but only found 0 (from http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm|3.0.0)
+Measure.group.population.id: minimum required = 1, but only found 0 (from http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm|3.0.0)
+Measure.group.population:initialPopulation.id: minimum required = 1, but only found 0 (from http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm|3.0.0)
+
+
+# NHSN does not use (and my strip) performer in Observations. They are not included in samples in this IG
+Best Practice Recommendation: In general, all observations should have a performer
+
+# Custom template contains javascript required for the IG
+The <script> containing the javascript 'try {       var curr'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 683 other files)
+The <script> containing the javascript '$(document).ready(fu'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 1535 other files)
+The <script> containing the javascript 'anchors.options.visi'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 1535 other files)
+
+# Extensions meant to have a context of Element.
+Review the extension type for link-original-mapped-concept-extension: extensions should not have a context of Element unless it's really intended that they can be used anywhere
+Review the extension type for link-original-element-value-extension: extensions should not have a context of Element unless it's really intended that they can be used anywhere
+
+
+# Code system is proper even though noted as draft.
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/observation-category|1.0.0
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/measure-population|1.0.0
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/organization-type|2.0.0
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/dose-rate-type|1.0.0
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/medicationrequest-category|1.0.0
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy|1.0.0
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/measure-scoring|3.0.0
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/location-physical-type|2.0.0
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/discharge-disposition|1.0.0
+Reference to draft CodeSystem http://hl7.org/fhir/encounter-status|4.0.1
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/condition-category|1.0.0
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/condition-ver-status|4.0.1 (from http://tx.fhir.org/r4)
+A definition for CodeSystem 'http://terminology.hl7.org/CodeSystem/ICD-9CM-diagnosiscodes' could not be found, so the code cannot be validated (from http://tx.fhir.org/r4)
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/condition-ver-status|4.0.1
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/diagnosis-role|1.1.0
+Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/condition-ver-status|4.0.1
+
+# Slices in bundles are not defined for clinical data.
+This element does not match any known slice defined in the profile http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild (this may not be a problem, but you should check that it's not intended to match a slice)
+This element does not match any known slice defined in the profile http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-measurereport-bundle|1.0.0-cibuild (this may not be a problem, but you should check that it's not intended to match a slice)
+
+# Slices for supplemental data extension not defined for clinical data.
+This element does not match any known slice defined in the profile http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+
+# Slice does not match because of issue with IG Publisher generating errors on MeasureReport
+This element does not match any known slice defined in the profile http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+This element does not match any known slice defined in the profile http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/subjectlist-measurereport|1.0.0-cibuild (this may not be a problem, but you should check that it's not intended to match a slice)
+This element does not match any known slice defined in the profile http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submission-header-bundle|1.0.0-cibuild (this may not be a problem, but you should check that it's not intended to match a slice)
+
+
+# Errors to unresolvable links that will remain unresolvable until the IG is published in place.
+The link 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1' for "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1" cannot be resolved
+The link 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SupplementalDataElementsFHIR4|2.0.000' for "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SupplementalDataElementsFHIR4|2.0.000" cannot be resolved
+The link 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/MATGlobalCommonFunctionsFHIR4|6.1.000' for "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/MATGlobalCommonFunctionsFHIR4|6.1.000" cannot be resolved
+The link 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.005' for "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.005" cannot be resolved
+Hyperlink 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1' at 'div/table/tr/td/ul/li/a' for 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1' does not resolve
+Hyperlink 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SupplementalDataElementsFHIR4|2.0.000' at 'div/table/tr/td/ul/li/a' for 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SupplementalDataElementsFHIR4|2.0.000' does not resolve
+Hyperlink 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/MATGlobalCommonFunctionsFHIR4|6.1.000' at 'div/table/tr/td/ul/li/a' for 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/MATGlobalCommonFunctionsFHIR4|6.1.000' does not resolve
+Hyperlink 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.005' at 'div/table/tr/td/ul/li/a' for 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.005' does not resolve
+
+
+# Best Practice Recommendation: Condition resource 
+WARNING: Bundle/submission-full-example1: Bundle.entry[7].resource/*Condition/condition-example-diagnosis-sameresultdiffday2*/: Constraint failed: con-3: 'Condition.clinicalStatus SHALL be present if verificationStatus is not entered-in-error and category is problem-list-item' (Best Practice Recommendation)
+WARNING: Bundle/submission-full-example1: Bundle.entry[16].resource/*Condition/condition-example-diagnosis-sameresultdiffday1*/: Constraint failed: con-3: 'Condition.clinicalStatus SHALL be present if verificationStatus is not entered-in-error and category is problem-list-item' (Best Practice Recommendation)
+WARNING: Bundle/submission-full-example1: Bundle.entry[33].resource/*Condition/condition-example-diagnosis-hypo1*/: Constraint failed: con-3: 'Condition.clinicalStatus SHALL be present if verificationStatus is not entered-in-error and category is problem-list-item' (Best Practice Recommendation)
+WARNING: Bundle/submission-full-example1: Bundle.entry[39].resource/*Condition/condition-example-diagnosis-hypo2*/: Constraint failed: con-3: 'Condition.clinicalStatus SHALL be present if verificationStatus is not entered-in-error and category is problem-list-item' (Best Practice Recommendation)
+WARNING: Condition/condition-example-diagnosis-hypo1: Condition: Constraint failed: con-3: 'Condition.clinicalStatus SHALL be present if verificationStatus is not entered-in-error and category is problem-list-item' (defined in http://hl7.org/fhir/StructureDefinition/Condition) (Best Practice Recommendation)
+WARNING: Condition/condition-example-diagnosis-hypo2: Condition: Constraint failed: con-3: 'Condition.clinicalStatus SHALL be present if verificationStatus is not entered-in-error and category is problem-list-item' (defined in http://hl7.org/fhir/StructureDefinition/Condition) (Best Practice Recommendation)
+WARNING: Condition/condition-example-diagnosis-sameresultdiffday1: Condition: Constraint failed: con-3: 'Condition.clinicalStatus SHALL be present if verificationStatus is not entered-in-error and category is problem-list-item' (defined in http://hl7.org/fhir/StructureDefinition/Condition) (Best Practice Recommendation)
+WARNING: Condition/condition-example-diagnosis-sameresultdiffday2: Condition: Constraint failed: con-3: 'Condition.clinicalStatus SHALL be present if verificationStatus is not entered-in-error and category is problem-list-item' (defined in http://hl7.org/fhir/StructureDefinition/Condition) (Best Practice Recommendation)
+WARNING: Condition/condition-example-diagnosis-hypo1: Condition: Constraint failed: con-3: 'Condition.clinicalStatus SHALL be present if verificationStatus is not entered-in-error and category is problem-list-item' (defined in http://hl7.org/fhir/StructureDefinition/Condition) (Best Practice Recommendation)
+
+
+# INFORMATION: Details about other issues
+INFORMATION: Bundle/submission-full-example1: Bundle.entry[3].resource/*MeasureReport/measurereport-example-subjectlist1*/.contained.entry[0].item: Details for MeasureReport/measurereport-example-individual-measurereport-sameresultdiffday matching against profile http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0
+INFORMATION: Bundle/submission-full-example1: Bundle.entry[3].resource/*MeasureReport/measurereport-example-subjectlist1*/.contained.entry[1].item: Details for MeasureReport/measurereport-example-individual-measurereport-hypo matching against profile http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0
+INFORMATION: Bundle/submission-full-example1: Bundle.entry[3].resource/*MeasureReport/measurereport-example-subjectlist1*/.group[0].population[0].subjectResults: Details for #list-example-individual-measurereport-list matching against profile http://hl7.org/fhir/StructureDefinition/List|4.0.1
+INFORMATION: Bundle/submission-full-example1: Bundle.entry[3].resource.group[0].population[0].subjectResults: Details for #list-example-individual-measurereport-list matching against profile http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list|1.0.0-cibuild
+
+# OIDs are not assigned in this IG
+INFORMATION: Resource: This resource could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+
+# INFORMATION: IG Publisher detected HTML fragment where there is none. False issue.
+INFORMATION: Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation: Measure.contained[0]/*Library/effective-data-requirements*/.extension[86].extension[2].value.ofType(string): The string value contains text that looks like embedded HTML tags. If this content is rendered to HTML without appropriate post-processing, it may be a security risk
+
+# INFORMATION: Example proprietary url
+A definition for CodeSystem 'http://www.example.com/prorpietary' could not be found, so the code cannot be validated 
+
+# Externally defined artifacts recreated in this IG for use by tools and validation. Ignore publisher issues. These should go aware when external tools are updated to correct the problems
+The nominated WG 'cqi' means that the publisher should be 'HL7 International / Clinical Quality Information' but 'CDC National Healthcare Safety Network (NHSN)' was found
+The nominated WG 'cqi' means that the contact url should be 'http://www.hl7.org/Special/committees/cqi' but it was not found
+
+# INFORMATION: The fragment should not include a publish box
+The html source does not contain the publish box; this is recommended for publishing support (see note at http://wiki.hl7.org/index.php?title=FHIR_Implementation_Guide_Publishing_Requirements#HL7_HTML_Standards_considerations). Note that this is mandatory for HL7 specifications, and on the ci-build, but in other cases it's still recommended (this is only reported once, but applies for all pages)

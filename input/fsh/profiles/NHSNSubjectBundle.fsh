@@ -3,7 +3,10 @@ Parent: Bundle
 Id: nhsn-subject-bundle
 Title: "NHSN Subject Bundle"
 Description: "This profile defines a valid subject-specific dQM Bundle. The Bundle is comprised of entry slices representing the a Patient, individual MeasureReports, and the underlying patient-centric clinical information."
-* obeys bundle-no-modifier-extensions and bundle-contain-all-measurereport-references and bundle-all-measurereport-measure-contains-version
+
+// Split submissions won't contain all referenced resources
+//* obeys bundle-no-modifier-extensions and bundle-contain-all-measurereport-references and bundle-all-measurereport-measure-contains-version
+* obeys bundle-no-modifier-extensions and bundle-all-measurereport-measure-contains-version
 * . ^short = "A Bundle contains a collection of Resources"
 // WARNING: The constraint index in the following rule (e.g., constraint[0]) may be incorrect.
 // Please compare with the constraint array in the original definition's snapshot and adjust as necessary.

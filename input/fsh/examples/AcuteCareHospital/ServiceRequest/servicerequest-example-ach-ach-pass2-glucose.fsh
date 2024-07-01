@@ -19,7 +19,7 @@ Usage: #example
 * subject.display = "Pass2 ACH"
 * encounter = Reference(encounter-example-ach-ach-pass2-inpatient)
 * encounter.display = "Hospital Admission"
-* occurrenceTiming.code = #BID
+* occurrenceTiming.code = http://terminology.hl7.org/CodeSystem/v3-GTSAbbreviation#BID "BID"
 * occurrenceTiming.repeat.count = 2
 * occurrenceTiming.repeat.period = 1
 * occurrenceTiming.repeat.periodUnit = #d

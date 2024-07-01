@@ -54,7 +54,7 @@
       "reference": "#options"
     }
   } ],
-  "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRCommon",
+  "url": "http://fhir.org/guides/cqf/common/Library/FHIRCommon",
   "version": "4.0.1",
   "name": "FHIRCommon",
   "status": "draft",
