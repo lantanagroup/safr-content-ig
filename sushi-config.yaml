@@ -430,8 +430,14 @@ pages:
 #       - Condition/condition-example-diagnosis-rps-initialpopulationpass
 #       - Condition/condition-example-diagnosis-rps-negativepcr
 #       - Condition/condition-example-diagnosis-rps-rsvlabbtg
+
+#       - DiagnosticReport/diagnosticreport-example-rps-initialpopulationpass
       
 #       - Immunization/immunization-example-rps-influenzatherapeutic
+
+#       - Location/location-example-rps-emergency
+#       - Location/location-example-rps-hospital
+#       - Location/location-example-rps-inpatient
       
 #       - Observation/observation-example-rps-initialpopulationpass
 #       - Observation/observation-example-rps-negativepcr-1
@@ -458,11 +464,17 @@ pages:
 #       - Medication/medication-example-rps-rsvlabbtg-2
 #       - Medication/medication-example-rps-negativepcr
 
+#       - Procedure/procedure-example-rps-negativepcr-intubation
+
 #       - Specimen/specimen-example-rps-initialpopulationpass
 #       - Specimen/specimen-example-rps-negativepcr-1
 #       - Specimen/specimen-example-rps-negativepcr-2
 #       - Specimen/specimen-example-rps-rsvlabbtg
 
+#       - ServiceRequest/servicerequest-example-rps-initialpopulationpass-covid
+#       - ServiceRequest/servicerequest-example-rps-negativepcr-covid-1
+#       - ServiceRequest/servicerequest-example-rps-negativepcr-covid-2
+#       - ServiceRequest/servicerequest-example-rps-rsvlabbtg-rsv
 
 resources:
    #StructureDefinition/extension-MeasureReport.population.description:
