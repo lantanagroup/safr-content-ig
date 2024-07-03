@@ -88,6 +88,7 @@ groups:
       - Measure/NHSNGlycemicControlHypoglycemicInitialPopulation
       - Measure/NHSNdQMAcuteCareHospitalInitialPopulation
       - Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation
+      - Measure/NHSNBedCapacityMeasure
 
   libs:
     name: "Knowledge Artifacts: Libraries"
@@ -104,6 +105,9 @@ groups:
       - Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation:
         name: NHSN Respiratory Pathogens Surveillance Initial Population
         description: Library of NHSN Respiratory Pathogens Surveillance Initial Population Measure
+      - Library/NHSNBedCapacityMeasure:
+        name: NHSN Bed Capacity Reporting Measure
+        description: Library of NHSN Bed Capacity Reporting Measure
       
 
   ext-libs:
