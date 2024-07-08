@@ -1,4 +1,4 @@
-library NHSNRespiratoryPathogensSurveillanceInitialPopulation version '0.0.012'
+library NHSNRespiratoryPathogensSurveillanceInitialPopulation version '0.0.013'
 
 using FHIR version '4.0.1'
 
@@ -200,24 +200,17 @@ define "RSV DiagnosticReport PRE Admission":
       and start of E.period during "Measurement Period"
     )
 
-define "DiagnosticReport Observations":
-  "Observations" Observations
-  where exists(
-    "DiagnosticReports" DiagnosticReports
-    where exists(
-      DiagnosticReports.result references
-      where Observations.id = Global.GetId(references.reference)
-    )
-  )
-
 define "COVID and Influenza DiagnosticReport Result from Lab":
-  [DiagnosticReport] Reports
-    where exists("COVID and Influenza DiagnosticReport Observations")
-      and Reports.status in {'final','registered','preliminary','partial'}
-      and exists("Initial Population")
+  "DiagnosticReports" Reports
+    where exists(
+      "COVID and Influenza DiagnosticReport Observations" Observations
+      where Reports.result.references(Observations)
+    )
+    and Reports.status in {'final','registered','preliminary','partial'}
+    and exists("Initial Population")
 
 define "COVID and Influenza DiagnosticReport Observations":
-  "DiagnosticReport Observations" Observations
+  "Observations" Observations
   where Observations.code in "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"
     or Observations.code in "COVID_19 (Tests for SARS_CoV_2 Antigen)"
     or Observations.code in "Influenza (Tests for influenza A or B virus Nucleic Acid)"
@@ -230,10 +223,17 @@ define "RSV DiagnosticReport Result from Lab":
       and Reports.status in {'final','registered','preliminary','partial'}
       and exists("Initial Population")
 
-define "RSV DiagnosticReport Observations":
-  "DiagnosticReport Observations" Observations
+define "RSV Observations":
+  "Observations" Observations
   where Observations.code in "RSV (Tests for RSV Nucleic Acid)"
     or Observations.code in "RSV (Tests for RSV Antigen)"
+    
+define "RSV DiagnosticReport Observations":
+  "DiagnosticReports" Reports
+  where exists(
+    "RSV Observations" Observations
+    where Reports.result.references(Observations)
+  )
 
 define "RPS DiagnosticReport Result from Lab":
   "COVID and Influenza DiagnosticReport Result from Lab"
@@ -503,6 +503,12 @@ define function "GetEncounter"(reference FHIR.Reference):
     "Encounters" Encounters
     where Encounters.id = Global.GetId(reference.reference)
   )
+
+define fluent function references(reference FHIR.Reference, resource FHIR.Resource):
+  resource.id = Last(Split(reference.reference, '/'))
+
+define fluent function references(references List<FHIR.Reference>, resource FHIR.Resource):
+  exists(references R where R.references(resource))
 
 //Common Retrievals
 define "Encounters":
