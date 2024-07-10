@@ -1,4 +1,5 @@
-Alias: $bed-capacity-code-system = http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes
+/*
+
 
 Instance: jurisdiction-bed-capacity-report-example
 InstanceOf: Bundle
@@ -15,3 +16,4 @@ Usage: #example
 * entry[=].resource = bed-capacity-measurereport-example-ipf
 * entry[+].fullUrl = "http://example.com/fhir/MeasureReport/bed-capacity-measurereport-example-chld"
 * entry[=].resource = bed-capacity-measurereport-example-chld
+*/
