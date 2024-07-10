@@ -19,7 +19,7 @@ Description: "This profile defines a valid Submission Header Bundle. The Bundle 
 * entry contains
     submitting-organization 1..1 and
     submitting-device 1..1 and
-    poi-list 1..1 and
+    poi-list 0..1 and
     subject-list 1..*
 /*     and
     individual-measurereport 0..* and

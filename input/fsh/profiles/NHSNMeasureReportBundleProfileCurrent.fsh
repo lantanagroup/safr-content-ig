@@ -29,7 +29,7 @@ Description: "This profile defines a valid Submission Bundle to NHSN with all re
   * resource only NHSNSubmittingDevice
     * ^short = "Bundle entry for submitting device"
 * entry[poi-list] ^short = "The Patients of Interest List: a List containing Patient FHIR IDs that may be included in the Initial Population across all measures"
-  * resource 1..
+  * resource 0..1
   * resource only PatientsOfInterestList
     * ^short = "The Bundle entry for Patients of Interest List"
 * entry[subject-list] ^short = "Summary Measure Report: For each measure, there is one Summary MeasureReport. The Summary MeasureReport includes the population count and a link to the List of Individual MeasureReports that are included in the summary"
