@@ -93,43 +93,35 @@ groups:
   libs:
     name: "Knowledge Artifacts: Measure Libraries"
     resources:
-      - Library/NHSNdQMAcuteCareHospitalInitialPopulation:
+      Library/NHSNdQMAcuteCareHospitalInitialPopulation:
         name: NHSN dQM Acute Care Hospital Initial Population
         description: Library of NHSN dQM Acute Care Hospital Initial Population Measure
-        path: Library-NHSNRespiratoryPathogensSurveillanceInitialPopulation.html
-      - Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
+      Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
         name: NHSN Glycemic ControlHypoglycemic Initial Population
         description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
-        path: Library-NHSNGlycemicControlHypoglycemicInitialPopulation.html
-      - Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation:
+      Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation:
         name: NHSN Respiratory Pathogens Surveillance Initial Population
         description: Library of NHSN Respiratory Pathogens Surveillance Initial Population Measure
-        path: Library-NHSNdQMAcuteCareHospitalInitialPopulation.html
       
 
   ext-libs:
     name: "Knowledge Artifacts: Helper and External Libraries"
     resources:
-      - Library/SharedResourceCreation:
+      Library/SharedResourceCreation:
         name: Shared Resource Creation
         description: Shared Resource Creation Library
-        path: Library-SharedResourceCreation.html
-      - Library/FHIRCommon:
+      Library/FHIRCommon:
         name: FHIR Common
         description: This library defines terminologies and functions commonly used in FHIR-based CQL artifacts.
-        path: Library-FHIRCommon.html
-      - Library/FHIRHelpers:
+      Library/FHIRHelpers:
         name: FHIR Helpers
         description: "This library defines functions to convert between FHIR data types and CQL system-defined types, as well as functions to support FHIRPath implementation. For more information, the FHIRHelpers wiki page: https://github.com/cqframework/clinical_quality_language/wiki/FHIRHelpers"
-        path: Library-FHIRHelpers.html
-      - Library/MATGlobalCommonFunctionsFHIR4:
+      Library/MATGlobalCommonFunctionsFHIR4:
         name: MAT Global Common Functions FHIR
         description: Measure Authoring Tool (MAT) Global Common Functions FHIR.
-        path: Library-MATGlobalCommonFunctionsFHIR4.html
-      - Library/SupplementalDataElementsFHIR4:
+      Library/SupplementalDataElementsFHIR4:
         name: Supplemental Data Elements FHIR
         description: This measure illustrates using supplemental data elements to gather additional information about a population.
-        path: Library-SupplementalDataElementsFHIR4.html
     
   extensions:
     name: Extensions
@@ -145,10 +137,10 @@ groups:
     description: "Extensions are externally defined artifacts that are not yet published."
     resources:
      #- StructureDefinition/extension-MeasureReport.population.description
-      - StructureDefinition/extension-MeasureReport.supplementalDataElement.reference:
+      StructureDefinition/extension-MeasureReport.supplementalDataElement.reference:
         name: Measure Report Supplemental Data Element Reference (R5 surrogate extension)
         description: Measure Report Supplemental Data Element Reference - This extension is not defined by this IG.  CQF Tooling uses this extension, but the extension is yet unpublished.
-      - StructureDefinition/extension-criteriaReference:
+      StructureDefinition/extension-criteriaReference:
         name: Measure Report Criteria Reference (R5 surrogate extension)
         description: Measure Report Criteria Reference - This extension is not defined by this IG.  CQF Tooling uses this extension, but the extension is yet unpublished.
 
@@ -156,19 +148,19 @@ groups:
   ach-ex:
     name: "Examples: ACH Submission Instances"
     resources:
-      - Bundle/submission-full-example1:
+      Bundle/submission-full-example1:
         name: Full ACH Measure Submission Bundle
         description: Measure Bundle - Full ACH Measure Submission Example
-      - Bundle/bundle-example-ach-header:
+      Bundle/bundle-example-ach-header:
         name: Example ACH Submission Header Bundle
         description: Example Separated ACH Submission Header Bundle
-      - Bundle/bundle-example-ach-subject-ach-pass1:
+      Bundle/bundle-example-ach-subject-ach-pass1:
         name: Example ACH Submission Subject Bundle 1
         description: Example Separated ACH Submission Subject Bundle 1 for LOS/MEN
-      - Bundle/bundle-example-ach-subject-ach-pass2:
+      Bundle/bundle-example-ach-subject-ach-pass2:
         name: Example ACH Submission Subject Bundle 2
         description: Example Separated ACH Submission Subject Bundle 2 for Hypoglycemia and VTE
-      - Bundle/bundle-example-ach-subject-ach-pass3:
+      Bundle/bundle-example-ach-subject-ach-pass3:
         name: Example ACH Submission Subject Bundle 3
         description: Example Separated ACH Submission Subject Bundle 3 for CDI and VTE
 
@@ -176,32 +168,39 @@ groups:
   rps-ex:
     name: "Examples: RPS Submission Instances"
     resources:
-      - Bundle/bundle-example-rps-full:
+      Bundle/bundle-example-rps-full:
         name: Full RPS Measure Submission Bundle
         description: Measure Bundle - Full RPS Measure Submission Example
-      - Bundle/bundle-example-rps-header:
+      Bundle/bundle-example-rps-header:
         name: Example RPS Submission Header Bundle
         description: Example Separated RPS Submission Header Bundle
-      - Bundle/bundle-example-rps-subject-initialpopulationpass:
+      Bundle/bundle-example-rps-subject-initialpopulationpass:
         name: Example RPS Submission Initial Population Pass Bundle
         description: Example Separated RPS Submission Initial Population Pass Bundle
-      - Bundle/bundle-example-rps-subject-negativepcr:
+      Bundle/bundle-example-rps-subject-negativepcr:
         name: Example RPS Submission Negative PCR Bundle
         description: Example Separated RPS Submission Negative PCR Bundle
-      - Bundle/bundle-example-rps-subject-influenzatherapeutic:
+      Bundle/bundle-example-rps-subject-influenzatherapeutic:
         name: Example RPS Submission Influenza Therapeutic Bundle
         description: Example Separated RPS Submission Influenza Therapeutic Bundle
-      - Bundle/bundle-example-rps-subject-rsvlabbtg:
+      Bundle/bundle-example-rps-subject-rsvlabbtg:
         name: Example RPS Submission RSV Lab BTG Bundle
         description: Example Separated RPS Submission RSV Lab BTG Bundle
 
         
-  bed-ex:
-    name: "Examples: Bed Capacity Submission Instances"
-    resources:
-      - Bundle/jurisdiction-bed-capacity-report-example:
-        name: Jurisdiction Capacity Full Report Bundle Example
-        description: Example Bundle of jurisdictional report for capacity reporting
+  # bed-ex:
+  #   name: "Examples: Bed Capacity Submission Instances"
+  #   resources:
+  #     Bundle/jurisdiction-bed-capacity-report-example:
+  #       name: Jurisdiction Capacity Full Report Bundle Example
+  #       description: Example Bundle of jurisdictional report for capacity reporting
+
+
+
+
+
+
+
 
   # general-examples:
   #   name: "Knowledge Artifacts: General Examples"

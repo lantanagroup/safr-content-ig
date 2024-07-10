@@ -17,15 +17,15 @@ test
     {% for resource in group[1].resources -%}
     {% assign artifact_name = site.data.resources[resource].title %}
     {% if artifact_name == null or artifact_name == '' %}
-      {% assign artifact_name = resource.name %}
+      {% assign artifact_name = resource[1].name %}
     {% endif %}
     {% assign artifact_description = site.data.resources[resource].description %}
     {% if artifact_description == null or artifact_description == '' %}
-      {% assign artifact_description = resource.description %}
+      {% assign artifact_description = resource[1].description %}
     {% endif %}
     {% assign artifact_path = site.data.resources[resource].path %}
     {% if artifact_path == null or artifact_path == '' %}
-      {% assign artifact_path = resource | replace: '-', ' ' %}
+      {% assign artifact_path = resource[0] | replace: '/', '-' | append: '.html'%}
     {% endif %}
     <!-- Get the resource information -->
     <tr>
