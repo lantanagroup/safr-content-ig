@@ -39,7 +39,7 @@ Measure.group.population.id: minimum required = 1, but only found 0 (from http:/
 Measure.group.population:initialPopulation.id: minimum required = 1, but only found 0 (from http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm|3.0.0)
 
 
-# NHSN does not use (and my strip) performer in Observations. They are not included in samples in this IG
+# NHSN does not use (and may strip) performer in Observations. They are not included in samples in this IG
 Best Practice Recommendation: In general, all observations should have a performer
 
 # Custom template contains javascript required for the IG
@@ -127,3 +127,6 @@ The nominated WG 'cqi' means that the contact url should be 'http://www.hl7.org/
 
 # INFORMATION: The fragment should not include a publish box
 The html source does not contain the publish box; this is recommended for publishing support (see note at http://wiki.hl7.org/index.php?title=FHIR_Implementation_Guide_Publishing_Requirements#HL7_HTML_Standards_considerations). Note that this is mandatory for HL7 specifications, and on the ci-build, but in other cases it's still recommended (this is only reported once, but applies for all pages)
+
+# WARNING: Invaid Invariant - CQMF STU3 uses an incorrect variant expression "value.startsWith(library).not()", it was later corrected to "expression.contains('.').not()" in STU4, for which this resource passes
+Constraint failed: cqm-4: 'Group population criteria SHOULD be simple expression names found within the primary library for the measure. The criteria SHOULD NOT include a namespace.' (defined in http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/measure-cqfm)

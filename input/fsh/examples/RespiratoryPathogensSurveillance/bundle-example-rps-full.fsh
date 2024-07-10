@@ -1,7 +1,7 @@
 Instance: bundle-example-rps-full
 InstanceOf: NHSNMeasureReportBundleProfileCurrent
-Title: "Submission RPS Full"
-Description: "Measure Bundle - Submission RPS Full"
+Title: "Full RPS Measure Submission Bundle"
+Description: "Measure Bundle - Full RPS Measure Submission Example"
 Usage: #example
 * identifier.system = "urn:ietf:rfc:3986"
 * identifier.value = "urn:uuid:1eaddf4c-2ec0-4dc4-b26f-9586d7a7bbb3"

@@ -23,10 +23,14 @@ test
     {% if artifact_description == null or artifact_description == '' %}
       {% assign artifact_description = resource.description %}
     {% endif %}
+    {% assign artifact_path = site.data.resources[resource].path %}
+    {% if artifact_path == null or artifact_path == '' %}
+      {% assign artifact_path = resource | replace: '-', ' ' %}
+    {% endif %}
     <!-- Get the resource information -->
     <tr>
       <td style="column-width:30%">
-        <a href="{{site.data.resources[resource].path}}">{{artifact_name}}</a>
+        <a href="{{artifact_path}}">{{artifact_name}}</a>
       </td>
       <!-- 
       <xsl:if test="$showDescriptions">-->

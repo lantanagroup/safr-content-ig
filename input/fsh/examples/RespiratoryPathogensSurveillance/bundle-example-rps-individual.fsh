@@ -18,8 +18,8 @@ Usage: #example
 
 Instance: bundle-example-rps-subject-initialpopulationpass
 InstanceOf: NHSNSubjectBundle
-Title: "Example RPS Submission Iniital Population Pass Bundle "
-Description: "Example Separated RPS Submission Iniital Population Pass Bundle"
+Title: "Example RPS Submission Initial Population Pass Bundle"
+Description: "Example Separated RPS Submission Initial Population Pass Bundle"
 Usage: #example
 * identifier.system = "urn:ietf:rfc:3986"
 * identifier.value = "urn:uuid:1eaddf4c-2ec0-4dc4-b26f-9586d7a78d8d"

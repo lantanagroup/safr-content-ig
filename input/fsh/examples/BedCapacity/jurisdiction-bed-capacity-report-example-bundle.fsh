@@ -3,7 +3,7 @@ Alias: $bed-capacity-code-system = http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/he
 Instance: jurisdiction-bed-capacity-report-example
 InstanceOf: Bundle
 Title: "Jurisdiction Capacity Full Report Bundle Example"
-Description: "Example Bundle of jurisidictional report for capacity reporting"
+Description: "Example Bundle of jurisdictional report for capacity reporting"
 Usage: #example
 * identifier.system = "urn:ietf:rfc:3986"
 * identifier.value = "urn:uuid:1eaddf4c-2ec0-4dc4-b26f-9586d7a777e1"
