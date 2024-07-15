@@ -82,6 +82,11 @@ groups:
       - ValueSet/rps-encounter-status
       - ValueSet/rps-encounter-class
 
+  codesystems:
+    name: "Terminology: Profile CodeSystems"
+    resources:
+      - CodeSystem/healthcare-capacity-codes
+
   measures:
     name: "Knowledge Artifacts: Digital Quality Measure"
     resources:
