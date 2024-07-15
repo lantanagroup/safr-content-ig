@@ -54,7 +54,7 @@
       "reference": "#options"
     }
   } ],
-  "url": "http://hl7.org/fhir/us/nhsn-dqm/Library/NHSNBedCapacityMeasure",
+  "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNBedCapacityMeasure",
   "version": "1.0.0",
   "name": "NHSNBedCapacityMeasure",
   "type": {
