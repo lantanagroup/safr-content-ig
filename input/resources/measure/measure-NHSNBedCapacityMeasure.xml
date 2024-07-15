@@ -1319,7 +1319,7 @@
          <relatedArtifact>
             <type value="depends-on"/>
             <display value="Library FHIRHelpers"/>
-            <resource value="http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"/>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1"/>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"/>
@@ -1910,9 +1910,9 @@
    <name value="NHSNBedCapacityMeasure"/>
    <title value="NHSN dQM Bed Capacity"/>
    <experimental value="true"/>
-   <date value="2024-07-15T15:44:25-04:00"/>
+   <date value="2024-07-15T17:05:32-04:00"/>
    <description value="NHSN Bed Capacity Measure includes counts of specific bed types within the context of a given healthcare context or setting."/>
-   <library value="http://hl7.org/fhir/us/nhsn-dqm/Library/NHSNBedCapacityMeasure"/>
+   <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNBedCapacityMeasure"/>
    <scoring>
       <coding>
          <system value="http://terminology.hl7.org/CodeSystem/measure-scoring"/>
@@ -1923,7 +1923,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AllBedsOccupied"/>
          </coding>
       </code>
@@ -1944,7 +1944,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AllBedsUnoccupied"/>
          </coding>
       </code>
@@ -1965,7 +1965,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultTotalOccupied"/>
          </coding>
       </code>
@@ -1986,7 +1986,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultTotalUnoccupied"/>
          </coding>
       </code>
@@ -2007,7 +2007,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultICUOccupied"/>
          </coding>
       </code>
@@ -2028,7 +2028,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultICUUnoccupied"/>
          </coding>
       </code>
@@ -2049,7 +2049,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultICU_LOCOccupied"/>
          </coding>
       </code>
@@ -2070,7 +2070,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultNonICUOccupied"/>
          </coding>
       </code>
@@ -2091,7 +2091,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultNonICUUnoccupied"/>
          </coding>
       </code>
@@ -2112,7 +2112,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultPCUOccupied"/>
          </coding>
       </code>
@@ -2133,7 +2133,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultPCUUnoccupied"/>
          </coding>
       </code>
@@ -2154,7 +2154,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultMTMSOccupied"/>
          </coding>
       </code>
@@ -2175,7 +2175,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultMTMSUnoccupied"/>
          </coding>
       </code>
@@ -2196,7 +2196,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultObsOccupied"/>
          </coding>
       </code>
@@ -2217,7 +2217,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultObsUnoccupied"/>
          </coding>
       </code>
@@ -2238,7 +2238,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsTotalOccupied"/>
          </coding>
       </code>
@@ -2259,7 +2259,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsTotalUnoccupied"/>
          </coding>
       </code>
@@ -2280,7 +2280,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsICUOccupied"/>
          </coding>
       </code>
@@ -2301,7 +2301,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsICUUnoccupied"/>
          </coding>
       </code>
@@ -2322,7 +2322,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsICU_LOCOccupied"/>
          </coding>
       </code>
@@ -2343,7 +2343,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsNonICUOccupied"/>
          </coding>
       </code>
@@ -2364,7 +2364,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsNonICUUnoccupied"/>
          </coding>
       </code>
@@ -2385,7 +2385,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsPCUOccupied"/>
          </coding>
       </code>
@@ -2406,7 +2406,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsPCUUnoccupied"/>
          </coding>
       </code>
@@ -2427,7 +2427,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsMTMSOccupied"/>
          </coding>
       </code>
@@ -2448,7 +2448,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsMTMSUnoccupied"/>
          </coding>
       </code>
@@ -2469,7 +2469,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsObsOccupied"/>
          </coding>
       </code>
@@ -2490,7 +2490,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsObsUnoccupied"/>
          </coding>
       </code>
@@ -2511,7 +2511,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SpecialtyTotalOccupied"/>
          </coding>
       </code>
@@ -2532,7 +2532,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SpecialtyTotalUnoccupied"/>
          </coding>
       </code>
@@ -2553,7 +2553,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SpecialtyNonCribOccupied"/>
          </coding>
       </code>
@@ -2574,7 +2574,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SpecialtyNonCribUnoccupied"/>
          </coding>
       </code>
@@ -2595,7 +2595,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="OBOccupied"/>
          </coding>
       </code>
@@ -2616,7 +2616,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="OBUnoccupied"/>
          </coding>
       </code>
@@ -2637,7 +2637,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICUOccupied"/>
          </coding>
       </code>
@@ -2658,7 +2658,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICUUnoccupied"/>
          </coding>
       </code>
@@ -2679,7 +2679,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICU4Occupied"/>
          </coding>
       </code>
@@ -2700,7 +2700,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICU4Unoccupied"/>
          </coding>
       </code>
@@ -2721,7 +2721,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICU3PlusOccupied"/>
          </coding>
       </code>
@@ -2742,7 +2742,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICU3PlusUnoccupied"/>
          </coding>
       </code>
@@ -2763,7 +2763,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICU3Occupied"/>
          </coding>
       </code>
@@ -2784,7 +2784,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICU3Unoccupied"/>
          </coding>
       </code>
@@ -2805,7 +2805,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICU2Occupied"/>
          </coding>
       </code>
@@ -2826,7 +2826,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICU2Unoccupied"/>
          </coding>
       </code>
@@ -2847,7 +2847,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICU1Occupied"/>
          </coding>
       </code>
@@ -2868,7 +2868,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICU1Unoccupied"/>
          </coding>
       </code>
@@ -2889,7 +2889,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NurseryOccupied"/>
          </coding>
       </code>
@@ -2910,7 +2910,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NurseryUnoccupied"/>
          </coding>
       </code>
@@ -2931,7 +2931,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultPsychOccupied"/>
          </coding>
       </code>
@@ -2952,7 +2952,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultPsychUnoccupied"/>
          </coding>
       </code>
@@ -2973,7 +2973,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsPsychOccupied"/>
          </coding>
       </code>
@@ -2994,7 +2994,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsPsychUnoccupied"/>
          </coding>
       </code>
@@ -3015,7 +3015,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="RehabOccupied"/>
          </coding>
       </code>
@@ -3036,7 +3036,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="RehabUnoccupied"/>
          </coding>
       </code>
@@ -3057,7 +3057,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeActiveTotalOccupied"/>
          </coding>
       </code>
@@ -3078,7 +3078,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeActiveTotalUnoccupied"/>
          </coding>
       </code>
@@ -3099,7 +3099,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeInactiveTotalOccupied"/>
          </coding>
       </code>
@@ -3120,7 +3120,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeInactiveTotalUnoccupied"/>
          </coding>
       </code>
@@ -3141,7 +3141,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeActiveICUOccupied"/>
          </coding>
       </code>
@@ -3162,7 +3162,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeActiveICUUnoccupied"/>
          </coding>
       </code>
@@ -3183,7 +3183,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeInactiveICUUnoccupied"/>
          </coding>
       </code>
@@ -3204,7 +3204,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeActiveNonICUOccupied"/>
          </coding>
       </code>
@@ -3225,7 +3225,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeActiveNonICUUnoccupied"/>
          </coding>
       </code>
@@ -3246,7 +3246,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeInactiveNonICUOccupied"/>
          </coding>
       </code>
@@ -3267,7 +3267,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeInactiveNonICUUnoccupied"/>
          </coding>
       </code>
@@ -3288,7 +3288,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="BurnOccupied"/>
          </coding>
       </code>
@@ -3309,7 +3309,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="BurnUnoccupied"/>
          </coding>
       </code>
@@ -3330,7 +3330,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NegativePressureOccupied"/>
          </coding>
       </code>
@@ -3351,7 +3351,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NegativePressureUnoccupied"/>
          </coding>
       </code>
@@ -3372,7 +3372,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultEDCensus"/>
          </coding>
       </code>
@@ -3393,7 +3393,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultEDAdmittedCensus"/>
          </coding>
       </code>
@@ -3414,7 +3414,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsEDCensus"/>
          </coding>
       </code>
@@ -3435,7 +3435,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsEDAdmittedCensus"/>
          </coding>
       </code>
@@ -3456,7 +3456,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="TotalEDCensus"/>
          </coding>
       </code>
@@ -3477,7 +3477,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="TotalEDAdmittedCensus"/>
          </coding>
       </code>
