@@ -2383,7 +2383,7 @@
    <title value="NHSN dQM Bed Capacity"/>
    <experimental value="true"/>
    <date value="2024-06-25T17:37:47-04:00"/>
-   <description value="NHSN bed capacity example measure"/>
+   <description value="NHSN Bed Capacity Measure includes counts of specific bed types within the context of a given healthcare context or setting."/>
    <library value="http://hl7.org/fhir/us/nhsn-dqm/Library/NHSNBedCapacityMeasure"/>
    <scoring>
       <coding>
