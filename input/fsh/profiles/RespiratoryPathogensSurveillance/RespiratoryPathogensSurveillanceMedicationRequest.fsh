@@ -7,6 +7,7 @@ Description: "This profile contains Required and Must Support data elements for 
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 // * status TODO check does there need to be a requirement binding of code = completed 
 * category MS
+* category from http://hl7.org/fhir/ValueSet/medicationrequest-category (extensible)
 * priority MS
 * doNotPerform MS
 * reasonCode MS
@@ -18,6 +19,7 @@ Description: "This profile contains Required and Must Support data elements for 
   * asNeeded[x] MS
   * site MS
   * route 1..
+  * route from http://hl7.org/fhir/ValueSet/route-codes (extensible)
   * method MS
   * doseAndRate MS
     * type MS

@@ -11,9 +11,11 @@ Description: "This profile contains Required and Must Support data elements for 
 * interpretation MS
 * bodySite MS
 * method MS
+* method from http://hl7.org/fhir/ValueSet/observation-methods (extensible)
 * specimen MS
 * hasMember MS
 * derivedFrom MS
 * component MS
+  * code from http://hl7.org/fhir/ValueSet/observation-codes (extensible)
   * value[x] MS
   * interpretation MS

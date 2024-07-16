@@ -21,6 +21,8 @@ Description: "This profile contains Required and Must Support data elements for 
 * hospitalization
   * admitSource MS
   * reAdmission MS
+  * reAdmission from http://terminology.hl7.org/ValueSet/v2-0092 (preferred)
+  * dischargeDisposition from http://hl7.org/fhir/ValueSet/encounter-discharge-disposition (required)
 * location 1..
   * ^short = "List of locations where the patient has been. Used in part to discern whether the patient is Inpatient, Emergency and or Observation status."
   * status MS
