@@ -1907,6 +1907,7 @@
       </valueReference>
    </extension>
    <url value="http://hl7.org/fhir/us/nhsn-dqm/Measure/NHSNBedCapacityMeasure"/>
+   <version value="0.0.01"/>
    <name value="NHSNBedCapacityMeasure"/>
    <title value="NHSN dQM Bed Capacity"/>
    <experimental value="true"/>
