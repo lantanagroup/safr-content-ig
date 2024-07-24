@@ -1,0 +1,23 @@
+# Docker buildx build --output will export the folders (output, input-cache & bundles)
+FROM lantanagroup/measure-builder:latest AS build
+
+WORKDIR /work
+COPY . .
+# Forcing script without prompts
+RUN bash _updatePublisher.sh --yes
+RUN bash _updateCQFTooling.sh --yes
+RUN bash _genonce.sh
+RUN bash _refresh.sh
+
+# Final stage to prepare artifacts for export
+FROM busybox AS exporter
+
+# Create directories in the final image
+RUN mkdir -p /output /input-cache /bundles
+
+# Copy directories from the build stage
+COPY --from=build /work/output /output
+COPY --from=build /work/input-cache /input-cache
+COPY --from=build /work/bundles /bundles
+
+CMD ["sh"]
