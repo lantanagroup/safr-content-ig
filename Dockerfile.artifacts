@@ -7,7 +7,7 @@ COPY . .
 RUN bash _updatePublisher.sh --yes
 RUN bash _updateCQFTooling.sh --yes
 RUN bash _genonce.sh
-RUN bash _refresh.sh
+#RUN bash _refresh.sh
 
 # Final stage to prepare artifacts for export
 FROM busybox AS exporter
