@@ -28,7 +28,7 @@ dlurl='https://oss.sonatype.org/service/local/artifact/maven/redirect?r='${r}'&g
 echo ${dlurl}
 
 input_cache_path=./input-cache/
-tooling_jar=tooling_jar=${a}-${v}.jar
+tooling_jar=${a}-${v}.jar
 
 set -e
 if ! type "curl" > /dev/null; then
