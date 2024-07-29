@@ -8,7 +8,8 @@ COPY . .
 # Forcing script without prompts
 RUN bash _updatePublisher.sh --yes
 RUN bash _updateCQFTooling.sh --yes
-RUN bash _genonce.sh
+RUN sushi .
+RUN bash _genonce.sh -no-sushi
 
 FROM nginx:1.21.6-alpine
 
