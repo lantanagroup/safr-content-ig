@@ -15,35 +15,35 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
             <valueCoding>
-               <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+               <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
                <code value="CHLD"/>
                <display value="Children's or Pediatric"/>
             </valueCoding>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
             <valueCoding>
-               <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+               <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
                <code value="IPF"/>
                <display value="Inpatient Psychiatric"/>
             </valueCoding>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
             <valueCoding>
-               <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+               <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
                <code value="OTH"/>
                <display value="Other facility-within-facility or subunit"/>
             </valueCoding>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
             <valueCoding>
-               <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+               <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
                <code value="HOSP"/>
                <display value="Hospital"/>
             </valueCoding>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
             <valueCoding>
-               <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+               <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
                <code value="IRF"/>
                <display value="Inpatient Rehabilitation"/>
             </valueCoding>
@@ -501,27 +501,13 @@
                <valueString value="NHSNBedCapacityMeasure"/>
             </extension>
             <extension url="name">
-               <valueString value="Peds ICULOC Beds Unoccupied Initial Population"/>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;Peds ICULOC Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="32"/>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNBedCapacityMeasure"/>
-            </extension>
-            <extension url="name">
                <valueString value="Rehab Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
                <valueString value="define &quot;Rehab Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsIRF&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="33"/>
+               <valueInteger value="32"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -535,7 +521,7 @@
                <valueString value="define &quot;Adult MTMS Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="34"/>
+               <valueInteger value="33"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -549,7 +535,7 @@
                <valueString value="define &quot;NICU3 Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="35"/>
+               <valueInteger value="34"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -563,7 +549,7 @@
                <valueString value="define &quot;Adult Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsIPF&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="36"/>
+               <valueInteger value="35"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -577,7 +563,7 @@
                <valueString value="define &quot;Burn Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="37"/>
+               <valueInteger value="36"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -591,7 +577,7 @@
                <valueString value="define &quot;Peds ICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="38"/>
+               <valueInteger value="37"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -605,7 +591,7 @@
                <valueString value="define &quot;NICU1 Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="39"/>
+               <valueInteger value="38"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -619,7 +605,7 @@
                <valueString value="define &quot;Negative Pressure Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="40"/>
+               <valueInteger value="39"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -633,7 +619,7 @@
                <valueString value="define &quot;Adult ICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="41"/>
+               <valueInteger value="40"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -647,21 +633,7 @@
                <valueString value="define &quot;NICU4 Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="42"/>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNBedCapacityMeasure"/>
-            </extension>
-            <extension url="name">
-               <valueString value="Adult ICULOC Beds Unoccupied Initial Population"/>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;Adult ICULOC Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIPF&quot;&#xa;  )"/>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="43"/>
+               <valueInteger value="41"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -675,7 +647,7 @@
                <valueString value="define &quot;Adult Obs Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="44"/>
+               <valueInteger value="42"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -689,7 +661,7 @@
                <valueString value="define &quot;Adult NonICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="45"/>
+               <valueInteger value="43"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -703,7 +675,7 @@
                <valueString value="define &quot;Peds Obs Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="46"/>
+               <valueInteger value="44"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -717,7 +689,7 @@
                <valueString value="define &quot;NICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="47"/>
+               <valueInteger value="45"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -731,7 +703,7 @@
                <valueString value="define &quot;NICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="48"/>
+               <valueInteger value="46"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -745,7 +717,7 @@
                <valueString value="define &quot;Nursery Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="49"/>
+               <valueInteger value="47"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -759,7 +731,7 @@
                <valueString value="define &quot;Adult Psych Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIPF&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="50"/>
+               <valueInteger value="48"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -773,7 +745,7 @@
                <valueString value="define &quot;Adult ED Admitted Census Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and exists(&#xa;    [Encounter: &quot;Emergency Department Visit&quot;] EDVisit&#xa;    where exists(LocationMatch(EDVisit.location))&#xa;      and EDVisit.period overlaps &quot;Measurement Period&quot;&#xa;      and EDVisit.status in {'arrived', 'triaged', 'in-progress'}&#xa;    )&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="51"/>
+               <valueInteger value="49"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -787,7 +759,7 @@
                <valueString value="define &quot;NICU3Plus Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="52"/>
+               <valueInteger value="50"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -801,7 +773,7 @@
                <valueString value="define &quot;Surge Active NonICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="53"/>
+               <valueInteger value="51"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -815,7 +787,7 @@
                <valueString value="define &quot;Rehab Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsIRF&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="54"/>
+               <valueInteger value="52"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -829,7 +801,7 @@
                <valueString value="define &quot;Surge Active Total Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="55"/>
+               <valueInteger value="53"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -843,7 +815,7 @@
                <valueString value="define &quot;Specialty NonCrib Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="56"/>
+               <valueInteger value="54"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -857,7 +829,7 @@
                <valueString value="define &quot;Adult ED Census Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and exists(&#xa;    [Encounter: &quot;Emergency Department Visit&quot;] EDVisit&#xa;    where exists(LocationMatch(EDVisit.location))&#xa;      and EDVisit.period overlaps &quot;Measurement Period&quot;&#xa;    )&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="57"/>
+               <valueInteger value="55"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -871,7 +843,7 @@
                <valueString value="define &quot;OB Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="58"/>
+               <valueInteger value="56"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -885,7 +857,7 @@
                <valueString value="define &quot;Peds PCU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="59"/>
+               <valueInteger value="57"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -899,7 +871,7 @@
                <valueString value="define &quot;Peds MTMS Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="60"/>
+               <valueInteger value="58"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -913,7 +885,7 @@
                <valueString value="define &quot;Total ED Census Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and exists(&#xa;    [Encounter: &quot;Emergency Department Visit&quot;] EDVisit&#xa;    where exists(LocationMatch(EDVisit.location))&#xa;      and EDVisit.period overlaps &quot;Measurement Period&quot;&#xa;    )&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="61"/>
+               <valueInteger value="59"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -927,7 +899,7 @@
                <valueString value="define &quot;Burn Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="62"/>
+               <valueInteger value="60"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -941,7 +913,7 @@
                <valueString value="define &quot;Adult ICULOC Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIPF&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="63"/>
+               <valueInteger value="61"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -955,21 +927,7 @@
                <valueString value="define &quot;Adult Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where LocationIsHOSP&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsIPF&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="64"/>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNBedCapacityMeasure"/>
-            </extension>
-            <extension url="name">
-               <valueString value="Surge Inactive ICU Beds Occupied Initial Population"/>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;Surge Inactive ICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="65"/>
+               <valueInteger value="62"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -983,7 +941,7 @@
                <valueString value="define &quot;Specialty Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="66"/>
+               <valueInteger value="63"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -997,7 +955,7 @@
                <valueString value="define &quot;NICU3Plus Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="67"/>
+               <valueInteger value="64"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1011,7 +969,7 @@
                <valueString value="define &quot;NICU1 Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="68"/>
+               <valueInteger value="65"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1025,7 +983,7 @@
                <valueString value="define &quot;Adult Psych Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIPF&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="69"/>
+               <valueInteger value="66"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1039,7 +997,7 @@
                <valueString value="define &quot;Adult Obs Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="70"/>
+               <valueInteger value="67"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1053,7 +1011,7 @@
                <valueString value="define &quot;Surge Active Total Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="71"/>
+               <valueInteger value="68"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1067,7 +1025,7 @@
                <valueString value="define &quot;Surge Active NonICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="72"/>
+               <valueInteger value="69"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1081,7 +1039,7 @@
                <valueString value="define &quot;Surge Inactive NonICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="73"/>
+               <valueInteger value="70"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1095,7 +1053,7 @@
                <valueString value="define &quot;Adult ICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="74"/>
+               <valueInteger value="71"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1109,7 +1067,7 @@
                <valueString value="define &quot;Adult MTMS Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="75"/>
+               <valueInteger value="72"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1123,7 +1081,7 @@
                <valueString value="define &quot;Peds Total Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsCHLD&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="76"/>
+               <valueInteger value="73"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1137,7 +1095,7 @@
                <valueString value="define &quot;Total ED Admitted Census Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and exists(&#xa;    [Encounter: &quot;Emergency Department Visit&quot;] EDVisit&#xa;    where exists(LocationMatch(EDVisit.location))&#xa;      and EDVisit.period overlaps &quot;Measurement Period&quot;&#xa;      and EDVisit.status in {'arrived', 'triaged', 'in-progress'}&#xa;    )&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="77"/>
+               <valueInteger value="74"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1151,7 +1109,7 @@
                <valueString value="define &quot;Nursery Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="78"/>
+               <valueInteger value="75"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1165,7 +1123,7 @@
                <valueString value="define &quot;NICU4 Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="79"/>
+               <valueInteger value="76"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1179,7 +1137,7 @@
                <valueString value="define &quot;All Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="80"/>
+               <valueInteger value="77"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1193,7 +1151,7 @@
                <valueString value="define &quot;Peds Obs Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="81"/>
+               <valueInteger value="78"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1207,7 +1165,7 @@
                <valueString value="define &quot;Surge Active ICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="82"/>
+               <valueInteger value="79"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1221,7 +1179,7 @@
                <valueString value="define &quot;Surge Inactive ICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="83"/>
+               <valueInteger value="80"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1235,7 +1193,7 @@
                <valueString value="define &quot;NICU2 Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="84"/>
+               <valueInteger value="81"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1249,7 +1207,7 @@
                <valueString value="define &quot;NICU2 Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="85"/>
+               <valueInteger value="82"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1263,7 +1221,7 @@
                <valueString value="define &quot;Peds ED Admitted Census Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and exists(&#xa;    [Encounter: &quot;Emergency Department Visit&quot;] EDVisit&#xa;    where exists(LocationMatch(EDVisit.location))&#xa;      and EDVisit.period overlaps &quot;Measurement Period&quot;&#xa;      and EDVisit.status in {'arrived', 'triaged', 'in-progress'}&#xa;    )&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsCHLD&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="86"/>
+               <valueInteger value="83"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1277,7 +1235,7 @@
                <valueString value="define function ToConcept(concept FHIR.CodeableConcept):&#xa;    if concept is null then&#xa;        null&#xa;    else&#xa;        System.Concept {&#xa;            codes: concept.coding C return ToCode(C),&#xa;            display: concept.text.value&#xa;        }"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="87"/>
+               <valueInteger value="84"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1291,7 +1249,7 @@
                <valueString value="define function LocationMatch(locations List&lt;FHIR.Encounter.Location>):&#xa;  locations l&#xa;  where GetLocation(l.location).id = Location.id"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="88"/>
+               <valueInteger value="85"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1305,7 +1263,7 @@
                <valueString value="define function &quot;GetLocation&quot;(reference Reference ):&#xa;  singleton from (&#xa;    [Location] L where L.id = GetId(reference.reference)&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="89"/>
+               <valueInteger value="86"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1319,7 +1277,7 @@
                <valueString value="define function ToString(value string): value.value"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="90"/>
+               <valueInteger value="87"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1333,7 +1291,7 @@
                <valueString value="define function &quot;GetId&quot;(uri String ):&#xa;  Last(Split(uri, '/'))"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="91"/>
+               <valueInteger value="88"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1347,21 +1305,7 @@
                <valueString value="define function ToInterval(period FHIR.Period):&#xa;    if period is null then&#xa;        null&#xa;    else&#xa;        if period.&quot;start&quot; is null then&#xa;            Interval(period.&quot;start&quot;.value, period.&quot;end&quot;.value]&#xa;        else&#xa;            Interval[period.&quot;start&quot;.value, period.&quot;end&quot;.value]"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="92"/>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="FHIRHelpers"/>
-            </extension>
-            <extension url="name">
-               <valueString value="ToString"/>
-            </extension>
-            <extension url="statement">
-               <valueString value="define function ToString(value EncounterStatus): value.value"/>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="93"/>
+               <valueInteger value="89"/>
             </extension>
          </extension>
          <name value="EffectiveDataRequirements"/>
@@ -1375,7 +1319,7 @@
          <relatedArtifact>
             <type value="depends-on"/>
             <display value="Library FHIRHelpers"/>
-            <resource value="http://fhir.org/guides/cqf/common/Library/FHIRHelpers"/>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1"/>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"/>
@@ -1385,7 +1329,7 @@
          <relatedArtifact>
             <type value="depends-on"/>
             <display value="Code system HealthcareCapacity"/>
-            <resource value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"/>
@@ -1561,13 +1505,6 @@
             <type value="boolean"/>
          </parameter>
          <parameter>
-            <name value="Peds ICULOC Beds Unoccupied Initial Population"/>
-            <use value="out"/>
-            <min value="0"/>
-            <max value="1"/>
-            <type value="boolean"/>
-         </parameter>
-         <parameter>
             <name value="Rehab Beds Unoccupied Initial Population"/>
             <use value="out"/>
             <min value="0"/>
@@ -1632,13 +1569,6 @@
          </parameter>
          <parameter>
             <name value="NICU4 Beds Unoccupied Initial Population"/>
-            <use value="out"/>
-            <min value="0"/>
-            <max value="1"/>
-            <type value="boolean"/>
-         </parameter>
-         <parameter>
-            <name value="Adult ICULOC Beds Unoccupied Initial Population"/>
             <use value="out"/>
             <min value="0"/>
             <max value="1"/>
@@ -1786,13 +1716,6 @@
          </parameter>
          <parameter>
             <name value="Adult Beds Occupied Initial Population"/>
-            <use value="out"/>
-            <min value="0"/>
-            <max value="1"/>
-            <type value="boolean"/>
-         </parameter>
-         <parameter>
-            <name value="Surge Inactive ICU Beds Occupied Initial Population"/>
             <use value="out"/>
             <min value="0"/>
             <max value="1"/>
@@ -1948,14 +1871,6 @@
          <dataRequirement>
             <type value="Location"/>
             <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Encounter"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
             <mustSupport value="id"/>
          </dataRequirement>
          <dataRequirement>
@@ -1965,207 +1880,6 @@
             <mustSupport value="period"/>
          </dataRequirement>
          <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Encounter"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"/>
-            <mustSupport value="location"/>
-            <mustSupport value="period"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Encounter"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"/>
-            <mustSupport value="type"/>
-            <mustSupport value="location"/>
-            <mustSupport value="period"/>
-            <codeFilter>
-               <path value="type"/>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"/>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
             <type value="Encounter"/>
             <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"/>
             <mustSupport value="type"/>
@@ -2176,192 +1890,6 @@
                <path value="type"/>
                <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"/>
             </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Encounter"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"/>
-            <mustSupport value="type"/>
-            <mustSupport value="location"/>
-            <mustSupport value="period"/>
-            <codeFilter>
-               <path value="type"/>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"/>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Encounter"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"/>
-            <mustSupport value="type"/>
-            <mustSupport value="location"/>
-            <mustSupport value="period"/>
-            <codeFilter>
-               <path value="type"/>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"/>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Encounter"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"/>
-            <mustSupport value="type"/>
-            <mustSupport value="location"/>
-            <mustSupport value="period"/>
-            <mustSupport value="status"/>
-            <codeFilter>
-               <path value="type"/>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"/>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Encounter"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"/>
-            <mustSupport value="type"/>
-            <mustSupport value="location"/>
-            <mustSupport value="period"/>
-            <mustSupport value="status"/>
-            <codeFilter>
-               <path value="type"/>
-               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"/>
-            </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"/>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
          </dataRequirement>
       </Library>
    </contained>
@@ -2379,12 +1907,13 @@
       </valueReference>
    </extension>
    <url value="http://hl7.org/fhir/us/nhsn-dqm/Measure/NHSNBedCapacityMeasure"/>
+   <version value="0.0.01"/>
    <name value="NHSNBedCapacityMeasure"/>
    <title value="NHSN dQM Bed Capacity"/>
    <experimental value="true"/>
-   <date value="2024-06-25T17:37:47-04:00"/>
-   <description value="NHSN bed capacity example measure"/>
-   <library value="http://hl7.org/fhir/us/nhsn-dqm/Library/NHSNBedCapacityMeasure"/>
+   <date value="2024-07-15T17:05:32-04:00"/>
+   <description value="NHSN Bed Capacity Measure includes counts of specific bed types within the context of a given healthcare context or setting."/>
+   <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNBedCapacityMeasure"/>
    <scoring>
       <coding>
          <system value="http://terminology.hl7.org/CodeSystem/measure-scoring"/>
@@ -2395,7 +1924,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AllBedsOccupied"/>
          </coding>
       </code>
@@ -2416,7 +1945,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AllBedsUnoccupied"/>
          </coding>
       </code>
@@ -2437,7 +1966,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultTotalOccupied"/>
          </coding>
       </code>
@@ -2458,7 +1987,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultTotalUnoccupied"/>
          </coding>
       </code>
@@ -2479,7 +2008,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultICUOccupied"/>
          </coding>
       </code>
@@ -2500,7 +2029,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultICUUnoccupied"/>
          </coding>
       </code>
@@ -2521,7 +2050,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultICU_LOCOccupied"/>
          </coding>
       </code>
@@ -2539,33 +2068,10 @@
          </criteria>
       </population>
    </group>
-<!-- Duplicate Group
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
-            <code value="AdultICUUnoccupied"/>
-         </coding>
-      </code>
-      <population id="d2e4841">
-         <code>
-            <coding>
-               <system value="http://terminology.hl7.org/CodeSystem/measure-population"/>
-               <code value="initial-population"/>
-               <display value="Initial Population"/>
-            </coding>
-         </code>
-         <criteria>
-            <language value="text/cql-identifier"/>
-            <expression value="Adult ICULOC Beds Unoccupied Initial Population"/>
-         </criteria>
-      </population>
-   </group>
--->   
-   <group>
-      <code>
-         <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultNonICUOccupied"/>
          </coding>
       </code>
@@ -2586,7 +2092,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultNonICUUnoccupied"/>
          </coding>
       </code>
@@ -2607,7 +2113,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultPCUOccupied"/>
          </coding>
       </code>
@@ -2628,7 +2134,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultPCUUnoccupied"/>
          </coding>
       </code>
@@ -2649,7 +2155,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultMTMSOccupied"/>
          </coding>
       </code>
@@ -2670,7 +2176,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultMTMSUnoccupied"/>
          </coding>
       </code>
@@ -2691,7 +2197,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultObsOccupied"/>
          </coding>
       </code>
@@ -2712,7 +2218,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultObsUnoccupied"/>
          </coding>
       </code>
@@ -2733,7 +2239,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsTotalOccupied"/>
          </coding>
       </code>
@@ -2754,7 +2260,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsTotalUnoccupied"/>
          </coding>
       </code>
@@ -2775,7 +2281,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsICUOccupied"/>
          </coding>
       </code>
@@ -2796,7 +2302,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsICUUnoccupied"/>
          </coding>
       </code>
@@ -2817,7 +2323,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsICU_LOCOccupied"/>
          </coding>
       </code>
@@ -2835,33 +2341,10 @@
          </criteria>
       </population>
    </group>
-<!-- Duplicate Group
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
-            <code value="PedsICUUnoccupied"/>
-         </coding>
-      </code>
-      <population id="d2e5922">
-         <code>
-            <coding>
-               <system value="http://terminology.hl7.org/CodeSystem/measure-population"/>
-               <code value="initial-population"/>
-               <display value="Initial Population"/>
-            </coding>
-         </code>
-         <criteria>
-            <language value="text/cql-identifier"/>
-            <expression value="Peds ICULOC Beds Unoccupied Initial Population"/>
-         </criteria>
-      </population>
-   </group>
--->   
-   <group>
-      <code>
-         <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsNonICUOccupied"/>
          </coding>
       </code>
@@ -2882,7 +2365,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsNonICUUnoccupied"/>
          </coding>
       </code>
@@ -2903,7 +2386,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsPCUOccupied"/>
          </coding>
       </code>
@@ -2924,7 +2407,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsPCUUnoccupied"/>
          </coding>
       </code>
@@ -2945,7 +2428,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsMTMSOccupied"/>
          </coding>
       </code>
@@ -2966,7 +2449,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsMTMSUnoccupied"/>
          </coding>
       </code>
@@ -2987,7 +2470,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsObsOccupied"/>
          </coding>
       </code>
@@ -3008,7 +2491,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsObsUnoccupied"/>
          </coding>
       </code>
@@ -3029,7 +2512,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SpecialtyTotalOccupied"/>
          </coding>
       </code>
@@ -3050,7 +2533,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SpecialtyTotalUnoccupied"/>
          </coding>
       </code>
@@ -3071,7 +2554,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SpecialtyNonCribOccupied"/>
          </coding>
       </code>
@@ -3092,7 +2575,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SpecialtyNonCribUnoccupied"/>
          </coding>
       </code>
@@ -3113,7 +2596,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="OBOccupied"/>
          </coding>
       </code>
@@ -3134,7 +2617,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="OBUnoccupied"/>
          </coding>
       </code>
@@ -3155,7 +2638,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICUOccupied"/>
          </coding>
       </code>
@@ -3176,7 +2659,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICUUnoccupied"/>
          </coding>
       </code>
@@ -3197,7 +2680,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICU4Occupied"/>
          </coding>
       </code>
@@ -3218,7 +2701,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICU4Unoccupied"/>
          </coding>
       </code>
@@ -3239,7 +2722,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICU3PlusOccupied"/>
          </coding>
       </code>
@@ -3260,7 +2743,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICU3PlusUnoccupied"/>
          </coding>
       </code>
@@ -3281,7 +2764,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICU3Occupied"/>
          </coding>
       </code>
@@ -3302,7 +2785,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICU3Unoccupied"/>
          </coding>
       </code>
@@ -3323,7 +2806,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICU2Occupied"/>
          </coding>
       </code>
@@ -3344,7 +2827,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICU2Unoccupied"/>
          </coding>
       </code>
@@ -3365,7 +2848,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICU1Occupied"/>
          </coding>
       </code>
@@ -3386,7 +2869,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NICU1Unoccupied"/>
          </coding>
       </code>
@@ -3407,7 +2890,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NurseryOccupied"/>
          </coding>
       </code>
@@ -3428,7 +2911,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NurseryUnoccupied"/>
          </coding>
       </code>
@@ -3449,7 +2932,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultPsychOccupied"/>
          </coding>
       </code>
@@ -3470,7 +2953,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultPsychUnoccupied"/>
          </coding>
       </code>
@@ -3491,7 +2974,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsPsychOccupied"/>
          </coding>
       </code>
@@ -3512,7 +2995,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsPsychUnoccupied"/>
          </coding>
       </code>
@@ -3533,7 +3016,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="RehabOccupied"/>
          </coding>
       </code>
@@ -3554,7 +3037,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="RehabUnoccupied"/>
          </coding>
       </code>
@@ -3575,7 +3058,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeActiveTotalOccupied"/>
          </coding>
       </code>
@@ -3596,7 +3079,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeActiveTotalUnoccupied"/>
          </coding>
       </code>
@@ -3617,7 +3100,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeInactiveTotalOccupied"/>
          </coding>
       </code>
@@ -3638,7 +3121,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeInactiveTotalUnoccupied"/>
          </coding>
       </code>
@@ -3659,7 +3142,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeActiveICUOccupied"/>
          </coding>
       </code>
@@ -3680,7 +3163,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeActiveICUUnoccupied"/>
          </coding>
       </code>
@@ -3701,7 +3184,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeInactiveICUUnoccupied"/>
          </coding>
       </code>
@@ -3722,7 +3205,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeActiveNonICUOccupied"/>
          </coding>
       </code>
@@ -3743,7 +3226,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeActiveNonICUUnoccupied"/>
          </coding>
       </code>
@@ -3764,7 +3247,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeInactiveNonICUOccupied"/>
          </coding>
       </code>
@@ -3785,7 +3268,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="SurgeInactiveNonICUUnoccupied"/>
          </coding>
       </code>
@@ -3806,7 +3289,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="BurnOccupied"/>
          </coding>
       </code>
@@ -3827,7 +3310,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="BurnUnoccupied"/>
          </coding>
       </code>
@@ -3848,7 +3331,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NegativePressureOccupied"/>
          </coding>
       </code>
@@ -3869,7 +3352,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="NegativePressureUnoccupied"/>
          </coding>
       </code>
@@ -3890,7 +3373,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultEDCensus"/>
          </coding>
       </code>
@@ -3911,7 +3394,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="AdultEDAdmittedCensus"/>
          </coding>
       </code>
@@ -3932,7 +3415,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsEDCensus"/>
          </coding>
       </code>
@@ -3953,7 +3436,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="PedsEDAdmittedCensus"/>
          </coding>
       </code>
@@ -3974,7 +3457,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="TotalEDCensus"/>
          </coding>
       </code>
@@ -3995,7 +3478,7 @@
    <group>
       <code>
          <coding>
-            <system value="http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes"/>
+            <system value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes"/>
             <code value="TotalEDAdmittedCensus"/>
          </coding>
       </code>

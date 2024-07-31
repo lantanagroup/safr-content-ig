@@ -7,9 +7,11 @@ Description: "This profile contains Required and Must Support data elements for 
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 * category MS
+* category from http://hl7.org/fhir/ValueSet/servicerequest-category (extensible)
 * priority MS
 * doNotPerform MS
 * code MS
+* code from http://hl7.org/fhir/ValueSet/procedure-code (extensible)
 //  * ^binding.extension.url = "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"
 //  * ^binding.extension.valueString = "ServiceRequestCode"
 //  * ^binding.description = "Codes for tests or services that can be carried out by a designated individual, organization or healthcare service."

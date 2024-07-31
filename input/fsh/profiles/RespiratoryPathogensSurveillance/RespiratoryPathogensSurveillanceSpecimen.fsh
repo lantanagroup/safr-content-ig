@@ -10,6 +10,8 @@ Description: "This profile contains Required and Must Support data elements for 
 * accessionIdentifier MS
 * status MS
 * type 1..
+* type from http://terminology.hl7.org/ValueSet/v2-0487 (extensible)
 * collection 1..
 * collection.collected[x] 1..
 * collection.bodySite 1..
+* collection.bodySite from http://hl7.org/fhir/ValueSet/body-site (extensible)

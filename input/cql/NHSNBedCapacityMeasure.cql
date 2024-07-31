@@ -1,11 +1,11 @@
-library NHSNBedCapacityMeasure version '1.0.0'
+library NHSNBedCapacityMeasure version '0.0.01'
 
 using FHIR version '4.0.1'
 
 include FHIRHelpers version '4.0.1' called FHIRHelpers
 
 codesystem "LocationPhysicalType": 'http://terminology.hl7.org/CodeSystem/location-physical-type'
-codesystem "HealthcareCapacity": 'http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes'
+codesystem "HealthcareCapacity": 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes'
 
 valueset "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292'
 

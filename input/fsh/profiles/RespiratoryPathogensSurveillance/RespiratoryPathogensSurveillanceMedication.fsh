@@ -7,5 +7,6 @@ Description: "This profile contains Required and Must Support data elements for 
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 * status MS
 * form MS
+* form from http://hl7.org/fhir/ValueSet/medication-form-codes (extensible)
 * amount MS
 * ingredient MS

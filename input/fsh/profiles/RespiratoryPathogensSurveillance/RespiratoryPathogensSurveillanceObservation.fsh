@@ -8,6 +8,7 @@ Description: "This profile contains Required and Must Support data elements for 
 * basedOn MS
 * partOf MS
 * category MS
+* code from http://hl7.org/fhir/ValueSet/observation-codes (extensible)
 * subject 1..
 * encounter MS
 * effective[x] 1..
@@ -15,7 +16,9 @@ Description: "This profile contains Required and Must Support data elements for 
 * value[x] MS
 * interpretation MS
 * method MS
+* method from http://hl7.org/fhir/ValueSet/observation-methods (extensible)
 * hasMember MS
 * component MS
+* component.code from http://hl7.org/fhir/ValueSet/observation-codes (extensible)
 * component.value[x] MS
 * component.interpretation MS

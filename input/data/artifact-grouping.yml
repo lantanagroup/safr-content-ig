@@ -82,6 +82,11 @@ groups:
       - ValueSet/rps-encounter-status
       - ValueSet/rps-encounter-class
 
+  codesystems:
+    name: "Terminology: Profile CodeSystems"
+    resources:
+      - CodeSystem/healthcare-capacity-codes
+
   measures:
     name: "Knowledge Artifacts: Digital Quality Measure"
     resources:
@@ -102,6 +107,9 @@ groups:
       Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation:
         name: NHSN Respiratory Pathogens Surveillance Initial Population
         description: Library of NHSN Respiratory Pathogens Surveillance Initial Population Measure
+      Library/NHSNBedCapacityMeasure:
+        name: NHSN Bed Capacity Reporting Initial Population
+        description: Library of NHSN Bed Capacity Initial Population Measure
       
 
   ext-libs:
@@ -188,14 +196,21 @@ groups:
         description: Example Separated RPS Submission RSV Lab BTG Bundle
 
         
-  # bed-ex:
-  #   name: "Examples: Bed Capacity Submission Instances"
-  #   resources:
-  #     Bundle/jurisdiction-bed-capacity-report-example:
-  #       name: Jurisdiction Capacity Full Report Bundle Example
-  #       description: Example Bundle of jurisdictional report for capacity reporting
-
-
+  bed-ex:
+    name: "Examples: Bed Capacity Submission Instances"
+    resources:
+       Bundle/jurisdiction-bed-capacity-report-example:
+         name: Jurisdiction Capacity Full Report Bundle Example
+         description: Example Bundle of jurisdictional report for capacity reporting
+       MeasureReport/bed-capacity-measurereport-example-hosp:
+         name: Jurisdiction Capacity Report from a Hospital context example
+         description: Example MeasureReport of single report for capacity reporting
+       MeasureReport/bed-capacity-measurereport-example-ipf:
+         name: Jurisdiction Capacity Report from a Inpatient Psychiatric context example
+         description: Example MeasureReport of single report for capacity reporting
+       MeasureReport/bed-capacity-measurereport-example-chld:
+         name: Jurisdiction Capacity Report from a Children's/Pediatric context example
+         description: Example MeasureReport of single report for capacity reporting
 
 
 

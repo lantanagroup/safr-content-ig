@@ -54,4 +54,4 @@ Alias: $procedure-code = http://hl7.org/fhir/ValueSet/procedure-code
 Alias: $vital-sign-profile = http://hl7.org/fhir/StructureDefinition/vitalsigns
 Alias: $daig-serv-section = http://hl7.org/fhir/ValueSet/diagnostic-service-sections
 
-Alias: $bed-capacity-code-system = http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes
+Alias: $bed-capacity-code-system = http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-code

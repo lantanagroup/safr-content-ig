@@ -1,4 +1,4 @@
-FROM lantanagroup/measure-builder:fsh AS build
+FROM lantanagroup/measure-builder:latest AS build
 #FROM ubuntu AS build
 #RUN apt-get update && apt-get install -y --no-install-recommends ruby-full build-essential zlib1g-dev git python3 bash curl openjdk-11-jdk
 #RUN gem install jekyll bundler
@@ -8,7 +8,8 @@ COPY . .
 # Forcing script without prompts
 RUN bash _updatePublisher.sh --yes
 RUN bash _updateCQFTooling.sh --yes
-RUN bash _genonce.sh
+RUN sushi .
+RUN bash _genonce.sh -no-sushi
 
 FROM nginx:1.21.6-alpine
 

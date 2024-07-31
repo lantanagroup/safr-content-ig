@@ -3,6 +3,9 @@ Parent: USCoreEncounterProfile
 Id: rps-encounter
 Title: "RPS Event Encounter"
 Description: "This profile contains Required and Must Support data elements for reporting encounter information to the NHSN Respiratory Pathogens Surveillance (RPS) Module. This profile is based on the [HL7 FHIR® US Core Encounter Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-encounter.html)."
+
+* obeys encounter-rps-initial-population
+
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 * identifier 1..
@@ -18,6 +21,8 @@ Description: "This profile contains Required and Must Support data elements for 
 * hospitalization
   * admitSource MS
   * reAdmission MS
+  * reAdmission from http://terminology.hl7.org/ValueSet/v2-0092 (preferred)
+  * dischargeDisposition from http://hl7.org/fhir/ValueSet/encounter-discharge-disposition (required)
 * location 1..
   * ^short = "List of locations where the patient has been. Used in part to discern whether the patient is Inpatient, Emergency and or Observation status."
   * status MS
