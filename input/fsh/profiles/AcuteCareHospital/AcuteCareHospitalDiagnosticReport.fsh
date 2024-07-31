@@ -9,7 +9,7 @@ Description: "This profile contains Required and Must Support data elements for 
 * basedOn MS
 * status MS
 * category 1.. MS
-* category from report-codes (extensible)
+* category from $daig-serv-section (extensible)
 * code MS
 * code from report-codes (extensible)
 * subject 1.. MS
