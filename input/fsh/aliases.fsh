@@ -52,5 +52,6 @@ Alias: $v3-EntityCode = http://terminology.hl7.org/CodeSystem/v3-EntityCode
 Alias: $shareablevalueset = http://hl7.org/fhir/StructureDefinition/shareablevalueset
 Alias: $procedure-code = http://hl7.org/fhir/ValueSet/procedure-code
 Alias: $vital-sign-profile = http://hl7.org/fhir/StructureDefinition/vitalsigns
+Alias: $daig-serv-section = http://hl7.org/fhir/ValueSet/diagnostic-service-sections
 
 Alias: $bed-capacity-code-system = http://hl7.org/fhir/us/nhsn-dqm/CodeSystem/healthcare-capacity-codes
