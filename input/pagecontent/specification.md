@@ -1,0 +1,50 @@
+This section of the implementation guide (IG) defines the specific conformance requirements for systems wishing to conform to this NHSN dQM Reporting IG. The bulk of it focuses on evaluating facility data against measure criteria and submitting those data to NHSN, though it also provides guidance on privacy, security, and other implementation requirements.
+
+### Pre-reading
+
+Before reading this formal specification, implementers should first familiarize themselves with two other key portions of the specification:
+
+* The [National Healthcare Safety Network (NHSN) Digital Quality Measure (dQM) Reporting Implementation Guide](https://build.fhir.org/ig/HL7/nhsn-dqm/index.html) HL7 Standard (currently under development) provides the baseline measure submission requirements and guidance that this guide builds from.
+* The [Use Cases](use_cases.html) page provides about the measure and reporting use cases this IG covers.
+
+
+### Conventions
+
+This Implementation Guide (IG) uses specific terminology to flag statements that have relevance for the evaluation of conformance with the guide:
+
+* **SHALL** indicates requirements that must be met to be conformant with the specification.
+
+* **SHOULD** indicates behaviors that are strongly recommended (and which may result in interoperability issues or sub-optimal behavior if not adhered to), but which do not, for this version of the specification, affect the determination of specification conformance.
+
+* **MAY** describes optional behaviors that are free to consider but are not a recommendation for or against adoption.
+
+
+#### Must Support ###
+
+The following rules regarding Must Support elements apply to all Profiles in this guide. The Must Support definitions are not inherited from other IGs, even for profiles in this guide derived from another guide.
+
+Sender:
+
+* If the data element is available in the FHIR API/EHR, the data element *SHALL* be provided (either through submission or response to a query) for measure calculation or risk adjustment.
+* If the sender does not capture/store the data, the data are not available, or sharing of the data is not authorized, the system **SHOULD NOT** send the element if the element is not marked as mandatory (lower cardinality of 0).
+
+Receiver: 
+
+* The receiver **SHALL** be capable of processing resource instances containing must-support data elements without generating an error or causing the application to fail.
+* The receiver **SHALL** be able to process resource instances containing must-support data elements asserting missing information (data absent reason extension).
+
+
+Note: The profiles in this IG inherit from the [US Core}({{site.data.fhir.ver.uscore}}) which has some requirements that are more stringent that what is necessary for measure reporting (e.g. Practitioner references). This means that some inherited US Core required elements may not be used by NHSN and if missing may still pass NHSN ingestion validation.
+
+#### Profiles
+
+This specification makes significant use of [FHIR profiles]({{site.data.fhir.path}}profiling.html) to define the data requirements for measure specific submissions.
+
+The full set of profiles defined in this IG can be found by following the links on the [Artifacts](artifacts-listing.html) page.
+
+
+#### Reporting Scenarios
+
+The following reporting scenarios use the Actors defined on the [Actors and Use Cases](use_cases.html) page.
+
+The reporting workflows are detailed on the [Reporting Scenarios](https://build.fhir.org/ig/HL7/nhsn-dqm/specification.html#reporting-scenarios) section of the [HL7 NHSN dQM Reporting Implementation Guide](https://build.fhir.org/ig/HL7/nhsn-dqm/index.html).

@@ -25,7 +25,9 @@ publisher:
 
 dependencies:
   hl7.fhir.extensions.r5: 4.0.1
-  hl7.fhir.us.core: 3.1.1
+  hl7.fhir.us.core: 
+    version: 3.1.1
+    id: uscore
   fhir.cqf.common:
     version: 4.0.1
     uri: http://fhir.org/guides/cqf/common/ImplementationGuide/cqf.fhir.common
@@ -78,20 +80,29 @@ parameters:
 menu:
   IG Home: index.html
   Table of Contents: toc.html
+  Use Cases: use_cases.html
+  Specification: specification.html
   Artifact Index: artifact-listing.html
+  Downloads: downloads.html
+  License: license.html
   Support:
     FHIR Spec: http://hl7.org/fhir/R4/index.html
+    HL7 NHSN dQM IG CI Build: https://build.fhir.org/ig/HL7/nhsn-dqm/index.html
+    US Core IG 3.1.1: https://hl7.org/fhir/us/core/STU3.1.1/index.html
+    Clinical Quality Framework: https://www.fhir.org/guides/cqf/common/
+    Da Vinci DEQM IG 3.1: https://hl7.org/fhir/us/davinci-deqm/STU3.1/index.html
+    QI Core IG 4.1.1: https://hl7.org/fhir/us/qicore/STU4.1.1/
     CQL Spec: http://cql.hl7.org/index.html
     FHIR Clinical Guidelines: http://hl7.org/fhir/uv/cpg
-    Must Support: must_support.html
-    Downloads: downloads.html
-    License: license.html
+    
 
 pages:
   index.xml:
     title: NHSN Measures Home
-  must_support.xml:
-    title: Must Support
+  use_cases.md:
+    title: Use Cases
+  specification.md:
+    title: Specification
   artifact-listing.md:
     title: Artifact Listing
   downloads.xml:

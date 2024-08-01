@@ -1,6 +1,0 @@
-<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R5/fhir-single.xsd">
-	<h3>Definition For Must Support</h3>
-	<p>
-	If the data element is available in the FHIR API/EHR, the data element <strong>SHALL</strong> be provided (either through submission or response to a query) for measure calculation or risk adjustment.
-  	</p>
-</div>
