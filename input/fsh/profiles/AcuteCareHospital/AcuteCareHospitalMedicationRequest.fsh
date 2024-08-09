@@ -12,6 +12,7 @@ Description: "This profile contains Required and Must Support data elements for 
 * priority MS
 * doNotPerform MS
 * reasonCode MS
+* medication[x] from http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1010.4 (extensible)
 * reasonReference MS
 * instantiatesCanonical MS
 * instantiatesUri MS
