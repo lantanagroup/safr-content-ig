@@ -5,7 +5,9 @@ test
 <xsl:variable name="showDescriptions" select="count(parent::f:definition/f:resource[f:groupingId/@value=current()/@id]/f:description/@value)!=0"/> -->
 
 {% for group in site.data.artifact-grouping.groups %}
-<h3>{{group[1].name}}</h3>
+
+### {{group[1].name}}
+
 <p>{{group[1].description | markdownify}}</p>
 <table class="grid">
   <col style="width:20%"/>
