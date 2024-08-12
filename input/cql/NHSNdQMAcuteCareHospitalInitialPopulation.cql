@@ -1,11 +1,9 @@
-library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.016'
+library NHSNdQMAcuteCareHospitalInitialPopulation version '0.0.017'
 
 using FHIR version '4.0.1'
 
-include FHIRHelpers version '4.0.1' called FHIRHelpers
-include MATGlobalCommonFunctionsFHIR4 version '6.1.000' called Global
-include SupplementalDataElementsFHIR4 version '2.0.000' called SDE
-include SharedResourceCreation version '0.1.005' called SharedResource
+include SharedResourceCreation version '0.1.006' called SharedResource
+include NHSNHelpers version '0.0.001' called NHSNHelpers
 
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
 codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category'
@@ -55,18 +53,22 @@ define "Qualifying Encounters During Measurement Period":
   union [Encounter: "Observation Services"]
   union [Encounter: class in "NHSN Inpatient Encounter Class Codes"]
   union [Encounter: class ~ "emergency"]) QualifyingEncounters
-  where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
-    and QualifyingEncounters.period overlaps "Measurement Period" 
+  where QualifyingEncounters.status.value in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
+    and NHSNHelpers.ToInterval(QualifyingEncounters.period) overlaps "Measurement Period"
 
 define "Encounters with Patient Hospital Locations":
   "Encounters" Encounters
   where exists(
     Encounters.location EncounterLocation
-    where Global.GetLocation(EncounterLocation.location).type in "Inpatient, Emergency, and Observation Locations"
-      and EncounterLocation.period overlaps Encounters.period
+    let types: NHSNHelpers.GetLocation(EncounterLocation.location).type
+    where exists(
+      types type
+      where NHSNHelpers.ToConcept(type) in "Inpatient, Emergency, and Observation Locations"
+    )
+    and NHSNHelpers.ToInterval(EncounterLocation.period) overlaps NHSNHelpers.ToInterval(Encounters.period)
   )
-  and Encounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
-  and Encounters.period overlaps "Measurement Period"
+  and Encounters.status.value in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
+  and NHSNHelpers.ToInterval(Encounters.period) overlaps "Measurement Period"
 
 define "Initial Population":
   "Qualifying Encounters During Measurement Period"
@@ -90,7 +92,7 @@ define "Get Locations from IP Encounters in Measurement Period":
   return
     locationElements LE
     let locationReference: LE.location
-    return Global.GetLocation(locationReference))
+    return NHSNHelpers.GetLocation(locationReference))
 
 //============================================================================
 //Supplemental Data Element
@@ -103,20 +105,20 @@ define "SDE Condition":
     "Initial Population" IP
     //Check for Problem List Conditions that were recorded before or during IP
     where (
-      Conditions.recordedDate before end of IP.period
+      Conditions.recordedDate.value before IP.period."end".value
       and exists(Conditions.category categories
-        where categories ~ "problem-list-item")
-      and Conditions.clinicalStatus ~ "active"
+        where NHSNHelpers.ToConcept(categories) ~ "problem-list-item")
+      and NHSNHelpers.ToConcept(Conditions.clinicalStatus) ~ "active"
     )
     //Check for Encounter Diagnosis Conditions that reference an IP encounter
     or (
       (exists(IP.diagnosis Diagnoses
-          where GetCondition(Diagnoses.condition).id = Conditions.id
+          where GetCondition(Diagnoses.condition).id.value = Conditions.id.value
         )
-        or GetEncounter(Conditions.encounter).id = IP.id
+        or GetEncounter(Conditions.encounter).id.value = IP.id.value
       )
       and exists (Conditions.category categories
-        where categories ~ "encounter-diagnosis")
+        where NHSNHelpers.ToConcept(categories) ~ "encounter-diagnosis")
     )
   )
   return SharedResource.ConditionResource(Conditions,
@@ -130,32 +132,36 @@ define "SDE Device":
 
 define "SDE DiagnosticReport Lab":
   "DiagnosticReports" DiagnosticReports
-  where (exists(DiagnosticReports.category Category where Category ~ "LAB")
-    and exists(
-      "Initial Population" IP
-      where Global."Normalize Interval"(DiagnosticReports.effective) overlaps IP.period))
+  where exists(
+    DiagnosticReports.category Category 
+      where NHSNHelpers.ToConcept(Category) ~ "LAB"
+  )
+  and exists(
+    "Initial Population" IP
+    where NHSNHelpers."Normalize Interval"(DiagnosticReports.effective) overlaps NHSNHelpers.ToInterval(IP.period)
+  )
   return SharedResource.DiagnosticReportLabResource(DiagnosticReports,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport-lab'}})
  
 define "SDE DiagnosticReport Note":
   "DiagnosticReports" DiagnosticReports
-  where ((exists(DiagnosticReports.category Category where Category ~ "Radiology"))
-    or exists((DiagnosticReports.category Category where Category ~ "Pathology"))
-    or exists((DiagnosticReports.category Category where Category ~ "Cardiology")))
+  where ((exists(DiagnosticReports.category Category where NHSNHelpers.ToConcept(Category) ~ "Radiology"))
+    or exists((DiagnosticReports.category Category where NHSNHelpers.ToConcept(Category) ~ "Pathology"))
+    or exists((DiagnosticReports.category Category where NHSNHelpers.ToConcept(Category) ~ "Cardiology")))
     and exists(
       "Initial Population" IP
-      where Global."Normalize Interval"(DiagnosticReports.effective) overlaps IP.period)
+      where NHSNHelpers."Normalize Interval"(DiagnosticReports.effective) overlaps NHSNHelpers.ToInterval(IP.period))
   return DiagnosticReportResource(DiagnosticReports,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport-note'}})
 
 define "SDE DiagnosticReport Others":
   [DiagnosticReport] DiagnosticReports
-  where not ((exists(DiagnosticReports.category Category where Category ~ "Radiology"))
-    or exists((DiagnosticReports.category Category where Category ~ "Pathology"))
-    or exists((DiagnosticReports.category Category where Category ~ "Cardiology"))
-    or exists(DiagnosticReports.category Category where Category ~ "LAB"))
+  where not ((exists(DiagnosticReports.category Category where NHSNHelpers.ToConcept(Category) ~ "Radiology"))
+    or exists((DiagnosticReports.category Category where NHSNHelpers.ToConcept(Category) ~ "Pathology"))
+    or exists((DiagnosticReports.category Category where NHSNHelpers.ToConcept(Category) ~ "Cardiology"))
+    or exists(DiagnosticReports.category Category where NHSNHelpers.ToConcept(Category) ~ "LAB"))
     and exists("Initial Population" IP
-      where Global."Normalize Interval"(DiagnosticReports.effective) overlaps IP.period)
+      where NHSNHelpers."Normalize Interval"(DiagnosticReports.effective) overlaps NHSNHelpers.ToInterval(IP.period))
   return DiagnosticReportResource(DiagnosticReports,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport'}})
 
@@ -163,7 +169,7 @@ define "SDE Encounter":
   "Encounters" Encounters
   where exists(
     "Initial Population" IP
-    where Encounters.period overlaps IP.period)
+    where Interval[Encounters.period."start".value, Encounters.period."end".value] overlaps Interval[IP.period."start".value, IP.period."end".value])
   return EncounterResource(Encounters,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-encounter'}})
 
@@ -178,7 +184,7 @@ define "SDE Medication Administration":
   [MedicationAdministration] MedicationAdministrations 
   where exists(
     "Initial Population" IP
-    where Global."Normalize Interval"(MedicationAdministrations.effective) overlaps IP.period)
+    where NHSNHelpers."Normalize Interval"(MedicationAdministrations.effective) overlaps NHSNHelpers.ToInterval(IP.period))
   return SharedResource.MedicationAdministrationResource(MedicationAdministrations,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-medicationadministration'}})
  
@@ -186,7 +192,7 @@ define "SDE Medication Request":
   [MedicationRequest] MedicationRequests 
   where exists(
     "Initial Population" IP
-    where MedicationRequests.authoredOn during IP.period)
+    where MedicationRequests.authoredOn.value during NHSNHelpers.ToInterval(IP.period))
   return SharedResource.MedicationRequestResource(MedicationRequests,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-medicationrequest'}})
 
@@ -200,33 +206,33 @@ define "SDE Medication":
 
 define "SDE Observation Lab Category":
   "Observations" Observations 
-  where (exists(Observations.category Category where Category ~ "laboratory"))
+  where (exists(Observations.category Category where NHSNHelpers.ToConcept(Category) ~ "laboratory"))
     and exists(
       "Initial Population" IP
-      where Global."Normalize Interval"(Observations.effective) overlaps IP.period)
+      where NHSNHelpers."Normalize Interval"(Observations.effective) overlaps NHSNHelpers.ToInterval(IP.period))
   return SharedResource.ObservationLabResource(Observations,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-observation-lab'}})
 
 //Vital Signs Observation has its own profile in FHIR Base
 define "SDE Observation Vital Signs Category":
   "Observations" Observations 
-  where (exists(Observations.category Category where Category ~ "vital-signs"))
+  where (exists(Observations.category Category where NHSNHelpers.ToConcept(Category) ~ "vital-signs"))
     and exists(
       "Initial Population" IP
-      where Global."Normalize Interval"(Observations.effective) overlaps IP.period)
+      where NHSNHelpers."Normalize Interval"(Observations.effective) overlaps NHSNHelpers.ToInterval(IP.period))
   return ObservationVitalSignsResource(Observations,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-observation-vitals'}})
 
 //Defaulting to base FHIR profile as there are no individual profiles in US Core 3.1.1 that cover these Observation categories
 define "SDE Observation Category":
   "Observations" Observations 
-  where ((exists(Observations.category Category where Category ~ "social-history"))
-    or (exists(Observations.category Category where Category ~ "survey"))
-    or (exists(Observations.category Category where Category ~ "imaging"))
-    or (exists(Observations.category Category where Category ~ "procedure")))
+  where ((exists(Observations.category Category where NHSNHelpers.ToConcept(Category) ~ "social-history"))
+    or (exists(Observations.category Category where NHSNHelpers.ToConcept(Category) ~ "survey"))
+    or (exists(Observations.category Category where NHSNHelpers.ToConcept(Category) ~ "imaging"))
+    or (exists(Observations.category Category where NHSNHelpers.ToConcept(Category) ~ "procedure")))
     and exists(
       "Initial Population" IP
-      where Global."Normalize Interval"(Observations.effective) overlaps IP.period)
+      where NHSNHelpers."Normalize Interval"(Observations.effective) overlaps NHSNHelpers.ToInterval(IP.period))
   return ObservationResource(Observations,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-observation'}})
 
@@ -234,7 +240,7 @@ define "SDE Coverage":
 	[Coverage] Coverages
   where exists(
     "Initial Population" IP
-    where Coverages.period overlaps IP.period)
+    where NHSNHelpers.ToInterval(Coverages.period) overlaps NHSNHelpers.ToInterval(IP.period))
   return SharedResource.CoverageResource(Coverages,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-coverage'}})
 
@@ -242,7 +248,7 @@ define "SDE Procedure":
   [Procedure] Procedures 
   where exists(
     "Initial Population" IP
-    where Global."Normalize Interval"(Procedures.performed) overlaps IP.period)
+    where NHSNHelpers."Normalize Interval"(Procedures.performed) overlaps NHSNHelpers.ToInterval(IP.period))
   return SharedResource.ProcedureResource(Procedures,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-procedure'}})
 
@@ -250,7 +256,7 @@ define "SDE Specimen":
   [Specimen] Specimens
   where exists(
     "Initial Population" IP
-    where Global."Normalize Interval"(Specimens.collection.collected) overlaps IP.period
+    where NHSNHelpers."Normalize Interval"(Specimens.collection.collected) overlaps NHSNHelpers.ToInterval(IP.period)
   )
   return SharedResource.SpecimenResource(Specimens,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-specimen'}})
@@ -258,7 +264,7 @@ define "SDE Specimen":
 define "SDE Service Request":
   [ServiceRequest] ServiceRequests
   where exists("Initial Population" IP
-    where ServiceRequests.authoredOn during IP.period)
+    where ServiceRequests.authoredOn.value during NHSNHelpers.ToInterval(IP.period))
   return SharedResource.ServiceRequestResource(ServiceRequests,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-servicerequest'}})
 
@@ -281,19 +287,19 @@ define function "GetMedicationFrom"(choice Choice<FHIR.CodeableConcept, FHIR.Ref
 define function "GetMedication"(reference Reference):
   singleton from (
     [Medication] Medications
-    where Medications.id = Global.GetId(reference.reference)
+    where Medications.id.value = NHSNHelpers.GetId(reference.reference.value)
   )
 
 define function "GetCondition"(reference Reference):
   singleton from (
     "Conditions" Conditions
-    where Conditions.id = Global.GetId(reference.reference)
+    where Conditions.id.value = NHSNHelpers.GetId(reference.reference.value)
   )
 
 define function "GetEncounter"(reference Reference):
   singleton from (
     "Encounters" Encounters
-    where Encounters.id = Global.GetId(reference.reference)
+    where Encounters.id.value = NHSNHelpers.GetId(reference.reference.value)
   )
 
 //
@@ -344,7 +350,7 @@ define function DeviceProperty(deviceProperty List<FHIR.Device.Property>):
 define function DeviceResource(device Device, profileURLs List<FHIR.canonical>):
   device d
   return Device{
-    id: FHIR.id{value: 'LCR-' + d.id},
+    id: FHIR.id{value: 'LCR-' + d.id.value},
     meta: SharedResource.MetaElement(d, profileURLs),
     extension: d.extension,
     definition: d.definition,
@@ -377,7 +383,7 @@ define function DeviceResource(device Device, profileURLs List<FHIR.canonical>):
 define function DiagnosticReportResource(diagnosticReport DiagnosticReport, profileURLs List<FHIR.canonical>):
   diagnosticReport d
   return DiagnosticReport{
-    id: FHIR.id{value: 'LCR-' + d.id},
+    id: FHIR.id{value: 'LCR-' + d.id.value},
     meta: SharedResource.MetaElement(d, profileURLs),
     extension: d.extension,
     basedOn: d.basedOn,
@@ -399,7 +405,7 @@ define function DiagnosticReportResource(diagnosticReport DiagnosticReport, prof
 define function EncounterResource(encounter Encounter, profileURLs List<FHIR.canonical>):
   encounter e
   return Encounter{
-    id: FHIR.id{value: 'LCR-' + e.id},
+    id: FHIR.id{value: 'LCR-' + e.id.value},
     meta: SharedResource.MetaElement(e, profileURLs),
     extension: e.extension,
     identifier: SharedResource.EncounterIdentifier(e.identifier),
@@ -425,7 +431,7 @@ define function EncounterResource(encounter Encounter, profileURLs List<FHIR.can
 define function ObservationResource(observation Observation, profileURLs List<FHIR.canonical>):
   observation o
   return Observation{
-    id: FHIR.id {value: 'LCR-' + o.id},
+    id: FHIR.id {value: 'LCR-' + o.id.value},
     meta: SharedResource.MetaElement(o, profileURLs),
     extension: o.extension,
     partOf: o.partOf,
@@ -482,7 +488,7 @@ define function ObservationVitalSignsComponent(component List<FHIR.Observation.C
 define function ObservationVitalSignsResource(observation Observation, profileURLs List<FHIR.canonical>):
   observation o
   return Observation{
-    id: FHIR.id {value: 'LCR-' + o.id},
+    id: FHIR.id {value: 'LCR-' + o.id.value},
     meta: SharedResource.MetaElement(o, profileURLs),
     extension: o.extension,
     partOf: o.partOf,

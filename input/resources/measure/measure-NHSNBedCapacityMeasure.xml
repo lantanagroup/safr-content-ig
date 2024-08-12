@@ -56,7 +56,7 @@
                <valueString value="IsBedLocation"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;IsBedLocation&quot;:&#xa;  Location.physicalType ~ &quot;Bed&quot;"/>
+               <valueString value="define &quot;IsBedLocation&quot;:&#xa;  NHSNHelpers.ToConcept(Location.physicalType) ~ &quot;Bed&quot;"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="0"/>
@@ -70,7 +70,7 @@
                <valueString value="Encounters"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Encounters&quot;:&#xa;  [Encounter]"/>
+               <valueString value="define Encounters:&#xa;  [Encounter]"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="1"/>
@@ -84,7 +84,7 @@
                <valueString value="EncounterCheck"/>
             </extension>
             <extension url="statement">
-               <valueString value="define EncounterCheck:&#xa;  exists(&quot;Encounters&quot; Encounters&#xa;  where exists(LocationMatch(Encounters.location))&#xa;    and Encounters.period overlaps &quot;Measurement Period&quot;)"/>
+               <valueString value="define EncounterCheck:&#xa;  exists(&quot;Encounters&quot; Encounters&#xa;  where exists(LocationMatch(Encounters.location))&#xa;    and NHSNHelpers.ToInterval(Encounters.period) overlaps &quot;Measurement Period&quot;)"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="2"/>
@@ -98,7 +98,7 @@
                <valueString value="LocationIsCHLD"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;LocationIsCHLD&quot;:&#xa;  exists(&#xa;    Location.type types&#xa;    where types ~ &quot;CHLD&quot;&#xa;  )"/>
+               <valueString value="define LocationIsCHLD:&#xa;  exists(&#xa;    Location.type types&#xa;    where NHSNHelpers.ToConcept(types) ~ &quot;CHLD&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="3"/>
@@ -112,7 +112,7 @@
                <valueString value="Peds Total Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Peds Total Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsCHLD&quot;&#xa;  )"/>
+               <valueString value="define &quot;Peds Total Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsCHLD"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="4"/>
@@ -126,7 +126,7 @@
                <valueString value="NoEncounterCheck"/>
             </extension>
             <extension url="statement">
-               <valueString value="define NoEncounterCheck:&#xa;  exists(&quot;Encounters&quot; Encounters&#xa;  where not exists(LocationMatch(Encounters.location))&#xa;    and Encounters.period overlaps &quot;Measurement Period&quot;)"/>
+               <valueString value="define NoEncounterCheck:&#xa;  exists(&quot;Encounters&quot; Encounters&#xa;  where not exists(LocationMatch(Encounters.location))&#xa;    and NHSNHelpers.ToInterval(Encounters.period) overlaps &quot;Measurement Period&quot;)"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="5"/>
@@ -154,7 +154,7 @@
                <valueString value="Peds ED Census Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Peds ED Census Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and exists(&#xa;    [Encounter: &quot;Emergency Department Visit&quot;] EDVisit&#xa;    where exists(LocationMatch(EDVisit.location))&#xa;      and EDVisit.period overlaps &quot;Measurement Period&quot;&#xa;    )&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsCHLD&quot;&#xa;  )"/>
+               <valueString value="define &quot;Peds ED Census Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and exists(&#xa;    [Encounter: &quot;Emergency Department Visit&quot;] EDVisit&#xa;    where exists(LocationMatch(EDVisit.location))&#xa;      and NHSNHelpers.ToInterval(EDVisit.period) overlaps &quot;Measurement Period&quot;&#xa;    )&#xa;  and LocationIsCHLD"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="7"/>
@@ -168,7 +168,7 @@
                <valueString value="LocationIsIPF"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;LocationIsIPF&quot;:&#xa;  exists(&#xa;    Location.type types&#xa;    where types ~ &quot;IPF&quot;&#xa;  )"/>
+               <valueString value="define LocationIsIPF:&#xa;  exists(&#xa;    Location.type types&#xa;    where NHSNHelpers.ToConcept(types) ~ &quot;IPF&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="8"/>
@@ -182,7 +182,7 @@
                <valueString value="LocationIsOTH"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;LocationIsOTH&quot;:&#xa;  exists(&#xa;    Location.type types&#xa;    where types ~ &quot;OTH&quot;&#xa;  )"/>
+               <valueString value="define LocationIsOTH:&#xa;  exists(&#xa;    Location.type types&#xa;    where NHSNHelpers.ToConcept(types) ~ &quot;OTH&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="9"/>
@@ -196,7 +196,7 @@
                <valueString value="Adult PCU Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult PCU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsIPF&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Adult PCU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsIPF&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="10"/>
@@ -210,7 +210,7 @@
                <valueString value="LocationIsHOSP"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;LocationIsHOSP&quot;:&#xa;  exists(&#xa;    Location.type types&#xa;    where types ~ &quot;HOSP&quot;&#xa;  )"/>
+               <valueString value="define LocationIsHOSP:&#xa;  exists(&#xa;    Location.type types&#xa;    where NHSNHelpers.ToConcept(types) ~ &quot;HOSP&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="11"/>
@@ -224,7 +224,7 @@
                <valueString value="Peds ICU Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Peds ICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
+               <valueString value="define &quot;Peds ICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsCHLD"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="12"/>
@@ -238,7 +238,7 @@
                <valueString value="Negative Pressure Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Negative Pressure Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;  )"/>
+               <valueString value="define &quot;Negative Pressure Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="13"/>
@@ -252,7 +252,7 @@
                <valueString value="Adult PCU Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult PCU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsIPF&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Adult PCU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsIPF&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="14"/>
@@ -266,7 +266,7 @@
                <valueString value="Peds PCU Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Peds PCU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Peds PCU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsCHLD&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="15"/>
@@ -280,7 +280,7 @@
                <valueString value="LocationIsIRF"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;LocationIsIRF&quot;:&#xa;  exists(&#xa;    Location.type types&#xa;    where types ~ &quot;IRF&quot;&#xa;  )"/>
+               <valueString value="define LocationIsIRF:&#xa;  exists(&#xa;    Location.type types&#xa;    where NHSNHelpers.ToConcept(types) ~ &quot;IRF&quot;&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="16"/>
@@ -294,7 +294,7 @@
                <valueString value="OB Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;OB Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;OB Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsIRF&#xa;  and LocationIsCHLD&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="17"/>
@@ -308,7 +308,7 @@
                <valueString value="Surge Inactive NonICU Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Surge Inactive NonICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
+               <valueString value="define &quot;Surge Inactive NonICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsCHLD"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="18"/>
@@ -322,7 +322,7 @@
                <valueString value="NICU3 Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;NICU3 Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
+               <valueString value="define &quot;NICU3 Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsCHLD"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="19"/>
@@ -336,7 +336,7 @@
                <valueString value="Peds ICULOC Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Peds ICULOC Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Peds ICULOC Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsCHLD&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="20"/>
@@ -350,7 +350,7 @@
                <valueString value="Surge Inactive Total Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Surge Inactive Total Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Surge Inactive Total Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsCHLD&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="21"/>
@@ -364,7 +364,7 @@
                <valueString value="Peds NonICU Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Peds NonICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsIPF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Peds NonICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsIPF&#xa;  and LocationIsCHLD&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="22"/>
@@ -378,7 +378,7 @@
                <valueString value="Peds MTMS Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Peds MTMS Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Peds MTMS Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsCHLD&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="23"/>
@@ -392,7 +392,7 @@
                <valueString value="Peds NonICU Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Peds NonICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsIPF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Peds NonICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsIPF&#xa;  and LocationIsCHLD&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="24"/>
@@ -406,7 +406,7 @@
                <valueString value="Peds Psych Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Peds Psych Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIPF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Peds Psych Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIPF&#xa;  and LocationIsCHLD&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="25"/>
@@ -420,7 +420,7 @@
                <valueString value="Surge Inactive Total Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Surge Inactive Total Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Surge Inactive Total Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsCHLD&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="26"/>
@@ -434,7 +434,7 @@
                <valueString value="Specialty Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Specialty Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Specialty Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="27"/>
@@ -448,7 +448,7 @@
                <valueString value="Surge Active ICU Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Surge Active ICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Surge Active ICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="28"/>
@@ -462,7 +462,7 @@
                <valueString value="Adult NonICU Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult NonICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Adult NonICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="29"/>
@@ -476,7 +476,7 @@
                <valueString value="Specialty NonCrib Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Specialty NonCrib Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Specialty NonCrib Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="30"/>
@@ -490,7 +490,7 @@
                <valueString value="Peds Psych Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Peds Psych Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIPF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Peds Psych Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIPF&#xa;  and LocationIsCHLD&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="31"/>
@@ -504,7 +504,7 @@
                <valueString value="Rehab Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Rehab Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsIRF&quot;&#xa;  )"/>
+               <valueString value="define &quot;Rehab Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsIRF"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="32"/>
@@ -518,7 +518,7 @@
                <valueString value="Adult MTMS Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult MTMS Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Adult MTMS Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="33"/>
@@ -532,7 +532,7 @@
                <valueString value="NICU3 Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;NICU3 Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
+               <valueString value="define &quot;NICU3 Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsCHLD"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="34"/>
@@ -546,7 +546,7 @@
                <valueString value="Adult Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsIPF&quot;&#xa;  )"/>
+               <valueString value="define &quot;Adult Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsIPF"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="35"/>
@@ -560,7 +560,7 @@
                <valueString value="Burn Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Burn Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Burn Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="36"/>
@@ -574,7 +574,7 @@
                <valueString value="Peds ICU Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Peds ICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
+               <valueString value="define &quot;Peds ICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsCHLD"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="37"/>
@@ -588,7 +588,7 @@
                <valueString value="NICU1 Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;NICU1 Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;NICU1 Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsCHLD&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="38"/>
@@ -602,7 +602,7 @@
                <valueString value="Negative Pressure Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Negative Pressure Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;  )"/>
+               <valueString value="define &quot;Negative Pressure Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="39"/>
@@ -616,7 +616,7 @@
                <valueString value="Adult ICU Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult ICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;  )"/>
+               <valueString value="define &quot;Adult ICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="40"/>
@@ -630,7 +630,7 @@
                <valueString value="NICU4 Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;NICU4 Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;NICU4 Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="41"/>
@@ -644,7 +644,7 @@
                <valueString value="Adult Obs Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult Obs Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Adult Obs Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="42"/>
@@ -658,7 +658,7 @@
                <valueString value="Adult NonICU Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult NonICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Adult NonICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="43"/>
@@ -672,7 +672,7 @@
                <valueString value="Peds Obs Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Peds Obs Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Peds Obs Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsCHLD&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="44"/>
@@ -686,7 +686,7 @@
                <valueString value="NICU Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;NICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;NICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="45"/>
@@ -700,7 +700,7 @@
                <valueString value="NICU Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;NICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;NICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="46"/>
@@ -714,7 +714,7 @@
                <valueString value="Nursery Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Nursery Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
+               <valueString value="define &quot;Nursery Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsIRF&#xa;  and LocationIsCHLD"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="47"/>
@@ -728,7 +728,7 @@
                <valueString value="Adult Psych Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult Psych Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIPF&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Adult Psych Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIPF&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="48"/>
@@ -742,7 +742,7 @@
                <valueString value="Adult ED Admitted Census Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult ED Admitted Census Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and exists(&#xa;    [Encounter: &quot;Emergency Department Visit&quot;] EDVisit&#xa;    where exists(LocationMatch(EDVisit.location))&#xa;      and EDVisit.period overlaps &quot;Measurement Period&quot;&#xa;      and EDVisit.status in {'arrived', 'triaged', 'in-progress'}&#xa;    )&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Adult ED Admitted Census Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and exists(&#xa;    [Encounter: &quot;Emergency Department Visit&quot;] EDVisit&#xa;    where exists(LocationMatch(EDVisit.location))&#xa;      and NHSNHelpers.ToInterval(EDVisit.period) overlaps &quot;Measurement Period&quot;&#xa;      and EDVisit.status.value in {'arrived', 'triaged', 'in-progress'}&#xa;    )&#xa;  and LocationIsHOSP&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="49"/>
@@ -756,7 +756,7 @@
                <valueString value="NICU3Plus Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;NICU3Plus Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
+               <valueString value="define &quot;NICU3Plus Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsCHLD"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="50"/>
@@ -770,7 +770,7 @@
                <valueString value="Surge Active NonICU Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Surge Active NonICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
+               <valueString value="define &quot;Surge Active NonICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsCHLD"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="51"/>
@@ -784,7 +784,7 @@
                <valueString value="Rehab Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Rehab Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsIRF&quot;&#xa;  )"/>
+               <valueString value="define &quot;Rehab Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsIRF"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="52"/>
@@ -798,7 +798,7 @@
                <valueString value="Surge Active Total Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Surge Active Total Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Surge Active Total Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsCHLD&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="53"/>
@@ -812,7 +812,7 @@
                <valueString value="Specialty NonCrib Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Specialty NonCrib Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Specialty NonCrib Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="54"/>
@@ -826,7 +826,7 @@
                <valueString value="Adult ED Census Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult ED Census Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and exists(&#xa;    [Encounter: &quot;Emergency Department Visit&quot;] EDVisit&#xa;    where exists(LocationMatch(EDVisit.location))&#xa;      and EDVisit.period overlaps &quot;Measurement Period&quot;&#xa;    )&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Adult ED Census Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and exists(&#xa;    [Encounter: &quot;Emergency Department Visit&quot;] EDVisit&#xa;    where exists(LocationMatch(EDVisit.location))&#xa;      and NHSNHelpers.ToInterval(EDVisit.period) overlaps &quot;Measurement Period&quot;&#xa;    )&#xa;  and LocationIsHOSP&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="55"/>
@@ -840,7 +840,7 @@
                <valueString value="OB Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;OB Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;OB Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsIRF&#xa;  and LocationIsCHLD&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="56"/>
@@ -854,7 +854,7 @@
                <valueString value="Peds PCU Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Peds PCU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Peds PCU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsCHLD&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="57"/>
@@ -868,7 +868,7 @@
                <valueString value="Peds MTMS Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Peds MTMS Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Peds MTMS Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsCHLD&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="58"/>
@@ -882,7 +882,7 @@
                <valueString value="Total ED Census Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Total ED Census Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and exists(&#xa;    [Encounter: &quot;Emergency Department Visit&quot;] EDVisit&#xa;    where exists(LocationMatch(EDVisit.location))&#xa;      and EDVisit.period overlaps &quot;Measurement Period&quot;&#xa;    )&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Total ED Census Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and exists(&#xa;    [Encounter: &quot;Emergency Department Visit&quot;] EDVisit&#xa;    where exists(LocationMatch(EDVisit.location))&#xa;      and NHSNHelpers.ToInterval(EDVisit.period) overlaps &quot;Measurement Period&quot;&#xa;    )&#xa;  and LocationIsHOSP&#xa;  and LocationIsCHLD&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="59"/>
@@ -896,7 +896,7 @@
                <valueString value="Burn Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Burn Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Burn Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="60"/>
@@ -910,7 +910,7 @@
                <valueString value="Adult ICULOC Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult ICULOC Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIPF&quot;&#xa;  )"/>
+               <valueString value="define &quot;Adult ICULOC Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIPF"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="61"/>
@@ -924,7 +924,7 @@
                <valueString value="Adult Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where LocationIsHOSP&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsIPF&quot;&#xa;  )"/>
+               <valueString value="define &quot;Adult Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsIPF"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="62"/>
@@ -938,7 +938,7 @@
                <valueString value="Specialty Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Specialty Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Specialty Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="63"/>
@@ -952,7 +952,7 @@
                <valueString value="NICU3Plus Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;NICU3Plus Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
+               <valueString value="define &quot;NICU3Plus Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsCHLD"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="64"/>
@@ -966,7 +966,7 @@
                <valueString value="NICU1 Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;NICU1 Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;NICU1 Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsCHLD&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="65"/>
@@ -980,7 +980,7 @@
                <valueString value="Adult Psych Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult Psych Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIPF&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Adult Psych Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIPF&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="66"/>
@@ -994,7 +994,7 @@
                <valueString value="Adult Obs Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult Obs Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Adult Obs Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="67"/>
@@ -1008,7 +1008,7 @@
                <valueString value="Surge Active Total Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Surge Active Total Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Surge Active Total Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsCHLD&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="68"/>
@@ -1022,7 +1022,7 @@
                <valueString value="Surge Active NonICU Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Surge Active NonICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
+               <valueString value="define &quot;Surge Active NonICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsCHLD"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="69"/>
@@ -1036,7 +1036,7 @@
                <valueString value="Surge Inactive NonICU Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Surge Inactive NonICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
+               <valueString value="define &quot;Surge Inactive NonICU Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsCHLD"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="70"/>
@@ -1050,7 +1050,7 @@
                <valueString value="Adult ICU Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult ICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;  )"/>
+               <valueString value="define &quot;Adult ICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="71"/>
@@ -1064,7 +1064,7 @@
                <valueString value="Adult MTMS Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult MTMS Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Adult MTMS Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="72"/>
@@ -1078,7 +1078,7 @@
                <valueString value="Peds Total Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Peds Total Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsCHLD&quot;&#xa;  )"/>
+               <valueString value="define &quot;Peds Total Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsCHLD"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="73"/>
@@ -1092,7 +1092,7 @@
                <valueString value="Total ED Admitted Census Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Total ED Admitted Census Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and exists(&#xa;    [Encounter: &quot;Emergency Department Visit&quot;] EDVisit&#xa;    where exists(LocationMatch(EDVisit.location))&#xa;      and EDVisit.period overlaps &quot;Measurement Period&quot;&#xa;      and EDVisit.status in {'arrived', 'triaged', 'in-progress'}&#xa;    )&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Total ED Admitted Census Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and exists(&#xa;    [Encounter: &quot;Emergency Department Visit&quot;] EDVisit&#xa;    where exists(LocationMatch(EDVisit.location))&#xa;      and NHSNHelpers.ToInterval(EDVisit.period) overlaps &quot;Measurement Period&quot;&#xa;      and EDVisit.status.value in {'arrived', 'triaged', 'in-progress'}&#xa;    )&#xa;  and LocationIsHOSP&#xa;  and LocationIsCHLD&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="74"/>
@@ -1106,7 +1106,7 @@
                <valueString value="Nursery Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Nursery Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
+               <valueString value="define &quot;Nursery Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsIRF&#xa;  and LocationIsCHLD"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="75"/>
@@ -1120,7 +1120,7 @@
                <valueString value="NICU4 Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;NICU4 Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;NICU4 Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="76"/>
@@ -1148,7 +1148,7 @@
                <valueString value="Peds Obs Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Peds Obs Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Peds Obs Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsCHLD&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="78"/>
@@ -1162,7 +1162,7 @@
                <valueString value="Surge Active ICU Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Surge Active ICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Surge Active ICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="79"/>
@@ -1176,7 +1176,7 @@
                <valueString value="Surge Inactive ICU Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Surge Inactive ICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsOTH&quot;&#xa;  )"/>
+               <valueString value="define &quot;Surge Inactive ICU Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsOTH"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="80"/>
@@ -1190,7 +1190,7 @@
                <valueString value="NICU2 Beds Unoccupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;NICU2 Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
+               <valueString value="define &quot;NICU2 Beds Unoccupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and NoEncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsCHLD"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="81"/>
@@ -1204,7 +1204,7 @@
                <valueString value="NICU2 Beds Occupied Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;NICU2 Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsHOSP&quot;&#xa;      and &quot;LocationIsIRF&quot;&#xa;      and &quot;LocationIsCHLD&quot;&#xa;  )"/>
+               <valueString value="define &quot;NICU2 Beds Occupied Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and EncounterCheck&#xa;  and LocationIsHOSP&#xa;  and LocationIsIRF&#xa;  and LocationIsCHLD"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="82"/>
@@ -1218,7 +1218,7 @@
                <valueString value="Peds ED Admitted Census Initial Population"/>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Peds ED Admitted Census Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and exists(&#xa;    [Encounter: &quot;Emergency Department Visit&quot;] EDVisit&#xa;    where exists(LocationMatch(EDVisit.location))&#xa;      and EDVisit.period overlaps &quot;Measurement Period&quot;&#xa;      and EDVisit.status in {'arrived', 'triaged', 'in-progress'}&#xa;    )&#xa;  and exists(&#xa;    Location.type types&#xa;    where &quot;LocationIsCHLD&quot;&#xa;  )"/>
+               <valueString value="define &quot;Peds ED Admitted Census Initial Population&quot;:&#xa;  IsBedLocation&#xa;  and exists(&#xa;    [Encounter: &quot;Emergency Department Visit&quot;] EDVisit&#xa;    where exists(LocationMatch(EDVisit.location))&#xa;      and NHSNHelpers.ToInterval(EDVisit.period) overlaps &quot;Measurement Period&quot;&#xa;      and EDVisit.status.value in {'arrived', 'triaged', 'in-progress'}&#xa;    )&#xa;  and LocationIsCHLD"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="83"/>
@@ -1226,7 +1226,7 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="FHIRHelpers"/>
+               <valueString value="NHSNHelpers"/>
             </extension>
             <extension url="name">
                <valueString value="ToConcept"/>
@@ -1246,7 +1246,7 @@
                <valueString value="LocationMatch"/>
             </extension>
             <extension url="statement">
-               <valueString value="define function LocationMatch(locations List&lt;FHIR.Encounter.Location>):&#xa;  locations l&#xa;  where GetLocation(l.location).id = Location.id"/>
+               <valueString value="define function LocationMatch(locations List&lt;FHIR.Encounter.Location>):&#xa;  locations l&#xa;  where NHSNHelpers.GetLocation(l.location).id.value = Location.id.value"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="85"/>
@@ -1254,13 +1254,13 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNBedCapacityMeasure"/>
+               <valueString value="NHSNHelpers"/>
             </extension>
             <extension url="name">
                <valueString value="GetLocation"/>
             </extension>
             <extension url="statement">
-               <valueString value="define function &quot;GetLocation&quot;(reference Reference ):&#xa;  singleton from (&#xa;    [Location] L where L.id = GetId(reference.reference)&#xa;  )"/>
+               <valueString value="define function &quot;GetLocation&quot;(reference Reference ):&#xa;  singleton from (&#xa;&#x9;[Location] Locations&#xa;&#x9;where Locations.id.value = GetId(reference.reference.value)&#xa;  )"/>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="86"/>
@@ -1268,21 +1268,7 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="FHIRHelpers"/>
-            </extension>
-            <extension url="name">
-               <valueString value="ToString"/>
-            </extension>
-            <extension url="statement">
-               <valueString value="define function ToString(value string): value.value"/>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="87"/>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNBedCapacityMeasure"/>
+               <valueString value="NHSNHelpers"/>
             </extension>
             <extension url="name">
                <valueString value="GetId"/>
@@ -1291,12 +1277,12 @@
                <valueString value="define function &quot;GetId&quot;(uri String ):&#xa;  Last(Split(uri, '/'))"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="88"/>
+               <valueInteger value="87"/>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="FHIRHelpers"/>
+               <valueString value="NHSNHelpers"/>
             </extension>
             <extension url="name">
                <valueString value="ToInterval"/>
@@ -1305,7 +1291,7 @@
                <valueString value="define function ToInterval(period FHIR.Period):&#xa;    if period is null then&#xa;        null&#xa;    else&#xa;        if period.&quot;start&quot; is null then&#xa;            Interval(period.&quot;start&quot;.value, period.&quot;end&quot;.value]&#xa;        else&#xa;            Interval[period.&quot;start&quot;.value, period.&quot;end&quot;.value]"/>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="89"/>
+               <valueInteger value="88"/>
             </extension>
          </extension>
          <name value="EffectiveDataRequirements"/>
@@ -1318,8 +1304,8 @@
          </type>
          <relatedArtifact>
             <type value="depends-on"/>
-            <display value="Library FHIRHelpers"/>
-            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1"/>
+            <display value="Library NHSNHelpers"/>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNHelpers|0.0.001"/>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"/>
@@ -1872,6 +1858,7 @@
             <type value="Location"/>
             <profile value="http://hl7.org/fhir/StructureDefinition/Location"/>
             <mustSupport value="id"/>
+            <mustSupport value="id.value"/>
          </dataRequirement>
          <dataRequirement>
             <type value="Encounter"/>
@@ -1886,6 +1873,7 @@
             <mustSupport value="location"/>
             <mustSupport value="period"/>
             <mustSupport value="status"/>
+            <mustSupport value="status.value"/>
             <codeFilter>
                <path value="type"/>
                <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"/>
@@ -1911,7 +1899,7 @@
    <name value="NHSNBedCapacityMeasure"/>
    <title value="NHSN dQM Bed Capacity"/>
    <experimental value="true"/>
-   <date value="2024-07-15T17:05:32-04:00"/>
+   <date value="2024-08-12T18:13:53-04:00"/>
    <description value="NHSN Bed Capacity Measure includes counts of specific bed types within the context of a given healthcare context or setting."/>
    <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNBedCapacityMeasure"/>
    <scoring>

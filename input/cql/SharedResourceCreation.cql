@@ -1,22 +1,20 @@
-library SharedResourceCreation version '0.1.005'
+library SharedResourceCreation version '0.1.006'
 
 using FHIR version '4.0.1'
 
-include FHIRHelpers version '4.0.1' called FHIRHelpers
-
 define function "GetIdExtensions"(domainResource DomainResource):
   domainResource.extension E
-  where E.url = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'
+  where E.url.value = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'
   return E
 
 define function "GetPatientExtensions"(domainResource DomainResource):
   domainResource.extension E
-  where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
-    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
-    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
-    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity'
-    or E.url = 'http://hl7.org/fhir/StructureDefinition/patient-genderIdentity'
-    or E.url = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'
+  where E.url.value = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
+    or E.url.value = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
+    or E.url.value = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
+    or E.url.value = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity'
+    or E.url.value = 'http://hl7.org/fhir/StructureDefinition/patient-genderIdentity'
+    or E.url.value = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'
   return E
 
 define function "MetaElement"(resource Resource, profileURLs List<FHIR.canonical>):
@@ -48,7 +46,7 @@ define function ConditionEvidence(evidence List<FHIR.Condition.Evidence>):
 define function ConditionResource(condition Condition, profileURLs List<FHIR.canonical>):
   condition c
   return Condition{
-    id: FHIR.id {value: 'LCR-' + c.id},
+    id: FHIR.id {value: 'LCR-' + c.id.value},
     meta: MetaElement(c, profileURLs),
     extension: c.extension,
     clinicalStatus: c.clinicalStatus,
@@ -77,7 +75,7 @@ define function CoverageClass(class List<FHIR.Coverage.Class>):
 define function CoverageResource(coverage Coverage, profileURLs List<FHIR.canonical>):
   coverage c
   return Coverage{
-    id: FHIR.id{value: 'LCR-' + c.id},
+    id: FHIR.id{value: 'LCR-' + c.id.value},
     meta: MetaElement(c, profileURLs),
     extension: c.extension,
     status: c.status,
@@ -116,7 +114,7 @@ define function DiagnosticReportCategory(category List<CodeableConcept>):
 define function DiagnosticReportLabResource(diagnosticReport DiagnosticReport, profileURLs List<FHIR.canonical>):
   diagnosticReport d
   return DiagnosticReport{
-    id: FHIR.id{value: 'LCR-' + d.id},
+    id: FHIR.id{value: 'LCR-' + d.id.value},
     meta: MetaElement(d, profileURLs),
     extension: d.extension,
     basedOn: d.basedOn,
@@ -201,7 +199,7 @@ define function EncounterLocation(location List<FHIR.Encounter.Location>):
 define function EncounterResource(encounter Encounter, profileURLs List<FHIR.canonical>):
   encounter e
   return Encounter{
-    id: FHIR.id{value: 'LCR-' + e.id},
+    id: FHIR.id{value: 'LCR-' + e.id.value},
     meta: MetaElement(e, profileURLs),
     extension: e.extension,
     identifier: EncounterIdentifier(e.identifier),
@@ -268,7 +266,7 @@ define function ObservationComponent(component List<FHIR.Observation.Component>)
 define function ObservationLabResource(observation Observation, profileURLs List<FHIR.canonical>):
   observation o
   return Observation{
-    id: FHIR.id {value: 'LCR-' + o.id},
+    id: FHIR.id {value: 'LCR-' + o.id.value},
     meta: MetaElement(o, profileURLs),
     extension: o.extension,
     basedOn: o.basedOn,
@@ -331,7 +329,7 @@ define function LocationHoursOfOperation(hoursOfOperation List<FHIR.Location.Hou
 define function LocationResource(location Location, profileURLs List<FHIR.canonical>):
   location l
   return Location{
-    id: FHIR.id {value: 'LCR-' + l.id},
+    id: FHIR.id {value: 'LCR-' + l.id.value},
     meta: MetaElement(l, profileURLs),
     extension: l.extension,
     status: l.status,
@@ -369,7 +367,7 @@ define function MedicationBatch(batch FHIR.Medication.Batch):
 define function MedicationResource(medication Medication, profileURLs List<FHIR.canonical>):
   medication m
   return Medication{
-    id: FHIR.id {value: 'LCR-' + m.id},
+    id: FHIR.id {value: 'LCR-' + m.id.value},
     meta: MetaElement(m, profileURLs),
     extension: m.extension,
     code: m.code,
@@ -402,7 +400,7 @@ define function MedicationAdministrationDosage(dosage FHIR.MedicationAdministrat
 define function MedicationAdministrationResource(medicationAdministration MedicationAdministration, profileURLs List<FHIR.canonical>):
   medicationAdministration m
   return MedicationAdministration{
-    id: FHIR.id {value: 'LCR-' + m.id},
+    id: FHIR.id {value: 'LCR-' + m.id.value},
     meta: MetaElement(m, profileURLs),
     extension: m.extension,
     instantiates: m.instantiates,
@@ -449,7 +447,7 @@ define function MedicationRequestDosageInstruction(dosageInstruction List<FHIR.D
 define function MedicationRequestResource(medicationRequest MedicationRequest, profileURLs List<FHIR.canonical>):
   medicationRequest m
   return MedicationRequest{
-    id: FHIR.id {value: 'LCR-' + m.id},
+    id: FHIR.id {value: 'LCR-' + m.id.value},
     meta: MetaElement(medicationRequest, profileURLs),
     extension: m.extension,
     status: m.status,
@@ -564,7 +562,7 @@ define function PatientLink(link List<FHIR.Patient.Link>):
 define function PatientResource(patient Patient, profileURLs List<FHIR.canonical>):
   patient p
   return Patient{
-    id: FHIR.id{value: 'LCR-' + p.id},
+    id: FHIR.id{value: 'LCR-' + p.id.value},
     meta: MetaElement(p, profileURLs),
     extension: GetPatientExtensions(p) union GetIdExtensions(p),
     identifier: p.identifier,
@@ -603,7 +601,7 @@ define function ProcedureFocalDevice(device List<FHIR.Procedure.FocalDevice>):
 define function ProcedureResource(procedure Procedure, profileURLs List<FHIR.canonical>):
   procedure p
   return Procedure{
-    id: FHIR.id {value: 'LCR-' + p.id},
+    id: FHIR.id {value: 'LCR-' + p.id.value},
     meta: MetaElement(p, profileURLs),
     extension: p.extension,
     instantiatesCanonical: p.instantiatesCanonical,
@@ -638,7 +636,7 @@ define function ProcedureResource(procedure Procedure, profileURLs List<FHIR.can
 define function ServiceRequestResource(serviceRequest ServiceRequest, profileURLs List<FHIR.canonical>):
   serviceRequest sR
   return ServiceRequest{
-    id: FHIR.id {value: 'LCR-' + sR.id},
+    id: FHIR.id {value: 'LCR-' + sR.id.value},
     meta: MetaElement(sR, profileURLs),
     extension: sR.extension,
     instantiatesCanonical: sR.instantiatesCanonical,
@@ -709,7 +707,7 @@ define function SpecimenContainer(container List<FHIR.Specimen.Container>):
 define function SpecimenResource(specimen Specimen, profileURLs List<FHIR.canonical>):
   specimen s
   return Specimen{
-    id: FHIR.id {value: 'LCR-' + s.id},
+    id: FHIR.id {value: 'LCR-' + s.id.value},
     meta: MetaElement(s, profileURLs),
     extension: s.extension,
     identifier: s.identifier,
