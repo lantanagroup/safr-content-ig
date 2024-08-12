@@ -1,78 +1,135 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R5/fhir-single.xsd">
   <!-- The spaces between the open and close "a" tag are mandatory.  (Cuz HTML renderers are dumb...) -->
-  <a name="scope"></a>
-  <h3>Scope</h3>
-  <p>
-    This content describes the specifications for the for the Health Level Seven International® (HL7) Fast Healthcare Interoperability 
-    Resources® (FHIR) digital quality measures (dQMs) reported to the National Healthcare Safety Network (NHSN). The specifications are 
-    based on HL7 FHIR Release 4 (R4)<sup><a href="#fhir_r4">1</a></sup>, US Core 3.1.1 profiles<sup><a href="#us_core">2</a></sup>, 
-    QI Core 4.1.1 profiles<sup><a href="#qi_core">3</a></sup>, Quality Measure IG 3.0.0 profiles<sup><a href="#cqf_measures">4</a></sup>,
-    Clinical Quality Framework Common FHIR Assets 4.0.1 profiles<sup><a href="#cqf_common">5</a></sup>, Data Exchange for Quality Measures (DEQM) 3.1.0 profiles<sup><a href="#deqm">6</a></sup>, 
-    and NHSN reporting requirements.
-    </p>
+  <a name="overview"></a>
+  <h3>Overview</h3>
+  <p>The content of the CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) implementation guide (IG) outlines the standards for electronically submitting surveillance data for the Acute Care Hospital (ACH), Respiratory Pathogens Surveillance (RPS), and the automated bed-capacity data-collection dQMs to NHSN. This IG complies with the NHSN dQM Reporting Implementation Guide, published by Health Level Seven International (HL7®) International for general requirements for submissions to NHSN. </p>
+  <p>The specifications in this IG define the standards for reporting the initial population that NHSN needs to calculate NHSN dQMs for ACH, RPS, and the automated bed-capacity data-collection. These specifications will be updated when NHSN requirements change.  </p>
+  <p>This IG does not define how to operationalize calculation of a specific NHSN measure or event of interest. </p>
   <a name="purpose"></a>
   <h3>Purpose</h3>
   <p>
-    These specifications define the data content requirements for submissions to NHSN through NHSNLink.
-  </p>
-  <a name="description"></a>
-  <h3>Description</h3>
+    These specifications define the data content requirements for submissions for the ACH, and RPS dQMs to NHSN through NHSNLink. These specifications also define the data content requirements for submissions for the automated bed-capacity data-collection dQM to NHSN directly from a facility or through an external dQM-evaluation engine.</p>
+  <a name="relationship-to-other-standards"></a>
+  <h3>Relationships to Other Standards</h3>
   <p>
-    These specifications are for the content contained within the encounters identified as meeting 
-    the criteria for the dQM Initial Population. The dQM Initial Population defines the cohort population from 
-    which NHSN analysts determine the denominator and calculate events per the metrics defined 
-    in each NHSN protocol. The Initial Population can vary between dQMs and may include all 
-    inpatient, emergency department, and observation encounters. NHSNLink (or other compiling 
-    system) gathers the line-level data for calculating the NHSN metrics along with data needed 
-    for stratification, risk adjustment, or benchmarking once the encounter meets the criteria for 
-    the Initial Population. 
+    This IG has the following dependencies:
+    <ol>
+      <li><a name="nhsn_dqm_reporting">HL7 FHIR NHSN dQM Reporting, Edition 1</a>: <a href="https://build.fhir.org/ig/HL7/nhsn-dqm/artifacts.html">https://build.fhir.org/ig/HL7/nhsn-dqm/artifacts.html</a></li>
+      <li><a name="fhir_r4">HL7 FHIR Release 4</a>: <a href="https://hl7.org/fhir/R4/">https://hl7.org/fhir/R4/</a></li>
+      <li><a name="us_core">US Core 3.1.1</a>: <a href="http://hl7.org/fhir/us/core/STU3.1.1/">http://hl7.org/fhir/us/core/STU3.1.1/</a></li>
+      <li><a name="qi_core">QI Core 4.1.1</a>: <a href="http://hl7.org/fhir/us/qicore/STU4.1.1/">http://hl7.org/fhir/us/qicore/STU4.1.1/</a></li>
+      <li><a name="cqf_measures">Quality Measure IG 3.0.0</a>: <a href="http://hl7.org/fhir/us/cqfmeasures/STU3/">http://hl7.org/fhir/us/cqfmeasures/STU3/</a></li>
+      <li><a name="cqf_common">Clinical Quality Framework Common FHIR Assets 4.0.1</a>: <a href="http://fhir.org/guides/cqf/common/4.0.1/">http://fhir.org/guides/cqf/common/4.0.1/</a></li>
+      <li><a name="deqm">Data Exchange for Quality Measures (DEQM) 3.1.0</a>: <a href="http://hl7.org/fhir/us/davinci-deqm/STU3.1/">http://hl7.org/fhir/us/davinci-deqm/STU3.1/</a></li>
+      <li><a name="saner">Situational Awareness for Novel Epidemic Response (SANER) 1.0.0</a>: <a href="http://hl7.org/fhir/uv/saner/">http://hl7.org/fhir/uv/saner/</a></li>
+    </ol>
   </p>
-  <h3>References</h3>
-  <ol>
-    <li><a name="fhir_r4" class="named">HL7 FHIR Release 4</a>: <a href="https://hl7.org/fhir/R4/">https://hl7.org/fhir/R4/</a></li>
-    <li><a name="us_core" class="named">US Core 3.1.1</a>: <a href="http://hl7.org/fhir/us/core/STU3.1.1/">http://hl7.org/fhir/us/core/STU3.1.1/</a></li>
-    <li><a name="qi_core" class="named">QI Core 4.1.1</a>: <a href="http://hl7.org/fhir/us/qicore/STU4.1.1/">http://hl7.org/fhir/us/qicore/STU4.1.1/</a></li>
-    <li><a name="cqf_measures" class="named">Quality Measure IG 3.0.0</a>: <a href="http://hl7.org/fhir/us/cqfmeasures/STU3/">http://hl7.org/fhir/us/cqfmeasures/STU3/</a></li>
-    <li><a name="cqf_common" class="named">Clinical Quality Framework Common FHIR Assets 4.0.1</a>: <a href="http://fhir.org/guides/cqf/common/4.0.1/">http://fhir.org/guides/cqf/common/4.0.1/</a></li>
-    <li><a name="deqm" class="named">Data Exchange for Quality Measures (DEQM) 3.1.0</a>: <a href="http://hl7.org/fhir/us/davinci-deqm/STU3.1/">http://hl7.org/fhir/us/davinci-deqm/STU3.1/</a></li>
-  </ol>
-  <!-- Previous Hypoglycemia landing page saved for potential future use for the Hypo measure page
-  <a name="scope"></a>
-  <h3>Scope</h3>
+  <a name="audience"></a>
+  <h3>Audience</h3>
   <p>
-    This document represents the content for the Fast Healthcare Interoperability Resources (FHIR) specifications for the initial population measure that informs 
-    CDC's NHSN Glycemic Control, Hypoglycemia module (1). This page is under construction and is in draft format.</p>
-  <a name="purpose"></a>
-  <h3>Purpose</h3>
-  <p>
-    The specification described here is for the initial population DQM. The initial population dQM provides the necessary Fast Healthcare Interoperability Resources (FHIR) line-level 
-    data necessary for calculating CDC's NHSN Glycemic Control, Hypoglycemia module metrics (1). The initial population measure is defined as all inpatient encounters, as well as emergency 
-    department (ED) and Observation (OBS) encounters that end within 1 hour of the start of the inpatient encounter, for patients of all ages where at least one antidiabetic 
-    drug (ADD) was ordered or administered during the encounter that is during the performance period. 
+    The audience for this work is all developers who want to enable their software systems to report surveillance data to the NHSN via FHIR dQMs.
   </p>
-  <a name="background"></a>
-  <h3>Background</h3>
+  <a name="acknowledgements"></a>
+  <h3>Acknowledgements</h3>
   <p>
-    The NHSN Glycemic Control, Hypoglycemia module provides a mechanism for facilities to report inpatient medication-related hypoglycemia events, and to provide analytic 
-    reports based on these data to inform glycemic control quality improvement efforts and patient safety events. The primary objective of the NHSN Glycemic Control, 
-    Hypoglycemia module is to facilitate measurement and benchmarking of medication-related hypoglycemia events within a facility. As additional data are collected by NHSN, 
-    an additional objective will be to facilitate inter-facility benchmarking and evaluate national-level trends of medication-related hypoglycemia over time. The initial population dQM 
-    provides the FHIR line-level data necessary for calculating the module metrics.   
+    Lantana Consulting Group produced and developed the content in this IG under contract to the Division of Healthcare Quality Promotion (DHQP) in the National Center for Emerging and Zoonotic Infectious Diseases (NCEZID) at the Centers for Disease Control and Prevention (CDC).
+    <table class="spec-table" id="acknowledgements_table">
+      <tr>
+        <td>Primary Editor</td>
+        <td>Rick Geimer</td>
+        <td>Lantana Consulting Group</td>
+        <td>rick.geimer@lantanagroup.com</td>
+      </tr>
+      <tr>
+        <td>Primary Editor</td>
+        <td>Corey Spears</td>
+        <td>Lantana Consulting Group</td>
+        <td>corey.spears@lantanagroup.com</td>
+      </tr>
+      <tr>
+        <td>Co-Editor</td>
+        <td>Andrea Benin</td>
+        <td>Chief, Surveillance Branch, DHQP, CDC</td>
+        <td>aqb4@cdc.gov</td>
+      </tr>
+      <tr>
+        <td>Co-Editor</td>
+        <td>Kristina Betz</td>
+        <td>NHSN Measure Development and Validation Unit Lead, CDC</td>
+        <td>rly7@cdc.gov</td>
+      </tr>
+      <tr>
+        <td>Co-Editor</td>
+        <td>Amrit Kerr</td>
+        <td>Project Manager, Lantana Consulting Group</td>
+        <td>amrit.kerr@lantanangroup.com</td>
+      </tr>
+      <tr>
+        <td>Co-Editor</td>
+        <td>Sheila Abner</td>
+        <td>CDC</td>
+        <td>sha8@cdc.gov</td>
+      </tr>
+      <tr>
+        <td>Co-Editor</td>
+        <td>Nadine Shehab</td>
+        <td>Lantana Consulting Group</td>
+        <td>ftn0@cdc.gov</td>
+      </tr>
+      <tr>
+        <td>Co-Editor</td>
+        <td>Jennifer Watkins</td>
+        <td>CACI</td>
+        <td>nub7@cdc.gov</td>
+      </tr>
+      <tr>
+        <td>Co-Editor</td>
+        <td>Raymond Dantes/td>
+          <td>CDC</td>
+          <td>vic5@cdc.gov</td>
+      </tr>
+      <tr>
+        <td>Co-Editor</td>
+        <td>David deRoode</td>
+        <td>Lantana Consulting Group</td>
+        <td>david.deroode@lantanagroup.com</td>
+      </tr>
+      <tr>
+        <td>Co-Editor</td>
+        <td>Zabrina Gonzaga</td>
+        <td>Lantana Consulting Group</td>
+        <td>zabrina.gonzaga@lantanagroup.com</td>
+      </tr>
+      <tr>
+        <td>Co-Editor</td>
+        <td>Sean McIlvenna</td>
+        <td>Lantana Consulting Group</td>
+        <td>sean.mcilvenna@lantanagroup.com</td>
+      </tr>
+      <tr>
+        <td>Co-Editor</td>
+        <td>Aaron Nusstein</td>
+        <td>FHIR Analyst, Lantana Consulting Group</td>
+        <td>aaron.nusstein@lantanangroup.com</td>
+      </tr>
+      <tr>
+        <td>Co-Editor</td>
+        <td>Lynn Perrine</td>
+        <td>Quality Measurement Manager, Lantana Consulting Group</td>
+        <td>lynn.perrine@lantanangroup.com</td>
+      </tr>
+      <tr>
+        <td>Co-Editor</td>
+        <td>Kim Figueroa</td>
+        <td>Clinical Analyst, Lantana Consulting Group</td>
+        <td>kim.figueroa@lantanangroup.com</td>
+      </tr>
+      <tr>
+        <td>Co-Editor</td>
+        <td>Mary-Margaret Richter</td>
+        <td>Clinical Analyst, Lantana Consulting Group</td>
+        <td>mm.richter@lantanangroup.com</td>
+      </tr>
+    </table>
   </p>
-  <a name="settings_and_patient_locations"></a>
-  <h3>Settings and Patient Locations</h3>
-  <p>
-    The initial population dQM provides the FHIR line-level data necessary for the NHSN Glycemic Control, Hypoglycemia module. This is for all patients ordered or administered ADDs from 
-    all inpatient locations for inpatient facilities enrolled in NHSN and using the Medication Safety Component, except for long-term care facilities (LTCFs) and outpatient 
-    dialysis facilities. ED and OBS encounters are also collected if they end within an hour of the inpatient admission (hospitalization). All participating facilities must 
-    have the ability to report data electronically to NHSN using the required HL7 FHIR specifications (2).  
-  </p>
-  <a name="references"></a>
-  <h3>References</h3>
-  <ol>
-    <li>[placeholder for future site of Hypoglycemia protocol on NHSN website]</li>
-    <li>Health Level Seven International. HL7 FHIR Release 4. Available at: <a href="https://hl7.org/FHIR/">https://hl7.org/FHIR/</a></li>
-
-  </ol>
--->
 </div>
