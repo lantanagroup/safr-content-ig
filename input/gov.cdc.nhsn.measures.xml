@@ -852,10 +852,13 @@
 
 
         <page>
-            <!-- The root will always be toc.html - the template will force it if you don't do it -->
-            <nameUrl value="toc.html"/>
-            <title value="Table of Contents"/>
-            <generation value="html"/>
+			<!--
+			<page>
+				<nameUrl value="toc.html"/>
+				<title value="Table of Contents"/>
+				<generation value="html"/>
+			</page>
+			-->
             <page>
                 <nameUrl value="index.html"/>
                 <title value="NHSN Measures"/>
@@ -933,10 +936,12 @@
       <value value="input/cql"/>
     </parameter>
     -->
+		<!--
         <parameter>
             <code value="path-liquid"/>
             <value value="templates/liquid"/>
         </parameter>
+		-->
         <parameter>
             <code value="path-suppressed-warnings"/>
             <value value="input/ignoreWarnings.txt"/>
