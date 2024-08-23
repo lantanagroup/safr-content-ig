@@ -1252,7 +1252,7 @@
                     {
                         "type": "depends-on",
                         "display": "Library FHIRHelpers",
-                        "resource": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1"
+                        "resource": "http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"
                     },
                     {
                         "type": "depends-on",
@@ -1602,7 +1602,7 @@
                     {
                         "type": "depends-on",
                         "display": "Library FHIRHelpers",
-                        "resource": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1"
+                        "resource": "http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"
                     },
                     {
                         "type": "depends-on",
@@ -2307,7 +2307,7 @@
                             {
                                 "type": "depends-on",
                                 "display": "Library FHIRHelpers",
-                                "resource": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1"
+                                "resource": "http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"
                             },
                             {
                                 "type": "depends-on",
@@ -9960,7 +9960,7 @@
                     {
                         "type": "depends-on",
                         "display": "Library FHIRHelpers",
-                        "resource": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1"
+                        "resource": "http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"
                     }
                 ],
                 "content": [
@@ -9987,7 +9987,7 @@
             "resource": {
                 "resourceType": "Library",
                 "id": "FHIRHelpers",
-                "url": "http://hl7.org/fhir/Library/FHIRHelpers",
+                "url": "http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1",
                 "version": "4.0.1",
                 "name": "FHIRHelpers",
                 "type": {
@@ -10049,7 +10049,7 @@
                     {
                         "type": "depends-on",
                         "display": "Library FHIRHelpers",
-                        "resource": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1"
+                        "resource": "http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"
                     },
                     {
                         "type": "depends-on",

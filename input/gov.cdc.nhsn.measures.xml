@@ -309,22 +309,7 @@
         </resource>
         -->
 
-        <resource>
-            <reference>
-                <reference value="Library/FHIRCommon"/>
-            </reference>
-            <name value="FHIR Common"/>
-            <description value="This library defines terminologies and functions commonly used in FHIR-based CQL artifacts."/>
-            <groupingId value="ext-libs"/>
-        </resource>
-        <resource>
-            <reference>
-                <reference value="Library/FHIRHelpers"/>
-            </reference>
-            <name value="FHIR Helpers"/>
-            <description value="This library defines functions to convert between FHIR data types and CQL system-defined types, as well as functions to support FHIRPath implementation. For more information, the FHIRHelpers wiki page: https://github.com/cqframework/clinical_quality_language/wiki/FHIRHelpers"/>
-            <groupingId value="ext-libs"/>
-        </resource>
+
         <resource>
             <reference>
                 <reference value="Library/MATGlobalCommonFunctionsFHIR4"/>
