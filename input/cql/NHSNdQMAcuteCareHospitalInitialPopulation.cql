@@ -29,6 +29,7 @@ code "survey": 'survey' from "Observation Category" display 'Survey'
 //code for Condition category
 code "problem-list-item": 'problem-list-item' from "Condition Category" display 'Problem List Item'
 code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display 'Encounter Diagnosis'
+code "health-concern": 'health-concern' from "Condition Category" display 'Health Concern'
 
 //code for Diagnostic Report Category
 code "LAB": 'LAB' from "V2-0074" display 'Laboratory'
@@ -118,7 +119,8 @@ define "SDE Condition":
         or GetEncounter(Conditions.encounter).id.value = IP.id.value
       )
       and exists (Conditions.category categories
-        where NHSNHelpers.ToConcept(categories) ~ "encounter-diagnosis")
+        where NHSNHelpers.ToConcept(categories) ~ "encounter-diagnosis"
+          or NHSNHelpers.ToConcept(categories) ~ "health-concern")
     )
   )
   return SharedResource.ConditionResource(Conditions,
