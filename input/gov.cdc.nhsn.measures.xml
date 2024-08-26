@@ -97,9 +97,9 @@
         <grouping id="libs">
             <name value="Knowledge Artifacts: Libraries"/>
         </grouping>
-        <grouping id="ext-libs">
+        <!--<grouping id="ext-libs">
             <name value="Knowledge Artifacts: External Libraries"/>
-        </grouping>
+        </grouping>-->
         <grouping id="extensions">
             <name value="Extensions"/>
         </grouping>
@@ -303,7 +303,7 @@
             <groupingId value="libs"/>
         </resource>
 
-
+        <!-- 
         <resource>
             <reference>
                 <reference value="Library/FHIRCommon"/>
@@ -336,7 +336,7 @@
             <description value="This measure illustrates using supplemental data elements to gather additional information about a population."/>
             <groupingId value="ext-libs"/>
         </resource>
-
+        -->
 
         <resource>
             <reference>
