@@ -8,8 +8,8 @@ Usage: #example
 * identifier.value = "123456789-pass1"
 * extension[0].url = "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-measureScoring"
 * extension[=].valueCodeableConcept = $measure-scoring#cohort
-* extension[+].url = "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.population.description"
-* extension[=].valueString = "The RPS Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."
+//* extension[+].url = "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.population.description"
+//* extension[=].valueString = "The RPS Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."
 * extension[+].url = "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference"
 * extension[=].valueReference.extension.url = "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference"
 * extension[=].valueReference.extension.valueString = "sde-minimal-patient"
@@ -29,7 +29,7 @@ Usage: #example
 * extension[+].url = "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference"
 * extension[=].valueReference.extension.url = "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference"
 * extension[=].valueReference.extension.valueString = "sde-condition"
-* extension[=].valueReference = Reference(condition-example-rps-negativepcr)
+* extension[=].valueReference = Reference(condition-example-diagnosis-rps-negativepcr)
 * extension[+].url = "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference"
 * extension[=].valueReference.extension.url = "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference"
 * extension[=].valueReference.extension.valueString = "sde-medication-administration"
@@ -77,8 +77,8 @@ Usage: #example
 * improvementNotation = $measure-improvement-notation#increase
 //* group.measureScore.extension.url = "http://hl7.org/fhir/StructureDefinition/data-absent-reason"
 //* group.measureScore.extension.valueCode = #unknown
-* group.population.extension.url = "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.population.description"
-* group.population.extension.valueString = "All inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."
+//* group.population.extension.url = "http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.population.description"
+//* group.population.extension.valueString = "All inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."
 * group.population.code = $measure-population#initial-population "Initial Population"
 * group.population.count = 1
 * evaluatedResource[0] = Reference(patient-example-rps-negativepcr)

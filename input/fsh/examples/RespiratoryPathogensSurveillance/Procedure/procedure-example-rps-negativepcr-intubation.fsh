@@ -10,6 +10,6 @@ Usage: #example
 * code = $sct#447996002 "Intubation of respiratory tract (procedure)"
 * subject = Reference(patient-example-rps-negativepcr)
 * subject.display = "RPS NegativePCR"
-* encounter = Reference(encounter-example-rps-negativepcr)
+* encounter = Reference(encounter-example-rps-negativepcr-1)
 * encounter.display = "Hospital Admission"
 * performedDateTime = "2023-01-02T15:30:00Z"

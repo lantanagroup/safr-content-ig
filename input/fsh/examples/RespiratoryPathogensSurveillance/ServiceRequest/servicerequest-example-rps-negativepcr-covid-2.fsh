@@ -17,7 +17,7 @@ Usage: #example
 * quantityQuantity.value = 1
 * subject = Reference(patient-example-rps-negativepcr)
 * subject.display = "RPS NegativePCR"
-* encounter = Reference(encounter-example-rps-negativepcr)
+* encounter = Reference(encounter-example-rps-negativepcr-1)
 * encounter.display = "Hospital Admission"
 * occurrenceTiming.event = "2024-02-02T17:22:00-05:00"
 * occurrenceTiming.repeat.count = 1

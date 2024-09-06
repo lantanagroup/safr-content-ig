@@ -13,7 +13,7 @@ Usage: #example
 * entry[=].resource = device-example-submitting-device
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/List/list-example-rps-patients-of-interest"
 * entry[=].resource = list-example-rps-patients-of-interest
-* entry[+].fullUrl = "http://nhsnlink.org/fhir/MeasureReport/measurereport-example-rps-subjectlist1"
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/MeasureReport/measurereport-example-rps-subjectlist"
 * entry[=].resource = measurereport-example-rps-subjectlist
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/MeasureReport/measurereport-example-rps-initialpopulationpass"
 * entry[=].resource = measurereport-example-rps-initialpopulationpass
@@ -101,11 +101,11 @@ Usage: #example
 * entry[=].resource = medicationrequest-example-rps-rsvlabbtg-1
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/MedicationAdministration/medicationadministration-example-rps-rsvlabbtg-2"
 * entry[=].resource = medicationadministration-example-rps-rsvlabbtg-2
-* entry[+].fullUrl = "http://nhsnlink.org/fhir/MedicationRequest/medicationrequest-example-rps-rsvlabbtg"
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/MedicationRequest/medicationrequest-example-rps-rsvlabbtg-2"
 * entry[=].resource = medicationrequest-example-rps-rsvlabbtg-2
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Observation/lab-observation-example-rps-rsvlabbtg"
 * entry[=].resource = lab-observation-example-rps-rsvlabbtg
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/ServiceRequest/servicerequest-example-rps-rsvlabbtg-rsv"
 * entry[=].resource = servicerequest-example-rps-rsvlabbtg-rsv
-* entry[+].fullUrl = "http://nhsnlink.org/fhir/Immunization/specimen-example-rps-rsvlabbtg"
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Specimen/specimen-example-rps-rsvlabbtg"
 * entry[=].resource = specimen-example-rps-rsvlabbtg

@@ -10,7 +10,7 @@ Usage: #example
 * code.text = "Nasopharyngeal swab"
 * subject = Reference(patient-example-rps-initialpopulationpass)
 * subject.display = "Pass2 ACH"
-* encounter = Reference(encounter-example-rps-initialpopulationpass)
+* encounter = Reference(encounter-example-rps-initialpopulationpass-1)
 * encounter.display = "Hospital Admission"
 * conclusionCode = $sct#840539006 "Disease caused by severe acute respiratory syndrome coronavirus 2 (disorder)"
 * effectiveDateTime = "2024-02-01T23:14:00-05:00"

@@ -6,8 +6,8 @@ Usage: #example
 * status = #final
 * category = $observation-category#laboratory "Laboratory"
 * category.text = "Laboratory"
-* code = $loinc#95209-3 "SARS-CoV+SARS-CoV-2 (COVID-19) Ag [Presence] in Respiratory specimen by Rapid immunoassay"
-* code.text = "SARS-CoV+SARS-CoV-2 Ag Resp Ql IA.rapid"
+* code = $loinc#94307-6 "SARS-CoV-2 (COVID-19) N gene [Presence] in Specimen by Nucleic acid amplification using CDC primer-probe set N1"
+* code.text = "SARS-CoV-2 (COVID-19) N gene NAA+probe CDC primer-probe set N1 Ql (Specimen)"
 * subject.reference = "Patient/patient-example-rps-negativepcr"
 * subject.display = "RPS, NegativePCR"
 * encounter.reference = "Encounter/encounter-example-rps-negativepcr-1"
