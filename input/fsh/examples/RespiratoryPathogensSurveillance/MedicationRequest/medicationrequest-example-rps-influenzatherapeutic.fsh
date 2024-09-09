@@ -1,7 +1,7 @@
 Instance: medicationrequest-example-rps-influenzatherapeutic
 InstanceOf: RespiratoryPathogensSurveillanceEventMedicationRequest
-Title: "Medication Request - RPS Medication Request Example Influenza Therapeudic"
-Description: "Medication Request - Example RPS Medication Request Influenza Therapeudic"
+Title: "Medication Request - RPS Medication Request Example Influenza Therapeutic"
+Description: "Medication Request - Example RPS Medication Request Influenza Therapeutic"
 Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"

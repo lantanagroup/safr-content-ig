@@ -40,12 +40,12 @@ Usage: #example
 * extension[=].valueReference = Reference(immunization-example-rps-influenzatherapeutic)
 * status = #complete
 * type = #individual
-* measure = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNdQMAcuteCareHospitalInitialPopulation|1.0.0-cibuild"
-* subject = Reference(patient-example-rps-initialpopulationpass)
-* date = "2024-02-05T21:04:29.481+00:00"
+* measure = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNdQMRespiratoryPathogensSurveillanceInitialPopulation|1.0.0-cibuild"
+* subject = Reference(patient-example-rps-influenzatherapeutic)
+* date = "2024-01-06T00:04:29.481+00:00"
 * reporter = Reference(organization-example-submitting-organization)
 * period.start = "2024-01-05T00:00:00.000+00:00"
-* period.end = "2024-02-04T00:00:00.000+00:00"
+* period.end = "2024-01-06T00:00:00.000+00:00"
 * improvementNotation = $measure-improvement-notation#increase
 //* group.measureScore.extension.url = "http://hl7.org/fhir/StructureDefinition/data-absent-reason"
 //* group.measureScore.extension.valueCode = #unknown

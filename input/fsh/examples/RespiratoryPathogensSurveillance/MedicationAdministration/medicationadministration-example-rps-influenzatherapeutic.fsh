@@ -1,7 +1,7 @@
 Instance: medicationadministration-example-rps-influenzatherapeutic
 InstanceOf: RespiratoryPathogensSurveillanceEventMedicationAdministration
-Title: "Medication Administration - RPS Medication Administration Example Influenza Therapeudic"
-Description: "Medication Administration - Example RPS Medication Administration Influenza Therapeudic"
+Title: "Medication Administration - RPS Medication Administration Example Influenza Therapeutic"
+Description: "Medication Administration - Example RPS Medication Administration Influenza Therapeutic"
 Usage: #example
 * status = #completed
 * medicationReference.extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"
