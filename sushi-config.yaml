@@ -80,7 +80,7 @@ parameters:
 menu:
   IG Home: index.html
   Table of Contents: toc.html
-  Use Cases: use_cases.html
+  Actors and Use Cases: use_cases.html
   Specification: specification.html
   Artifact Index: artifact-listing.html
   Downloads: downloads.html
@@ -100,7 +100,7 @@ pages:
   index.xml:
     title: NHSN Measures Home
   use_cases.md:
-    title: Use Cases
+    title: Actors and Use Cases
   specification.md:
     title: Specification
   artifact-listing.md:
