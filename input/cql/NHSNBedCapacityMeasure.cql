@@ -2,7 +2,8 @@ library NHSNBedCapacityMeasure version '0.0.01'
 
 using FHIR version '4.0.1'
 
-include NHSNHelpers version '0.0.001' called NHSNHelpers
+include FHIRHelpers version '4.0.1' called FHIRHelpers
+include NHSNHelpers version '0.0.002' called NHSNHelpers
 
 codesystem "LocationPhysicalType": 'http://terminology.hl7.org/CodeSystem/location-physical-type'
 codesystem "HealthcareCapacity": 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-codes'
@@ -23,7 +24,7 @@ parameter "Measurement Period" Interval<DateTime>
 context Location
 
 define "IsBedLocation":
-  NHSNHelpers.ToConcept(Location.physicalType) ~ "Bed"
+  Location.physicalType ~ "Bed"
 
 define "All Beds Occupied Initial Population":
   IsBedLocation
@@ -491,7 +492,7 @@ define "Adult ED Census Initial Population":
   and exists(
     [Encounter: "Emergency Department Visit"] EDVisit
     where exists(LocationMatch(EDVisit.location))
-      and NHSNHelpers.ToInterval(EDVisit.period) overlaps "Measurement Period"
+      and EDVisit.period overlaps "Measurement Period"
     )
   and LocationIsHOSP
   and LocationIsOTH
@@ -501,7 +502,7 @@ define "Adult ED Admitted Census Initial Population":
   and exists(
     [Encounter: "Emergency Department Visit"] EDVisit
     where exists(LocationMatch(EDVisit.location))
-      and NHSNHelpers.ToInterval(EDVisit.period) overlaps "Measurement Period"
+      and EDVisit.period overlaps "Measurement Period"
       and EDVisit.status.value in {'arrived', 'triaged', 'in-progress'}
     )
   and LocationIsHOSP
@@ -512,7 +513,7 @@ define "Peds ED Census Initial Population":
   and exists(
     [Encounter: "Emergency Department Visit"] EDVisit
     where exists(LocationMatch(EDVisit.location))
-      and NHSNHelpers.ToInterval(EDVisit.period) overlaps "Measurement Period"
+      and EDVisit.period overlaps "Measurement Period"
     )
   and LocationIsCHLD
 
@@ -521,7 +522,7 @@ define "Peds ED Admitted Census Initial Population":
   and exists(
     [Encounter: "Emergency Department Visit"] EDVisit
     where exists(LocationMatch(EDVisit.location))
-      and NHSNHelpers.ToInterval(EDVisit.period) overlaps "Measurement Period"
+      and EDVisit.period overlaps "Measurement Period"
       and EDVisit.status.value in {'arrived', 'triaged', 'in-progress'}
     )
   and LocationIsCHLD
@@ -531,7 +532,7 @@ define "Total ED Census Initial Population":
   and exists(
     [Encounter: "Emergency Department Visit"] EDVisit
     where exists(LocationMatch(EDVisit.location))
-      and NHSNHelpers.ToInterval(EDVisit.period) overlaps "Measurement Period"
+      and EDVisit.period overlaps "Measurement Period"
     )
   and LocationIsHOSP
   and LocationIsCHLD
@@ -542,7 +543,7 @@ define "Total ED Admitted Census Initial Population":
   and exists(
     [Encounter: "Emergency Department Visit"] EDVisit
     where exists(LocationMatch(EDVisit.location))
-      and NHSNHelpers.ToInterval(EDVisit.period) overlaps "Measurement Period"
+      and EDVisit.period overlaps "Measurement Period"
       and EDVisit.status.value in {'arrived', 'triaged', 'in-progress'}
     )
   and LocationIsHOSP
@@ -555,42 +556,42 @@ define Encounters:
 define LocationIsHOSP:
   exists(
     Location.type types
-    where NHSNHelpers.ToConcept(types) ~ "HOSP"
+    where types ~ "HOSP"
   )
 
 define LocationIsIPF:
   exists(
     Location.type types
-    where NHSNHelpers.ToConcept(types) ~ "IPF"
+    where types ~ "IPF"
   )
 
 define LocationIsIRF:
   exists(
     Location.type types
-    where NHSNHelpers.ToConcept(types) ~ "IRF"
+    where types ~ "IRF"
   )
 
 define LocationIsCHLD:
   exists(
     Location.type types
-    where NHSNHelpers.ToConcept(types) ~ "CHLD"
+    where types ~ "CHLD"
   )
 
 define LocationIsOTH:
   exists(
     Location.type types
-    where NHSNHelpers.ToConcept(types) ~ "OTH"
+    where types ~ "OTH"
   )
 
 define EncounterCheck:
   exists("Encounters" Encounters
   where exists(LocationMatch(Encounters.location))
-    and NHSNHelpers.ToInterval(Encounters.period) overlaps "Measurement Period")
+    and Encounters.period overlaps "Measurement Period")
 
 define NoEncounterCheck:
   exists("Encounters" Encounters
   where not exists(LocationMatch(Encounters.location))
-    and NHSNHelpers.ToInterval(Encounters.period) overlaps "Measurement Period")
+    and Encounters.period overlaps "Measurement Period")
 
 define function LocationMatch(locations List<FHIR.Encounter.Location>):
   locations l

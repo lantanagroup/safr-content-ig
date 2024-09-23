@@ -2,7 +2,8 @@ library NHSNRespiratoryPathogensSurveillanceInitialPopulation version '0.0.014'
 
 using FHIR version '4.0.1'
 
-include NHSNHelpers version '0.0.001' called NHSNHelpers
+include FHIRHelpers version '4.0.1' called FHIRHelpers
+include NHSNHelpers version '0.0.002' called NHSNHelpers
 include SharedResourceCreation version '0.1.006' called SharedResource
 
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode' 
@@ -91,14 +92,14 @@ define "Initial Population":
 define "EncounterInpatient":
   ([Encounter: "Encounter Inpatient"]
     union [Encounter: class in "NHSN Inpatient Encounter Class Codes"]) Encounters
-  where Encounters.status.value in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
-    and NHSNHelpers.ToInterval(Encounters.period) overlaps "Measurement Period"
+  where Encounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
+    and Encounters.period overlaps "Measurement Period"
 
 define "EncounterObservation":
   ([Encounter: "Observation Services"]
     union [Encounter: class in {"observation encounter"}]) Encounters
-  where Encounters.status.value in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
-    and NHSNHelpers.ToInterval(Encounters.period) overlaps "Measurement Period"
+  where Encounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
+    and Encounters.period overlaps "Measurement Period"
 
 define "Encounters with Patient Hospital Locations":
   [Encounter] Encounters
@@ -107,11 +108,11 @@ define "Encounters with Patient Hospital Locations":
     let types: NHSNHelpers.GetLocation(EncounterLocation.location).type
     where exists(
       types type
-      where NHSNHelpers.ToConcept(type) in "Inpatient, Emergency, and Observation Locations"
+      where type in "Inpatient, Emergency, and Observation Locations"
     )
-    and NHSNHelpers.ToInterval(EncounterLocation.period) overlaps NHSNHelpers.ToInterval(Encounters.period)
-    and Encounters.status.value in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error' }
-    and NHSNHelpers.ToInterval(Encounters.period) overlaps "Measurement Period"
+    and EncounterLocation.period overlaps Encounters.period
+    and Encounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error' }
+    and Encounters.period overlaps "Measurement Period"
   )
 
 
@@ -125,16 +126,16 @@ define "COVID And Influenza Observation":
   union [Observation: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"]
   union [Observation: "COVID_19 (Tests for SARS_CoV_2 Antigen)"]
   ) Observations
-    where exists(Observations.category Category where NHSNHelpers.ToConcept(Category) ~ "laboratory")
-      and Observations.status.value in {'final','registered','preliminary','partial'}
+    where exists(Observations.category Category where Category ~ "laboratory")
+      and Observations.status in {'final','registered','preliminary','partial'}
       and exists("Initial Population")
 
 define "RSV Observation":
   ([Observation: "RSV (Tests for RSV Nucleic Acid)"]
   union [Observation: "RSV (Tests for RSV Antigen)"]   
   ) Observations
-    where exists(Observations.category Category where NHSNHelpers.ToConcept(Category) ~ "laboratory")
-      and Observations.status.value in {'final','registered','preliminary','partial'}
+    where exists(Observations.category Category where Category ~ "laboratory")
+      and Observations.status in {'final','registered','preliminary','partial'}
       and exists("Initial Population")
 
 define "RPS Observation":
@@ -146,10 +147,10 @@ define "COVID And Influenza PRE Admission Observation":
   "COVID And Influenza Observation" O 
    where exists( EncounterInpatient E 
     where (
-      NHSNHelpers."Normalize Interval"(O.effective) 14 days or less on or before start of NHSNHelpers.ToInterval(E.period)
-      or NHSNHelpers."Normalize Interval"(GetSpecimen(O.specimen).collection.collected) 14 days or less on or before start of NHSNHelpers.ToInterval(E.period)
+      NHSNHelpers."Normalize Interval"(O.effective) 14 days or less on or before start of E.period
+      or NHSNHelpers."Normalize Interval"(GetSpecimen(O.specimen).collection.collected) 14 days or less on or before start of E.period
       )
-      and start of NHSNHelpers.ToInterval(E.period) during "Measurement Period"
+      and start of E.period during "Measurement Period"
     )  
 
 //further constrain RSV observation for 8 day lookback
@@ -157,10 +158,10 @@ define "RSV PRE Admission Observation":
   "RSV Observation" O 
   where exists(EncounterInpatient E 
     where (
-      NHSNHelpers."Normalize Interval"(O.effective) 8 days or less on or before start of NHSNHelpers.ToInterval(E.period)
-      or NHSNHelpers."Normalize Interval"(GetSpecimen(O.specimen).collection.collected) 8 days or less on or before start of NHSNHelpers.ToInterval(E.period)
+      NHSNHelpers."Normalize Interval"(O.effective) 8 days or less on or before start of E.period
+      or NHSNHelpers."Normalize Interval"(GetSpecimen(O.specimen).collection.collected) 8 days or less on or before start of E.period
       )
-      and start of NHSNHelpers.ToInterval(E.period) during "Measurement Period"
+      and start of E.period during "Measurement Period"
     )
 
 //Lab DiagnosticReport
@@ -171,14 +172,14 @@ define "COVID And Influenza DiagnosticReport":
     union [DiagnosticReport: "Influenza (Tests for influenza A or B virus Antigen)"]
   ) Reports
     where exists("Initial Population")
-      and Reports.status.value in {'final','registered','preliminary','partial'}
+      and Reports.status in {'final','registered','preliminary','partial'}
 
 define "RSV DiagnosticReport":
   ([DiagnosticReport: "RSV (Tests for RSV Nucleic Acid)"]
     union [DiagnosticReport: "RSV (Tests for RSV Antigen)"]
   ) Reports
     where exists("Initial Population")
-      and Reports.status.value in {'final','registered','preliminary','partial'}
+      and Reports.status in {'final','registered','preliminary','partial'}
 
 define "RPS DiagnosticReport":
   "COVID And Influenza DiagnosticReport"
@@ -189,8 +190,8 @@ define "COVID And Influenza DiagnosticReport PRE Admission":
   "COVID And Influenza DiagnosticReport" R 
   where exists(EncounterInpatient E 
     where (
-      NHSNHelpers."Normalize Interval"(R.effective) 14 days or less on or before start of NHSNHelpers.ToInterval(E.period))
-      and start of NHSNHelpers.ToInterval(E.period) during "Measurement Period"
+      NHSNHelpers."Normalize Interval"(R.effective) 14 days or less on or before start of E.period)
+      and start of E.period during "Measurement Period"
     )
 
 //further constrain RSV for 8 day lookback
@@ -198,8 +199,8 @@ define "RSV DiagnosticReport PRE Admission":
   "RSV DiagnosticReport" R 
   where exists(EncounterInpatient E 
     where (
-      NHSNHelpers."Normalize Interval"(R.effective) 8 days or less on or before start of NHSNHelpers.ToInterval(E.period))
-      and start of NHSNHelpers.ToInterval(E.period) during "Measurement Period"
+      NHSNHelpers."Normalize Interval"(R.effective) 8 days or less on or before start of E.period)
+      and start of E.period during "Measurement Period"
     )
 
 define "COVID and Influenza DiagnosticReport Result from Lab":
@@ -208,27 +209,27 @@ define "COVID and Influenza DiagnosticReport Result from Lab":
       "COVID and Influenza DiagnosticReport Observations" Observations
       where Reports.result.references(Observations)
     )
-    and Reports.status.value in {'final','registered','preliminary','partial'}
+    and Reports.status in {'final','registered','preliminary','partial'}
     and exists("Initial Population")
 
 define "COVID and Influenza DiagnosticReport Observations":
   "Observations" Observations
-  where NHSNHelpers.ToConcept(Observations.code) in "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"
-    or NHSNHelpers.ToConcept(Observations.code) in "COVID_19 (Tests for SARS_CoV_2 Antigen)"
-    or NHSNHelpers.ToConcept(Observations.code) in "Influenza (Tests for influenza A or B virus Nucleic Acid)"
-    or NHSNHelpers.ToConcept(Observations.code) in "Influenza (Tests for influenza A or B virus Antigen)"
+  where Observations.code in "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"
+    or Observations.code in "COVID_19 (Tests for SARS_CoV_2 Antigen)"
+    or Observations.code in "Influenza (Tests for influenza A or B virus Nucleic Acid)"
+    or Observations.code in "Influenza (Tests for influenza A or B virus Antigen)"
 
  
 define "RSV DiagnosticReport Result from Lab":
   [DiagnosticReport] Reports
     where exists("RSV DiagnosticReport Observations")
-      and Reports.status.value in {'final','registered','preliminary','partial'}
+      and Reports.status in {'final','registered','preliminary','partial'}
       and exists("Initial Population")
 
 define "RSV Observations":
   "Observations" Observations
-  where NHSNHelpers.ToConcept(Observations.code) in "RSV (Tests for RSV Nucleic Acid)"
-    or NHSNHelpers.ToConcept(Observations.code) in "RSV (Tests for RSV Antigen)"
+  where Observations.code in "RSV (Tests for RSV Nucleic Acid)"
+    or Observations.code in "RSV (Tests for RSV Antigen)"
     
 define "RSV DiagnosticReport Observations":
   "DiagnosticReports" Reports
@@ -246,8 +247,8 @@ define "COVID and Influenza DiagnosticReport Result from Lab PRE Admission":
   "COVID and Influenza DiagnosticReport Result from Lab" R 
   where exists(EncounterInpatient E 
     where (
-      NHSNHelpers."Normalize Interval"(R.effective) 14 days or less on or before start of NHSNHelpers.ToInterval(E.period))
-      and start of NHSNHelpers.ToInterval(E.period) during "Measurement Period"
+      NHSNHelpers."Normalize Interval"(R.effective) 14 days or less on or before start of E.period)
+      and start of E.period during "Measurement Period"
     )
 
 //further constrain RSV with 8 day lookback
@@ -255,8 +256,8 @@ define "RSV DiagnosticReport Result from Lab PRE Admission":
   "RSV DiagnosticReport Result from Lab" R 
   where exists(EncounterInpatient E 
     where (
-      NHSNHelpers."Normalize Interval"(R.effective) 8 days or less on or before start of NHSNHelpers.ToInterval(E.period))
-      and start of NHSNHelpers.ToInterval(E.period) during "Measurement Period"
+      NHSNHelpers."Normalize Interval"(R.effective) 8 days or less on or before start of E.period)
+      and start of E.period during "Measurement Period"
     )
     
 //----------------------------------
@@ -266,7 +267,7 @@ define "SDE Encounter":
   "Encounters" Encounters
   where exists(
     "Initial Population" IP
-    where NHSNHelpers.ToInterval(Encounters.period) overlaps NHSNHelpers.ToInterval(IP.period))
+    where Encounters.period overlaps IP.period)
   return SharedResource.EncounterResource(Encounters,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-encounter'}})
 
@@ -284,7 +285,7 @@ define "SDE Location":
    
 define "SDE Encounter Discharge Dispositions":
 	"Initial Population" DischargeDispositions 
-  where NHSNHelpers.ToConcept(DischargeDispositions.hospitalization.dischargeDisposition) in "Discharge Disposition"
+  where DischargeDispositions.hospitalization.dischargeDisposition in "Discharge Disposition"
   return SharedResource.EncounterResource(DischargeDispositions,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-encounter'}})
 
@@ -371,8 +372,8 @@ define "SDE RPS ServiceRequest":
   union  [ServiceRequest: "RSV (Tests for RSV Nucleic Acid)"]
   union  [ServiceRequest: "RSV (Tests for RSV Antigen)"]
   ) ServiceRequests
-    where ServiceRequests.intent.value ~ 'order'
-      and ServiceRequests.status.value ~ 'completed'
+    where ServiceRequests.intent ~ 'order'
+      and ServiceRequests.status ~ 'completed'
       and exists("Initial Population")
   return SharedResource.ServiceRequestResource(ServiceRequests,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-servicerequest'}})
@@ -386,7 +387,7 @@ define "SDE Isolation Precautions Implemented":
 
 define "SDE Covid or Influenza Medication Administered":
   [MedicationAdministration] RPSMedAdmin
-    let Meds: NHSNHelpers.ToConcept(GetMedicationCode(RPSMedAdmin.medication))
+    let Meds: GetMedicationCode(RPSMedAdmin.medication)
    where (Meds in "Anakinra"
             or Meds in "Bamlanivimab"
             or Meds in "Baloxavir"
@@ -406,7 +407,7 @@ define "SDE Covid or Influenza Medication Administered":
             or Meds in "Sotrovimab"    
             or Meds in "Tofacitinib"
             or Meds in "Zanamivir")
-      and RPSMedAdmin.status.value ~ 'completed'
+      and RPSMedAdmin.status ~ 'completed'
       and exists("Initial Population")
       and NHSNHelpers."Normalize Interval"(RPSMedAdmin.effective) during "Measurement Period"
     return SharedResource.MedicationAdministrationResource(RPSMedAdmin,
@@ -414,7 +415,7 @@ define "SDE Covid or Influenza Medication Administered":
 
 define "SDE Covid or Influenza Medication Ordered":
   [MedicationRequest] RPSMedRequest
-    let Meds: NHSNHelpers.ToConcept(GetMedicationCode(RPSMedRequest.medication))
+    let Meds: GetMedicationCode(RPSMedRequest.medication)
     where (Meds in "Anakinra"
             or Meds in "Baloxavir"
             or Meds in "Bamlanivimab"
@@ -473,7 +474,7 @@ define "SDE All Procedures":
 //-----------------------------------------------------
 define function "GetMedication"(reference Reference ):
   singleton from (
-    [Medication: id in {NHSNHelpers.GetId(reference.reference.value)}]
+    [Medication: id in {NHSNHelpers.GetId(reference.reference)}]
   )
 
 define function "GetMedicationCode"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):
@@ -497,17 +498,17 @@ define function "GetMedicationFrom"(choice Choice<FHIR.CodeableConcept, FHIR.Ref
 define function "GetSpecimen"(reference FHIR.Reference):
   singleton from (
     [Specimen] Specimens
-    where Specimens.id.value = NHSNHelpers.GetId(reference.reference.value)
+    where Specimens.id = NHSNHelpers.GetId(reference.reference)
   )
 
 define function "GetEncounter"(reference FHIR.Reference):
   singleton from (
     "Encounters" Encounters
-    where Encounters.id.value = NHSNHelpers.GetId(reference.reference.value)
+    where Encounters.id = NHSNHelpers.GetId(reference.reference)
   )
 
 define fluent function references(reference FHIR.Reference, resource FHIR.Resource):
-  resource.id.value = Last(Split(reference.reference.value, '/'))
+  resource.id = Last(Split(reference.reference, '/'))
 
 define fluent function references(references List<FHIR.Reference>, resource FHIR.Resource):
   exists(references R where R.references(resource))

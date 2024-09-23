@@ -2,7 +2,8 @@ library NHSNGlycemicControlHypoglycemicInitialPopulation version '0.0.022'
 
 using FHIR version '4.0.1'
 
-include NHSNHelpers version '0.0.001' called NHSNHelpers
+include FHIRHelpers version '4.0.1' called FHIRHelpers
+include NHSNHelpers version '0.0.002' called NHSNHelpers
 include SharedResourceCreation version '0.1.006' called SharedResource
 
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode' 
@@ -57,13 +58,13 @@ context Patient
 define "Initial Population":
   ("Inpatient Encounter"
   union "Encounters with Patient Hospital Locations") InpatientEncounters
-  where InpatientEncounters.status.value in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
-    and NHSNHelpers.ToInterval(InpatientEncounters.period) overlaps "Measurement Period"
+  where InpatientEncounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
+    and InpatientEncounters.period overlaps "Measurement Period"
     and exists( 
     "Antidiabetic Drugs Administered or Ordered" ADD
-    where Coalesce(start of NHSNHelpers."Normalize Interval"(ADD.effective), ADD.authoredOn.value)
+    where Coalesce(start of NHSNHelpers."Normalize Interval"(ADD.effective), ADD.authoredOn)
       during "HospitalizationWithObservationOrEmergency"(InpatientEncounters)
-    and Coalesce(start of NHSNHelpers."Normalize Interval"(ADD.effective), ADD.authoredOn.value) during "Measurement Period")
+    and Coalesce(start of NHSNHelpers."Normalize Interval"(ADD.effective), ADD.authoredOn) during "Measurement Period")
 
 define "Inpatient Encounter":
   [Encounter: class in "NHSN Inpatient Encounter Class Codes"]
@@ -76,18 +77,18 @@ define "Encounters with Patient Hospital Locations":
     let types: NHSNHelpers.GetLocation(EncounterLocation.location).type
     where exists(
       types type
-      where NHSNHelpers.ToConcept(type) in "Inpatient, Emergency, and Observation Locations"
+      where type in "Inpatient, Emergency, and Observation Locations"
     )
-    and NHSNHelpers.ToInterval(EncounterLocation.period) during NHSNHelpers.ToInterval(Encounters.period)
+    and EncounterLocation.period during Encounters.period
   )
 
 define "Antidiabetic Drugs Administered or Ordered":
   ("MedicationAdministrations" ADDMedAdmin
-    where NHSNHelpers.ToConcept(GetMedicationCode(ADDMedAdmin.medication)) in "Diabetes Medications"
-      and ADDMedAdmin.status.value ~ 'completed')
+    where GetMedicationCode(ADDMedAdmin.medication) in "Diabetes Medications"
+      and ADDMedAdmin.status ~ 'completed')
   union (
     "MedicationRequests" MedicationRequests
-      where NHSNHelpers.ToConcept(GetMedicationCode(MedicationRequests.medication)) in "Diabetes Medications"
+      where GetMedicationCode(MedicationRequests.medication) in "Diabetes Medications"
   )
 
 define "Get Locations from Initial Population":
@@ -107,9 +108,9 @@ define "SDE Blood Glucose Observation":
 	[Observation: "Blood Glucose Laboratory and Point of Care Tests"] Observations 
   where exists(
     "Initial Population" InitialPopulation
-    where start of NHSNHelpers."Normalize Interval"(Observations.effective) during NHSNHelpers.ToInterval(InitialPopulation.period)
+    where start of NHSNHelpers."Normalize Interval"(Observations.effective) during InitialPopulation.period
     or NHSNHelpers."Normalize Interval"(GetSpecimen(Observations.specimen).collection.collected) 
-      during NHSNHelpers.ToInterval(InitialPopulation.period)
+      during InitialPopulation.period
   )
   return SharedResource.ObservationLabResource(Observations, 
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab'}})
@@ -119,7 +120,7 @@ define "SDE Chief Complaint":
   "Initial Population" IP
   where exists(
     IP.diagnosis InitialPopulationDiagnosis
-    where NHSNHelpers.ToConcept(InitialPopulationDiagnosis.use) ~ "Chief Complaint"
+    where InitialPopulationDiagnosis.use ~ "Chief Complaint"
   )
   return SharedResource.EncounterResource(IP, 
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})
@@ -129,7 +130,7 @@ define "SDE Condition":
   "Conditions" Conditions
   where exists(
     "Initial Population" InitialPopulation
-    where NHSNHelpers."Normalize Interval"(Conditions.onset) overlaps NHSNHelpers.ToInterval(InitialPopulation.period)
+    where NHSNHelpers."Normalize Interval"(Conditions.onset) overlaps InitialPopulation.period
   )
   return SharedResource.ConditionResource(Conditions,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition'}})
@@ -139,7 +140,7 @@ define "SDE Condition during Encounter":
   "Conditions" ConditionEncounterDiagnosis
   where exists(
     ConditionEncounterDiagnosis.category category
-    where NHSNHelpers.ToConcept(category) ~ "encounter-diagnosis"
+    where category ~ "encounter-diagnosis"
   )
   return SharedResource.ConditionResource(ConditionEncounterDiagnosis,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition'}})
@@ -149,10 +150,10 @@ define "SDE Coverage":
 	[Coverage] Coverages
   where exists(
     "Initial Population" InitialPopulation
-    where start of NHSNHelpers.ToInterval(Coverages.period) before day of end of NHSNHelpers.ToInterval(InitialPopulation.period)
-    and (end of NHSNHelpers.ToInterval(Coverages.period) is null
-      or (end of NHSNHelpers.ToInterval(Coverages.period) is not null
-        and end of NHSNHelpers.ToInterval(Coverages.period) on or after day of end of NHSNHelpers.ToInterval(InitialPopulation.period)
+    where start of Coverages.period before day of end of InitialPopulation.period
+    and (end of Coverages.period is null
+      or (end of Coverages.period is not null
+        and end of Coverages.period on or after day of end of InitialPopulation.period
       )
     )
   )
@@ -162,7 +163,7 @@ define "SDE Coverage":
 //To capture the discharge disposition
 define "SDE Encounter Discharge Dispositions":
 	"Initial Population" DischargeDispositions 
-  where NHSNHelpers.ToConcept(DischargeDispositions.hospitalization.dischargeDisposition) in "Discharge Disposition"
+  where DischargeDispositions.hospitalization.dischargeDisposition in "Discharge Disposition"
   return SharedResource.EncounterResource(DischargeDispositions, 
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})
 
@@ -174,9 +175,9 @@ define "SDE Encounter Locations":
     let types: NHSNHelpers.GetLocation(InitialPopulationLocation.location).type
     where exists(
       types type
-      where NHSNHelpers.ToConcept(type) in "Inpatient, Emergency, and Observation Locations"
+      where type in "Inpatient, Emergency, and Observation Locations"
     )
-    and NHSNHelpers.ToInterval(InitialPopulationLocation.period) during NHSNHelpers.ToInterval(InitialPopulation.period)
+    and InitialPopulationLocation.period during InitialPopulation.period
   )
   return SharedResource.EncounterResource(InitialPopulation, 
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})
@@ -217,7 +218,7 @@ define "SDE Medication Request":
 	"MedicationRequests" MedicationRequests
   where exists(
     "Initial Population" InitialPopulation
-	  where MedicationRequests.authoredOn.value during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
+	  where MedicationRequests.authoredOn during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
   )
   return SharedResource.MedicationRequestResource(MedicationRequests,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest'}})
@@ -232,7 +233,7 @@ define "SDE Service Request":
   [ServiceRequest] ServiceRequests
   where exists(
     "Initial Population" InitialPopulation
-    where ServiceRequests.authoredOn.value during NHSNHelpers.ToInterval(InitialPopulation.period)
+    where ServiceRequests.authoredOn during InitialPopulation.period
   )
   return SharedResource.ServiceRequestResource(ServiceRequests,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-servicerequest'}})
@@ -242,7 +243,7 @@ define "SDE Specimen":
   "Specimens" Specimens
   where exists(
     "Initial Population" InitialPopulation
-    where NHSNHelpers."Normalize Interval"(Specimens.collection.collected) during NHSNHelpers.ToInterval(InitialPopulation.period)
+    where NHSNHelpers."Normalize Interval"(Specimens.collection.collected) during InitialPopulation.period
   )
   return SharedResource.SpecimenResource(Specimens,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-specimen'}})
@@ -281,28 +282,28 @@ define function "GetMedicationCode"(choice Choice<FHIR.CodeableConcept, FHIR.Ref
 define function "GetMedication"(reference Reference ):
   singleton from (
     [Medication] Medications
-    where Medications.id.value = NHSNHelpers.GetId(reference.reference.value)
+    where Medications.id = NHSNHelpers.GetId(reference.reference)
   )
 
 define function "HospitalizationWithObservationOrEmergency"(TheEncounter FHIR.Encounter ):
   TheEncounter Visit
     let ObsVisit: Last([Encounter: "Observation Services"] LastObs
-        where NHSNHelpers.ToCode(LastObs.class) ~ "observation encounter"
-          and NHSNHelpers.ToInterval(LastObs.period) ends 1 hour or less on or before start of NHSNHelpers.ToInterval(Visit.period)
-  				sort by end of NHSNHelpers.ToInterval(period)
+        where LastObs.class ~ "observation encounter"
+          and LastObs.period ends 1 hour or less on or before start of Visit.period
+  				sort by end of period
     ),
-    VisitStart: Coalesce(start of NHSNHelpers.ToInterval(ObsVisit.period), start of NHSNHelpers.ToInterval(Visit.period)),
+    VisitStart: Coalesce(start of ObsVisit.period, start of Visit.period),
     EDVisit: Last([Encounter: "Emergency Department Visit"] LastED
-        where NHSNHelpers.ToCode(LastED.class) ~ "emergency"
-          and NHSNHelpers.ToInterval(LastED.period) ends 1 hour or less on or before start of NHSNHelpers.ToInterval(Visit.period)
-  				sort by end of NHSNHelpers.ToInterval(period)
+        where LastED.class ~ "emergency"
+          and LastED.period ends 1 hour or less on or before start of Visit.period
+  				sort by end of period
     )
-    return Interval[Coalesce(start of NHSNHelpers.ToInterval(EDVisit.period), VisitStart), end of NHSNHelpers.ToInterval(Visit.period)]
+    return Interval[Coalesce(start of EDVisit.period, VisitStart), end of Visit.period]
 
 define function "GetSpecimen"(reference Reference):
   singleton from (
     [Specimen] Specimens
-    where Specimens.id.value = NHSNHelpers.GetId(reference.reference.value)
+    where Specimens.id = NHSNHelpers.GetId(reference.reference)
   )
 
 define function "GetMedicationFrom"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):
