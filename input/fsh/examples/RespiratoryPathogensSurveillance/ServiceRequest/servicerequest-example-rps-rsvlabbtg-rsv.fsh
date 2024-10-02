@@ -16,7 +16,7 @@ Usage: #example
 * code.text = "RSV Ag Ql (Throat)"
 * quantityQuantity.value = 1
 * subject = Reference(patient-example-rps-rsvlabbtg)
-* subject.display = "RPS NegativePCR"
+* subject.display = "RPS RSVLabBTG"
 * encounter = Reference(encounter-example-rps-rsvlabbtg)
 * encounter.display = "Hospital Admission"
 * occurrenceTiming.event = "2024-02-02T17:22:00-05:00"

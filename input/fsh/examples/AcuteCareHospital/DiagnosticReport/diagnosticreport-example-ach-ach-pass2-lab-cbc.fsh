@@ -1,7 +1,7 @@
 Instance: diagnosticreport-example-ach-ach-pass2-lab-cbc
 InstanceOf: AcuteCareHospitalLabDiagnosticReport
-Title: "DiagnosticReport - Example ACH Pass2 Lab CBC"
-Description: "DiagnosticReport - Example ACH Pass2 - CBC panel - Blood by Automated count"
+Title: "DiagnosticReport - Example Initial Population Pass"
+Description: "DiagnosticReport - Example Initial Population Pass - CBC panel - Blood by Automated count"
 Usage: #example
 * status = #final
 * category[LaboratorySlice] = http://terminology.hl7.org/CodeSystem/v2-0074#LAB "Laboratory"
