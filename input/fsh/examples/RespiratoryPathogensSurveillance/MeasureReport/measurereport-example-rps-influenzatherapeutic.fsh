@@ -40,7 +40,7 @@ Usage: #example
 * extension[=].valueReference = Reference(immunization-example-rps-influenzatherapeutic)
 * status = #complete
 * type = #individual
-* measure = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNdQMRespiratoryPathogensSurveillanceInitialPopulation|1.0.0-cibuild"
+* measure = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation|1.0.0-cibuild"
 * subject = Reference(patient-example-rps-influenzatherapeutic)
 * date = "2024-01-06T00:04:29.481+00:00"
 * reporter = Reference(organization-example-submitting-organization)

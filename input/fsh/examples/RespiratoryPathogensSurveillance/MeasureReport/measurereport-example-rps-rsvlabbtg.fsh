@@ -56,7 +56,7 @@ Usage: #example
 * extension[=].valueReference = Reference(specimen-example-rps-rsvlabbtg)
 * status = #complete
 * type = #individual
-* measure = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNdQMRespiratoryPathogensSurveillanceInitialPopulation|1.0.0-cibuild"
+* measure = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation|1.0.0-cibuild"
 * subject = Reference(patient-example-rps-rsvlabbtg)
 * date = "2024-01-06T21:04:29.481+00:00"
 * reporter = Reference(organization-example-submitting-organization)
