@@ -3,6 +3,8 @@ Parent: USCoreLocation
 Id: ach-location
 Title: "ACH Event Location"
 Description: "This profile contains Required and Must Support data elements for reporting location information to the NHSN Acute Care Hospital (ACH) Digital Quality Measures. This profile is based on the [HL7 FHIR® US Core Location Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-location.html)."
+
+* obeys location-type-initial-population
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 * alias MS
@@ -10,4 +12,5 @@ Description: "This profile contains Required and Must Support data elements for 
 * physicalType from http://hl7.org/fhir/ValueSet/location-physical-type (extensible)
 * physicalType MS
 * type 1..
+* type from http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType (extensible)
 * partOf MS
