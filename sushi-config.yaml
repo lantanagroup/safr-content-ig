@@ -81,6 +81,7 @@ menu:
   IG Home: index.html
   Table of Contents: toc.html
   Actors and Use Cases: use_cases.html
+  Validation and Pre-Qualification: validation-pre-qualification.html
   Specification: specification.html
   Artifact Index: artifact-listing.html
   Downloads: downloads.html
@@ -101,6 +102,8 @@ pages:
     title: NHSN Measures Home
   use_cases.md:
     title: Actors and Use Cases
+  validation-pre-qualification.md: 
+    title: Validation and Pre-Qualification
   specification.md:
     title: Specification
   artifact-listing.md:
