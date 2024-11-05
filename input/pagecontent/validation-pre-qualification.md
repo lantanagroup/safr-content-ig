@@ -22,7 +22,7 @@ Validation and subsequent pre-qualification occur after data evaluation and befo
 
 <div>
 <figure class="figure">
-    <img src="SubmissionDiagram.png" alt="Figure 1: Process Flow for Pre-qualification" title="Figure 1: Process Flow for Pre-qualification" class="img-responsive img-rounded center-block" width="75%">
+    <img src="SubmissionDiagram.PNG" alt="Figure 1: Process Flow for Pre-qualification" title="Figure 1: Process Flow for Pre-qualification" class="img-responsive img-rounded center-block" width="75%">
     <figcaption class="figure-caption"><strong>Figure 1: Process Flow for Pre-qualification </strong></figcaption>
 </figure>
 <p></p>

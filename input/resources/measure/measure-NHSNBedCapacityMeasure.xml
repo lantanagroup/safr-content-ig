@@ -2302,7 +2302,7 @@
          <reference value="#effective-data-requirements"></reference>
       </valueReference>
    </extension>
-   <url value="http://hl7.org/fhir/us/nhsn-dqm/Measure/NHSNBedCapacityMeasure"></url>
+   <url value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNBedCapacityMeasure"></url>
    <version value="0.0.01"></version>
    <name value="NHSNBedCapacityMeasure"></name>
    <title value="NHSN dQM Bed Capacity"></title>

@@ -40,7 +40,7 @@ Note: The profiles in this IG inherit from the [US Core}({{site.data.fhir.ver.us
 
 This specification makes significant use of [FHIR profiles]({{site.data.fhir.path}}profiling.html) to define the data requirements for measure specific submissions.
 
-The full set of profiles defined in this IG can be found by following the links on the [Artifacts](artifacts-listing.html) page.
+The full set of profiles defined in this IG can be found by following the links on the [Artifacts](artifact-listing.html) page.
 
 
 #### Reporting Scenarios
