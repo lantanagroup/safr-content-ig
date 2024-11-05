@@ -34,7 +34,7 @@ Receiver:
 * The receiver **SHALL** be able to process resource instances containing must-support data elements asserting missing information (data absent reason extension).
 
 
-Note: The profiles in this IG inherit from the [US Core}({{site.data.fhir.ver.uscore}}) which has some requirements that are more stringent that what is necessary for measure reporting (e.g. Practitioner references). This means that some inherited US Core required elements may not be used by NHSN and if missing may still pass NHSN ingestion validation.
+Note: The profiles in this IG inherit from the [US Core]({{site.data.fhir.ver.uscore}}) which has some requirements that are more stringent that what is necessary for measure reporting (e.g. Practitioner references). This means that some inherited US Core required elements may not be used by NHSN and if missing may still pass NHSN ingestion validation.
 
 #### Profiles
 
@@ -47,4 +47,24 @@ The full set of profiles defined in this IG can be found by following the links 
 
 The following reporting scenarios use the Actors defined on the [Actors and Use Cases](use_cases.html) page.
 
-The reporting workflows are detailed on the [Reporting Scenarios](https://build.fhir.org/ig/HL7/nhsn-dqm/specification.html#reporting-scenarios) section of the [HL7 NHSN dQM Reporting Implementation Guide](https://build.fhir.org/ig/HL7/nhsn-dqm/index.html).
+#### NHSNLink Pull from NHSN
+
+When NHSNLink pulls data from EHRs, both NHSNLink and the NHSN application reside within an NHSN controlled environment. NHSNLink first retrieves the latest FHIR measures and related resources from the measure source and extracts the data requirements for each measure. NHSNLink queries the data source for data; evaluates the data against a measure; prepares bundles containing MeasureReport and supporting resources; and then performs pre-qualification (see NHSNLink FHIR Validation and Pre-qualification section below), additional FHIR validation checks against measure-specific profiles, before making the data available to NHSN back-end systems. In this scenario, the data source SHALL have a FHIR API that at a minimum provides read access to all resources required by the measure(s). 
+
+<div>
+<figure class="figure">
+    <img src="NHSNProcessFlow.PNG" alt="Figure 1: Process flow from EHR to NHSN" title="Figure 1: Process flow from EHR to NHSN" class="img-responsive img-rounded center-block" width="75%">
+    <figcaption class="figure-caption"><strong>Figure 1: Process flow from EHR to NHSN</strong></figcaption>
+</figure>
+<p></p>
+</div>
+
+<div>
+<figure class="figure">
+    <img src="HowNHSNWorks.PNG" alt="Figure 2: How NHSNLink Works" title="Figure 2: How NHSNLink Works" class="img-responsive img-rounded center-block" width="75%">
+    <figcaption class="figure-caption"><strong>Figure 2: How NHSNLink Works</strong></figcaption>
+</figure>
+<p></p>
+</div>
+
+
