@@ -1,42 +1,46 @@
 ### Actors 
 
-This implementation guide defines the following actors: a data source, a dQM Evaluation Engine, a Measure Source and Data aggregator.  
+This implementation guide (IG) defines the following actors: a data source, a dQM evaluation engine, a measure source, and data aggregator. 
 
-Note: A given system may play the role of multiple actors. For example, an EHR could be both the Data Source and dQM Evaluation Engine when calculating a measure internally. Likewise, a system residing at NHSN that queries the Data Source remotely, may evaluate the data, produce and validate MeasureReport bundles as a result of acting as the dQM Evaluation Engine and MeasureReport Recipient. 
+Note: A given system may play the role of multiple actors. For example, an EHR could be both the data source and dQM evaluation engine when calculating a measure internally. Likewise, a system such as NHSNLink that resides at NHSN and queries the data source remotely may act as the dQM evaluation engine and MeasureReport recipient and evaluate the data, produce, and validate MeasureReport bundles. 
 
 The actors defined here are used in the Reporting Scenarios section of the [Specification](specification.html) page in this IG. 
 
-- Data Source: The EHR facilities enrolling in reporting to NHSN serves as the data source. The facilities contain the data that will be evaluated against one or more measures.   
-- Measure Source: A system at NHSN that stores FHIR resources such as Measure, Library, ValueSet, etc. that are used for dQM Reporting. NHSNLink queries the Measure Source for the latest Measure content before querying the EHR FHIR Server and performing measure evaluation.   
-- dQM Evaluation Engine: NHSNLink will request and query patients from the EHR FHIR Server and evaluate the data against the dQM that was retrieved from the    Measure Source. The resulting MeasureReport bundle will be ingested by NHSN for analysis. 
-- MeasureReport Recipient: NHSN ingests the MeasureReport bundles from the dQM Evaluation Engine that were validated against the profiles in this implementation guide.  
+- <b>Data Source</b>: The EHRs for facilities reporting to NHSN serves as the data source.   
+- <b>Measure Source</b>: NHSN stores FHIR resources used for dQM reporting such as Measure, Library, ValueSet, etc. that systems can query for the latest measure content before querying the EHR FHIR server and performing measure evaluation.   
+- <b>dQM Evaluation Engine</b>: Requests and queries patients from the EHR FHIR server and evaluates the data against the dQM retrieved from the Measure Source. The dQM evaluation engine validates the data against the profiles in this IG. 
+- <b>MeasureReport Recipient</b>: NHSN ingests the MeasureReport bundles from the dQM evaluation engine.  
 
 This implementation guide will serve a wide variety of use cases for NHSN.
 
-### Use Case 1: Acute Care Hospital (ACH)
+### Use Cases 
 
-#### Description
+This implementation guide (IG) serves a wide variety of National Healthcare Safety Network (NHSN) use cases. 
 
-The NHSN Acute Care Hospital (ACH) digital quality measure (dQM) allows facilities to report line-level data electronically to NHSN for the following modules that provide monthly event rates back to the facility such as: Glycemic Control (hyperglycemia and medication-related hypoglycemia); Healthcare facility-onset, antibiotic-Treated Clostridioides difficile (C. difficile) Infection (HT-CDI); Hospital-Onset Bacteremia & Fungemia (HOB), Venous Thromboembolism (VTE)-related prophylaxis and event rates (under development), Late Onset Sepsis / Meningitis (under development), Hospital-onset Acute Kidney Injury (HAKI) (under development), and Opioid-related Adverse Events (ORAE) (under development). NHSN protocols for these measures will soon be available at https://www.cdc.gov/nhsn/acute-care-hospital/index.html.  
+#### Use Case 1: Acute Care Hospital (ACH)
 
-#### Patients of Interest
+##### Description
 
-The facility will work with NHSN to define a list of patients of interest(POI list). This is often the entire in-patient population at the facility. The data for the patients in the list are then extracted and evaluated against the measure criteria for the initial population (see below).
+The NHSN Acute Care Hospital (ACH) digital quality measure (dQM) allows facilities to report line-level data electronically to NHSN for the following modules that provide monthly event rates back to the facility. These dQMs include Glycemic Control (hyperglycemia and medication-related hypoglycemia); Healthcare Facility-onset, antibiotic-Treated Clostridioides difficile (C. difficile) Infection (HT-CDI); Hospital-Onset Bacteremia and Fungemia (HOB), Venous Thromboembolism (VTE)-related Prophylaxis and event rates (under development), Late Onset Sepsis / Meningitis (under development), Hospital-onset Acute Kidney Injury (HAKI) (under development), and Opioid-related Adverse Events (ORAE) (under development).  
 
-#### Initial Population
+##### Patients of Interest
 
-The initial population in the ACH dQM is defined as all encounters for patients of any age in an Emergency Department (ED), observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period. Once an individual patient meets the population criteria, the line-level data needed to calculate metrics, benchmark and or stratify the individual protocol measures is submitted to NHSN.
+The facility works with NHSN to define a list of patients of interest (POI list). The POI list is often the facility’s entire inpatient population. The data for the patients in the list are then extracted and evaluated against the measure criteria for the initial population.
 
-#### Additional Use Case Information References
+##### Initial Population
+
+The initial population in the ACH dQM is defined as all encounters for patients of any age in an Emergency Department (ED), observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period. Once an individual patient meets the population criteria, the line-level data needed to calculate metrics, benchmark, and or stratify the individual protocol measures is submitted to NHSN.
+
+##### Additional Use Case Information References
 
 For specific information on the individual NHSN protocols and metrics see: 
 [Acute Care / Critical Access Hospitals (ACH) | NHSN | CDC ](https://www.cdc.gov/nhsn/acute-care-hospital/index.html)
 [Example ACH Initial Population Library (CQL)](Library-NHSNdQMAcuteCareHospitalInitialPopulationLibrary.html)
 [Example ACH Measure Library ](Measure-NHSNdQMAcuteCareHospitalInitialPopulation.html)
 
-#### ACH Submission Examples
+##### ACH Submission Examples
 
-#### Bundle Submission Examples
+##### Bundle Submission Examples
 
 - [Full Submission Bundle](Bundle-submission-full-example1.html)
 - [Submitting Organization](Organization-organization-example-submitting-organization.html) 
@@ -54,7 +58,7 @@ Individual Measure Report
 
 - [ACH Individual Measure Report List](List-list-example-ach-individual-measurereport-list.html)
 
-#### Initial Population Examples
+##### Initial Population Examples
 
 Patient
 
@@ -67,7 +71,7 @@ Encounter
 - [Encounter - Example ACH Pass3 - Short Stay](Encounter-encounter-example-ach-ach-pass3-short-stay.html)
 - [Encounter - Example ACH Pass3 - Acute](Encounter-encounter-example-ach-ach-pass3-acute.html)
 
-#### Line Level Data Examples
+##### Line Level Data Examples
 
 Condition
 
@@ -141,74 +145,71 @@ Specimen
 - [Specimen - Example ACH Pass1 CSF](Specimen-specimen-example-ach-ach-pass1-csf.html)
 - [Specimen - Example ACH Pass3 Stool](Specimen-specimen-example-ach-ach-pass3-stool.html)
 
-### Use Case 2: Bed Capacity Reporting
+#### Use Case 2: Bed Capacity Reporting
 
-#### Description
+##### Description
 
-The NHSN Bed Capacity measure allows for facilities to report real-time hospital bed capacity data electronically to CDC’s National Healthcare Safety Network (NHSN), enabling a jurisdictional capacity datastore and dashboard for viewing real-time occupancy information. The goal of this measure is to strengthen healthcare systems capacity by providing near real time insight into routine operations and especially during public health emergencies.
+The NHSN Bed Capacity measure allows for facilities to report real-time hospital bed capacity data electronically to CDC’s NHSN, enabling a jurisdictional capacity datastore and dashboard for viewing real-time occupancy information. The goal of this measure is to provide insight into the healthcare systems’ during routine operations and especially during public health emergencies.
 
-The NHSN Bed Capacity use case is intended to follow the pattern of a [SANER](https://hl7.org/fhir/uv/saner/) measure, but there are currently incompatibilities between SANER and DEQM that the owning HL7 work groups have agreed to resolve, but have not yet implemented. Once SANER and DEQM are harmonized this IG will likely be updated to reflect that.
+The NHSN Bed Capacity use case is intended to follow the pattern of a [SANER](https://hl7.org/fhir/uv/saner/) (Situational Awareness for Novel Epidemic Response) measure, but there are currently incompatibilities between SANER and DEQM (Data Exchange for Quality Measures) that the owning HL7 work groups (WG) have agreed to resolve, but have not yet implemented. Once SANER and DEQM are harmonized this IG will likely be updated to reflect that.
 
-#### Background
+##### Background
 
-Formally called the NHSN Connectivity Initiative: Hospital Bed Capacity Project, the objective of this measure is to establish a web-based easy-to use interface to be accessed by hospitals and governmental agencies at a state and regional level to coordinate daily, surge and crisis needs.  Since March 2020, the U.S. government has been consistently collecting data from hospitals and states to better understand healthcare system stress, capacity, capabilities, and hospitalizations. The COVID-19 pandemic underscored the Federal needs for data are continuously evolving, and that data modernization must be prioritized to reduce burden and maximize efficiency.
+Formally called the NHSN Connectivity Initiative: Hospital Bed Capacity Project, the objective of NHSN Bed Capacity measure is to establish a web-based easy-to use interface to be accessed by hospitals and governmental agencies at a state and regional level to coordinate daily, surge, and crisis needs. Since March 2020, the U.S. government has been consistently collecting data from hospitals and states to better understand healthcare system stress, capacity, capabilities, and hospitalizations. The COVID-19 pandemic underscored the Federal Government’s continuously evolving needs for data and the need to prioritize data modernization to reduce burden and maximize efficiency.
 
-#### Bed Inclusion Criteria
+##### Bed Inclusion Criteria
 
 For all bed censuses and counts, the following bed types should be <u>included</u>:
 1. All inpatient staffed and unblocked beds
 2. Observation beds
 
-
-#### Bed Exclusion Criteria
+##### Bed Exclusion Criteria
 
 For all bed censuses and counts, the following bed types should be <u>excluded</u>:
-1. Virtual beds or locations in the EMR that are not physical spaces (i.e., beds used for interoperative phase of care or in certain operative settings or virtual staging areas for admissions.)
+1. Virtual beds or locations in the EHR that are not physical spaces (i.e., beds used for interoperative phase of care or in certain operative settings or virtual staging areas for admissions.) 
 2. Beds no longer in use, even in case of surge
-3. Blocked beds (i.e., beds blocked due to logistical or maintenance challenges, staffing restrictions, isolation, etc.) 
+3. Blocked beds (i.e., beds blocked due to logistical or maintenance challenges, staffing restrictions, isolation, etc.)  
 
+##### Unit Inclusion Criteria
 
-#### Unit Inclusion Criteria
+- Emergency department (ED)
+- Intensive care unit (ICU) 
+- Level of care (LOC) 
+- Medicine telemetry/medicine surgery acute care bed (MT/MS) 
+- Neonatal intensive care unit (NICU) 
+- Negative pressure (NP) 
+- Obstetrics (OB) 
+- Observation (OBS) 
+- Progressive care unit (PCU) 
+- Pediatric (Peds) 
+- Pediatric intensive care unit (PICU) 
+- Psychiatric (Psych) 
+- Rehabilitation (Rehab) 
 
-- ED    Emergency department
-- ICU   Intensive care unit
-- LOC   Level of care
-- MT/MS Medicine telemetry/medicine surgery acute care bed
-- NICU  Neonatal intensive care unit
-- NP    Negative pressure
-- OB    Obstetrics
-- OBS   Observation
-- PCU   Progressive care unit
-- Peds  Pediatric
-- PICU  Pediatric intensive care unit
-- Psych Psychiatric
-- Rehab Rehabilitation
-
-
-#### Bed Capacity Examples
+##### Bed Capacity Examples
 - [MeasureReport - Children's Hospital Bed Capacity Individual Measure Report](MeasureReport-bed-capacity-measurereport-example-chld.html)
 - [MeasureReport - Hospital Bed Capacity Individual Measure Report](MeasureReport-bed-capacity-measurereport-example-hosp.html)
 - [MeasureReport - Inpatient Psychiatric Facility Bed Capacity Individual Measure Report](MeasureReport-bed-capacity-measurereport-example-ipf.html)
 
-### Use Case 3: Respiratory Pathogens Surveillance (RPS)
+#### Use Case 3: Respiratory Pathogens Surveillance (RPS)
 
-#### Description
+##### Description
 
 The NHSN Respiratory Pathogens Surveillance (RPS) module enables the measurement of facility and unit-specific incidence and prevalence of Coronavirus 2019 (COVID-19), Influenza, and Respiratory Syncytial Virus (RSV) disease among patients admitted to the hospital (inpatient, observation, or short stay status), and specific associated patient outcomes. The RPS module supports an electronic health record (EHR)-/vendor-neutral standard for reporting patient-level data on hospitalized patients with a respiratory illness due to one or more of the pathogens under surveillance. Data collected via the RPS module may be used by facilities for quality improvement and patient care planning purposes, as well as by local, state, and federal public health agencies in coordination and response to public health outbreaks. The RPS module offers a mechanism for ongoing monitoring of infectious respiratory viral illness among hospitalized patients with minimal human resource expenditure via 100% electronically automated data capture. This initial version of the module is based on electronic data capture and upload of demographic, administrative, and clinical data from the facility’s electronic source systems such as the electronic health record (EHR), patient registration system (admission, discharge, and transfer [ADT] data), laboratory information system, and pharmacy electronic medication administration system. Facilities will have access to their data via the analysis functions of NHSN.
 
-#### Patients of Interest
+##### Patients of Interest
 
 The facility will work with NHSN to define a list of patients of interest (POI list). This is often the entire in-patient population at the facility. The data for the patients in the list are then extracted and evaluated against the measure criteria for the initial population (see below).
 
-#### Initial Population
+##### Initial Population
 
 The Respiratory Pathogens Surveillance Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
 
-#### Additional Use Case Information References
+##### Additional Use Case Information References
 
 [https://www.cdc.gov/nhsn/acute-care-hospital/index.html](https://www.cdc.gov/nhsn/acute-care-hospital/index.html)
 
-#### RPS Submission Examples
+##### RPS Submission Examples
 
 - [Full RPS Measure Submission Bundle](Bundle-bundle-example-rps-full.html)
 - [Example RPS Submission Header Bundle](Bundle-bundle-example-rps-header.html)
@@ -217,7 +218,7 @@ The Respiratory Pathogens Surveillance Initial Population includes all encounter
 - [Example RPS Submission Influenza Therapeutic Bundle](Bundle-bundle-example-rps-subject-influenzatherapeutic.html)
 - [Example RPS Submission RSV Lab BTG Bundle](Bundle-bundle-example-rps-subject-rsvlabbtg.html)
 
-#### Bundle Submission Examples
+##### Bundle Submission Examples
 
 - [Submitting Organization](Organization-organization-example-submitting-organization.html)
 - [Submitting Device](Device-device-example-submitting-device.html)
@@ -234,7 +235,7 @@ Individual Measure Report
 
 - [RPS Individual Measure Report List](List-list-example-rps-individual-measurereport-list.html)
 
-#### Initial Population Examples
+##### Initial Population Examples
 
 Patient
 
@@ -252,7 +253,7 @@ Encounter
 - [Encounter - RPS Encounter Example Negative PCR 2](Encounter-encounter-example-rps-negativepcr-2.html)
 - [Encounter - RPS Encounter Example RSV Lab BTG](Encounter-encounter-example-rps-rsvlabbtg.html)
 
-#### Line Level Data Examples
+##### Line Level Data Examples
 
 Diagnostic Report (Lab)
 
