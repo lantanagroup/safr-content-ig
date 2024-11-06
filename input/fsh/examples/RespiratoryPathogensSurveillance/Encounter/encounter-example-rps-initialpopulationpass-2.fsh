@@ -23,5 +23,5 @@ Usage: #example
 * hospitalization.dischargeDisposition = $discharge-disposition#snf "Skilled nursing facility"
 * hospitalization.dischargeDisposition.text = "To skilled nursing unit"
 * location.location.display = "UH Adult Inpatient Department"
-* location.period.start = "2024-01-14T08:00:00Z"
+* location.period.start = "2024-01-14T09:00:00Z"
 * location.period.end = "2024-01-22T12:00:00Z"
