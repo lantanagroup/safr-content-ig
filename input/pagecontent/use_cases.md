@@ -280,7 +280,7 @@ Medication
 
 Medication Administration
 
-- [Medication Administration - RPS Medication Administration Example Influenza therapeutic](MedicationAdministration-medicationadministration-example-rps-influenzatherapeutic.html)
+- [Medication Administration - RPS Medication Administration Example Influenza Therapeutic](MedicationAdministration-medicationadministration-example-rps-influenzatherapeutic.html)
 - [Medication Administration - RPS Medication Administration Example Initial Population Pass 1](MedicationAdministration-medicationadministration-example-rps-initialpopulationpass-1.html)
 - [Medication Administration - RPS Medication Administration Example Initial Population Pass 2](MedicationAdministration-medicationadministration-example-rps-initialpopulationpass-2.html)
 - [Medication Administration - RPS Medication Administration Example RSV Lab BTG 1](MedicationAdministration-medicationadministration-example-rps-rsvlabbtg-1.html)
@@ -288,7 +288,7 @@ Medication Administration
 
 Medication Request
 
-- [Medication Request - RPS Medication Request Example Influenza therapeutic](MedicationRequest-medicationrequest-example-rps-influenzatherapeutic.html)
+- [Medication Request - RPS Medication Request Example Influenza Therapeutic](MedicationRequest-medicationrequest-example-rps-influenzatherapeutic.html)
 - [Medication Request - RPS Medication Request Example Initial Population Pass](MedicationRequest-medicationrequest-example-rps-initialpopulationpass.html)
 - [Medication Request - RPS Medication Request Example Negative PCR](MedicationRequest-medicationrequest-example-rps-negativepcr.html)
 - [Medication Request - RPS Medication Request Example RSV Lab BTG 1](MedicationRequest-medicationrequest-example-rps-rsvlabbtg-1.html)
