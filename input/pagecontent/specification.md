@@ -53,16 +53,16 @@ When NHSNLink pulls data from EHRs, both NHSNLink and the NHSN application resid
 
 <div>
 <figure class="figure">
-    <figcaption class="figure-caption"><strong>Figure 1: Process Flow from EHR to NHSN</strong></figcaption>
-    <img src="NHSNProcessFlow.PNG" alt="Figure 1: Process flow from EHR to NHSN" title="Figure 1: Process flow from EHR to NHSN" class="img-responsive img-rounded center-block" width="75%">
+    <figcaption class="figure-caption"><strong>Figure 2: Process Flow from EHR to NHSN</strong></figcaption>
+    <img src="NHSNProcessFlow.PNG" alt="Figure 2: Process flow from EHR to NHSN" title="Figure 2: Process flow from EHR to NHSN" class="img-responsive img-rounded center-block" width="75%">
 </figure>
 <p></p>
 </div>
 
 <div>
 <figure class="figure">
-    <figcaption class="figure-caption"><strong>Figure 2: How NHSNLink Works</strong></figcaption>
-    <img src="HowNHSNWorks.PNG" alt="Figure 2: How NHSNLink Works" title="Figure 2: How NHSNLink Works" class="img-responsive img-rounded center-block" width="75%">
+    <figcaption class="figure-caption"><strong>Figure 3: How NHSNLink Works</strong></figcaption>
+    <img src="HowNHSNWorks.PNG" alt="Figure 3: How NHSNLink Works" title="Figure 3: How NHSNLink Works" class="img-responsive img-rounded center-block" width="75%">
 </figure>
 <p></p>
 </div>
