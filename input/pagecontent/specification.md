@@ -47,6 +47,9 @@ The full set of profiles defined in this IG can be found by following the links 
 
 The following reporting scenarios use the Actors defined on the [Actors and Use Cases](use_cases.html) page.
 
+The general reporting workflows are detailed on the [Reporting Scenarios](https://build.fhir.org/ig/HL7/nhsn-dqm/specification.html#reporting-scenarios) section of the [HL7 NHSN dQM Reporting Implementation Guide](https://build.fhir.org/ig/HL7/nhsn-dqm/index.html).
+
+
 #### NHSNLink Pull from NHSN
 
 When NHSNLink pulls data from EHRs, both NHSNLink and the NHSN application reside within an NHSN controlled environment. NHSNLink first retrieves the latest FHIR measures and related resources from the measure source and extracts the data requirements for each measure. NHSNLink queries the data source for data; evaluates the data against a measure; prepares bundles containing MeasureReport and supporting resources; and then performs pre-qualification (see NHSNLink FHIR Validation and Pre-qualification section below), additional FHIR validation checks against measure-specific profiles, before making the data available to NHSN back-end systems. In this scenario, the data source SHALL have a FHIR API that at a minimum provides read access to all resources required by the measure(s). 
@@ -66,5 +69,3 @@ When NHSNLink pulls data from EHRs, both NHSNLink and the NHSN application resid
 </figure>
 <p></p>
 </div>
-
-
