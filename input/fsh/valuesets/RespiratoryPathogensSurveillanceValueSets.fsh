@@ -23,3 +23,17 @@ Description: "A set of codes indicating the encounter class that represent inpat
 * $v3-ActCode#SS	"short stay"
 * ^copyright = "This Valueset is not copyrighted."
 * ^experimental = false
+
+
+
+
+ValueSet: RespiratoryPathogensSurveillanceEventDiagnosticReportStatus
+Id: rps-diagnostic-report-status
+Title: "Respiratory Pathogens Surveillance Diagnostic Report Status ValueSet"
+Description: "A set of codes indicating the status pf the diagnostic report."
+* $v3-ActCode#final	"Final"
+* $v3-ActCode#registered	"Registered"
+* $v3-ActCode#preliminary	"Preliminary"
+* $v3-ActCode#partial	"Partial"
+* ^copyright = "This Valueset is not copyrighted."
+* ^experimental = false

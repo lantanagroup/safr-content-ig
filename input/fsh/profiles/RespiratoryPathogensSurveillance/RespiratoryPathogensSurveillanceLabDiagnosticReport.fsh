@@ -7,6 +7,9 @@ Description: "This profile contains Required and Must Support data elements for 
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 // * status  TODO verify is binding needed as stated in DD:w The following constraints are written into the CQL: 'final','registered','preliminary','partial'
+* status from RespiratoryPathogensSurveillanceEventDiagnosticReportStatus (required)
+* status ^short = "final | registered | preliminary | partial"
+* status ^definition = "final | registered | preliminary | partial"
 * encounter MS
 * specimen MS
 * conclusion MS
