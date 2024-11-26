@@ -13,10 +13,6 @@ Description: "This profile contains Required and Must Support data elements for 
   * entryType MS
 * status MS
 * distinctIdentifier MS
-* manufactureDate MS
-* expirationDate MS
-* lotNumber MS
-* serialNumber MS
 * deviceName MS
 * type from http://hl7.org/fhir/ValueSet/device-type (extensible)
 * type 1..
