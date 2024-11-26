@@ -40,6 +40,7 @@ code "Cardiology": 'LP29708-2' from "LOINC" display 'Cardiology'
 
 //code for Emergency Encounter Class
 code "emergency": 'EMER' from "ActCode" display 'emergency'
+code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
 
 //code for Condition clinicalStatus
 code "active": 'active' from "Condition Clinical Status" display 'active'
@@ -54,7 +55,8 @@ define "Qualifying Encounters During Measurement Period":
   union [Encounter: "Emergency Department Visit"]
   union [Encounter: "Observation Services"]
   union [Encounter: class in "NHSN Inpatient Encounter Class Codes"]
-  union [Encounter: class ~ "emergency"]) QualifyingEncounters
+  union [Encounter: class ~ "emergency"]
+  union [Encounter: class ~ "observation encounter"]) QualifyingEncounters
   where QualifyingEncounters.status in {'in-progress', 'finished', 'triaged', 'onleave', 'entered-in-error'}
     and QualifyingEncounters.period overlaps "Measurement Period" 
 
