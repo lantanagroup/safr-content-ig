@@ -79,6 +79,7 @@ groups:
     resources:
       - ValueSet/ach-encounter-status
       - ValueSet/ach-encounter-class
+      - ValueSet/rps-diagnostic-report-status
       - ValueSet/rps-encounter-status
       - ValueSet/rps-encounter-class
 

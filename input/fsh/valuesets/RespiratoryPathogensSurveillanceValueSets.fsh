@@ -30,7 +30,7 @@ Description: "A set of codes indicating the encounter class that represent inpat
 ValueSet: RespiratoryPathogensSurveillanceEventDiagnosticReportStatus
 Id: rps-diagnostic-report-status
 Title: "Respiratory Pathogens Surveillance Diagnostic Report Status ValueSet"
-Description: "A set of codes indicating the status pf the diagnostic report."
+Description: "A set of codes indicating the status of the diagnostic report."
 * $v3-ActCode#final	"Final"
 * $v3-ActCode#registered	"Registered"
 * $v3-ActCode#preliminary	"Preliminary"
