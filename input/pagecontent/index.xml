@@ -2,13 +2,13 @@
   <!-- The spaces between the open and close "a" tag are mandatory.  (Cuz HTML renderers are dumb...) -->
   <a name="overview"></a>
   <h3>Overview</h3>
-  <p>The content of the CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) implementation guide (IG) outlines the standards for electronically submitting surveillance data for the Acute Care Hospital (ACH), Respiratory Pathogens Surveillance (RPS), and the automated bed-capacity data-collection dQMs to NHSN. This IG complies with the NHSN dQM Reporting Implementation Guide, published by Health Level Seven International (HL7®) International for general requirements for submissions to NHSN. </p>
-  <p>The specifications in this IG define the standards for reporting the initial population that NHSN needs to calculate NHSN dQMs for ACH, RPS, and the automated bed-capacity data-collection. These specifications will be updated when NHSN requirements change.  </p>
-  <p>This IG does not define how to operationalize calculation of a specific NHSN measure or event of interest. </p>
+  <p>The content of the CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) implementation guide (IG) outlines the standards for electronically submitting surveillance data for the Acute Care Hospital (ACH) and Respiratory Pathogens Surveillance (RPS). This IG complies with the NHSN dQM Reporting Implementation Guide, published by Health Level Seven International (HL7®) International for general requirements for submissions to NHSN.</p>
+  <p>The specifications in this IG define the standards for reporting the initial population that NHSN needs to calculate NHSN dQMs for ACH, RPS, and the automated bed-capacity data-collection. These specifications will be updated when NHSN requirements change.</p>
+  <p>This IG does not define how to operationalize calculation of a specific NHSN measure or event of interest.</p>
   <a name="purpose"></a>
   <h3>Purpose</h3>
   <p>
-    These specifications define the data content requirements for submissions for the ACH, and RPS dQMs to NHSN through NHSNLink. These specifications also define the data content requirements for submissions for the automated bed-capacity data-collection dQM to NHSN directly from a facility or through an external dQM-evaluation engine.</p>
+    These specifications define the data content requirements for submissions for the ACH and RPS dQMs to NHSN through NHSNLink.</p>
   <a name="relationship-to-other-standards"></a>
   <h3>Relationships to Other Standards</h3>
   <p>
@@ -21,7 +21,6 @@
       <li><a name="cqf_measures">Quality Measure IG 3.0.0</a>: <a href="http://hl7.org/fhir/us/cqfmeasures/STU3/">http://hl7.org/fhir/us/cqfmeasures/STU3/</a></li>
       <li><a name="cqf_common">Clinical Quality Framework Common FHIR Assets 4.0.1</a>: <a href="http://fhir.org/guides/cqf/common/4.0.1/">http://fhir.org/guides/cqf/common/4.0.1/</a></li>
       <li><a name="deqm">Data Exchange for Quality Measures (DEQM) 3.1.0</a>: <a href="http://hl7.org/fhir/us/davinci-deqm/STU3.1/">http://hl7.org/fhir/us/davinci-deqm/STU3.1/</a></li>
-      <li><a name="saner">Situational Awareness for Novel Epidemic Response (SANER) 1.0.0</a>: <a href="http://hl7.org/fhir/uv/saner/">http://hl7.org/fhir/uv/saner/</a></li>
     </ol>
   </p>
   <a name="audience"></a>
