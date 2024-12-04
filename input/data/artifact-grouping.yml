@@ -83,10 +83,10 @@ groups:
       - ValueSet/rps-encounter-status
       - ValueSet/rps-encounter-class
 
-  codesystems:
-    name: "Terminology: Profile CodeSystems"
-    resources:
-      - CodeSystem/healthcare-capacity-codes
+  # codesystems:
+  #   name: "Terminology: Profile CodeSystems"
+  #   resources:
+  #     - CodeSystem/healthcare-capacity-codes
 
   measures:
     name: "Knowledge Artifacts: Digital Quality Measure"
@@ -94,7 +94,7 @@ groups:
       - Measure/NHSNGlycemicControlHypoglycemicInitialPopulation
       - Measure/NHSNdQMAcuteCareHospitalInitialPopulation
       - Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation
-      - Measure/NHSNBedCapacityMeasure
+      # - Measure/NHSNBedCapacityMeasure
 
   libs:
     name: "Knowledge Artifacts: Measure Libraries"
@@ -108,9 +108,9 @@ groups:
       Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation:
         name: NHSN Respiratory Pathogens Surveillance Initial Population
         description: Library of NHSN Respiratory Pathogens Surveillance Initial Population Measure
-      Library/NHSNBedCapacityMeasure:
-        name: NHSN Bed Capacity Reporting Initial Population
-        description: Library of NHSN Bed Capacity Initial Population Measure
+      # Library/NHSNBedCapacityMeasure:
+      #   name: NHSN Bed Capacity Reporting Initial Population
+      #   description: Library of NHSN Bed Capacity Initial Population Measure
       
 
   ext-libs:
