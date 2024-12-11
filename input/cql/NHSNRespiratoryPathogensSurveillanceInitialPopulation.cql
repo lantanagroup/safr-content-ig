@@ -1,4 +1,4 @@
-library NHSNRespiratoryPathogensSurveillanceInitialPopulation version '0.0.014'
+library NHSNRespiratoryPathogensSurveillanceInitialPopulation version '1.0.0'
 
 using FHIR version '4.0.1'
 
