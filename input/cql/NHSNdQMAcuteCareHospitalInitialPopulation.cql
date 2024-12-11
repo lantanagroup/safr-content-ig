@@ -168,10 +168,10 @@ define "SDE DiagnosticReport Others":
 
 define "SDE Encounter": 
   "Encounters" Encounters
-  where exists(
+  where not CheckIP(Encounters)
+  and exists(
     "Initial Population" IP
-    where not CheckIP(Encounters) 
-    and Encounters.period overlaps IP.period)
+    where Encounters.period overlaps IP.period)
   return EncounterResource(Encounters,
   {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter'}})
 
