@@ -1,4 +1,4 @@
-library NHSNdQMAcuteCareHospitalInitialPopulation version '1.0.0'
+library NHSNdQMAcuteCareHospitalInitialPopulation version '1.0.1'
 
 using FHIR version '4.0.1'
 
@@ -172,7 +172,7 @@ define "SDE Encounter":
     "Initial Population" IP
     where Encounters.period overlaps IP.period)
   return EncounterResource(Encounters,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-encounter'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter'}})
 
 define "SDE Location":
   "Get Locations from IP Encounters in Measurement Period" Locations
