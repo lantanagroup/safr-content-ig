@@ -1,4 +1,4 @@
-library NHSNGlycemicControlHypoglycemicInitialPopulation version '1.0.0'
+library NHSNGlycemicControlHypoglycemicInitialPopulation version '1.0.1'
 
 using FHIR version '4.0.1'
 
