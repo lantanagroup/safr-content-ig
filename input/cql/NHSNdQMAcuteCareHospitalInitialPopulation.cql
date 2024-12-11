@@ -170,9 +170,15 @@ define "SDE Encounter":
   "Encounters" Encounters
   where exists(
     "Initial Population" IP
-    where Encounters.period overlaps IP.period)
+    where not CheckIP(Encounters) 
+    and Encounters.period overlaps IP.period)
   return EncounterResource(Encounters,
   {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter'}})
+
+define "SDE IP Encounters":
+  "Initial Population" IP
+  return EncounterResource(IP, 
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-encounter'}})
 
 define "SDE Location":
   "Get Locations from IP Encounters in Measurement Period" Locations
@@ -277,6 +283,10 @@ define "SDE Minimal Patient":
 //
 //Functions
 //
+define function "CheckIP"(encounter Encounter):
+  exists("Initial Population" IP
+  where encounter.id = IP.id)
+
 define function "GetMedicationFrom"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):
   case
     when choice is FHIR.Reference then
