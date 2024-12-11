@@ -113,7 +113,7 @@ define "SDE Blood Glucose Observation":
       during InitialPopulation.period
   )
   return SharedResource.ObservationLabResource(Observations, 
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-observation-lab'}})
+  {FHIR.canonical{value: ''}})
 
 //To capture the patient's chief complaint
 define "SDE Chief Complaint":
@@ -123,7 +123,7 @@ define "SDE Chief Complaint":
     where InitialPopulationDiagnosis.use ~ "Chief Complaint"
   )
   return SharedResource.EncounterResource(IP, 
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})
+  {FHIR.canonical{value: ''}})
 
 //To capture any active Conditions the patient has
 define "SDE Condition":
@@ -133,7 +133,7 @@ define "SDE Condition":
     where NHSNHelpers."Normalize Interval"(Conditions.onset) overlaps InitialPopulation.period
   )
   return SharedResource.ConditionResource(Conditions,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition'}})
+  {FHIR.canonical{value: ''}})
   
 //To capture the Encounter diagnosis
 define "SDE Condition during Encounter":
@@ -143,7 +143,7 @@ define "SDE Condition during Encounter":
     where category ~ "encounter-diagnosis"
   )
   return SharedResource.ConditionResource(ConditionEncounterDiagnosis,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-condition'}})
+  {FHIR.canonical{value: ''}})
 
 //To capture Coverage information
 define "SDE Coverage": 
@@ -158,14 +158,14 @@ define "SDE Coverage":
     )
   )
   return SharedResource.CoverageResource(Coverages,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-coverage'}})
+  {FHIR.canonical{value: ''}})
     
 //To capture the discharge disposition
 define "SDE Encounter Discharge Dispositions":
 	"Initial Population" DischargeDispositions 
   where DischargeDispositions.hospitalization.dischargeDisposition in "Discharge Disposition"
   return SharedResource.EncounterResource(DischargeDispositions, 
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})
+  {FHIR.canonical{value: ''}})
 
 //To capture the Locations where the Encounter took place
 define "SDE Encounter Locations":
@@ -180,19 +180,19 @@ define "SDE Encounter Locations":
     and InitialPopulationLocation.period during InitialPopulation.period
   )
   return SharedResource.EncounterResource(InitialPopulation, 
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})
+  {FHIR.canonical{value: ''}})
 
 define "SDE Initial Population Encounters":
   "Initial Population" IP
   return SharedResource.EncounterResource(IP,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-encounter'}})
+  {FHIR.canonical{value: ''}})
 
 define "SDE Location":
   "Get Locations from Initial Population" Locations
   where exists("Initial Population")
   and Locations is not null
   return SharedResource.LocationResource(Locations,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-location'}})
+  {FHIR.canonical{value: ''}})
 
 //To capture information about the Medication
 define "SDE Medication":
@@ -200,7 +200,7 @@ define "SDE Medication":
   union "SDE Medication Administration") MedReqOrAdmin
   where MedReqOrAdmin.medication is FHIR.Reference
   return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication),
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication'}})
+  {FHIR.canonical{value: ''}})
 
 //To capture information on when the Medication was given
 define "SDE Medication Administration":
@@ -211,7 +211,7 @@ define "SDE Medication Administration":
       overlaps "HospitalizationWithObservationOrEmergency"(InitialPopulation)
   )
   return SharedResource.MedicationAdministrationResource(MedicationAdministrations, 
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationadministration'}})
+  {FHIR.canonical{value: ''}})
 
 //To capture information about the medication order
 define "SDE Medication Request":
@@ -221,12 +221,12 @@ define "SDE Medication Request":
 	  where MedicationRequests.authoredOn during "HospitalizationWithObservationOrEmergency"(InitialPopulation)
   )
   return SharedResource.MedicationRequestResource(MedicationRequests,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medicationrequest'}})
+  {FHIR.canonical{value: ''}})
 
 define "SDE Minimal Patient":
   Patient p
   return SharedResource.PatientResource(p,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/cross-measure-patient'}})
+  {FHIR.canonical{value: ''}})
   
 //To capture blood glucose testing orders
 define "SDE Service Request":
@@ -236,7 +236,7 @@ define "SDE Service Request":
     where ServiceRequests.authoredOn during InitialPopulation.period
   )
   return SharedResource.ServiceRequestResource(ServiceRequests,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-servicerequest'}})
+  {FHIR.canonical{value: ''}})
 
 //To capture the blood glucose specimen information
 define "SDE Specimen":
@@ -246,7 +246,7 @@ define "SDE Specimen":
     where NHSNHelpers."Normalize Interval"(Specimens.collection.collected) during InitialPopulation.period
   )
   return SharedResource.SpecimenResource(Specimens,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-specimen'}})
+  {FHIR.canonical{value: ''}})
 
 //
 // Retrieve Resources
