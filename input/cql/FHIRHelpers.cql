@@ -18,12 +18,18 @@ define function ToInterval(period FHIR.Period):
             Interval(period."start".value, period."end".value]
         else 
             if time from period."start".value is null then
-                Interval[DateTime(year from period."start".value, month from period."start".value, day from period."start".value, 0, 0, 0, 0, 0), 
-                period."end".value]
+                Interval[
+                    DateTime(year from period."start".value, month from period."start".value, day from period."start".value,
+                        0, 0, 0, 0, timezoneoffset from period."end".value), 
+                    period."end".value
+                ]
         else 
             if time from period."end".value is null then
-                Interval[period."start".value, 
-                DateTime(year from period."end".value, month from period."end".value, day from period."end".value, 23, 59, 59, 999, 0)]
+                Interval[
+                    period."start".value, 
+                    DateTime(year from period."end".value, month from period."end".value, day from period."end".value,
+                        23, 59, 59, 999, timezoneoffset from period."start".value)
+                ]
         else Interval[period."start".value, period."end".value]
 
 define function ToCalendarUnit(unit System.String):

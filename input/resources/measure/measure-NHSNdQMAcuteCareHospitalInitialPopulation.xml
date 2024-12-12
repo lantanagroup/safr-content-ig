@@ -681,12 +681,18 @@ define &quot;SDE Condition&quot;:
             Interval(period.&quot;start&quot;.value, period.&quot;end&quot;.value]
         else 
             if time from period.&quot;start&quot;.value is null then
-                Interval[DateTime(year from period.&quot;start&quot;.value, month from period.&quot;start&quot;.value, day from period.&quot;start&quot;.value, 0, 0, 0, 0, 0), 
-                period.&quot;end&quot;.value]
+                Interval[
+                    DateTime(year from period.&quot;start&quot;.value, month from period.&quot;start&quot;.value, day from period.&quot;start&quot;.value,
+                        0, 0, 0, 0, timezoneoffset from period.&quot;end&quot;.value), 
+                    period.&quot;end&quot;.value
+                ]
         else 
             if time from period.&quot;end&quot;.value is null then
-                Interval[period.&quot;start&quot;.value, 
-                DateTime(year from period.&quot;end&quot;.value, month from period.&quot;end&quot;.value, day from period.&quot;end&quot;.value, 23, 59, 59, 999, 0)]
+                Interval[
+                    period.&quot;start&quot;.value, 
+                    DateTime(year from period.&quot;end&quot;.value, month from period.&quot;end&quot;.value, day from period.&quot;end&quot;.value,
+                        23, 59, 59, 999, timezoneoffset from period.&quot;start&quot;.value)
+                ]
         else Interval[period.&quot;start&quot;.value, period.&quot;end&quot;.value]"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -3257,7 +3263,7 @@ define function &quot;GetMedicationFrom&quot;(choice Choice&lt;FHIR.CodeableConc
    <title value="NHSN dQM Acute Care Hospital Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2024-12-12T16:37:52-05:00"></date>
+   <date value="2024-12-12T17:05:00-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Acute Care Hospital Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>
