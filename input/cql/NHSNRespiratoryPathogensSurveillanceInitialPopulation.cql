@@ -1,4 +1,4 @@
-library NHSNRespiratoryPathogensSurveillanceInitialPopulation version '1.0.0'
+library NHSNRespiratoryPathogensSurveillanceInitialPopulation version '1.0.0-dev'
 
 using FHIR version '4.0.1'
 
@@ -265,7 +265,7 @@ define "RSV DiagnosticReport Result from Lab PRE Admission":
 //----------------------------------
 define "SDE IP Encounters":
   "Initial Population" IP
-  return EncounterResource(IP, 
+  return SharedResource.EncounterResource(IP, 
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-encounter'}})
 
 define "SDE Encounter": 
