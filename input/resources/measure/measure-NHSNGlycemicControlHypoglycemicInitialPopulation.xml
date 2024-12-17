@@ -618,14 +618,14 @@ define &quot;SDE Chief Complaint&quot;:
         if period.&quot;start&quot;.value is null then
             Interval(period.&quot;start&quot;.value, period.&quot;end&quot;.value]
         else 
-            if time from period.&quot;start&quot;.value is null then
+            if time from period.&quot;start&quot;.value is null and time from period.&quot;end&quot;.value is not null then
                 Interval[
                     DateTime(year from period.&quot;start&quot;.value, month from period.&quot;start&quot;.value, day from period.&quot;start&quot;.value,
                         0, 0, 0, 0, timezoneoffset from period.&quot;end&quot;.value), 
                     period.&quot;end&quot;.value
                 ]
         else 
-            if time from period.&quot;end&quot;.value is null then
+            if time from period.&quot;end&quot;.value is null and time from period.&quot;start&quot;.value is not null then
                 Interval[
                     period.&quot;start&quot;.value, 
                     DateTime(year from period.&quot;end&quot;.value, month from period.&quot;end&quot;.value, day from period.&quot;end&quot;.value,
@@ -2591,7 +2591,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2024-12-12T14:27:51-08:00"></date>
+   <date value="2024-12-17T09:33:43-08:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."></description>
    <purpose value="This site allows NHSN to view Measure-specification content in the dQMs under development by Lantana Consulting Group. Note that this site undergoes constant revision and is not intended to serve as an implementation guide."></purpose>

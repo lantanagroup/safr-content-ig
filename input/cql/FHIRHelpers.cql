@@ -17,14 +17,14 @@ define function ToInterval(period FHIR.Period):
         if period."start".value is null then
             Interval(period."start".value, period."end".value]
         else 
-            if time from period."start".value is null then
+            if time from period."start".value is null and time from period."end".value is not null then
                 Interval[
                     DateTime(year from period."start".value, month from period."start".value, day from period."start".value,
                         0, 0, 0, 0, timezoneoffset from period."end".value), 
                     period."end".value
                 ]
         else 
-            if time from period."end".value is null then
+            if time from period."end".value is null and time from period."start".value is not null then
                 Interval[
                     period."start".value, 
                     DateTime(year from period."end".value, month from period."end".value, day from period."end".value,

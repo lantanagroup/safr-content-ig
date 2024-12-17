@@ -966,14 +966,14 @@ define function &quot;CheckIP&quot;(encounter Encounter):
         if period.&quot;start&quot;.value is null then
             Interval(period.&quot;start&quot;.value, period.&quot;end&quot;.value]
         else 
-            if time from period.&quot;start&quot;.value is null then
+            if time from period.&quot;start&quot;.value is null and time from period.&quot;end&quot;.value is not null then
                 Interval[
                     DateTime(year from period.&quot;start&quot;.value, month from period.&quot;start&quot;.value, day from period.&quot;start&quot;.value,
                         0, 0, 0, 0, timezoneoffset from period.&quot;end&quot;.value), 
                     period.&quot;end&quot;.value
                 ]
         else 
-            if time from period.&quot;end&quot;.value is null then
+            if time from period.&quot;end&quot;.value is null and time from period.&quot;start&quot;.value is not null then
                 Interval[
                     period.&quot;start&quot;.value, 
                     DateTime(year from period.&quot;end&quot;.value, month from period.&quot;end&quot;.value, day from period.&quot;end&quot;.value,
@@ -3901,7 +3901,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
    <title value="NHSN Respiratory Pathogens Surveillance Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2024-12-12T17:27:51-05:00"></date>
+   <date value="2024-12-17T12:33:43-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="All encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period. "></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>
