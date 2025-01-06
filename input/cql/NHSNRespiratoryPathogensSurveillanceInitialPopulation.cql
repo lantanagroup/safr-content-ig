@@ -1,4 +1,4 @@
-library NHSNRespiratoryPathogensSurveillanceInitialPopulation version '0.0.014'
+library NHSNRespiratoryPathogensSurveillanceInitialPopulation version '1.0.0-dev'
 
 using FHIR version '4.0.1'
 
@@ -263,13 +263,19 @@ define "RSV DiagnosticReport Result from Lab PRE Admission":
 //----------------------------------
 // SDE
 //----------------------------------
+define "SDE IP Encounters":
+  "Initial Population" IP
+  return SharedResource.EncounterResource(IP, 
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-encounter'}})
+
 define "SDE Encounter": 
   "Encounters" Encounters
-  where exists(
+  where not CheckIP(Encounters)
+  and exists(
     "Initial Population" IP
     where Encounters.period overlaps IP.period)
   return SharedResource.EncounterResource(Encounters,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-encounter'}})
+  {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter'}})
 
 define "SDE Minimal Patient":
   Patient p
@@ -472,6 +478,10 @@ define "SDE All Procedures":
 //-----------------------------------------------------
 //functions
 //-----------------------------------------------------
+define function "CheckIP"(encounter Encounter):
+  exists("Initial Population" IP
+  where encounter.id = IP.id)
+
 define function "GetMedication"(reference Reference ):
   singleton from (
     [Medication: id in {NHSNHelpers.GetId(reference.reference)}]
