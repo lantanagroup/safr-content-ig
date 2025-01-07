@@ -1,19 +1,19 @@
 ### Actors 
 
-This implementation guide (IG) defines the following actors: a data source, a dQM evaluation engine, a measure source, and data aggregator. 
+This implementation guide (IG) defines the following actors: a data source, a dQM evaluation engine, a measure source, and data aggregator.  
 
 Note: A given system may play the role of multiple actors. For example, an EHR could be both the data source and dQM evaluation engine when calculating a measure internally. Likewise, a system such as NHSNLink that resides at NHSN and queries the data source remotely may act as the dQM evaluation engine and MeasureReport recipient and evaluate the data, produce, and validate MeasureReport bundles. 
 
 The actors defined here are used in the Reporting Scenarios section of the [Specification](specification.html) page in this IG. 
 
-- <b>Data Source</b>: The EHRs for facilities reporting to NHSN serves as the data source.   
-- <b>Measure Source</b>: NHSN stores FHIR resources used for dQM reporting such as Measure, Library, ValueSet, etc. that systems can query for the latest measure content before querying the EHR FHIR server and performing measure evaluation.   
-- <b>dQM Evaluation Engine</b>: Requests and queries patients from the EHR FHIR server and evaluates the data against the dQM retrieved from the Measure Source. The dQM evaluation engine validates the data against the profiles in this IG. 
-- <b>MeasureReport Recipient</b>: NHSN ingests the MeasureReport bundles from the dQM evaluation engine.  
+- <b>Data Source:</b> The EHRs for facilities reporting to NHSN serves as the data source.   
+- <b>Measure Source:</b> NHSN stores FHIR resources used for dQM reporting such as Measure, Library, ValueSet, etc. that systems can query for the latest measure content before querying the EHR FHIR server and performing measure evaluation.   
+- <b>dQM Evaluation Engine:</b>  Requests and queries patients from the EHR FHIR server and evaluates the data against the dQM retrieved from the Measure Source. The dQM evaluation engine validates the data against the profiles in this IG. 
+- <b>MeasureReport Recipient:</b> SN ingests the MeasureReport bundles from the dQM evaluation engine.  
 
-### Use Cases 
+### Use Cases
 
-This implementation guide (IG) serves a wide variety of National Healthcare Safety Network (NHSN) use cases. 
+This implementation guide (IG) serves a wide variety of National Healthcare Safety Network (NHSN) use cases.
 
 ### Use Case 1: Acute Care Hospital (ACH)
 
@@ -27,7 +27,7 @@ The facility works with NHSN to define a list of patients of interest (POI list)
 
 #### Initial Population
 
-The initial population in the ACH dQM is defined as all encounters for patients of any age in an Emergency Department (ED), observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period. Once an individual patient meets the population criteria, the line-level data needed to calculate metrics, benchmark, and or stratify the individual protocol measures is submitted to NHSN.
+The initial population in the ACH dQM is defined as all encounters for patients of any age in an Emergency Department (ED), observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period. Once an individual patient meets the population criteria, the line-level data needed to calculate metrics, benchmark, and or stratify the individual protocol measures is submitted to NHSN. 
 
 #### Additional Use Case Information References
 
@@ -143,7 +143,9 @@ Specimen
 - [Specimen - Example ACH Pass1 CSF](Specimen-specimen-example-ach-ach-pass1-csf.html)
 - [Specimen - Example ACH Pass3 Stool](Specimen-specimen-example-ach-ach-pass3-stool.html)
 
-<!-- ### Use Case 2: Bed Capacity Reporting
+<!-- Removing Bed Capacity and RPS narrative
+
+### Use Case 2: Bed Capacity Reporting
 
 #### Description
 
@@ -281,7 +283,7 @@ Medication
 
 Medication Administration
 
-- [Medication Administration - RPS Medication Administration Example Influenza therapeutic](MedicationAdministration-medicationadministration-example-rps-influenzatherapeutic.html)
+- [Medication Administration - RPS Medication Administration Example Influenza Therapeutic](MedicationAdministration-medicationadministration-example-rps-influenzatherapeutic.html)
 - [Medication Administration - RPS Medication Administration Example Initial Population Pass 1](MedicationAdministration-medicationadministration-example-rps-initialpopulationpass-1.html)
 - [Medication Administration - RPS Medication Administration Example Initial Population Pass 2](MedicationAdministration-medicationadministration-example-rps-initialpopulationpass-2.html)
 - [Medication Administration - RPS Medication Administration Example RSV Lab BTG 1](MedicationAdministration-medicationadministration-example-rps-rsvlabbtg-1.html)
@@ -289,7 +291,7 @@ Medication Administration
 
 Medication Request
 
-- [Medication Request - RPS Medication Request Example Influenza therapeutic](MedicationRequest-medicationrequest-example-rps-influenzatherapeutic.html)
+- [Medication Request - RPS Medication Request Example Influenza Therapeutic](MedicationRequest-medicationrequest-example-rps-influenzatherapeutic.html)
 - [Medication Request - RPS Medication Request Example Initial Population Pass](MedicationRequest-medicationrequest-example-rps-initialpopulationpass.html)
 - [Medication Request - RPS Medication Request Example Negative PCR](MedicationRequest-medicationrequest-example-rps-negativepcr.html)
 - [Medication Request - RPS Medication Request Example RSV Lab BTG 1](MedicationRequest-medicationrequest-example-rps-rsvlabbtg-1.html)
