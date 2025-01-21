@@ -504,35 +504,35 @@ resources:
      description: Measure Report Criteria Reference - This extension is not defined by this IG.  CQF Tooling uses this extension, but the extension is yet unpublished.
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
 
-   Measure/NHSNGlycemicControlHypoglycemicInitialPopulation:
-     name: NHSN Glycemic Control, Hypoglycemia Initial Population
-     description: The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter.
-     #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
+  #  Measure/NHSNGlycemicControlHypoglycemicInitialPopulation:
+  #    name: NHSN Glycemic Control, Hypoglycemia Initial Population
+  #    description: The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter.
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    Measure/NHSNdQMAcuteCareHospitalInitialPopulation:
      name: NHSN dQM Acute Care Hospital Initial Population
      description: The Acute Care Hospital Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period.
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
-   Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation:
-     name: NHSN Respiratory Pathogens Surveillance Initial Population
-     description: The Respiratory Pathogens Surveillance Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
-     #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
+  #  Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation:
+  #    name: NHSN Respiratory Pathogens Surveillance Initial Population
+  #    description: The Respiratory Pathogens Surveillance Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    Library/SharedResourceCreation:
      name: Shared Resource Creation
      description: Shared Resource Creation Library
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
-   Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
-     name: NHSN Glycemic ControlHypoglycemic Initial Population
-     description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
-     #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
+  #  Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
+  #    name: NHSN Glycemic ControlHypoglycemic Initial Population
+  #    description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
-   Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation:
-     name: NHSN Respiratory Pathogens Surveillance Initial Population
-     description: Library of NHSN Respiratory Pathogens Surveillance Initial Population Measure
-     #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
+  #  Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation:
+  #    name: NHSN Respiratory Pathogens Surveillance Initial Population
+  #    description: Library of NHSN Respiratory Pathogens Surveillance Initial Population Measure
+  #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    Library/NHSNdQMAcuteCareHospitalInitialPopulation:
      name: NHSN dQM Acute Care Hospital Initial Population
