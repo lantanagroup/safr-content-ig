@@ -87,7 +87,7 @@
                     <td>
                         <a href="https://hl7.org/fhir/R4">4.0.1</a>
                     </td>
-                    <td>CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) - Version 1.0.0
+                    <td>NHSN Content IG that contains ACH dQM based on FHIR R4, US Core v 3.1.1, QI Core v4.1.1, Quality Measure IG 3.0.0, CQF Common FHIR Assets 4.0.1, Data Exchange for Quality Measures (DEQM) 3.1.0
                     </td>
                     <td>
                         <a title="Home Page" href="{{base_url}}">
