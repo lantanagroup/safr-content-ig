@@ -143,9 +143,7 @@ Specimen
 - [Specimen - Example ACH Pass1 CSF](Specimen-specimen-example-ach-ach-pass1-csf.html)
 - [Specimen - Example ACH Pass3 Stool](Specimen-specimen-example-ach-ach-pass3-stool.html)
 
-<!-- Removing Bed Capacity and RPS narrative
-
-### Use Case 2: Bed Capacity Reporting
+<!---### Use Case 2: Bed Capacity Reporting
 
 #### Description
 
@@ -193,8 +191,8 @@ For all bed censuses and counts, the following bed types should be <u>excluded</
 [//]: #- [MeasureReport - Children's Hospital Bed Capacity Individual Measure Report](MeasureReport-bed-capacity-measurereport-example-chld.html)
 [//]: #- [MeasureReport - Hospital Bed Capacity Individual Measure Report](MeasureReport-bed-capacity-measurereport-example-hosp.html)
 [//]: #- [MeasureReport - Inpatient Psychiatric Facility Bed Capacity Individual Measure Report](MeasureReport-bed-capacity-measurereport-example-ipf.html)
-
-### Use Case 3: Respiratory Pathogens Surveillance (RPS)
+-->
+### Use Case 2: Respiratory Pathogens Surveillance (RPS)
 
 #### Description
 
