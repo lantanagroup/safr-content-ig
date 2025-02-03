@@ -1,31 +1,33 @@
 ### Actors 
 
-This implementation guide defines the following actors: a data source, a dQM Evaluation Engine, a Measure Source and Data aggregator.  
+This implementation guide (IG) defines the following actors: a data source, a dQM evaluation engine, a measure source, and data aggregator.  
 
-Note: A given system may play the role of multiple actors. For example, an EHR could be both the Data Source and dQM Evaluation Engine when calculating a measure internally. Likewise, a system residing at NHSN that queries the Data Source remotely, may evaluate the data, produce and validate MeasureReport bundles as a result of acting as the dQM Evaluation Engine and MeasureReport Recipient. 
+Note: A given system may play the role of multiple actors. For example, an EHR could be both the data source and dQM evaluation engine when calculating a measure internally. Likewise, a system such as NHSNLink that resides at NHSN and queries the data source remotely may act as the dQM evaluation engine and MeasureReport recipient and evaluate the data, produce, and validate MeasureReport bundles. 
 
 The actors defined here are used in the Reporting Scenarios section of the [Specification](specification.html) page in this IG. 
 
-- Data Source: The EHR facilities enrolling in reporting to NHSN serves as the data source. The facilities contain the data that will be evaluated against one or more measures.   
-- Measure Source: A system at NHSN that stores FHIR resources such as Measure, Library, ValueSet, etc. that are used for dQM Reporting. NHSNLink queries the Measure Source for the latest Measure content before querying the EHR FHIR Server and performing measure evaluation.   
-- dQM Evaluation Engine: NHSNLink will request and query patients from the EHR FHIR Server and evaluate the data against the dQM that was retrieved from the    Measure Source. The resulting MeasureReport bundle will be ingested by NHSN for analysis. 
-- MeasureReport Recipient: NHSN ingests the MeasureReport bundles from the dQM Evaluation Engine that were validated against the profiles in this implementation guide.  
+- <b>Data Source:</b> The EHRs for facilities reporting to NHSN serves as the data source.   
+- <b>Measure Source:</b> NHSN stores FHIR resources used for dQM reporting such as Measure, Library, ValueSet, etc. that systems can query for the latest measure content before querying the EHR FHIR server and performing measure evaluation.   
+- <b>dQM Evaluation Engine:</b>  Requests and queries patients from the EHR FHIR server and evaluates the data against the dQM retrieved from the Measure Source. The dQM evaluation engine validates the data against the profiles in this IG. 
+- <b>MeasureReport Recipient:</b> SN ingests the MeasureReport bundles from the dQM evaluation engine.  
 
-This implementation guide will serve a wide variety of use cases for NHSN.
+### Use Cases
+
+This implementation guide (IG) serves a wide variety of National Healthcare Safety Network (NHSN) use cases.
 
 ### Use Case 1: Acute Care Hospital (ACH)
 
 #### Description
 
-The NHSN Acute Care Hospital (ACH) digital quality measure (dQM) allows facilities to report line-level data electronically to NHSN for the following modules that provide monthly event rates back to the facility such as: Glycemic Control (hyperglycemia and medication-related hypoglycemia); Healthcare facility-onset, antibiotic-Treated Clostridioides difficile (C. difficile) Infection (HT-CDI); Hospital-Onset Bacteremia & Fungemia (HOB), Venous Thromboembolism (VTE)-related prophylaxis and event rates (under development), Late Onset Sepsis / Meningitis (under development), Hospital-onset Acute Kidney Injury (HAKI) (under development), and Opioid-related Adverse Events (ORAE) (under development). NHSN protocols for these measures will soon be available at https://www.cdc.gov/nhsn/acute-care-hospital/index.html.  
+The NHSN Acute Care Hospital (ACH) digital quality measure (dQM) allows facilities to report line-level data electronically to NHSN for the following modules that provide monthly event rates back to the facility. These dQMs include Glycemic Control (hyperglycemia and medication-related hypoglycemia); Healthcare Facility-onset, antibiotic-Treated Clostridioides difficile (C. difficile) Infection (HT-CDI); Hospital-Onset Bacteremia and Fungemia (HOB), Venous Thromboembolism (VTE)-related Prophylaxis and event rates (under development), Late Onset Sepsis / Meningitis (under development), Hospital-onset Acute Kidney Injury (HAKI) (under development), and Opioid-related Adverse Events (ORAE) (under development).  
 
 #### Patients of Interest
 
-The facility will work with NHSN to define a list of patients of interest(POI list). This is often the entire in-patient population at the facility. The data for the patients in the list are then extracted and evaluated against the measure criteria for the initial population (see below).
+The facility works with NHSN to define a list of patients of interest (POI list). The POI list is often the facility’s entire inpatient population. The data for the patients in the list are then extracted and evaluated against the measure criteria for the initial population.
 
 #### Initial Population
 
-The initial population in the ACH dQM is defined as all encounters for patients of any age in an Emergency Department (ED), observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period. Once an individual patient meets the population criteria, the line-level data needed to calculate metrics, benchmark and or stratify the individual protocol measures is submitted to NHSN.
+The initial population in the ACH dQM is defined as all encounters for patients of any age in an Emergency Department (ED), observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period. Once an individual patient meets the population criteria, the line-level data needed to calculate metrics, benchmark, and or stratify the individual protocol measures is submitted to NHSN. 
 
 #### Additional Use Case Information References
 
@@ -279,7 +281,7 @@ Medication
 
 Medication Administration
 
-- [Medication Administration - RPS Medication Administration Example Influenza therapeutic](MedicationAdministration-medicationadministration-example-rps-influenzatherapeutic.html)
+- [Medication Administration - RPS Medication Administration Example Influenza Therapeutic](MedicationAdministration-medicationadministration-example-rps-influenzatherapeutic.html)
 - [Medication Administration - RPS Medication Administration Example Initial Population Pass 1](MedicationAdministration-medicationadministration-example-rps-initialpopulationpass-1.html)
 - [Medication Administration - RPS Medication Administration Example Initial Population Pass 2](MedicationAdministration-medicationadministration-example-rps-initialpopulationpass-2.html)
 - [Medication Administration - RPS Medication Administration Example RSV Lab BTG 1](MedicationAdministration-medicationadministration-example-rps-rsvlabbtg-1.html)
@@ -287,7 +289,7 @@ Medication Administration
 
 Medication Request
 
-- [Medication Request - RPS Medication Request Example Influenza therapeutic](MedicationRequest-medicationrequest-example-rps-influenzatherapeutic.html)
+- [Medication Request - RPS Medication Request Example Influenza Therapeutic](MedicationRequest-medicationrequest-example-rps-influenzatherapeutic.html)
 - [Medication Request - RPS Medication Request Example Initial Population Pass](MedicationRequest-medicationrequest-example-rps-initialpopulationpass.html)
 - [Medication Request - RPS Medication Request Example Negative PCR](MedicationRequest-medicationrequest-example-rps-negativepcr.html)
 - [Medication Request - RPS Medication Request Example RSV Lab BTG 1](MedicationRequest-medicationrequest-example-rps-rsvlabbtg-1.html)
@@ -313,4 +315,4 @@ Specimen
 - [Specimen - RPS Specimen Example Initial Population Pass](Specimen-specimen-example-rps-initialpopulationpass.html)
 - [Specimen - RPS Specimen Example Negative PCR 1](Specimen-specimen-example-rps-negativepcr-1.html)
 - [Specimen - RPS Specimen Example Negative PCR 2](Specimen-specimen-example-rps-negativepcr-2.html)
-- [Specimen - RPS Specimen Example RSV Lab BTG](Specimen-specimen-example-rps-rsvlabbtg.html)
+- [Specimen - RPS Specimen Example RSV Lab BTG](Specimen-specimen-example-rps-rsvlabbtg.html) -->
