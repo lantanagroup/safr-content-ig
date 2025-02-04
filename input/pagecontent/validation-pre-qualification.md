@@ -30,4 +30,3 @@ Validation and subsequent pre-qualification occur after data evaluation and befo
 
 Pre-qualification categorization is technology agnostic; the frameworks and programming languages used to implement above do not matter. This allows the evaluation and submission of data to NHSN through multiple systems and pathways, provided prequalification results are acceptable. Similarly, the technology used to implement pre-qualification categorization to determine and assert only acceptable issues exist within a given submission dataset is not mandated.  
 
-Specific pre-qualification category rules and guidance can be found in the [Technical Requirements section of the NHSN dQM resources] (link needed).  

@@ -5,9 +5,9 @@
     "type": {
         "coding": [
             {
-                "system": "http://terminology.hl7.org/CodeSystem/v2-0487",
-                "code": "STL",            
-                "display": "Stool = Fecal"
+                "system": "http://snomed.info/sct",
+                "code": "429901000124102",            
+                "display": "Bloody stool specimen (specimen)"
             }
         ]
     },
