@@ -90,7 +90,7 @@
   }, {
     "type": "depends-on",
     "display": "Code system Specimen Type",
-    "resource": "http://terminology.hl7.org/CodeSystem/v2-0487"
+    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1099.54"
   }, {
     "type": "depends-on",
     "display": "Code system Observation Category",

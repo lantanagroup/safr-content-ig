@@ -5,9 +5,9 @@
     "type": {
         "coding": [
             {
-                "system": "http://terminology.hl7.org/CodeSystem/v2-0487",
-                "code": "NSECR",            
-                "display": "Nasal swab"
+                "system": "http://snomed.info/sct",
+                "code": "472901003",            
+                "display": "Swab from nasal sinus (specimen)"
             }
         ]
     },

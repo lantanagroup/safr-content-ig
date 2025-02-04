@@ -8,8 +8,10 @@ Usage: #example
 * identifier[=].assigner.display = "LIS"
 * identifier[+].system = "urn:oid:2.16.840.1.113883.19.5.1.798.800"
 * identifier[=].value = "C10408290:42"
-* type = $v2-0487#CSF "Cerebral spinal fluid"
-* type.text = "Cerebral spinal fluid"
+//* type = $v2-0487#CSF "Cerebral spinal fluid"
+//* type.text = "Cerebral spinal fluid"
+* type = $sct#258450006 "Cerebrospinal fluid specimen (specimen)"
+* type.text = "Cerebrospinal fluid specimen (specimen)"
 * subject = Reference(patient-example-ach-ach-pass1)
 * subject.display = "Pass1 ACH"
 * receivedTime = "2024-02-02T18:20:00-05:00"

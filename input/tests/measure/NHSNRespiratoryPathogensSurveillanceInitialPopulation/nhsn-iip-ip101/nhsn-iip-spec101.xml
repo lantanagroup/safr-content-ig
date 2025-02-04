@@ -44,8 +44,9 @@
 
         Note that this practice is so widespread that it's pointless to try and stop it    -->
         <coding> 
-            <system value="http://terminology.hl7.org/CodeSystem/v2-0487"/> 
-            <code value="SER"/> 
+            <system value="http://snomed.info/sct"/> 
+            <code value="119364003"/> 
+            <display value="Serum specimen (specimen)"/> 
         </coding> 
     </type> 
     <subject> 
