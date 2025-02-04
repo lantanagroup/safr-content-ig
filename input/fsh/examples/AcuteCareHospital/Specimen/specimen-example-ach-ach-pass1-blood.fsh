@@ -8,8 +8,10 @@ Usage: #example
 * identifier[=].assigner.display = "LIS"
 * identifier[+].system = "urn:oid:2.16.840.1.113883.19.5.1.798.800"
 * identifier[=].value = "C10408290:41"
-* type = $v2-0487#BLDV "Blood venous"
-* type.text = "Blood venous"
+//* type = $v2-0487#BLDV "Blood venous"
+//* type.text = "Blood venous"
+* type = $sct#122555007 "Venous blood specimen (specimen)"
+* type.text = "Venous blood specimen (specimen)"
 * subject = Reference(patient-example-ach-ach-pass1)
 * subject.display = "Pass1 ACH"
 * receivedTime = "2024-02-02T18:20:00-05:00"

@@ -10,7 +10,8 @@ Description: "This profile contains Required and Must Support data elements for 
 * accessionIdentifier MS
 * status MS
 * type 1..
-* type from http://terminology.hl7.org/ValueSet/v2-0487 (extensible)
+//* type from http://terminology.hl7.org/ValueSet/v2-0487 (extensible)
+* type = $SpecimenType
 * collection 1..
 * collection.collected[x] 1..
 * collection.bodySite 1..
