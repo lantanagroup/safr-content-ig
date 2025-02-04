@@ -11,7 +11,7 @@ Description: "This profile contains Required and Must Support data elements for 
 * status MS
 * type 1..
 //* type from http://terminology.hl7.org/ValueSet/v2-0487 (extensible)
-* type = $SpecimenType
+* type from $SpecimenType (extensible)
 * collection 1..
 * collection.collected[x] 1..
 * collection.bodySite 1..

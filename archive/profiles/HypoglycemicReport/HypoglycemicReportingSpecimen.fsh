@@ -9,6 +9,8 @@ Description: "This profile contains Required and Must Support data elements for 
 * identifier MS
 * accessionIdentifier MS
 * type 1..
+// MEASDEV-1619 - Update the Specimen.type binding to match the one used by US Core 6.1+
+* type from $SpecimenType (extensible)
 * collection 1..
 * collection.collected[x] 1..
 * collection.bodySite MS

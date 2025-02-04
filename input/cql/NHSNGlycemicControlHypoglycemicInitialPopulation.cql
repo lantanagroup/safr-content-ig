@@ -8,7 +8,8 @@ include SharedResourceCreation version '0.1.006' called SharedResource
 
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode' 
 codesystem "Diagnosis Role": 'http://terminology.hl7.org/CodeSystem/diagnosis-role'
-codesystem "Specimen Type": 'http://terminology.hl7.org/CodeSystem/v2-0487'
+// Changed based on - MEASDEV-1619 - Update the Specimen.type binding to match the one used by US Core 6.1+
+//codesystem "Specimen Type": 'http://terminology.hl7.org/CodeSystem/v2-0487'
 codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category'
 codesystem "Condition Category": 'http://terminology.hl7.org/CodeSystem/condition-category' 
 
