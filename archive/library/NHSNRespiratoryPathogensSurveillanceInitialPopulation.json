@@ -596,7 +596,7 @@
   }, {
     "type": "Location",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Location" ],
-    "mustSupport": [ "id", "id.value", "extension", "status", "operationalStatus", "name", "alias", "description", "mode", "type", "telecom", "address", "physicalType", "position", "managingOrganization", "partOf", "hoursOfOperation", "availabilityExceptions", "endpoint" ]
+    "mustSupport": [ "id", "extension", "status", "operationalStatus", "name", "alias", "description", "mode", "type", "telecom", "address", "physicalType", "position", "managingOrganization", "partOf", "hoursOfOperation", "availabilityExceptions", "endpoint" ]
   }, {
     "type": "Observation",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Observation" ],

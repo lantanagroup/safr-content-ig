@@ -34,7 +34,7 @@ define function "ToDateInterval"(period FHIR.Period):
 define function "GetLocation"(reference Reference ):
   singleton from (
 	[Location] Locations
-	where Locations.id.value = GetId(reference.reference.value)
+		where Locations.id = GetId(reference.reference)
   )
 
 define function "GetId"(uri String ):

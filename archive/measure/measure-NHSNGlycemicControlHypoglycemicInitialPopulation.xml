@@ -560,11 +560,25 @@ define &quot;SDE Chief Complaint&quot;:
                <valueString value="define function &quot;GetLocation&quot;(reference Reference ):
   singleton from (
 	[Location] Locations
-	where Locations.id.value = GetId(reference.reference.value)
+		where Locations.id = GetId(reference.reference)
   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="25"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="FHIRHelpers"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="ToString"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function ToString(value string): value.value"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="26"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -579,7 +593,7 @@ define &quot;SDE Chief Complaint&quot;:
   Last(Split(uri, '/'))"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="26"></valueInteger>
+               <valueInteger value="27"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -600,7 +614,7 @@ define &quot;SDE Chief Complaint&quot;:
         }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="27"></valueInteger>
+               <valueInteger value="28"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -632,20 +646,6 @@ define &quot;SDE Chief Complaint&quot;:
                         23, 59, 59, 999, timezoneoffset from period.&quot;start&quot;.value)
                 ]
         else Interval[period.&quot;start&quot;.value, period.&quot;end&quot;.value]"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="28"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="FHIRHelpers"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="ToString"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define function ToString(value EncounterStatus): value.value"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="29"></valueInteger>
@@ -2355,7 +2355,6 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <type value="Location"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
             <mustSupport value="id"></mustSupport>
-            <mustSupport value="id.value"></mustSupport>
             <mustSupport value="extension"></mustSupport>
             <mustSupport value="status"></mustSupport>
             <mustSupport value="operationalStatus"></mustSupport>
@@ -2586,12 +2585,12 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
       <system value="https://nhsnlink.org"></system>
       <value value="nhsnglycemiccontrolhypoglycemicinitialpopulation"></value>
    </identifier>
-   <version value="0.0.020"></version>
+   <version value="1.0.0-dev"></version>
    <name value="NHSNGlycemicControlHypoglycemicInitialPopulation"></name>
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2024-12-17T09:33:43-08:00"></date>
+   <date value="2025-02-03T15:24:37-08:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."></description>
    <purpose value="This site allows NHSN to view Measure-specification content in the dQMs under development by Lantana Consulting Group. Note that this site undergoes constant revision and is not intended to serve as an implementation guide."></purpose>

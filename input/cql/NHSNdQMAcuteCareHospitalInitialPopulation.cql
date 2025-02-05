@@ -135,6 +135,8 @@ define "SDE Device":
   return DeviceResource(Devices,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-device'}})
 
+//This block collects all DiagnosticReport resources while also marking Lab and Note DiagnosticReports with the appropriate profiles
+//#Start DiagnosticReport block
 define "SDE DiagnosticReport Lab":
   "DiagnosticReports" DiagnosticReports
   where (exists(DiagnosticReports.category Category where Category ~ "LAB")
@@ -165,6 +167,7 @@ define "SDE DiagnosticReport Others":
       where NHSNHelpers."Normalize Interval"(DiagnosticReports.effective) overlaps IP.period)
   return DiagnosticReportResource(DiagnosticReports,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport'}})
+//#End DiagnosticReport block
 
 define "SDE Encounter": 
   "Encounters" Encounters

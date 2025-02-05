@@ -996,7 +996,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
                <valueString value="define function &quot;GetLocation&quot;(reference Reference ):
   singleton from (
 	[Location] Locations
-	where Locations.id.value = GetId(reference.reference.value)
+		where Locations.id = GetId(reference.reference)
   )"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -2987,7 +2987,6 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <type value="Location"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
             <mustSupport value="id"></mustSupport>
-            <mustSupport value="id.value"></mustSupport>
             <mustSupport value="extension"></mustSupport>
             <mustSupport value="status"></mustSupport>
             <mustSupport value="operationalStatus"></mustSupport>
@@ -3896,12 +3895,12 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
       <system value="https://nhsnlink.org"></system>
       <value value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></value>
    </identifier>
-   <version value="0.0.014"></version>
+   <version value="1.0.0-dev"></version>
    <name value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></name>
    <title value="NHSN Respiratory Pathogens Surveillance Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2024-12-17T12:33:43-05:00"></date>
+   <date value="2025-02-03T18:24:37-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="All encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period. "></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>
