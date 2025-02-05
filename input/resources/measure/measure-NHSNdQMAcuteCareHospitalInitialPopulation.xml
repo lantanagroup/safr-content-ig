@@ -202,7 +202,9 @@
                <valueString value="SDE Encounter"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE Encounter&quot;: 
+               <valueString value="//#End DiagnosticReport block
+
+define &quot;SDE Encounter&quot;: 
   &quot;Encounters&quot; Encounters
   where not CheckIP(Encounters)
   and exists(
@@ -500,7 +502,9 @@ define &quot;SDE Condition&quot;:
                <valueString value="SDE DiagnosticReport Lab"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE DiagnosticReport Lab&quot;:
+               <valueString value="//This block collects all DiagnosticReport resources while also marking Lab and Note DiagnosticReports with the appropriate profiles
+//#Start DiagnosticReport block
+define &quot;SDE DiagnosticReport Lab&quot;:
   &quot;DiagnosticReports&quot; DiagnosticReports
   where (exists(DiagnosticReports.category Category where Category ~ &quot;LAB&quot;)
     and exists(
@@ -695,12 +699,25 @@ define function &quot;CheckIP&quot;(encounter Encounter):
             <extension url="statement">
                <valueString value="define function ToInterval(period FHIR.Period):
     if period is null then
-        null
-    else
-        if period.&quot;start&quot; is null then
+        null 
+    else 
+        if period.&quot;start&quot;.value is null then
             Interval(period.&quot;start&quot;.value, period.&quot;end&quot;.value]
-        else
-            Interval[period.&quot;start&quot;.value, period.&quot;end&quot;.value]"></valueString>
+        else 
+            if time from period.&quot;start&quot;.value is null and time from period.&quot;end&quot;.value is not null then
+                Interval[
+                    DateTime(year from period.&quot;start&quot;.value, month from period.&quot;start&quot;.value, day from period.&quot;start&quot;.value,
+                        0, 0, 0, 0, timezoneoffset from period.&quot;end&quot;.value), 
+                    period.&quot;end&quot;.value
+                ]
+        else 
+            if time from period.&quot;end&quot;.value is null and time from period.&quot;start&quot;.value is not null then
+                Interval[
+                    period.&quot;start&quot;.value, 
+                    DateTime(year from period.&quot;end&quot;.value, month from period.&quot;end&quot;.value, day from period.&quot;end&quot;.value,
+                        23, 59, 59, 999, timezoneoffset from period.&quot;start&quot;.value)
+                ]
+        else Interval[period.&quot;start&quot;.value, period.&quot;end&quot;.value]"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="28"></valueInteger>
@@ -717,7 +734,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
                <valueString value="define function &quot;GetLocation&quot;(reference Reference ):
   singleton from (
 	[Location] Locations
-	where Locations.id.value = GetId(reference.reference.value)
+		where Locations.id = GetId(reference.reference)
   )"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -2516,7 +2533,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library FHIRHelpers"></display>
-            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.1"></resource>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.2"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -2927,7 +2944,6 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <type value="Location"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
             <mustSupport value="id"></mustSupport>
-            <mustSupport value="id.value"></mustSupport>
             <mustSupport value="extension"></mustSupport>
             <mustSupport value="status"></mustSupport>
             <mustSupport value="operationalStatus"></mustSupport>
@@ -3262,12 +3278,12 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
       <system value="https://nhsnlink.org"></system>
       <value value="NHSNdQMAcuteCareHospitalInitialPopulation"></value>
    </identifier>
-   <version value="0.0.017"></version>
+   <version value="1.0.0-dev"></version>
    <name value="NHSNdQMAcuteCareHospitalInitialPopulation"></name>
    <title value="NHSN dQM Acute Care Hospital Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2024-12-12T17:19:09-05:00"></date>
+   <date value="2025-02-05T14:13:07-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Acute Care Hospital Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>

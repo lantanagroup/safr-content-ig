@@ -2,7 +2,7 @@ library NHSNHelpers version '0.0.002'
 
 using FHIR version '4.0.1'
 
-include FHIRHelpers version '4.0.1'
+include FHIRHelpers version '4.0.2'
 
 context Patient
 
@@ -34,7 +34,7 @@ define function "ToDateInterval"(period FHIR.Period):
 define function "GetLocation"(reference Reference ):
   singleton from (
 	[Location] Locations
-	where Locations.id.value = GetId(reference.reference.value)
+		where Locations.id = GetId(reference.reference)
   )
 
 define function "GetId"(uri String ):

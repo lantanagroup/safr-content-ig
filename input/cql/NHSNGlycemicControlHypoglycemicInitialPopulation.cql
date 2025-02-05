@@ -2,7 +2,7 @@ library NHSNGlycemicControlHypoglycemicInitialPopulation version '1.0.0-dev'
 
 using FHIR version '4.0.1'
 
-include FHIRHelpers version '4.0.1' called FHIRHelpers
+include FHIRHelpers version '4.0.2' called FHIRHelpers
 include NHSNHelpers version '0.0.002' called NHSNHelpers
 include SharedResourceCreation version '0.1.006' called SharedResource
 

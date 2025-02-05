@@ -2,7 +2,7 @@ library NHSNdQMAcuteCareHospitalInitialPopulation version '1.0.0-dev'
 
 using FHIR version '4.0.1'
 
-include FHIRHelpers version '4.0.1' called FHIRHelpers
+include FHIRHelpers version '4.0.2' called FHIRHelpers
 include NHSNHelpers version '0.0.002' called NHSNHelpers
 include SharedResourceCreation version '0.1.006' called SharedResource
 
@@ -135,6 +135,8 @@ define "SDE Device":
   return DeviceResource(Devices,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-device'}})
 
+//This block collects all DiagnosticReport resources while also marking Lab and Note DiagnosticReports with the appropriate profiles
+//#Start DiagnosticReport block
 define "SDE DiagnosticReport Lab":
   "DiagnosticReports" DiagnosticReports
   where (exists(DiagnosticReports.category Category where Category ~ "LAB")
@@ -165,6 +167,7 @@ define "SDE DiagnosticReport Others":
       where NHSNHelpers."Normalize Interval"(DiagnosticReports.effective) overlaps IP.period)
   return DiagnosticReportResource(DiagnosticReports,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport'}})
+//#End DiagnosticReport block
 
 define "SDE Encounter": 
   "Encounters" Encounters
