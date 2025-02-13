@@ -17,7 +17,7 @@ Usage: #example
 * relatedArtifact[=].resource = "http://fhir.org/guides/cqf/common/Library/FHIR-ModelInfo|4.0.1"
 * relatedArtifact[+].type = #depends-on
 * relatedArtifact[=].display = "Library FHIRHelpers"
-* relatedArtifact[=].resource = "http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"
+* relatedArtifact[=].resource = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers|4.0.2"
 * relatedArtifact[+].type = #depends-on
 * relatedArtifact[=].display = "Library Global"
 * relatedArtifact[=].resource = "http://hl7.org/fhir/us/cqfmeasures/Library/MATGlobalCommonFunctions"

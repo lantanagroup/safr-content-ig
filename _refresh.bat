@@ -1,6 +1,13 @@
 @ECHO OFF
+
+SET var_r=snapshots
+SET var_g=org.opencds.cqf
+SET var_a=tooling-cli
+SET var_v=3.6.0
+
 REM SET tooling_jar=tooling-cli-3.1.0-SNAPSHOT.jar
-SET tooling_jar=tooling-cli-3.1.0-SNAPSHOT.jar
+REM SET tooling_jar=tooling-cli-3.1.0-SNAPSHOT.jar
+SET tooling_jar=%var_a%-%var_v%-SNAPSHOT.jar
 SET input_cache_path=%~dp0input-cache
 SET resources_path=%~dp0/input/resources
 SET ig_ini_path=%~dp0ig.ini

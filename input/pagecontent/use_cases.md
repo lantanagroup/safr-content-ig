@@ -33,8 +33,8 @@ The initial population in the ACH dQM is defined as all encounters for patients 
 
 For specific information on the individual NHSN protocols and metrics see: 
 [Acute Care / Critical Access Hospitals (ACH) | NHSN | CDC ](https://www.cdc.gov/nhsn/acute-care-hospital/index.html)
-[Example ACH Initial Population Library (CQL)](Library-NHSNdQMAcuteCareHospitalInitialPopulationLibrary.html)
-[Example ACH Measure Library ](Measure-NHSNdQMAcuteCareHospitalInitialPopulation.html)
+[ACH Initial Population Library (CQL)](Library-NHSNdQMAcuteCareHospitalInitialPopulation.html)
+[ACH Measure Library ](Measure-NHSNdQMAcuteCareHospitalInitialPopulation.html)
 
 #### ACH Submission Examples
 

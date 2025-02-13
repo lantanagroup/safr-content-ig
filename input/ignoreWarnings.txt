@@ -77,8 +77,5 @@ Unable to check the stated count 2 because the subject list cannot be fully proc
 # WARNING: An example proprietary code system, not meant to be validated
 A definition for CodeSystem 'http://www.example.com/prorpietary' could not be found, so the code cannot be validated
 
-# INFORMATION: This IG does not currently assign OIDs and there is not currently a plan to have measures or libraries be interchangable with systems that use OIDs (such as would be used for CDA)
-INFORMATION: Resource: The resource Library/NHSNdQMAcuteCareHospitalInitialPopulationLibrary could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
-
 # INFORMATION: maxValueSet is used by tooling for R4.
 The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.2.0 is deprecated
