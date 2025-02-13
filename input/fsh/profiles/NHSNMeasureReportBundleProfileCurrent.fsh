@@ -1,4 +1,4 @@
-Profile: NHSNMeasureReportBundleProfileCurrent
+Profile: NHSNMeasureReportBundleProfile
 Parent: Bundle
 Id: nhsn-measurereport-bundle
 Title: "NHSN MeasureReport Bundle"

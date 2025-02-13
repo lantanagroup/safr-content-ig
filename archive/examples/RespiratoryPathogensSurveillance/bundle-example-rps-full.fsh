@@ -1,5 +1,5 @@
 Instance: bundle-example-rps-full
-InstanceOf: NHSNMeasureReportBundleProfileCurrent
+InstanceOf: NHSNMeasureReportBundleProfile
 Title: "Full RPS Measure Submission Bundle"
 Description: "Measure Bundle - Full RPS Measure Submission Example"
 Usage: #example

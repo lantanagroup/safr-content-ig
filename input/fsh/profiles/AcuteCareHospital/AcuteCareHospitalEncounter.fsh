@@ -5,13 +5,13 @@ Title: "ACH Event Encounter"
 Description: "This profile contains Required and Must Support data elements for reporting encounter information to the NHSN Acute Care Hospital (ACH) Digital Quality Measures. This profile is based on the [HL7 FHIR® US Core Encounter Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-encounter.html)."
 
 * obeys encounter-ach-initial-population
-/* obeys encounter-ach-initial-population1
-* obeys encounter-ach-initial-population2
-* obeys encounter-ach-initial-population3
-* obeys encounter-ach-initial-population3a
-* obeys encounter-ach-initial-population3b
-* obeys encounter-ach-initial-population3c
-*/
+//* obeys encounter-ach-initial-population1
+//* obeys encounter-ach-initial-population2
+//* obeys encounter-ach-initial-population3
+//* obeys encounter-ach-initial-population3a
+//* obeys encounter-ach-initial-population3b
+//* obeys encounter-ach-initial-population3c
+
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 * identifier 1..
