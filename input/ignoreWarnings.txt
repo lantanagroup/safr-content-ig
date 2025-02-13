@@ -12,12 +12,6 @@ MeasureReport.group.measureScore: minimum required = 1, but only found 0 (from h
 ERROR: Bundle/bundle-example-ach-subject-ach-pass1: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
 ERROR: Bundle/bundle-example-ach-subject-ach-pass2: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
 ERROR: Bundle/bundle-example-ach-subject-ach-pass3: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
-Slice 'Bundle.entry:subject-list': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-measurereport-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
-
-# Error with FHIR validator checking Encounter based populations
-Slice 'Bundle.entry:subject-list': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submission-header-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
-
-
 
 
 # NHSN does not use (and may strip) performer in Observations. They are not included in samples in this IG
@@ -25,11 +19,8 @@ Best Practice Recommendation: In general, all observations should have a perform
 
 # Custom template contains javascript required for the IG
 The <script> containing the javascript 'try {       var curr'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 394 other files)
-The <script> containing the javascript '$(document).ready(fu'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 836 other files)
-The <script> containing the javascript 'anchors.options.visi'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 836 other files)
-
-WARNING: The <script> containing the javascript '$(document).ready(fu'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild
-The <script> containing the javascript '$(document).ready(fu'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 836 other files)
+The <script> containing the javascript 'anchors.options.visi'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 835 other files)
+The <script> containing the javascript '$(document).ready(fu'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 835 other files)
 
 # Extensions meant to have a context of Element.
 Review the extension type for link-original-mapped-concept-extension: extensions should not have a context of Element unless it's really intended that they can be used anywhere
@@ -55,7 +46,7 @@ This element does not match any known slice defined in the profile http://hl7.or
 
 # Slice does not match because of issue with IG Publisher generating errors on MeasureReport
 This element does not match any known slice defined in the profile http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-This element does not match any known slice defined in the profile http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submission-header-bundle|1.0.0-cibuild (this may not be a problem, but you should check that it's not intended to match a slice)
+
 
 
 
@@ -78,16 +69,10 @@ Constraint failed: cqm-4: 'Group population criteria SHOULD be simple expression
 INFORMATION: StructureDefinition/ach-diagnosticreport-lab: StructureDefinition.snapshot.element[21].slicing.discriminator[0]: The discriminator type 'pattern' is deprecated in R5+. For future compatibility, you could consider using type=value with a pattern[x] instead (if this is not an inherited slicing)
 INFORMATION: StructureDefinition/ach-observation-lab: StructureDefinition.snapshot.element[22].slicing.discriminator[0]: The discriminator type 'pattern' is deprecated in R5+. For future compatibility, you could consider using type=value with a pattern[x] instead (if this is not an inherited slicing)
 
-# Seemingly invalid error about contained resources having a duplicate ID. See: https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Duplicate.20ID.20for.20contained.20resource.20in.20IG.20Publisher.201.2E8.2E10
- Duplicate ID for contained resource: list-example-ach-individual-measurereport-list
 
 # INFORMATION: Notice where contained subject list resource cannot be processed
 Unable to check the stated count 2 because the subject list cannot be fully processed (Subject reference MeasureReport resolved to a #list-example-ach-individual-measurereport-list, which could not be processed)
 
-# WARNING: Extension examples that are included inside of the Encounter instance encounter-example-ach-ach-pass2-inpatient (Encounter-encounter-example-ach-ach-pass2-inpatient.json)
-WARNING: StructureDefinition.where(url = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-element-value-extension'): The Implementation Guide contains no examples for this extension
-WARNING: StructureDefinition.where(url = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-mapped-concept-extension'): The Implementation Guide contains no examples for this extension
-WARNING: StructureDefinition.where(url = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'): The Implementation Guide contains no examples for this extension
 
 # WARNING: An example proprietary code system, not meant to be validated
 A definition for CodeSystem 'http://www.example.com/prorpietary' could not be found, so the code cannot be validated
