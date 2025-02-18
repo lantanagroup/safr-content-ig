@@ -114,7 +114,7 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
             <valueCoding>
-               <system value="http://terminology.hl7.org/CodeSystem/condition-category"></system>
+               <system value="http://hl7.org/fhir/us/core/CodeSystem/condition-category"></system>
                <code value="health-concern"></code>
                <display value="Health Concern"></display>
             </valueCoding>
@@ -2577,6 +2577,11 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
+            <display value="Code system US Core Condition Category"></display>
+            <resource value="http://hl7.org/fhir/us/core/CodeSystem/condition-category"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
             <display value="Value set Encounter Inpatient"></display>
             <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"></resource>
          </relatedArtifact>
@@ -3283,7 +3288,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
    <title value="NHSN dQM Acute Care Hospital Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2025-02-05T14:13:07-05:00"></date>
+   <date value="2025-02-13T17:10:00-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Acute Care Hospital Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>

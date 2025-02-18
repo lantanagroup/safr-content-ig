@@ -7,9 +7,9 @@ Description: "This profile includes the name and identifier of the organization 
 * ^status = #active
 * ^date = "2023-05-15T19:23:44-07:00"
 * ^jurisdiction = urn:iso:std:iso:3166#US
-* identifier ^slicing.discriminator.type = #pattern
+* identifier ^slicing.discriminator.type = #value
   * ^slicing.discriminator.path = "system"
-  * ^slicing.description = "Slice based on system pattern"
+  * ^slicing.description = "Slice based on system value"
   * ^slicing.rules = #open
 * identifier contains nhsn_org_id 1..1 MS
 * identifier[nhsn_org_id] ^short = "NHSN Org ID"

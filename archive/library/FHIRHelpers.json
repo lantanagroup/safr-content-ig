@@ -54,7 +54,7 @@
       "reference": "#options"
     }
   } ],
-  "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/FHIRHelpers",
+  "url": "http://hl7.org/fhir/Library/FHIRHelpers",
   "version": "4.0.2",
   "name": "FHIRHelpers",
   "type": {

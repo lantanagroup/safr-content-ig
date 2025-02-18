@@ -3,11 +3,25 @@ InstanceOf: AcuteCareHospitalReportingEncounter
 Title: "Encounter - Example ACH Pass2 - Inpatient"
 Description: "Encounter - Example ACH Pass2 - Hospital admission"
 Usage: #example
+
+* extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"
+* extension.valueString = "eloBHVi6UskNwFJ55XgUq294CfCWyE3tytd.P4NomlhQprDjGoqWBeK2-ed8C2oMs3"
+
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.698.8"
 * identifier.value = "10005104252b"
+
+* class.extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-mapped-concept-extension"
+* class.extension.valueCodeableConcept = http://www.example.com/prorpietary#I "Inpatient"
+
 * status = #finished
+* status.extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-element-value-extension"
+* status.extension.valueString = "COMPLETED"
+
 * class = $v3-ActCode#IMP "inpatient encounter"
+* class.extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-mapped-concept-extension"
+* class.extension.valueCodeableConcept = http://www.example.com/prorpietary#I "Inpatient"
+
 * type = $sct#32485007 "Hospital admission (procedure)"
 * type.text = "Hospital Admission"
 * subject = Reference(patient-example-ach-ach-pass2)

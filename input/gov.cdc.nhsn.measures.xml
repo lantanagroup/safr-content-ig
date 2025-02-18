@@ -387,16 +387,7 @@
             <description value="Measure Report - Subject List Example 1"/>
             <groupingId value="example"/>
         </resource>
-        <resource>
-            <reference>
-                <reference value="List/list-example-individual-measurereport-list"/>
-            </reference>
-            <name value="List - Example Individual Measure Report List 1"/>
-            <description value="List - Individual Measure Report List Example 1"/>
-            <groupingId value="example"/>
-        </resource>
 
-        
         <resource>
             <reference>
                 <reference value="MeasureReport/measurereport-example-individual-measurereport-sameresultdiffday"/>

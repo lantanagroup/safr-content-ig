@@ -11,6 +11,7 @@ codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observ
 codesystem "LOINC": 'http://loinc.org' 
 codesystem "V2-0074": 'http://terminology.hl7.org/CodeSystem/v2-0074'
 codesystem "Condition Category": 'http://terminology.hl7.org/CodeSystem/condition-category'
+codesystem "US Core Condition Category": 'http://hl7.org/fhir/us/core/CodeSystem/condition-category'
 codesystem "Condition Clinical Status": 'http://terminology.hl7.org/CodeSystem/condition-clinical'
 
 valueset "Inpatient, Emergency, and Observation Locations": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
@@ -30,7 +31,7 @@ code "survey": 'survey' from "Observation Category" display 'Survey'
 //code for Condition category
 code "problem-list-item": 'problem-list-item' from "Condition Category" display 'Problem List Item'
 code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display 'Encounter Diagnosis'
-code "health-concern": 'health-concern' from "Condition Category" display 'Health Concern'
+code "health-concern": 'health-concern' from "US Core Condition Category" display 'Health Concern'
 
 //code for Diagnostic Report Category
 code "LAB": 'LAB' from "V2-0074" display 'Laboratory'
