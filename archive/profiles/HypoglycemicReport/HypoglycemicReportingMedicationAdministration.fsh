@@ -9,8 +9,11 @@ Description: "This profile contains Required and Must Support data elements for 
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 * statusReason MS
 * category MS
+* medicationReference.reference 1.. MS
+* subject.reference 1.. MS
 * reasonCode MS
 * reasonReference MS
+  * reference 1.. MS
 * dosage 1..
   * route 1..
   * method MS

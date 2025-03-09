@@ -22,6 +22,7 @@ Description: "This profile contains Required and Must Support data elements for 
 * status ^short = "triaged | in-progress | finished | onleave | entered-in-error"
 * status ^definition = "triaged | in-progress | finished | onleave | entered-in-error."
 * classHistory MS
+* subject.reference 1.. MS
 * period 1..
 * diagnosis MS
   * use MS
@@ -40,7 +41,7 @@ Description: "This profile contains Required and Must Support data elements for 
   * physicalType from http://hl7.org/fhir/ValueSet/location-physical-type (extensible)
   * physicalType MS
   * period 1..
-
+  * location.reference 1.. MS
 
   // TODO MEASDEV-703
   /* Add invariant to address Initial Population requirement

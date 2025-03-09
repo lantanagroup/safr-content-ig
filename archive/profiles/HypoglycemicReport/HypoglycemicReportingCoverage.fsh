@@ -8,8 +8,12 @@ Description: "This profile contains Required and Must Support data elements for 
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 * type MS
 * policyHolder MS
+  * reference 1.. MS
 * subscriber MS
+  * reference 1.. MS
 * subscriberId MS
 * dependent MS
 * relationship MS
 * period MS
+* beneficiary.reference 1.. MS
+* payor.reference 1.. MS

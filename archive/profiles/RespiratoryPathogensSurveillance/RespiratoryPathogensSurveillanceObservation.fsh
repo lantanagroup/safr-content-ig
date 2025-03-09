@@ -6,11 +6,15 @@ Description: "This profile contains Required and Must Support data elements for 
 * ^status = #active
 * id 1..
 * basedOn MS
+  * reference 1.. MS
 * partOf MS
+  * reference 1.. MS
 * category MS
 * code from http://hl7.org/fhir/ValueSet/observation-codes (extensible)
 * subject 1..
+  * reference 1.. MS
 * encounter MS
+  * reference 1.. MS
 * effective[x] 1..
 * issued MS
 * value[x] MS
@@ -18,6 +22,7 @@ Description: "This profile contains Required and Must Support data elements for 
 * method MS
 * method from http://hl7.org/fhir/ValueSet/observation-methods (extensible)
 * hasMember MS
+  * reference 1.. MS
 * component MS
 * component.code from http://hl7.org/fhir/ValueSet/observation-codes (extensible)
 * component.value[x] MS

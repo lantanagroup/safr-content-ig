@@ -14,9 +14,14 @@ Description: "This profile contains Required and Must Support data elements for 
   * ^binding.extension.url = "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName"
   * ^binding.extension.valueString = "ServiceRequestCode"
   * ^binding.description = "Codes for tests or services that can be carried out by a designated individual, organization or healthcare service."
+* subject.reference 1.. MS
 * encounter MS
+  * reference 1.. MS
+* medicationReference.reference 1.. MS
 * occurrence[x] MS
 * asNeeded[x] MS
 * authoredOn 1..
 * reasonReference MS
+  * reference 1.. MS
 * specimen MS
+  * reference 1.. MS

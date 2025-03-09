@@ -8,4 +8,7 @@ Description: "This profile contains Required and Must Support data elements for 
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 * category from us-core-diagnosticreport-category (required)
 * basedOn MS
+  * reference 1.. MS
+* subject.reference 1.. MS
+* encounter.reference 1.. MS
 * conclusionCode MS

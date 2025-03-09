@@ -15,3 +15,4 @@ Description: "This profile contains Required and Must Support data elements for 
 * type 1..
 * type from http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType (extensible)
 * partOf MS
+  * reference 1.. MS
