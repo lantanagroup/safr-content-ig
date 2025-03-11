@@ -1,4 +1,4 @@
-library SharedResourceCreation version '0.1.006'
+library SharedResourceCreation version '0.1.007'
 
 include FHIRHelpers version '4.0.2'
 
