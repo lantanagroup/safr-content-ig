@@ -1,4 +1,4 @@
-library SharedResourceCreation version '0.1.006'
+library SharedResourceCreation version '0.1.007'
 
 include FHIRHelpers version '4.0.2'
 
@@ -14,8 +14,6 @@ define function "GetPatientExtensions"(domainResource DomainResource):
   where E.url.value = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
     or E.url.value = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
     or E.url.value = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
-    or E.url.value = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity'
-    or E.url.value = 'http://hl7.org/fhir/StructureDefinition/patient-genderIdentity'
     or E.url.value = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'
   return E
 
