@@ -1,4 +1,4 @@
-Instance: submission-full-example1
+Instance: submission-individual-example1
 InstanceOf: NHSNMeasureReportBundleProfile
 Title: "Example Full ACH Measure Submission Bundle"
 Description: "Example Full ACH Submission Bundle"
