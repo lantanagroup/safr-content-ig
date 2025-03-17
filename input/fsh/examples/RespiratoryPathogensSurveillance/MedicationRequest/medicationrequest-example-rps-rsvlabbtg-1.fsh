@@ -1,7 +1,7 @@
 Instance: medicationrequest-example-rps-rsvlabbtg-1
 InstanceOf: RespiratoryPathogensSurveillanceEventMedicationRequest
-Title: "Medication Request - RPS Medication Request Example RSV Lab BTG 1"
-Description: "Medication Request - Example RPS Medication Request RSV Lab BTG 1"
+Title: "Medication Request - RPS Daily Medication Request Example RSV Lab BTG 1"
+Description: "Medication Request - Example RPS Daily Medication Request RSV Lab BTG 1"
 Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"

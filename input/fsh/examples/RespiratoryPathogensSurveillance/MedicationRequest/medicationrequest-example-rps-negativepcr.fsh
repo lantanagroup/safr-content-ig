@@ -1,7 +1,7 @@
 Instance: medicationrequest-example-rps-negativepcr
 InstanceOf: RespiratoryPathogensSurveillanceEventMedicationRequest
-Title: "Medication Request - RPS Medication Request Example Negative PCR"
-Description: "Medication Request - Example RPS Medication Request Negative PCR"
+Title: "Medication Request - RPS Daily Medication Request Example Negative PCR"
+Description: "Medication Request - Example RPS Daily Medication Request Negative PCR"
 Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"

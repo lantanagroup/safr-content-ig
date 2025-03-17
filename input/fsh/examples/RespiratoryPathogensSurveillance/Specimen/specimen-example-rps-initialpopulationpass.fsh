@@ -1,7 +1,7 @@
 Instance: specimen-example-rps-initialpopulationpass
 InstanceOf: RespiratoryPathogensSurveillanceEventSpecimen
-Title: "Specimen - RPS Specimen Example Initial Population Pass"
-Description: "Specimen - Example RPS Specimen Initial Population Pass"
+Title: "Specimen - RPS Daily Specimen Example Initial Population Pass"
+Description: "Specimen - Example RPS Daily Specimen Initial Population Pass"
 Usage: #example
 
 // * type = $v2-0487#NASDR "Drainage, Nasal"

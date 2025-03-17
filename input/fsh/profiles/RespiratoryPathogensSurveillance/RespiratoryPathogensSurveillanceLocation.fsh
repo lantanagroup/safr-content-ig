@@ -1,8 +1,8 @@
 Profile: RespiratoryPathogensSurveillanceEventLocation
 Parent: USCoreLocation
 Id: rps-location
-Title: "RPS Event Location"
-Description: "This profile contains Required and Must Support data elements for reporting location information to the NHSN Respiratory Pathogens Surveillance (RPS) Module. This profile is based on the [HL7 FHIR® US Core Location Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-location.html)."
+Title: "RPS Daily Event Location"
+Description: "This profile contains Required and Must Support data elements for reporting location information to the NHSN Respiratory Pathogens Surveillance (RPS) Daily Module. This profile is based on the [HL7 FHIR® US Core Location Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-location.html)."
 
 // The constraint should not be on location but referenced through Encounter. The requirement is not that all locations have this binding, but that an encounter either has a location with a code in the valueSet or an Encounter.class with a specific value or an Encounter.type with a specific valueSet
 //* obeys location-type-initial-population

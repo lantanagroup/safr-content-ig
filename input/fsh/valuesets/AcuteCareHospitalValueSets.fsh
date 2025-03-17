@@ -1,6 +1,6 @@
 ValueSet: AcuteCareHospitalEncounterStatus
 Id: ach-encounter-status
-Title: "Acute Care Hospital Encounter Status ValueSet"
+Title: "Acute Care Hospital Monthly Encounter Status ValueSet"
 Description: "A set of codes indicating the status of the encounter."
 * $encounter-status#in-progress	"In Progress"
 * $encounter-status#finished "Finished"
@@ -14,7 +14,7 @@ Description: "A set of codes indicating the status of the encounter."
 
 ValueSet: AcuteCareHospitalEncounterClass
 Id: ach-encounter-class
-Title: "Acute Care Hospital Encounter Class ValueSet"
+Title: "Acute Care Hospital Monthly Encounter Class ValueSet"
 Description: "A set of codes indicating the encounter class that represent inpatient, emergency, observation and short stay concepts."
 * $v3-ActCode#EMER	"emergency"
 * $v3-ActCode#ACUTE	"inpatient acute"

@@ -1,7 +1,7 @@
 Instance: observation-example-ach-pass1-csf
 InstanceOf: AcuteCareHospitalReportingLabObservation
-Title: "Observation - Example ACH Pass1 Csf"
-Description: "Observation - Example ACH Pass1 - Lab: Serratia marcescens DNA in Specimen by NAA with probe detection"
+Title: "Observation - Example ACH Monthly Pass1 Csf"
+Description: "Observation - Example ACH Monthly Pass1 - Lab: Serratia marcescens DNA in Specimen by NAA with probe detection"
 Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-ach-pass1-csf)

@@ -1,7 +1,7 @@
 Instance: observation-example-ach-pass2-hemo-a1c
 InstanceOf: AcuteCareHospitalReportingLabObservation
-Title: "Observation - Example ACH Pass2 Hemo A1C"
-Description: "Observation - Example ACH Pass2 Hemo - Lab: Glucose in Capillary blood by Glucometer"
+Title: "Observation - Example ACH Monthly Pass2 Hemo A1C"
+Description: "Observation - Example ACH Monthly Pass2 Hemo - Lab: Glucose in Capillary blood by Glucometer"
 Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-ach-pass2-hemo-a1c)

@@ -1,7 +1,7 @@
 Instance: condition-example-diagnosis-rps-initialpopulationpass
 InstanceOf: Condition
-Title: "Condition - RPS Condition Example Initial Population Pass"
-Description: "Condition - Example RPS Condition Initial Population Pass"
+Title: "Condition - RPS Daily Condition Example Initial Population Pass"
+Description: "Condition - Example RPS Daily Condition Initial Population Pass"
 Usage: #example
 * extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"
 * extension.valueString = "eloBHVi6UskNwFJ55XgUq294CfCWyE3tytd.P4NomlhQprDjGoqWBeK2-ed8C2oMs3"

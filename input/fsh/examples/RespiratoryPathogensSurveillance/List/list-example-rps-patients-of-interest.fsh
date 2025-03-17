@@ -1,7 +1,7 @@
 Instance: list-example-rps-patients-of-interest
 InstanceOf: PatientsOfInterestList
-Title: "List - Example RPS Patients Of Interest"
-Description: "List - Example RPS Patients Of Interest"
+Title: "List - Example RPS Daily Patients Of Interest"
+Description: "List - Example RPS Daily Patients Of Interest"
 Usage: #example
 * identifier.system = "https://nhsnlink.org"
 * identifier.value = "NHSNdQMAcuteCareHospitalInitialPopulation"

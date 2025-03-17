@@ -1,7 +1,7 @@
 Instance: servicerequest-example-ach-ach-pass2-hemo-a1c
 InstanceOf: AcuteCareHospitalReportingServiceRequest
-Title: "ServiceRequest - Example ACH Pass2 Hemo A1C"
-Description: "ServiceRequest - Example ACH Pass2 Hemo - Hemoglobin A1c in Blood"
+Title: "ServiceRequest - Example ACH Monthly Pass2 Hemo A1C"
+Description: "ServiceRequest - Example ACH Monthly Pass2 Hemo - Hemoglobin A1c in Blood"
 Usage: #example
 * identifier.use = #usual
 * identifier.type = $v2-0203#PLAC "Placer Identifier"

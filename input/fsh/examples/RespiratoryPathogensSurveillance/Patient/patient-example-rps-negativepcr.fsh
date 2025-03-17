@@ -1,7 +1,7 @@
 Instance: patient-example-rps-negativepcr
 InstanceOf: CrossMeasurePatient
-Title: "Patient - RPS Patient Example Negative PCR"
-Description: "Patient - Example RPS Patient Negative PCR"
+Title: "Patient - RPS Daily Patient Example Negative PCR"
+Description: "Patient - Example RPS Daily Patient Negative PCR"
 Usage: #example
 * extension[0].url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
 * extension[=].extension[0].url = "ombCategory"

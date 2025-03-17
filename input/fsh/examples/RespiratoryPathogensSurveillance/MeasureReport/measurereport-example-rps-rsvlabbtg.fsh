@@ -1,7 +1,7 @@
 Instance: measurereport-example-rps-rsvlabbtg
 InstanceOf: MeasureReport
-Title: "MeasureReport - Example Individual RPS RSV Lab BTG"
-Description: "MeasureReport - Example Individual RPS RSV Lab BTG"
+Title: "MeasureReport - Example Individual RPS Daily RSV Lab BTG"
+Description: "MeasureReport - Example Individual RPS Daily RSV Lab BTG"
 Usage: #example
 * meta.profile = "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"
 * identifier.system = "http://example.org/fhir/measurereport/id"

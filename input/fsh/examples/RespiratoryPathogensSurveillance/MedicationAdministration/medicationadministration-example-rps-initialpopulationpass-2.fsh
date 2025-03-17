@@ -1,7 +1,7 @@
 Instance: medicationadministration-example-rps-initialpopulationpass-2
 InstanceOf: RespiratoryPathogensSurveillanceEventMedicationAdministration
-Title: "Medication Administration - RPS Medication Administration Example Initial Population Pass 2"
-Description: "Medication Administration - Example RPS Medication Administration Initial Population Pass 2"
+Title: "Medication Administration - RPS Daily Medication Administration Example Initial Population Pass 2"
+Description: "Medication Administration - Example RPS Daily Medication Administration Initial Population Pass 2"
 Usage: #example
 * status = #completed
 * medicationReference.extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"

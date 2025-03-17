@@ -1,7 +1,7 @@
 Instance: diagnosticreport-example-rps-initialpopulationpass
 InstanceOf: RespiratoryPathogensSurveillanceEventLabDiagnosticReport
-Title: "DiagnosticReport - Example RPS - Initial Population Pass"
-Description: "DiagnosticReport - Example RPS - Initial Population Pass"
+Title: "DiagnosticReport - Example RPS Daily - Initial Population Pass"
+Description: "DiagnosticReport - Example RPS Daily - Initial Population Pass"
 Usage: #example
 * status = #final
 * category[LaboratorySlice] = http://terminology.hl7.org/CodeSystem/v2-0074#LAB "Laboratory"

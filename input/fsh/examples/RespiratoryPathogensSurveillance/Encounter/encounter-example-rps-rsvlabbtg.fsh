@@ -1,7 +1,7 @@
 Instance: encounter-example-rps-rsvlabbtg
 InstanceOf: RespiratoryPathogensSurveillanceEventEncounter
-Title: "Encounter - RPS Encounter Example RSV Lab BTG"
-Description: "Encounter - Example RPS Encounter RSV Lab BTG"
+Title: "Encounter - RPS Daily Encounter Example RSV Lab BTG"
+Description: "Encounter - Example RPS Daily Encounter RSV Lab BTG"
 Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.698.8"

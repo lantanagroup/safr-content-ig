@@ -1,7 +1,7 @@
 Instance: coverage-example-ach-pass1
 InstanceOf: AcuteCareHospitalReportingCoverage
-Title: "Coverage - Example ACH Pass1"
-Description: "Coverage - Example ACH Pass1 - Medicaid: Child Beneficiary"
+Title: "Coverage - Example ACH Monthly Pass1"
+Description: "Coverage - Example ACH Monthly Pass1 - Medicaid: Child Beneficiary"
 Usage: #example
 * identifier.type = $v2-0203#MB "Member Number"
 * identifier.system = "http://example.org/fhir/memberidentifier"

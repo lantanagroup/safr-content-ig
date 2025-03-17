@@ -1,7 +1,7 @@
 Instance: lab-observation-example-rps-rsvlabbtg
 InstanceOf: RespiratoryPathogensSurveillanceEventLabObservation
-Title: "Lab Observation - RPS Observation Example RSV Lab BTG"
-Description: "Lab Observation - Example RPS Observation RSV Lab BTG"
+Title: "Lab Observation - RPS Daily Observation Example RSV Lab BTG"
+Description: "Lab Observation - Example RPS Daily Observation RSV Lab BTG"
 Usage: #example
 * status = #final
 * category = $observation-category#laboratory "Laboratory"

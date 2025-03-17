@@ -1,7 +1,7 @@
 Instance: servicerequest-example-rps-negativepcr-covid-1
 InstanceOf: RespiratoryPathogensSurveillanceEventServiceRequest
-Title: "ServiceRequest - Example RPS Negative PCR COVID 1"
-Description: "ServiceRequest - Example RPS Negative PCR COVID 1"
+Title: "ServiceRequest - Example RPS Daily Negative PCR COVID 1"
+Description: "ServiceRequest - Example RPS Daily Negative PCR COVID 1"
 Usage: #example
 * identifier.use = #usual
 * identifier.type = $v2-0203#PLAC "Placer Identifier"

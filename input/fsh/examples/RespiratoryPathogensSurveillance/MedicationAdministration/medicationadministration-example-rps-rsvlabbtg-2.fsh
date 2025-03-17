@@ -1,7 +1,7 @@
 Instance: medicationadministration-example-rps-rsvlabbtg-2
 InstanceOf: RespiratoryPathogensSurveillanceEventMedicationAdministration
-Title: "Medication Administration - RPS Medication Administration Example RSV Lab BTG 2"
-Description: "Medication Administration - Example RPS Medication Administration RSV Lab BTG 2"
+Title: "Medication Administration - RPS Daily Medication Administration Example RSV Lab BTG 2"
+Description: "Medication Administration - Example RPS Daily Medication Administration RSV Lab BTG 2"
 Usage: #example
 * status = #completed
 * medicationReference.extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"

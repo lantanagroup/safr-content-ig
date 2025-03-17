@@ -1,7 +1,7 @@
 Instance: encounter-example-rps-influenzatherapeutic
 InstanceOf: RespiratoryPathogensSurveillanceEventEncounter
-Title: "Encounter - RPS Encounter Example Influenza Therapeutic"
-Description: "Encounter - Example RPS Encounter Influenza Therapeutic"
+Title: "Encounter - RPS Daily Encounter Example Influenza Therapeutic"
+Description: "Encounter - Example RPS Daily Encounter Influenza Therapeutic"
 Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.698.8"

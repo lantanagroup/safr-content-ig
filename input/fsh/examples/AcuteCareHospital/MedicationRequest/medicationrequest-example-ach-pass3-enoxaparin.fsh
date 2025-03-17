@@ -1,7 +1,7 @@
 Instance: medicationrequest-example-ach-pass3-enoxaparin
 InstanceOf: AcuteCareHospitalReportingMedicationRequest
-Title: "MedicationRequest - Example ACH Pass3 Enoxaparin"
-Description: "MedicationRequest - Example ACH Pass3 - enoxaparin sodium, 0.4 ML,  100 MG/ML Prefilled Syringe"
+Title: "MedicationRequest - Example ACH Monthly Pass3 Enoxaparin"
+Description: "MedicationRequest - Example ACH Monthly Pass3 - enoxaparin sodium, 0.4 ML,  100 MG/ML Prefilled Syringe"
 Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.798"
