@@ -6,9 +6,9 @@ Usage: #example
 * meta.profile[1] = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-medication"
 * extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"
 * extension.valueString = "eDM8ABTRBjSPufStEIBO3HvwBspfD0oXLHMv97-pguBOoSTrdrxjGw9zmmgjJl1NsoxlmOydXuO5nk4kugSGubzSTWOgchZYpXPiM5vLG4PI3"
-* code.coding[0] = $atc#C10AA05
-* code.coding[+] = $rxnorm#83366
-* code.coding[+] = $rxnorm#83367
+* code.coding[0] = $rxnorm#83367
+// * code.coding[+] = $rxnorm#83366
+// * code.coding[+] = $atc#C10AA05
 * code.coding[+] = $rxnorm#153165
 * code.coding[+] = $rxnorm#617312
 * code.coding[+] = $rxnorm#617314

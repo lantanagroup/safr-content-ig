@@ -9,7 +9,7 @@ Usage: #example
 * clinicalStatus = $condition-clinical#active "Active"
 * category = $condition-category#problem-list-item "Problem List Item"
 * category.text = "Problem List Item"
-* code.coding[0] = $sct#111552007 "Diabetes mellitus without complication (disorder)"
+* code.coding[0] = $sct#313436004 "Type 2 diabetes mellitus without complication"
 * code.coding[+] = $icd-10-cm#E11.9 "Type 2 diabetes mellitus without complications"
 * code.text = "Diabetes mellitus without complication"
 * subject = Reference(patient-example-ach-ach-pass2)

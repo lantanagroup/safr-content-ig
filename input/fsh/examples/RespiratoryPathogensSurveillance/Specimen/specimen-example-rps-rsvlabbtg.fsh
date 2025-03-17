@@ -6,8 +6,8 @@ Usage: #example
 
 //* type = $v2-0487#NASDR "Drainage, Nasal"
 //* type.text = "Nasopharyngeal (NP) swab"
-* type = $sct#258500001 "Specimen from nasopharyngeal structure (specimen)"
-* type.text = "Specimen from nasopharyngeal structure (specimen)"
+* type = $sct#258500001 "Nasopharyngeal swab (specimen)"
+* type.text = "Nasopharyngeal swab (specimen)"
 
 * subject.reference = "Patient/patient-example-rps-rsvlabbtg"
 * subject.display = "RPS, RSVLabBTG"

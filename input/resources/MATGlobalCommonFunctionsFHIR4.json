@@ -57,7 +57,7 @@
   }, {
     "type": "depends-on",
     "display": "Code system RoleCode",
-    "resource": "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+    "resource": "http://terminology.hl7.org/CodeSystem/v3-RoleCode|3.0.0"
   }, {
     "type": "depends-on",
     "display": "Value set Emergency Department Visit",
