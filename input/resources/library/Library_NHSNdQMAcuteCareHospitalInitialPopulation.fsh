@@ -1,7 +1,7 @@
 Instance: NHSNdQMAcuteCareHospitalInitialPopulationLibrary
 InstanceOf: Library
-Title: "Acute Care Hospital Initial Population Library"
-Description: "Library of Acute Care Hospital (ACH) Initial Population Measure"
+Title: "Acute Care Hospital Monthly Initial Population Library"
+Description: "Library of Acute Care Hospital (ACH) Monthly Initial Population Measure"
 Usage: #example
 
 * contained = options

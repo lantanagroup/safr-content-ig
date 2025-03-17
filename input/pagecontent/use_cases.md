@@ -15,11 +15,11 @@ The actors defined here are used in the Reporting Scenarios section of the [Spec
 
 This implementation guide (IG) serves a wide variety of National Healthcare Safety Network (NHSN) use cases.
 
-### Use Case 1: Acute Care Hospital (ACH)
+### Use Case 1: Acute Care Hospital (ACH) Monthly
 
 #### Description
 
-The NHSN Acute Care Hospital (ACH) digital quality measure (dQM) allows facilities to report line-level data electronically to NHSN for the following modules that provide monthly event rates back to the facility. These dQMs include Glycemic Control (hyperglycemia and medication-related hypoglycemia); Healthcare Facility-onset, antibiotic-Treated Clostridioides difficile (C. difficile) Infection (HT-CDI); Hospital-Onset Bacteremia and Fungemia (HOB), Venous Thromboembolism (VTE)-related Prophylaxis and event rates (under development), Late Onset Sepsis / Meningitis (under development), Hospital-onset Acute Kidney Injury (HAKI) (under development), and Opioid-related Adverse Events (ORAE) (under development).  
+The NHSN Acute Care Hospital (ACH) monthly digital quality measure (dQM) allows facilities to report line-level data electronically to NHSN for the following modules that provide monthly event rates back to the facility. These dQMs include Glycemic Control (hyperglycemia and medication-related hypoglycemia); Healthcare Facility-onset, antibiotic-Treated Clostridioides difficile (C. difficile) Infection (HT-CDI); Hospital-Onset Bacteremia and Fungemia (HOB), Venous Thromboembolism (VTE)-related Prophylaxis and event rates (under development), Late Onset Sepsis / Meningitis (under development), Hospital-onset Acute Kidney Injury (HAKI) (under development), and Opioid-related Adverse Events (ORAE) (under development).  
 
 #### Patients of Interest
 
@@ -27,16 +27,16 @@ The facility works with NHSN to define a list of patients of interest (POI list)
 
 #### Initial Population
 
-The initial population in the ACH dQM is defined as all encounters for patients of any age in an Emergency Department (ED), observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period. Once an individual patient meets the population criteria, the line-level data needed to calculate metrics, benchmark, and or stratify the individual protocol measures is submitted to NHSN. 
+The initial population in the ACH Monthly dQM is defined as all encounters for patients of any age in an Emergency Department (ED), observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period. Once an individual patient meets the population criteria, the line-level data needed to calculate metrics, benchmark, and or stratify the individual protocol measures is submitted to NHSN. 
 
 #### Additional Use Case Information References
 
 For specific information on the individual NHSN protocols and metrics see: 
 [Acute Care / Critical Access Hospitals (ACH) | NHSN | CDC ](https://www.cdc.gov/nhsn/acute-care-hospital/index.html)
-[Example ACH Initial Population Library (CQL)](Library-NHSNdQMAcuteCareHospitalInitialPopulationLibrary.html)
-[Example ACH Measure Library ](Measure-NHSNdQMAcuteCareHospitalInitialPopulation.html)
+[Example ACH Monthly Initial Population Library (CQL)](Library-NHSNdQMAcuteCareHospitalInitialPopulationLibrary.html)
+[Example ACH Monthly Measure Library ](Measure-NHSNdQMAcuteCareHospitalInitialPopulation.html)
 
-#### ACH Submission Examples
+#### ACH Monthly Submission Examples
 
 #### Bundle Submission Examples
 
@@ -46,57 +46,57 @@ For specific information on the individual NHSN protocols and metrics see:
 
 POI List
 
-- [ACH Patients Of Interest](List-list-example-ach-patients-of-interest.html)
+- [ACH Monthly Patients Of Interest](List-list-example-ach-patients-of-interest.html)
 
 Subject List Measure Report
 
-- [ACH Subject List](MeasureReport-measurereport-example-ach-subjectlist1.html)
+- [ACH Monthly Subject List](MeasureReport-measurereport-example-ach-subjectlist1.html)
 
 Individual Measure Report
 
-- [ACH Individual Measure Report List](List-list-example-ach-individual-measurereport-list.html)
+- [ACH Monthly Individual Measure Report List](List-list-example-ach-individual-measurereport-list.html)
 
 #### Initial Population Examples
 
 Patient
 
-- [Patient - Example ACH Pass1 - LOS/MEN](Patient-patient-example-ach-ach-pass1.html)
-- [Patient - Example ACH Pass2 - Hypo](Patient-patient-example-ach-ach-pass2.html)
-- [Patient - Example ACH Pass3 - CDI/HOB](Patient-patient-example-ach-ach-pass3.html)
+- [Patient - Example ACH Monthly Pass1 - LOS/MEN](Patient-patient-example-ach-ach-pass1.html)
+- [Patient - Example ACH Monthly Pass2 - Hypo](Patient-patient-example-ach-ach-pass2.html)
+- [Patient - Example ACH Monthly Pass3 - CDI/HOB](Patient-patient-example-ach-ach-pass3.html)
 
 Encounter
 
-- [Encounter - Example ACH Pass2 - Inpatient](Encounter-encounter-example-ach-ach-pass2-inpatient.html)
-- [Encounter - Example ACH Pass2 - Emergency](Encounter-encounter-example-ach-ach-pass2-emergency.html)
-- [Encounter - Example ACH Pass3 - Short Stay](Encounter-encounter-example-ach-ach-pass3-short-stay.html)
-- [Encounter - Example ACH Pass3 - Acute](Encounter-encounter-example-ach-ach-pass3-acute.html)
+- [Encounter - Example ACH Monthly Pass2 - Inpatient](Encounter-encounter-example-ach-ach-pass2-inpatient.html)
+- [Encounter - Example ACH Monthly Pass2 - Emergency](Encounter-encounter-example-ach-ach-pass2-emergency.html)
+- [Encounter - Example ACH Monthly Pass3 - Short Stay](Encounter-encounter-example-ach-ach-pass3-short-stay.html)
+- [Encounter - Example ACH Monthly Pass3 - Acute](Encounter-encounter-example-ach-ach-pass3-acute.html)
 
 #### Line Level Data Examples
 
 Condition
 
-- [Condition - Example Diagnosis ACH Pass1 Encounter Diagnosis](Condition-condition-example-diagnosis-ach-pass1.html)
-- [Condition - Example Diagnosis ACH Pass2 Problem List](Condition-condition-example-diagnosis-ach-pass2-problem.html)
+- [Condition - Example Diagnosis ACH Monthly Pass1 Encounter Diagnosis](Condition-condition-example-diagnosis-ach-pass1.html)
+- [Condition - Example Diagnosis ACH Monthly Pass2 Problem List](Condition-condition-example-diagnosis-ach-pass2-problem.html)
 
 Coverage
 
-- [Coverage - Example ACH Pass1 Medicaid](Coverage-coverage-example-ach-pass1.html)
-- [Coverage - Example ACH Pass2 Commercial](Coverage-coverage-example-ach-pass2.html)
+- [Coverage - Example ACH Monthly Pass1 Medicaid](Coverage-coverage-example-ach-pass1.html)
+- [Coverage - Example ACH Monthly Pass2 Commercial](Coverage-coverage-example-ach-pass2.html)
 
 Device
 
-- [Device - Example ACH Pass1 Central Line](Device-device-example-ach-ach-pass1-central-line.html)
+- [Device - Example ACH Monthly Pass1 Central Line](Device-device-example-ach-ach-pass1-central-line.html)
 
 Diagnostic Report
 
-- [DiagnosticReport - Example ACH Pass2 Cardiopulmonary1](DiagnosticReport-diagnosticreport-example-ach-ach-pass2-cardiopulmonary.html)
-- [DiagnosticReport - Example ACH Pass2 Lab CBC](DiagnosticReport-diagnosticreport-example-ach-ach-pass2-lab-cbc.html)
+- [DiagnosticReport - Example ACH Monthly Pass2 Cardiopulmonary1](DiagnosticReport-diagnosticreport-example-ach-ach-pass2-cardiopulmonary.html)
+- [DiagnosticReport - Example ACH Monthly Pass2 Lab CBC](DiagnosticReport-diagnosticreport-example-ach-ach-pass2-lab-cbc.html)
 
 Location
 
-- [Location - Example ACH - Emergency](Location-location-example-ach-emergency.html)
-- [Location - Example ACH - Inpatient](Location-location-example-ach-inpatient.html)
-- [Location - Example ACH - Nicu](Location-location-example-ach-nicu-level-iii.html)
+- [Location - Example ACH Monthly - Emergency](Location-location-example-ach-emergency.html)
+- [Location - Example ACH Monthly - Inpatient](Location-location-example-ach-inpatient.html)
+- [Location - Example ACH Monthly - Nicu](Location-location-example-ach-nicu-level-iii.html)
 
 Medication
 
@@ -107,43 +107,43 @@ Medication
 
 Medication Administration
 
-- [MedicationAdministration - Example ACH Pass2 Heparin 1](MedicationAdministration-medicationadministration-example-ach-pass2-heparin-1.html)
-- [MedicationAdministration - Example ACH Pass2 Heparin 2](MedicationAdministration-medicationadministration-example-ach-pass2-heparin-2.html)
-- [MedicationAdministration - Example ACH Pass2 Insulin Lispro 1](MedicationAdministration-medicationadministration-example-ach-pass2-insulin-lispro-1.html)
-- [MedicationAdministration - Example ACH Pass2 Insulin Lispro 2](MedicationAdministration-medicationadministration-example-ach-pass2-insulin-lispro-2.html)
+- [MedicationAdministration - Example ACH Monthly Pass2 Heparin 1](MedicationAdministration-medicationadministration-example-ach-pass2-heparin-1.html)
+- [MedicationAdministration - Example ACH Monthly Pass2 Heparin 2](MedicationAdministration-medicationadministration-example-ach-pass2-heparin-2.html)
+- [MedicationAdministration - Example ACH Monthly Pass2 Insulin Lispro 1](MedicationAdministration-medicationadministration-example-ach-pass2-insulin-lispro-1.html)
+- [MedicationAdministration - Example ACH Monthly Pass2 Insulin Lispro 2](MedicationAdministration-medicationadministration-example-ach-pass2-insulin-lispro-2.html)
 
 Medication Request
 
-- [MedicationRequest - Example ACH Pass1 Vancomycin](MedicationRequest-medicationrequest-example-ach-pass1-vancomycin.html)
-- [MedicationRequest - Example ACH Pass2 Metformin](MedicationRequest-medicationrequest-example-ach-pass2-metformin.html)
+- [MedicationRequest - Example ACH Monthly Pass1 Vancomycin](MedicationRequest-medicationrequest-example-ach-pass1-vancomycin.html)
+- [MedicationRequest - Example ACH Monthly Pass2 Metformin](MedicationRequest-medicationrequest-example-ach-pass2-metformin.html)
 
 Observation
 
-- [Observation - Example ACH Pass1 Blood](Observation-observation-example-ach-pass1-blood.html)
-- [Observation - Example ACH Pass1 Csf](Observation-observation-example-ach-pass1-csf.html)
-- [Observation - Example ACH Pass1 Gestational Age](Observation-observation-example-ach-pass1-gestational-age.html)
-- [Observation - Example ACH Pass1 Vitals Weight](Observation-observation-example-ach-pass1-vitals-weight.html)
-- [Observation - Example ACH Pass2 Hemo A1C](Observation-observation-example-ach-pass2-hemo-a1c.html)
-- [Observation - Example ACH Pass3 C. diff](Observation-observation-example-ach-pass3-cdiff.html)
+- [Observation - Example ACH Monthly Pass1 Blood](Observation-observation-example-ach-pass1-blood.html)
+- [Observation - Example ACH Monthly Pass1 Csf](Observation-observation-example-ach-pass1-csf.html)
+- [Observation - Example ACH Monthly Pass1 Gestational Age](Observation-observation-example-ach-pass1-gestational-age.html)
+- [Observation - Example ACH Monthly Pass1 Vitals Weight](Observation-observation-example-ach-pass1-vitals-weight.html)
+- [Observation - Example ACH Monthly Pass2 Hemo A1C](Observation-observation-example-ach-pass2-hemo-a1c.html)
+- [Observation - Example ACH Monthly Pass3 C. diff](Observation-observation-example-ach-pass3-cdiff.html)
 
 Procedure
 
-- [Procedure - Example ACH Pass1 Central Line](Procedure-procedure-example-ach-ach-pass1-central-line.html)
-- [Procedure - Example ACH Pass1 Lumbar](Procedure-procedure-example-ach-ach-pass1-lumbar.html)
+- [Procedure - Example ACH Monthly Pass1 Central Line](Procedure-procedure-example-ach-ach-pass1-central-line.html)
+- [Procedure - Example ACH Monthly Pass1 Lumbar](Procedure-procedure-example-ach-ach-pass1-lumbar.html)
 
 Service Request
 
-- [ServiceRequest - Example ACH Pass1 Blood](ServiceRequest-servicerequest-example-ach-ach-pass1-blood.html)
-- [ServiceRequest - Example ACH Pass1 CSF](ServiceRequest-servicerequest-example-ach-ach-pass1-csf.html)
-- [ServiceRequest - Example ACH Pass2 Glucose](ServiceRequest-servicerequest-example-ach-ach-pass2-glucose.html)
-- [ServiceRequest - Example ACH Pass2 Hemo A1C](ServiceRequest-servicerequest-example-ach-ach-pass2-hemo-a1c.html)
-- [ServiceRequest - Example ACH Pass3 Cdiff](ServiceRequest-servicerequest-example-ach-ach-pass3-cdiff.html)
+- [ServiceRequest - Example ACH Monthly Pass1 Blood](ServiceRequest-servicerequest-example-ach-ach-pass1-blood.html)
+- [ServiceRequest - Example ACH Monthly Pass1 CSF](ServiceRequest-servicerequest-example-ach-ach-pass1-csf.html)
+- [ServiceRequest - Example ACH Monthly Pass2 Glucose](ServiceRequest-servicerequest-example-ach-ach-pass2-glucose.html)
+- [ServiceRequest - Example ACH Monthly Pass2 Hemo A1C](ServiceRequest-servicerequest-example-ach-ach-pass2-hemo-a1c.html)
+- [ServiceRequest - Example ACH Monthly Pass3 Cdiff](ServiceRequest-servicerequest-example-ach-ach-pass3-cdiff.html)
 
 Specimen
 
-- [Specimen - Example ACH Pass1 Blood](Specimen-specimen-example-ach-ach-pass1-blood.html)
-- [Specimen - Example ACH Pass1 CSF](Specimen-specimen-example-ach-ach-pass1-csf.html)
-- [Specimen - Example ACH Pass3 Stool](Specimen-specimen-example-ach-ach-pass3-stool.html)
+- [Specimen - Example ACH Monthly Pass1 Blood](Specimen-specimen-example-ach-ach-pass1-blood.html)
+- [Specimen - Example ACH Monthly Pass1 CSF](Specimen-specimen-example-ach-ach-pass1-csf.html)
+- [Specimen - Example ACH Monthly Pass3 Stool](Specimen-specimen-example-ach-ach-pass3-stool.html)
 
 ### Use Case 2: Bed Capacity Reporting
 

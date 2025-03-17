@@ -1,7 +1,7 @@
 Instance: measurereport-example-individual-ach-ach-pass2
 InstanceOf: MeasureReport
-Title: "MeasureReport - Example Individual ACH Pass2 - Hypo"
-Description: "MeasureReport - Example Individual ACH Pass2 - Hypoglycemia"
+Title: "MeasureReport - Example Individual ACH Monthly Pass2 - Hypo"
+Description: "MeasureReport - Example Individual ACH Monthly Pass2 - Hypoglycemia"
 Usage: #example
 * meta.profile = "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"
 * identifier.system = "http://example.org/fhir/measurereport/id"

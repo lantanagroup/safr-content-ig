@@ -1,7 +1,7 @@
 Instance: diagnosticreport-example-ach-ach-pass2-radiology
 InstanceOf: AcuteCareHospitalNoteDiagnosticReport
-Title: "DiagnosticReport - Example ACH Pass2 Radiology"
-Description: "DiagnosticReport - Example ACH Pass2 - Ultrasonography of right lower limb"
+Title: "DiagnosticReport - Example ACH Monthly Pass2 Radiology"
+Description: "DiagnosticReport - Example ACH Monthly Pass2 - Ultrasonography of right lower limb"
 Usage: #example
 * status = #final
 * category = $loinc#LP29684-5 "Radiology"
