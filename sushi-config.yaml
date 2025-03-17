@@ -4,7 +4,7 @@ fhirVersion: 4.0.1
 applyExtensionMetadataToRoot: false
 id: gov.cdc.nhsn.measures
 packageId: gov.cdc.nhsn.measures
-title: CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM)
+title: CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) Content Package IG
 name: NHSNMeasures
 status: active
 date: 2023-09-14
