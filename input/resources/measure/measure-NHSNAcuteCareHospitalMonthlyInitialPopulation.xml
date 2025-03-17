@@ -1,5 +1,5 @@
 <Measure xmlns="http://hl7.org/fhir">
-   <id value="NHSNdQMAcuteCareHospitalInitialPopulation"></id>
+   <id value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></id>
    <meta>
       <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm"></profile>
       <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm"></profile>
@@ -121,7 +121,7 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="Encounters"></valueString>
@@ -136,7 +136,7 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="Qualifying Encounters During Measurement Period"></valueString>
@@ -158,7 +158,7 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="Encounters with Patient Hospital Locations"></valueString>
@@ -180,7 +180,7 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="Initial Population"></valueString>
@@ -196,7 +196,7 @@
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Encounter"></valueString>
@@ -219,7 +219,7 @@ define &quot;SDE Encounter&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Medication Request"></valueString>
@@ -239,7 +239,7 @@ define &quot;SDE Encounter&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Coverage"></valueString>
@@ -259,7 +259,7 @@ define &quot;SDE Encounter&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Procedure"></valueString>
@@ -279,7 +279,7 @@ define &quot;SDE Encounter&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Device"></valueString>
@@ -297,7 +297,7 @@ define &quot;SDE Encounter&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="Observations"></valueString>
@@ -312,7 +312,7 @@ define &quot;SDE Encounter&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Observation Lab Category"></valueString>
@@ -333,7 +333,7 @@ define &quot;SDE Encounter&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Observation Vital Signs Category"></valueString>
@@ -355,7 +355,7 @@ define &quot;SDE Observation Vital Signs Category&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE DiagnosticReport Others"></valueString>
@@ -378,7 +378,7 @@ define &quot;SDE Observation Vital Signs Category&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Medication Administration"></valueString>
@@ -398,7 +398,7 @@ define &quot;SDE Observation Vital Signs Category&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Observation Category"></valueString>
@@ -423,7 +423,7 @@ define &quot;SDE Observation Category&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="Conditions"></valueString>
@@ -438,7 +438,7 @@ define &quot;SDE Observation Category&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Condition"></valueString>
@@ -481,7 +481,7 @@ define &quot;SDE Condition&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="DiagnosticReports"></valueString>
@@ -496,7 +496,7 @@ define &quot;SDE Condition&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE DiagnosticReport Lab"></valueString>
@@ -519,7 +519,7 @@ define &quot;SDE DiagnosticReport Lab&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="Get Locations from IP Encounters in Measurement Period"></valueString>
@@ -539,7 +539,7 @@ define &quot;SDE DiagnosticReport Lab&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Location"></valueString>
@@ -558,7 +558,7 @@ define &quot;SDE DiagnosticReport Lab&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Service Request"></valueString>
@@ -577,7 +577,7 @@ define &quot;SDE DiagnosticReport Lab&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE DiagnosticReport Note"></valueString>
@@ -600,7 +600,7 @@ define &quot;SDE DiagnosticReport Lab&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Minimal Patient"></valueString>
@@ -617,7 +617,7 @@ define &quot;SDE DiagnosticReport Lab&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Medication"></valueString>
@@ -637,7 +637,7 @@ define &quot;SDE DiagnosticReport Lab&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SDE Specimen"></valueString>
@@ -658,7 +658,7 @@ define &quot;SDE DiagnosticReport Lab&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="CheckIP"></valueString>
@@ -779,7 +779,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="EncounterResource"></valueString>
@@ -1205,7 +1205,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="DeviceResource"></valueString>
@@ -1250,7 +1250,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="DeviceUdiCarrier"></valueString>
@@ -1276,7 +1276,7 @@ define function DeviceUdiCarrier(udiCarrier List&lt;FHIR.Device.UdiCarrier&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="DeviceDeviceName"></valueString>
@@ -1295,7 +1295,7 @@ define function DeviceUdiCarrier(udiCarrier List&lt;FHIR.Device.UdiCarrier&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="DeviceSpecialization"></valueString>
@@ -1314,7 +1314,7 @@ define function DeviceUdiCarrier(udiCarrier List&lt;FHIR.Device.UdiCarrier&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="DeviceVersion"></valueString>
@@ -1334,7 +1334,7 @@ define function DeviceUdiCarrier(udiCarrier List&lt;FHIR.Device.UdiCarrier&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="DeviceProperty"></valueString>
@@ -1486,7 +1486,7 @@ define function DeviceUdiCarrier(udiCarrier List&lt;FHIR.Device.UdiCarrier&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="ObservationVitalSignsResource"></valueString>
@@ -1528,7 +1528,7 @@ define function DeviceUdiCarrier(udiCarrier List&lt;FHIR.Device.UdiCarrier&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="ObservationVitalSignsCategory"></valueString>
@@ -1547,7 +1547,7 @@ define function DeviceUdiCarrier(udiCarrier List&lt;FHIR.Device.UdiCarrier&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="ObservationVitalSignsCoding"></valueString>
@@ -1569,7 +1569,7 @@ define function DeviceUdiCarrier(udiCarrier List&lt;FHIR.Device.UdiCarrier&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="ObservationVitalSignsComponent"></valueString>
@@ -1591,7 +1591,7 @@ define function DeviceUdiCarrier(udiCarrier List&lt;FHIR.Device.UdiCarrier&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="DiagnosticReportResource"></valueString>
@@ -1705,7 +1705,7 @@ define function DeviceUdiCarrier(udiCarrier List&lt;FHIR.Device.UdiCarrier&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="ObservationResource"></valueString>
@@ -1747,7 +1747,7 @@ define function DeviceUdiCarrier(udiCarrier List&lt;FHIR.Device.UdiCarrier&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="GetCondition"></valueString>
@@ -1765,7 +1765,7 @@ define function DeviceUdiCarrier(udiCarrier List&lt;FHIR.Device.UdiCarrier&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="GetEncounter"></valueString>
@@ -2384,7 +2384,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="GetMedicationFrom"></valueString>
@@ -2404,7 +2404,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNdQMAcuteCareHospitalInitialPopulation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="GetMedication"></valueString>
@@ -3276,17 +3276,17 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          <reference value="#effective-data-requirements"></reference>
       </valueReference>
    </extension>
-   <url value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNdQMAcuteCareHospitalInitialPopulation"></url>
+   <url value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation"></url>
    <identifier>
       <system value="https://nhsnlink.org"></system>
-      <value value="NHSNdQMAcuteCareHospitalInitialPopulation"></value>
+      <value value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></value>
    </identifier>
    <version value="1.0.0-dev"></version>
-   <name value="NHSNdQMAcuteCareHospitalInitialPopulation"></name>
+   <name value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></name>
    <title value="NHSN dQM Acute Care Hospital Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2025-03-10T09:56:21-05:00"></date>
+   <date value="2025-03-17T15:07:28-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Acute Care Hospital Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>
@@ -3298,7 +3298,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          <url value="https://www.cdc.gov/nhsn/index.html"></url>
       </document>
    </relatedArtifact>
-   <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNdQMAcuteCareHospitalInitialPopulation"></library>
+   <library value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNAcuteCareHospitalMonthlyInitialPopulation"></library>
    <disclaimer value="This performance measure is not a clinical guideline, does not establish a standard of medical care and has not been tested for all potential applications.        THE MEASURES AND SPECIFICATIONS ARE PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND.        This measure and specifications are subject to further revisions."></disclaimer>
    <scoring>
       <coding>

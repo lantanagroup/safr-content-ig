@@ -1,0 +1,23 @@
+{
+  "resourceType": "Location",
+  "id": "LocACH2175",
+  "meta": {
+      "versionId": "3",
+      "lastUpdated": "2024-04-01T19:44:09.465+00:00",
+      "source": "#6abd30ca3a59e099"
+  },
+  "status": "active",
+  "name": "Any Hospital",
+  "description": "This is the physical location of Any Hospital",
+  "type": [
+      {
+          "coding": [
+              {
+                  "system": "https://www.cdc.gov/nhsn/cdaportal/terminology/codesystem/hsloc.html",
+                  "code": "1227-8",
+                  "display": "Oncology Step Down Unit"
+              }
+          ]
+      }
+  ]
+}

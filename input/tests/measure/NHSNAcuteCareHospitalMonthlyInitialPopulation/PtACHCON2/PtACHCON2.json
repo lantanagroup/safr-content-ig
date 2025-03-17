@@ -1,0 +1,34 @@
+{
+  "resourceType": "Patient",
+  "id": "PtACHCON2",
+  "meta": {
+      "versionId": "4",
+      "lastUpdated": "2024-04-01T15:27:28.169+00:00",
+      "source": "#0d1eebdc1a220551",
+      "profile": [
+          "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"
+      ]
+  },
+  "text": {
+      "status": "generated",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\">Mary <b>BELL </b></div><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>5635352</td></tr><tr><td>Date of birth</td><td><span>22 December 1999</span></td></tr></tbody></table></div>"
+  },
+  "identifier": [
+      {
+          "system": "http://hospital.smarthealthit.org",
+          "value": "5635352"
+      }
+  ],
+  "active": true,
+  "name": [
+      {
+          "family": "Bell",
+          "given": [
+              "Mary"
+          ]
+      }
+  ],
+  "gender": "female",
+  "birthDate": "1999-12-22",
+  "deceasedDateTime": "2024-03-25T08:00:00.0"
+}

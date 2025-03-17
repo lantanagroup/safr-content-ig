@@ -1,0 +1,183 @@
+<Encounter>
+  <id value="eB0ga82sAo0wtjYL.J7rKvA3" />
+  <extension url="http://open.epic.com/FHIR/StructureDefinition/extension/accidentrelated">
+    <valueBoolean value="false" />
+  </extension>
+  <identifier>
+    <use value="usual" />
+    <system value="urn:oid:1.2.840.114350.1.13.247.3.7.3.698084.8" />
+    <value value="4920127603" />
+  </identifier>
+  <status value="finished" />
+  <class>
+    <system value="urn:oid:1.2.840.114350.1.72.1.7.7.10.696784.13260" />
+    <code value="6" />
+    <display value="Discharge" />
+  </class>
+  <type>
+    <coding>
+      <system value="http://snomed.info/sct" />
+      <code value="183452005" />
+      <display value="Emergency" />
+    </coding>
+    <text value="Emergency" />
+  </type>
+  <type>
+    <coding>
+      <system value="urn:oid:1.2.840.114350.1.13.247.3.7.10.698084.30" />
+      <code value="3" />
+      <display value="Hospital Encounter" />
+    </coding>
+    <text value="Hospital Encounter" />
+  </type>
+  <type>
+    <coding>
+      <system value="urn:oid:1.2.840.114350.1.13.247.3.7.10.698084.18875" />
+      <code value="1" />
+      <display value="Emergency" />
+    </coding>
+    <text value="Emergency" />
+  </type>
+  <serviceType>
+    <coding>
+      <system value="urn:oid:1.2.840.114350.1.13.247.3.7.10.698084.18886" />
+      <code value="105" />
+      <display value="Emergency Medicine" />
+    </coding>
+    <text value="Emergency Medicine" />
+  </serviceType>
+  <priority>
+    <coding>
+      <system value="urn:oid:1.2.840.114350.1.13.247.3.7.10.698084.410" />
+      <code value="3" />
+      <display value="Urgent" />
+    </coding>
+    <text value="Urgent" />
+  </priority>
+  <subject>
+    <reference value="Patient/e2NKjS8896qyj768Tp1p7AbnJ4VX7INll7PX9-kR-tJY3" />
+    <display value="RPS, InitialPopulationPass" />
+  </subject>
+  <participant>
+    <type>
+      <coding>
+        <system value="http://hl7.org/fhir/v3/ParticipationType" />
+        <code value="DIS" />
+        <display value="discharger" />
+      </coding>
+      <text value="discharger" />
+    </type>
+    <individual>
+      <reference value="Practitioner/e9Er.CPgIQ9dDKhcoLCUCLw3" />
+      <type value="Practitioner" />
+      <display value="Attending Md Urmc Emergency, MD" />
+    </individual>
+  </participant>
+  <participant>
+    <type>
+      <coding>
+        <system value="http://hl7.org/fhir/v3/ParticipationType" />
+        <code value="ATND" />
+        <display value="attender" />
+      </coding>
+      <text value="attender" />
+    </type>
+    <period>
+      <start value="2024-03-18T13:51:35Z" />
+      <end value="2024-03-25T18:17:00Z" />
+    </period>
+    <individual>
+      <reference value="Practitioner/e9Er.CPgIQ9dDKhcoLCUCLw3" />
+      <type value="Practitioner" />
+      <display value="Attending Md Urmc Emergency, MD" />
+    </individual>
+  </participant>
+  <period>
+    <start value="2024-03-18T12:00:00Z" />
+    <end value="2024-03-25T18:17:00Z" />
+  </period>
+  <diagnosis>
+    <condition>
+      <reference value="Condition/eXAkFHmOUs31NRWdQoCY4UpJS6gbV1Ggk2FyrhERb3h83" />
+      <display value="Shortness of breath" />
+    </condition>
+  </diagnosis>
+  <account>
+    <identifier>
+      <system value="urn:oid:1.2.840.114350.1.13.247.3.7.2.726582" />
+      <value value="10000021445" />
+    </identifier>
+    <display value="RPS,INITIALPOPULATIONPASS" />
+  </account>
+  <hospitalization>
+    <admitSource>
+      <coding>
+        <system value="urn:oid:1.2.840.114350.1.13.247.3.7.10.698084.10310" />
+        <code value="1" />
+        <display value="Physician Referral" />
+      </coding>
+      <text value="Physician Referral" />
+    </admitSource>
+    <dischargeDisposition>
+      <coding>
+        <system value="urn:oid:1.2.840.114350.1.13.247.3.7.10.698084.18888" />
+        <code value="1" />
+        <display value="Home or Self Care" />
+      </coding>
+      <text value="Home or Self Care" />
+    </dischargeDisposition>
+  </hospitalization>
+  <location>
+    <location>
+      <reference value="Location/e3ilDWSPQApFlauPxckyns6c-rPI0Gw9lD8KM7uLJyM03" />
+      <display value="Strong Memorial Emergency Department" />
+    </location>
+    <period>
+      <start value="2024-03-18T12:00:00Z" />
+      <end value="2024-03-25T18:17:00Z" />
+    </period>
+  </location>
+  <location>
+    <location>
+      <reference value="Location/e3ilDWSPQApFlauPxckyns6c-rPI0Gw9lD8KM7uLJyM03" />
+      <display value="Strong Memorial Emergency Department" />
+    </location>
+  </location>
+  <location>
+    <location>
+      <reference value="Location/eFIagsMTf2FBbtA5Aw46Mdw3" />
+      <display value="UR MEDICINE" />
+    </location>
+  </location>
+  <location>
+    <location>
+      <reference value="Location/e9itxrKK5kE2wRFaB4VOnLA3" />
+      <display value="AC-41" />
+    </location>
+    <physicalType>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/location-physical-type" />
+        <code value="ro" />
+        <display value="Room" />
+      </coding>
+      <text value="Room" />
+    </physicalType>
+  </location>
+  <location>
+    <location>
+      <identifier>
+        <system value="urn:oid:1.2.840.114350.1.13.247.3.7.2.666968" />
+        <value value="3753" />
+      </identifier>
+      <display value="AC-41R" />
+    </location>
+    <physicalType>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/location-physical-type" />
+        <code value="bd" />
+        <display value="Bed" />
+      </coding>
+      <text value="Bed" />
+    </physicalType>
+  </location>
+</Encounter>

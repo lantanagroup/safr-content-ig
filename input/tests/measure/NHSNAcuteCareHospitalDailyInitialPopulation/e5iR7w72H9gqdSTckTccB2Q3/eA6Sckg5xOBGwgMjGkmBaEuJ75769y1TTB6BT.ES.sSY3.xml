@@ -1,0 +1,239 @@
+<Encounter>
+  <id value="eA6Sckg5xOBGwgMjGkmBaEuJ75769y1TTB6BT.ES.sSY3" />
+  <extension url="http://open.epic.com/FHIR/StructureDefinition/extension/accidentrelated">
+    <valueBoolean value="false" />
+  </extension>
+  <identifier>
+    <use value="usual" />
+    <system value="urn:oid:1.2.840.114350.1.13.37.3.7.3.698084.8" />
+    <value value="310077619862" />
+  </identifier>
+  <status value="in-progress" />
+  <class>
+    <system value="urn:oid:1.2.840.114350.1.72.1.7.7.10.696784.13260" />
+    <code value="3" />
+    <display value="Admission" />
+  </class>
+  <type>
+    <coding>
+      <system value="http://snomed.info/sct" />
+      <code value="32485007" />
+      <display value="Hospital admission (procedure)" />
+    </coding>
+    <text value="Hospital admission (procedure)" />
+  </type>
+  <type>
+    <coding>
+      <system value="urn:oid:1.2.840.114350.1.13.37.3.7.10.698084.30" />
+      <code value="3" />
+      <display value="Hospital Encounter" />
+    </coding>
+    <text value="Hospital Encounter" />
+  </type>
+  <type>
+    <coding>
+      <system value="urn:oid:1.2.840.114350.1.13.37.3.7.10.698084.18875" />
+      <code value="13" />
+      <display value="Routine " />
+    </coding>
+    <text value="Routine " />
+  </type>
+  <serviceType>
+    <coding>
+      <system value="urn:oid:1.2.840.114350.1.13.37.3.7.10.698084.18886" />
+      <code value="7100102" />
+      <display value="Pediatrics" />
+    </coding>
+    <text value="Pediatrics" />
+  </serviceType>
+  <subject>
+    <reference value="Patient/e5iR7w72H9gqdSTckTccB2Q3" />
+    <display value="RPS, InfluenzaTherapeutic" />
+  </subject>
+  <participant>
+    <type>
+      <coding>
+        <system value="http://hl7.org/fhir/v3/ParticipationType" />
+        <code value="ADM" />
+        <display value="admitter" />
+      </coding>
+      <text value="admitter" />
+    </type>
+    <individual>
+      <reference value="Practitioner/eQulAkdweBcZ7Dw5H-aUAGQ3" />
+      <type value="Practitioner" />
+      <display value="Greg F Burke-Like, MD" />
+    </individual>
+  </participant>
+  <participant>
+    <type>
+      <coding>
+        <system value="http://hl7.org/fhir/v3/ParticipationType" />
+        <code value="DIS" />
+        <display value="discharger" />
+      </coding>
+      <text value="discharger" />
+    </type>
+    <individual>
+      <reference value="Practitioner/eQulAkdweBcZ7Dw5H-aUAGQ3" />
+      <type value="Practitioner" />
+      <display value="Greg F Burke-Like, MD" />
+    </individual>
+  </participant>
+  <participant>
+    <type>
+      <coding>
+        <system value="http://hl7.org/fhir/v3/ParticipationType" />
+        <code value="ATND" />
+        <display value="attender" />
+      </coding>
+      <text value="attender" />
+    </type>
+    <period>
+      <start value="2024-04-19T17:48:00Z" />
+      <end value="2024-04-23T17:29:00Z" />
+    </period>
+    <individual>
+      <reference value="Practitioner/eQulAkdweBcZ7Dw5H-aUAGQ3" />
+      <type value="Practitioner" />
+      <display value="Greg F Burke-Like, MD" />
+    </individual>
+  </participant>
+  <participant>
+    <type>
+      <coding>
+        <system value="http://hl7.org/fhir/v3/ParticipationType" />
+        <code value="ATND" />
+        <display value="attender" />
+      </coding>
+      <text value="attender" />
+    </type>
+    <period>
+      <start value="2024-06-10T18:13:07Z" />
+    </period>
+    <individual>
+      <reference value="Practitioner/epjUwAnPUfX9DLm-3LqPHTQ3" />
+      <type value="Practitioner" />
+      <display value="Susan Test, MD" />
+    </individual>
+  </participant>
+  <participant>
+    <type>
+      <coding>
+        <system value="http://hl7.org/fhir/v3/ParticipationType" />
+        <code value="REF" />
+        <display value="referrer" />
+      </coding>
+      <text value="referrer" />
+    </type>
+    <individual>
+      <reference value="Practitioner/eQulAkdweBcZ7Dw5H-aUAGQ3" />
+      <type value="Practitioner" />
+      <display value="Greg F Burke-Like, MD" />
+    </individual>
+  </participant>
+  <period>
+    <start value="2024-04-19T17:48:00Z" />
+  </period>
+  <reasonCode>
+    <coding>
+      <system value="http://snomed.info/sct" />
+      <code value="442438000" />
+      <display value="Influenza caused by Influenza A virus (disorder)" />
+    </coding>
+    <text value="Influenza A with pneumonia" />
+  </reasonCode>
+  <diagnosis>
+    <condition>
+      <reference value="Condition/ePDHQNbCf-Wrs6dY7q8gDlX.OlrjwufRkCiYtq0UbSBU3" />
+      <display value="Fever with chills" />
+    </condition>
+  </diagnosis>
+  <account>
+    <identifier>
+      <system value="urn:oid:1.2.840.114350.1.13.37.3.7.2.726582" />
+      <value value="11000008252" />
+    </identifier>
+    <display value="RPS,INFLUENZATHERAPEUTIC" />
+  </account>
+  <hospitalization>
+    <extension url="http://open.epic.com/FHIR/StructureDefinition/extension/ip-admit-datetime">
+      <valueDateTime value="2024-04-19T17:48:00Z" />
+    </extension>
+    <origin>
+      <reference value="Location/ewEU005I75Rk9Hkc6ZLUQGg3" />
+    </origin>
+    <admitSource>
+      <coding>
+        <system value="urn:oid:1.2.840.114350.1.13.37.3.7.10.698084.10310" />
+        <code value="4" />
+        <display value="Physician or Clinical Office " />
+      </coding>
+      <text value="Physician or Clinical Office " />
+    </admitSource>
+    <destination>
+      <reference value="Location/e00-qA3uoJWbLaCeWavcUiw3" />
+      <display value="Home" />
+    </destination>
+    <dischargeDisposition>
+      <coding>
+        <system value="urn:oid:1.2.840.114350.1.13.37.3.7.10.698084.18888" />
+        <code value="1" />
+        <display value="Home - Self Care" />
+      </coding>
+      <text value="Home - Self Care" />
+    </dischargeDisposition>
+  </hospitalization>
+  <location>
+    <location>
+      <reference value="Location/ey5iap1lcf5jqJBJm5lMgUw3" />
+      <display value="CH2 GMC, Children's Hospital 2nd Floor" />
+    </location>
+    <period>
+      <start value="2024-04-19T17:48:00Z" />
+    </period>
+  </location>
+  <location>
+    <location>
+      <reference value="Location/ey5iap1lcf5jqJBJm5lMgUw3" />
+      <display value="CH2 GMC, Children's Hospital 2nd Floor" />
+    </location>
+  </location>
+  <location>
+    <location>
+      <reference value="Location/esBPbeKfzNkJEI5o97f-6-Q3" />
+      <display value="GEISINGER" />
+    </location>
+  </location>
+  <location>
+    <location>
+      <reference value="Location/eG7Vgscaa2KY62h8wYF7F2g3" />
+      <display value="GMC J2VB" />
+    </location>
+    <physicalType>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/location-physical-type" />
+        <code value="ro" />
+        <display value="Room" />
+      </coding>
+      <text value="Room" />
+    </physicalType>
+  </location>
+  <location>
+    <location>
+      <identifier>
+        <system value="urn:oid:1.2.840.114350.1.13.37.3.7.2.666968" />
+        <value value="1539" />
+      </identifier>
+      <display value="GMC J2VB / X4" />
+    </location>
+    <physicalType>
+      <coding>
+        <system value="http://terminology.hl7.org/CodeSystem/location-physical-type" />
+        <code value="bd" />
+        <display value="Bed" />
+      </coding>
+      <text value="Bed" />
+    </physicalType>
+  </location>
+</Encounter>
