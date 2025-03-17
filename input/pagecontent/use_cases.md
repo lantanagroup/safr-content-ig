@@ -194,11 +194,11 @@ For all bed censuses and counts, the following bed types should be <u>excluded</
 [//]: #- [MeasureReport - Hospital Bed Capacity Individual Measure Report](MeasureReport-bed-capacity-measurereport-example-hosp.html)
 [//]: #- [MeasureReport - Inpatient Psychiatric Facility Bed Capacity Individual Measure Report](MeasureReport-bed-capacity-measurereport-example-ipf.html)
 
-### Use Case 2: Respiratory Pathogens Surveillance (RPS)
+### Use Case 2: Respiratory Pathogens Surveillance (RPS) Daily
 
 #### Description
 
-The NHSN Respiratory Pathogens Surveillance (RPS) module enables the measurement of facility and unit-specific incidence and prevalence of Coronavirus 2019 (COVID-19), Influenza, and Respiratory Syncytial Virus (RSV) disease among patients admitted to the hospital (inpatient, observation, or short stay status), and specific associated patient outcomes. The RPS module supports an electronic health record (EHR)-/vendor-neutral standard for reporting patient-level data on hospitalized patients with a respiratory illness due to one or more of the pathogens under surveillance. Data collected via the RPS module may be used by facilities for quality improvement and patient care planning purposes, as well as by local, state, and federal public health agencies in coordination and response to public health outbreaks. The RPS module offers a mechanism for ongoing monitoring of infectious respiratory viral illness among hospitalized patients with minimal human resource expenditure via 100% electronically automated data capture. This initial version of the module is based on electronic data capture and upload of demographic, administrative, and clinical data from the facility’s electronic source systems such as the electronic health record (EHR), patient registration system (admission, discharge, and transfer [ADT] data), laboratory information system, and pharmacy electronic medication administration system. Facilities will have access to their data via the analysis functions of NHSN.
+The NHSN Respiratory Pathogens Surveillance (RPS) Daily module enables the measurement of facility and unit-specific incidence and prevalence of Coronavirus 2019 (COVID-19), Influenza, and Respiratory Syncytial Virus (RSV) disease among patients admitted to the hospital (inpatient, observation, or short stay status), and specific associated patient outcomes. The RPS Daily module supports an electronic health record (EHR)-/vendor-neutral standard for reporting patient-level data on hospitalized patients with a respiratory illness due to one or more of the pathogens under surveillance. Data collected via the RPS Daily module may be used by facilities for quality improvement and patient care planning purposes, as well as by local, state, and federal public health agencies in coordination and response to public health outbreaks. The RPS Daily module offers a mechanism for ongoing monitoring of infectious respiratory viral illness among hospitalized patients with minimal human resource expenditure via 100% electronically automated data capture. This initial version of the module is based on electronic data capture and upload of demographic, administrative, and clinical data from the facility’s electronic source systems such as the electronic health record (EHR), patient registration system (admission, discharge, and transfer [ADT] data), laboratory information system, and pharmacy electronic medication administration system. Facilities will have access to their data via the analysis functions of NHSN.
 
 #### Patients of Interest
 
@@ -206,20 +206,20 @@ The facility will work with NHSN to define a list of patients of interest (POI l
 
 #### Initial Population
 
-The Respiratory Pathogens Surveillance Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
+The Respiratory Pathogens Surveillance Daily Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
 
 #### Additional Use Case Information References
 
 [https://www.cdc.gov/nhsn/acute-care-hospital/index.html](https://www.cdc.gov/nhsn/acute-care-hospital/index.html)
 
-#### RPS Submission Examples
+#### RPS Daily Submission Examples
 
-- [Full RPS Measure Submission Bundle](Bundle-bundle-example-rps-full.html)
-- [Example RPS Submission Header Bundle](Bundle-bundle-example-rps-header.html)
-- [Example RPS Submission Initial Population Pass Bundle](Bundle-bundle-example-rps-subject-initialpopulationpass.html)
-- [Example RPS Submission Negative PCR Bundle](Bundle-bundle-example-rps-subject-negativepcr.html)
-- [Example RPS Submission Influenza Therapeutic Bundle](Bundle-bundle-example-rps-subject-influenzatherapeutic.html)
-- [Example RPS Submission RSV Lab BTG Bundle](Bundle-bundle-example-rps-subject-rsvlabbtg.html)
+- [Full RPS Daily Measure Submission Bundle](Bundle-bundle-example-rps-full.html)
+- [Example RPS Daily Submission Header Bundle](Bundle-bundle-example-rps-header.html)
+- [Example RPS Daily Submission Initial Population Pass Bundle](Bundle-bundle-example-rps-subject-initialpopulationpass.html)
+- [Example RPS Daily Submission Negative PCR Bundle](Bundle-bundle-example-rps-subject-negativepcr.html)
+- [Example RPS Daily Submission Influenza Therapeutic Bundle](Bundle-bundle-example-rps-subject-influenzatherapeutic.html)
+- [Example RPS Daily Submission RSV Lab BTG Bundle](Bundle-bundle-example-rps-subject-rsvlabbtg.html)
 
 #### Bundle Submission Examples
 
@@ -228,33 +228,33 @@ The Respiratory Pathogens Surveillance Initial Population includes all encounter
 
 POI List
 
-- [RPS Patients Of Interest](List-list-example-rps-patients-of-interest.html)
+- [RPS Daily Patients Of Interest](List-list-example-rps-patients-of-interest.html)
 
 Subject List Measure Report
 
-- [RPS Subject List](MeasureReport-measurereport-example-rps-subjectlist.html)
+- [RPS Daily Subject List](MeasureReport-measurereport-example-rps-subjectlist.html)
 
 Individual Measure Report
 
-- [RPS Individual Measure Report List](List-list-example-rps-individual-measurereport-list.html)
+- [RPS Daily Individual Measure Report List](List-list-example-rps-individual-measurereport-list.html)
 
 #### Initial Population Examples
 
 Patient
 
-- [Patient - RPS Patient Example Influenza Therapeutic](Patient-patient-example-rps-influenzatherapeutic.html)
-- [Patient - RPS Patient Example Initial Population Pass](Patient-patient-example-rps-initialpopulationpass.html)
-- [Patient - RPS Patient Example Negative PCR](Patient-patient-example-rps-negativepcr.html)
-- [Patient - RPS Patient Example RSV Lab BTG](Patient-patient-example-rps-rsvlabbtg.html)
+- [Patient - RPS Daily Patient Example Influenza Therapeutic](Patient-patient-example-rps-influenzatherapeutic.html)
+- [Patient - RPS Daily Patient Example Initial Population Pass](Patient-patient-example-rps-initialpopulationpass.html)
+- [Patient - RPS Daily Patient Example Negative PCR](Patient-patient-example-rps-negativepcr.html)
+- [Patient - RPS Daily Patient Example RSV Lab BTG](Patient-patient-example-rps-rsvlabbtg.html)
 
 Encounter
 
-- [Encounter - RPS Encounter Example Influenza Therapeutic](Encounter-encounter-example-rps-influenzatherapeutic.html)
-- [Encounter - RPS Encounter Example Initial Population Pass 1](Encounter-encounter-example-rps-initialpopulationpass-1.html)
-- [Encounter - RPS Encounter Example Initial Population Pass 2](Encounter-encounter-example-rps-initialpopulationpass-2.html)
-- [Encounter - RPS Encounter Example Negative PCR 1](Encounter-encounter-example-rps-negativepcr-1.html)
-- [Encounter - RPS Encounter Example Negative PCR 2](Encounter-encounter-example-rps-negativepcr-2.html)
-- [Encounter - RPS Encounter Example RSV Lab BTG](Encounter-encounter-example-rps-rsvlabbtg.html)
+- [Encounter - RPS Daily Encounter Example Influenza Therapeutic](Encounter-encounter-example-rps-influenzatherapeutic.html)
+- [Encounter - RPS Daily Encounter Example Initial Population Pass 1](Encounter-encounter-example-rps-initialpopulationpass-1.html)
+- [Encounter - RPS Daily Encounter Example Initial Population Pass 2](Encounter-encounter-example-rps-initialpopulationpass-2.html)
+- [Encounter - RPS Daily Encounter Example Negative PCR 1](Encounter-encounter-example-rps-negativepcr-1.html)
+- [Encounter - RPS Daily Encounter Example Negative PCR 2](Encounter-encounter-example-rps-negativepcr-2.html)
+- [Encounter - RPS Daily Encounter Example RSV Lab BTG](Encounter-encounter-example-rps-rsvlabbtg.html)
 
 #### Line Level Data Examples
 
@@ -264,57 +264,57 @@ Diagnostic Report (Lab)
 
 Lab Result Observation 
 
-- [Lab Observation - RPS Observation Example Initial Population Pass](Observation-lab-observation-example-rps-initialpopulationpass.html)
-- [Lab Observation - RPS Observation Example Negative PCR 1](Observation-lab-observation-example-rps-negativepcr-1.html)
-- [Lab Observation - RPS Observation Example Negative PCR 2](Observation-lab-observation-example-rps-negativepcr-2.html)
-- [Lab Observation - RPS Observation Example RSV Lab BTG](Observation-lab-observation-example-rps-rsvlabbtg.html)
+- [Lab Observation - RPS Daily Observation Example Initial Population Pass](Observation-lab-observation-example-rps-initialpopulationpass.html)
+- [Lab Observation - RPS Daily Observation Example Negative PCR 1](Observation-lab-observation-example-rps-negativepcr-1.html)
+- [Lab Observation - RPS Daily Observation Example Negative PCR 2](Observation-lab-observation-example-rps-negativepcr-2.html)
+- [Lab Observation - RPS Daily Observation Example RSV Lab BTG](Observation-lab-observation-example-rps-rsvlabbtg.html)
 
 Location
 
-- [Location - Example RPS - Inpatient](Location-location-example-rps-inpatient.html)
+- [Location - Example RPS Daily - Inpatient](Location-location-example-rps-inpatient.html)
 
 Medication
 
-- [Medication - RPS Medication Example Influenza Therapeutic](Medication-medication-example-rps-influenzatherapeutic.html)
-- [Medication - RPS Medication Example Initial Population Pass](Medication-medication-example-rps-initialpopulationpass.html)
-- [Medication - RPS Medication Example Negative PCR](Medication-medication-example-rps-negativepcr.html)
-- [Medication - RPS Medication Example RSV Lab BTG 1](Medication-medication-example-rps-rsvlabbtg-1.html)
-- [Medication - RPS Medication Example RSV Lab BTG 2](Medication-medication-example-rps-rsvlabbtg-2.html)
+- [Medication - RPS Daily Medication Example Influenza Therapeutic](Medication-medication-example-rps-influenzatherapeutic.html)
+- [Medication - RPS Daily Medication Example Initial Population Pass](Medication-medication-example-rps-initialpopulationpass.html)
+- [Medication - RPS Daily Medication Example Negative PCR](Medication-medication-example-rps-negativepcr.html)
+- [Medication - RPS Daily Medication Example RSV Lab BTG 1](Medication-medication-example-rps-rsvlabbtg-1.html)
+- [Medication - RPS Daily Medication Example RSV Lab BTG 2](Medication-medication-example-rps-rsvlabbtg-2.html)
 
 Medication Administration
 
-- [Medication Administration - RPS Medication Administration Example Influenza Therapeutic](MedicationAdministration-medicationadministration-example-rps-influenzatherapeutic.html)
-- [Medication Administration - RPS Medication Administration Example Initial Population Pass 1](MedicationAdministration-medicationadministration-example-rps-initialpopulationpass-1.html)
-- [Medication Administration - RPS Medication Administration Example Initial Population Pass 2](MedicationAdministration-medicationadministration-example-rps-initialpopulationpass-2.html)
-- [Medication Administration - RPS Medication Administration Example RSV Lab BTG 1](MedicationAdministration-medicationadministration-example-rps-rsvlabbtg-1.html)
-- [Medication Administration - RPS Medication Administration Example RSV Lab BTG 2](MedicationAdministration-medicationadministration-example-rps-rsvlabbtg-2.html)
+- [Medication Administration - RPS Daily Medication Administration Example Influenza Therapeutic](MedicationAdministration-medicationadministration-example-rps-influenzatherapeutic.html)
+- [Medication Administration - RPS Daily Medication Administration Example Initial Population Pass 1](MedicationAdministration-medicationadministration-example-rps-initialpopulationpass-1.html)
+- [Medication Administration - RPS Daily Medication Administration Example Initial Population Pass 2](MedicationAdministration-medicationadministration-example-rps-initialpopulationpass-2.html)
+- [Medication Administration - RPS Daily Medication Administration Example RSV Lab BTG 1](MedicationAdministration-medicationadministration-example-rps-rsvlabbtg-1.html)
+- [Medication Administration - RPS Daily Medication Administration Example RSV Lab BTG 2](MedicationAdministration-medicationadministration-example-rps-rsvlabbtg-2.html)
 
 Medication Request
 
-- [Medication Request - RPS Medication Request Example Influenza Therapeutic](MedicationRequest-medicationrequest-example-rps-influenzatherapeutic.html)
-- [Medication Request - RPS Medication Request Example Initial Population Pass](MedicationRequest-medicationrequest-example-rps-initialpopulationpass.html)
-- [Medication Request - RPS Medication Request Example Negative PCR](MedicationRequest-medicationrequest-example-rps-negativepcr.html)
-- [Medication Request - RPS Medication Request Example RSV Lab BTG 1](MedicationRequest-medicationrequest-example-rps-rsvlabbtg-1.html)
-- [Medication Request - RPS Medication Request Example RSV Lab BTG 2](MedicationRequest-medicationrequest-example-rps-rsvlabbtg-2.html)
+- [Medication Request - RPS Daily Medication Request Example Influenza Therapeutic](MedicationRequest-medicationrequest-example-rps-influenzatherapeutic.html)
+- [Medication Request - RPS Daily Medication Request Example Initial Population Pass](MedicationRequest-medicationrequest-example-rps-initialpopulationpass.html)
+- [Medication Request - RPS Daily Medication Request Example Negative PCR](MedicationRequest-medicationrequest-example-rps-negativepcr.html)
+- [Medication Request - RPS Daily Medication Request Example RSV Lab BTG 1](MedicationRequest-medicationrequest-example-rps-rsvlabbtg-1.html)
+- [Medication Request - RPS Daily Medication Request Example RSV Lab BTG 2](MedicationRequest-medicationrequest-example-rps-rsvlabbtg-2.html)
 
 Observation
 
-- [Observation - Example RPS Initial Population Pass Social Isolation](Observation-observation-example-rps-initialpopulationpass-isolation.html)
+- [Observation - Example RPS Daily Initial Population Pass Social Isolation](Observation-observation-example-rps-initialpopulationpass-isolation.html)
 
 Procedure
 
-- [Procedure - Example RPS Negative PCR Intubation](Procedure-procedure-example-rps-negativepcr-intubation.html)
+- [Procedure - Example RPS Daily Negative PCR Intubation](Procedure-procedure-example-rps-negativepcr-intubation.html)
 
 Service Request
 
-- [ServiceRequest - Example RPS Initial Population Pass COVID](ServiceRequest-servicerequest-example-rps-initialpopulationpass-covid.html)
-- [ServiceRequest - Example RPS Negative PCR COVID 1](ServiceRequest-servicerequest-example-rps-negativepcr-covid-1.html)
-- [ServiceRequest - Example RPS Negative PCR COVID 2](ServiceRequest-servicerequest-example-rps-negativepcr-covid-2.html)
-- [ServiceRequest - Example RPS RSV Lab BTG](ServiceRequest-servicerequest-example-rps-rsvlabbtg-rsv.html)
+- [ServiceRequest - Example RPS Daily Initial Population Pass COVID](ServiceRequest-servicerequest-example-rps-initialpopulationpass-covid.html)
+- [ServiceRequest - Example RPS Daily Negative PCR COVID 1](ServiceRequest-servicerequest-example-rps-negativepcr-covid-1.html)
+- [ServiceRequest - Example RPS Daily Negative PCR COVID 2](ServiceRequest-servicerequest-example-rps-negativepcr-covid-2.html)
+- [ServiceRequest - Example RPS Daily RSV Lab BTG](ServiceRequest-servicerequest-example-rps-rsvlabbtg-rsv.html)
 
 Specimen
 
-- [Specimen - RPS Specimen Example Initial Population Pass](Specimen-specimen-example-rps-initialpopulationpass.html)
-- [Specimen - RPS Specimen Example Negative PCR 1](Specimen-specimen-example-rps-negativepcr-1.html)
-- [Specimen - RPS Specimen Example Negative PCR 2](Specimen-specimen-example-rps-negativepcr-2.html)
-- [Specimen - RPS Specimen Example RSV Lab BTG](Specimen-specimen-example-rps-rsvlabbtg.html)
+- [Specimen - RPS Daily Specimen Example Initial Population Pass](Specimen-specimen-example-rps-initialpopulationpass.html)
+- [Specimen - RPS Daily Specimen Example Negative PCR 1](Specimen-specimen-example-rps-negativepcr-1.html)
+- [Specimen - RPS Daily Specimen Example Negative PCR 2](Specimen-specimen-example-rps-negativepcr-2.html)
+- [Specimen - RPS Daily Specimen Example RSV Lab BTG](Specimen-specimen-example-rps-rsvlabbtg.html)

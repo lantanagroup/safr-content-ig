@@ -1,7 +1,7 @@
 Instance: servicerequest-example-rps-initialpopulationpass-covid
 InstanceOf: RespiratoryPathogensSurveillanceEventServiceRequest
-Title: "ServiceRequest - Example RPS Initial Population Pass COVID"
-Description: "ServiceRequest - Example RPS Initial Population Pass COVID"
+Title: "ServiceRequest - Example RPS Daily Initial Population Pass COVID"
+Description: "ServiceRequest - Example RPS Daily Initial Population Pass COVID"
 Usage: #example
 * identifier.use = #usual
 * identifier.type = $v2-0203#PLAC "Placer Identifier"

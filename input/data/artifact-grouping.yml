@@ -57,7 +57,7 @@ groups:
       - StructureDefinition/hypoglycemic-reporting-specimen      
 
   rps:
-    name: Respiratory Pathogens Surveillance Event Reporting Profiles
+    name: Respiratory Pathogens Surveillance Daily Event Reporting Profiles
     resources:
       - StructureDefinition/rps-encounter
       - StructureDefinition/rps-location
@@ -100,14 +100,14 @@ groups:
     name: "Knowledge Artifacts: Measure Libraries"
     resources:
       Library/NHSNdQMAcuteCareHospitalInitialPopulation:
-        name: NHSN dQM Acute Care Hospital Initial Population
-        description: Library of NHSN dQM Acute Care Hospital Initial Population Measure
+        name: NHSN dQM Acute Care Hospital Monthly Initial Population
+        description: Library of NHSN dQM Acute Care Hospital Monthly Initial Population Measure
       Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
         name: NHSN Glycemic ControlHypoglycemic Initial Population
         description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
       Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation:
         name: NHSN Respiratory Pathogens Surveillance Initial Population
-        description: Library of NHSN Respiratory Pathogens Surveillance Initial Population Measure
+        description: Library of NHSN Respiratory Pathogens Surveillance Daily Initial Population Measure
       # Library/NHSNBedCapacityMeasure:
       #   name: NHSN Bed Capacity Reporting Initial Population
       #   description: Library of NHSN Bed Capacity Initial Population Measure
@@ -178,26 +178,26 @@ groups:
 
 
   rps-ex:
-    name: "Examples: RPS Submission Instances"
+    name: "Examples: RPS Daily Submission Instances"
     resources:
       Bundle/bundle-example-rps-full:
-        name: Full RPS Measure Submission Bundle
-        description: Measure Bundle - Full RPS Measure Submission Example
+        name: Full RPS Daily Measure Submission Bundle
+        description: Measure Bundle - Full RPS Daily Measure Submission Example
       Bundle/bundle-example-rps-header:
-        name: Example RPS Submission Header Bundle
-        description: Example Separated RPS Submission Header Bundle
+        name: Example RPS Daily Submission Header Bundle
+        description: Example Separated RPS Daily Submission Header Bundle
       Bundle/bundle-example-rps-subject-initialpopulationpass:
-        name: Example RPS Submission Initial Population Pass Bundle
-        description: Example Separated RPS Submission Initial Population Pass Bundle
+        name: Example RPS Daily Submission Initial Population Pass Bundle
+        description: Example Separated RPS Daily Submission Initial Population Pass Bundle
       Bundle/bundle-example-rps-subject-negativepcr:
-        name: Example RPS Submission Negative PCR Bundle
-        description: Example Separated RPS Submission Negative PCR Bundle
+        name: Example RPS Daily Submission Negative PCR Bundle
+        description: Example Separated RPS Daily Submission Negative PCR Bundle
       Bundle/bundle-example-rps-subject-influenzatherapeutic:
-        name: Example RPS Submission Influenza Therapeutic Bundle
-        description: Example Separated RPS Submission Influenza Therapeutic Bundle
+        name: Example RPS Daily Submission Influenza Therapeutic Bundle
+        description: Example Separated RPS Daily Submission Influenza Therapeutic Bundle
       Bundle/bundle-example-rps-subject-rsvlabbtg:
-        name: Example RPS Submission RSV Lab BTG Bundle
-        description: Example Separated RPS Submission RSV Lab BTG Bundle
+        name: Example RPS Daily Submission RSV Lab BTG Bundle
+        description: Example Separated RPS Daily Submission RSV Lab BTG Bundle
 
         
 #  bed-ex:

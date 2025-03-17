@@ -1,7 +1,7 @@
 Instance: procedure-example-rps-negativepcr-intubation
 InstanceOf: RespiratoryPathogensSurveillanceEventProcedure
-Title: "Procedure - Example RPS Negative PCR Intubation"
-Description: "Procedure - Example RPS Negative PCR - Intubation"
+Title: "Procedure - Example RPS Daily Negative PCR Intubation"
+Description: "Procedure - Example RPS Daily Negative PCR - Intubation"
 Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.698.8"

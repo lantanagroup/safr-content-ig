@@ -1,7 +1,7 @@
 Instance: lab-observation-example-rps-negativepcr-2
 InstanceOf: RespiratoryPathogensSurveillanceEventLabObservation
-Title: "Lab Observation - RPS Observation Example Negative PCR 2"
-Description: "Lab Observation - Example RPS Observation Negative PCR 2"
+Title: "Lab Observation - RPS Daily Observation Example Negative PCR 2"
+Description: "Lab Observation - Example RPS Daily Observation Negative PCR 2"
 Usage: #example
 * status = #final
 * category = $observation-category#laboratory "Laboratory"

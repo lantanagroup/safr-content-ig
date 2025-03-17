@@ -1,7 +1,7 @@
 Instance: immunization-example-rps-influenzatherapeutic
 InstanceOf: Immunization
-Title: "Immunization - RPS Immunization Example Influenza Therapeutic"
-Description: "Immunization - Example RPS Immunization Influenza Therapeutic"
+Title: "Immunization - RPS Daily Immunization Example Influenza Therapeutic"
+Description: "Immunization - Example RPS Daily Immunization Influenza Therapeutic"
 Usage: #example
 * identifier.system = "urn:ietf:rfc:3986"
 * identifier.value = "urn:oid:1.3.6.1.4.1.21367.2005.3.7.1234"

@@ -1,7 +1,7 @@
 Instance: measurereport-example-rps-influenzatherapeutic
 InstanceOf: MeasureReport
-Title: "MeasureReport - Example Individual RPS Influenza Therapeutic"
-Description: "MeasureReport - Example Individual RPS Influenza Therapeutic"
+Title: "MeasureReport - Example Individual RPS Daily Influenza Therapeutic"
+Description: "MeasureReport - Example Individual RPS Daily Influenza Therapeutic"
 Usage: #example
 * meta.profile = "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"
 * identifier.system = "http://example.org/fhir/measurereport/id"

@@ -2,13 +2,13 @@
   <!-- The spaces between the open and close "a" tag are mandatory.  (Cuz HTML renderers are dumb...) -->
   <a name="overview"></a>
   <h3>Overview</h3>
-  <p>The content of the CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) implementation guide (IG) outlines the standards for electronically submitting surveillance data for Acute Care Hospital (ACH) Monthly and Respiratory Pathogens Surveillance (RPS) dQMs. This IG complies with the NHSN dQM Reporting Implementation Guide, published by Health Level Seven International (HL7®) International for general requirements for submissions to NHSN.</p>
-  <p>The specifications in this IG define the standards for reporting the initial population that NHSN needs to calculate NHSN dQMs for ACH Monthly, RPS, and the automated bed-capacity data-collection. These specifications will be updated when NHSN requirements change.</p>
+  <p>The content of the CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) implementation guide (IG) outlines the standards for electronically submitting surveillance data for Acute Care Hospital (ACH) Monthly and Respiratory Pathogens Surveillance (RPS) Daily dQMs. This IG complies with the NHSN dQM Reporting Implementation Guide, published by Health Level Seven International (HL7®) International for general requirements for submissions to NHSN.</p>
+  <p>The specifications in this IG define the standards for reporting the initial population that NHSN needs to calculate NHSN dQMs for ACH Monthly, RPS Daily, and the automated bed-capacity data-collection. These specifications will be updated when NHSN requirements change.</p>
   <p>This IG does not define how to operationalize calculation of a specific NHSN measure or event of interest.</p>
   <a name="purpose"></a>
   <h3>Purpose</h3>
   <p>
-    These specifications define the data content requirements for submissions for the ACH Monthly and RPS dQMs to NHSN through NHSNLink.</p>
+    These specifications define the data content requirements for submissions for the ACH Monthly and RPS Daily dQMs to NHSN through NHSNLink.</p>
   <a name="relationship-to-other-standards"></a>
   <h3>Relationships to Other Standards</h3>
   <p>
@@ -61,7 +61,7 @@
         <td>Co-Editor</td>
         <td>Amrit Kerr</td>
         <td>Project Manager, Lantana Consulting Group</td>
-        <td>amrit.kerr@lantanangroup.com</td>
+        <td>amrit.kerr@lantanagroup.com</td>
       </tr>
       <tr>
         <td>Co-Editor</td>
@@ -109,25 +109,25 @@
         <td>Co-Editor</td>
         <td>Aaron Nusstein</td>
         <td>FHIR Analyst, Lantana Consulting Group</td>
-        <td>aaron.nusstein@lantanangroup.com</td>
+        <td>aaron.nusstein@lantanagroup.com</td>
       </tr>
       <tr>
         <td>Co-Editor</td>
         <td>Lynn Perrine</td>
         <td>Quality Measurement Manager, Lantana Consulting Group</td>
-        <td>lynn.perrine@lantanangroup.com</td>
+        <td>lynn.perrine@lantanagroup.com</td>
       </tr>
       <tr>
         <td>Co-Editor</td>
         <td>Kim Figueroa</td>
         <td>Clinical Analyst, Lantana Consulting Group</td>
-        <td>kim.figueroa@lantanangroup.com</td>
+        <td>kim.figueroa@lantanagroup.com</td>
       </tr>
       <tr>
         <td>Co-Editor</td>
         <td>Mary-Margaret Richter</td>
         <td>Clinical Analyst, Lantana Consulting Group</td>
-        <td>mm.richter@lantanangroup.com</td>
+        <td>mm.richter@lantanagroup.com</td>
       </tr>
     </table>
   </p>
