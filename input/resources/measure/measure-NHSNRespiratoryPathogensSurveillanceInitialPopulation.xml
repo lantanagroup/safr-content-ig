@@ -634,6 +634,26 @@ define &quot;SDE RSV DiagnosticReport Result from Lab&quot;:
                <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
             </extension>
             <extension url="name">
+               <valueString value="SDE IP Encounters"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//----------------------------------
+// SDE
+//----------------------------------
+define &quot;SDE IP Encounters&quot;:
+  &quot;Initial Population&quot; IP
+  return SharedResource.EncounterResource(IP, 
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-encounter'}})"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="30"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
                <valueString value="COVID and Influenza DiagnosticReport Observations"></valueString>
             </extension>
             <extension url="statement">
@@ -645,7 +665,7 @@ define &quot;SDE RSV DiagnosticReport Result from Lab&quot;:
     or Observations.code in &quot;Influenza (Tests for influenza A or B virus Antigen)&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="30"></valueInteger>
+               <valueInteger value="31"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -666,7 +686,7 @@ define &quot;SDE RSV DiagnosticReport Result from Lab&quot;:
     and exists(&quot;Initial Population&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="31"></valueInteger>
+               <valueInteger value="32"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -682,7 +702,7 @@ define &quot;SDE RSV DiagnosticReport Result from Lab&quot;:
     union &quot;RSV DiagnosticReport Result from Lab&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="32"></valueInteger>
+               <valueInteger value="33"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -700,7 +720,7 @@ define &quot;SDE RPS DiagnosticReport Result from Lab&quot;:
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="33"></valueInteger>
+               <valueInteger value="34"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -718,7 +738,7 @@ define &quot;SDE RSV PRE Admission Observation&quot;:
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="34"></valueInteger>
+               <valueInteger value="35"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -737,7 +757,7 @@ define &quot;SDE RSV PRE Admission Observation&quot;:
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-procedure'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="35"></valueInteger>
+               <valueInteger value="36"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -760,7 +780,7 @@ define &quot;COVID And Influenza PRE Admission Observation&quot;:
     )"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="36"></valueInteger>
+               <valueInteger value="37"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -779,7 +799,7 @@ define &quot;SDE COVID And Influenza Specimen&quot;:
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-specimen'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="37"></valueInteger>
+               <valueInteger value="38"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -798,7 +818,7 @@ define &quot;SDE RPS Specimen&quot;:
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-specimen'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="38"></valueInteger>
+               <valueInteger value="39"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -817,7 +837,7 @@ define &quot;SDE All ServiceRequests&quot;:
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-servicerequest'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="39"></valueInteger>
+               <valueInteger value="40"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -835,7 +855,7 @@ define &quot;SDE COVID And Influenza DiagnosticReport&quot;:
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="40"></valueInteger>
+               <valueInteger value="41"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -853,7 +873,7 @@ define &quot;SDE COVID And Influenza PRE Admission Observation&quot;:
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="41"></valueInteger>
+               <valueInteger value="42"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -879,7 +899,7 @@ define &quot;SDE COVID And Influenza PRE Admission Observation&quot;:
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-servicerequest'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="42"></valueInteger>
+               <valueInteger value="43"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -897,7 +917,7 @@ define &quot;SDE COVID and Influenza DiagnosticReport Result from Lab&quot;:
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="43"></valueInteger>
+               <valueInteger value="44"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -915,7 +935,7 @@ define &quot;SDE COVID and Influenza DiagnosticReport Result from Lab&quot;:
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-location'}})"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="44"></valueInteger>
+               <valueInteger value="45"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -934,7 +954,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   where encounter.id = IP.id)"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="45"></valueInteger>
+               <valueInteger value="46"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -948,7 +968,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
                <valueString value="define function ToString(value EncounterStatus): value.value"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="46"></valueInteger>
+               <valueInteger value="47"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -982,7 +1002,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
         else Interval[period.&quot;start&quot;.value, period.&quot;end&quot;.value]"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="47"></valueInteger>
+               <valueInteger value="48"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1000,7 +1020,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   )"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="48"></valueInteger>
+               <valueInteger value="49"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1015,7 +1035,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   Last(Split(uri, '/'))"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="49"></valueInteger>
+               <valueInteger value="50"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1036,7 +1056,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
         }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="50"></valueInteger>
+               <valueInteger value="51"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1075,7 +1095,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="51"></valueInteger>
+               <valueInteger value="52"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1098,7 +1118,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="52"></valueInteger>
+               <valueInteger value="53"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1120,7 +1140,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="53"></valueInteger>
+               <valueInteger value="54"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1139,7 +1159,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="54"></valueInteger>
+               <valueInteger value="55"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1158,7 +1178,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="55"></valueInteger>
+               <valueInteger value="56"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1178,7 +1198,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="56"></valueInteger>
+               <valueInteger value="57"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1198,7 +1218,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="57"></valueInteger>
+               <valueInteger value="58"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1224,7 +1244,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="58"></valueInteger>
+               <valueInteger value="59"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1245,7 +1265,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="59"></valueInteger>
+               <valueInteger value="60"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1263,7 +1283,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   )"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="60"></valueInteger>
+               <valueInteger value="61"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1296,7 +1316,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="61"></valueInteger>
+               <valueInteger value="62"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1320,7 +1340,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="62"></valueInteger>
+               <valueInteger value="63"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1341,7 +1361,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="63"></valueInteger>
+               <valueInteger value="64"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1363,7 +1383,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="64"></valueInteger>
+               <valueInteger value="65"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1397,7 +1417,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="65"></valueInteger>
+               <valueInteger value="66"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1415,7 +1435,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="66"></valueInteger>
+               <valueInteger value="67"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1437,7 +1457,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="67"></valueInteger>
+               <valueInteger value="68"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1480,7 +1500,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="68"></valueInteger>
+               <valueInteger value="69"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1499,7 +1519,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="69"></valueInteger>
+               <valueInteger value="70"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1523,7 +1543,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="70"></valueInteger>
+               <valueInteger value="71"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1546,7 +1566,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="71"></valueInteger>
+               <valueInteger value="72"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1568,7 +1588,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="72"></valueInteger>
+               <valueInteger value="73"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1615,7 +1635,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="73"></valueInteger>
+               <valueInteger value="74"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1635,7 +1655,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="74"></valueInteger>
+               <valueInteger value="75"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1654,7 +1674,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="75"></valueInteger>
+               <valueInteger value="76"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1676,7 +1696,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   end"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="76"></valueInteger>
+               <valueInteger value="77"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1693,7 +1713,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   )"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="77"></valueInteger>
+               <valueInteger value="78"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1727,7 +1747,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
 	end"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="78"></valueInteger>
+               <valueInteger value="79"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1741,7 +1761,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
                <valueString value="define function ToDateTime(value dateTime): value.value"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="79"></valueInteger>
+               <valueInteger value="80"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1755,7 +1775,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
                <valueString value="define function ToDate(value date): value.value"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="80"></valueInteger>
+               <valueInteger value="81"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1780,7 +1800,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
     end"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="81"></valueInteger>
+               <valueInteger value="82"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1805,7 +1825,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
     end"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="82"></valueInteger>
+               <valueInteger value="83"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1844,7 +1864,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="83"></valueInteger>
+               <valueInteger value="84"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1869,7 +1889,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="84"></valueInteger>
+               <valueInteger value="85"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1889,7 +1909,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="85"></valueInteger>
+               <valueInteger value="86"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1925,7 +1945,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="86"></valueInteger>
+               <valueInteger value="87"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1941,13 +1961,11 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   where E.url.value = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
     or E.url.value = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
     or E.url.value = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
-    or E.url.value = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity'
-    or E.url.value = 'http://hl7.org/fhir/StructureDefinition/patient-genderIdentity'
     or E.url.value = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'
   return E"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="87"></valueInteger>
+               <valueInteger value="88"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1964,7 +1982,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   return E"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="88"></valueInteger>
+               <valueInteger value="89"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2004,7 +2022,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="89"></valueInteger>
+               <valueInteger value="90"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2026,7 +2044,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="90"></valueInteger>
+               <valueInteger value="91"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2055,7 +2073,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="91"></valueInteger>
+               <valueInteger value="92"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2081,7 +2099,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="92"></valueInteger>
+               <valueInteger value="93"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2102,7 +2120,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="93"></valueInteger>
+               <valueInteger value="94"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2124,7 +2142,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="94"></valueInteger>
+               <valueInteger value="95"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2162,7 +2180,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="95"></valueInteger>
+               <valueInteger value="96"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2181,7 +2199,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="96"></valueInteger>
+               <valueInteger value="97"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2204,7 +2222,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="97"></valueInteger>
+               <valueInteger value="98"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2231,7 +2249,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="98"></valueInteger>
+               <valueInteger value="99"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2250,7 +2268,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="99"></valueInteger>
+               <valueInteger value="100"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2269,7 +2287,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="100"></valueInteger>
+               <valueInteger value="101"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2289,7 +2307,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   end"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="101"></valueInteger>
+               <valueInteger value="102"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2304,7 +2322,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   exists(references R where R.references(resource))"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="102"></valueInteger>
+               <valueInteger value="103"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2356,7 +2374,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="103"></valueInteger>
+               <valueInteger value="104"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2392,7 +2410,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="104"></valueInteger>
+               <valueInteger value="105"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2419,7 +2437,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="105"></valueInteger>
+               <valueInteger value="106"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2439,7 +2457,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="106"></valueInteger>
+               <valueInteger value="107"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2460,7 +2478,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="107"></valueInteger>
+               <valueInteger value="108"></valueInteger>
             </extension>
          </extension>
          <name value="EffectiveDataRequirements"></name>
@@ -2484,7 +2502,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library SharedResource"></display>
-            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.006"></resource>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.007"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -2755,6 +2773,13 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <min value="0"></min>
             <max value="*"></max>
             <type value="DiagnosticReport"></type>
+         </parameter>
+         <parameter>
+            <name value="SDE IP Encounters"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="*"></max>
+            <type value="Encounter"></type>
          </parameter>
          <parameter>
             <name value="SDE RPS DiagnosticReport Result from Lab"></name>
@@ -3900,7 +3925,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
    <title value="NHSN Respiratory Pathogens Surveillance Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2025-02-03T18:24:37-05:00"></date>
+   <date value="2025-03-12T16:25:05-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="All encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period. "></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>
@@ -4255,6 +4280,19 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
       <criteria>
          <language value="text/cql-identifier"></language>
          <expression value="SDE Encounter"></expression>
+      </criteria>
+   </supplementalData>
+   <supplementalData id="sde-ip-encounters">
+      <usage>
+         <coding>
+            <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
+            <code value="supplemental-data"></code>
+         </coding>
+      </usage>
+      <description value="SDE IP Encounters"></description>
+      <criteria>
+         <language value="text/cql-identifier"></language>
+         <expression value="SDE IP Encounters"></expression>
       </criteria>
    </supplementalData>
 </Measure>
