@@ -1,0 +1,217 @@
+<Patient xmlns="http://hl7.org/fhir">
+  <id value="e5iR7w72H9gqdSTckTccB2Q3" />
+  <extension url="http://open.epic.com/FHIR/StructureDefinition/extension/legal-sex">
+    <valueCodeableConcept>
+      <coding>
+        <system value="urn:oid:1.2.840.114350.1.13.37.3.7.10.698084.130.657370.10011190" />
+        <code value="male" />
+        <display value="male" />
+      </coding>
+    </valueCodeableConcept>
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/patient-genderIdentity">
+    <valueCodeableConcept>
+      <coding>
+        <system value="http://hl7.org/fhir/gender-identity" />
+        <code value="male" />
+        <display value="male" />
+      </coding>
+    </valueCodeableConcept>
+  </extension>
+  <extension url="http://open.epic.com/FHIR/StructureDefinition/extension/sex-for-clinical-use">
+    <valueCodeableConcept>
+      <coding>
+        <system value="urn:oid:1.2.840.114350.1.13.37.3.7.10.698084.130.657370.10011190" />
+        <code value="male" />
+        <display value="male" />
+      </coding>
+    </valueCodeableConcept>
+  </extension>
+  <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex">
+    <valueCode value="M" />
+  </extension>
+  <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-race">
+    <extension url="ombCategory">
+      <valueCoding>
+        <system value="urn:oid:2.16.840.1.113883.6.238" />
+        <code value="2054-5" />
+        <display value="Black or African American" />
+      </valueCoding>
+    </extension>
+    <extension url="text">
+      <valueString value="Black or African American" />
+    </extension>
+  </extension>
+  <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity">
+    <extension url="ombCategory">
+      <valueCoding>
+        <system value="urn:oid:2.16.840.1.113883.6.238" />
+        <code value="2135-2" />
+        <display value="Hispanic or Latino" />
+      </valueCoding>
+    </extension>
+    <extension url="text">
+      <valueString value="Hispanic or Latino" />
+    </extension>
+  </extension>
+  <extension url="http://open.epic.com/FHIR/StructureDefinition/extension/calculated-pronouns-to-use-for-text">
+    <valueCodeableConcept>
+      <coding>
+        <system value="http://loinc.org" />
+        <code value="LA29518-0" />
+        <display value="he/him/his/his/himself" />
+      </coding>
+    </valueCodeableConcept>
+  </extension>
+  <identifier>
+    <use value="usual" />
+    <type>
+      <text value="CEID" />
+    </type>
+    <system value="urn:oid:1.2.840.114350.1.13.37.3.7.2.688884.100" />
+    <value value="GS22WWN4CFJM9KL" />
+  </identifier>
+  <identifier>
+    <use value="usual" />
+    <type>
+      <text value="EPI" />
+    </type>
+    <system value="urn:oid:1.2.840.114350.1.13.37.3.7.5.737384.0" />
+    <value value="E6245883" />
+  </identifier>
+  <identifier>
+    <use value="usual" />
+    <type>
+      <text value="EXTERNAL" />
+    </type>
+    <system value="urn:oid:1.2.840.114350.1.13.37.3.7.2.698084" />
+    <value value="6770551" />
+  </identifier>
+  <identifier>
+    <use value="usual" />
+    <type>
+      <text value="FHIR" />
+    </type>
+    <system value="http://open.epic.com/FHIR/StructureDefinition/patient-dstu2-fhir-id" />
+    <value value="TfTbZV8V1HXxW.cHHKqeF9kbUwwTs9rOwXUrJ3EhHYS8B" />
+  </identifier>
+  <identifier>
+    <use value="usual" />
+    <type>
+      <text value="FHIR STU3" />
+    </type>
+    <system value="http://open.epic.com/FHIR/StructureDefinition/patient-fhir-id" />
+    <value value="e5iR7w72H9gqdSTckTccB2Q3" />
+  </identifier>
+  <identifier>
+    <use value="usual" />
+    <type>
+      <text value="GHSMRN" />
+    </type>
+    <system value="urn:oid:1.2.840.114350.1.13.37.3.7.5.698084.1" />
+    <value value="6730984" />
+  </identifier>
+  <identifier>
+    <use value="usual" />
+    <type>
+      <text value="INTERNAL" />
+    </type>
+    <system value="urn:oid:1.2.840.114350.1.13.37.3.7.2.698084" />
+    <value value="   6770551" />
+  </identifier>
+  <identifier>
+    <use value="usual" />
+    <type>
+      <text value="WPRINTERNAL" />
+    </type>
+    <system value="urn:oid:1.2.840.114350.1.13.37.3.7.2.878082" />
+    <value value="2102139" />
+  </identifier>
+  <identifier>
+    <use value="usual" />
+    <system value="https://open.epic.com/FHIR/StructureDefinition/PayerMemberId" />
+    <value value="1236730984" />
+  </identifier>
+  <active value="true" />
+  <name>
+    <use value="official" />
+    <text value="InfluenzaTherapeutic RPS" />
+    <family value="RPS" />
+    <given value="InfluenzaTherapeutic" />
+  </name>
+  <name>
+    <use value="usual" />
+    <text value="InfluenzaTherapeutic RPS" />
+    <family value="RPS" />
+    <given value="InfluenzaTherapeutic" />
+  </name>
+  <gender value="male" />
+  <birthDate value="2020-02-29" />
+  <deceasedBoolean value="false" />
+  <address>
+    <use value="home" />
+    <line value="789 Alphabet Street" />
+    <city value="Lansing" />
+    <district value="Lackawanna" />
+    <state value="MI" />
+    <postalCode value="48864" />
+    <country value="USA" />
+  </address>
+  <address>
+    <use value="old" />
+    <line value="789 Alphabet Street" />
+    <city value="Lansing" />
+    <district value="Lackawanna" />
+    <state value="MI" />
+    <postalCode value="48864" />
+    <country value="USA" />
+  </address>
+  <maritalStatus>
+    <text value="Single" />
+  </maritalStatus>
+  <contact>
+    <relationship>
+      <coding>
+        <system value="urn:oid:1.2.840.114350.1.13.37.3.7.4.827665.1000" />
+        <code value="122" />
+        <display value="Mother" />
+      </coding>
+      <text value="Mother" />
+    </relationship>
+    <name>
+      <use value="usual" />
+      <text value="Mama Bear" />
+    </name>
+    <telecom>
+      <system value="phone" />
+      <value value="999-999-9999" />
+      <use value="mobile" />
+    </telecom>
+    <telecom>
+      <system value="email" />
+      <value value="test@pretend.com" />
+    </telecom>
+    <address>
+      <use value="home" />
+      <line value="789 Alphabet Street" />
+      <city value="Lansing" />
+      <state value="MI" />
+      <postalCode value="48864" />
+    </address>
+  </contact>
+  <communication>
+    <language>
+      <coding>
+        <system value="urn:ietf:bcp:47" />
+        <code value="en" />
+        <display value="English" />
+      </coding>
+      <text value="English" />
+    </language>
+    <preferred value="true" />
+  </communication>
+  <managingOrganization>
+    <reference value="Organization/eDPlhwLRHjv6ZeSzYeRKuLQ3" />
+    <display value="GEISINGER" />
+  </managingOrganization>
+</Patient>
