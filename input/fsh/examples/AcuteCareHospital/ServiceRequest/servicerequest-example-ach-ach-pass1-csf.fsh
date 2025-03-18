@@ -1,7 +1,7 @@
 Instance: servicerequest-example-ach-ach-pass1-csf
 InstanceOf: AcuteCareHospitalReportingServiceRequest
-Title: "ServiceRequest - Example ACH Pass1 CSF"
-Description: "ServiceRequest - Example ACH Pass1 - Differential panel - Cerebral spinal fluid"
+Title: "ServiceRequest - Example ACH Monthly Pass1 CSF"
+Description: "ServiceRequest - Example ACH Monthly Pass1 - Differential panel - Cerebral spinal fluid"
 Usage: #example
 * identifier.use = #usual
 * identifier.type = $v2-0203#PLAC "Placer Identifier"

@@ -1,7 +1,7 @@
 Instance: measurereport-example-rps-subjectlist
 InstanceOf: SubjectListMeasureReportProfile
-Title: "MeasureReport - Example RPS Subject List"
-Description: "Measure Report - Example RPS Subject List Example"
+Title: "MeasureReport - Example RPS Daily Subject List"
+Description: "Measure Report - Example RPS Daily Subject List Example"
 Usage: #example
 * meta.extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-received-date-extension"
 * meta.extension.valueDateTime = "2023-05-23T06:07:08Z"
@@ -19,8 +19,8 @@ Usage: #example
 
 Instance: list-example-rps-individual-measurereport-list
 InstanceOf: IndividualMeasureReportList
-Title: "List - Example RPS Individual Measure Report List"
-Description: "List - Example RPS Individual Measure Report List Example"
+Title: "List - Example RPS Daily Individual Measure Report List"
+Description: "List - Example RPS Daily Individual Measure Report List Example"
 Usage: #example
 * status = #current
 * mode = #snapshot

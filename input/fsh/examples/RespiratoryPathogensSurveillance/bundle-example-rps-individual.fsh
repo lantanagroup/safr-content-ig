@@ -1,7 +1,7 @@
 Instance: bundle-example-rps-header
 InstanceOf: NHSNSubmissionHeaderBundle
-Title: "Example RPS Submission Header Bundle"
-Description: "Example Separated RPS Submission Header Bundle"
+Title: "Example RPS Daily Submission Header Bundle"
+Description: "Example Separated RPS Daily Submission Header Bundle"
 Usage: #example
 * identifier.system = "urn:ietf:rfc:3986"
 * identifier.value = "urn:uuid:1eaddf4c-2ec0-4dc4-b26f-9586d7a7336a"
@@ -18,8 +18,8 @@ Usage: #example
 
 Instance: bundle-example-rps-subject-initialpopulationpass
 InstanceOf: NHSNSubjectBundle
-Title: "Example RPS Submission Initial Population Pass Bundle"
-Description: "Example Separated RPS Submission Initial Population Pass Bundle"
+Title: "Example RPS Daily Submission Initial Population Pass Bundle"
+Description: "Example Separated RPS Daily Submission Initial Population Pass Bundle"
 Usage: #example
 * identifier.system = "urn:ietf:rfc:3986"
 * identifier.value = "urn:uuid:1eaddf4c-2ec0-4dc4-b26f-9586d7a78d8d"
@@ -52,8 +52,8 @@ Usage: #example
 
 Instance: bundle-example-rps-subject-negativepcr
 InstanceOf: NHSNSubjectBundle
-Title: "Example RPS Submission Negative PCR Bundle"
-Description: "Example Separated RPS Submission Negative PCR Bundle"
+Title: "Example RPS Daily Submission Negative PCR Bundle"
+Description: "Example Separated RPS Daily Submission Negative PCR Bundle"
 Usage: #example
 * identifier.system = "urn:ietf:rfc:3986"
 * identifier.value = "urn:uuid:1eaddf4c-2ec0-4dc4-b26f-9586d7a7a765"
@@ -92,8 +92,8 @@ Usage: #example
 
 Instance: bundle-example-rps-subject-influenzatherapeutic
 InstanceOf: NHSNSubjectBundle
-Title: "Example RPS Submission Influenza Therapeutic Bundle"
-Description: "Example Separated RPS Submission Influenza Therapeutic Bundle"
+Title: "Example RPS Daily Submission Influenza Therapeutic Bundle"
+Description: "Example Separated RPS Daily Submission Influenza Therapeutic Bundle"
 Usage: #example
 * identifier.system = "urn:ietf:rfc:3986"
 * identifier.value = "urn:uuid:1eaddf4c-2ec0-4dc4-b26f-9586d7a70099"
@@ -118,8 +118,8 @@ Usage: #example
 
 Instance: bundle-example-rps-subject-rsvlabbtg
 InstanceOf: NHSNSubjectBundle
-Title: "Example RPS Submission RSV Lab BTG Bundle"
-Description: "Example Separated RPS Submission RSV Lab BTG Bundle"
+Title: "Example RPS Daily Submission RSV Lab BTG Bundle"
+Description: "Example Separated RPS Daily Submission RSV Lab BTG Bundle"
 Usage: #example
 * identifier.system = "urn:ietf:rfc:3986"
 * identifier.value = "urn:uuid:1eaddf4c-2ec0-4dc4-b26f-9586d7a75525"

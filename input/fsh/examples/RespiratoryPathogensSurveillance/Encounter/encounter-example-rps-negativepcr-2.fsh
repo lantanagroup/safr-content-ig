@@ -1,7 +1,7 @@
 Instance: encounter-example-rps-negativepcr-2
 InstanceOf: RespiratoryPathogensSurveillanceEventEncounter
-Title: "Encounter - RPS Encounter Example Negative PCR 2"
-Description: "Encounter - Example RPS Encounter Negative PCR 2"
+Title: "Encounter - RPS Daily Encounter Example Negative PCR 2"
+Description: "Encounter - Example RPS Daily Encounter Negative PCR 2"
 Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.698.8"

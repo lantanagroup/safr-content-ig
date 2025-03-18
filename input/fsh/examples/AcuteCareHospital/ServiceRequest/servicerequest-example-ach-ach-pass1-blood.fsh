@@ -1,7 +1,7 @@
 Instance: servicerequest-example-ach-ach-pass1-blood
 InstanceOf: AcuteCareHospitalReportingServiceRequest
-Title: "ServiceRequest - Example ACH Pass1 Blood"
-Description: "ServiceRequest - Example ACH Pass1 Blood"
+Title: "ServiceRequest - Example ACH Monthly Pass1 Blood"
+Description: "ServiceRequest - Example ACH Monthly Pass1 Blood"
 Usage: #example
 * identifier.use = #usual
 * identifier.type = $v2-0203#PLAC "Placer Identifier"

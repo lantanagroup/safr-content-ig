@@ -1,7 +1,7 @@
 Instance: patient-example-ach-ach-pass2
 InstanceOf: CrossMeasurePatient
-Title: "Patient - Example ACH Pass2 - Hypo"
-Description: "Patient - Example ACH Pass2 - Hypoglycemia"
+Title: "Patient - Example ACH Monthly Pass2 - Hypo"
+Description: "Patient - Example ACH Monthly Pass2 - Hypoglycemia"
 Usage: #example
 * extension[0].url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
 * extension[=].extension[0].url = "ombCategory"

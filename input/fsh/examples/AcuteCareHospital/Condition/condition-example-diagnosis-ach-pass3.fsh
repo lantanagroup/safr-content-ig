@@ -1,7 +1,7 @@
 Instance: condition-example-diagnosis-ach-pass3
 InstanceOf: AcuteCareHospitalReportingCondition
-Title: "Condition - Example Diagnosis ACH Pass3"
-Description: "Condition - Example Diagnosis ACH Pass3 - Encounter Diagnosis: Enterocolitis due to Clostridium difficile"
+Title: "Condition - Example Diagnosis ACH Monthly Pass3"
+Description: "Condition - Example Diagnosis ACH Monthly Pass3 - Encounter Diagnosis: Enterocolitis due to Clostridium difficile"
 Usage: #example
 * verificationStatus.coding.version = "4.0.0"
 * verificationStatus.coding = $condition-ver-status#confirmed "Confirmed"

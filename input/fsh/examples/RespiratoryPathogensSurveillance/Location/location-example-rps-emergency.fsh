@@ -1,7 +1,7 @@
 Instance: location-example-rps-emergency
 InstanceOf: RespiratoryPathogensSurveillanceEventLocation
-Title: "Location - Example RPS - Emergency"
-Description: "Location - Example RPS - Emergency Department Pavilion"
+Title: "Location - Example RPS Daily - Emergency"
+Description: "Location - Example RPS Daily - Emergency Department Pavilion"
 Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.6869"

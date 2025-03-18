@@ -1,7 +1,7 @@
 Instance: condition-example-diagnosis-rps-influenzatherapeutic
 InstanceOf: Condition
-Title: "Condition - RPS Condition Example Influenza Therapeutic"
-Description: "Condition - Example RPS Condition Influenza Therapeutic"
+Title: "Condition - RPS Daily Condition Example Influenza Therapeutic"
+Description: "Condition - Example RPS Daily Condition Influenza Therapeutic"
 Usage: #example
 * extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"
 * extension.valueString = "eloBHVi6UskNwFJ55XgUq294CfCWyE3tytd.P4NomlhQprDjGoqWBeK2-ed8C2oMs3"

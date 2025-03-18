@@ -1,7 +1,7 @@
 Instance: medication-example-rps-initialpopulationpass
 InstanceOf: RespiratoryPathogensSurveillanceEventMedication
-Title: "Medication - RPS Medication Example Initial Population Pass"
-Description: "Medication - Example RPS Medication Initial Population Pass"
+Title: "Medication - RPS Daily Medication Example Initial Population Pass"
+Description: "Medication - Example RPS Daily Medication Initial Population Pass"
 Usage: #example
 * extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"
 * extension.valueString = "eZeW55xkBH0DrR0Xj004fNlA99h1sjXKwuhGs.PNpjjUi.Dh2-U-oGW0c9xZjPn2b29S.YZMgFiH.76i57tFS1PARcjzOMkC6TPHQQXiH6vA3"

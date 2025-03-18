@@ -1,7 +1,7 @@
 Instance: measurereport-example-rps-initialpopulationpass
 InstanceOf: MeasureReport
-Title: "MeasureReport - Example Individual RPS Initial Population Pass"
-Description: "MeasureReport - Example Individual RPS Initial Population Pass"
+Title: "MeasureReport - Example Individual RPS Daily Initial Population Pass"
+Description: "MeasureReport - Example Individual RPS Daily Initial Population Pass"
 Usage: #example
 * meta.profile = "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"
 * identifier.system = "http://example.org/fhir/measurereport/id"

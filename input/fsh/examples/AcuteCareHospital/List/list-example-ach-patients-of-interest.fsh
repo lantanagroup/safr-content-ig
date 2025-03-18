@@ -1,7 +1,7 @@
 Instance: list-example-ach-patients-of-interest
 InstanceOf: PatientsOfInterestList
-Title: "List - Example ACH Patients Of Interest"
-Description: "List - Example ACH Patients Of Interest"
+Title: "List - Example ACH Monthly Patients Of Interest"
+Description: "List - Example ACH Monthly Patients Of Interest"
 Usage: #example
 * extension[0].url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-patient-list-applicable-period-extension"
 * extension[=].valuePeriod.start = "2021-07-28T00:00:00Z"

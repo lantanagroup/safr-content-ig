@@ -4,7 +4,7 @@ fhirVersion: 4.0.1
 applyExtensionMetadataToRoot: false
 id: gov.cdc.nhsn.measures
 packageId: gov.cdc.nhsn.measures
-title: CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM)
+title: CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) Content Package IG
 name: NHSNMeasures
 status: active
 date: 2023-09-14
@@ -249,8 +249,8 @@ pages:
 #       - Device/device-example-submitting-device
 
 #   ach-examples:
-#     name: "Knowledge Artifacts: ACH Examples"
-#     description: "Resource examples for ACH Initial Population Measure."
+#     name: "Knowledge Artifacts: ACH Monthly Examples"
+#     description: "Resource examples for ACH Monthly Initial Population Measure."
 #     resources:
 #       - Bundle/bundle-example-ach-header
       
@@ -573,17 +573,17 @@ resources:
    
 
    #Bundle/bundle-example-ach-header:
-     #name: Example ACH Submission Header Bundle
-     #description: Example Separated ACH Submission Header Bundle
+     #name: Example ACH Monthly Submission Header Bundle
+     #description: Example Separated ACH Monthly Submission Header Bundle
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submission-header-bundle
 
   #  Bundle/bundle-example-ach-subject-ach-pass1:
-  #    name: Example ACH Submission Subject Bundle 1
-  #    description: Example Separated ACH Submission Subject Bundle 1 for LOS/MEN
+  #    name: Example ACH Monthly Submission Subject Bundle 1
+  #    description: Example Separated ACH Monthly Submission Subject Bundle 1 for LOS/MEN
   #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle
 
   #  Bundle/bundle-example-ach-subject-ach-pass2:
-  #    name: Example ACH Submission Subject Bundle 2
+  #    name: Example ACH Monthly Submission Subject Bundle 2
   #    description: Example Separated ACH Submission Subject Bundle 2 for Hypoglycemia and VTE
   #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle
 

@@ -3283,12 +3283,12 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
    </identifier>
    <version value="1.0.0-dev"></version>
    <name value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></name>
-   <title value="NHSN dQM Acute Care Hospital Initial Population"></title>
+   <title value="NHSN dQM Acute Care Hospital Monthly Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
    <date value="2025-03-17T15:07:28-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
-   <description value="The Acute Care Hospital Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."></description>
+   <description value="The Acute Care Hospital Monthly Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>
    <relatedArtifact>
       <type value="documentation"></type>
@@ -3314,7 +3314,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          <display value="Outcome"></display>
       </coding>
    </type>
-   <rationale value="The NHSN Acute Care Hospital dQM allows for facilities to report line level patient data electronically to NHSN for the following modules that are reported monthly: Glycemic Control, Hypoglycemia; Healthcare facility-onset, antibiotic-Treated Clostridioides difficile (C. difficile) Infection (HT-CDI); Hospital-Onset Bacteremia &amp; Fungemia (HOB); Venous Thromboembolism (VTE); Late Onset Sepsis / Meningitis. *Please see [Acute Care / Critical Access Hospitals (ACH) | NHSN | CDC](https://www.cdc.gov/nhsn/acute-care-hospital/index.html) for the individual measure protocols."></rationale>
+   <rationale value="The NHSN Acute Care Hospital Monthly dQM allows for facilities to report line level patient data electronically to NHSN for the following modules that are reported monthly: Glycemic Control, Hypoglycemia; Healthcare facility-onset, antibiotic-Treated Clostridioides difficile (C. difficile) Infection (HT-CDI); Hospital-Onset Bacteremia &amp; Fungemia (HOB); Venous Thromboembolism (VTE); Late Onset Sepsis / Meningitis. *Please see [Acute Care / Critical Access Hospitals (ACH) | NHSN | CDC](https://www.cdc.gov/nhsn/acute-care-hospital/index.html) for the individual measure protocols."></rationale>
    <group>
       <population id="initial-population">
          <code>

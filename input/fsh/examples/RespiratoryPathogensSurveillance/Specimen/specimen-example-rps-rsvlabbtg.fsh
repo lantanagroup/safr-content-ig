@@ -1,7 +1,7 @@
 Instance: specimen-example-rps-rsvlabbtg
 InstanceOf: RespiratoryPathogensSurveillanceEventSpecimen
-Title: "Specimen - RPS Specimen Example RSV Lab BTG"
-Description: "Specimen - Example RPS Specimen RSV Lab BTG"
+Title: "Specimen - RPS Daily Specimen Example RSV Lab BTG"
+Description: "Specimen - Example RPS Daily Specimen RSV Lab BTG"
 Usage: #example
 
 //* type = $v2-0487#NASDR "Drainage, Nasal"

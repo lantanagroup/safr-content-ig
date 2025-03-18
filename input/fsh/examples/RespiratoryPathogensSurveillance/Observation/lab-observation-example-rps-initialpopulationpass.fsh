@@ -1,7 +1,7 @@
 Instance: lab-observation-example-rps-initialpopulationpass
 InstanceOf: RespiratoryPathogensSurveillanceEventLabObservation
-Title: "Lab Observation - RPS Observation Example Initial Population Pass"
-Description: "Lab Observation - Example RPS Observation Initial Population Pass"
+Title: "Lab Observation - RPS Daily Observation Example Initial Population Pass"
+Description: "Lab Observation - Example RPS Daily Observation Initial Population Pass"
 Usage: #example
 * status = #final
 * category = $observation-category#laboratory "Laboratory"

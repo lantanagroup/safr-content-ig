@@ -1,7 +1,7 @@
 Instance: patient-example-ach-ach-pass3
 InstanceOf: CrossMeasurePatient
-Title: "Patient - Example ACH Pass3 - CDI/HOB"
-Description: "Patient - Example ACH Pass3 - Healthcare facility-onset, antibiotic-treated Clostridioides difficile infection / Hospital-onset bacteremia and fungemia (CDI/HOB)"
+Title: "Patient - Example ACH Monthly Pass3 - CDI/HOB"
+Description: "Patient - Example ACH Monthly Pass3 - Healthcare facility-onset, antibiotic-treated Clostridioides difficile infection / Hospital-onset bacteremia and fungemia (CDI/HOB)"
 Usage: #example
 * extension[0].url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
 * extension[=].extension[0].url = "ombCategory"

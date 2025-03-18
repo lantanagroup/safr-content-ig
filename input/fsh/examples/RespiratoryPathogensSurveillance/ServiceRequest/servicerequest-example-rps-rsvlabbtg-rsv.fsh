@@ -1,7 +1,7 @@
 Instance: servicerequest-example-rps-rsvlabbtg-rsv
 InstanceOf: RespiratoryPathogensSurveillanceEventServiceRequest
-Title: "ServiceRequest - Example RPS RSV Lab BTG"
-Description: "ServiceRequest - Example RPS RSV Lab BTG"
+Title: "ServiceRequest - Example RPS Daily RSV Lab BTG"
+Description: "ServiceRequest - Example RPS Daily RSV Lab BTG"
 Usage: #example
 * identifier.use = #usual
 * identifier.type = $v2-0203#PLAC "Placer Identifier"

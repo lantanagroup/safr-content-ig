@@ -1,7 +1,7 @@
 Instance: observation-example-rps-initialpopulationpass-isolation
 InstanceOf: RespiratoryPathogensSurveillanceEventObservation
-Title: "Observation - Example RPS Initial Population Pass Gestational Age"
-Description: "Observation - Example RPS Initial Population Pass - Lab: Gestational age at birth"
+Title: "Observation - Example RPS Daily Initial Population Pass Gestational Age"
+Description: "Observation - Example RPS Daily Initial Population Pass - Lab: Gestational age at birth"
 Usage: #example
 //https://build.fhir.org/ig/HL7/fhir-qi-core/Observation-example-gestation.json.html
 * status = #final

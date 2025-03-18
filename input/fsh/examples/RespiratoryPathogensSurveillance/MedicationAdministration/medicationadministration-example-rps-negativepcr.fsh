@@ -1,7 +1,7 @@
 Instance: medicationadministration-example-rps-negativepcr
 InstanceOf: AcuteCareHospitalReportingMedicationAdministration
-Title: "Medication Administration - RPS Medication Administration Example Negative PCR"
-Description: "Medication Administration - Example RPS Medication Administration Negative PCR"
+Title: "Medication Administration - RPS Daily Medication Administration Example Negative PCR"
+Description: "Medication Administration - Example RPS Daily Medication Administration Negative PCR"
 Usage: #example
 * status = #completed
 * medicationReference.extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"

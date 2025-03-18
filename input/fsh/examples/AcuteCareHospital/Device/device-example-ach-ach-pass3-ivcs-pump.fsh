@@ -1,7 +1,7 @@
 Instance: device-example-ach-ach-pass3-ivcs-pump
 InstanceOf: AcuteCareHospitalDevice
-Title: "Device - Example ACH Pass3 Ivcs Pump"
-Description: "Device - Example ACH Pass3 - Intermittent venous compression system pump"
+Title: "Device - Example ACH Monthly Pass3 Ivcs Pump"
+Description: "Device - Example ACH Monthly Pass3 - Intermittent venous compression system pump"
 Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.698.8"

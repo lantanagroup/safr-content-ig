@@ -1,7 +1,7 @@
 Instance: measurereport-example-rps-negativepcr
 InstanceOf: MeasureReport
-Title: "MeasureReport - Example Individual RPS Negative PCR"
-Description: "MeasureReport - Example Individual RPS Negative PCR"
+Title: "MeasureReport - Example Individual RPS Daily Negative PCR"
+Description: "MeasureReport - Example Individual RPS Daily Negative PCR"
 Usage: #example
 * meta.profile = "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"
 * identifier.system = "http://example.org/fhir/measurereport/id"
