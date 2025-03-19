@@ -92,21 +92,21 @@ groups:
     name: "Knowledge Artifacts: Digital Quality Measure"
     resources:
       - Measure/NHSNGlycemicControlHypoglycemicInitialPopulation
-      - Measure/NHSNdQMAcuteCareHospitalInitialPopulation
-      - Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation
+      - Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation
+      - Measure/NHSNAcuteCareHospitalDailyInitialPopulation
       # - Measure/NHSNBedCapacityMeasure
 
   libs:
     name: "Knowledge Artifacts: Measure Libraries"
     resources:
-      Library/NHSNdQMAcuteCareHospitalInitialPopulation:
+      Library/NHSNdQMAcuteCareHospitalMonthlyInitialPopulation:
         name: NHSN dQM Acute Care Hospital Monthly Initial Population
         description: Library of NHSN dQM Acute Care Hospital Monthly Initial Population Measure
       Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
         name: NHSN Glycemic ControlHypoglycemic Initial Population
         description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
-      Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation:
-        name: NHSN Respiratory Pathogens Surveillance Initial Population
+      Library/NHSNAcuteCareHospitalDailyInitialPopulation:
+        name: NHSN Respiratory Pathogens Surveillance Daily Initial Population
         description: Library of NHSN Respiratory Pathogens Surveillance Daily Initial Population Measure
       # Library/NHSNBedCapacityMeasure:
       #   name: NHSN Bed Capacity Reporting Initial Population
