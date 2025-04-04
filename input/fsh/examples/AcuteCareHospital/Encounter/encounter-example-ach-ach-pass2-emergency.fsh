@@ -1,7 +1,7 @@
 Instance: encounter-example-ach-ach-pass2-emergency
 InstanceOf: AcuteCareHospitalReportingEncounter
-Title: "Encounter - Example ACH Pass2 - Emergency"
-Description: "Encounter - Example ACH Pass2 - Emergency department visit"
+Title: "Encounter - Example ACH Monthly Pass2 - Emergency"
+Description: "Encounter - Example ACH Monthly Pass2 - Emergency department visit"
 Usage: #example
 * identifier.use = #usual
 * identifier.system = "urn:oid:2.16.840.1.113883.19.5.1.698.8"
@@ -44,7 +44,7 @@ Usage: #example
 * hospitalization.dischargeDisposition.text = "Skilled nursing facility"
 */
 
-* location[0].location.display = "ACH Emergency Department"
+* location[0].location.display = "ACH Monthly Emergency Department"
 * location[=].location = Reference(location-example-ach-emergency)
 * location[=].physicalType = http://terminology.hl7.org/CodeSystem/location-physical-type#wa "Ward"
 * location[=].period.start = "2024-01-31T02:35:00-05:00"

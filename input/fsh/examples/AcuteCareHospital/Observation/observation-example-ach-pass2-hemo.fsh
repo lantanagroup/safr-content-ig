@@ -1,7 +1,7 @@
 Instance: observation-example-ach-pass2-hemo
 InstanceOf: AcuteCareHospitalReportingLabObservation
-Title: "Observation - Example ACH Pass2 Hemo"
-Description: "Observation - Example ACH Pass2 - Lab: Bacteria identified in Blood by Culture"
+Title: "Observation - Example ACH Monthly Pass2 Hemo"
+Description: "Observation - Example ACH Monthly Pass2 - Lab: Bacteria identified in Blood by Culture"
 Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-ach-pass2-hemo)

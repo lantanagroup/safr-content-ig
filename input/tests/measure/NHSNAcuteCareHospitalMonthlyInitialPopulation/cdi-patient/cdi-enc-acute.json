@@ -1,0 +1,143 @@
+{
+	"resourceType": "Encounter",
+	"id": "cdi-enc-acute",
+	"meta": {
+		"lastUpdated": "2017-05-26T11:56:57.250-04:00",
+		"profile": [
+			"http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter"
+		]
+	},
+	"text": {
+		"status": "generated",
+		"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>\r\n                    Generated Narrative with Details\r\n                </b></p><p><b>\r\n                    id\r\n                </b>\r\n                : example-1\r\n            </p><p><b>\r\n                    meta\r\n                </b>\r\n                :\r\n            </p><p><b>\r\n                    status\r\n                </b>\r\n                : finished\r\n            </p><p><b>\r\n                    class\r\n                </b>\r\n                : ambulatory (Details: http://terminology.hl7.org/CodeSystem/v3-ActCode code AMB = 'ambulatory', stated as 'ambulatory')\r\n            </p><p><b>\r\n                    type\r\n                </b>\r\n                : Office Visit\r\n                <span style=\"background: LightGoldenRodYellow\">\r\n                    (Details : {http://www.ama-assn.org/go/cpt code '99201' = '99201)\r\n                </span></p><p><b>\r\n                    subject\r\n                </b>\r\n                :\r\n                <a href=\"Patient-example.html\">\r\n                    Generated Summary: id: example; Medical Record Number = 1032702 (USUAL); active; Amy V. Shaw ; ph: 555-555-5555(HOME), amy.shaw@example.com; gender: female; birthDate: 2007-02-20\r\n                </a></p><p><b>\r\n                    period\r\n                </b>\r\n                : 02/11/2015 9:00:14 AM --&gt; 02/11/2015 10:00:14 AM\r\n            </p></div>"
+	},
+	"status": "finished",
+	"class": {
+		"system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+		"code": "ACUTE",
+		"display": "inpatient acute"
+	},
+	"type": [
+		{
+			"coding": [
+				{
+					"system": "http://snomed.info/sct",
+					"code": "32485007"
+				}
+			],
+			"text": "Hospital admission (procedure)"
+		}
+	],
+	"subject": {
+		"reference": "Patient/cdi-patient"
+	},
+	
+	"period": {
+		"start": "2022-01-10T00:00:00",
+		"end": "2022-01-15T18:00:14-04:00"
+	},
+	"diagnosis": [
+		{
+			"condition": {
+				"reference": "Condition/cdi-con-enc-diag-cc"
+			},
+			"use": {
+				"coding": [
+					{
+						"system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+						"code": "CC"
+					}
+				]
+			}
+		},
+		{
+			"condition": {
+				"reference": "Condition/cdi-con-enc-diag-dd"
+			},
+			"use": {
+				"coding": [
+					{
+						"system": "http://terminology.hl7.org/CodeSystem/diagnosis-role",
+						"code": "DD"
+					}
+				]
+			}
+		}
+	],
+	"hospitalization": {
+		"admitSource": {
+			"coding": [
+				{
+					"system": "http://terminology.hl7.org/CodeSystem/admit-source",
+					"code": "hosp-trans",
+					"display": "Transferred from other hospital"
+				}
+			]
+		},
+		"dischargeDisposition": {
+			"coding": [
+				{
+					"system": "http://terminology.hl7.org/CodeSystem/discharge-disposition",
+					"code": "home",
+					"display": "home"
+				}
+			]
+		}
+	},
+	"location": [
+		{
+			"location": {
+				"reference": "Location/cdi-location",
+				"display": "Emergency Waiting Room"
+			},
+			"status": "active",
+			"period": {
+				"start": "2022-01-02T07:15:00+10:00",
+				"end": "2022-01-02T08:45:00+10:00"
+			}
+		},
+		{
+			"location": {
+				"reference": "Location/cdi-location",
+				"display": "Emergency"
+			},
+			"status": "active",
+			"period": {
+				"start": "2022-01-01T08:45:00+10:00",
+				"end": "2022-01-01T09:27:00+10:00"
+			}
+		},
+		{
+			"location": {
+				"reference": "Location/cdi-location",
+				"display": "Ward 1, Room 42, Bed 1"
+			},
+			"status": "active",
+			"period": {
+				"start": "2022-01-01T09:27:00+10:00",
+				"end": "2022-01-01T12:15:00+10:00"
+			}
+		},
+		{
+			"location": {
+				"reference": "Location/cdi-location",
+				"display": "Ward 1, Room 42, Bed 1"
+			},
+			"status": "reserved",
+			"period": {
+				"start": "2022-01-01T12:15:00+10:00",
+				"end": "2022-01-01T12:45:00+10:00"
+			}
+		},
+		{
+			"location": {
+				"reference": "Location/cdi-location",
+				"display": "Ward 1, Room 42, Bed 1"
+			},
+			"status": "active",
+			"period": {
+				"start": "2022-01-01T12:45:00+10:00"
+			}
+		}
+	]
+}

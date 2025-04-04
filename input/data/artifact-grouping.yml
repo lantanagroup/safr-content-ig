@@ -21,7 +21,7 @@ groups:
       - StructureDefinition/nhsn-submitting-device
       
   ach:
-    name: Acute Care Hospital Reporting Profiles
+    name: Acute Care Hospital Monthly Reporting Profiles
     resources:
       - StructureDefinition/ach-encounter
       - StructureDefinition/ach-location
@@ -42,34 +42,34 @@ groups:
       - StructureDefinition/ach-medicationadministration
       - StructureDefinition/ach-medicationrequest
       
-  # hypo:
-  #   name: Hypoglycemic Event Reporting profiles
-  #   resources:
-  #     - StructureDefinition/hypoglycemic-reporting-condition
-  #     - StructureDefinition/hypoglycemic-reporting-coverage
-  #     - StructureDefinition/hypoglycemic-reporting-encounter
-  #     - StructureDefinition/hypoglycemic-reporting-observation-lab
-  #     - StructureDefinition/hypoglycemic-reporting-location
-  #     - StructureDefinition/hypoglycemic-reporting-medication
-  #     - StructureDefinition/hypoglycemic-reporting-medicationadministration
-  #     - StructureDefinition/hypoglycemic-reporting-medicationrequest
-  #     - StructureDefinition/hypoglycemic-reporting-servicerequest
-  #     - StructureDefinition/hypoglycemic-reporting-specimen      
+  hypo:
+    name: Hypoglycemic Event Reporting profiles
+    resources:
+      - StructureDefinition/hypoglycemic-reporting-condition
+      - StructureDefinition/hypoglycemic-reporting-coverage
+      - StructureDefinition/hypoglycemic-reporting-encounter
+      - StructureDefinition/hypoglycemic-reporting-observation-lab
+      - StructureDefinition/hypoglycemic-reporting-location
+      - StructureDefinition/hypoglycemic-reporting-medication
+      - StructureDefinition/hypoglycemic-reporting-medicationadministration
+      - StructureDefinition/hypoglycemic-reporting-medicationrequest
+      - StructureDefinition/hypoglycemic-reporting-servicerequest
+      - StructureDefinition/hypoglycemic-reporting-specimen      
 
-  # rps:
-  #   name: Respiratory Pathogens Surveillance Event Reporting Profiles
-  #   resources:
-  #     - StructureDefinition/rps-encounter
-  #     - StructureDefinition/rps-location
-  #     - StructureDefinition/rps-observation-lab
-  #     - StructureDefinition/rps-servicerequest
-  #     - StructureDefinition/rps-specimen
-  #     - StructureDefinition/rps-procedure
-  #     - StructureDefinition/rps-diagnosticreport-lab
-  #     - StructureDefinition/rps-medication
-  #     - StructureDefinition/rps-medicationadministration
-  #     - StructureDefinition/rps-medicationrequest
-  #     - StructureDefinition/rps-observation
+  rps:
+    name: Respiratory Pathogens Surveillance Daily Event Reporting Profiles
+    resources:
+      - StructureDefinition/rps-encounter
+      - StructureDefinition/rps-location
+      - StructureDefinition/rps-observation-lab
+      - StructureDefinition/rps-servicerequest
+      - StructureDefinition/rps-specimen
+      - StructureDefinition/rps-procedure
+      - StructureDefinition/rps-diagnosticreport-lab
+      - StructureDefinition/rps-medication
+      - StructureDefinition/rps-medicationadministration
+      - StructureDefinition/rps-medicationrequest
+      - StructureDefinition/rps-observation
 
 
 
@@ -79,9 +79,9 @@ groups:
     resources:
       - ValueSet/ach-encounter-status
       - ValueSet/ach-encounter-class
-      # - ValueSet/rps-diagnostic-report-status
-      # - ValueSet/rps-encounter-status
-      # - ValueSet/rps-encounter-class
+      - ValueSet/rps-diagnostic-report-status
+      - ValueSet/rps-encounter-status
+      - ValueSet/rps-encounter-class
 
   # codesystems:
   #   name: "Terminology: Profile CodeSystems"
@@ -91,23 +91,23 @@ groups:
   measures:
     name: "Knowledge Artifacts: Digital Quality Measure"
     resources:
-      # - Measure/NHSNGlycemicControlHypoglycemicInitialPopulation
-      - Measure/NHSNdQMAcuteCareHospitalInitialPopulation
-      # - Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation
+      - Measure/NHSNGlycemicControlHypoglycemicInitialPopulation
+      - Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation
+      - Measure/NHSNAcuteCareHospitalDailyInitialPopulation
       # - Measure/NHSNBedCapacityMeasure
 
   libs:
     name: "Knowledge Artifacts: Measure Libraries"
     resources:
-      Library/NHSNdQMAcuteCareHospitalInitialPopulation:
-        name: NHSN dQM Acute Care Hospital Initial Population
-        description: Library of NHSN dQM Acute Care Hospital Initial Population Measure
-      # Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
-      #   name: NHSN Glycemic ControlHypoglycemic Initial Population
-      #   description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
-      # Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation:
-      #   name: NHSN Respiratory Pathogens Surveillance Initial Population
-      #   description: Library of NHSN Respiratory Pathogens Surveillance Initial Population Measure
+      Library/NHSNdQMAcuteCareHospitalMonthlyInitialPopulation:
+        name: NHSN dQM Acute Care Hospital Monthly Initial Population
+        description: Library of NHSN dQM Acute Care Hospital Monthly Initial Population Measure
+      Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
+        name: NHSN Glycemic ControlHypoglycemic Initial Population
+        description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
+      Library/NHSNAcuteCareHospitalDailyInitialPopulation:
+        name: NHSN Respiratory Pathogens Surveillance Daily Initial Population
+        description: Library of NHSN Respiratory Pathogens Surveillance Daily Initial Population Measure
       # Library/NHSNBedCapacityMeasure:
       #   name: NHSN Bed Capacity Reporting Initial Population
       #   description: Library of NHSN Bed Capacity Initial Population Measure
@@ -158,46 +158,46 @@ groups:
 
 
   ach-ex:
-    name: "Examples: ACH Submission Instances"
+    name: "Examples: ACH Monthly Submission Instances"
     resources:
       Bundle/submission-full-example1:
-        name: Full ACH Measure Submission Bundle
-        description: Measure Bundle - Full ACH Measure Submission Example
+        name: Full ACH Monthly Measure Submission Bundle
+        description: Measure Bundle - Full ACH Monthly Measure Submission Example
       Bundle/bundle-example-ach-header:
-        name: Example ACH Submission Header Bundle
-        description: Example Separated ACH Submission Header Bundle
+        name: Example ACH Monthly Submission Header Bundle
+        description: Example Separated ACH Monthly Submission Header Bundle
       Bundle/bundle-example-ach-subject-ach-pass1:
-        name: Example ACH Submission Subject Bundle 1
-        description: Example Separated ACH Submission Subject Bundle 1 for LOS/MEN
+        name: Example ACH Monthly Submission Subject Bundle 1
+        description: Example Separated ACH Monthly Submission Subject Bundle 1 for LOS/MEN
       Bundle/bundle-example-ach-subject-ach-pass2:
-        name: Example ACH Submission Subject Bundle 2
-        description: Example Separated ACH Submission Subject Bundle 2 for Hypoglycemia and VTE
+        name: Example ACH Monthly Submission Subject Bundle 2
+        description: Example Separated ACH Monthly Submission Subject Bundle 2 for Hypoglycemia and VTE
       Bundle/bundle-example-ach-subject-ach-pass3:
-        name: Example ACH Submission Subject Bundle 3
-        description: Example Separated ACH Submission Subject Bundle 3 for CDI and VTE
+        name: Example ACH Monthly Submission Subject Bundle 3
+        description: Example Separated ACH Monthly Submission Subject Bundle 3 for CDI and VTE
 
 
-  # rps-ex:
-  #   name: "Examples: RPS Submission Instances"
-  #   resources:
-  #     Bundle/bundle-example-rps-full:
-  #       name: Full RPS Measure Submission Bundle
-  #       description: Measure Bundle - Full RPS Measure Submission Example
-  #     Bundle/bundle-example-rps-header:
-  #       name: Example RPS Submission Header Bundle
-  #       description: Example Separated RPS Submission Header Bundle
-  #     Bundle/bundle-example-rps-subject-initialpopulationpass:
-  #       name: Example RPS Submission Initial Population Pass Bundle
-  #       description: Example Separated RPS Submission Initial Population Pass Bundle
-  #     Bundle/bundle-example-rps-subject-negativepcr:
-  #       name: Example RPS Submission Negative PCR Bundle
-  #       description: Example Separated RPS Submission Negative PCR Bundle
-  #     Bundle/bundle-example-rps-subject-influenzatherapeutic:
-  #       name: Example RPS Submission Influenza Therapeutic Bundle
-  #       description: Example Separated RPS Submission Influenza Therapeutic Bundle
-  #     Bundle/bundle-example-rps-subject-rsvlabbtg:
-  #       name: Example RPS Submission RSV Lab BTG Bundle
-  #       description: Example Separated RPS Submission RSV Lab BTG Bundle
+  rps-ex:
+    name: "Examples: RPS Daily Submission Instances"
+    resources:
+      Bundle/bundle-example-rps-full:
+        name: Full RPS Daily Measure Submission Bundle
+        description: Measure Bundle - Full RPS Daily Measure Submission Example
+      Bundle/bundle-example-rps-header:
+        name: Example RPS Daily Submission Header Bundle
+        description: Example Separated RPS Daily Submission Header Bundle
+      Bundle/bundle-example-rps-subject-initialpopulationpass:
+        name: Example RPS Daily Submission Initial Population Pass Bundle
+        description: Example Separated RPS Daily Submission Initial Population Pass Bundle
+      Bundle/bundle-example-rps-subject-negativepcr:
+        name: Example RPS Daily Submission Negative PCR Bundle
+        description: Example Separated RPS Daily Submission Negative PCR Bundle
+      Bundle/bundle-example-rps-subject-influenzatherapeutic:
+        name: Example RPS Daily Submission Influenza Therapeutic Bundle
+        description: Example Separated RPS Daily Submission Influenza Therapeutic Bundle
+      Bundle/bundle-example-rps-subject-rsvlabbtg:
+        name: Example RPS Daily Submission RSV Lab BTG Bundle
+        description: Example Separated RPS Daily Submission RSV Lab BTG Bundle
 
         
 #  bed-ex:

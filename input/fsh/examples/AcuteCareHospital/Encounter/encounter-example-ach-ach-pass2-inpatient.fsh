@@ -1,7 +1,7 @@
 Instance: encounter-example-ach-ach-pass2-inpatient
 InstanceOf: AcuteCareHospitalReportingEncounter
-Title: "Encounter - Example ACH Pass2 - Inpatient"
-Description: "Encounter - Example ACH Pass2 - Hospital admission"
+Title: "Encounter - Example ACH Monthly Pass2 - Inpatient"
+Description: "Encounter - Example ACH Monthly Pass2 - Hospital admission"
 Usage: #example
 
 * extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"
@@ -57,7 +57,7 @@ Usage: #example
 * hospitalization.dischargeDisposition.text = "Expired"
 
 
-* location[0].location.display = "ACH Inpatient Hospital Ward"
+* location[0].location.display = "ACH Monthly Inpatient Hospital Ward"
 * location[=].location = Reference(location-example-ach-inpatient)
 * location[=].physicalType = http://terminology.hl7.org/CodeSystem/location-physical-type#wa "Ward"
 * location[=].period.start = "2024-02-01T01:02:00-05:00"

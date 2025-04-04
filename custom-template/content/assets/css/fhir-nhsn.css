@@ -1,15 +1,15 @@
 
 :root {
 
-  --ig-status-text-color: black;/*maroon; /* 1. IG Title and status text color */
-  --navbar-bg-color: #d85326;/*#7b1fad; /* 2. Header container color */
+  --ig-status-text-color: white;/*maroon; /* 1. IG Title and status text color */
+  --navbar-bg-color: #0057b8;/*#7b1fad; /* 2. Header container color */
   --footer-bg-color: #707070; /* 3. Footer background color*/
-  --footer-container-bg-color: #d85326;/*#7b1fad; /* 4. Footer container color */
+  --footer-container-bg-color: #16427f;/*#7b1fad; /* 4. Footer container color */
   --stripe-bg-color: #999999; /* 5. Header strip color */
 
-  --btn-hover-color: #c74c20;/*#9b2fdd;  /* 6. Menu button hover color */
-  --btn-active-color: #b14125;/*#da0c23; /* 7. Menu button active color */
-  --btn-text-color: black;/*#e6e6e6; /* 8. Menu button text color */
+  --btn-hover-color: #00234a;/*#9b2fdd;  /* 6. Menu button hover color */
+  --btn-active-color: #00234a;/*#da0c23; /* 7. Menu button active color */
+  --btn-text-color: white;/*#e6e6e6; /* 8. Menu button text color */
   --btn-gradient-start-color: #428bca; /* 9. Menu item gradient start color */
   --btn-gradient-end-color: #357ebd; /* 10. Menu item gradient end  color */
   --btn-gradient-start-color-alpha: #ff428bca; /* 11. Menu item gradient start color (with alpha) */

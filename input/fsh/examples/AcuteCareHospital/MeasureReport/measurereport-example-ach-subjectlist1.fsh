@@ -1,7 +1,7 @@
 Instance: measurereport-example-ach-subjectlist1
 InstanceOf: SubjectListMeasureReportProfile
-Title: "MeasureReport - Example ACH Subject List 1"
-Description: "Measure Report - Example ACH Subject List Example 1"
+Title: "MeasureReport - Example ACH Monthly Subject List 1"
+Description: "Measure Report - Example ACH Monthly Subject List Example 1"
 Usage: #example
 * meta.extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-received-date-extension"
 * meta.extension.valueDateTime = "2023-05-23T06:07:08Z"
@@ -22,8 +22,8 @@ Usage: #example
 
 Instance: list-example-ach-individual-measurereport-list
 InstanceOf: IndividualMeasureReportList
-Title: "List - Example ACH Individual Measure Report List"
-Description: "List - Example ACH Individual Measure Report List Example"
+Title: "List - Example ACH Monthly Individual Measure Report List"
+Description: "List - Example ACH Monthly Individual Measure Report List Example"
 Usage: #example
 //* id = "list-example-individual-measurereport-list"
 * status = #current

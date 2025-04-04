@@ -4,7 +4,7 @@ fhirVersion: 4.0.1
 applyExtensionMetadataToRoot: false
 id: gov.cdc.nhsn.measures
 packageId: gov.cdc.nhsn.measures
-title: CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM)
+title: CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) Content Package IG
 name: NHSNMeasures
 status: active
 date: 2023-09-14
@@ -249,8 +249,8 @@ pages:
 #       - Device/device-example-submitting-device
 
 #   ach-examples:
-#     name: "Knowledge Artifacts: ACH Examples"
-#     description: "Resource examples for ACH Initial Population Measure."
+#     name: "Knowledge Artifacts: ACH Monthly Examples"
+#     description: "Resource examples for ACH Monthly Initial Population Measure."
 #     resources:
 #       - Bundle/bundle-example-ach-header
       
@@ -509,9 +509,9 @@ resources:
   #    description: The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter.
   #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
-   Measure/NHSNdQMAcuteCareHospitalInitialPopulation:
-     name: NHSN dQM Acute Care Hospital Initial Population
-     description: The Acute Care Hospital Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period.
+   Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation:
+     name: NHSN dQM Acute Care Hospital Monthly Initial Population
+     description: The Acute Care Hospital Monthly Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period.
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
   #  Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation:
@@ -534,9 +534,9 @@ resources:
   #    description: Library of NHSN Respiratory Pathogens Surveillance Initial Population Measure
   #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
-   Library/NHSNdQMAcuteCareHospitalInitialPopulation:
-     name: NHSN dQM Acute Care Hospital Initial Population
-     description: Library of NHSN dQM Acute Care Hospital Initial Population Measure
+   Library/NHSNAcuteCareHospitalMonthlyInitialPopulation:
+     name: NHSN dQM Acute Care Hospital Monthly Initial Population
+     description: Library of NHSN dQM Acute Care Hospital Monthly Initial Population Measure
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    
@@ -573,17 +573,17 @@ resources:
    
 
    #Bundle/bundle-example-ach-header:
-     #name: Example ACH Submission Header Bundle
-     #description: Example Separated ACH Submission Header Bundle
+     #name: Example ACH Monthly Submission Header Bundle
+     #description: Example Separated ACH Monthly Submission Header Bundle
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-submission-header-bundle
 
   #  Bundle/bundle-example-ach-subject-ach-pass1:
-  #    name: Example ACH Submission Subject Bundle 1
-  #    description: Example Separated ACH Submission Subject Bundle 1 for LOS/MEN
+  #    name: Example ACH Monthly Submission Subject Bundle 1
+  #    description: Example Separated ACH Monthly Submission Subject Bundle 1 for LOS/MEN
   #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle
 
   #  Bundle/bundle-example-ach-subject-ach-pass2:
-  #    name: Example ACH Submission Subject Bundle 2
+  #    name: Example ACH Monthly Submission Subject Bundle 2
   #    description: Example Separated ACH Submission Subject Bundle 2 for Hypoglycemia and VTE
   #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle
 

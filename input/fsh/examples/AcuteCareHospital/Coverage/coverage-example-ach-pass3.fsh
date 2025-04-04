@@ -1,7 +1,7 @@
 Instance: coverage-example-ach-pass3
 InstanceOf: AcuteCareHospitalReportingCoverage
-Title: "Coverage - Example ACH Pass3"
-Description: "Coverage - Example ACH Pass3 - Commercial PPO"
+Title: "Coverage - Example ACH Monthly Pass3"
+Description: "Coverage - Example ACH Monthly Pass3 - Commercial PPO"
 Usage: #example
 * identifier.type = $v2-0203#MB "Member Number"
 * identifier.system = "http://example.org/fhir/memberidentifier"

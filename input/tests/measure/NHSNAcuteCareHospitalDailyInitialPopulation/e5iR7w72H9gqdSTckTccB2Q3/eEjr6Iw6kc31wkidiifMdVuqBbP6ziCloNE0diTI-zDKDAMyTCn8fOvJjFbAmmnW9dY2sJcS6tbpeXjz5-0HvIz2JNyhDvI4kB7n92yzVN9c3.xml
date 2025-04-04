@@ -1,0 +1,94 @@
+<Medication>
+  <id value="eEjr6Iw6kc31wkidiifMdVuqBbP6ziCloNE0diTI-zDKDAMyTCn8fOvJjFbAmmnW9dY2sJcS6tbpeXjz5-0HvIz2JNyhDvI4kB7n92yzVN9c3" />
+  <identifier>
+    <use value="usual" />
+    <system value="urn:oid:1.2.840.114350.1.13.37.3.7.2.698288" />
+    <value value="237355" />
+  </identifier>
+  <code>
+    <coding>
+      <system value="http://www.whocc.no/atc" />
+      <code value="J05AH02" />
+    </coding>
+    <coding>
+      <system value="urn:oid:2.16.840.1.113883.6.253" />
+      <code value="131300" />
+    </coding>
+    <coding>
+      <system value="urn:oid:2.16.840.1.113883.6.68" />
+      <code value="12504060200110" />
+    </coding>
+    <coding>
+      <system value="urn:oid:2.16.840.1.113883.6.162" />
+      <code value="56229" />
+    </coding>
+    <coding>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm" />
+      <code value="259275" />
+    </coding>
+    <coding>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm" />
+      <code value="260101" />
+    </coding>
+    <coding>
+      <system value="http://www.nlm.nih.gov/research/umls/rxnorm" />
+      <code value="728109" />
+    </coding>
+    <text value="Oseltamivir (Tamiflu) 30 mg cap" />
+  </code>
+  <form>
+    <coding>
+      <system value="urn:oid:1.2.840.114350.1.13.37.3.7.4.698288.310" />
+      <code value="CAPS" />
+      <display value="Capsule" />
+    </coding>
+    <text value="Capsule" />
+  </form>
+  <ingredient>
+    <itemCodeableConcept>
+      <coding>
+        <system value="http://www.whocc.no/atc" />
+        <code value="J05AH02" />
+      </coding>
+      <coding>
+        <system value="urn:oid:2.16.840.1.113883.6.253" />
+        <code value="131300" />
+      </coding>
+      <coding>
+        <system value="urn:oid:2.16.840.1.113883.6.68" />
+        <code value="12504060200110" />
+      </coding>
+      <coding>
+        <system value="urn:oid:2.16.840.1.113883.6.162" />
+        <code value="56229" />
+      </coding>
+      <coding>
+        <system value="http://www.nlm.nih.gov/research/umls/rxnorm" />
+        <code value="259275" />
+      </coding>
+      <coding>
+        <system value="http://www.nlm.nih.gov/research/umls/rxnorm" />
+        <code value="260101" />
+      </coding>
+      <coding>
+        <system value="http://www.nlm.nih.gov/research/umls/rxnorm" />
+        <code value="728109" />
+      </coding>
+      <text value="Oseltamivir (Tamiflu) 30 mg cap" />
+    </itemCodeableConcept>
+    <strength>
+      <numerator>
+        <value value="30" />
+        <unit value="MG" />
+        <system value="http://unitsofmeasure.org" />
+        <code value="mg" />
+      </numerator>
+      <denominator>
+        <value value="30" />
+        <unit value="MG" />
+        <system value="http://unitsofmeasure.org" />
+        <code value="mg" />
+      </denominator>
+    </strength>
+  </ingredient>
+</Medication>

@@ -1,0 +1,43 @@
+{
+    "resourceType": "Encounter",
+    "id": "EnACHCON3",
+    "meta": {
+        "versionId": "5",
+        "lastUpdated": "2024-04-01T19:43:55.894+00:00",
+        "source": "#8095130e244425aa",
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter"
+        ]
+    },
+    "status": "finished",
+    "class": {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SS",
+        "display": "short stay"
+    },
+    "subject": {
+        "reference": "Patient/PtACHCON3"
+    },
+    "period": {
+        "start": "2024-04-01T10:00:00.000Z",
+        "end": "2024-04-30T10:00:00.000Z"
+    },
+    "diagnosis": [
+        {
+            "condition":{
+                "reference": "Condition/ConACHCON3"
+            }
+        }
+    ],
+    "hospitalization": {
+        "dischargeDisposition": {
+            "coding": [
+                {
+                    "system": "http://terminology.hl7.org/CodeSystem/discharge-disposition",
+                    "code": "home",
+                    "display": "home"
+                }
+            ]
+        }
+    }
+}

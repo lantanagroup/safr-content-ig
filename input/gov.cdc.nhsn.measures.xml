@@ -256,7 +256,7 @@
         </resource>
         <resource>
             <reference>
-                <reference value="Measure/NHSNdQMAcuteCareHospitalInitialPopulation"/>
+                <reference value="Measure/NHSNdQMAcuteCareHospitalMonthlyInitialPopulation"/>
             </reference>
             <name value="NHSN dQM Acute Care Hospital Initial Population"/>
             <description value="The Acute Care Hospital Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."/>
@@ -264,7 +264,7 @@
         </resource>
         <resource>
             <reference>
-                <reference value="Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation"/>
+                <reference value="Measure/NHSNAcuteCareHospitalDailyInitialPopulation"/>
             </reference>
             <name value="NHSN Respiratory Pathogens Surveillance Initial Population"/>
             <description value="dQM Measure for Respiratory Pathogens Surveillance"/>
@@ -288,17 +288,17 @@
         </resource>
         <resource>
             <reference>
-                <reference value="Library/NHSNRespiratoryPathogensSurveillanceInitialPopulation"/>
+                <reference value="Library/NHSNAcuteCareHospitalDailyInitialPopulation"/>
             </reference>
-            <name value="NHSNRespiratoryPathogensSurveillanceInitialPopulation"/>
+            <name value="NHSNAcuteCareHospitalDailyInitialPopulation"/>
             <description value="Library of NHSN Respiratory Pathogens Surveillance Initial Population Measure"/>
             <groupingId value="libs"/>
         </resource>
         <resource>
             <reference>
-                <reference value="Library/NHSNdQMAcuteCareHospitalInitialPopulation"/>
+                <reference value="Library/NHSNdQMAcuteCareHospitalMonthlyInitialPopulation"/>
             </reference>
-            <name value="NHSNdQMAcuteCareHospitalInitialPopulation"/>
+            <name value="NHSNdQMAcuteCareHospitalMonthlyInitialPopulation"/>
             <description value="Library of NHSN dQM Acute Care Hospital Initial Population Measure"/>
             <groupingId value="libs"/>
         </resource>

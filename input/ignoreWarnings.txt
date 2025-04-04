@@ -12,6 +12,10 @@ MeasureReport.group.measureScore: minimum required = 1, but only found 0 (from h
 ERROR: Bundle/bundle-example-ach-subject-ach-pass1: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
 ERROR: Bundle/bundle-example-ach-subject-ach-pass2: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
 ERROR: Bundle/bundle-example-ach-subject-ach-pass3: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
+ERROR: Bundle/bundle-example-rps-subject-influenzatherapeutic: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
+ERROR: Bundle/bundle-example-rps-subject-initialpopulationpass: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
+ERROR: Bundle/bundle-example-rps-subject-negativepcr: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
+ERROR: Bundle/bundle-example-rps-subject-rsvlabbtg: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
 
 
 # NHSN does not use (and may strip) performer in Observations. They are not included in samples in this IG
@@ -72,6 +76,9 @@ INFORMATION: StructureDefinition/ach-observation-lab: StructureDefinition.snapsh
 
 # INFORMATION: Notice where contained subject list resource cannot be processed
 Unable to check the stated count 2 because the subject list cannot be fully processed (Subject reference MeasureReport resolved to a #list-example-ach-individual-measurereport-list, which could not be processed)
+Unable to check the stated count 4 because the subject list cannot be fully processed (Subject reference MeasureReport resolved to a #list-example-rps-individual-measurereport-list, which could not be processed)
+Unable to check the stated count 2 because the subject list cannot be fully processed (Subject reference MeasureReport resolved to a #list-example-individual-measurereport-list, which could not be processed)
+
 
 
 # WARNING: An example proprietary code system, not meant to be validated

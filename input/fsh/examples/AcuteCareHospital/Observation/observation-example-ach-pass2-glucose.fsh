@@ -1,7 +1,7 @@
 Instance: observation-example-ach-pass2-poc-1
 InstanceOf: AcuteCareHospitalReportingLabObservation
-Title: "Observation - Example ACH Pass2 Poc 1"
-Description: "Observation - Example ACH Pass2 Lab: Glucose in Capillary blood by Glucometer - First Encounter Observation"
+Title: "Observation - Example ACH Monthly Pass2 Poc 1"
+Description: "Observation - Example ACH Monthly Pass2 Lab: Glucose in Capillary blood by Glucometer - First Encounter Observation"
 Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-ach-pass2-glucose)
@@ -20,8 +20,8 @@ Usage: #example
 
 Instance: observation-example-ach-pass2-poc-2
 InstanceOf: AcuteCareHospitalReportingLabObservation
-Title: "Observation - Example ACH Pass2 Poc 2"
-Description: "Observation - Example ACH Pass2 Lab: Glucose in Capillary blood by Glucometer - Second Encounter Observation"
+Title: "Observation - Example ACH Monthly Pass2 Poc 2"
+Description: "Observation - Example ACH Monthly Pass2 Lab: Glucose in Capillary blood by Glucometer - Second Encounter Observation"
 Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-ach-pass2-glucose)
