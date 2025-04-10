@@ -1332,7 +1332,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   return FHIR.Specimen.Collection{
     collector: c.collector,
     collected: c.collected,
-    //duration: c.duration, Does not parse for some reason? Need to bring up with SmileCDR
+    &quot;duration&quot;: c.&quot;duration&quot;,
     quantity: c.quantity,
     method: c.method,
     bodySite: c.bodySite,
@@ -2502,7 +2502,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library SharedResource"></display>
-            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.007"></resource>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.008"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -3925,7 +3925,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
    <title value="NHSN Respiratory Pathogens Surveillance Daily Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2025-03-17T15:07:28-05:00"></date>
+   <date value="2025-04-10T16:59:19-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="All encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period. "></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>

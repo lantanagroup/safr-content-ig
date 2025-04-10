@@ -1842,7 +1842,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   return FHIR.Specimen.Collection{
     collector: c.collector,
     collected: c.collected,
-    //duration: c.duration, Does not parse for some reason? Need to bring up with SmileCDR
+    &quot;duration&quot;: c.&quot;duration&quot;,
     quantity: c.quantity,
     method: c.method,
     bodySite: c.bodySite,
@@ -2002,7 +2002,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library SharedResource"></display>
-            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.007"></resource>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.008"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -2588,7 +2588,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2025-03-13T10:35:45-08:00"></date>
+   <date value="2025-04-10T13:59:19-08:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."></description>
    <purpose value="This site allows NHSN to view Measure-specification content in the dQMs under development by Lantana Consulting Group. Note that this site undergoes constant revision and is not intended to serve as an implementation guide."></purpose>

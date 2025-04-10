@@ -4,7 +4,7 @@ using FHIR version '4.0.1'
 
 include FHIRHelpers version '4.0.2' called FHIRHelpers
 include NHSNHelpers version '0.0.002' called NHSNHelpers
-include SharedResourceCreation version '0.1.007' called SharedResource
+include SharedResourceCreation version '0.1.008' called SharedResource
 
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode' 
 codesystem "LOINC": 'http://loinc.org' 
