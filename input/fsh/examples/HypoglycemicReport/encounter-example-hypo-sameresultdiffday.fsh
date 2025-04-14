@@ -1,5 +1,5 @@
 Instance: encounter-example-hypo-sameresultdiffday
-InstanceOf: AcuteCareHospitalReportingEncounter
+InstanceOf: AcuteCareHospitalMonthlyReportingEncounter
 Title: "Encounter - Hypo Encounter Example SameResultDiffDay"
 Description: "Encounter - Example Hypo Encounter SameResultDiffDay"
 Usage: #example

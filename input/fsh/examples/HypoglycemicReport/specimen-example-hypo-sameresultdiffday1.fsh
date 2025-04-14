@@ -1,5 +1,5 @@
 Instance: specimen-example-hypo-sameresultdiffday1
-InstanceOf: AcuteCareHospitalReportingSpecimen
+InstanceOf: AcuteCareHospitalMonthlyReportingSpecimen
 Title: "Specimen - Hypo Specimen Example Sameresultdiffday 1"
 Description: "Specimen - Example Hypo Specimen Sameresultdiffday 1"
 Usage: #example

@@ -1,5 +1,5 @@
 Instance: observation-example-hypo-lab-hypo8
-InstanceOf: AcuteCareHospitalReportingLabObservation
+InstanceOf: AcuteCareHospitalMonthlyReportingLabObservation
 Title: "Observation - Hypo Lab Example Hypo 8"
 Description: "Observation - Example Hypo Lab Hypo 8"
 Usage: #example

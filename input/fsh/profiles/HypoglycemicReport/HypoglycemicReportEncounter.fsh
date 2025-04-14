@@ -10,7 +10,7 @@ Description: "This profile contains Required and Must Support data elements for 
   * use MS
   * type MS
   * period MS
-* status from AcuteCareHospitalEncounterStatus (required) // MEASDEV-703, MEASDEV-756
+* status from AcuteCareHospitalMonthlyEncounterStatus (required) // MEASDEV-703, MEASDEV-756
 * status ^short = "triaged | in-progress | finished | onleave | entered-in-error"
 * status ^definition = "triaged | in-progress | finished | onleave | entered-in-error."
 * classHistory MS

@@ -1,5 +1,5 @@
 Instance: location-example-hypo-emergency
-InstanceOf: AcuteCareHospitalReportingLocation
+InstanceOf: AcuteCareHospitalMonthlyReportingLocation
 Title: "Location - Example Hypo - Emergency"
 Description: "Location - Example Hypo - Emergency Department Pavilion"
 Usage: #example

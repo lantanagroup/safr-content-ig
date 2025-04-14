@@ -1,5 +1,5 @@
 Instance: condition-example-diagnosis-hypo2
-InstanceOf: AcuteCareHospitalReportingCondition
+InstanceOf: AcuteCareHospitalMonthlyReportingCondition
 Title: "Condition - Hypo Diagnosis Example Hypo 2"
 Description: "Condition - Example Hypo Diagnosis Hypo 2"
 Usage: #example

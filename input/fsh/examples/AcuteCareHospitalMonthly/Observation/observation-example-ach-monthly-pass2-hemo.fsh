@@ -1,0 +1,19 @@
+Instance: observation-example-ach-monthly-pass2-hemo
+InstanceOf: AcuteCareHospitalMonthlyReportingLabObservation
+Title: "Observation - Example ACH Monthly Pass2 Hemo"
+Description: "Observation - Example ACH Monthly Pass2 - Lab: Bacteria identified in Blood by Culture"
+Usage: #example
+* status = #final
+* basedOn = Reference(servicerequest-example-ach-monthly-pass2-hemo)
+* category[Laboratory] = $observation-category#laboratory "Laboratory"
+* category[Laboratory].text = "Laboratory"
+* code = $loinc#600-7 "Bacteria identified in Blood by Culture"
+* code.text = "Bacteria identified in Blood by Culture"
+* subject = Reference(patient-example-ach-monthly-pass2)
+* subject.display = "Pass2 ACH"
+* encounter = Reference(encounter-example-ach-monthly-pass2-inpatient)
+* encounter.display = "Hospital Admission"
+* effectiveDateTime = "2024-02-02T11:24:00-05:00"
+* issued = "2024-02-02T11:29:00-05:00"
+* valueQuantity = 8 'g/dL' "d/gL"
+* specimen = Reference(specimen-example-ach-monthly-pass2-blood-2)

@@ -1,0 +1,19 @@
+Instance: diagnosticreport-example-ach-monthly-pass2-radiology
+InstanceOf: AcuteCareHospitalMonthlyNoteDiagnosticReport
+Title: "DiagnosticReport - Example ACH Monthly Pass2 Radiology"
+Description: "DiagnosticReport - Example ACH Monthly Pass2 - Ultrasonography of right lower limb"
+Usage: #example
+* status = #final
+* category = $loinc#LP29684-5 "Radiology"
+* category.text = "Radiology"
+* code = $sct#14331000087103 "Doppler ultrasonography of vascular structure of right lower limb (procedure)"
+* code.text = "ultrasonography of right lower limb"
+* subject = Reference(patient-example-ach-monthly-pass2)
+* subject.display = "Pass2 ACH"
+* encounter = Reference(encounter-example-ach-monthly-pass2-inpatient)
+* encounter.display = "Hospital Admission"
+* conclusionCode = $sct#128053003 "Deep venous thrombosis (disorder)"
+* effectiveDateTime = "2024-02-01T23:14:00-05:00"
+* issued = "2024-02-02T08:52:00-05:00"
+
+

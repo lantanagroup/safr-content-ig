@@ -1,5 +1,5 @@
 Instance: medicationadministration-example-hypo-hypo1
-InstanceOf: AcuteCareHospitalReportingMedicationAdministration
+InstanceOf: AcuteCareHospitalMonthlyReportingMedicationAdministration
 Title: "MedicationAdministration - Hypo Medication Administration Example Hypo 1"
 Description: "MedicationAdministration - Example Hypo Medication Administration Hypo 1"
 Usage: #example

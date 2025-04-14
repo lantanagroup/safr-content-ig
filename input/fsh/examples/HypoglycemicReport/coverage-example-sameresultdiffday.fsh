@@ -1,5 +1,5 @@
 Instance: coverage-example-sameresultdiffday
-InstanceOf: AcuteCareHospitalReportingCoverage
+InstanceOf: AcuteCareHospitalMonthlyReportingCoverage
 Title: "Coverage - Coverage Example Sameresultdiffday"
 Description: "Coverage - Example Coverage Sameresultdiffday"
 Usage: #example

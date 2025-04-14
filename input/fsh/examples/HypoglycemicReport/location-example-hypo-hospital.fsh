@@ -1,5 +1,5 @@
 Instance: location-example-hypo-hospital
-InstanceOf: AcuteCareHospitalReportingLocation
+InstanceOf: AcuteCareHospitalMonthlyReportingLocation
 Title: "Location - Example Hypo - Hospital"
 Description: "Location - Example ACH - Hospital"
 Usage: #example
