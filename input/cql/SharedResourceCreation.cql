@@ -1,4 +1,4 @@
-library SharedResourceCreation version '0.1.007'
+library SharedResourceCreation version '0.1.008'
 
 include FHIRHelpers version '4.0.2'
 
@@ -678,7 +678,7 @@ define function SpecimenCollection(collection FHIR.Specimen.Collection):
   return FHIR.Specimen.Collection{
     collector: c.collector,
     collected: c.collected,
-    //duration: c.duration, Does not parse for some reason? Need to bring up with SmileCDR
+    "duration": c."duration",
     quantity: c.quantity,
     method: c.method,
     bodySite: c.bodySite,
