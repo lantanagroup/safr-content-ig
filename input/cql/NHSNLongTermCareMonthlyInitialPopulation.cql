@@ -9,42 +9,13 @@ include SharedResourceCreation version '0.1.008' called SharedResource
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
 codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category'
 codesystem "LOINC": 'http://loinc.org' 
-codesystem "V2-0074": 'http://terminology.hl7.org/CodeSystem/v2-0074'
-codesystem "Condition Category": 'http://terminology.hl7.org/CodeSystem/condition-category'
-codesystem "US Core Condition Category": 'http://hl7.org/fhir/us/core/CodeSystem/condition-category'
-codesystem "Condition Clinical Status": 'http://terminology.hl7.org/CodeSystem/condition-clinical'
-
-valueset "Inpatient, Emergency, and Observation Locations": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
-valueset "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292'
-valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
-valueset "Observation Services": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143'
-valueset "NHSN Inpatient Encounter Class Codes": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.274'
 
 //code for Observation Category
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
-code "social-history": 'social-history' from "Observation Category" display 'Social History'
-code "vital-signs": 'vital-signs' from "Observation Category" display 'Vital Signs'
-code "imaging": 'imaging' from "Observation Category" display 'Imaging'
-code "procedure": 'procedure' from "Observation Category" display 'Procedure'
-code "survey": 'survey' from "Observation Category" display 'Survey'
-
-//code for Condition category
-code "problem-list-item": 'problem-list-item' from "Condition Category" display 'Problem List Item'
-code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display 'Encounter Diagnosis'
-code "health-concern": 'health-concern' from "US Core Condition Category" display 'Health Concern'
-
-//code for Diagnostic Report Category
-code "LAB": 'LAB' from "V2-0074" display 'Laboratory'
-code "Radiology": 'LP29684-5' from "LOINC" display 'Radiology'
-code "Pathology": 'LP7839-6' from "LOINC" display 'Pathology'
-code "Cardiology": 'LP29708-2' from "LOINC" display 'Cardiology'
 
 //code for Emergency Encounter Class
 code "emergency": 'EMER' from "ActCode" display 'emergency'
 code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
-
-//code for Condition clinicalStatus
-code "active": 'active' from "Condition Clinical Status" display 'active'
 
 parameter "Measurement Period" 
     default Interval[@2022-01-01T00:00:00.0, @2022-01-31T23:59:59.0)
@@ -57,12 +28,6 @@ define "Initial Population":
 
 define "Encounters":
   [Encounter]
-
-define "Conditions":
-  [Condition]
-
-define "DiagnosticReports":
-  [DiagnosticReport]
 
 define "Observations":
   [Observation]
