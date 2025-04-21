@@ -210,7 +210,7 @@ define &quot;SDE Encounter&quot;:
   and exists(
     &quot;Initial Population&quot; IP
     where Encounters.period overlaps IP.period)
-  return EncounterResource(Encounters,
+  return SharedResource.EncounterResource(Encounters,
   {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter'}})"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -287,7 +287,7 @@ define &quot;SDE Encounter&quot;:
             <extension url="statement">
                <valueString value="define &quot;SDE IP Encounters&quot;:
   &quot;Initial Population&quot; IP
-  return EncounterResource(IP, 
+  return SharedResource.EncounterResource(IP, 
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-encounter'}})"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -796,7 +796,7 @@ define function &quot;CheckIP&quot;(encounter Encounter):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
+               <valueString value="SharedResourceCreation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="EncounterResource"></valueString>
@@ -806,13 +806,13 @@ define function &quot;CheckIP&quot;(encounter Encounter):
   encounter e
   return Encounter{
     id: FHIR.id{value: 'LCR-' + e.id},
-    meta: SharedResource.MetaElement(e, profileURLs),
+    meta: MetaElement(e, profileURLs),
     extension: e.extension,
-    identifier: SharedResource.EncounterIdentifier(e.identifier),
+    identifier: EncounterIdentifier(e.identifier),
     status: e.status,
-    statusHistory: SharedResource.EncounterStatusHistory(e.statusHistory),
+    statusHistory: EncounterStatusHistory(e.statusHistory),
     class: e.class,
-    classHistory: SharedResource.EncounterClassHistory(e.classHistory),
+    classHistory: EncounterClassHistory(e.classHistory),
     type: e.type,
     serviceType: e.serviceType,
     priority: e.priority,
@@ -821,10 +821,10 @@ define function &quot;CheckIP&quot;(encounter Encounter):
     length: e.length,
     reasonCode: e.reasonCode,
     reasonReference: e.reasonReference,
-    diagnosis: SharedResource.EncounterDiagnosis(e.diagnosis),
+    diagnosis: EncounterDiagnosis(e.diagnosis),
     account: e.account,
-    hospitalization: SharedResource.EncounterHospitalization(e.hospitalization),
-    location: SharedResource.EncounterLocation(e.location),
+    hospitalization: EncounterHospitalization(e.hospitalization),
+    location: EncounterLocation(e.location),
     partOf: e.partOf
   }"></valueString>
             </extension>
@@ -2558,7 +2558,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library SharedResource"></display>
-            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.008"></resource>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.009"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -3310,7 +3310,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
    <title value="NHSN dQM Acute Care Hospital Monthly Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2025-04-10T16:59:19-05:00"></date>
+   <date value="2025-04-21T17:09:10-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Acute Care Hospital Monthly Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>

@@ -1,4 +1,4 @@
-library SharedResourceCreation version '0.1.008'
+library SharedResourceCreation version '0.1.009'
 
 include FHIRHelpers version '4.0.2'
 
@@ -211,7 +211,6 @@ define function EncounterResource(encounter Encounter, profileURLs List<FHIR.can
     serviceType: e.serviceType,
     priority: e.priority,
     subject: e.subject,
-    participant: EncounterParticipant(e.participant),
     period: e.period,
     length: e.length,
     reasonCode: e.reasonCode,
