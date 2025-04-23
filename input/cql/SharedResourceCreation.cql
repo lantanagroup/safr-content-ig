@@ -157,13 +157,14 @@ define function EncounterClassHistory(classHistory List<FHIR.Encounter.ClassHist
     period: cH.period
   }
 
+/*No longer needed but saving for potential future use
 define function EncounterParticipant(participant List<FHIR.Encounter.Participant>):
   participant p
   return FHIR.Encounter.Participant{
     type: p.type,
     period: p.period,
     individual: p.individual
-  }
+  }*/
 
 define function EncounterDiagnosis(diagnosis List<FHIR.Encounter.Diagnosis>):
   diagnosis d
