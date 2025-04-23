@@ -9,9 +9,11 @@ COPY . .
 RUN bash _updatePublisher.sh --yes
 RUN bash _updateCQFTooling.sh --yes
 RUN sushi .
+RUN bash _refresh.sh
 RUN bash _genonce.sh -no-sushi
 
 FROM nginx:1.21.6-alpine
 
 COPY --from=build /work/output/. /usr/share/nginx/html
+COPY --from=build /work/bundles /usr/share/nginx/bundles
 COPY nginx.default.conf /etc/nginx/conf.d/default.conf
