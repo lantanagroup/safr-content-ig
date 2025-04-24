@@ -13,10 +13,6 @@ codesystem "LOINC": 'http://loinc.org'
 //code for Observation Category
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 
-//code for Emergency Encounter Class
-code "emergency": 'EMER' from "ActCode" display 'emergency'
-code "observation encounter": 'OBSENC' from "ActCode" display 'observation encounter'
-
 parameter "Measurement Period" 
     default Interval[@2022-01-01T00:00:00.0, @2022-01-31T23:59:59.0)
 
