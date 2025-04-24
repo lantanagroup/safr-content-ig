@@ -179,18 +179,6 @@ define function EncounterResource(encounter Encounter, profileURLs List<FHIR.can
     partOf: e.partOf
   }
 
-define function MedicationRequestTiming(timing FHIR.Timing):
-  timing t
-  return FHIR.Timing{
-    repeat: MedicationRequestTimingRepeat(t.repeat)
-  }
-
-define function MedicationRequestTimingRepeat(repeat FHIR.Timing.Repeat):
-  repeat r
-  return FHIR.Timing.Repeat{
-    bounds: r.bounds
-  }
-
 define function MedicationRequestDoseAndRate(doseAndRate List<FHIR.Dosage.DoseAndRate>):
   doseAndRate dR
   return FHIR.Dosage.DoseAndRate{
@@ -204,7 +192,7 @@ define function MedicationRequestDosageInstruction(dosageInstruction List<FHIR.D
   return FHIR.Dosage{
     text: dI.text,
     patientInstruction: dI.patientInstruction,
-    timing: MedicationRequestTiming(dI.timing),
+    timing: dI.timing,
     asNeeded: dI.asNeeded,
     site: dI.site,
     route: dI.route,
