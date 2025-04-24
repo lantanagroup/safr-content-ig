@@ -42,7 +42,7 @@ define "SDE Coverage":
   where exists(
     "Initial Population" IP
     where Coverages.period overlaps IP.period)
-  return SharedResource.CoverageResource(Coverages,
+  return CoverageResource(Coverages,
   {FHIR.canonical{value: ''}})
 
 define "SDE Encounter": 
@@ -72,7 +72,7 @@ define "SDE Medication Request":
   where exists(
     "Initial Population" IP
     where MedicationRequests.authoredOn during IP.period)
-  return SharedResource.MedicationRequestResource(MedicationRequests,
+  return MedicationRequestResource(MedicationRequests,
   {FHIR.canonical{value: ''}})
 
 define "SDE Medication":
@@ -89,12 +89,12 @@ define "SDE Observation Lab Category":
     and exists(
       "Initial Population" IP
       where NHSNHelpers."Normalize Interval"(Observations.effective) overlaps IP.period)
-  return SharedResource.ObservationLabResource(Observations,
+  return ObservationLabResource(Observations,
   {FHIR.canonical{value: ''}})
 
 define "SDE Minimal Patient":
   Patient p
-  return SharedResource.PatientResource(p,
+  return PatientResource(p,
   {FHIR.canonical{value: ''}})
 
 define "SDE Specimen":
