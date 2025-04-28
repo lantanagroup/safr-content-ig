@@ -1,5 +1,5 @@
 Instance: condition-example-diagnosis-sameresultdiffday2
-InstanceOf: AcuteCareHospitalReportingCondition
+InstanceOf: AcuteCareHospitalMonthlyReportingCondition
 Title: "Condition - Hypo Diagnosis Example Sameersultdiffday 2"
 Description: "Condition - Example Hypo Diagnosis Sameresultdiffday 2"
 Usage: #example

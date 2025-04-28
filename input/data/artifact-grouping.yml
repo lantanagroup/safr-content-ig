@@ -20,27 +20,27 @@ groups:
       - StructureDefinition/nhsn-submitting-organization
       - StructureDefinition/nhsn-submitting-device
       
-  ach:
+  ach-monthly:
     name: Acute Care Hospital Monthly Reporting Profiles
     resources:
-      - StructureDefinition/ach-encounter
-      - StructureDefinition/ach-location
-      - StructureDefinition/ach-observation-lab
-      - StructureDefinition/ach-observation-vitals
-      - StructureDefinition/ach-observation
-      - StructureDefinition/ach-servicerequest
-      - StructureDefinition/ach-specimen
-      - StructureDefinition/ach-condition
-      - StructureDefinition/ach-procedure
-      - StructureDefinition/ach-coverage
-      #- StructureDefinition/ach-implantable-device
-      - StructureDefinition/ach-device
-      - StructureDefinition/ach-diagnosticreport
-      - StructureDefinition/ach-diagnosticreport-lab
-      - StructureDefinition/ach-diagnosticreport-note
-      - StructureDefinition/ach-medication
-      - StructureDefinition/ach-medicationadministration
-      - StructureDefinition/ach-medicationrequest
+      - StructureDefinition/ach-monthly-encounter
+      - StructureDefinition/ach-monthly-location
+      - StructureDefinition/ach-monthly-observation-lab
+      - StructureDefinition/ach-monthly-observation-vitals
+      - StructureDefinition/ach-monthly-observation
+      - StructureDefinition/ach-monthly-servicerequest
+      - StructureDefinition/ach-monthly-specimen
+      - StructureDefinition/ach-monthly-condition
+      - StructureDefinition/ach-monthly-procedure
+      - StructureDefinition/ach-monthly-coverage
+      #- StructureDefinition/ach-monthly-implantable-device
+      - StructureDefinition/ach-monthly-device
+      - StructureDefinition/ach-monthly-diagnosticreport
+      - StructureDefinition/ach-monthly-diagnosticreport-lab
+      - StructureDefinition/ach-monthly-diagnosticreport-note
+      - StructureDefinition/ach-monthly-medication
+      - StructureDefinition/ach-monthly-medicationadministration
+      - StructureDefinition/ach-monthly-medicationrequest
       
   hypo:
     name: Hypoglycemic Event Reporting profiles
@@ -56,20 +56,20 @@ groups:
       - StructureDefinition/hypoglycemic-reporting-servicerequest
       - StructureDefinition/hypoglycemic-reporting-specimen      
 
-  rps:
-    name: Respiratory Pathogens Surveillance Daily Event Reporting Profiles
+  ach-daily:
+    name: Acute Care Hospital Daily Event Reporting Profiles
     resources:
-      - StructureDefinition/rps-encounter
-      - StructureDefinition/rps-location
-      - StructureDefinition/rps-observation-lab
-      - StructureDefinition/rps-servicerequest
-      - StructureDefinition/rps-specimen
-      - StructureDefinition/rps-procedure
-      - StructureDefinition/rps-diagnosticreport-lab
-      - StructureDefinition/rps-medication
-      - StructureDefinition/rps-medicationadministration
-      - StructureDefinition/rps-medicationrequest
-      - StructureDefinition/rps-observation
+      - StructureDefinition/ach-daily-encounter
+      - StructureDefinition/ach-daily-location
+      - StructureDefinition/ach-daily-observation-lab
+      - StructureDefinition/ach-daily-servicerequest
+      - StructureDefinition/ach-daily-specimen
+      - StructureDefinition/ach-daily-procedure
+      - StructureDefinition/ach-daily-diagnosticreport-lab
+      - StructureDefinition/ach-daily-medication
+      - StructureDefinition/ach-daily-medicationadministration
+      - StructureDefinition/ach-daily-medicationrequest
+      - StructureDefinition/ach-daily-observation
 
 
 
@@ -77,11 +77,11 @@ groups:
   valuesets:
     name: "Terminology: Profile ValueSets"
     resources:
-      - ValueSet/ach-encounter-status
-      - ValueSet/ach-encounter-class
-      - ValueSet/rps-diagnostic-report-status
-      - ValueSet/rps-encounter-status
-      - ValueSet/rps-encounter-class
+      - ValueSet/ach-monthly-encounter-status
+      - ValueSet/ach-monthly-encounter-class
+      - ValueSet/ach-daily-diagnostic-report-status
+      - ValueSet/ach-daily-encounter-status
+      - ValueSet/ach-daily-encounter-class
 
   # codesystems:
   #   name: "Terminology: Profile CodeSystems"
@@ -157,46 +157,46 @@ groups:
         description: Measure Report Criteria Reference - This extension is not defined by this IG.  CQF Tooling uses this extension, but the extension is yet unpublished.
 
 
-  ach-ex:
+  ach-monthly-ex:
     name: "Examples: ACH Monthly Submission Instances"
     resources:
       Bundle/submission-full-example1:
         name: Full ACH Monthly Measure Submission Bundle
         description: Measure Bundle - Full ACH Monthly Measure Submission Example
-      Bundle/bundle-example-ach-header:
+      Bundle/bundle-example-ach-monthly-header:
         name: Example ACH Monthly Submission Header Bundle
         description: Example Separated ACH Monthly Submission Header Bundle
-      Bundle/bundle-example-ach-subject-ach-pass1:
+      Bundle/bundle-example-ach-monthly-subject-ach-monthly-pass1:
         name: Example ACH Monthly Submission Subject Bundle 1
         description: Example Separated ACH Monthly Submission Subject Bundle 1 for LOS/MEN
-      Bundle/bundle-example-ach-subject-ach-pass2:
+      Bundle/bundle-example-ach-monthly-subject-ach-monthly-pass2:
         name: Example ACH Monthly Submission Subject Bundle 2
         description: Example Separated ACH Monthly Submission Subject Bundle 2 for Hypoglycemia and VTE
-      Bundle/bundle-example-ach-subject-ach-pass3:
+      Bundle/bundle-example-ach-monthly-subject-ach-monthly-pass3:
         name: Example ACH Monthly Submission Subject Bundle 3
         description: Example Separated ACH Monthly Submission Subject Bundle 3 for CDI and VTE
 
 
-  rps-ex:
-    name: "Examples: RPS Daily Submission Instances"
+  ach-daily-ex:
+    name: "Examples: ACH Daily Submission Instances"
     resources:
-      Bundle/bundle-example-rps-full:
-        name: Full RPS Daily Measure Submission Bundle
-        description: Measure Bundle - Full RPS Daily Measure Submission Example
-      Bundle/bundle-example-rps-header:
-        name: Example RPS Daily Submission Header Bundle
-        description: Example Separated RPS Daily Submission Header Bundle
-      Bundle/bundle-example-rps-subject-initialpopulationpass:
-        name: Example RPS Daily Submission Initial Population Pass Bundle
-        description: Example Separated RPS Daily Submission Initial Population Pass Bundle
-      Bundle/bundle-example-rps-subject-negativepcr:
-        name: Example RPS Daily Submission Negative PCR Bundle
-        description: Example Separated RPS Daily Submission Negative PCR Bundle
-      Bundle/bundle-example-rps-subject-influenzatherapeutic:
-        name: Example RPS Daily Submission Influenza Therapeutic Bundle
-        description: Example Separated RPS Daily Submission Influenza Therapeutic Bundle
-      Bundle/bundle-example-rps-subject-rsvlabbtg:
-        name: Example RPS Daily Submission RSV Lab BTG Bundle
+      Bundle/bundle-example-ach-daily-full:
+        name: Full ACH Daily Measure Submission Bundle
+        description: Measure Bundle - Full ACH Daily Measure Submission Example
+      Bundle/bundle-example-ach-daily-header:
+        name: Example ACH Daily Submission Header Bundle
+        description: Example Separated ACH Daily Submission Header Bundle
+      Bundle/bundle-example-ach-daily-subject-initialpopulationpass:
+        name: Example ACH Daily Submission Initial Population Pass Bundle
+        description: Example Separated ACH Daily Submission Initial Population Pass Bundle
+      Bundle/bundle-example-ach-daily-subject-negativepcr:
+        name: Example ACH Daily Submission Negative PCR Bundle
+        description: Example Separated ACH Daily Submission Negative PCR Bundle
+      Bundle/bundle-example-ach-daily-subject-influenzatherapeutic:
+        name: Example ACH Daily Submission Influenza Therapeutic Bundle
+        description: Example Separated ACH Daily Submission Influenza Therapeutic Bundle
+      Bundle/bundle-example-ach-daily-subject-rsvlabbtg:
+        name: Example ACH Daily Submission RSV Lab BTG Bundle
         description: Example Separated RPS Daily Submission RSV Lab BTG Bundle
 
         

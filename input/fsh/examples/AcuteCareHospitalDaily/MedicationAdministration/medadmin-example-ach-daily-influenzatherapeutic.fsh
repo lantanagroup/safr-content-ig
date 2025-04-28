@@ -1,0 +1,18 @@
+Instance: medadmin-example-ach-daily-influenzatherapeutic
+InstanceOf: AcuteCareHospitalDailyEventMedicationAdministration
+Title: "Medication Administration - ACH Daily Medication Administration Example Influenza Therapeutic"
+Description: "Medication Administration - Example ACH Daily Medication Administration Influenza Therapeutic"
+Usage: #example
+* status = #completed
+* medicationReference.extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension"
+* medicationReference.extension.valueString = "Medication/eZeW55xkBH0DrR0Xj004fNid0iluLJl6nT2adScy2TI9SbXSOBJPdED7Qjms.Fj48j0.MQxtisgjhubwnqaIImzMAo7axKzx4khlfA7xEkUU3"
+* medicationReference = Reference(medication-example-ach-daily-influenzatherapeutic)
+* medicationReference.display = "Oseltamivir 60 mg PO"
+* subject = Reference(patient-example-ach-daily-influenzatherapeutic)
+* subject.display = "ACHDaily, InfluenzaTherapeutic"
+* effectivePeriod.start = "2024-01-01T20:00:00Z"
+* effectivePeriod.end = "2024-01-04T20:00:09Z"
+* request = Reference(medicationrequest-example-ach-daily-influenzatherapeutic)
+* dosage.text = "Oseltamivir 60 mg PO twice daily x 5 days"
+* dosage.route = $sct#385049006 "Capsule"
+* dosage.dose = 60 'mg' "mg"

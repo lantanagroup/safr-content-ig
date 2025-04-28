@@ -1,5 +1,5 @@
 Instance: medicationrequest-example-hypo-sameresultdiffday1
-InstanceOf: AcuteCareHospitalReportingMedicationRequest
+InstanceOf: AcuteCareHospitalMonthlyReportingMedicationRequest
 Title: "MedicationRequest - Hypo MedicationRequest Example Sameresultdiffday 1"
 Description: "MedicationRequest - Example Hypo MedicationRequest Sameresultdiffday 1"
 Usage: #example

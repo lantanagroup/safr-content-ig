@@ -7,7 +7,7 @@ Encounter Invariant:
 OR (Encounter.type = "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307',  or "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292’ or  "Observation Services": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143'
 OR (Encounter.location:Location.type in http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265)
 */
-Invariant: encounter-ach-initial-population
+Invariant: encounter-ach-monthly-initial-population
 Description: "Encounter: (class must be from ACH Monthly encounter class) or (type from 'Encounter Inpatient', 'Emergency Department Visit', or 'Observation Services') or (Encounter location type from 'Inpatient, Emergency, and Observation Locations')"
 Severity: #error
 Expression: "class.memberOf('http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ValueSet/ach-encounter-class') or class.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.274') or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307')).exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292')).exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143')).exists() or location.where(location.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists()).exists()"
@@ -16,8 +16,8 @@ Expression: "class.memberOf('http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ValueSet/
 
 
 /* MEASDEV-1234: Update RPS Encounter Profiles */
-Invariant: encounter-rps-initial-population
-Description: "Encounter: (class must be from RPS Daily encounter class) or (type from 'Encounter Inpatient' or 'Observation Services') or (Encounter location type from 'Inpatient, Emergency, and Observation Locations')"
+Invariant: encounter-ach-daily-initial-population
+Description: "Encounter: (class must be from ACH Daily encounter class) or (type from 'Encounter Inpatient' or 'Observation Services') or (Encounter location type from 'Inpatient, Emergency, and Observation Locations')"
 Severity: #error
 Expression: "class.memberOf('http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ValueSet/rps-encounter-class').exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307')).exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143')).exists() or where(location.location.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists())"
 

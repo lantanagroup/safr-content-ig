@@ -1,5 +1,5 @@
 Instance: location-example-hypo-encounter-location-sameresultdiffday
-InstanceOf: AcuteCareHospitalReportingLocation
+InstanceOf: AcuteCareHospitalMonthlyReportingLocation
 Title: "Location - Hypo Encounter Location Example Sameersultdiffday"
 Description: "Location - Example Hypo Encounter Location Sameresultdiffday"
 Usage: #example

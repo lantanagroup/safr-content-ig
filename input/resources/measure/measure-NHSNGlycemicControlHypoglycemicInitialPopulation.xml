@@ -942,7 +942,6 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
     serviceType: e.serviceType,
     priority: e.priority,
     subject: e.subject,
-    participant: EncounterParticipant(e.participant),
     period: e.period,
     length: e.length,
     reasonCode: e.reasonCode,
@@ -1023,30 +1022,19 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
                <valueString value="SharedResourceCreation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="EncounterParticipant"></valueString>
+               <valueString value="EncounterDiagnosis"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define function EncounterParticipant(participant List&lt;FHIR.Encounter.Participant&gt;):
+               <valueString value="/*No longer needed but saving for potential future use
+define function EncounterParticipant(participant List&lt;FHIR.Encounter.Participant&gt;):
   participant p
   return FHIR.Encounter.Participant{
     type: p.type,
     period: p.period,
     individual: p.individual
-  }"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="45"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="EncounterDiagnosis"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt;):
+  }*/
+
+define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt;):
   diagnosis d
   return FHIR.Encounter.Diagnosis{
     condition: d.condition,
@@ -1055,7 +1043,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="46"></valueInteger>
+               <valueInteger value="45"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1081,7 +1069,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="47"></valueInteger>
+               <valueInteger value="46"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1102,7 +1090,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="48"></valueInteger>
+               <valueInteger value="47"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1136,7 +1124,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="49"></valueInteger>
+               <valueInteger value="48"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1156,7 +1144,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="50"></valueInteger>
+               <valueInteger value="49"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1175,7 +1163,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="51"></valueInteger>
+               <valueInteger value="50"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1213,7 +1201,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="52"></valueInteger>
+               <valueInteger value="51"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1232,7 +1220,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="53"></valueInteger>
+               <valueInteger value="52"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1255,7 +1243,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="54"></valueInteger>
+               <valueInteger value="53"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1273,7 +1261,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   )"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="55"></valueInteger>
+               <valueInteger value="54"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1316,7 +1304,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="56"></valueInteger>
+               <valueInteger value="55"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1335,7 +1323,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="57"></valueInteger>
+               <valueInteger value="56"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1359,7 +1347,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="58"></valueInteger>
+               <valueInteger value="57"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1382,7 +1370,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="59"></valueInteger>
+               <valueInteger value="58"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1404,7 +1392,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="60"></valueInteger>
+               <valueInteger value="59"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1456,7 +1444,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="61"></valueInteger>
+               <valueInteger value="60"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1492,7 +1480,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="62"></valueInteger>
+               <valueInteger value="61"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1519,7 +1507,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="63"></valueInteger>
+               <valueInteger value="62"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1539,7 +1527,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="64"></valueInteger>
+               <valueInteger value="63"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1560,7 +1548,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="65"></valueInteger>
+               <valueInteger value="64"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1596,7 +1584,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="66"></valueInteger>
+               <valueInteger value="65"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1616,7 +1604,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   return E"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="67"></valueInteger>
+               <valueInteger value="66"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1633,7 +1621,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   return E"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="68"></valueInteger>
+               <valueInteger value="67"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1673,7 +1661,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="69"></valueInteger>
+               <valueInteger value="68"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1695,7 +1683,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="70"></valueInteger>
+               <valueInteger value="69"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1724,7 +1712,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="71"></valueInteger>
+               <valueInteger value="70"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1750,7 +1738,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="72"></valueInteger>
+               <valueInteger value="71"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1771,7 +1759,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="73"></valueInteger>
+               <valueInteger value="72"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1793,7 +1781,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="74"></valueInteger>
+               <valueInteger value="73"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1826,7 +1814,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="75"></valueInteger>
+               <valueInteger value="74"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1842,7 +1830,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   return FHIR.Specimen.Collection{
     collector: c.collector,
     collected: c.collected,
-    //duration: c.duration, Does not parse for some reason? Need to bring up with SmileCDR
+    &quot;duration&quot;: c.&quot;duration&quot;,
     quantity: c.quantity,
     method: c.method,
     bodySite: c.bodySite,
@@ -1850,7 +1838,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="76"></valueInteger>
+               <valueInteger value="75"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1871,7 +1859,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="77"></valueInteger>
+               <valueInteger value="76"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1893,7 +1881,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="78"></valueInteger>
+               <valueInteger value="77"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1920,7 +1908,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="79"></valueInteger>
+               <valueInteger value="78"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1939,7 +1927,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="80"></valueInteger>
+               <valueInteger value="79"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1958,7 +1946,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="81"></valueInteger>
+               <valueInteger value="80"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -1978,7 +1966,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   end"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="82"></valueInteger>
+               <valueInteger value="81"></valueInteger>
             </extension>
          </extension>
          <name value="EffectiveDataRequirements"></name>
@@ -2002,7 +1990,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library SharedResource"></display>
-            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.007"></resource>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/SharedResourceCreation|0.1.009"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -2218,7 +2206,6 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <mustSupport value="serviceType"></mustSupport>
             <mustSupport value="priority"></mustSupport>
             <mustSupport value="subject"></mustSupport>
-            <mustSupport value="participant"></mustSupport>
             <mustSupport value="length"></mustSupport>
             <mustSupport value="reasonCode"></mustSupport>
             <mustSupport value="reasonReference"></mustSupport>
@@ -2248,7 +2235,6 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <mustSupport value="serviceType"></mustSupport>
             <mustSupport value="priority"></mustSupport>
             <mustSupport value="subject"></mustSupport>
-            <mustSupport value="participant"></mustSupport>
             <mustSupport value="length"></mustSupport>
             <mustSupport value="reasonCode"></mustSupport>
             <mustSupport value="reasonReference"></mustSupport>
@@ -2278,7 +2264,6 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <mustSupport value="serviceType"></mustSupport>
             <mustSupport value="priority"></mustSupport>
             <mustSupport value="subject"></mustSupport>
-            <mustSupport value="participant"></mustSupport>
             <mustSupport value="length"></mustSupport>
             <mustSupport value="reasonCode"></mustSupport>
             <mustSupport value="reasonReference"></mustSupport>
@@ -2308,7 +2293,6 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <mustSupport value="serviceType"></mustSupport>
             <mustSupport value="priority"></mustSupport>
             <mustSupport value="subject"></mustSupport>
-            <mustSupport value="participant"></mustSupport>
             <mustSupport value="length"></mustSupport>
             <mustSupport value="reasonCode"></mustSupport>
             <mustSupport value="reasonReference"></mustSupport>
@@ -2338,7 +2322,6 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <mustSupport value="serviceType"></mustSupport>
             <mustSupport value="priority"></mustSupport>
             <mustSupport value="subject"></mustSupport>
-            <mustSupport value="participant"></mustSupport>
             <mustSupport value="length"></mustSupport>
             <mustSupport value="reasonCode"></mustSupport>
             <mustSupport value="reasonReference"></mustSupport>
@@ -2588,7 +2571,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2025-03-13T10:35:45-08:00"></date>
+   <date value="2025-04-24T09:39:28-08:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."></description>
    <purpose value="This site allows NHSN to view Measure-specification content in the dQMs under development by Lantana Consulting Group. Note that this site undergoes constant revision and is not intended to serve as an implementation guide."></purpose>

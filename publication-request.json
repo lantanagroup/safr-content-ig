@@ -1,0 +1,14 @@
+{
+    "package-id": "gov.cdc.nhsn.measures",
+    "version": "1.0.0-draft",
+    "path": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/1.0.0-draft",
+    "mode": "working",
+    "status": "draft",
+    "sequence": "R 1",
+    "desc": "CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) Content Package IG Release 1 Draft, 1.0.0-draft - US Realm",
+    "first": true,
+	"category": "Public Health",
+	"title": "CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) Content Package IG",
+	"ci-build": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ci",
+	"introduction": "The content of the CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) implementation guide (IG) outlines the standards for electronically submitting surveillance data for Acute Care Hospital (ACH) Monthly and Respiratory Pathogens Surveillance (RPS) Daily dQMs. This IG complies with the NHSN dQM Reporting Implementation Guide, published by Health Level Seven International (HL7®) International for general requirements for submissions to NHSN."
+}

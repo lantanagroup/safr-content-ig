@@ -1,4 +1,4 @@
-library SharedResourceCreation version '0.1.007'
+library SharedResourceCreation version '0.1.009'
 
 include FHIRHelpers version '4.0.2'
 
@@ -157,13 +157,14 @@ define function EncounterClassHistory(classHistory List<FHIR.Encounter.ClassHist
     period: cH.period
   }
 
+/*No longer needed but saving for potential future use
 define function EncounterParticipant(participant List<FHIR.Encounter.Participant>):
   participant p
   return FHIR.Encounter.Participant{
     type: p.type,
     period: p.period,
     individual: p.individual
-  }
+  }*/
 
 define function EncounterDiagnosis(diagnosis List<FHIR.Encounter.Diagnosis>):
   diagnosis d
@@ -211,7 +212,6 @@ define function EncounterResource(encounter Encounter, profileURLs List<FHIR.can
     serviceType: e.serviceType,
     priority: e.priority,
     subject: e.subject,
-    participant: EncounterParticipant(e.participant),
     period: e.period,
     length: e.length,
     reasonCode: e.reasonCode,
@@ -678,7 +678,7 @@ define function SpecimenCollection(collection FHIR.Specimen.Collection):
   return FHIR.Specimen.Collection{
     collector: c.collector,
     collected: c.collected,
-    //duration: c.duration, Does not parse for some reason? Need to bring up with SmileCDR
+    "duration": c."duration",
     quantity: c.quantity,
     method: c.method,
     bodySite: c.bodySite,

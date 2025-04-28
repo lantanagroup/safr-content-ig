@@ -1,7 +1,7 @@
 Instance: location-example-hypo-cardiology
 Title: "Location - Example Hypo - Cardiology"
 Description: "Location - Example Hypo - Cardiology Department"
-InstanceOf: AcuteCareHospitalReportingLocation
+InstanceOf: AcuteCareHospitalMonthlyReportingLocation
 Usage: #example
 * meta.profile[1] = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/hypoglycemic-reporting-location"
 * identifier.use = #usual

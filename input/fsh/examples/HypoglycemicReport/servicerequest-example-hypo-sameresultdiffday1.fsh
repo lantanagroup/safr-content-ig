@@ -1,5 +1,5 @@
 Instance: servicerequest-example-hypo-sameresultdiffday1
-InstanceOf: AcuteCareHospitalReportingServiceRequest
+InstanceOf: AcuteCareHospitalMonthlyReportingServiceRequest
 Title: "ServiceRequest - Hypo ServiceRequest Example Sameresultdiffday 1"
 Description: "ServiceRequest - Example Hypo ServiceRequest Sameresultdiffday 1"
 Usage: #example

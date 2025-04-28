@@ -1,5 +1,5 @@
 Instance: encounter-example-hypo-hypo
-InstanceOf: AcuteCareHospitalReportingEncounter
+InstanceOf: AcuteCareHospitalMonthlyReportingEncounter
 Title: "Encounter - Hypo Encounter Example Hypo"
 Description: "Encounter - Example Hypo Encounter Hypo"
 Usage: #example
