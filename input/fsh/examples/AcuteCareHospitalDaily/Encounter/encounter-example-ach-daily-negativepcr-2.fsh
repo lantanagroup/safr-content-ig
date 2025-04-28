@@ -22,13 +22,17 @@ Usage: #example
 * hospitalization.admitSource.text = "observation unit"
 * hospitalization.dischargeDisposition = $discharge-disposition#exp "Expired"
 * hospitalization.dischargeDisposition.text = "Deceased (expired)"
-* location[0].location.display = "UH Adult Emergency Department"
+//* location[0].location.display = "UH Adult Emergency Department"
+* location[0].location.display = "EMERGENCY - PAVILION"
+* location[=].location = Reference(location-example-hypo-emergency)
 * location[=].period.start = "2022-08-11T18:52:00Z"
 * location[=].period.end = "2022-08-17T16:09:00Z"
-* location[+].location.display = "UH 7B MED ACUTE CARE"
+//* location[+].location.display = "UH 7C MED ACUTE CARE"
+* location[+].location.display = "Health Hospital Location"
+* location[=].location = Reference(location-example-hypo-hospital)
 * location[=].period.start = "2022-08-17T16:09:00Z"
 * location[=].period.end = "2022-08-22T19:01:00Z"
-* location[+].location.display = "7129"
+/* location[+].location.display = "7129"
 * location[=].physicalType = $location-physical-type#ro "Room"
 * location[=].physicalType.text = "Room"
 * location[=].period.start = "2022-08-11T18:52:00Z"
@@ -40,3 +44,4 @@ Usage: #example
 * location[=].physicalType.text = "Bed"
 * location[=].period.start = "2022-08-17T16:09:00Z"
 * location[=].period.end = "2022-08-22T19:01:00Z"
+*/

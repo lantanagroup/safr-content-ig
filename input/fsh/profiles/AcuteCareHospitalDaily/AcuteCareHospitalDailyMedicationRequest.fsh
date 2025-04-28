@@ -10,8 +10,13 @@ Description: "This profile contains Required and Must Support data elements for 
 * category from http://hl7.org/fhir/ValueSet/medicationrequest-category (extensible)
 * priority MS
 * doNotPerform MS
+* medicationReference.reference 1.. MS
+* reportedReference.reference 1.. MS
 * reasonCode MS
 * reasonReference MS
+  * reference 1.. MS
+* subject.reference 1.. MS
+* encounter.reference 1.. MS
 * instantiatesCanonical MS
 * instantiatesUri MS
 * dosageInstruction

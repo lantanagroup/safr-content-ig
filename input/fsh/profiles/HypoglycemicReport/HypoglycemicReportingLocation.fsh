@@ -8,3 +8,4 @@ Description: "This profile contains Required and Must Support data elements for 
 * alias MS
 * type 1..
 * partOf MS
+  * reference 1.. MS

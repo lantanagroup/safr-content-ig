@@ -10,7 +10,11 @@ Description: "This profile contains Required and Must Support data elements for 
 * status from AcuteCareHospitalDailyEventDiagnosticReportStatus (required)
 * status ^short = "final | registered | preliminary | partial"
 * status ^definition = "final | registered | preliminary | partial"
+* subject.reference 1.. MS
+
 * encounter MS
+  * reference 1.. MS
 * specimen MS
+  * reference 1.. MS
 * conclusion MS
 * conclusionCode MS

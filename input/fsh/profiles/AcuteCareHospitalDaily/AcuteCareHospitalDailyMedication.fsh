@@ -11,3 +11,4 @@ Description: "This profile contains Required and Must Support data elements for 
 * form from http://hl7.org/fhir/ValueSet/medication-form-codes (extensible)
 * amount MS
 * ingredient MS
+  * itemReference.reference 1.. MS

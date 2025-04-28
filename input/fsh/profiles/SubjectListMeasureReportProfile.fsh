@@ -25,3 +25,4 @@ Description: "A Subject-List MeasureReport contains the count of subjects (i.e. 
     * subjectResults 1..
     * subjectResults only Reference(IndividualMeasureReportList)
       * ^short = "List referencing all individual measure reports for this measure"
+      * reference 1..

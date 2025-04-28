@@ -9,9 +9,11 @@ Usage: #example
 * status = #active
 * type = $v3-ActCode#SUBSIDIZ "subsidized health program"
 * policyHolder.display = "Mom Parent"
+* policyHolder.reference = "http://example.org/fhir/RelatedPerson/exampleMom"
 * subscriberId = "98435938934"
 * beneficiary = Reference(patient-example-ach-monthly-pass1)
 * relationship = $subscriber-relationship#child "Child"
 * relationship.text = "Child"
 * period.start = "2020-08-01"
 * payor.display = "Medicaid"
+* payor.reference = "http://example.org/fhir/Organization/Medicaid"

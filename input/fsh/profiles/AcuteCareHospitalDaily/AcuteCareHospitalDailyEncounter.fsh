@@ -17,6 +17,7 @@ Description: "This profile contains Required and Must Support data elements for 
 * status ^definition = "triaged | in-progress | finished | onleave | entered-in-error."
 * statusHistory.status 1.. // TODO Verify this is actually required when statusHistory is not nor is MS as per the DD
 * classHistory MS
+* subject.reference 1.. MS
 * period 1..
 * hospitalization
   * admitSource MS
@@ -27,6 +28,7 @@ Description: "This profile contains Required and Must Support data elements for 
   * ^short = "List of locations where the patient has been. Used in part to discern whether the patient is Inpatient, Emergency and or Observation status."
   * status MS
   * period 1..
+  * location.reference 1.. MS
 
 
   // TODO MEASDEV-703

@@ -6,10 +6,14 @@ Description: "This profile contains Required and Must Support data elements for 
 * ^status = #active
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
+* subject.reference 1.. MS
 * encounter MS
+  * reference 1.. MS
 * location MS
+  * reference 1.. MS
 * reasonCode MS
 * reasonCode from http://hl7.org/fhir/ValueSet/procedure-reason (extensible)
 * reasonReference MS
+  * reference 1.. MS
 * bodySite MS
 * bodySite from http://hl7.org/fhir/ValueSet/body-site (extensible)

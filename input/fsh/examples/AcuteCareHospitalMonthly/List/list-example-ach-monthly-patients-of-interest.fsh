@@ -8,7 +8,7 @@ Usage: #example
 * extension[=].valuePeriod.end = "2021-08-28T00:00:00Z"
 
 * identifier.system = "https://nhsnlink.org"
-* identifier.value = "NHSNdQMAcuteCareHospitalInitialPopulation"
+* identifier.value = "NHSNdQMAcuteCareHospitalMonthlyInitialPopulation"
 * status = #current
 * mode = #changes
 * date = "2021-07-28T00:00:00Z"

@@ -35,3 +35,4 @@ Description: "This profile contains NHSN-specific Required and Must-Support elem
   * period MS
 * communication.preferred MS
 * link MS
+  * other.reference 1..

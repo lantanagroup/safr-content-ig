@@ -14,6 +14,7 @@ Description: "This profile contains Required and Must Support data elements for 
 * status ^short = "triaged | in-progress | finished | onleave | entered-in-error"
 * status ^definition = "triaged | in-progress | finished | onleave | entered-in-error."
 * classHistory MS
+* subject.reference 1.. MS
 * period 1..
 * diagnosis MS
   * use MS
@@ -24,3 +25,4 @@ Description: "This profile contains Required and Must Support data elements for 
   * ^short = "List of locations where the patient has been. Used in part to discern whether the patient is Inpatient, Emergency and or Observation status."
   * status MS
   * period 1..
+  * location.reference 1.. MS

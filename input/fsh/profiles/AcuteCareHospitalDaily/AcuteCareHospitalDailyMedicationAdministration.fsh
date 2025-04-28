@@ -12,7 +12,11 @@ Description: "This profile contains Required and Must Support data elements for 
 * category MS
 * category from http://hl7.org/fhir/ValueSet/medication-admin-category (extensible)
 * medication[x] from http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1010.4 (extensible)
+* medicationReference.reference 1.. MS
+* subject.reference 1.. MS
 * context MS
+* context.reference 1.. MS
 * reasonCode MS
 * reasonReference MS
+  * reference 1.. MS
 * request MS

@@ -18,3 +18,4 @@ Usage: #example
 * subject.reference = "Patient/patient-example-hypo"
 * subject.display = "Hypo, Edadd"
 * encounter.display = "Hospital Encounter"
+* encounter = Reference(encounter-example-hypo-hypo)

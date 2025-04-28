@@ -17,3 +17,4 @@ Usage: #example
 * subject.reference = "Patient/patient-example-sameresultdiffday"
 * subject.display = "Hypo, Sameresultdiffday"
 * encounter.display = "Hospital Encounter"
+* encounter = Reference(encounter-example-hypo-sameresultdiffday)

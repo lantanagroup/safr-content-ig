@@ -6,4 +6,7 @@ Description: "This profile contains Required and Must Support data elements for 
 * ^status = #active
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
+* subject.reference 1.. MS
+* encounter.reference 1.. MS
 * specimen MS
+  * reference 1.. MS

@@ -47,13 +47,19 @@ Usage: #example
 * hospitalization.admitSource.text = "From nursing home"
 * hospitalization.dischargeDisposition = $discharge-disposition#home "Home"
 * hospitalization.dischargeDisposition.text = "Home"
-* location[0].location.display = "UH Adult Emergency Department"
+//* location[0].location.display = "UH Adult Emergency Department"
+* location[0].location.display = "EMERGENCY - PAVILION"
+* location[=].location = Reference(location-example-hypo-emergency)
 * location[=].period.start = "2022-08-11T18:52:00Z"
 * location[=].period.end = "2022-08-17T16:09:00Z"
+
 //* location[=].location = Reference(location-example-hypo-encounter-location-sameresultdiffday)
-* location[+].location.display = "UH 7B MED ACUTE CARE"
+//* location[+].location.display = "UH 7B MED ACUTE CARE"
+* location[+].location.display = "Health Hospital Location"
+* location[=].location = Reference(location-example-hypo-hospital)
 * location[=].period.start = "2022-08-17T16:09:00Z"
 * location[=].period.end = "2022-08-22T19:01:00Z"
+/*
 * location[+].location.display = "7129"
 * location[=].physicalType = $location-physical-type#ro "Room"
 * location[=].physicalType.text = "Room"
@@ -66,7 +72,7 @@ Usage: #example
 * location[=].physicalType.text = "Bed"
 * location[=].period.start = "2022-08-17T16:09:00Z"
 * location[=].period.end = "2022-08-22T19:01:00Z"
-
+*/
 
 /*
 Instance: location-example-hypo-hospital

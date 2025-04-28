@@ -6,11 +6,14 @@ Description: "This profile contains Required and Must Support data elements for 
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 * partOf MS
+  * reference 1.. MS
 * status 1..
 * category 1.. // TODO, should we require a VS? DD says: CQL constrains to these Categories:  Social-history, vital-signs, imaging, laboratory, procedure, survey
 * code from http://hl7.org/fhir/ValueSet/observation-codes (extensible)
 * subject 1..
+* subject.reference 1.. MS
 * encounter MS
+  * reference 1.. MS
 * effective[x] 1..
 * issued MS
 * value[x] MS
@@ -24,6 +27,7 @@ Description: "This profile contains Required and Must Support data elements for 
   * high MS
   * age MS
 * hasMember MS
+  * reference 1.. MS
 * component MS
   * code from http://hl7.org/fhir/ValueSet/observation-codes (extensible)
   * code MS  // TODO verify is this really MS? DD has it as MS, but in general Required elements are not marked as MS

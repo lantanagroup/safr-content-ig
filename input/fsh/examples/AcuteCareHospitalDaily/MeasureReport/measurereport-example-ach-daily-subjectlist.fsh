@@ -24,7 +24,11 @@ Description: "List - Example ACH Daily Individual Measure Report List Example"
 Usage: #example
 * status = #current
 * mode = #snapshot
-* entry[+].item
+* entry[+].item = Reference(measurereport-example-rps-initialpopulationpass)
+* entry[+].item = Reference(measurereport-example-rps-negativepcr)
+* entry[+].item = Reference(measurereport-example-rps-influenzatherapeutic)
+* entry[+].item = Reference(measurereport-example-rps-rsvlabbtg)
+/* entry[+].item
   * identifier.system = "http://example.org/fhir/measurereport/id"
   * identifier.value = "123456789-initialpopulationpass"
 * entry[+].item
@@ -36,3 +40,5 @@ Usage: #example
 * entry[+].item
   * identifier.system = "http://example.org/fhir/measurereport/id"
   * identifier.value = "123456789-rsvlabbtg"
+*/
+  

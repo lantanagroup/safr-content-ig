@@ -82,7 +82,7 @@ Usage: #example
 * extension[=].valueReference = Reference(specimen-example-ach-monthly-pass1-csf)
 * status = #complete
 * type = #individual
-* measure = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNdQMAcuteCareHospitalInitialPopulation|1.0.0-cibuild"
+* measure = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNdQMAcuteCareMonthlyHospitalInitialPopulation|1.0.0-cibuild"
 * subject = Reference(patient-example-ach-monthly-pass1)
 * date = "2024-02-05T21:04:29.481+00:00"
 * reporter = Reference(organization-example-submitting-organization)

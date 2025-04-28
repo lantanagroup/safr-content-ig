@@ -9,8 +9,12 @@ Description: "This profile contains Required and Must Support data elements for 
 * type from http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.114222.4.11.3591 (extensible)
 * type MS
 * policyHolder MS
+  * reference 1.. MS
 * subscriber MS
+  * reference 1.. MS
 * subscriberId MS
 * dependent MS
 * relationship MS
 * period MS
+* beneficiary.reference 1.. MS
+* payor.reference 1.. MS

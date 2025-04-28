@@ -16,6 +16,7 @@ Usage: #example
 * relationship.text = "Self"
 * period.start = "2020-01-01"
 * payor.display = "Acme Health Plan"
+* payor.reference = "http://example.org/fhir/Organization/PayerComm"
 * class[0].type = $coverage-class#group "Group"
 * class[=].type.text = "An employee group"
 * class[=].value = "xyz"
