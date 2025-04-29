@@ -106,8 +106,8 @@ groups:
         name: NHSN Glycemic ControlHypoglycemic Initial Population
         description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
       Library/NHSNAcuteCareHospitalDailyInitialPopulation:
-        name: NHSN Respiratory Pathogens Surveillance Daily Initial Population
-        description: Library of NHSN Respiratory Pathogens Surveillance Daily Initial Population Measure
+        name: NHSN Acute Care Hospital Daily Initial Population
+        description: Library of NHSN Acute Care Hospital Daily Initial Population Measure
       # Library/NHSNBedCapacityMeasure:
       #   name: NHSN Bed Capacity Reporting Initial Population
       #   description: Library of NHSN Bed Capacity Initial Population Measure

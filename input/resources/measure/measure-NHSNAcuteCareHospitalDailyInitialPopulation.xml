@@ -196,7 +196,7 @@ define &quot;SDE RSV Specimen&quot;:
   &quot;RSV PRE Admission Observation&quot; ObservationWithSpecimen
     let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
     return SharedResource.SpecimenResource(Specimen,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-specimen'}})"></valueString>
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-specimen'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="8"></valueInteger>
@@ -233,7 +233,7 @@ define &quot;SDE RSV Specimen&quot;:
 define &quot;SDE RSV DiagnosticReport&quot;:
   &quot;RSV DiagnosticReport&quot; Reports
     return SharedResource.DiagnosticReportLabResource(Reports,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})"></valueString>
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-diagnosticreport-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="10"></valueInteger>
@@ -270,10 +270,10 @@ define &quot;COVID And Influenza Observation&quot;:
                <valueString value="NHSNAcuteCareHospitalDailyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="RPS Observation"></valueString>
+               <valueString value="ACH Daily Observation"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;RPS Observation&quot;:
+               <valueString value="define &quot;ACH Daily Observation&quot;:
   &quot;RSV Observation&quot;
   union &quot;COVID And Influenza Observation&quot;"></valueString>
             </extension>
@@ -286,14 +286,14 @@ define &quot;COVID And Influenza Observation&quot;:
                <valueString value="NHSNAcuteCareHospitalDailyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="SDE RPSObservation"></valueString>
+               <valueString value="SDE ACH Daily Observation"></valueString>
             </extension>
             <extension url="statement">
                <valueString value="//return the Observation during the Measurement Period
-define &quot;SDE RPSObservation&quot;:
-  &quot;RPS Observation&quot; Observations
+define &quot;SDE ACH Daily Observation&quot;:
+  &quot;ACH Daily Observation&quot; Observations
     return SharedResource.ObservationLabResource(Observations,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation-lab'}})"></valueString>
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-observation-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="13"></valueInteger>
@@ -312,7 +312,7 @@ define &quot;SDE All Procedures&quot;:
   [Procedure] P
   where exists(&quot;Initial Population&quot;)
   return SharedResource.ProcedureResource(P,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-procedure'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-procedure'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="14"></valueInteger>
@@ -330,7 +330,7 @@ define &quot;SDE All Procedures&quot;:
 	&quot;Initial Population&quot; DischargeDispositions 
   where DischargeDispositions.hospitalization.dischargeDisposition in &quot;Discharge Disposition&quot;
   return SharedResource.EncounterResource(DischargeDispositions,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-encounter'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-encounter'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="15"></valueInteger>
@@ -363,10 +363,10 @@ define &quot;COVID And Influenza DiagnosticReport&quot;:
                <valueString value="NHSNAcuteCareHospitalDailyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="RPS DiagnosticReport"></valueString>
+               <valueString value="ACH Daily DiagnosticReport"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;RPS DiagnosticReport&quot;:
+               <valueString value="define &quot;ACH Daily DiagnosticReport&quot;:
   &quot;COVID And Influenza DiagnosticReport&quot;
     union &quot;RSV DiagnosticReport&quot;"></valueString>
             </extension>
@@ -379,14 +379,14 @@ define &quot;COVID And Influenza DiagnosticReport&quot;:
                <valueString value="NHSNAcuteCareHospitalDailyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="SDE RPS DiagnosticReport"></valueString>
+               <valueString value="SDE ACH Daily DiagnosticReport"></valueString>
             </extension>
             <extension url="statement">
                <valueString value="//return the DiagnosticReport during the Measurement Period
-define &quot;SDE RPS DiagnosticReport&quot;:
-  &quot;RPS DiagnosticReport&quot; Reports
+define &quot;SDE ACH Daily DiagnosticReport&quot;:
+  &quot;ACH Daily DiagnosticReport&quot; Reports
     return SharedResource.DiagnosticReportLabResource(Reports,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})"></valueString>
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-diagnosticreport-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="18"></valueInteger>
@@ -401,8 +401,8 @@ define &quot;SDE RPS DiagnosticReport&quot;:
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Covid or Influenza Medication Ordered&quot;:
-  [MedicationRequest] RPSMedRequest
-    let Meds: GetMedicationCode(RPSMedRequest.medication)
+  [MedicationRequest] ACH Daily MedRequest
+    let Meds: GetMedicationCode(ACHDailyMedRequest.medication)
     where (Meds in &quot;Anakinra&quot;
             or Meds in &quot;Baloxavir&quot;
             or Meds in &quot;Bamlanivimab&quot;
@@ -423,9 +423,9 @@ define &quot;SDE RPS DiagnosticReport&quot;:
             or Meds in &quot;Tofacitinib&quot;
             or Meds in &quot;Zanamivir&quot;)
       and exists(&quot;Initial Population&quot;)
-      and NHSNHelpers.&quot;Normalize Interval&quot;(RPSMedRequest.authoredOn) during &quot;Measurement Period&quot;
-    return SharedResource.MedicationRequestResource(RPSMedRequest,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-medicationrequest'}})"></valueString>
+      and NHSNHelpers.&quot;Normalize Interval&quot;(ACHDailyMedRequest.authoredOn) during &quot;Measurement Period&quot;
+    return SharedResource.MedicationRequestResource(ACHDailyMedRequest,
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-medicationrequest'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="19"></valueInteger>
@@ -477,7 +477,7 @@ define &quot;SDE All Observations&quot;:
   &quot;Observations&quot; O
   where exists(&quot;Initial Population&quot;)
   return SharedResource.ObservationLabResource(O,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-observation'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="22"></valueInteger>
@@ -492,8 +492,8 @@ define &quot;SDE All Observations&quot;:
             </extension>
             <extension url="statement">
                <valueString value="define &quot;SDE Covid or Influenza Medication Administered&quot;:
-  [MedicationAdministration] RPSMedAdmin
-    let Meds: GetMedicationCode(RPSMedAdmin.medication)
+  [MedicationAdministration] ACHDailyMedAdmin
+    let Meds: GetMedicationCode(ACHDailyMedAdmin.medication)
    where (Meds in &quot;Anakinra&quot;
             or Meds in &quot;Bamlanivimab&quot;
             or Meds in &quot;Baloxavir&quot;
@@ -513,11 +513,11 @@ define &quot;SDE All Observations&quot;:
             or Meds in &quot;Sotrovimab&quot;    
             or Meds in &quot;Tofacitinib&quot;
             or Meds in &quot;Zanamivir&quot;)
-      and RPSMedAdmin.status ~ 'completed'
+      and ACHDailyMedAdmin.status ~ 'completed'
       and exists(&quot;Initial Population&quot;)
-      and NHSNHelpers.&quot;Normalize Interval&quot;(RPSMedAdmin.effective) during &quot;Measurement Period&quot;
-    return SharedResource.MedicationAdministrationResource(RPSMedAdmin,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-medicationadministration'}})"></valueString>
+      and NHSNHelpers.&quot;Normalize Interval&quot;(ACHDailyMedAdmin.effective) during &quot;Measurement Period&quot;
+    return SharedResource.MedicationAdministrationResource(ACHDailyMedAdmin,
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-medicationadministration'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="23"></valueInteger>
@@ -536,7 +536,7 @@ define &quot;SDE All Observations&quot;:
   union &quot;SDE Covid or Influenza Medication Administered&quot;) MedReqOrAdmin
   where MedReqOrAdmin.medication is FHIR.Reference
   return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication),
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-medication'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-medication'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="24"></valueInteger>
@@ -623,7 +623,7 @@ define &quot;SDE All Observations&quot;:
 define &quot;SDE RSV DiagnosticReport Result from Lab&quot;:
   &quot;RSV DiagnosticReport Result from Lab&quot; Reports
     return SharedResource.DiagnosticReportLabResource(Reports,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})"></valueString>
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-diagnosticreport-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="29"></valueInteger>
@@ -643,7 +643,7 @@ define &quot;SDE RSV DiagnosticReport Result from Lab&quot;:
 define &quot;SDE IP Encounters&quot;:
   &quot;Initial Population&quot; IP
   return SharedResource.EncounterResource(IP, 
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-encounter'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-encounter'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="30"></valueInteger>
@@ -694,10 +694,10 @@ define &quot;SDE IP Encounters&quot;:
                <valueString value="NHSNAcuteCareHospitalDailyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="RPS DiagnosticReport Result from Lab"></valueString>
+               <valueString value="ACH Daily DiagnosticReport Result from Lab"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;RPS DiagnosticReport Result from Lab&quot;:
+               <valueString value="define &quot;ACH Daily DiagnosticReport Result from Lab&quot;:
   &quot;COVID and Influenza DiagnosticReport Result from Lab&quot;
     union &quot;RSV DiagnosticReport Result from Lab&quot;"></valueString>
             </extension>
@@ -710,14 +710,14 @@ define &quot;SDE IP Encounters&quot;:
                <valueString value="NHSNAcuteCareHospitalDailyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="SDE RPS DiagnosticReport Result from Lab"></valueString>
+               <valueString value="SDE ACH Daily DiagnosticReport Result from Lab"></valueString>
             </extension>
             <extension url="statement">
                <valueString value="//return the DiagnosticReport based on the result during the Measurement Period    
-define &quot;SDE RPS DiagnosticReport Result from Lab&quot;:
-  &quot;RPS DiagnosticReport Result from Lab&quot; Reports
+define &quot;SDE ACH Daily DiagnosticReport Result from Lab&quot;:
+  &quot;ACH Daily DiagnosticReport Result from Lab&quot; Reports
     return SharedResource.DiagnosticReportLabResource(Reports,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})"></valueString>
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-diagnosticreport-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="34"></valueInteger>
@@ -735,7 +735,7 @@ define &quot;SDE RPS DiagnosticReport Result from Lab&quot;:
 define &quot;SDE RSV PRE Admission Observation&quot;:
   &quot;RSV PRE Admission Observation&quot; Observations
     return SharedResource.ObservationLabResource(Observations, 
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation-lab'}})"></valueString>
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-observation-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="35"></valueInteger>
@@ -754,7 +754,7 @@ define &quot;SDE RSV PRE Admission Observation&quot;:
     where NHSNHelpers.&quot;Normalize Interval&quot;(IsolationPrecautions.performed) during &quot;Measurement Period&quot;
     and exists(&quot;Initial Population&quot;)
   return SharedResource.ProcedureResource(IsolationPrecautions,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-procedure'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-procedure'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="36"></valueInteger>
@@ -796,7 +796,7 @@ define &quot;SDE COVID And Influenza Specimen&quot;:
   &quot;COVID And Influenza PRE Admission Observation&quot; ObservationWithSpecimen
     let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
     return SharedResource.SpecimenResource(Specimen,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-specimen'}})"></valueString>
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-specimen'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="38"></valueInteger>
@@ -807,15 +807,15 @@ define &quot;SDE COVID And Influenza Specimen&quot;:
                <valueString value="NHSNAcuteCareHospitalDailyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="SDE RPS Specimen"></valueString>
+               <valueString value="SDE ACH Daily Specimen"></valueString>
             </extension>
             <extension url="statement">
                <valueString value="//return the Specimen related to the Observation during the Measurement Period
-define &quot;SDE RPS Specimen&quot;:
-  &quot;RPS Observation&quot; ObservationWithSpecimen
+define &quot;SDE ACH Daily Specimen&quot;:
+  &quot;ACH Daily Observation&quot; ObservationWithSpecimen
     let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
     return SharedResource.SpecimenResource(Specimen,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-specimen'}})"></valueString>
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-specimen'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="39"></valueInteger>
@@ -834,7 +834,7 @@ define &quot;SDE All ServiceRequests&quot;:
   [ServiceRequest] SR
   where exists(&quot;Initial Population&quot;)
   return SharedResource.ServiceRequestResource(SR,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-servicerequest'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-servicerequest'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="40"></valueInteger>
@@ -852,7 +852,7 @@ define &quot;SDE All ServiceRequests&quot;:
 define &quot;SDE COVID And Influenza DiagnosticReport&quot;:
   &quot;COVID And Influenza DiagnosticReport&quot; Reports
     return SharedResource.DiagnosticReportLabResource(Reports,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})"></valueString>
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-diagnosticreport-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="41"></valueInteger>
@@ -870,7 +870,7 @@ define &quot;SDE COVID And Influenza DiagnosticReport&quot;:
 define &quot;SDE COVID And Influenza PRE Admission Observation&quot;:
   &quot;COVID And Influenza PRE Admission Observation&quot; Observations
     return SharedResource.ObservationLabResource(Observations,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation-lab'}})"></valueString>
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-observation-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="42"></valueInteger>
@@ -881,10 +881,10 @@ define &quot;SDE COVID And Influenza PRE Admission Observation&quot;:
                <valueString value="NHSNAcuteCareHospitalDailyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="SDE RPS ServiceRequest"></valueString>
+               <valueString value="SDE ACH Daily ServiceRequest"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;SDE RPS ServiceRequest&quot;:
+               <valueString value="define &quot;SDE ACH Daily ServiceRequest&quot;:
   ([ServiceRequest: &quot;COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)&quot;] 
   union  [ServiceRequest: &quot;COVID_19 (Tests for SARS_CoV_2 Antigen)&quot;] 
   union  [ServiceRequest: &quot;Influenza (Tests for influenza A or B virus Nucleic Acid)&quot;]
@@ -896,7 +896,7 @@ define &quot;SDE COVID And Influenza PRE Admission Observation&quot;:
       and ServiceRequests.status ~ 'completed'
       and exists(&quot;Initial Population&quot;)
   return SharedResource.ServiceRequestResource(ServiceRequests,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-servicerequest'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-servicerequest'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="43"></valueInteger>
@@ -914,7 +914,7 @@ define &quot;SDE COVID And Influenza PRE Admission Observation&quot;:
 define &quot;SDE COVID and Influenza DiagnosticReport Result from Lab&quot;:
   &quot;COVID and Influenza DiagnosticReport Result from Lab&quot; Reports
     return SharedResource.DiagnosticReportLabResource(Reports,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})"></valueString>
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-diagnosticreport-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="44"></valueInteger>
@@ -932,7 +932,7 @@ define &quot;SDE COVID and Influenza DiagnosticReport Result from Lab&quot;:
   [Location] Locations
   where exists(&quot;Initial Population&quot;)
   return SharedResource.LocationResource(Locations,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-location'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-location'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="45"></valueInteger>
@@ -2686,7 +2686,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <type value="DiagnosticReport"></type>
          </parameter>
          <parameter>
-            <name value="SDE RPSObservation"></name>
+            <name value="SDE ACH Daily Observation"></name>
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
@@ -2714,7 +2714,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <type value="Encounter"></type>
          </parameter>
          <parameter>
-            <name value="SDE RPS DiagnosticReport"></name>
+            <name value="SDE ACH Daily DiagnosticReport"></name>
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
@@ -2770,7 +2770,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <type value="Encounter"></type>
          </parameter>
          <parameter>
-            <name value="SDE RPS DiagnosticReport Result from Lab"></name>
+            <name value="SDE ACH Daily DiagnosticReport Result from Lab"></name>
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
@@ -2798,7 +2798,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <type value="Specimen"></type>
          </parameter>
          <parameter>
-            <name value="SDE RPS Specimen"></name>
+            <name value="SDE ACH Daily Specimen"></name>
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
@@ -2826,7 +2826,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <type value="Observation"></type>
          </parameter>
          <parameter>
-            <name value="SDE RPS ServiceRequest"></name>
+            <name value="SDE ACH Daily ServiceRequest"></name>
             <use value="out"></use>
             <min value="0"></min>
             <max value="*"></max>
@@ -3905,7 +3905,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
    </identifier>
    <version value="1.0.0-dev"></version>
    <name value="NHSNAcuteCareHospitalDailyInitialPopulation"></name>
-   <title value="NHSN Respiratory Pathogens Surveillance Daily Initial Population"></title>
+   <title value="NHSN Acute Care Hospital Daily Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
    <date value="2025-04-24T12:39:28-05:00"></date>
@@ -3936,7 +3936,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          <display value="Outcome"></display>
       </coding>
    </type>
-   <rationale value="The NHSN Respiratory Pathogens Surveillance (RPS) Daily module enables the measurement of facility and unit-specific incidence and prevalence of Coronavirus 2019 (COVID-19), Influenza, and Respiratory Syncytial Virus (RSV) disease among patients admitted to the hospital (inpatient, observation, or short stay status), and specific associated patient outcomes.  The RPS Daily module supports an electronic health record (EHR)-/vendor-neutral standard for reporting patient-level data on hospitalized patients with a respiratory illness due to one or more of the pathogens under surveillance. Data collected via the RPS module may be used by facilities for quality improvement and patient care planning purposes, as well as by local, state, and federal public health agencies in coordination and response to public health outbreaks. The RPS Daily module offers a mechanism for ongoing monitoring of infectious respiratory viral illness among hospitalized patients with minimal human resource expenditure via 100% electronically automated data capture. This initial version of the module is based on electronic data capture and upload of demographic, administrative, and clinical data from the facility’s electronic source systems such as the electronic health record (EHR), patient registration system (admission, discharge, and transfer [ADT] data), laboratory information system, and pharmacy electronic medication administration system. Facilities will have access to their data via the analysis functions of NHSN. "></rationale>
+   <rationale value="The NHSN Acute Care Hospital (ACH) Daily module enables the measurement of facility and unit-specific incidence and prevalence of Coronavirus 2019 (COVID-19), Influenza, and Respiratory Syncytial Virus (RSV) disease among patients admitted to the hospital (inpatient, observation, or short stay status), and specific associated patient outcomes.  The ACH Daily Daily module supports an electronic health record (EHR)-/vendor-neutral standard for reporting patient-level data on hospitalized patients with a respiratory illness due to one or more of the pathogens under surveillance. Data collected via the ACH Daily module may be used by facilities for quality improvement and patient care planning purposes, as well as by local, state, and federal public health agencies in coordination and response to public health outbreaks. The ACH Daily module offers a mechanism for ongoing monitoring of infectious respiratory viral illness among hospitalized patients with minimal human resource expenditure via 100% electronically automated data capture. This initial version of the module is based on electronic data capture and upload of demographic, administrative, and clinical data from the facility’s electronic source systems such as the electronic health record (EHR), patient registration system (admission, discharge, and transfer [ADT] data), laboratory information system, and pharmacy electronic medication administration system. Facilities will have access to their data via the analysis functions of NHSN. "></rationale>
    <group>
       <population id="initial-population">
          <code>
@@ -3946,7 +3946,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
                <display value="Initial Population"></display>
             </coding>
          </code>
-         <description value="The Respiratory Pathogens Surveillance Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period."></description>
+         <description value="The Acute Care Hospital Daily Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period."></description>
          <criteria>
             <language value="text/cql-identifier"></language>
             <expression value="Initial Population"></expression>
@@ -3992,17 +3992,17 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          <expression value="SDE Encounter Discharge Dispositions"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData id="sde-rpsobservation">
+   <supplementalData id="sde-ach-daily-observation">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
          </coding>
       </usage>
-      <description value="SDE RPSObservation"></description>
+      <description value="SDE ACH Daily Observation"></description>
       <criteria>
          <language value="text/cql-identifier"></language>
-         <expression value="SDE RPSObservation"></expression>
+         <expression value="SDE ACH Daily Observation"></expression>
       </criteria>
    </supplementalData>
    <supplementalData id="sde-rsv-pre-admission-observation">
@@ -4031,17 +4031,17 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          <expression value="SDE COVID And Influenza PRE Admission Observation"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData id="sde-rps-specimen">
+   <supplementalData id="sde-ach-daily-specimen">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
          </coding>
       </usage>
-      <description value="SDE RPS Specimen"></description>
+      <description value="SDE ACH Daily Specimen"></description>
       <criteria>
          <language value="text/cql-identifier"></language>
-         <expression value="SDE RPS Specimen"></expression>
+         <expression value="SDE ACH Daily Specimen"></expression>
       </criteria>
    </supplementalData>
    <supplementalData id="sde-rsv-specimen">
@@ -4070,17 +4070,17 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          <expression value="SDE COVID And Influenza Specimen"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData id="sde-rps-diagnosticreport">
+   <supplementalData id="sde-ach-daily-diagnosticreport">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
          </coding>
       </usage>
-      <description value="SDE RPS DiagnosticReport"></description>
+      <description value="SDE ACH Daily DiagnosticReport"></description>
       <criteria>
          <language value="text/cql-identifier"></language>
-         <expression value="SDE RPS DiagnosticReport"></expression>
+         <expression value="SDE ACH Daily DiagnosticReport"></expression>
       </criteria>
    </supplementalData>
    <supplementalData id="sde-rsv-diagnosticreport">
@@ -4109,17 +4109,17 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          <expression value="SDE COVID And Influenza DiagnosticReport"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData id="sde-rps-diagnosticreport-result-from-lab">
+   <supplementalData id="sde-ach-daily-diagnosticreport-result-from-lab">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
          </coding>
       </usage>
-      <description value="SDE RPS DiagnosticReport Result from Lab"></description>
+      <description value="SDE ACH Daily DiagnosticReport Result from Lab"></description>
       <criteria>
          <language value="text/cql-identifier"></language>
-         <expression value="SDE RPS DiagnosticReport Result from Lab"></expression>
+         <expression value="SDE ACH Daily DiagnosticReport Result from Lab"></expression>
       </criteria>
    </supplementalData>
    <supplementalData id="sde-covid-and-influenza-diagnosticreport-result-from-lab">
@@ -4148,17 +4148,17 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          <expression value="SDE RSV DiagnosticReport Result from Lab"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData id="sde-rps-servicerequest">
+   <supplementalData id="sde-ach-daily-servicerequest">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
          </coding>
       </usage>
-      <description value="SDE RPS ServiceRequest"></description>
+      <description value="SDE ACH Daily ServiceRequest"></description>
       <criteria>
          <language value="text/cql-identifier"></language>
-         <expression value="SDE RPS ServiceRequest"></expression>
+         <expression value="SDE ACH Daily ServiceRequest"></expression>
       </criteria>
    </supplementalData>
    <supplementalData id="sde-isolation-precautions-implemented">

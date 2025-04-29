@@ -7,7 +7,13 @@ Description: "This profile contains Required and Must Support data elements for 
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 * category MS
 * doNotPerform MS
+* reportedReference.reference 1.. MS
 * reasonCode MS
+* medicationReference.reference 1.. MS
+* subject.reference 1.. MS
+* encounter.reference 1.. MS
+* reasonReference MS
+  * reference 1.. MS
 * instantiatesCanonical MS
 * instantiatesUri MS
 * courseOfTherapyType MS

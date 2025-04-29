@@ -198,7 +198,7 @@ For all bed censuses and counts, the following bed types should be <u>excluded</
 
 #### Description
 
-The NHSN ACH Daily module enables the measurement of facility and unit-specific incidence and prevalence of Coronavirus 2019 (COVID-19), Influenza, and Respiratory Syncytial Virus (RSV) disease among patients admitted to the hospital (inpatient, observation, or short stay status), and specific associated patient outcomes. The ACH Daily module supports an electronic health record (EHR)-/vendor-neutral standard for reporting patient-level data on hospitalized patients with a respiratory illness due to one or more of the pathogens under surveillance. Data collected via the AcuteCareHospitalMonthly Daily module may be used by facilities for quality improvement and patient care planning purposes, as well as by local, state, and federal public health agencies in coordination and response to public health outbreaks. The AcuteCareHospitalMonthly Daily module offers a mechanism for ongoing monitoring of infectious respiratory viral illness among hospitalized patients with minimal human resource expenditure via 100% electronically automated data capture. This initial version of the module is based on electronic data capture and upload of demographic, administrative, and clinical data from the facility’s electronic source systems such as the electronic health record (EHR), patient registration system (admission, discharge, and transfer [ADT] data), laboratory information system, and pharmacy electronic medication administration system. Facilities will have access to their data via the analysis functions of NHSN.
+The NHSN ACH Daily module enables the measurement of facility and unit-specific incidence and prevalence of Coronavirus 2019 (COVID-19), Influenza, and Respiratory Syncytial Virus (RSV) disease among patients admitted to the hospital (inpatient, observation, or short stay status), and specific associated patient outcomes. The ACH Daily module supports an electronic health record (EHR)-/vendor-neutral standard for reporting patient-level data on hospitalized patients with a respiratory illness due to one or more of the pathogens under surveillance. Data collected via the Acute Care Hospital Daily module may be used by facilities for quality improvement and patient care planning purposes, as well as by local, state, and federal public health agencies in coordination and response to public health outbreaks. The Acute Care Hospital Daily module offers a mechanism for ongoing monitoring of infectious respiratory viral illness among hospitalized patients with minimal human resource expenditure via 100% electronically automated data capture. This initial version of the module is based on electronic data capture and upload of demographic, administrative, and clinical data from the facility’s electronic source systems such as the electronic health record (EHR), patient registration system (admission, discharge, and transfer [ADT] data), laboratory information system, and pharmacy electronic medication administration system. Facilities will have access to their data via the analysis functions of NHSN.
 
 #### Patients of Interest
 
@@ -206,13 +206,13 @@ The facility will work with NHSN to define a list of patients of interest (POI l
 
 #### Initial Population
 
-The Respiratory Pathogens Surveillance Daily Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
+The Acute Care Hospital Daily Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
 
 #### Additional Use Case Information References
 
 [https://www.cdc.gov/nhsn/acute-care-hospital/index.html](https://www.cdc.gov/nhsn/acute-care-hospital/index.html)
 
-#### AcuteCareHospitalMonthly Daily Submission Examples
+#### Acute Care Hospital Daily Submission Examples
 
 - [Full ACH Daily Measure Submission Bundle](Bundle-bundle-example-ach-daily-full.html)
 - [Example ACH Daily Submission Header Bundle](Bundle-bundle-example-ach-daily-header.html)
