@@ -71,7 +71,16 @@ groups:
       - StructureDefinition/ach-daily-medicationrequest
       - StructureDefinition/ach-daily-observation
 
-
+  ltc-monthly:
+    name: Long Term Care Monthly Event Reporting Profiles
+    resources:
+      - StructureDefinition/ltc-monthly-coverage
+      - StructureDefinition/ltc-monthly-encounter
+      - StructureDefinition/ltc-monthly-observation-lab
+      - StructureDefinition/ltc-monthly-medication
+      - StructureDefinition/ltc-monthly-medicationadministration
+      - StructureDefinition/ltc-monthly-medicationrequest
+      - StructureDefinition/ltc-monthly-specimen
 
 
   valuesets:
