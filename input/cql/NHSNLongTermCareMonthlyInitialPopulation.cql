@@ -6,27 +6,19 @@ include FHIRHelpers version '4.0.2' called FHIRHelpers
 include NHSNHelpers version '0.0.002' called NHSNHelpers
 include SharedResourceCreation version '0.1.009' called SharedResource
 
-codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode'
 codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category'
-codesystem "LOINC": 'http://loinc.org' 
 
 //code for Observation Category
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 
 parameter "Measurement Period" 
-    default Interval[@2022-01-01T00:00:00.0, @2022-01-31T23:59:59.0)
+    default Interval[@2024-03-01T00:00:00.0, @2024-03-31T23:59:59.0)
 
 context Patient 
 
 define "Initial Population":
-  "Encounters" QualifyingEncounters
+  [Encounter] QualifyingEncounters
   where QualifyingEncounters.period overlaps "Measurement Period" 
-
-define "Encounters":
-  [Encounter]
-
-define "Observations":
-  [Observation]
 
 //============================================================================
 //Supplemental Data Element
@@ -39,15 +31,6 @@ define "SDE Coverage":
     "Initial Population" IP
     where Coverages.period overlaps IP.period)
   return CoverageResource(Coverages,
-  {FHIR.canonical{value: ''}})
-
-define "SDE Encounter": 
-  "Encounters" Encounters
-  where not CheckIP(Encounters)
-  and exists(
-    "Initial Population" IP
-    where Encounters.period overlaps IP.period)
-  return EncounterResource(Encounters,
   {FHIR.canonical{value: ''}})
 
 define "SDE IP Encounters":
@@ -80,7 +63,7 @@ define "SDE Medication":
   {FHIR.canonical{value: ''}})
 
 define "SDE Observation Lab Category":
-  "Observations" Observations 
+  [Observation] Observations 
   where (exists(Observations.category Category where Category ~ "laboratory"))
     and exists(
       "Initial Population" IP
@@ -105,10 +88,6 @@ define "SDE Specimen":
 //
 //Functions
 //
-define function "CheckIP"(encounter Encounter):
-  exists("Initial Population" IP
-  where encounter.id = IP.id)
-
 define function "GetMedicationFrom"(choice Choice<FHIR.CodeableConcept, FHIR.Reference>):
   case
     when choice is FHIR.Reference then
