@@ -20,11 +20,6 @@ define "Initial Population":
   [Encounter] QualifyingEncounters
   where QualifyingEncounters.period overlaps "Measurement Period" 
 
-//============================================================================
-//Supplemental Data Element
-//When FHIR.canonical value is present, US Core 3.1.1 profiles are used
-//When FHIR.canonical value is not present, FHIR Base profiles are used
-//============================================================================
 define "SDE Coverage": 
 	[Coverage] Coverages
   where exists(

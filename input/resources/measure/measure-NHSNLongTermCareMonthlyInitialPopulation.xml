@@ -78,12 +78,7 @@
                <valueString value="SDE Coverage"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//============================================================================
-//Supplemental Data Element
-//When FHIR.canonical value is present, US Core 3.1.1 profiles are used
-//When FHIR.canonical value is not present, FHIR Base profiles are used
-//============================================================================
-define &quot;SDE Coverage&quot;: 
+               <valueString value="define &quot;SDE Coverage&quot;: 
 	[Coverage] Coverages
   where exists(
     &quot;Initial Population&quot; IP
@@ -1515,7 +1510,7 @@ define function &quot;GetMedicationFrom&quot;(choice Choice&lt;FHIR.CodeableConc
    <title value="NHSN Long Term Care Monthly Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2025-05-01T13:01:35-05:00"></date>
+   <date value="2025-05-05T11:26:14-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Long Term Care Initial Population includes all encounters that overlap the measurement period."></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>
