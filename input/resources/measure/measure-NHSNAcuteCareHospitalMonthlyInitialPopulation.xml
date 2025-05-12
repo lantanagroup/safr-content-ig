@@ -231,7 +231,7 @@ define &quot;SDE Encounter&quot;:
     &quot;Initial Population&quot; IP
     where MedicationRequests.authoredOn during IP.period)
   return SharedResource.MedicationRequestResource(MedicationRequests,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-medicationrequest'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-medicationrequest'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="5"></valueInteger>
@@ -251,7 +251,7 @@ define &quot;SDE Encounter&quot;:
     &quot;Initial Population&quot; IP
     where Coverages.period overlaps IP.period)
   return SharedResource.CoverageResource(Coverages,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-coverage'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-coverage'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="6"></valueInteger>
@@ -271,7 +271,7 @@ define &quot;SDE Encounter&quot;:
     &quot;Initial Population&quot; IP
     where NHSNHelpers.&quot;Normalize Interval&quot;(Procedures.performed) overlaps IP.period)
   return SharedResource.ProcedureResource(Procedures,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-procedure'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-procedure'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="7"></valueInteger>
@@ -288,7 +288,7 @@ define &quot;SDE Encounter&quot;:
                <valueString value="define &quot;SDE IP Encounters&quot;:
   &quot;Initial Population&quot; IP
   return SharedResource.EncounterResource(IP, 
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-encounter'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-encounter'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="8"></valueInteger>
@@ -306,7 +306,7 @@ define &quot;SDE Encounter&quot;:
   [Device] Devices 
   where exists(&quot;Initial Population&quot;)
   return DeviceResource(Devices,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-device'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-device'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="9"></valueInteger>
@@ -342,7 +342,7 @@ define &quot;SDE Encounter&quot;:
       &quot;Initial Population&quot; IP
       where NHSNHelpers.&quot;Normalize Interval&quot;(Observations.effective) overlaps IP.period)
   return SharedResource.ObservationLabResource(Observations,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-observation-lab'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-observation-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="11"></valueInteger>
@@ -364,7 +364,7 @@ define &quot;SDE Observation Vital Signs Category&quot;:
       &quot;Initial Population&quot; IP
       where NHSNHelpers.&quot;Normalize Interval&quot;(Observations.effective) overlaps IP.period)
   return ObservationVitalSignsResource(Observations,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-observation-vitals'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-observation-vitals'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="12"></valueInteger>
@@ -387,7 +387,7 @@ define &quot;SDE Observation Vital Signs Category&quot;:
     and exists(&quot;Initial Population&quot; IP
       where NHSNHelpers.&quot;Normalize Interval&quot;(DiagnosticReports.effective) overlaps IP.period)
   return DiagnosticReportResource(DiagnosticReports,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-diagnosticreport'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="13"></valueInteger>
@@ -407,7 +407,7 @@ define &quot;SDE Observation Vital Signs Category&quot;:
     &quot;Initial Population&quot; IP
     where NHSNHelpers.&quot;Normalize Interval&quot;(MedicationAdministrations.effective) overlaps IP.period)
   return SharedResource.MedicationAdministrationResource(MedicationAdministrations,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-medicationadministration'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-medicationadministration'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="14"></valueInteger>
@@ -432,7 +432,7 @@ define &quot;SDE Observation Category&quot;:
       &quot;Initial Population&quot; IP
       where NHSNHelpers.&quot;Normalize Interval&quot;(Observations.effective) overlaps IP.period)
   return ObservationResource(Observations,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-observation'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-observation'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="15"></valueInteger>
@@ -490,7 +490,7 @@ define &quot;SDE Condition&quot;:
     )
   )
   return SharedResource.ConditionResource(Conditions,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-condition'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-condition'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="17"></valueInteger>
@@ -528,7 +528,7 @@ define &quot;SDE DiagnosticReport Lab&quot;:
       &quot;Initial Population&quot; IP
       where NHSNHelpers.&quot;Normalize Interval&quot;(DiagnosticReports.effective) overlaps IP.period))
   return SharedResource.DiagnosticReportLabResource(DiagnosticReports,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport-lab'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-diagnosticreport-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="19"></valueInteger>
@@ -567,7 +567,7 @@ define &quot;SDE DiagnosticReport Lab&quot;:
   where exists(&quot;Initial Population&quot;)
   and Locations is not null
   return SharedResource.LocationResource(Locations,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-location'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-location'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="21"></valueInteger>
@@ -586,7 +586,7 @@ define &quot;SDE DiagnosticReport Lab&quot;:
   where exists(&quot;Initial Population&quot; IP
     where ServiceRequests.authoredOn during IP.period)
   return SharedResource.ServiceRequestResource(ServiceRequests,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-servicerequest'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-servicerequest'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="22"></valueInteger>
@@ -609,7 +609,7 @@ define &quot;SDE DiagnosticReport Lab&quot;:
       &quot;Initial Population&quot; IP
       where NHSNHelpers.&quot;Normalize Interval&quot;(DiagnosticReports.effective) overlaps IP.period)
   return DiagnosticReportResource(DiagnosticReports,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-diagnosticreport-note'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-diagnosticreport-note'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="23"></valueInteger>
@@ -646,7 +646,7 @@ define &quot;SDE DiagnosticReport Lab&quot;:
   where MedReqOrAdmin.medication is FHIR.Reference
   and exists(&quot;Initial Population&quot;) //No longer need to check for timing here because it's checked in SDE Medication Request/Administriation
   return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication),
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-medication'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-medication'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="25"></valueInteger>
@@ -667,7 +667,7 @@ define &quot;SDE DiagnosticReport Lab&quot;:
     where NHSNHelpers.&quot;Normalize Interval&quot;(Specimens.collection.collected) overlaps IP.period
   )
   return SharedResource.SpecimenResource(Specimens,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-specimen'}})"></valueString>
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-specimen'}})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="26"></valueInteger>
@@ -3314,12 +3314,12 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
       <system value="https://nhsnlink.org"></system>
       <value value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></value>
    </identifier>
-   <version value="1.0.0-dev"></version>
+   <version value="1.0.1-dev"></version>
    <name value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></name>
    <title value="NHSN dQM Acute Care Hospital Monthly Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2025-04-24T12:39:28-05:00"></date>
+   <date value="2025-05-12T09:16:27-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Acute Care Hospital Monthly Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>
