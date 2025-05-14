@@ -10,8 +10,8 @@ Usage: #example
 * status.extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-element-value-extension"
 * status.extension.valueString = "TRIAGED"
 * class = $v3-ActCode#ACUTE "Inpatient Acute"
-* type = $sct#4525004 "Emergency department patient visit"
-* type.text = "Emergency department patient visit"
+* type = $sct#183452005 "Emergency hospital admission (procedure)"
+* type.text = "Emergency hospital admission"
 * subject = Reference(patient-example-ach-daily-influenzatherapeutic)
 * subject.display = "ACHDaily, InfluenzaTherapeutic"
 * period.start = "2024-01-01T08:00:00Z"

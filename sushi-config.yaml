@@ -30,7 +30,6 @@ dependencies:
     id: uscore
   fhir.cqf.common:
     version: 4.0.1
-    uri: http://fhir.org/guides/cqf/common/ImplementationGuide/cqf.fhir.common
     id: cqf
   hl7.fhir.us.cqfmeasures: 3.0.0
   hl7.fhir.us.davinci-deqm: 3.1.0
@@ -45,6 +44,7 @@ parameters:
   path-liquid: templates\liquid
   excludettl: 'true'
   excludemap: 'true'
+  pin-canonicals: pin-multiples
 
   default-contact: true
   default-publisher: true

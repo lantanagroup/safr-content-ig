@@ -9,22 +9,15 @@
 
 # This is an error in the DEQM STU3 specification that was later relaxed by DEQM STU4. The core IG Publisher produces an error if there is a measurescore for for a cohort MeasureReport 
 MeasureReport.group.measureScore: minimum required = 1, but only found 0 (from http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0)
-ERROR: Bundle/bundle-example-ach-subject-ach-pass1: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
-ERROR: Bundle/bundle-example-ach-subject-ach-pass2: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
-ERROR: Bundle/bundle-example-ach-subject-ach-pass3: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
-ERROR: Bundle/bundle-example-rps-subject-influenzatherapeutic: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
-ERROR: Bundle/bundle-example-rps-subject-initialpopulationpass: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
-ERROR: Bundle/bundle-example-rps-subject-negativepcr: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
-ERROR: Bundle/bundle-example-rps-subject-rsvlabbtg: Bundle: Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
-
+%Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
 
 # NHSN does not use (and may strip) performer in Observations. They are not included in samples in this IG
 Best Practice Recommendation: In general, all observations should have a performer
 
 # Custom template contains javascript required for the IG
-The <script> containing the javascript 'try {       var curr'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 394 other files)
-The <script> containing the javascript 'anchors.options.visi'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 835 other files)
-The <script> containing the javascript '$(document).ready(fu'... is illegal and not allowed on the HL7 cibuild - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 cibuild (also in 835 other files)
+%The <script> containing the javascript 'try { var curr'... is illegal and not allowed on the HL7 ci-build - need to put the script in a .js file in a trusted template if this IG is to build on the HL7 ci-build (if it is justified and needed)%
+%The <script> containing the javascript '$(document).ready(fu'... is illegal and not allowed on the HL7 ci-build - need to put the script in a .js file in a trusted template if this IG is to build on the HL7 ci-build (if it is justified and needed)%
+%The <script> containing the javascript 'anchors.options.visi'... is illegal and not allowed on the HL7 ci-build - need to put the script in a .js file in a trusted template if this IG is to build on the HL7 ci-build (if it is justified and needed)%
 
 # Extensions meant to have a context of Element.
 Review the extension type for link-original-mapped-concept-extension: extensions should not have a context of Element unless it's really intended that they can be used anywhere
@@ -37,8 +30,8 @@ Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/medicationre
 Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/dose-rate-type|1.0.0
 Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/condition-ver-status|4.0.1 from hl7.fhir.r4.core#4.0.1
 
-
-
+# Pinned versions of VS/CS via pin-canonicals parameter
+%Pinned the version of http://terminology.hl7.org/%
 
 
 # Slices in bundles are not defined for clinical data.
@@ -75,10 +68,7 @@ INFORMATION: StructureDefinition/ach-observation-lab: StructureDefinition.snapsh
 
 
 # INFORMATION: Notice where contained subject list resource cannot be processed
-Unable to check the stated count 2 because the subject list cannot be fully processed (Subject reference MeasureReport resolved to a #list-example-ach-individual-measurereport-list, which could not be processed)
-Unable to check the stated count 4 because the subject list cannot be fully processed (Subject reference MeasureReport resolved to a #list-example-rps-individual-measurereport-list, which could not be processed)
-Unable to check the stated count 2 because the subject list cannot be fully processed (Subject reference MeasureReport resolved to a #list-example-individual-measurereport-list, which could not be processed)
-
+Unable to check the stated count 2 because the subject list cannot be fully processed (Subject reference MeasureReport resolved to a #list-example-ach-monthly-individual-measurereport-list, which could not be processed)
 
 
 # WARNING: An example proprietary code system, not meant to be validated
@@ -86,3 +76,8 @@ A definition for CodeSystem 'http://www.example.com/prorpietary' could not be fo
 
 # INFORMATION: maxValueSet is used by tooling for R4.
 The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.2.0 is deprecated
+
+# WARNING: Descriptive URLs are not expected to resolve
+%URL value 'urn:oid:%
+%URL value 'https://nhsnlink.org' does not resolve
+%URL value 'https://www.cdc.gov/nhsn/OrgID' does not resolve 

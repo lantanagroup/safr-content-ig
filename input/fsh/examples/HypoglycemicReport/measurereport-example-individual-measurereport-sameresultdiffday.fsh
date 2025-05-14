@@ -72,7 +72,7 @@ Usage: #example
 * extension[=].valueReference = Reference(Observation/observation-example-hypo-lab-sameresultdiffday7)
 * status = #complete
 * type = #individual
-* measure = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNdQMAcuteCareHospitalInitialPopulation|1.0.0-cibuild"
+* measure = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation|1.0.0-cibuild"
 * subject = Reference(Patient/patient-example-sameresultdiffday)
 * date = "2022-11-15T21:03:39+00:00"
 * reporter = Reference(organization-example-submitting-organization)

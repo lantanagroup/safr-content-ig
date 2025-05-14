@@ -99,7 +99,7 @@ groups:
   libs:
     name: "Knowledge Artifacts: Measure Libraries"
     resources:
-      Library/NHSNdQMAcuteCareHospitalMonthlyInitialPopulation:
+      Library/NHSNAcuteCareHospitalMonthlyInitialPopulation:
         name: NHSN dQM Acute Care Hospital Monthly Initial Population
         description: Library of NHSN dQM Acute Care Hospital Monthly Initial Population Measure
       Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
@@ -166,13 +166,13 @@ groups:
       Bundle/bundle-example-ach-monthly-header:
         name: Example ACH Monthly Submission Header Bundle
         description: Example Separated ACH Monthly Submission Header Bundle
-      Bundle/bundle-example-ach-monthly-subject-ach-monthly-pass1:
+      Bundle/bundle-example-ach-monthly-subject-ach-pass1:
         name: Example ACH Monthly Submission Subject Bundle 1
         description: Example Separated ACH Monthly Submission Subject Bundle 1 for LOS/MEN
-      Bundle/bundle-example-ach-monthly-subject-ach-monthly-pass2:
+      Bundle/bundle-example-ach-monthly-subject-ach-pass2:
         name: Example ACH Monthly Submission Subject Bundle 2
         description: Example Separated ACH Monthly Submission Subject Bundle 2 for Hypoglycemia and VTE
-      Bundle/bundle-example-ach-monthly-subject-ach-monthly-pass3:
+      Bundle/bundle-example-ach-monthly-subject-ach-pass3:
         name: Example ACH Monthly Submission Subject Bundle 3
         description: Example Separated ACH Monthly Submission Subject Bundle 3 for CDI and VTE
 

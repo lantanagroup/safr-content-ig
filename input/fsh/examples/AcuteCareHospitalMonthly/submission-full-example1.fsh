@@ -13,8 +13,8 @@ Usage: #example
 * entry[=].resource = device-example-submitting-device
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/List/list-example-patients-of-interest"
 * entry[=].resource = list-example-patients-of-interest
-* entry[+].fullUrl = "http://nhsnlink.org/fhir/MeasureReport/measurereport-example-subjectlist1"
-* entry[=].resource = measurereport-example-subjectlist1
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/MeasureReport/measurereport-example-ach-monthly-subjectlist1"
+* entry[=].resource = measurereport-example-ach-monthly-subjectlist1
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Medication/medication-example-hypo-sameresultdiffday1"
 * entry[=].resource = medication-example-hypo-sameresultdiffday1
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Observation/observation-example-hypo-lab-sameresultdiffday1"

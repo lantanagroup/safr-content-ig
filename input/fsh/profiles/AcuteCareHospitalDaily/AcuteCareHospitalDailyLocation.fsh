@@ -13,6 +13,6 @@ Description: "This profile contains Required and Must Support data elements for 
 * physicalType from http://hl7.org/fhir/ValueSet/location-physical-type (extensible)
 * physicalType MS
 * type 1..
-* type from http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType (extensible)
+* type from http://terminology.hl7.org/ValueSet/v3-ServiceDeliveryLocationRoleType|3.0.0 (extensible)
 * partOf MS
   * reference 1.. MS

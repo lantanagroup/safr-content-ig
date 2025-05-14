@@ -10,7 +10,7 @@ Usage: #example
 * contained = Inline-Instance-for-measurereport-example-subjectlist1-1
 * status = #complete
 * type = #subject-list
-* measure = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNdQMAcuteCareHospitalInitialPopulation|1.0.0-cibuild"
+* measure = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation|1.0.0-cibuild"
 * period.start = "2022-08-01T00:00:00+00:00"
 * period.end = "2022-08-31T23:59:59+00:00"
 * group.population.code = $measure-population#initial-population "Initial Population"
