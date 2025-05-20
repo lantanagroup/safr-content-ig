@@ -15,5 +15,5 @@ Usage: #example
 * occurrenceDateTime = "2024-01-02"
 * primarySource = true
 * doseQuantity = 5 'mg'
-* note.text = "Notes on adminstration of vaccine"
+* note.text = "Notes on administration of vaccine"
 * isSubpotent = true

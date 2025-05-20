@@ -2,7 +2,7 @@ Profile: AcuteCareHospitalDailyEventSpecimen
 Parent: Specimen
 Id: ach-daily-specimen
 Title: "ACH Daily Event Specimen"
-Description: "This profile contains Required and Must Support data elements for reporting COVID-19, Influenza, and Respiratory Syncytial Virus (RSV) specimen information to the NHSN Acute Care Hospital (ACH) Daily Module. This profile is based on the [HL7 FHIR R4 Specimen Resource v4.0.1](http://hl7.org/fhir/R4/specimen.html)."
+Description: "This profile contains Required and Must Support data elements for reporting COVID-19, Influenza, and Respiratory Syncytial Virus (RSV) specimen information for the NHSN Acute Care Hospital (ACH) Daily Digital Quality Measure. This profile is based on the [HL7 FHIR R4 Specimen Resource v4.0.1](http://hl7.org/fhir/R4/specimen.html)."
 * ^status = #active
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1

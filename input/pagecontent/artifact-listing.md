@@ -1,5 +1,4 @@
 This page provides an organized list of the primary FHIR artifacts defined as part of this implementation guide.
-test
 
 <!-- Taken from xslt - If there is a description in the group, then show the descriptions table column. Not sure if this is needed
 <xsl:variable name="showDescriptions" select="count(parent::f:definition/f:resource[f:groupingId/@value=current()/@id]/f:description/@value)!=0"/> -->

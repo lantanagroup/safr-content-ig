@@ -30,7 +30,7 @@ Usage: #example
 * active = true
 * name[0].use = #official
 * name[=].text = "ACHDaily InfluenzaTherapeutic"
-* name[=].family = "InfluenzaTherapeutic"
+* name[=].family = "RSVLabBTG"
 * name[=].given = "ACHDaily"
 * telecom.system = #phone
 * telecom.value = "999-999-9999"

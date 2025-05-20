@@ -198,7 +198,9 @@ For all bed censuses and counts, the following bed types should be <u>excluded</
 
 #### Description
 
-The NHSN ACH Daily module enables the measurement of facility and unit-specific incidence and prevalence of Coronavirus 2019 (COVID-19), Influenza, and Respiratory Syncytial Virus (RSV) disease among patients admitted to the hospital (inpatient, observation, or short stay status), and specific associated patient outcomes. The ACH Daily module supports an electronic health record (EHR)-/vendor-neutral standard for reporting patient-level data on hospitalized patients with a respiratory illness due to one or more of the pathogens under surveillance. Data collected via the Acute Care Hospital Daily module may be used by facilities for quality improvement and patient care planning purposes, as well as by local, state, and federal public health agencies in coordination and response to public health outbreaks. The Acute Care Hospital Daily module offers a mechanism for ongoing monitoring of infectious respiratory viral illness among hospitalized patients with minimal human resource expenditure via 100% electronically automated data capture. This initial version of the module is based on electronic data capture and upload of demographic, administrative, and clinical data from the facility’s electronic source systems such as the electronic health record (EHR), patient registration system (admission, discharge, and transfer [ADT] data), laboratory information system, and pharmacy electronic medication administration system. Facilities will have access to their data via the analysis functions of NHSN.
+The NHSN Respiratory Pathogens Surveillance (RPS) module enables the measurement of facility and unit-specific incidence and prevalence of Coronavirus 2019 (COVID-19), Influenza, and Respiratory Syncytial Virus (RSV) disease among patients admitted to the hospital (inpatient, observation, or short stay status), and specific associated patient outcomes. The RPS module offers a mechanism for ongoing monitoring of infectious respiratory viral illness among hospitalized patients with minimal human resource expenditure via 100% electronically automated data capture. This initial version of the module is based on electronic data capture and upload of demographic, administrative, and clinical data from the facility’s electronic source systems such as the electronic health record (EHR), patient registration system (admission, discharge, and transfer [ADT] data), laboratory information system, and pharmacy electronic medication administration system.
+
+RPS module data collected via the ACH Daily dQM may be used by facilities for quality improvement and patient care planning purposes, as well as by local, state, and federal public health agencies in coordination and response to public health outbreaks. Facilities will have access to their data via the analysis functions of NHSN.
 
 #### Patients of Interest
 
@@ -206,20 +208,20 @@ The facility will work with NHSN to define a list of patients of interest (POI l
 
 #### Initial Population
 
-The Acute Care Hospital Daily Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
+The ACH Daily Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
 
 #### Additional Use Case Information References
 
 [https://www.cdc.gov/nhsn/acute-care-hospital/index.html](https://www.cdc.gov/nhsn/acute-care-hospital/index.html)
 
-#### Acute Care Hospital Daily Submission Examples
+#### ACH Daily Submission Examples
 
 - [Full ACH Daily Measure Submission Bundle](Bundle-bundle-example-ach-daily-full.html)
-- [Example ACH Daily Submission Header Bundle](Bundle-bundle-example-ach-daily-header.html)
-- [Example ACH Daily Submission Initial Population Pass Bundle](Bundle-bundle-example-ach-daily-subject-initialpopulationpass.html)
-- [Example ACH Daily Submission Negative PCR Bundle](Bundle-bundle-example-ach-daily-subject-negativepcr.html)
-- [Example ACH Daily Submission Influenza Therapeutic Bundle](Bundle-bundle-example-ach-daily-subject-influenzatherapeutic.html)
-- [Example ACH Daily Submission RSV Lab BTG Bundle](Bundle-bundle-example-ach-daily-subject-rsvlabbtg.html)
+- [ACH Daily Submission Header Bundle](Bundle-bundle-example-ach-daily-header.html)
+- [ACH Daily Submission Initial Population Pass Bundle](Bundle-bundle-example-ach-daily-subject-initialpopulationpass.html)
+- [ACH Daily Submission Negative PCR Bundle](Bundle-bundle-example-ach-daily-subject-negativepcr.html)
+- [ACH Daily Submission Influenza Therapeutic Bundle](Bundle-bundle-example-ach-daily-subject-influenzatherapeutic.html)
+- [ACH Daily Submission RSV Lab BTG Bundle](Bundle-bundle-example-ach-daily-subject-rsvlabbtg.html)
 
 #### Bundle Submission Examples
 
@@ -260,7 +262,7 @@ Encounter
 
 Diagnostic Report (Lab)
 
-- [DiagnosticReport -  Example Initial Population Pass](DiagnosticReport-diagnosticreport-example-ach-daily-initialpopulationpass.html)
+- [DiagnosticReport -  ACH Daily Diagnostic Report Lab Example Initial Population Pass](DiagnosticReport-diagnosticreport-example-ach-daily-initialpopulationpass.html)
 
 Lab Result Observation 
 
@@ -271,7 +273,7 @@ Lab Result Observation
 
 Location
 
-- [Location - Example ACH Daily - Inpatient](Location-location-example-ach-daily-inpatient.html)
+- [Location - ACH Daily Location Example Inpatient](Location-location-example-ach-daily-inpatient.html)
 
 Medication
 
@@ -299,18 +301,18 @@ Medication Request
 
 Observation
 
-- [Observation - Example ACH Daily Initial Population Pass Social Isolation](Observation-observation-example-ach-daily-initialpopulationpass-isolation.html)
+- [Observation - ACH Daily Observation Example Initial Population Pass Isolation](Observation-observation-example-ach-daily-initialpopulationpass-isolation.html)
 
 Procedure
 
-- [Procedure - Example ACH Daily Negative PCR Intubation](Procedure-procedure-example-ach-daily-negativepcr-intubation.html)
+- [Procedure - ACH Daily Procedure Example Negative PCR Intubation](Procedure-procedure-example-ach-daily-negativepcr-intubation.html)
 
 Service Request
 
-- [ServiceRequest - Example ACH Daily Initial Population Pass COVID](ServiceRequest-servicerequest-example-ach-daily-initialpopulationpass-covid.html)
-- [ServiceRequest - Example ACH Daily Negative PCR COVID 1](ServiceRequest-servicerequest-example-ach-daily-negativepcr-covid-1.html)
-- [ServiceRequest - Example ACH Daily Negative PCR COVID 2](ServiceRequest-servicerequest-example-ach-daily-negativepcr-covid-2.html)
-- [ServiceRequest - Example ACH Daily RSV Lab BTG](ServiceRequest-servicerequest-example-ach-daily-rsvlabbtg-rsv.html)
+- [ServiceRequest - ACH Daily Service Request Example Initial Population Pass COVID](ServiceRequest-servicerequest-example-ach-daily-initialpopulationpass-covid.html)
+- [ServiceRequest - ACH Daily Service Request Example Negative PCR COVID 1](ServiceRequest-servicerequest-example-ach-daily-negativepcr-covid-1.html)
+- [ServiceRequest - ACH Daily Service Request Example Negative PCR COVID 2](ServiceRequest-servicerequest-example-ach-daily-negativepcr-covid-2.html)
+- [ServiceRequest - ACH Daily Service Request Example RSV Lab BTG](ServiceRequest-servicerequest-example-ach-daily-rsvlabbtg-rsv.html)
 
 Specimen
 

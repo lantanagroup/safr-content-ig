@@ -2,7 +2,7 @@ Profile: AcuteCareHospitalDailyEventEncounter
 Parent: USCoreEncounterProfile
 Id: ach-daily-encounter
 Title: "ACH Daily Event Encounter"
-Description: "This profile contains Required and Must Support data elements for reporting encounter information to the NHSN Acute Care Hospital (ACH) Daily Module. This profile is based on the [HL7 FHIR® US Core Encounter Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-encounter.html)."
+Description: "This profile contains Required and Must Support data elements for reporting encounter information for the NHSN Acute Care Hospital (ACH) Daily Digital Quality Measures. This profile is based on the [HL7 FHIR® US Core Encounter Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-encounter.html)."
 
 * obeys encounter-ach-daily-initial-population
 
@@ -12,7 +12,7 @@ Description: "This profile contains Required and Must Support data elements for 
   * use MS
   * type MS
   * period MS
-* status from AcuteCareHospitalDailyEventEncounterStatus (required)
+* status from AcuteCareHospitalDailyEncounterStatus (required)
 * status ^short = "triaged | in-progress | finished | onleave | entered-in-error"
 * status ^definition = "triaged | in-progress | finished | onleave | entered-in-error."
 * statusHistory.status 1.. // TODO Verify this is actually required when statusHistory is not nor is MS as per the DD
