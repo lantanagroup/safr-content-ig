@@ -2,7 +2,7 @@ Profile: NHSNSubjectBundle
 Parent: Bundle
 Id: nhsn-subject-bundle
 Title: "NHSN Subject Bundle"
-Description: "This profile defines a valid subject-specific dQM Bundle. The Bundle is comprised of entry slices representing the a Patient, individual MeasureReports, and the underlying patient-centric clinical information."
+Description: "This profile defines a valid subject-specific dQM Bundle. The Bundle is comprised of entry slices representing a Patient, individual MeasureReports, and the underlying patient-centric clinical information."
 
 // Split submissions won't contain all referenced resources
 //* obeys bundle-no-modifier-extensions and bundle-contain-all-measurereport-references and bundle-all-measurereport-measure-contains-version

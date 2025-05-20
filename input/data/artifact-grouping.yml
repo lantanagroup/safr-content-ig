@@ -100,10 +100,10 @@ groups:
     name: "Knowledge Artifacts: Measure Libraries"
     resources:
       Library/NHSNAcuteCareHospitalMonthlyInitialPopulation:
-        name: NHSN dQM Acute Care Hospital Monthly Initial Population
+        name: NHSN Acute Care Hospital Monthly Initial Population
         description: Library of NHSN dQM Acute Care Hospital Monthly Initial Population Measure
       Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
-        name: NHSN Glycemic ControlHypoglycemic Initial Population
+        name: NHSN Glycemic Control Hypoglycemic Initial Population
         description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
       Library/NHSNAcuteCareHospitalDailyInitialPopulation:
         name: NHSN Acute Care Hospital Daily Initial Population
