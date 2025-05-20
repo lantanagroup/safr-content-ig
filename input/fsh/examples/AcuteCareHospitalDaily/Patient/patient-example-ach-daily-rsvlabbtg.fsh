@@ -29,7 +29,7 @@ Usage: #example
 * identifier.value = "1000009002"
 * active = true
 * name[0].use = #official
-* name[=].text = "ACHDaily InfluenzaTherapeutic"
+* name[=].text = "ACHDaily RSVLabBTG"
 * name[=].family = "RSVLabBTG"
 * name[=].given = "ACHDaily"
 * telecom.system = #phone
