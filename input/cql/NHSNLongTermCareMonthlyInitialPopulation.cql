@@ -38,7 +38,7 @@ define "SDE Medication Administration":
   where exists(
     "Initial Population" IP
     where NHSNHelpers."Normalize Interval"(MedicationAdministrations.effective) overlaps IP.period)
-  return SharedResource.MedicationAdministrationResource(MedicationAdministrations,
+  return MedicationAdministrationResource(MedicationAdministrations,
   {FHIR.canonical{value: ''}})
  
 define "SDE Medication Request":
@@ -54,7 +54,7 @@ define "SDE Medication":
   union "SDE Medication Administration") MedReqOrAdmin
   where MedReqOrAdmin.medication is FHIR.Reference
   and exists("Initial Population") //No longer need to check for timing here because it's checked in SDE Medication Request/Administriation
-  return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication),
+  return MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication),
   {FHIR.canonical{value: ''}})
 
 define "SDE Observation Lab Category":
@@ -108,17 +108,8 @@ define function CoverageResource(coverage Coverage, profileURLs List<FHIR.canoni
     extension: c.extension,
     status: c.status,
     type: c.type,
-    policyHolder: c.policyHolder,
     subscriber: c.subscriber,
-    period: c.period,
-    payor: c.payor
-  }
-
-define function EncounterDiagnosis(diagnosis List<FHIR.Encounter.Diagnosis>):
-  diagnosis d
-  return FHIR.Encounter.Diagnosis{
-    condition: d.condition,
-    use: d.use
+    period: c.period
   }
 
 define function EncounterHospitalization(hospitalization FHIR.Encounter.Hospitalization):
@@ -147,10 +138,53 @@ define function EncounterResource(encounter Encounter, profileURLs List<FHIR.can
     length: e.length,
     reasonCode: e.reasonCode,
     reasonReference: e.reasonReference,
-    diagnosis: EncounterDiagnosis(e.diagnosis),
     hospitalization: EncounterHospitalization(e.hospitalization),
-    location: SharedResource.EncounterLocation(e.location),
     partOf: e.partOf
+  }
+
+define function MedicationResource(medication Medication, profileURLs List<FHIR.canonical>):
+  medication m
+  return Medication{
+    id: FHIR.id {value: 'LCR-' + m.id},
+    meta: SharedResource.MetaElement(m, profileURLs),
+    extension: m.extension,
+    code: m.code,
+    status: m.status,
+    form: m.form,
+    amount: m.amount,
+    ingredient: SharedResource.MedicationIngredient(m.ingredient)
+  }
+
+define function MedicationAdministrationDosage(dosage FHIR.MedicationAdministration.Dosage):
+  dosage d
+  return FHIR.MedicationAdministration.Dosage{
+    text: d.text,
+    route: d.route,
+    method: d.method,
+    dose: d.dose
+  }
+
+define function MedicationAdministrationResource(medicationAdministration MedicationAdministration, profileURLs List<FHIR.canonical>):
+  medicationAdministration m
+  return MedicationAdministration{
+    id: FHIR.id {value: 'LCR-' + m.id},
+    meta: SharedResource.MetaElement(m, profileURLs),
+    extension: m.extension,
+    instantiates: m.instantiates,
+    partOf: m.partOf,
+    status: m.status,
+    statusReason: m.statusReason,
+    category: m.category,
+    medication: m.medication,
+    subject: m.subject,
+    context: m.context,
+    supportingInformation: m.supportingInformation,
+    effective: m.effective,
+    reasonCode: m.reasonCode,
+    reasonReference: m.reasonReference,
+    request: m.request,
+    dosage: MedicationAdministrationDosage(m.dosage),
+    eventHistory: m.eventHistory
   }
 
 define function MedicationRequestDoseAndRate(doseAndRate List<FHIR.Dosage.DoseAndRate>):
@@ -165,10 +199,8 @@ define function MedicationRequestDosageInstruction(dosageInstruction List<FHIR.D
   dosageInstruction dI
   return FHIR.Dosage{
     text: dI.text,
-    patientInstruction: dI.patientInstruction,
     timing: dI.timing,
     asNeeded: dI.asNeeded,
-    site: dI.site,
     route: dI.route,
     method: dI.method,
     doseAndRate: MedicationRequestDoseAndRate(dI.doseAndRate)
