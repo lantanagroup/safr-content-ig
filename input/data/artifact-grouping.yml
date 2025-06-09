@@ -42,19 +42,19 @@ groups:
       - StructureDefinition/ach-monthly-medicationadministration
       - StructureDefinition/ach-monthly-medicationrequest
       
-  hypo:
-    name: Hypoglycemic Event Reporting profiles
-    resources:
-      - StructureDefinition/hypoglycemic-reporting-condition
-      - StructureDefinition/hypoglycemic-reporting-coverage
-      - StructureDefinition/hypoglycemic-reporting-encounter
-      - StructureDefinition/hypoglycemic-reporting-observation-lab
-      - StructureDefinition/hypoglycemic-reporting-location
-      - StructureDefinition/hypoglycemic-reporting-medication
-      - StructureDefinition/hypoglycemic-reporting-medicationadministration
-      - StructureDefinition/hypoglycemic-reporting-medicationrequest
-      - StructureDefinition/hypoglycemic-reporting-servicerequest
-      - StructureDefinition/hypoglycemic-reporting-specimen      
+  # hypo:
+  #   name: Hypoglycemic Event Reporting profiles
+  #   resources:
+  #     - StructureDefinition/hypoglycemic-reporting-condition
+  #     - StructureDefinition/hypoglycemic-reporting-coverage
+  #     - StructureDefinition/hypoglycemic-reporting-encounter
+  #     - StructureDefinition/hypoglycemic-reporting-observation-lab
+  #     - StructureDefinition/hypoglycemic-reporting-location
+  #     - StructureDefinition/hypoglycemic-reporting-medication
+  #     - StructureDefinition/hypoglycemic-reporting-medicationadministration
+  #     - StructureDefinition/hypoglycemic-reporting-medicationrequest
+  #     - StructureDefinition/hypoglycemic-reporting-servicerequest
+  #     - StructureDefinition/hypoglycemic-reporting-specimen      
 
   ach-daily:
     name: Acute Care Hospital Daily Event Reporting Profiles
@@ -91,22 +91,27 @@ groups:
   measures:
     name: "Knowledge Artifacts: Digital Quality Measure"
     resources:
-      - Measure/NHSNGlycemicControlHypoglycemicInitialPopulation
-      - Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation
-      - Measure/NHSNAcuteCareHospitalDailyInitialPopulation
+      # - Measure/NHSNGlycemicControlHypoglycemicInitialPopulation
+      Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation:
+        name: NHSN dQM Acute Care Hospital Monthly Initial Population Measure
+        description: The Acute Care Hospital Monthly Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period.
+      Measure/NHSNAcuteCareHospitalDailyInitialPopulation:
+        name: NHSN dQM Acute Care Hospital Daily Initial Population Measure
+        description: All encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
+
       # - Measure/NHSNBedCapacityMeasure
 
   libs:
     name: "Knowledge Artifacts: Measure Libraries"
     resources:
       Library/NHSNAcuteCareHospitalMonthlyInitialPopulation:
-        name: NHSN dQM Acute Care Hospital Monthly Initial Population
+        name: NHSN Acute Care Hospital Monthly Initial Population Library
         description: Library of NHSN dQM Acute Care Hospital Monthly Initial Population Measure
-      Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
-        name: NHSN Glycemic ControlHypoglycemic Initial Population
-        description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
+      # Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
+      #   name: NHSN Glycemic ControlHypoglycemic Initial Population
+      #   description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
       Library/NHSNAcuteCareHospitalDailyInitialPopulation:
-        name: NHSN Acute Care Hospital Daily Initial Population
+        name: NHSN Acute Care Hospital Daily Initial Population Library
         description: Library of NHSN Acute Care Hospital Daily Initial Population Measure
       # Library/NHSNBedCapacityMeasure:
       #   name: NHSN Bed Capacity Reporting Initial Population

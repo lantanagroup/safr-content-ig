@@ -1,7 +1,7 @@
 Instance: medication-example-vancomycin-15
 InstanceOf: AcuteCareHospitalMonthlyReportingMedication
-Title: "Medication - Example Vancomycin 15"
-Description: "Medication - Example - Vancomycin Injectable Solution"
+Title: "Medication - Example ACH Monthly Vancomycin 15"
+Description: "Medication - Example ACH Monthly - Vancomycin Injectable Solution"
 Usage: #example
 
 * code.coding[+] = $rxnorm#375983 "vancomycin Injectable Solution"
