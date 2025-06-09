@@ -3604,10 +3604,10 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <code value="supplemental-data"></code>
          </coding>
       </usage>
-      <description value="SDE ACH Daily Specimen"></description>
+      <description value="SDE RPS Specimen"></description>
       <criteria>
          <language value="text/cql-identifier"></language>
-         <expression value="SDE ACH Daily Specimen"></expression>
+         <expression value="SDE RPS Specimen"></expression>
       </criteria>
    </supplementalData>
    <supplementalData id="sde-rsv-specimen">
@@ -3636,17 +3636,17 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          <expression value="SDE COVID And Influenza Specimen"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData id="sde-ach-daily-diagnosticreport">
+   <supplementalData id="rps-diagnosticreport">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
          </coding>
       </usage>
-      <description value="SDE ACH Daily DiagnosticReport"></description>
+      <description value="RPS DiagnosticReport"></description>
       <criteria>
          <language value="text/cql-identifier"></language>
-         <expression value="SDE ACH Daily DiagnosticReport"></expression>
+         <expression value="RPS DiagnosticReport"></expression>
       </criteria>
    </supplementalData>
    <supplementalData id="sde-rsv-diagnosticreport">
@@ -3682,10 +3682,10 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <code value="supplemental-data"></code>
          </coding>
       </usage>
-      <description value="SDE ACH Daily DiagnosticReport Result from Lab"></description>
+      <description value="SDE RPS DiagnosticReport Result from Lab"></description>
       <criteria>
          <language value="text/cql-identifier"></language>
-         <expression value="SDE ACH Daily DiagnosticReport Result from Lab"></expression>
+         <expression value="SDE RPS DiagnosticReport Result from Lab"></expression>
       </criteria>
    </supplementalData>
    <supplementalData id="sde-covid-and-influenza-diagnosticreport-result-from-lab">
@@ -3714,17 +3714,17 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          <expression value="SDE RSV DiagnosticReport Result from Lab"></expression>
       </criteria>
    </supplementalData>
-   <supplementalData id="sde-ach-daily-servicerequest">
+   <supplementalData id="rps-servicerequest">
       <usage>
          <coding>
             <system value="http://terminology.hl7.org/CodeSystem/measure-data-usage"></system>
             <code value="supplemental-data"></code>
          </coding>
       </usage>
-      <description value="SDE ACH Daily ServiceRequest"></description>
+      <description value="RPS ServiceRequest"></description>
       <criteria>
          <language value="text/cql-identifier"></language>
-         <expression value="SDE ACH Daily ServiceRequest"></expression>
+         <expression value="RPS ServiceRequest"></expression>
       </criteria>
    </supplementalData>
    <supplementalData id="sde-isolation-precautions-implemented">

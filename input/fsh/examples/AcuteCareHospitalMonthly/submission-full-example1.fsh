@@ -1,15 +1,13 @@
-// Examples of separated bundles
-
-
-Instance: bundle-example-ach-monthly-header
-InstanceOf: NHSNSubmissionHeaderBundle
-Title: "Example ACH Monthly Submission Header Bundle"
-Description: "Example Separated ACH Monthly Submission Header Bundle"
+Instance: submission-full-example1
+InstanceOf: NHSNMeasureReportBundleProfile
+Title: "Full ACH Measure Submission Bundle"
+Description: "Measure Bundle - Full ACH Measure Submission Example"
 Usage: #example
 * identifier.system = "urn:ietf:rfc:3986"
 * identifier.value = "urn:uuid:1eaddf4c-2ec0-4dc4-b26f-9586d7a777e9"
 * type = #collection
-* timestamp = "2024-02-05T21:04:29.481+00:00"
+* timestamp = "2022-11-15T21:04:29.481+00:00"
+
 * entry[0].fullUrl = "http://nhsnlink.org/fhir/Organization/organization-example-submitting-organization"
 * entry[=].resource = organization-example-submitting-organization
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Device/device-example-submitting-device"
@@ -19,22 +17,10 @@ Usage: #example
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/MeasureReport/measurereport-example-ach-monthly-subjectlist1"
 * entry[=].resource = measurereport-example-ach-monthly-subjectlist1
 
-
-Instance: bundle-example-ach-monthly-subject-ach-pass1
-InstanceOf: NHSNSubjectBundle
-Title: "Example ACH Monthly Submission Subject Bundle 1"
-Description: "Example Separated ACH Monthly Submission Subject Bundle 1 for LOS/MEN"
-Usage: #example
-* identifier.system = "urn:ietf:rfc:3986"
-* identifier.value = "urn:uuid:1eaddf4c-2ec0-4dc4-b26f-9586d7a777e1"
-* type = #collection
-* timestamp = "2024-02-05T21:04:29.481+00:00"
-* entry[0].fullUrl = "http://nhsnlink.org/fhir/MeasureReport/measurereport-example-individual-ach-monthly-pass1"
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/MeasureReport/measurereport-example-individual-ach-monthly-pass1"
 * entry[=].resource = measurereport-example-individual-ach-monthly-pass1
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Patient/patient-example-ach-monthly-pass1"
 * entry[=].resource = patient-example-ach-monthly-pass1
-//* entry[+].fullUrl = "http://nhsnlink.org/fhir/Patient/patient-example-ach-monthly-pass1"
-//* entry[=].resource = patient-example-ach-monthly-pass1
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Encounter/encounter-example-ach-monthly-pass1"
 * entry[=].resource = encounter-example-ach-monthly-pass1
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Coverage/coverage-example-ach-monthly-pass1"
@@ -68,18 +54,7 @@ Usage: #example
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Specimen/specimen-example-ach-monthly-pass1-csf"
 * entry[=].resource = specimen-example-ach-monthly-pass1-csf
 
-
-
-Instance: bundle-example-ach-monthly-subject-ach-pass2
-InstanceOf: NHSNSubjectBundle
-Title: "Example ACH Monthly Submission Subject Bundle 2"
-Description: "Example Separated ACH Monthly Submission Subject Bundle 2 for Hypoglycemia and VTE"
-Usage: #example
-* identifier.system = "urn:ietf:rfc:3986"
-* identifier.value = "urn:uuid:1eaddf4c-2ec0-4dc4-b26f-9586d7a777e1"
-* type = #collection
-* timestamp = "2024-02-05T21:04:29.481+00:00"
-* entry[0].fullUrl = "http://nhsnlink.org/fhir/MeasureReport/measurereport-example-individual-ach-monthly-pass2"
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/MeasureReport/measurereport-example-individual-ach-monthly-pass2"
 * entry[=].resource = measurereport-example-individual-ach-monthly-pass2
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Patient/patient-example-ach-monthly-pass2"
 * entry[=].resource = patient-example-ach-monthly-pass2
@@ -146,19 +121,7 @@ Usage: #example
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Specimen/specimen-example-ach-monthly-pass2-blood-2"
 * entry[=].resource = specimen-example-ach-monthly-pass2-blood-2
 
-
-
-
-Instance: bundle-example-ach-monthly-subject-ach-pass3
-InstanceOf: NHSNSubjectBundle
-Title: "Example ACH Monthly Submission Subject Bundle 3"
-Description: "Example Separated ACH Monthly Submission Subject Bundle 3 for CDI and VTE"
-Usage: #example
-* identifier.system = "urn:ietf:rfc:3986"
-* identifier.value = "urn:uuid:1eaddf4c-2ec0-4dc4-b26f-9586d7a777e2"
-* type = #collection
-* timestamp = "2024-02-05T21:04:29.481+00:00"
-* entry[0].fullUrl = "http://nhsnlink.org/fhir/MeasureReport/measurereport-example-individual-ach-monthly-pass3"
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/MeasureReport/measurereport-example-individual-ach-monthly-pass3"
 * entry[=].resource = measurereport-example-individual-ach-monthly-pass3
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Patient/patient-example-ach-monthly-pass3"
 * entry[=].resource = patient-example-ach-monthly-pass3
@@ -200,4 +163,3 @@ Usage: #example
 * entry[=].resource = servicerequest-example-ach-monthly-pass3-cdiff
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Specimen/specimen-example-ach-monthly-pass3-stool"
 * entry[=].resource = specimen-example-ach-monthly-pass3-stool
-

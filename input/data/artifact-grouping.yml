@@ -92,12 +92,12 @@ groups:
     name: "Knowledge Artifacts: Digital Quality Measure"
     resources:
       # - Measure/NHSNGlycemicControlHypoglycemicInitialPopulation
-      Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation:
-        name: NHSN dQM Acute Care Hospital Monthly Initial Population Measure
-        description: The Acute Care Hospital Monthly Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period.
-      Measure/NHSNAcuteCareHospitalDailyInitialPopulation:
-        name: NHSN dQM Acute Care Hospital Daily Initial Population Measure
-        description: All encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
+      measure/NHSNAcuteCareHospitalMonthlyInitialPopulation:
+      #   name: NHSN Acute Care Hospital Monthly Initial Population Measure
+      #   description: The Acute Care Hospital Monthly Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period.
+      measure/NHSNAcuteCareHospitalDailyInitialPopulation:
+        # name: NHSN Acute Care Hospital Daily Initial Population Measure
+        # description: All encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
 
       # - Measure/NHSNBedCapacityMeasure
 
@@ -105,14 +105,14 @@ groups:
     name: "Knowledge Artifacts: Measure Libraries"
     resources:
       Library/NHSNAcuteCareHospitalMonthlyInitialPopulation:
-        name: NHSN Acute Care Hospital Monthly Initial Population Library
-        description: Library of NHSN dQM Acute Care Hospital Monthly Initial Population Measure
-      # Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
+      #   name: NHSN Acute Care Hospital Monthly Initial Population Library
+      #   description: Library of NHSN dQM Acute Care Hospital Monthly Initial Population Measure
+      #  Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
       #   name: NHSN Glycemic ControlHypoglycemic Initial Population
       #   description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
       Library/NHSNAcuteCareHospitalDailyInitialPopulation:
-        name: NHSN Acute Care Hospital Daily Initial Population Library
-        description: Library of NHSN Acute Care Hospital Daily Initial Population Measure
+        # name: NHSN Acute Care Hospital Daily Initial Population Library
+        # description: Library of NHSN Acute Care Hospital Daily Initial Population Measure
       # Library/NHSNBedCapacityMeasure:
       #   name: NHSN Bed Capacity Reporting Initial Population
       #   description: Library of NHSN Bed Capacity Initial Population Measure
