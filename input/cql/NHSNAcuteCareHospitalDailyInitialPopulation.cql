@@ -296,7 +296,7 @@ define "SDE Encounter Discharge Dispositions":
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-encounter'}})
 
 //return the Observation during the Measurement Period
-define "SDE RPSObservation":
+define "SDE RPS Observation":
   "RPS Observation" Observations
     return SharedResource.ObservationLabResource(Observations,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-observation-lab'}})
@@ -335,7 +335,7 @@ define "SDE COVID And Influenza Specimen":
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-specimen'}})
 
 //return the DiagnosticReport during the Measurement Period
-define "SDE RPS DiagnosticReport":
+define "RPS DiagnosticReport":
   "RPS DiagnosticReport" Reports
     return SharedResource.DiagnosticReportLabResource(Reports,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-diagnosticreport-lab'}})
@@ -353,7 +353,7 @@ define "SDE RSV DiagnosticReport":
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-diagnosticreport-lab'}})
 
 //return the DiagnosticReport based on the result during the Measurement Period    
-define "SDE RPS DiagnosticReport Result from Lab":
+define "RPS DiagnosticReport Result from Lab":
   "RPS DiagnosticReport Result from Lab" Reports
     return SharedResource.DiagnosticReportLabResource(Reports,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-diagnosticreport-lab'}})
@@ -370,7 +370,7 @@ define "SDE RSV DiagnosticReport Result from Lab":
     return SharedResource.DiagnosticReportLabResource(Reports,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-diagnosticreport-lab'}})
   
-define "SDE RPS ServiceRequest":
+define "RPS ServiceRequest":
   ([ServiceRequest: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] 
   union  [ServiceRequest: "COVID_19 (Tests for SARS_CoV_2 Antigen)"] 
   union  [ServiceRequest: "Influenza (Tests for influenza A or B virus Nucleic Acid)"]

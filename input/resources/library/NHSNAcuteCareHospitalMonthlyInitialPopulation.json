@@ -3,7 +3,7 @@
   "id": "NHSNAcuteCareHospitalMonthlyInitialPopulation",
   "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNAcuteCareHospitalMonthlyInitialPopulation",
   "version": "1.0.0-dev",
-  "name": "NHSNAcuteCareHospitalMonthlyInitialPopulation",
+  "name": "NHSNAcuteCareHospitalMonthlyInitialPopulationLibrary",
   "type": {
     "coding": [ {
       "system": "http://terminology.hl7.org/CodeSystem/library-type",

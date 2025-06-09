@@ -1,7 +1,7 @@
 Instance: measurereport-example-individual-measurereport-sameresultdiffday
 InstanceOf: MeasureReport
-Title: "MeasureReport - Example Individual Measure Report Sameresultdiffday"
-Description: "Measure Report - Individual Measure Report Example Sameresultdiffday"
+Title: "MeasureReport - Example Individual Measure Report Hypo - Sameresultdiffday"
+Description: "MeasureReport - Example Individual Measure Report Hypo - Sameresultdiffday"
 Usage: #example
 * meta.profile = "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm"
 //* text.status = #extensions

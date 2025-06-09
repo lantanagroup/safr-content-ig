@@ -494,14 +494,14 @@ resources:
    #  description: Measure Report Population Description - This extension is not defined by this IG. CQF Tooling uses this extension, but the extension is yet unpublished.
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
-   StructureDefinition/extension-MeasureReport.supplementalDataElement.reference:
-     name: Measure Report Supplemental Data Element Reference (R5 surrogate extension)
-     description: Measure Report Supplemental Data Element Reference - This extension is not defined by this IG.  CQF Tooling uses this extension, but the extension is yet unpublished.
+  #  StructureDefinition/extension-MeasureReport.supplementalDataElement.reference:
+    #  name: Measure Report Supplemental Data Element Reference (R5 surrogate extension)
+    #  description: Measure Report Supplemental Data Element Reference - This extension is not defined by this IG.  CQF Tooling uses this extension, but the extension is yet unpublished.
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
-   StructureDefinition/extension-criteriaReference:
-     name: Measure Report Criteria Reference (R5 surrogate extension)
-     description: Measure Report Criteria Reference - This extension is not defined by this IG.  CQF Tooling uses this extension, but the extension is yet unpublished.
+  #  StructureDefinition/extension-criteriaReference:
+    #  name: Measure Report Criteria Reference (R5 surrogate extension)
+    #  description: Measure Report Criteria Reference - This extension is not defined by this IG.  CQF Tooling uses this extension, but the extension is yet unpublished.
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
 
   #  Measure/NHSNGlycemicControlHypoglycemicInitialPopulation:
@@ -510,18 +510,22 @@ resources:
   #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation:
-     name: NHSN dQM Acute Care Hospital Monthly Initial Population
+     name: NHSN dQM Acute Care Hospital Monthly Initial Population Measure
      description: The Acute Care Hospital Monthly Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period.
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
+   Measure/NHSNAcuteCareHospitalDailyInitialPopulation:
+     name: NHSN dQM Acute Care Hospital Daily Initial Population Measure
+     description: All encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
+
   #  Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation:
   #    name: NHSN Respiratory Pathogens Surveillance Initial Population
   #    description: The Respiratory Pathogens Surveillance Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
   #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
-   Library/SharedResourceCreation:
-     name: Shared Resource Creation
-     description: Shared Resource Creation Library
+  #  Library/SharedResourceCreation:
+    #  name: Shared Resource Creation
+    #  description: Shared Resource Creation Library
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
   #  Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
@@ -535,23 +539,27 @@ resources:
   #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    Library/NHSNAcuteCareHospitalMonthlyInitialPopulation:
-     name: NHSN Acute Care Hospital Monthly Initial Population
+     name: NHSN Acute Care Hospital Monthly Initial Population Library
      description: Library of NHSN dQM Acute Care Hospital Monthly Initial Population Measure
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
+
+   Library/NHSNAcuteCareHospitalDailyInitialPopulation:
+     name: NHSN Acute Care Hospital Daily Initial Population Library
+     description: Library of NHSN dQM Acute Care Hospital Daily Initial Population Measure
+
    
-   
-   Library/NHSNHelpers:
-     name: NHSN Helpers
-     description: "This library defines functions to convert between FHIR data types and CQL system-defined types, as well as functions to support FHIRPath implementation."
+  #  Library/NHSNHelpers:
+    #  name: NHSN Helpers
+    #  description: "This library defines functions to convert between FHIR data types and CQL system-defined types, as well as functions to support FHIRPath implementation."
 
    #Library/FHIRCommon:
    #  name: FHIR Common
    #  description: This library defines terminologies and functions commonly used in FHIR-based CQL artifacts.
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
-   Library/FHIRHelpers:
-     name: FHIR Helpers
-     description: "This library defines functions to convert between FHIR data types and CQL system-defined types, as well as functions to support FHIRPath implementation. For more information, the FHIRHelpers wiki page: https://github.com/cqframework/clinical_quality_language/wiki/FHIRHelpers"
+  #  Library/FHIRHelpers:
+  #    name: FHIR Helpers
+  #    description: "This library defines functions to convert between FHIR data types and CQL system-defined types, as well as functions to support FHIRPath implementation. For more information, the FHIRHelpers wiki page: https://github.com/cqframework/clinical_quality_language/wiki/FHIRHelpers"
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    #Library/MATGlobalCommonFunctionsFHIR4:
@@ -566,9 +574,9 @@ resources:
    
    
    
-   Device/cqf-tooling:
-     name: cqf-tooling
-     description: Device - Software System Example
+  #  Device/cqf-tooling:
+  #    name: cqf-tooling
+  #    description: Device - Software System Example
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
 

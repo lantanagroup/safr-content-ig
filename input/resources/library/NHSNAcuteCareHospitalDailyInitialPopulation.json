@@ -3,7 +3,7 @@
   "id": "NHSNAcuteCareHospitalDailyInitialPopulation",
   "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNAcuteCareHospitalDailyInitialPopulation",
   "version": "1.0.0-dev",
-  "name": "NHSNAcuteCareHospitalDailyInitialPopulation",
+  "name": "NHSNAcuteCareHospitalDailyInitialPopulationLibrary",
   "type": {
     "coding": [ {
       "system": "http://terminology.hl7.org/CodeSystem/library-type",
