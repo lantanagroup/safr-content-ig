@@ -111,6 +111,7 @@ groups:
       #   name: NHSN Glycemic ControlHypoglycemic Initial Population
       #   description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
       Library/NHSNAcuteCareHospitalDailyInitialPopulation:
+      Library/NHSNAcuteCareHospitalDailyInitialPopulation:
         # name: NHSN Acute Care Hospital Daily Initial Population Library
         # description: Library of NHSN Acute Care Hospital Daily Initial Population Measure
       # Library/NHSNBedCapacityMeasure:

@@ -1,0 +1,5 @@
+# Add 'cql-change' label to any CQL file changes within the 'input/cql' folder 
+cql-change:
+- changed-files:
+  - any-glob-to-any-file: 
+    - 'input/cql/*.cql'

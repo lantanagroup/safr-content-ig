@@ -1,6 +1,6 @@
-ValueSet: AcuteCareHospitalDailyEventEncounterStatus
+ValueSet: AcuteCareHospitalDailyEncounterStatus
 Id: ach-daily-encounter-status
-Title: "Acute Care Hospital Daily Event Encounter Status ValueSet"
+Title: "Acute Care Hospital Daily Encounter Status ValueSet"
 Description: "A set of codes indicating the status of the encounter."
 * $encounter-status#in-progress	"In Progress"
 * $encounter-status#finished "Finished"
