@@ -11,7 +11,6 @@ codesystem "LOINC": 'http://loinc.org'
 codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category' 
 codesystem "RXNORM": 'http://www.nlm.nih.gov/research/umls/rxnorm'
 
-
 valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307' 
 valueset "Inpatient, Emergency, and Observation Locations": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265' 
 valueset "Observation Services": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143' 
@@ -138,7 +137,7 @@ define "RSV Observation":
       and Observations.status in {'final','registered','preliminary','partial'}
       and exists("Initial Population")
 
-define "RPS Observation":
+define "ACH Daily Observation":
   "RSV Observation"
   union "COVID And Influenza Observation"
 
@@ -181,7 +180,7 @@ define "RSV DiagnosticReport":
     where exists("Initial Population")
       and Reports.status in {'final','registered','preliminary','partial'}
 
-define "RPS DiagnosticReport":
+define "ACH Daily DiagnosticReport":
   "COVID And Influenza DiagnosticReport"
     union "RSV DiagnosticReport"
 
@@ -238,7 +237,7 @@ define "RSV DiagnosticReport Observations":
     where Reports.result.references(Observations)
   )
 
-define "RPS DiagnosticReport Result from Lab":
+define "ACH Daily DiagnosticReport Result from Lab":
   "COVID and Influenza DiagnosticReport Result from Lab"
     union "RSV DiagnosticReport Result from Lab"
 
@@ -296,8 +295,8 @@ define "SDE Encounter Discharge Dispositions":
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-encounter'}})
 
 //return the Observation during the Measurement Period
-define "SDE RPS Observation":
-  "RPS Observation" Observations
+define "SDE ACH Daily Observation":
+  "ACH Daily Observation" Observations
     return SharedResource.ObservationLabResource(Observations,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-observation-lab'}})
 
@@ -314,8 +313,8 @@ define "SDE COVID And Influenza PRE Admission Observation":
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-observation-lab'}})
 
 //return the Specimen related to the Observation during the Measurement Period
-define "SDE RPS Specimen":
-  "RPS Observation" ObservationWithSpecimen
+define "SDE ACH Daily Specimen":
+  "ACH Daily Observation" ObservationWithSpecimen
     let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
     return SharedResource.SpecimenResource(Specimen,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-specimen'}})
@@ -335,8 +334,8 @@ define "SDE COVID And Influenza Specimen":
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-specimen'}})
 
 //return the DiagnosticReport during the Measurement Period
-define "RPS DiagnosticReport":
-  "RPS DiagnosticReport" Reports
+define "SDE ACH Daily DiagnosticReport":
+  "ACH Daily DiagnosticReport" Reports
     return SharedResource.DiagnosticReportLabResource(Reports,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-diagnosticreport-lab'}})
 
@@ -353,8 +352,8 @@ define "SDE RSV DiagnosticReport":
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-diagnosticreport-lab'}})
 
 //return the DiagnosticReport based on the result during the Measurement Period    
-define "RPS DiagnosticReport Result from Lab":
-  "RPS DiagnosticReport Result from Lab" Reports
+define "SDE ACH Daily DiagnosticReport Result from Lab":
+  "ACH Daily DiagnosticReport Result from Lab" Reports
     return SharedResource.DiagnosticReportLabResource(Reports,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-diagnosticreport-lab'}})
 
@@ -370,7 +369,7 @@ define "SDE RSV DiagnosticReport Result from Lab":
     return SharedResource.DiagnosticReportLabResource(Reports,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-diagnosticreport-lab'}})
   
-define "RPS ServiceRequest":
+define "SDE ACH Daily ServiceRequest":
   ([ServiceRequest: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] 
   union  [ServiceRequest: "COVID_19 (Tests for SARS_CoV_2 Antigen)"] 
   union  [ServiceRequest: "Influenza (Tests for influenza A or B virus Nucleic Acid)"]
