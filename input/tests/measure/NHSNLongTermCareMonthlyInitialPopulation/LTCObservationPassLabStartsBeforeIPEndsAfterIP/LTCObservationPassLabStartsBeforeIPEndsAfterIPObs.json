@@ -1,0 +1,22 @@
+{
+  "resourceType": "Observation",
+  "id": "LTCObservationPassLabStartsBeforeIPEndsAfterIPObs",
+  "subject": {
+    "reference": "Patient/LTCObservationPassLabStartsBeforeIPEndsAfterIP"
+  },
+  "category":[
+    {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+          "code": "laboratory",
+          "display": "Laboratory"
+        }
+      ]
+    }
+  ],
+  "effectivePeriod": {
+    "start": "2024-12-31T00:00:00.000Z",
+    "end": "2025-01-06T10:00:00.000Z"
+  }
+}
