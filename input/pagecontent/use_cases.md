@@ -1,13 +1,13 @@
 ### Actors 
 
-This implementation guide (IG) defines the following actors: a data source, a dQM evaluation engine, a measure source, and data aggregator.  
+This implementation guide (IG) defines the following actors: a data source, a dQM evaluation engine, a measure source, and a data aggregator.  
 
-Note: A given system may play the role of multiple actors. For example, an EHR could be both the data source and dQM evaluation engine when calculating a measure internally. Likewise, a system such as NHSNLink that resides at NHSN and queries the data source remotely may act as the dQM evaluation engine and MeasureReport recipient and evaluate the data, produce, and validate MeasureReport bundles. 
+<b>Note:</b> A given system may play the role of multiple actors. For example, an EHR could serve as both the data source and dQM evaluation engine when calculating a measure internally. Likewise, a system such as NHSNLink, which resides at NHSN and queries the data source remotely may act as the dQM evaluation engine and MeasureReport recipient, evaluating the data, producing, and validating MeasureReport bundles. 
 
 The actors defined here are used in the Reporting Scenarios section of the [Specification](specification.html) page in this IG. 
 
-- <b>Data Source:</b> The EHRs for facilities reporting to NHSN serves as the data source.   
-- <b>Measure Source:</b> NHSN stores FHIR resources used for dQM reporting such as Measure, Library, ValueSet, etc. that systems can query for the latest measure content before querying the EHR FHIR server and performing measure evaluation.   
+- <b>Data Source:</b> The EHRs for facilities reporting to NHSN serve as the data source.   
+- <b>Measure Source:</b> NHSN stores FHIR resources used for dQM reporting, such as Measure, Library, ValueSet, etc. that systems can query for the latest measure content before querying the EHR FHIR server and performing measure evaluation.   
 - <b>dQM Evaluation Engine:</b>  Requests and queries patients from the EHR FHIR server and evaluates the data against the dQM retrieved from the Measure Source. The dQM evaluation engine validates the data against the profiles in this IG. 
 - <b>MeasureReport Recipient:</b> SN ingests the MeasureReport bundles from the dQM evaluation engine.  
 
@@ -19,7 +19,7 @@ This implementation guide (IG) serves a wide variety of National Healthcare Safe
 
 #### Description
 
-The NHSN Acute Care Hospital (ACH) monthly digital quality measure (dQM) allows facilities to report line-level data electronically to NHSN for the following modules that provide monthly event rates back to the facility. These dQMs include Glycemic Control (hyperglycemia and medication-related hypoglycemia); Healthcare Facility-onset, antibiotic-Treated Clostridioides difficile (C. difficile) Infection (HT-CDI); Hospital-Onset Bacteremia and Fungemia (HOB), Venous Thromboembolism (VTE)-related Prophylaxis and event rates (under development), Late Onset Sepsis / Meningitis (under development), Hospital-onset Acute Kidney Injury (HAKI) (under development), and Opioid-related Adverse Events (ORAE) (under development).  
+The NHSN Acute Care Hospital (ACH) monthly digital quality measure (dQM) enables facilities to electronically report line-level data to NHSN for the following modules, which provide monthly event rates back to the facility. These dQMs include Glycemic Control (hyperglycemia and medication-related hypoglycemia); Healthcare Facility-onset, antibiotic-Treated Clostridioides difficile (C. difficile) Infection (HT-CDI); Hospital-Onset Bacteremia and Fungemia (HOB), Venous Thromboembolism (VTE)-related Prophylaxis and event rates (under development), Late-Onset Sepsis / Meningitis (under development), Acute Sepsis Events (ASE) (under development), Hospital-onset Acute Kidney Injury (HAKI) (under development), and Opioid-related Adverse Events (ORAE) (under development).  
 
 #### Patients of Interest
 
@@ -40,7 +40,7 @@ For specific information on the individual NHSN protocols and metrics see:
 
 #### Bundle Submission Examples
 
-- [Full Submission Bundle](Bundle-submission-full-example1.html)
+- [Full ACH Monthly Measure Submission Bundle](Bundle-submission-full-example1.html)
 - [Submitting Organization](Organization-organization-example-submitting-organization.html) 
 - [Submitting Device](Device-device-example-submitting-device.html) 
 
@@ -69,7 +69,7 @@ Encounter
 - [Encounter - Example ACH Monthly Pass2 - Inpatient](Encounter-encounter-example-ach-monthly-pass2-inpatient.html)
 - [Encounter - Example ACH Monthly Pass2 - Emergency](Encounter-encounter-example-ach-monthly-pass2-emergency.html)
 - [Encounter - Example ACH Monthly Pass3 - Short Stay](Encounter-encounter-example-ach-monthly-pass3-short-stay.html)
-- [Encounter - Example ACH Monthly Pass3 - Acute](Encounter-encounter-example-ach-monthly-pass3-acute.html)
+- [Encounter - Example ACH Monthly Pass3 - Acute Critical Care](Encounter-encounter-example-ach-monthly-pass3-acute.html)
 
 #### Line Level Data Examples
 
@@ -82,10 +82,10 @@ Coverage
 
 - [Coverage - Example ACH Monthly Pass1 Medicaid](Coverage-coverage-example-ach-monthly-pass1.html)
 - [Coverage - Example ACH Monthly Pass2 Commercial](Coverage-coverage-example-ach-monthly-pass2.html)
-
+<!-- 
 Device
 
-- [Device - Example ACH Monthly Pass1 Central Line](Device-device-example-ach-monthly-pass1-central-line.html)
+- [Device - Example ACH Monthly Pass1 Central Line](Device-device-example-ach-monthly-pass1-central-line.html) -->
 
 Diagnostic Report
 
@@ -96,7 +96,7 @@ Location
 
 - [Location - Example ACH Monthly - Emergency](Location-location-example-ach-monthly-emergency.html)
 - [Location - Example ACH Monthly - Inpatient](Location-location-example-ach-monthly-inpatient.html)
-- [Location - Example ACH Monthly - Nicu](Location-location-example-ach-monthly-nicu-level-iii.html)
+- [Location - Example ACH Monthly - NICU](Location-location-example-ach-monthly-nicu-level-iii.html)
 
 Medication
 
@@ -119,8 +119,8 @@ Medication Request
 
 Observation
 
-- [Observation - Example ACH Monthly Pass1 Blood](Observation-observation-example-ach-monthly-pass1-blood.html)
-- [Observation - Example ACH Monthly Pass1 Csf](Observation-observation-example-ach-monthly-pass1-csf.html)
+- [Observation - Example ACH Monthly Pass1 Blood Culture](Observation-observation-example-ach-monthly-pass1-blood.html)
+- [Observation - Example ACH Monthly Pass1 CSF](Observation-observation-example-ach-monthly-pass1-csf.html)
 - [Observation - Example ACH Monthly Pass1 Gestational Age](Observation-observation-example-ach-monthly-pass1-gestational-age.html)
 - [Observation - Example ACH Monthly Pass1 Vitals Weight](Observation-observation-example-ach-monthly-pass1-vitals-weight.html)
 - [Observation - Example ACH Monthly Pass2 Hemo A1C](Observation-observation-example-ach-monthly-pass2-hemo-a1c.html)
@@ -133,7 +133,7 @@ Procedure
 
 Service Request
 
-- [ServiceRequest - Example ACH Monthly Pass1 Blood](ServiceRequest-servicerequest-example-ach-monthly-pass1-blood.html)
+- [ServiceRequest - Example ACH Monthly Pass1 Blood Culture](ServiceRequest-servicerequest-example-ach-monthly-pass1-blood.html)
 - [ServiceRequest - Example ACH Monthly Pass1 CSF](ServiceRequest-servicerequest-example-ach-monthly-pass1-csf.html)
 - [ServiceRequest - Example ACH Monthly Pass2 Glucose](ServiceRequest-servicerequest-example-ach-monthly-pass2-glucose.html)
 - [ServiceRequest - Example ACH Monthly Pass2 Hemo A1C](ServiceRequest-servicerequest-example-ach-monthly-pass2-hemo-a1c.html)
