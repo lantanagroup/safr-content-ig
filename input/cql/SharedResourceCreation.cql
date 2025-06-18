@@ -1,8 +1,20 @@
-library SharedResourceCreation version '0.1.009'
+library SharedResourceCreation version '0.1.010'
 
 include FHIRHelpers version '4.0.2'
 
 using FHIR version '4.0.1'
+
+define function RemoveUnaccepted(codes List<FHIR.CodeableConcept>, accepted List<System.Code>):
+	codes c
+  where exists(
+    accepted a
+    where c ~ a
+  )
+
+define function FilterCodeableConcepts(codes List<FHIR.CodeableConcept>, accepted List<System.Code>):
+	if Count(accepted) > 0
+		then RemoveUnaccepted(codes, accepted)
+	else codes
 
 define function "GetIdExtensions"(domainResource DomainResource):
   domainResource.extension E
@@ -43,7 +55,7 @@ define function ConditionEvidence(evidence List<FHIR.Condition.Evidence>):
     detail: e.detail
   }
 
-define function ConditionResource(condition Condition, profileURLs List<FHIR.canonical>):
+define function ConditionResource(condition Condition, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
   condition c
   return Condition{
     id: FHIR.id {value: 'LCR-' + c.id},
@@ -51,7 +63,7 @@ define function ConditionResource(condition Condition, profileURLs List<FHIR.can
     extension: c.extension,
     clinicalStatus: c.clinicalStatus,
     verificationStatus: c.verificationStatus,
-    category: c.category,
+    category: FilterCodeableConcepts(c.category, acceptedCategories),
     severity: c.severity,
     code: c.code,
     bodySite: c.bodySite,
