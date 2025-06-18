@@ -1,0 +1,17 @@
+{
+  "resourceType": "Coverage",
+  "id": "LTCComplicatedUTICov",
+  "beneficiary": {
+    "reference": "Patient/LTCComplicatedUTI"
+  },
+  "type": {
+    "coding":{
+      "code": "311",
+      "display": "Tricare (Champus)"
+    }
+  },
+  "period": {
+    "start": "2025-01-02T00:00:00.000Z",
+    "end": "2025-01-04T10:00:00.000Z"
+  }
+}

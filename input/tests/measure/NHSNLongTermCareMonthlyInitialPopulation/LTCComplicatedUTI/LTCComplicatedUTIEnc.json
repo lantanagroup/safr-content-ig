@@ -1,0 +1,35 @@
+{
+    "resourceType": "Encounter",
+    "id": "LTCComplicatedUTIEnc",
+    "meta": {
+        "versionId": "5",
+        "lastUpdated": "2024-04-01T19:43:55.894+00:00",
+        "source": "#8095130e244425aa",
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter"
+        ]
+    },
+    "status": "in-progress",
+    "subject": {
+        "reference": "Patient/LTCComplicatedUTI"
+    },
+    "period": {
+        "start": "2025-01-01T00:00:00.000Z"
+    },
+    "reasonCode": [
+        {
+            "coding":[
+                {
+                    "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                    "code": "F03.90",
+                    "display": "Dementia"
+                },
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "52448006",
+                    "display": "Dementia (disorder)"
+                }
+            ]
+        }
+    ]
+}
