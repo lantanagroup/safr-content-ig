@@ -3,8 +3,8 @@ library NHSNGlycemicControlHypoglycemicInitialPopulation version '1.0.0-dev'
 using FHIR version '4.0.1'
 
 include FHIRHelpers version '4.0.2' called FHIRHelpers
-include NHSNHelpers version '0.0.002' called NHSNHelpers
-include SharedResourceCreation version '0.1.009' called SharedResource
+include NHSNHelpers version '0.0.003' called NHSNHelpers
+include SharedResourceCreation version '0.1.010' called SharedResource
 
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode' 
 codesystem "Diagnosis Role": 'http://terminology.hl7.org/CodeSystem/diagnosis-role'
@@ -134,7 +134,8 @@ define "SDE Condition":
     where NHSNHelpers."Normalize Interval"(Conditions.onset) overlaps InitialPopulation.period
   )
   return SharedResource.ConditionResource(Conditions,
-  {FHIR.canonical{value: ''}})
+  {FHIR.canonical{value: ''}},
+  {})
   
 //To capture the Encounter diagnosis
 define "SDE Condition during Encounter":
@@ -144,7 +145,8 @@ define "SDE Condition during Encounter":
     where category ~ "encounter-diagnosis"
   )
   return SharedResource.ConditionResource(ConditionEncounterDiagnosis,
-  {FHIR.canonical{value: ''}})
+  {FHIR.canonical{value: ''}},
+  {})
 
 //To capture Coverage information
 define "SDE Coverage": 
