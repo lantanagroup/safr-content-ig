@@ -1,0 +1,11 @@
+{
+  "resourceType": "Coverage",
+  "id": "LTCCoveragePassOverlapsIPEndCov",
+  "beneficiary": {
+    "reference": "Patient/LTCCoveragePassOverlapsIPEnd"
+  },
+  "period": {
+    "start": "2025-01-02T00:00:00.000Z",
+    "end": "2025-01-06T10:00:00.000Z"
+  }
+}

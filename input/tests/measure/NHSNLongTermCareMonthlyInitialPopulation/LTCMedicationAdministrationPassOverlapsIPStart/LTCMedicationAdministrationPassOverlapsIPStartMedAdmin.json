@@ -1,0 +1,12 @@
+{
+  "resourceType": "MedicationAdministration",
+  "id": "LTCMedicationAdministrationPassOverlapsIPStartMedAdmin",
+  "subject": {
+    "reference": "Patient/LTCMedicationAdministrationPassOverlapsIPStart",
+    "display": "Donald Duck"
+  },
+  "effectivePeriod": {
+    "start": "2024-12-31T00:00:00.000Z",
+    "end": "2025-01-02T00:00:00.000Z"
+  }
+}

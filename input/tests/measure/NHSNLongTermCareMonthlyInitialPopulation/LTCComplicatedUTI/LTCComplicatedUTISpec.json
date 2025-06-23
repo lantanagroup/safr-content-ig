@@ -1,0 +1,19 @@
+{
+         
+    "resourceType": "Specimen",
+    "id": "LTCComplicatedUTISpec",
+    "status": "available",
+    "type": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "122575003",            
+                "display": "Urine specimen (specimen)"
+            }
+        ]
+    },
+    "subject": {"reference": "Patient/LTCComplicatedUTI"},
+    "receivedTime": "2025-01-02T12:00:00Z",
+    "collection": {"collectedDateTime": "2025-01-01T15:20:00Z"}
+
+}
