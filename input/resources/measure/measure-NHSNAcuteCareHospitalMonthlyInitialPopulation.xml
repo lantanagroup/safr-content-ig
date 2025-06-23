@@ -3332,12 +3332,12 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
       <system value="https://nhsnlink.org"></system>
       <value value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></value>
    </identifier>
-   <version value="1.0.0-dev"></version>
+   <version value="1.0.1-dev"></version>
    <name value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></name>
    <title value="NHSN dQM Acute Care Hospital Monthly Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2025-06-18T12:45:57-05:00"></date>
+   <date value="2025-06-23T07:23:25-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Acute Care Hospital Monthly Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>
