@@ -82,8 +82,8 @@ Coverage
 
 - [Coverage - Example ACH Monthly Pass1 Medicaid](Coverage-coverage-example-ach-monthly-pass1.html)
 - [Coverage - Example ACH Monthly Pass2 Commercial](Coverage-coverage-example-ach-monthly-pass2.html)
-<!-- 
-Device
+
+<!-- Device
 
 - [Device - Example ACH Monthly Pass1 Central Line](Device-device-example-ach-monthly-pass1-central-line.html) -->
 
