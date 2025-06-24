@@ -2579,7 +2579,6 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
    <relatedArtifact>
       <type value="documentation"></type>
       <display value="NHSN Protocol Documentation [Placeholder]"></display>
-      <url value="https://www.cdc.gov/nhsn/index.html"></url>
       <document>
          <url value="https://www.cdc.gov/nhsn/index.html"></url>
       </document>

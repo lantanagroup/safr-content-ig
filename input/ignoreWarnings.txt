@@ -27,10 +27,12 @@ Details for MeasureReport/measurereport-example-ach-daily-rsvlabbtg matching aga
 Slice 'MeasureReport.contained:ip-measurereport-list': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/subjectlist-measurereport|1.0.0-cibuild). Note that other slices are allowed in addition to this required slice
 Unable to find a profile match for #list-example-ach-monthly-individual-measurereport-list among choices: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list
 Details for #list-example-ach-monthly-individual-measurereport-list matching against profile http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list|1.0.0-cibuild
+Details for #list-example-ach-monthly-individual-measurereport-list matching against profile http://hl7.org/fhir/StructureDefinition/List|4.0.1
 
 This element does not match any known slice defined in the profile http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/subjectlist-measurereport|1.0.0-cibuild (this may not be a problem, but you should check that it's not intended to match a slice)
 Unable to find a profile match for #list-example-ach-daily-individual-measurereport-list among choices: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list
 Details for #list-example-ach-daily-individual-measurereport-list matching against profile http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list|1.0.0-cibuild
+Details for #list-example-ach-daily-individual-measurereport-list matching against profile http://hl7.org/fhir/StructureDefinition/List|4.0.1
 
 Unable to find a profile match for MeasureReport/measurereport-example-individual-ach-monthly-pass1 among choices: http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm
 Details for MeasureReport/measurereport-example-individual-ach-monthly-pass1 matching against profile http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0
@@ -39,7 +41,7 @@ Details for MeasureReport/measurereport-example-individual-ach-monthly-pass2 mat
 Unable to find a profile match for MeasureReport/measurereport-example-individual-ach-monthly-pass3 among choices: http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm
 Details for MeasureReport/measurereport-example-individual-ach-monthly-pass3 matching against profile http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0
 
-This element does not match any known slice defined in the profile http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/subjectlist-measurereport|1.0.0-cibuild (this may not be a problem, but you should check that it's not intended to match a slice)
+
 
 # Example of MedicationRequest, reportedBoolean is allowed
 %reported.ofType(boolean): This element does not match any known slice defined in the profile http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-medicationrequest|1.0.0-cibuild (this may not be a problem, but you should check that it's not intended to match a slice)
@@ -54,10 +56,6 @@ This element does not match any known slice defined in the profile http://www.cd
 Best Practice Recommendation: In general, all observations should have a performer
 
 # Custom template contains javascript required for the IG
-The <script> containing the javascript 'try { var curr'... is illegal and not allowed on the HL7 ci-build - need to put the script in a .js file in a trusted template if this IG is to build on the HL7 ci-build (if it is justified and needed)%
-The <script> containing the javascript '$(document).ready(fu'... is illegal and not allowed on the HL7 ci-build - need to put the script in a .js file in a trusted template if this IG is to build on the HL7 ci-build (if it is justified and needed)%
-The <script> containing the javascript 'anchors.options.visi'... is illegal and not allowed on the HL7 ci-build - need to put the script in a .js file in a trusted template if this IG is to build on the HL7 ci-build (if it is justified and needed)%
-
 The <script> containing the javascript 'try {       var curr'... is illegal and not allowed on the HL7 ci-build - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 ci-build (if it is justified and needed)%
 The <script> containing the javascript '$(document).ready(fu'... is illegal and not allowed on the HL7 ci-build - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 ci-build (if it is justified and needed)%
 The <script> containing the javascript 'anchors.options.visi'... is illegal and not allowed on the HL7 ci-build - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 ci-build (if it is justified and needed)%
@@ -73,6 +71,7 @@ Reference to draft CodeSystem http://hl7.org/fhir/encounter-status|4.0.1
 Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/medicationrequest-category|1.0.0
 Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/dose-rate-type|1.0.0
 Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/condition-ver-status|4.0.1 from hl7.fhir.r4.core#4.0.1
+Reference to draft CodeSystem http://hl7.org/fhir/diagnostic-report-status|4.0.1
 
 # Pinned versions of VS/CS via pin-canonicals parameter
 %Pinned the version of http://terminology.hl7.org/%
@@ -134,3 +133,31 @@ WARNING: ImplementationGuide/gov.cdc.nhsn.measures: ImplementationGuide.dependsO
 WARNING: ImplementationGuide/gov.cdc.nhsn.measures: ImplementationGuide.dependsOn[4]: The ImplementationGuide uses package hl7.fhir.us.cqfmeasures#3.0.0 released on 2022-04-28, but the most recent appropriate version is 5.0.0. This reference is getting old and the more recent version should be considered
 WARNING: ImplementationGuide/gov.cdc.nhsn.measures: ImplementationGuide.dependsOn[5]: The ImplementationGuide uses package hl7.fhir.us.davinci-deqm#3.1.0 released on 2022-11-21, but the most recent appropriate version is 5.0.0. This reference is getting old and the more recent version should be considered
 WARNING: ImplementationGuide/gov.cdc.nhsn.measures: ImplementationGuide.dependsOn[6]: The ImplementationGuide uses package hl7.fhir.us.qicore#4.1.1 released on 2022-03-31, but the most recent appropriate version is 7.0.0. This reference is getting old and the more recent version should be considered
+
+
+# Correct VSAC ValueSet URL that cannot be accessed by the publisher
+A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
+A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1311'
+A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1312'
+A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1308'
+A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2097'
+A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2098'
+A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2099'
+A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2100'
+A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2101'
+A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2102'
+A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2103'
+A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2119'
+A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2104'
+A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2105'
+A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.85'
+A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.86'
+A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.87'
+A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.10.20.22.5.300'
+A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.274'
+
+# Base NHSN website url with no artifact definition, Added to url by CQFTooling.
+No definition could be found for URL value 'https://www.cdc.gov/nhsn/index.html'
+
+# Description generated by CQFTooling that does not include html
+INFORMATION: Measure/NHSNAcuteCareHospitalDailyInitialPopulation: Measure.contained[0]/*Library/effective-data-requirements*/.extension[81].extension[2].value.ofType(string): The string value contains text that looks like embedded HTML tags. If this content is rendered to HTML without appropriate post-processing, it may be a security risk

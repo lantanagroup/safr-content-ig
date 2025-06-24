@@ -523,9 +523,9 @@ resources:
   #    description: The Respiratory Pathogens Surveillance Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
   #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
-  #  Library/SharedResourceCreation:
-    #  name: Shared Resource Creation
-    #  description: Shared Resource Creation Library
+   Library/SharedResourceCreation:
+     name: Shared Resource Creation
+     description: Shared Resource Creation Library
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
   #  Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
@@ -548,18 +548,18 @@ resources:
      description: Library of NHSN dQM Acute Care Hospital Daily Initial Population Measure
 
    
-  #  Library/NHSNHelpers:
-    #  name: NHSN Helpers
-    #  description: "This library defines functions to convert between FHIR data types and CQL system-defined types, as well as functions to support FHIRPath implementation."
+   Library/NHSNHelpers:
+     name: NHSN Helpers
+     description: "This library defines functions to convert between FHIR data types and CQL system-defined types, as well as functions to support FHIRPath implementation."
 
    #Library/FHIRCommon:
    #  name: FHIR Common
    #  description: This library defines terminologies and functions commonly used in FHIR-based CQL artifacts.
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
-  #  Library/FHIRHelpers:
-  #    name: FHIR Helpers
-  #    description: "This library defines functions to convert between FHIR data types and CQL system-defined types, as well as functions to support FHIRPath implementation. For more information, the FHIRHelpers wiki page: https://github.com/cqframework/clinical_quality_language/wiki/FHIRHelpers"
+   Library/FHIRHelpers:
+     name: FHIR Helpers
+     description: "This library defines functions to convert between FHIR data types and CQL system-defined types, as well as functions to support FHIRPath implementation. For more information, the FHIRHelpers wiki page: https://github.com/cqframework/clinical_quality_language/wiki/FHIRHelpers. This locally defined version includes modifications from the original library."
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    #Library/MATGlobalCommonFunctionsFHIR4:
@@ -574,9 +574,9 @@ resources:
    
    
    
-  #  Device/cqf-tooling:
-  #    name: cqf-tooling
-  #    description: Device - Software System Example
+   Device/cqf-tooling:
+     name: cqf-tooling
+     description: Device - Software System Example
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
 

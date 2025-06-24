@@ -54,9 +54,9 @@ Usage: #example
 * group.population.code = $measure-population#initial-population "Initial Population"
 * group.population.count = 1
 * evaluatedResource[0] = Reference(patient-example-ach-daily-influenzatherapeutic)
-* evaluatedResource[0] = Reference(encounter-example-ach-daily-influenzatherapeutic)
-* evaluatedResource[0] = Reference(coverage-example-ach-daily-influenzatherapeutic)
-* evaluatedResource[0] = Reference(condition-example-ach-daily-influenzatherapeutic)
-* evaluatedResource[0] = Reference(medadmin-example-ach-daily-influenzatherapeutic)
-* evaluatedResource[0] = Reference(medicationrequest-example-ach-daily-influenzatherapeutic)
-* evaluatedResource[0] = Reference(immunization-example-ach-daily-influenzatherapeutic)
+* evaluatedResource[+] = Reference(encounter-example-ach-daily-influenzatherapeutic)
+* evaluatedResource[+] = Reference(coverage-example-ach-daily-influenzatherapeutic)
+* evaluatedResource[+] = Reference(condition-example-diagnosis-ach-daily-influenzatherapeutic)
+* evaluatedResource[+] = Reference(medadmin-example-ach-daily-influenzatherapeutic)
+* evaluatedResource[+] = Reference(medicationrequest-example-ach-daily-influenzatherapeutic)
+* evaluatedResource[+] = Reference(immunization-example-ach-daily-influenzatherapeutic)
