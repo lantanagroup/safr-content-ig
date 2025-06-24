@@ -1,0 +1,50 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "LTCComplicatedUTIMedReq2",
+  "subject": {
+    "reference": "Patient/LTCComplicatedUTI"
+  },
+  "medicationCodeableConcept":{
+    "coding":[
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "198335",
+        "display": "sulfamethoxazole 800 MG / trimethoprim 160 MG Oral Tablet"
+      }
+    ]
+  },
+  "authoredOn": "2025-01-09T00:00:00.000Z",
+  "dosageInstruction": [
+    {
+      "text": "30 to 60 minutes before dental procedure",
+      "route": {
+        "coding":[
+          {
+            "system": "http://snomed.info/sct",
+            "code": "26643006",
+            "display": "Oral"
+          }
+        ]
+      },
+      "doseAndRate": [
+        {
+          "doseQuantity":{
+            "value": "1"
+          },
+          "rateQuantity": {
+            "value": "2",
+            "unit": "day"
+          }
+        }
+      ]
+    }
+  ],
+  "dispenseRequest": {
+    "expectedSupplyDuration": {
+      "value": 3,
+      "unit": "days",
+      "system": "http://unitsofmeasure.org",
+      "code": "d"
+    }
+  }
+}

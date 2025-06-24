@@ -1,0 +1,13 @@
+{
+  "resourceType": "Specimen",
+  "id": "LTCSpecimenPassStartsBeforeIPEndsAfterIPSpec",
+  "subject" : {
+      "reference" : "Patient/LTCSpecimenPassStartsBeforeIPEndsAfterIP"
+  },
+   "collection" : {
+    "collectedPeriod": {
+      "start": "2024-12-31T00:00:00.000Z",
+      "end": "2025-01-06T10:00:00.000Z"
+    }
+  }  
+}

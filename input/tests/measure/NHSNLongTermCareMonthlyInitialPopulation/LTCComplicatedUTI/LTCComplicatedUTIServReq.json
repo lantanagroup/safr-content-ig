@@ -1,0 +1,23 @@
+{
+	"resourceType": "ServiceRequest",
+	"id": "LTCComplicatedUTIServReq",
+	"status": "completed",
+	"intent": "order",
+	"code": {
+		"coding": [
+			{
+				"system": "http://loinc.org",
+				"code": "58077-9",
+				"display": "Urinalysis complete W Reflex Culture panel"
+			}
+		],
+		"text": "Urinalysis complete W Reflex Culture panel"
+	},
+	"subject": {
+		"reference": "Patient/LTCComplicatedUTI"
+	},
+	"encounter": {
+		"reference": "Encounter/LTCComplicatedUTIEnc"
+	},
+	"authoredOn": "2025-01-02T16:16:00-07:00"
+}

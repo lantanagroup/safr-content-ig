@@ -1,0 +1,20 @@
+{
+  "resourceType": "MedicationAdministration",
+  "id": "LTCPneumoniaMedAdmin1",
+  "subject": {
+    "reference": "Patient/LTCPneumonia"
+  },
+  "medicationCodeableConcept":{
+    "coding":[
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "199885",
+        "display": "Levofloxacin 500mg Oral Tablet"
+      }
+    ]
+  },
+  "effectivePeriod": {
+    "start": "2025-01-01T00:00:00.000Z",
+    "end": "2025-01-07T00:00:00.000Z"
+  }
+}

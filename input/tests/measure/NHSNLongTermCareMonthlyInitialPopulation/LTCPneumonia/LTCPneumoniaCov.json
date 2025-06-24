@@ -1,0 +1,17 @@
+{
+  "resourceType": "Coverage",
+  "id": "LTCPneumoniaCov",
+  "beneficiary": {
+    "reference": "Patient/LTCPneumonia"
+  },
+  "type": {
+    "coding":{
+      "code": "1",
+      "display": "MEDICARE"
+    }
+  },
+  "period": {
+    "start": "2025-01-02T00:00:00.000Z",
+    "end": "2025-01-04T10:00:00.000Z"
+  }
+}
