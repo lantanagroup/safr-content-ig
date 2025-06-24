@@ -238,7 +238,7 @@ Subject List Measure Report
 
 Individual Measure Report
 
-- [ACH Daily Individual Measure Report List](List-list-example-ach-daily-individual-measurereport-list.html)
+- [ACH Daily Individual Measure Report List](list-example-ach-daily-individual-measurereport-list.html)
 
 #### Initial Population Examples
 

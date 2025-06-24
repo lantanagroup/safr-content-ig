@@ -8,8 +8,8 @@ Usage: #example
 //* category[+] = $observation-category#laboratory "Laboratory"
 * category[+] = $observation-category#exam "exam"
 * category[=].text = "Exam"
-* code = $sct#422650009 "Respiratory isolation"
-* code.text = "Respiratory isolation"
+* code = $sct#422650009 "Social isolation (finding)"
+* code.text = "Social isolation"
 * subject = Reference(patient-example-ach-daily-initialpopulationpass)
 * subject.display = "ACHDaily InitialPopulationPass"
 * encounter = Reference(encounter-example-ach-daily-initialpopulationpass-1)
