@@ -7,10 +7,10 @@ packageId: gov.cdc.nhsn.measures
 title: CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) Content Package IG
 name: NHSNMeasures
 status: active
-date: 2023-09-14
+date: 2025-06-24
 copyrightYear: 2023+
-version: 1.0.0-cibuild  
-releaseLabel: Continuous Integration
+version: 1.0.0
+releaseLabel: Release 1
 jurisdiction: urn:iso:std:iso:3166#US
 extension:
   - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
