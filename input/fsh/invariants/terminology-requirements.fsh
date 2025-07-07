@@ -19,7 +19,7 @@ Expression: "class.memberOf('http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ValueSet/
 Invariant: encounter-ach-daily-initial-population
 Description: "Encounter: (class must be from ACH Daily encounter class) or (type from 'Encounter Inpatient' or 'Observation Services') or (Encounter location type from 'Inpatient, Emergency, and Observation Locations')"
 Severity: #error
-Expression: "class.memberOf('http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ValueSet/ach-daily-encounter-class').exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307')).exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143')).exists() or where(location.location.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists())"
+Expression: "class.memberOf('http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ValueSet/ach-daily-encounter-class') or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307')).exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143')).exists() or where(location.location.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists())"
 
 Invariant: location-type-initial-population
 Description: "Location: (Location type from 'Inpatient, Emergency, and Observation Locations')"
