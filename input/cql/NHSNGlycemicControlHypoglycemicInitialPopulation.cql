@@ -1,10 +1,10 @@
-library NHSNGlycemicControlHypoglycemicInitialPopulation version '1.0.0-dev'
+library NHSNGlycemicControlHypoglycemicInitialPopulation version '1.0.1-dev'
 
 using FHIR version '4.0.1'
 
 include FHIRHelpers version '4.0.2' called FHIRHelpers
 include NHSNHelpers version '0.0.002' called NHSNHelpers
-include SharedResourceCreation version '0.1.009' called SharedResource
+include SharedResourceCreation version '0.1.010' called SharedResource
 
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode' 
 codesystem "Diagnosis Role": 'http://terminology.hl7.org/CodeSystem/diagnosis-role'
@@ -16,7 +16,6 @@ codesystem "Condition Category": 'http://terminology.hl7.org/CodeSystem/conditio
 //
 // Value Sets Used in the Measure
 //
-valueset "Discharge Disposition": 'http://terminology.hl7.org/ValueSet/encounter-discharge-disposition'
 valueset "Diabetes Medications": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.58'
 
 //Glucose Lab Tests
@@ -161,13 +160,6 @@ define "SDE Coverage":
   return SharedResource.CoverageResource(Coverages,
   {FHIR.canonical{value: ''}})
     
-//To capture the discharge disposition
-define "SDE Encounter Discharge Dispositions":
-	"Initial Population" DischargeDispositions 
-  where DischargeDispositions.hospitalization.dischargeDisposition in "Discharge Disposition"
-  return SharedResource.EncounterResource(DischargeDispositions, 
-  {FHIR.canonical{value: ''}})
-
 //To capture the Locations where the Encounter took place
 define "SDE Encounter Locations":
   "Initial Population" InitialPopulation 

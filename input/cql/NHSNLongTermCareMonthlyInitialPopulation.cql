@@ -4,7 +4,7 @@ using FHIR version '4.0.1'
 
 include FHIRHelpers version '4.0.2' called FHIRHelpers
 include NHSNHelpers version '0.0.002' called NHSNHelpers
-include SharedResourceCreation version '0.1.009' called SharedResource
+include SharedResourceCreation version '0.1.010' called SharedResource
 
 codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category'
 
@@ -12,13 +12,19 @@ codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observ
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 
 parameter "Measurement Period" 
-    default Interval[@2024-03-01T00:00:00.0, @2024-03-31T23:59:59.0)
+    default Interval[@2025-01-01T00:00:00.000Z, @2025-01-31T23:59:59.000Z)
 
 context Patient 
 
 define "Initial Population":
   [Encounter] QualifyingEncounters
   where QualifyingEncounters.period overlaps "Measurement Period" 
+
+define "Periods":
+ [Encounter] QualifyingEncounters
+  return Tuple {
+    period: QualifyingEncounters.period.start  
+  }
 
 define "SDE Coverage": 
 	[Coverage] Coverages

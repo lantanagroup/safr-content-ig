@@ -1,4 +1,4 @@
-library SharedResourceCreation version '0.1.009'
+library SharedResourceCreation version '0.1.010'
 
 include FHIRHelpers version '4.0.2'
 
@@ -184,8 +184,7 @@ define function EncounterHospitalization(hospitalization FHIR.Encounter.Hospital
     dietPreference: h.dietPreference,
     specialCourtesy: h.specialCourtesy,
     specialArrangement: h.specialArrangement,
-    destination: h.destination,
-    dischargeDisposition: h.dischargeDisposition
+    destination: h.destination
   }
 
 define function EncounterLocation(location List<FHIR.Encounter.Location>):
