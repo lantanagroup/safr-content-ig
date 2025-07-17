@@ -122,7 +122,7 @@ define "SDE Chief Complaint":
     IP.diagnosis InitialPopulationDiagnosis
     where InitialPopulationDiagnosis.use ~ "Chief Complaint"
   )
-  return SharedResource.EncounterResource(IP, 
+  return EncounterResource(IP, 
   {FHIR.canonical{value: ''}})
 
 //To capture any active Conditions the patient has
@@ -174,12 +174,12 @@ define "SDE Encounter Locations":
     )
     and InitialPopulationLocation.period during InitialPopulation.period
   )
-  return SharedResource.EncounterResource(InitialPopulation, 
+  return EncounterResource(InitialPopulation, 
   {FHIR.canonical{value: ''}})
 
 define "SDE Initial Population Encounters":
   "Initial Population" IP
-  return SharedResource.EncounterResource(IP,
+  return EncounterResource(IP,
   {FHIR.canonical{value: ''}})
 
 define "SDE Location":
@@ -260,6 +260,46 @@ define "Specimens":
 
 define "Conditions":
   [Condition]
+
+define function EncounterHospitalization(hospitalization FHIR.Encounter.Hospitalization):
+  hospitalization h
+  return FHIR.Encounter.Hospitalization{
+    preAdmissionIdentifier: h.preAdmissionIdentifier,
+    origin: h.origin,
+    admitSource: h.admitSource,
+    reAdmission: h.reAdmission,
+    dietPreference: h.dietPreference,
+    specialCourtesy: h.specialCourtesy,
+    specialArrangement: h.specialArrangement,
+    destination: h.destination
+  }
+
+
+define function EncounterResource(encounter Encounter, profileURLs List<FHIR.canonical>):
+  encounter e
+  return Encounter{
+    id: FHIR.id{value: 'LCR-' + e.id},
+    meta: SharedResource.MetaElement(e, profileURLs),
+    extension: e.extension,
+    identifier: SharedResource.EncounterIdentifier(e.identifier),
+    status: e.status,
+    statusHistory: SharedResource.EncounterStatusHistory(e.statusHistory),
+    class: e.class,
+    classHistory: SharedResource.EncounterClassHistory(e.classHistory),
+    type: e.type,
+    serviceType: e.serviceType,
+    priority: e.priority,
+    subject: e.subject,
+    period: e.period,
+    length: e.length,
+    reasonCode: e.reasonCode,
+    reasonReference: e.reasonReference,
+    diagnosis: SharedResource.EncounterDiagnosis(e.diagnosis),
+    account: e.account,
+    hospitalization: EncounterHospitalization(e.hospitalization),
+    location: SharedResource.EncounterLocation(e.location),
+    partOf: e.partOf
+  }
 
 //
 //Functions

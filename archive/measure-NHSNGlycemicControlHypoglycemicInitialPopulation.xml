@@ -239,7 +239,7 @@ define &quot;SDE Encounter Locations&quot;:
     )
     and InitialPopulationLocation.period during InitialPopulation.period
   )
-  return SharedResource.EncounterResource(InitialPopulation, 
+  return EncounterResource(InitialPopulation, 
   {FHIR.canonical{value: ''}})"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -317,7 +317,7 @@ define &quot;SDE Medication Administration&quot;:
             <extension url="statement">
                <valueString value="define &quot;SDE Initial Population Encounters&quot;:
   &quot;Initial Population&quot; IP
-  return SharedResource.EncounterResource(IP,
+  return EncounterResource(IP,
   {FHIR.canonical{value: ''}})"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -525,7 +525,7 @@ define &quot;SDE Chief Complaint&quot;:
     IP.diagnosis InitialPopulationDiagnosis
     where InitialPopulationDiagnosis.use ~ &quot;Chief Complaint&quot;
   )
-  return SharedResource.EncounterResource(IP, 
+  return EncounterResource(IP, 
   {FHIR.canonical{value: ''}})"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -904,7 +904,7 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
+               <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="EncounterResource"></valueString>
@@ -914,13 +914,13 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
   encounter e
   return Encounter{
     id: FHIR.id{value: 'LCR-' + e.id},
-    meta: MetaElement(e, profileURLs),
+    meta: SharedResource.MetaElement(e, profileURLs),
     extension: e.extension,
-    identifier: EncounterIdentifier(e.identifier),
+    identifier: SharedResource.EncounterIdentifier(e.identifier),
     status: e.status,
-    statusHistory: EncounterStatusHistory(e.statusHistory),
+    statusHistory: SharedResource.EncounterStatusHistory(e.statusHistory),
     class: e.class,
-    classHistory: EncounterClassHistory(e.classHistory),
+    classHistory: SharedResource.EncounterClassHistory(e.classHistory),
     type: e.type,
     serviceType: e.serviceType,
     priority: e.priority,
@@ -929,10 +929,10 @@ define function &quot;GetMedicationCode&quot;(choice Choice&lt;FHIR.CodeableConc
     length: e.length,
     reasonCode: e.reasonCode,
     reasonReference: e.reasonReference,
-    diagnosis: EncounterDiagnosis(e.diagnosis),
+    diagnosis: SharedResource.EncounterDiagnosis(e.diagnosis),
     account: e.account,
     hospitalization: EncounterHospitalization(e.hospitalization),
-    location: EncounterLocation(e.location),
+    location: SharedResource.EncounterLocation(e.location),
     partOf: e.partOf
   }"></valueString>
             </extension>
@@ -1031,7 +1031,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
+               <valueString value="NHSNGlycemicControlHypoglycemicInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="EncounterHospitalization"></valueString>
@@ -2553,7 +2553,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2025-07-17T12:29:59-08:00"></date>
+   <date value="2025-07-17T12:37:55-08:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."></description>
    <purpose value="This site allows NHSN to view Measure-specification content in the dQMs under development by Lantana Consulting Group. Note that this site undergoes constant revision and is not intended to serve as an implementation guide."></purpose>

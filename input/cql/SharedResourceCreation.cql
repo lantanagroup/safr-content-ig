@@ -196,7 +196,8 @@ define function EncounterHospitalization(hospitalization FHIR.Encounter.Hospital
     dietPreference: h.dietPreference,
     specialCourtesy: h.specialCourtesy,
     specialArrangement: h.specialArrangement,
-    destination: h.destination
+    destination: h.destination,
+    dischargeDisposition: h.dischargeDisposition
   }
 
 define function EncounterLocation(location List<FHIR.Encounter.Location>):

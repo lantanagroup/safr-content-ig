@@ -1410,7 +1410,7 @@ define function &quot;GetMedicationFrom&quot;(choice Choice&lt;FHIR.CodeableConc
    <title value="NHSN Long Term Care Monthly Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2025-07-17T15:29:59-05:00"></date>
+   <date value="2025-07-17T15:37:55-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Long Term Care Initial Population includes all encounters that overlap the measurement period."></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>
