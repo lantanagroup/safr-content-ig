@@ -20,12 +20,6 @@ define "Initial Population":
   [Encounter] QualifyingEncounters
   where QualifyingEncounters.period overlaps "Measurement Period" 
 
-define "Periods":
- [Encounter] QualifyingEncounters
-  return Tuple {
-    period: QualifyingEncounters.period.start  
-  }
-
 define "SDE Coverage": 
 	[Coverage] Coverages
   where exists(
