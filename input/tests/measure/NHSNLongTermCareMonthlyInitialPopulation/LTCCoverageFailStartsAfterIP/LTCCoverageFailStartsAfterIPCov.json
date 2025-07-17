@@ -1,0 +1,11 @@
+{
+  "resourceType": "Coverage",
+  "id": "LTCCoverageFailStartsAfterIPCov",
+  "beneficiary": {
+    "reference": "Patient/LTCCoverageFailStartsAfterIP"
+  },
+  "period": {
+    "start": "2024-12-29T00:00:00.000Z",
+    "end": "2024-12-31T10:00:00.000Z"
+  }
+}

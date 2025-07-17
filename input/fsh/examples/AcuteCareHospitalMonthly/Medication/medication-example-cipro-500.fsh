@@ -1,7 +1,7 @@
 Instance: medication-example-cipro-500
 InstanceOf: AcuteCareHospitalMonthlyReportingMedication
-Title: "Medication - Example Cipro 500"
-Description: "Medication - Example - Ciprofloxacin 500 MG"
+Title: "Medication - Example ACH Monthly Cipro 500"
+Description: "Medication - Example ACH Monthly - Ciprofloxacin 500 MG"
 Usage: #example
 
 * code.coding[+] = $rxnorm#328287 "ciprofloxacin 500 MG"

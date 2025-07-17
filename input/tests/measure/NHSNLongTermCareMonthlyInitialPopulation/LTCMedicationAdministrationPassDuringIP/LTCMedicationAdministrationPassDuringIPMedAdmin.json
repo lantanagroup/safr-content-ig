@@ -1,0 +1,12 @@
+{
+  "resourceType": "MedicationAdministration",
+  "id": "LTCMedicationAdministrationPassDuringIPMedAdmin",
+  "subject": {
+    "reference": "Patient/LTCMedicationAdministrationPassDuringIP",
+    "display": "Donald Duck"
+  },
+  "effectivePeriod": {
+    "start": "2025-01-02T00:00:00.000Z",
+    "end": "2025-01-04T00:00:00.000Z"
+  }
+}

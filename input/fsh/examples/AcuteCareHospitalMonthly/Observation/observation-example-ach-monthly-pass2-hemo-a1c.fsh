@@ -7,8 +7,8 @@ Usage: #example
 * basedOn = Reference(servicerequest-example-ach-monthly-pass2-hemo-a1c)
 * category[Laboratory] = $observation-category#laboratory "Laboratory"
 * category[Laboratory].text = "Laboratory"
-* code = $loinc#41653-7 "Glucose [Mass/volume] in Capillary blood by Glucometer"
-* code.text = "Glucose"
+* code = $loinc#4548-4 "Hemoglobin A1c/Hemoglobin.total in Blood"
+* code.text = "Hemoglobin A1c"
 * subject = Reference(patient-example-ach-monthly-pass2)
 * subject.display = "Pass2 ACH"
 * encounter = Reference(encounter-example-ach-monthly-pass2-inpatient)

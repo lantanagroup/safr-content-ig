@@ -24,6 +24,6 @@ Usage: #example
 * hospitalization.dischargeDisposition.text = "Home"
 //* location.location.display = "Emergency Department"
 * location[0].location.display = "EMERGENCY - PAVILION"
-* location[=].location = Reference(location-example-hypo-emergency)
+* location[=].location = Reference(location-example-ach-daily-emergency)
 * location.period.start = "2024-01-14T08:00:00Z"
 * location.period.end = "2024-01-22T12:00:00Z"

@@ -6,8 +6,8 @@ Usage: #example
 * status = #final
 * category[VSCat] = $observation-category#vital-signs "Vital Signs"
 * category[VSCat].text = "Vital Signs"
-* code = $loinc#8339-4 "Birth weight Measured"
-* code.text = "Birth Weight"
+* code = $loinc#29463-7 "Body weight"
+* code.text = "Weight"
 * subject = Reference(patient-example-ach-monthly-pass1)
 * subject.display = "Pass1 ACH"
 * encounter = Reference(encounter-example-ach-monthly-pass1)

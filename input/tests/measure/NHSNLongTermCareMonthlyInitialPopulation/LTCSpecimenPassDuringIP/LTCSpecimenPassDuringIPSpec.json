@@ -1,0 +1,20 @@
+{
+  "resourceType": "Specimen",
+  "id": "LTCSpecimenPassDuringIPSpec",
+   "type" : {
+    "coding" : [{
+      "system" : "http://snomed.info/sct",
+      "code" : "119364003",
+      "display" : "Serum sample"
+    }]
+  },
+  "subject" : {
+    "reference" : "Patient/LTCSpecimenPassDuringIP"
+  },
+   "collection" : {
+    "collector" : {
+      "reference" : "Practitioner/f202"
+    },
+    "collectedDateTime" : "2025-01-03T06:40:17Z"
+  }
+  }

@@ -1,4 +1,4 @@
-library NHSNAcuteCareHospitalMonthlyInitialPopulation version '1.0.0-dev'
+library NHSNAcuteCareHospitalMonthlyInitialPopulation version '1.0.1-dev'
 
 using FHIR version '4.0.1'
 
@@ -47,7 +47,7 @@ code "observation encounter": 'OBSENC' from "ActCode" display 'observation encou
 code "active": 'active' from "Condition Clinical Status" display 'active'
 
 parameter "Measurement Period" 
-    default Interval[@2022-01-01T00:00:00.0, @2022-01-31T23:59:59.0)
+    default Interval[@2024-04-01T00:00:00.0, @2024-04-30T23:59:59.0)
 
 context Patient 
 
@@ -124,7 +124,8 @@ define "SDE Condition":
     )
   )
   return SharedResource.ConditionResource(Conditions,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-condition'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-condition'}},
+  {"problem-list-item", "encounter-diagnosis", "health-concern"})
 
 define "SDE Device":
   [Device] Devices 

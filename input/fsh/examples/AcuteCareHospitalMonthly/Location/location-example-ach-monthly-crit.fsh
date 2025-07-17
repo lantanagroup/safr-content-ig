@@ -1,6 +1,6 @@
 Instance: location-example-ach-monthly-crit
 InstanceOf: AcuteCareHospitalMonthlyReportingLocation
-Title: "Location - Example ACH Monthly - Crit"
+Title: "Location - Example ACH Monthly - Medical Critical Care"
 Description: "Location - Example ACH Monthly - Medical Critical Care"
 Usage: #example
 * identifier.system = "http://www.example.com/location"

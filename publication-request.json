@@ -1,9 +1,9 @@
 {
     "package-id": "gov.cdc.nhsn.measures",
-    "version": "1.0.0-draft",
-    "path": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/1.0.0-draft",
-    "mode": "working",
-    "status": "draft",
+    "version": "1.0.0",
+    "path": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/1.0.0",
+    "mode": "milestone",
+    "status": "release",
     "sequence": "R 1",
     "desc": "CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) Content Package IG Release 1 Draft, 1.0.0-draft - US Realm",
     "first": true,
