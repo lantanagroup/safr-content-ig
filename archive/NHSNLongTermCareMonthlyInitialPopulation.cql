@@ -12,7 +12,7 @@ codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observ
 code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
 
 parameter "Measurement Period" 
-    default Interval[@2024-03-01T00:00:00.0, @2024-03-31T23:59:59.0)
+    default Interval[@2025-01-01T00:00:00.000Z, @2025-01-31T23:59:59.000Z)
 
 context Patient 
 
