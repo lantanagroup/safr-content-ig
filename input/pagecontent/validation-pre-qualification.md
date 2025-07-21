@@ -22,8 +22,8 @@ Validation and subsequent pre-qualification occur after data evaluation and befo
 
 <div>
 <figure class="figure">
-    <figcaption class="figure-caption"><strong>Figure 1: Process Flow for Pre-qualification </strong></figcaption>
-    <img src="SubmissionDiagram.PNG" alt="Figure 1: Process Flow for Pre-qualification" title="Figure 1: Process Flow for Pre-qualification" class="img-responsive img-rounded center-block" width="75%">
+    <figcaption class="figure-caption"><strong>Figure 2: Process Flow for Pre-qualification </strong></figcaption>
+    <img src="SubmissionDiagram.PNG" alt="Figure 2: Process Flow for Pre-qualification" title="Figure 2: Process Flow for Pre-qualification" class="img-responsive img-rounded center-block" width="75%">
 </figure>
 <p></p>
 </div>
