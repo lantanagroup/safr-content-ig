@@ -1,5 +1,6 @@
-# Release management is interested in changes to CQL files in case coordination with the Link development and QA teams is required
-input/cql/*.cql @lantanagroup/nhsn-measures-release-management-team
+# Notify teams with specific interests in the following files and folders
+input/cql/*.cql @lantanagroup/cql-change-observers
+input/fsh/** @lantanagroup/fsh-change-observers
 
 # The following is pasted from https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners and may be useful for extending different patterns to different reviews in our repo
 

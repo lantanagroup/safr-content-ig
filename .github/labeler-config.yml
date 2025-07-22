@@ -3,3 +3,9 @@ cql-change:
 - changed-files:
   - any-glob-to-any-file: 
     - 'input/cql/*.cql'
+
+# Add 'fsh-change' label to any file changes within the '/fsh' folder 
+fsh-change:
+- changed-files:
+  - any-glob-to-any-file: 
+    - 'input/fsh/**'
