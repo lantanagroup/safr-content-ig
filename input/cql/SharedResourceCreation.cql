@@ -4,18 +4,6 @@ include FHIRHelpers version '4.0.2'
 
 using FHIR version '4.0.1'
 
-define function RemoveUnaccepted(codes List<FHIR.CodeableConcept>, accepted List<System.Code>):
-	codes c
-  where exists(
-    accepted a
-    where c ~ a
-  )
-
-define function FilterCodeableConcepts(codes List<FHIR.CodeableConcept>, accepted List<System.Code>):
-	if Count(accepted) > 0
-		then RemoveUnaccepted(codes, accepted)
-	else codes
-
 define function "GetIdExtensions"(domainResource DomainResource):
   domainResource.extension E
   where E.url.value = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'
@@ -63,7 +51,7 @@ define function ConditionResource(condition Condition, profileURLs List<FHIR.can
     extension: c.extension,
     clinicalStatus: c.clinicalStatus,
     verificationStatus: c.verificationStatus,
-    category: FilterCodeableConcepts(c.category, acceptedCategories),
+    category: c.category,
     severity: c.severity,
     code: c.code,
     bodySite: c.bodySite,

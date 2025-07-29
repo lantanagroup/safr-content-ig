@@ -123,7 +123,7 @@ define "SDE Condition":
           or categories ~ "health-concern")
     )
   )
-  return SharedResource.ConditionResource(Conditions,
+  return ConditionResource(Conditions,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-condition'}},
   {"problem-list-item", "encounter-diagnosis", "health-concern"})
 
@@ -314,9 +314,43 @@ define function "GetEncounter"(reference Reference):
     where Encounters.id = NHSNHelpers.GetId(reference.reference)
   )
 
+define function RemoveUnaccepted(codes List<FHIR.CodeableConcept>, accepted List<System.Code>):
+	codes c
+  where exists(
+    accepted a
+    where c ~ a
+  )
+
+define function FilterCodeableConcepts(codes List<FHIR.CodeableConcept>, accepted List<System.Code>):
+	if Count(accepted) > 0
+		then RemoveUnaccepted(codes, accepted)
+	else codes
+
 //
 //Measure Specific Resource Creation Functions
 //
+define function ConditionResource(condition Condition, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
+  condition c
+  return Condition{
+    id: FHIR.id {value: 'LCR-' + c.id},
+    meta: SharedResource.MetaElement(c, profileURLs),
+    extension: c.extension,
+    clinicalStatus: c.clinicalStatus,
+    verificationStatus: c.verificationStatus,
+    category: FilterCodeableConcepts(c.category, acceptedCategories),
+    severity: c.severity,
+    code: c.code,
+    bodySite: c.bodySite,
+    subject: c.subject,
+    encounter: c.encounter,
+    onset: c.onset,
+    abatement: c.abatement,
+    recordedDate: c.recordedDate,
+    stage: SharedResource.ConditionStage(c.stage),
+    evidence: SharedResource.ConditionEvidence(c.evidence),
+    note: c.note
+  }
+
 define function DeviceUdiCarrier(udiCarrier List<FHIR.Device.UdiCarrier>):
   udiCarrier u
   return FHIR.Device.UdiCarrier{
