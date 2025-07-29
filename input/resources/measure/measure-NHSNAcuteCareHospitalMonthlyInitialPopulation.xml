@@ -489,7 +489,7 @@ define &quot;SDE Condition&quot;:
           or categories ~ &quot;health-concern&quot;)
     )
   )
-  return SharedResource.ConditionResource(Conditions,
+  return ConditionResource(Conditions,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-condition'}},
   {&quot;problem-list-item&quot;, &quot;encounter-diagnosis&quot;, &quot;health-concern&quot;})"></valueString>
             </extension>
@@ -1283,10 +1283,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
                <valueString value="DeviceUdiCarrier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//
-//Measure Specific Resource Creation Functions
-//
-define function DeviceUdiCarrier(udiCarrier List&lt;FHIR.Device.UdiCarrier&gt;):
+               <valueString value="define function DeviceUdiCarrier(udiCarrier List&lt;FHIR.Device.UdiCarrier&gt;):
   udiCarrier u
   return FHIR.Device.UdiCarrier{
     deviceIdentifier: u.deviceIdentifier,
@@ -1810,17 +1807,20 @@ define function DeviceUdiCarrier(udiCarrier List&lt;FHIR.Device.UdiCarrier&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="ConditionResource"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define function ConditionResource(condition Condition, profileURLs List&lt;FHIR.canonical&gt;, acceptedCategories List&lt;System.Code&gt;):
+               <valueString value="//
+//Measure Specific Resource Creation Functions
+//
+define function ConditionResource(condition Condition, profileURLs List&lt;FHIR.canonical&gt;, acceptedCategories List&lt;System.Code&gt;):
   condition c
   return Condition{
     id: FHIR.id {value: 'LCR-' + c.id},
-    meta: MetaElement(c, profileURLs),
+    meta: SharedResource.MetaElement(c, profileURLs),
     extension: c.extension,
     clinicalStatus: c.clinicalStatus,
     verificationStatus: c.verificationStatus,
@@ -1833,8 +1833,8 @@ define function DeviceUdiCarrier(udiCarrier List&lt;FHIR.Device.UdiCarrier&gt;):
     onset: c.onset,
     abatement: c.abatement,
     recordedDate: c.recordedDate,
-    stage: ConditionStage(c.stage),
-    evidence: ConditionEvidence(c.evidence),
+    stage: SharedResource.ConditionStage(c.stage),
+    evidence: SharedResource.ConditionEvidence(c.evidence),
     note: c.note
   }"></valueString>
             </extension>
@@ -1844,7 +1844,7 @@ define function DeviceUdiCarrier(udiCarrier List&lt;FHIR.Device.UdiCarrier&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="FilterCodeableConcepts"></valueString>
@@ -3337,7 +3337,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
    <title value="NHSN dQM Acute Care Hospital Monthly Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2025-07-17T15:37:55-05:00"></date>
+   <date value="2025-07-29T07:47:59-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Acute Care Hospital Monthly Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>
