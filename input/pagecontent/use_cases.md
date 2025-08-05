@@ -19,11 +19,21 @@ This implementation guide (IG) serves a wide variety of National Healthcare Safe
 
 #### Description
 
-The NHSN Acute Care Hospital (ACH) monthly digital quality measure (dQM) enables facilities to electronically report line-level data to NHSN for the following modules, which provide monthly event rates back to the facility. These dQMs include Glycemic Control (hyperglycemia and medication-related hypoglycemia); Healthcare Facility-onset, antibiotic-Treated Clostridioides difficile (C. difficile) Infection (HT-CDI); Hospital-Onset Bacteremia and Fungemia (HOB), Venous Thromboembolism (VTE)-related Prophylaxis and event rates (under development), Late-Onset Sepsis / Meningitis (under development), Acute Sepsis Events (ASE) (under development), Hospital-onset Acute Kidney Injury (HAKI) (under development), and Opioid-related Adverse Events (ORAE) (under development).  
+The NHSN Acute Care Hospital (ACH) monthly digital quality measure (dQM) enables facilities to electronically report line-level data to NHSN for the following modules, which provide monthly event rates back to the facility. These dQMs include:
+
+- Glycemic Control (hyperglycemia and medication-related hypoglycemia)
+- Healthcare Facility-onset
+- Antibiotic-Treated Clostridioides difficile (C. difficile) Infection (HT-CDI)
+- Hospital-Onset Bacteremia and Fungemia (HOB)
+- Venous Thromboembolism (VTE)-related Prophylaxis and event rates (under development)
+- Late-Onset Sepsis / Meningitis (under development)
+- Acute Sepsis Events (ASE) (under development)
+- Hospital-onset Acute Kidney Injury (HAKI) (under development)
+- Opioid-related Adverse Events (ORAE) (under development)
 
 #### Patients of Interest
 
-The facility works with NHSN to define a list of patients of interest (POI list). The POI list is often the facility’s entire inpatient population. The data for the patients in the list are then extracted and evaluated against the measure criteria for the initial population.
+The facility works with NHSN to define a patients of interest (POI) list. The POI list is often the facility’s entire inpatient population. The data for the patients on the list are then extracted and evaluated against the measure criteria for the initial population.
 
 #### Initial Population
 
@@ -94,16 +104,16 @@ Diagnostic Report
 
 Location
 
-- [Location - Example ACH Monthly - Emergency](Location-location-example-ach-monthly-emergency.html)
-- [Location - Example ACH Monthly - Inpatient](Location-location-example-ach-monthly-inpatient.html)
-- [Location - Example ACH Monthly - NICU](Location-location-example-ach-monthly-nicu-level-iii.html)
+- [Location - Example ACH Monthly Emergency](Location-location-example-ach-monthly-emergency.html)
+- [Location - Example ACH Monthly Inpatient](Location-location-example-ach-monthly-inpatient.html)
+- [Location - Example ACH Monthly NICU](Location-location-example-ach-monthly-nicu-level-iii.html)
 
 Medication
 
-- [Medication - Example Heparin](Medication-medication-example-heparin.html)
-- [Medication - Example Metformin 1000](Medication-medication-example-metformin-1000.html)
-- [Medication - Example Vancomycin 15](Medication-medication-example-vancomycin-15.html)
-- [Medication - Example Insulin Lispro](Medication-medication-example-insulin-lispro.html)
+- [Medication - Example ACH Monthly Heparin](Medication-medication-example-heparin.html)
+- [Medication - Example ACH Monthly Metformin 1000](Medication-medication-example-metformin-1000.html)
+- [Medication - Example ACH Monthly Vancomycin 15](Medication-medication-example-vancomycin-15.html)
+- [Medication - Example ACH Monthly Insulin Lispro](Medication-medication-example-insulin-lispro.html)
 
 Medication Administration
 
@@ -204,7 +214,7 @@ RPS module data collected via the ACH Daily dQM may be used by facilities for qu
 
 #### Patients of Interest
 
-The facility will work with NHSN to define a list of patients of interest (POI list). This is often the entire in-patient population at the facility. The data for the patients in the list are then extracted and evaluated against the measure criteria for the initial population (see below).
+The facility will work with NHSN to define a POI list. This is often the entire in-patient population at the facility. The data for the patients in the list are then extracted and evaluated against the measure criteria for the initial population (see below).
 
 #### Initial Population
 
@@ -244,79 +254,79 @@ Individual Measure Report
 
 Patient
 
-- [Patient - Example ACH Daily Patient Influenza Therapeutic](Patient-patient-example-ach-daily-influenzatherapeutic.html)
-- [Patient - Example ACH Daily Patient Initial Population Pass](Patient-patient-example-ach-daily-initialpopulationpass.html)
-- [Patient - Example ACH Daily Patient Negative PCR](Patient-patient-example-ach-daily-negativepcr.html)
-- [Patient - Example ACH Daily Patient RSV Lab BTG](Patient-patient-example-ach-daily-rsvlabbtg.html)
+- [Patient - Example ACH Daily Influenza Therapeutic](Patient-patient-example-ach-daily-influenzatherapeutic.html)
+- [Patient - Example ACH Daily Initial Population Pass](Patient-patient-example-ach-daily-initialpopulationpass.html)
+- [Patient - Example ACH Daily Negative PCR](Patient-patient-example-ach-daily-negativepcr.html)
+- [Patient - Example ACH Daily RSV Lab BTG](Patient-patient-example-ach-daily-rsvlabbtg.html)
 
 Encounter
 
-- [Encounter - Example ACH Daily Encounter Influenza Therapeutic](Encounter-encounter-example-ach-daily-influenzatherapeutic.html)
-- [Encounter - Example ACH Daily Encounter Initial Population Pass 1](Encounter-encounter-example-ach-daily-initialpopulationpass-1.html)
-- [Encounter - Example ACH Daily Encounter Initial Population Pass 2](Encounter-encounter-example-ach-daily-initialpopulationpass-2.html)
-- [Encounter - Example ACH Daily Encounter Negative PCR 1](Encounter-encounter-example-ach-daily-negativepcr-1.html)
-- [Encounter - Example ACH Daily Encounter Negative PCR 2](Encounter-encounter-example-ach-daily-negativepcr-2.html)
-- [Encounter - Example ACH Daily Encounter RSV Lab BTG](Encounter-encounter-example-ach-daily-rsvlabbtg.html)
+- [Encounter - Example ACH Daily Influenza Therapeutic](Encounter-encounter-example-ach-daily-influenzatherapeutic.html)
+- [Encounter - Example ACH Daily Initial Population Pass 1](Encounter-encounter-example-ach-daily-initialpopulationpass-1.html)
+- [Encounter - Example ACH Daily Initial Population Pass 2](Encounter-encounter-example-ach-daily-initialpopulationpass-2.html)
+- [Encounter - Example ACH Daily Negative PCR 1](Encounter-encounter-example-ach-daily-negativepcr-1.html)
+- [Encounter - Example ACH Daily Negative PCR 2](Encounter-encounter-example-ach-daily-negativepcr-2.html)
+- [Encounter - Example ACH Daily RSV Lab BTG](Encounter-encounter-example-ach-daily-rsvlabbtg.html)
 
 #### Line Level Data Examples
 
 Diagnostic Report (Lab)
 
-- [DiagnosticReport - Example ACH Daily Diagnostic Report Lab Initial Population Pass](DiagnosticReport-diagnosticreport-example-ach-daily-initialpopulationpass.html)
+- [DiagnosticReport - Example ACH Daily Initial Population Pass](DiagnosticReport-diagnosticreport-example-ach-daily-initialpopulationpass.html)
 
 Lab Result Observation 
 
-- [Lab Observation - Example ACH Daily Observation Initial Population Pass](Observation-lab-observation-example-ach-daily-initialpopulationpass.html)
-- [Lab Observation - Example ACH Daily Observation Negative PCR 1](Observation-lab-observation-example-ach-daily-negativepcr-1.html)
-- [Lab Observation - Example ACH Daily Observation Negative PCR 2](Observation-lab-observation-example-ach-daily-negativepcr-2.html)
-- [Lab Observation - Example ACH Daily Observation RSV Lab BTG](Observation-lab-observation-example-ach-daily-rsvlabbtg.html)
+- [Lab Observation - Example ACH Daily Initial Population Pass](Observation-lab-observation-example-ach-daily-initialpopulationpass.html)
+- [Lab Observation - Example ACH Daily Negative PCR 1](Observation-lab-observation-example-ach-daily-negativepcr-1.html)
+- [Lab Observation - Example ACH Daily Negative PCR 2](Observation-lab-observation-example-ach-daily-negativepcr-2.html)
+- [Lab Observation - Example ACH Daily RSV Lab BTG](Observation-lab-observation-example-ach-daily-rsvlabbtg.html)
 
 Location
 
-- [Location - Example ACH Daily Location Inpatient](Location-location-example-ach-daily-inpatient.html)
+- [Location - Example ACH Daily Inpatient](Location-location-example-ach-daily-inpatient.html)
 
 Medication
 
-- [Medication - Example ACH Daily Medication Influenza Therapeutic](Medication-medication-example-ach-daily-influenzatherapeutic.html)
-- [Medication - Example ACH Daily Medication Initial Population Pass](Medication-medication-example-ach-daily-initialpopulationpass.html)
-- [Medication - Example ACH Daily Medication Negative PCR](Medication-medication-example-ach-daily-negativepcr.html)
-- [Medication - Example ACH Daily Medication RSV Lab BTG 1](Medication-medication-example-ach-daily-rsvlabbtg-1.html)
-- [Medication - Example ACH Daily Medication RSV Lab BTG 2](Medication-medication-example-ach-daily-rsvlabbtg-2.html)
+- [Medication - Example ACH Daily Influenza Therapeutic](Medication-medication-example-ach-daily-influenzatherapeutic.html)
+- [Medication - Example ACH Daily Initial Population Pass](Medication-medication-example-ach-daily-initialpopulationpass.html)
+- [Medication - Example ACH Daily Negative PCR](Medication-medication-example-ach-daily-negativepcr.html)
+- [Medication - Example ACH Daily RSV Lab BTG 1](Medication-medication-example-ach-daily-rsvlabbtg-1.html)
+- [Medication - Example ACH Daily RSV Lab BTG 2](Medication-medication-example-ach-daily-rsvlabbtg-2.html)
 
 Medication Administration
 
-- [Medication Administration - Example ACH Daily Medication Administration Influenza Therapeutic](MedicationAdministration-medadmin-example-ach-daily-influenzatherapeutic.html)
-- [Medication Administration - Example ACH Daily Medication Administration Initial Population Pass 1](MedicationAdministration-medadmin-example-ach-daily-initialpopulationpass-1.html)
-- [Medication Administration - Example ACH Daily Medication Administration Initial Population Pass 2](MedicationAdministration-medadmin-example-ach-daily-initialpopulationpass-2.html)
-- [Medication Administration - Example ACH Daily Medication Administration RSV Lab BTG 1](MedicationAdministration-medadmin-example-ach-daily-rsvlabbtg-1.html)
-- [Medication Administration - Example ACH Daily Medication Administration RSV Lab BTG 2](MedicationAdministration-medadmin-example-ach-daily-rsvlabbtg-2.html)
+- [Medication Administration - Example ACH Daily Influenza Therapeutic](MedicationAdministration-medadmin-example-ach-daily-influenzatherapeutic.html)
+- [Medication Administration - Example ACH Daily Initial Population Pass 1](MedicationAdministration-medadmin-example-ach-daily-initialpopulationpass-1.html)
+- [Medication Administration - Example ACH Daily Initial Population Pass 2](MedicationAdministration-medadmin-example-ach-daily-initialpopulationpass-2.html)
+- [Medication Administration - Example ACH Daily RSV Lab BTG 1](MedicationAdministration-medadmin-example-ach-daily-rsvlabbtg-1.html)
+- [Medication Administration - Example ACH Daily RSV Lab BTG 2](MedicationAdministration-medadmin-example-ach-daily-rsvlabbtg-2.html)
 
 Medication Request
 
-- [Medication Request - Example ACH Daily Medication Request Influenza Therapeutic](MedicationRequest-medicationrequest-example-ach-daily-influenzatherapeutic.html)
-- [Medication Request - Example ACH Daily Medication Request Initial Population Pass](MedicationRequest-medicationrequest-example-ach-daily-initialpopulationpass.html)
-- [Medication Request - Example ACH Daily Medication Request Negative PCR](MedicationRequest-medicationrequest-example-ach-daily-negativepcr.html)
-- [Medication Request - Example ACH Daily Medication Request RSV Lab BTG 1](MedicationRequest-medicationrequest-example-ach-daily-rsvlabbtg-1.html)
-- [Medication Request - Example ACH Daily Medication Request RSV Lab BTG 2](MedicationRequest-medicationrequest-example-ach-daily-rsvlabbtg-2.html)
+- [Medication Request - Example ACH Daily Influenza Therapeutic](MedicationRequest-medicationrequest-example-ach-daily-influenzatherapeutic.html)
+- [Medication Request - Example ACH Daily Initial Population Pass](MedicationRequest-medicationrequest-example-ach-daily-initialpopulationpass.html)
+- [Medication Request - Example ACH Daily Negative PCR](MedicationRequest-medicationrequest-example-ach-daily-negativepcr.html)
+- [Medication Request - Example ACH Daily RSV Lab BTG 1](MedicationRequest-medicationrequest-example-ach-daily-rsvlabbtg-1.html)
+- [Medication Request - Example ACH Daily RSV Lab BTG 2](MedicationRequest-medicationrequest-example-ach-daily-rsvlabbtg-2.html)
 
 Observation
 
-- [Observation - Example ACH Daily Observation Initial Population Pass Isolation](Observation-observation-example-ach-daily-initialpopulationpass-isolation.html)
+- [Observation - Example ACH Daily Initial Population Pass Isolation](Observation-observation-example-ach-daily-initialpopulationpass-isolation.html)
 
 Procedure
 
-- [Procedure - Example ACH Daily Procedure Negative PCR Intubation](Procedure-procedure-example-ach-daily-negativepcr-intubation.html)
+- [Procedure - Example ACH Daily Negative PCR Intubation](Procedure-procedure-example-ach-daily-negativepcr-intubation.html)
 
 Service Request
 
-- [ServiceRequest - Example ACH Daily Service Request Initial Population Pass COVID](ServiceRequest-servicerequest-example-ach-daily-initialpopulationpass-covid.html)
-- [ServiceRequest - Example ACH Daily Service Request Negative PCR COVID 1](ServiceRequest-servicerequest-example-ach-daily-negativepcr-covid-1.html)
-- [ServiceRequest - Example ACH Daily Service Request Negative PCR COVID 2](ServiceRequest-servicerequest-example-ach-daily-negativepcr-covid-2.html)
-- [ServiceRequest - Example ACH Daily Service Request RSV Lab BTG](ServiceRequest-servicerequest-example-ach-daily-rsvlabbtg-rsv.html)
+- [ServiceRequest - Example ACH Daily Initial Population Pass COVID](ServiceRequest-servicerequest-example-ach-daily-initialpopulationpass-covid.html)
+- [ServiceRequest - Example ACH Daily Negative PCR COVID 1](ServiceRequest-servicerequest-example-ach-daily-negativepcr-covid-1.html)
+- [ServiceRequest - Example ACH Daily Negative PCR COVID 2](ServiceRequest-servicerequest-example-ach-daily-negativepcr-covid-2.html)
+- [ServiceRequest - Example ACH Daily RSV Lab BTG](ServiceRequest-servicerequest-example-ach-daily-rsvlabbtg-rsv.html)
 
 Specimen
 
-- [Specimen - Example ACH Daily Specimen Initial Population Pass](Specimen-specimen-example-ach-daily-initialpopulationpass.html)
-- [Specimen - Example ACH Daily Specimen Negative PCR 1](Specimen-specimen-example-ach-daily-negativepcr-1.html)
-- [Specimen - Example ACH Daily Specimen Negative PCR 2](Specimen-specimen-example-ach-daily-negativepcr-2.html)
-- [Specimen - Example ACH Daily Specimen RSV Lab BTG](Specimen-specimen-example-ach-daily-rsvlabbtg.html)
+- [Specimen - Example ACH Daily Initial Population Pass](Specimen-specimen-example-ach-daily-initialpopulationpass.html)
+- [Specimen - Example ACH Daily Negative PCR 1](Specimen-specimen-example-ach-daily-negativepcr-1.html)
+- [Specimen - Example ACH Daily Negative PCR 2](Specimen-specimen-example-ach-daily-negativepcr-2.html)
+- [Specimen - Example ACH Daily RSV Lab BTG](Specimen-specimen-example-ach-daily-rsvlabbtg.html)

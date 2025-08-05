@@ -3,7 +3,7 @@
   <a name="overview"></a>
   <h3>Overview</h3>
   <p>The content of The Centers for Disease Control and Prevention (CDC) National Healthcare Safety Network (NHSN) Digital Quality Measures (dQMs) Content Package implementation guide (IG) defines the standards for reporting the initial population and supplemental data elements needed for calculating metrics for the CDC NHSN dQMs Content Package. This IG does not define how to calculate a specific NHSN dQM or event of interest.</p>
-  <p>This IG complies with the NHSN dQM Reporting IG, published by Health Level Seven International (HL7®) International for general requirements for submissions to NHSN. The [NHSN dQM Reporting IG](https://hl7.org/fhir/us/nhsn-dqm/) specifications will be revised in accordance with any changes to NHSN reporting requirements. The figure below shows how the CDC NHSN dQM IG fits into the broader landscape of HL7 FHIR and NHSN IGs.</p>
+  <!-- <p>This IG complies with the NHSN dQM Reporting IG, published by Health Level Seven International (HL7®) International for general requirements for submissions to NHSN. The [NHSN dQM Reporting IG](https://hl7.org/fhir/us/nhsn-dqm/) specifications will be revised in accordance with any changes to NHSN reporting requirements. The figure below shows how the CDC NHSN dQM IG fits into the broader landscape of HL7 FHIR and NHSN IGs.</p> -->
   <div>
     <figure class="figure">
         <figcaption class="figure-caption"><strong>Figure 1: NHSN Implementation Guide Hierarchy</strong></figcaption>
@@ -19,13 +19,13 @@
   <p>
     This IG has the following dependencies:
     <ol>
-      <li><a name="nhsn_dqm_reporting">HL7 FHIR NHSN dQM Reporting, Edition 1</a>: <a href="https://build.fhir.org/ig/HL7/nhsn-dqm/artifacts.html">https://build.fhir.org/ig/HL7/nhsn-dqm/artifacts.html</a></li>
-      <li><a name="fhir_r4">HL7 FHIR Release 4</a>: <a href="https://hl7.org/fhir/R4/">https://hl7.org/fhir/R4/</a></li>
-      <li><a name="us_core">US Core 3.1.1</a>: <a href="http://hl7.org/fhir/us/core/STU3.1.1/">http://hl7.org/fhir/us/core/STU3.1.1/</a></li>
-      <li><a name="qi_core">QI Core 4.1.1</a>: <a href="http://hl7.org/fhir/us/qicore/STU4.1.1/">http://hl7.org/fhir/us/qicore/STU4.1.1/</a></li>
-      <li><a name="cqf_measures">Quality Measure IG 3.0.0</a>: <a href="http://hl7.org/fhir/us/cqfmeasures/STU3/">http://hl7.org/fhir/us/cqfmeasures/STU3/</a></li>
-      <li><a name="cqf_common">Clinical Quality Framework Common FHIR Assets 4.0.1</a>: <a href="http://fhir.org/guides/cqf/common/4.0.1/">http://fhir.org/guides/cqf/common/4.0.1/</a></li>
-      <li><a name="deqm">Data Exchange for Quality Measures (DEQM) 3.1.0</a>: <a href="http://hl7.org/fhir/us/davinci-deqm/STU3.1/">http://hl7.org/fhir/us/davinci-deqm/STU3.1/</a></li>
+      <!-- <li><a name="nhsn_dqm_reporting">HL7 FHIR NHSN dQM Reporting, Edition 1</a>: <a href="https://build.fhir.org/ig/HL7/nhsn-dqm/artifacts.html">https://build.fhir.org/ig/HL7/nhsn-dqm/artifacts.html</a></li> -->
+      <li><a name="fhir_r4" href="https://hl7.org/fhir/R4/">HL7 FHIR Release 4</a></li>
+      <li><a name="us_core" href="http://hl7.org/fhir/us/core/STU3.1.1/">US Core 3.1.1</a></li>
+      <li><a name="qi_core" href="http://hl7.org/fhir/us/qicore/STU4.1.1/">QI Core 4.1.1</a></li>
+      <li><a name="cqf_measures" href="http://hl7.org/fhir/us/cqfmeasures/STU3/">Quality Measure IG 3.0.0</a></li>
+      <li><a name="cqf_common" href="http://fhir.org/guides/cqf/common/4.0.1/">Clinical Quality Framework Common FHIR Assets 4.0.1</a></li>
+      <li><a name="deqm" href="http://hl7.org/fhir/us/davinci-deqm/STU3.1/">Data Exchange for Quality Measures (DEQM) 3.1.0</a></li>
     </ol>
   </p>
   <a name="audience"></a>
@@ -51,27 +51,33 @@
         <td>corey.spears@lantanagroup.com</td>
       </tr>
       <tr>
+        <td>Primary Editor</td>
+        <td>Aaron Nusstein</td>
+        <td>Lantana Consulting Group</td>
+        <td>aaron.nusstein@lantanagroup.com</td>
+      </tr>
+      <tr>
         <td>Co-Editor</td>
         <td>Andrea Benin</td>
-        <td>Chief, Surveillance Branch, DHQP, CDC</td>
+        <td>DHQP, CDC</td>
         <td>aqb4@cdc.gov</td>
       </tr>
       <tr>
         <td>Co-Editor</td>
         <td>Kristina Betz</td>
-        <td>NHSN Measure Development and Validation Unit Lead, CDC</td>
+        <td>CDC</td>
         <td>rly7@cdc.gov</td>
       </tr>
       <tr>
         <td>Co-Editor</td>
         <td>Amrit Kerr</td>
-        <td>Project Manager, Lantana Consulting Group</td>
+        <td>Lantana Consulting Group</td>
         <td>amrit.kerr@lantanagroup.com</td>
       </tr>
       <tr>
         <td>Co-Editor</td>
         <td>Sheila Abner</td>
-        <td>NHSN Standardized Terminology Lead, CDC</td>
+        <td>CDC</td>
         <td>sha8@cdc.gov</td>
       </tr>
       <tr>
@@ -112,29 +118,23 @@
       </tr>
       <tr>
         <td>Co-Editor</td>
-        <td>Aaron Nusstein</td>
-        <td>FHIR Analyst, Lantana Consulting Group</td>
-        <td>aaron.nusstein@lantanagroup.com</td>
-      </tr>
-      <tr>
-        <td>Co-Editor</td>
         <td>Lynn Perrine</td>
-        <td>Quality Measurement Manager, Lantana Consulting Group</td>
+        <td>Lantana Consulting Group</td>
         <td>lynn.perrine@lantanagroup.com</td>
       </tr>
       <tr>
         <td>Co-Editor</td>
         <td>Kim Figueroa</td>
-        <td>Clinical Analyst, Lantana Consulting Group</td>
+        <td>Lantana Consulting Group</td>
         <td>kim.figueroa@lantanagroup.com</td>
       </tr>
       <tr>
         <td>Co-Editor</td>
         <td>Mary-Margaret Richter</td>
-        <td>Clinical Analyst, Lantana Consulting Group</td>
+        <td>Lantana Consulting Group</td>
         <td>mm.richter@lantanagroup.com</td>
       </tr>
-            <tr>
+      <tr>
         <td>Co-Editor</td>
         <td>Shanai Thornton</td>
         <td>Lantana Consulting Group</td>

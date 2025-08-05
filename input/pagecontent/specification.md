@@ -4,13 +4,13 @@ This section of the implementation guide (IG) defines the specific conformance r
 
 Before reading this formal specification, implementers should first familiarize themselves with two other key portions of the specification:
 
-* The [National Healthcare Safety Network (NHSN) Digital Quality Measure (dQM) Reporting Implementation Guide](https://build.fhir.org/ig/HL7/nhsn-dqm/index.html) HL7 Standard (currently under development) provides the baseline measure submission requirements and guidance that this guide builds from.
+* The [National Healthcare Safety Network (NHSN) Digital Quality Measure (dQM) Reporting Implementation Guide](https://hl7.org/fhir/us/nhsn-dqm/) HL7 Standard provides the baseline measure submission requirements and guidance that this guide builds from.
 * The [Use Cases](use_cases.html) page provides about the measure and reporting use cases this IG covers.
 
 
 ### Conventions
 
-This Implementation Guide (IG) uses specific terminology to flag statements that have relevance for the evaluation of conformance with the guide:
+This IG uses specific terminology to flag statements that have relevance for the evaluation of conformance with the guide:
 
 * **SHALL** indicates requirements that must be met to be conformant with the specification.
 
@@ -47,7 +47,7 @@ The complete set of profiles defined in this IG can be found by following the li
 
 The following reporting scenarios use the Actors defined in the [Actors and Use Cases](use_cases.html) page.
 
-The general reporting workflows are detailed in the [Reporting Scenarios](https://build.fhir.org/ig/HL7/nhsn-dqm/specification.html#reporting-scenarios) section of the [HL7 NHSN dQM Reporting Implementation Guide](https://build.fhir.org/ig/HL7/nhsn-dqm/index.html).
+The general reporting workflows are detailed in the [Reporting Scenarios](https://hl7.org/fhir/us/nhsn-dqm/specification.html#reporting-scenarios) section of the [HL7 NHSN dQM Reporting Implementation Guide](https://hl7.org/fhir/us/nhsn-dqm/index.html).
 
 
 #### NHSNLink Pull from NHSN
