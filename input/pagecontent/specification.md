@@ -2,10 +2,7 @@ This section of the implementation guide (IG) defines the specific conformance r
 
 ### Pre-reading
 
-Before reading this formal specification, implementers should first familiarize themselves with two other key portions of the specification:
-
-* The [National Healthcare Safety Network (NHSN) Digital Quality Measure (dQM) Reporting Implementation Guide](https://hl7.org/fhir/us/nhsn-dqm/) HL7 Standard provides the baseline measure submission requirements and guidance that this guide builds from.
-* The [Use Cases](use_cases.html) page provides about the measure and reporting use cases this IG covers.
+Before reading this formal specification, implementers should first familiarize themselves with the [Use Cases](use_cases.html) page that describes the measure and reporting use cases this IG covers.
 
 
 ### Conventions
