@@ -31,9 +31,15 @@ dependencies:
   fhir.cqf.common:
     version: 4.0.1
     id: cqf
-  hl7.fhir.us.cqfmeasures: 3.0.0
-  hl7.fhir.us.davinci-deqm: 3.1.0
-  hl7.fhir.us.qicore: 4.1.1
+  hl7.fhir.us.cqfmeasures: 
+    version: 3.0.0
+    id: cqfm
+  hl7.fhir.us.davinci-deqm: 
+    version: 3.1.0
+    id: deqm
+  hl7.fhir.us.qicore: 
+    version: 4.1.1
+    id: qicore
 
 description: "This content describes the specifications for the for the Health Level Seven International® (HL7) Fast Healthcare Interoperability Resources® (FHIR) digital quality measures (dQMs) reported to the National Healthcare Safety Network (NHSN)."
 parameters:
@@ -116,8 +122,6 @@ pages:
     title: NHSN Implementation Guide Resource
   changes.xml:
     title: IG Change History 
-  history.xml:
-    title: IG Version History Directory
 
 
 # groups:
