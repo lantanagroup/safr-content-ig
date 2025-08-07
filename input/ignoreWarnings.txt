@@ -120,7 +120,7 @@ Unable to check the stated count 1 because the subject list cannot be fully proc
 A definition for CodeSystem 'http://www.example.com/prorpietary' could not be found, so the code cannot be validated
 
 # INFORMATION: maxValueSet is used by tooling for R4.
-The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.2.0 is deprecated
+The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.3.0-ballot-tc1 is deprecated with the note Use additionalBinding extension or element instead
 
 # WARNING: Descriptive URLs are not expected to resolve
 %URL value 'urn:oid:%
@@ -132,13 +132,11 @@ No definition could be found for URL value 'https://www.cdc.gov/nhsn/OrgID'
 WARNING: ImplementationGuide/gov.cdc.nhsn.measures: ImplementationGuide.dependsOn[2]: The ImplementationGuide uses package hl7.fhir.us.core#3.1.1 released on 2020-08-28, but the most recent appropriate version is 8.0.0. This reference is getting old and the more recent version should be considered
 WARNING: ImplementationGuide/gov.cdc.nhsn.measures: ImplementationGuide.dependsOn[4]: The ImplementationGuide uses package hl7.fhir.us.cqfmeasures#3.0.0 released on 2022-04-28, but the most recent appropriate version is 5.0.0. This reference is getting old and the more recent version should be considered
 WARNING: ImplementationGuide/gov.cdc.nhsn.measures: ImplementationGuide.dependsOn[5]: The ImplementationGuide uses package hl7.fhir.us.davinci-deqm#3.1.0 released on 2022-11-21, but the most recent appropriate version is 5.0.0. This reference is getting old and the more recent version should be considered
-WARNING: ImplementationGuide/gov.cdc.nhsn.measures: ImplementationGuide.dependsOn[6]: The ImplementationGuide uses package hl7.fhir.us.qicore#4.1.1 released on 2022-03-31, but the most recent appropriate version is 7.0.0. This reference is getting old and the more recent version should be considered
+WARNING: ImplementationGuide/gov.cdc.nhsn.measures: ImplementationGuide.dependsOn[6]: The ImplementationGuide uses package hl7.fhir.us.qicore#4.1.1 released on 2022-03-31, but the most recent appropriate version is 7.0.1. This reference is getting old and the more recent version should be considered
 
 
 # Correct VSAC ValueSet URL that cannot be accessed by the publisher
-A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
 A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1311'
-A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1312'
 A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1308'
 A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2097'
 A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2098'
@@ -150,11 +148,7 @@ A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/V
 A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2119'
 A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2104'
 A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2105'
-A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.85'
-A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.86'
-A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1190.87'
-A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.10.20.22.5.300'
-A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.274'
+
 
 # Base NHSN website url with no artifact definition, Added to url by CQFTooling.
 No definition could be found for URL value 'https://www.cdc.gov/nhsn/index.html'
