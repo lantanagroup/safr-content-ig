@@ -120,7 +120,7 @@ Unable to check the stated count 1 because the subject list cannot be fully proc
 A definition for CodeSystem 'http://www.example.com/prorpietary' could not be found, so the code cannot be validated
 
 # INFORMATION: maxValueSet is used by tooling for R4.
-The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.3.0-ballot-tc1 is deprecated with the note Use additionalBinding extension or element instead
+The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet%
 
 # WARNING: Descriptive URLs are not expected to resolve
 %URL value 'urn:oid:%
