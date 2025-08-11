@@ -96,8 +96,7 @@ trap "rm -rf $temp_dir" EXIT
 fi
 
 # Initialize the Markdown table
-markdown_table="| Measure Name | Version | New Version? |\n|--------------|---------|---------------|\n"
-
+markdown_table="| Measure Name | Version |\n|--------------|---------|\n"
 
 # Loop through all files in the folder
 for file_path in "$folder_path"/NHSN*.cql; do
@@ -116,16 +115,8 @@ for file_path in "$folder_path"/NHSN*.cql; do
     # Use regex to extract the version number
     if [[ $first_line =~ version[[:space:]]\'([^\']+)\' ]]; then
       version="${BASH_REMATCH[1]}"
-      
-      # Compare the version with the latest release
-      if [[ "$version" == "$latest_release" ]]; then
-        new_version="No"
-      else
-        new_version="Yes"
-      fi
-
-      # Append the file name, version, and comparison result to the Markdown table
-      markdown_table+="| $file_name | $version | $new_version |\n"
+      # Append the file name and version to the Markdown table
+      markdown_table+="| $file_name | $version |\n"
     fi
   fi
 done
@@ -136,6 +127,9 @@ if [[ "$latest_release_url" != "No previous release available." ]]; then
 else
   markdown_table+="\n*Note: No previous release is available.*\n"
 fi
+
+# Add a warning about missing ValueSets
+markdown_table+="\n> **⚠️ WARNING:** No ValueSets are present in the release artifacts. This will be fixed in a future update to the pipeline job.\n"
 
 # Output the Markdown table to a file
 echo -e "$markdown_table" > cql_versions.md
