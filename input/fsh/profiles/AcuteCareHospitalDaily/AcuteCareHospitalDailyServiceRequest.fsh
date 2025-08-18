@@ -2,7 +2,7 @@ Profile: AcuteCareHospitalDailyEventServiceRequest
 Parent: ServiceRequest
 Id: ach-daily-servicerequest
 Title: "ACH Daily Event ServiceRequest"
-Description: "This profile contains Required and Must Support data elements for reporting COVID-19, Influenza, and Respiratory Syncytial Virus (RSV) laboratory order information for the NHSN Acute Care Hospital (ACH) Daily Digital Quality Measure. This profile is based on the [HL7 FHIR R4 ServiceRequest Resource v4.0.1](http://hl7.org/fhir/R4/servicerequest.html)."
+Description: "This profile contains Required and Must Support data elements for reporting COVID-19, Influenza, and Respiratory Syncytial Virus (RSV) laboratory order information for the NHSN Acute Care Hospital (ACH) Daily Digital Quality Measures. This profile is based on the [HL7 FHIR R4 ServiceRequest Resource v4.0.1](http://hl7.org/fhir/R4/servicerequest.html)."
 * ^status = #active
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
