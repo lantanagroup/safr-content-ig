@@ -2,7 +2,7 @@ Profile: AcuteCareHospitalDailyEventLabDiagnosticReport
 Parent: USCoreDiagnosticReportProfileLaboratoryReporting
 Id: ach-daily-diagnosticreport-lab
 Title: "ACH Daily Event Diagnostic Report (Lab)"
-Description: "This profile contains Required and Must Support data elements for reporting diagnostic report lab information for the NHSN Acute Care Hospital (ACH) Daily Digital Quality Measure. This profile is based on the [HL7 FHIR® US Core Diagnostic Report - Lab Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-diagnosticreport-lab.html)."
+Description: "This profile contains Required and Must Support data elements for reporting diagnostic report lab information for the NHSN Acute Care Hospital (ACH) Daily Digital Quality Measures. This profile is based on the [HL7 FHIR® US Core Diagnostic Report - Lab Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-diagnosticreport-lab.html)."
 * ^status = #active
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
