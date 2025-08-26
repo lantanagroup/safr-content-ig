@@ -2,7 +2,7 @@ Profile: AcuteCareHospitalMonthlyReportingEncounter
 Parent: USCoreEncounterProfile
 Id: ach-monthly-encounter
 Title: "ACH Monthly Event Encounter"
-Description: "This profile contains Required and Must Support data elements for reporting encounter information to the NHSN Acute Care Hospital (ACH) Monthly Digital Quality Measures. This profile is based on the [HL7 FHIR® US Core Encounter Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-encounter.html)."
+Description: "This profile contains Required and Must Support data elements for reporting encounter information to the NHSN Acute Care Hospital (ACH) Monthly Digital Quality Measure. This profile is based on the [HL7 FHIR® US Core Encounter Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-encounter.html)."
 
 * obeys encounter-ach-monthly-initial-population
 //* obeys encounter-ach-initial-population1

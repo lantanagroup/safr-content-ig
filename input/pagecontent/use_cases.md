@@ -21,19 +21,14 @@ This implementation guide (IG) serves a wide variety of National Healthcare Safe
 
 The NHSN Acute Care Hospital (ACH) monthly digital quality measure (dQM) enables facilities to electronically report line-level data to NHSN for the following modules, which provide monthly event rates back to the facility. These dQMs include:
 
-- Glycemic Control (hyperglycemia and medication-related hypoglycemia)
-- Healthcare Facility-onset
-- Antibiotic-Treated Clostridioides difficile (C. difficile) Infection (HT-CDI)
-- Hospital-Onset Bacteremia and Fungemia (HOB)
-- Venous Thromboembolism (VTE)-related Prophylaxis and event rates (under development)
-- Late-Onset Sepsis / Meningitis (under development)
-- Acute Sepsis Events (ASE) (under development)
-- Hospital-onset Acute Kidney Injury (HAKI) (under development)
-- Opioid-related Adverse Events (ORAE) (under development)
+- Glycemic Control (includes hyperglycemia and medication-related hypoglycemia events)
+- Bacteremia & Fungemia Surveillance (includes Hospital-Onset Bacteremia & Fungemia events)
+- Clostridioides difficile Surveillance (includes Healthcare facility-onset, antibiotic-Treated CDI events)
+- Sepsis Surveillance (includes Adult Community-onset Sepsis events)
 
 #### Patients of Interest
 
-The facility works with NHSN to define a patients of interest (POI) list. The POI list is often the facility’s entire inpatient population. The data for the patients on the list are then extracted and evaluated against the measure criteria for the initial population.
+The facility works with NHSN to define a patients of interest (POI) list. The POI list is often the facility’s entire Inpatient, Emergency, and Observation population. The data for the patients on the list are then extracted and evaluated against the measure criteria for the initial population.
 
 #### Initial Population
 
@@ -214,7 +209,7 @@ RPS module data collected via the ACH Daily dQM may be used by facilities for qu
 
 #### Patients of Interest
 
-The facility will work with NHSN to define a POI list. This is often the entire in-patient population at the facility. The data for the patients in the list are then extracted and evaluated against the measure criteria for the initial population (see below).
+The facility will work with NHSN to define a POI list. This is often the entire in-patient inpatient, observation, or short stay population at the facility. The data for the patients in the list are then extracted and evaluated against the measure criteria for the initial population (see below).
 
 #### Initial Population
 
