@@ -1,4 +1,4 @@
-library NHSNAcuteCareHospitalMonthlyInitialPopulation version '1.0.1-dev'
+library NHSNAcuteCareHospitalMonthlyInitialPopulation version '1.0.0-dev'
 
 using FHIR version '4.0.1'
 
@@ -13,6 +13,7 @@ codesystem "V2-0074": 'http://terminology.hl7.org/CodeSystem/v2-0074'
 codesystem "Condition Category": 'http://terminology.hl7.org/CodeSystem/condition-category'
 codesystem "US Core Condition Category": 'http://hl7.org/fhir/us/core/CodeSystem/condition-category'
 codesystem "Condition Clinical Status": 'http://terminology.hl7.org/CodeSystem/condition-clinical'
+codesystem "SNOMEDCT": 'http://www.snomed.org/'
 
 valueset "Inpatient, Emergency, and Observation Locations": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
 valueset "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292'
@@ -29,9 +30,9 @@ code "procedure": 'procedure' from "Observation Category" display 'Procedure'
 code "survey": 'survey' from "Observation Category" display 'Survey'
 
 //code for Condition category
-code "problem-list-item": 'problem-list-item' from "Condition Category" display 'Problem List Item'
+//code "problem-list-item": 'problem-list-item' from "Condition Category" display 'Problem List Item'
 code "encounter-diagnosis": 'encounter-diagnosis' from "Condition Category" display 'Encounter Diagnosis'
-code "health-concern": 'health-concern' from "US Core Condition Category" display 'Health Concern'
+//code "health-concern": 'health-concern' from "US Core Condition Category" display 'Health Concern'
 
 //code for Diagnostic Report Category
 code "LAB": 'LAB' from "V2-0074" display 'Laboratory'
@@ -46,8 +47,12 @@ code "observation encounter": 'OBSENC' from "ActCode" display 'observation encou
 //code for Condition clinicalStatus
 code "active": 'active' from "Condition Clinical Status" display 'active'
 
+//code for Procedure category
+code "Surgical procedure": '3877713003' from "SNOMEDCT" display 'Surgical procedure'
+code "Diagnostic procedure": '103693007' from "SNOMEDCT" display 'Diagnostic procedure'
+
 parameter "Measurement Period" 
-    default Interval[@2024-04-01T00:00:00.0, @2024-04-30T23:59:59.0)
+    default Interval[@2022-01-01T00:00:00.0, @2022-01-31T23:59:59.0)
 
 context Patient 
 
@@ -102,17 +107,18 @@ define "Get Locations from IP Encounters in Measurement Period":
 //============================================================================
 define "SDE Condition":
   "Conditions" Conditions 
-  where exists(
+    where exists(
     "Initial Population" IP
-    //Check for Problem List Conditions that were recorded before or during IP
-    where (
+//Check for Problem List Conditions that were recorded before or during IP 
+     where /*(
       Conditions.recordedDate before end of IP.period
       and exists(Conditions.category categories
         where categories ~ "problem-list-item")
       and Conditions.clinicalStatus ~ "active"
-    )
-    //Check for Encounter Diagnosis Conditions that reference an IP encounter
-    or (
+    )*/
+//Check for Encounter Diagnosis Conditions that reference an IP encounter
+//  or
+   (
       (exists(IP.diagnosis Diagnoses
           where GetCondition(Diagnoses.condition).id = Conditions.id
         )
@@ -120,12 +126,13 @@ define "SDE Condition":
       )
       and exists (Conditions.category categories
         where categories ~ "encounter-diagnosis"
-          or categories ~ "health-concern")
+      //or categories ~ health-concern")  
     )
+   )
   )
   return ConditionResource(Conditions,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-condition'}},
-  {"problem-list-item", "encounter-diagnosis", "health-concern"})
+   {"encounter-diagnosis"})
 
 define "SDE Device":
   [Device] Devices 
@@ -234,9 +241,9 @@ define "SDE Observation Vital Signs Category":
 //Defaulting to base FHIR profile as there are no individual profiles in US Core 3.1.1 that cover these Observation categories
 define "SDE Observation Category":
   "Observations" Observations 
-  where ((exists(Observations.category Category where Category ~ "social-history"))
+  where (/*(exists(Observations.category Category where Category ~ "social-history"))
     or (exists(Observations.category Category where Category ~ "survey"))
-    or (exists(Observations.category Category where Category ~ "imaging"))
+    or */(exists(Observations.category Category where Category ~ "imaging"))
     or (exists(Observations.category Category where Category ~ "procedure")))
     and exists(
       "Initial Population" IP
@@ -257,7 +264,7 @@ define "SDE Procedure":
   where exists(
     "Initial Population" IP
     where NHSNHelpers."Normalize Interval"(Procedures.performed) overlaps IP.period)
-  return SharedResource.ProcedureResource(Procedures,
+     return ProcedureResource(Procedures,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-procedure'}})
 
 define "SDE Specimen":
@@ -315,20 +322,21 @@ define function "GetEncounter"(reference Reference):
   )
 
 define function RemoveUnaccepted(codes List<FHIR.CodeableConcept>, accepted List<System.Code>):
-	codes c
+  codes c
   where exists(
     accepted a
     where c ~ a
   )
 
 define function FilterCodeableConcepts(codes List<FHIR.CodeableConcept>, accepted List<System.Code>):
-	if Count(accepted) > 0
-		then RemoveUnaccepted(codes, accepted)
-	else codes
+  if Count(accepted) > 0
+    then RemoveUnaccepted(codes, accepted)
+  else codes    
 
 //
 //Measure Specific Resource Creation Functions
 //
+
 define function ConditionResource(condition Condition, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
   condition c
   return Condition{
@@ -533,4 +541,54 @@ define function ObservationVitalSignsResource(observation Observation, profileUR
     hasMember: o.hasMember,
     derivedFrom: o.derivedFrom,
     component: ObservationVitalSignsComponent(o.component)
+  }
+
+define function ProcedurePerformer(performer List<FHIR.Procedure.Performer>):
+  performer p
+  return FHIR.Procedure.Performer{
+    function: p.function,
+    actor: p.actor,
+    onBehalfOf: p.onBehalfOf
+  }
+
+define function ProcedureFocalDevice(device List<FHIR.Procedure.FocalDevice>):
+  device d
+  return FHIR.Procedure.FocalDevice{
+    action: d.action,
+    manipulated: d.manipulated
+  }
+
+define function ProcedureResource(procedure Procedure, profileURLs List<FHIR.canonical>):
+  procedure p
+  return Procedure{
+    id: FHIR.id {value: 'LCR-' + p.id},
+    meta: SharedResource.MetaElement(p, profileURLs),
+    extension: p.extension,
+    instantiatesCanonical: p.instantiatesCanonical,
+    instantiatesUri: p.instantiatesUri,
+    basedOn: p.basedOn,
+    partOf: p.partOf,
+    status: p.status,
+    statusReason: p.statusReason,
+    category: p.category,
+    code: p.code,
+    subject: p.subject,
+    encounter: p.encounter,
+    performed: p.performed,
+    recorder: p.recorder,
+    asserter: p.asserter,
+    performer: ProcedurePerformer(p.performer),
+    location: p.location,
+    reasonCode: p.reasonCode,
+    reasonReference: p.reasonReference,
+    bodySite: p.bodySite,
+    outcome: p.outcome,
+    report: p.report,
+    complication: p.complication,
+    complicationDetail: p.complicationDetail,
+    followUp: p.followUp,
+    note: p.note,
+    focalDevice: ProcedureFocalDevice(p.focalDevice),
+    usedReference: p.usedReference,
+    usedCode: p.usedCode
   }
