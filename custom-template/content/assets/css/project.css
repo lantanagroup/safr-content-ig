@@ -58,13 +58,17 @@ var(--publish-box-border); */
   --btn-gradient-end-color: #357ebd; /* 10. Menu item gradient end  color */
   --btn-gradient-start-color-alpha: #ff428bca; /* 11. Menu item gradient start color (with alpha) */
   --btn-gradient-end-color-alpha: #ff357ebd; /* 12. Menu item gradient end color (with alpha) */
-  --link-color: #428bca; /* 13. Hyperlink text color */
-  --link-hover-color: #2a6496; /* 14. Hyperlink text hover color */
+  /*--link-color: #428bca; /* 13. Hyperlink text color - Original color not 508 compliant */
+  --link-color: #0000aa;; /* 13. Hyperlink text color*/
+  /* --link-hover-color: #2a6496; /* 14. Hyperlink text hover color - Original color not 508 compliant */
+  --link-hover-color: #000066; /* 14. Hyperlink text hover color */
 
-  --publish-box-bg-color: yellow; /* 15. Publish box background color */
+  /*--publish-box-bg-color: yellow; /* 15. Publish box background color - Original color not 508 compliant*/
+  --publish-box-bg-color: #ffffcc; /* 15. Publish box background color */
   --publish-box-border: 1px solid #0A0008; /* 16.  Publish box border definition */
 
-  --toc-box-bg-color: #ffeb7e; /* 17.  TOC box background color */
+  /*--toc-box-bg-color: #ffeb7e; /* 17.  TOC box background color - Original color not 508 compliant*/
+  --toc-box-bg-color: #ffffcc; /* 17.  TOC box background color */
   --toc-box-border: 1px solid navy; /* 18. TOC box border definition */
 
   --stu-note-background-color: #fff2ff; /* 19. (STU) Note box background color */
@@ -84,6 +88,7 @@ var(--publish-box-border); */
   --dragon-background-color: #fffbf7; /* 29. Dragon background color */
   --dragon-text-color: #101020; /* 30. Dragon font color */
 
+  --toc-box-link-color: #000066;
 }
 
 
@@ -236,7 +241,13 @@ body {
 #publish-box {
   background-color: var(--publish-box-bg-color);
   border: var(--publish-box-border);
+  font-weight: bold;
   padding: 5px;
+}
+
+a.publish-box {
+  font-weight: bold;
+  color:   var(--toc-box-link-color);
 }
 
 .dragon {
@@ -571,6 +582,7 @@ ul.markdown-toc
   float: right;
   z-index: 10;
   width: 30%;
+  color:   var(--toc-box-link-color);
   background-color:  var(--toc-box-bg-color);
   border: var(--toc-box-border);
 }
@@ -588,6 +600,7 @@ ul.markdown-toc p.link
   font-size: 10px;
   padding-left: 8px;
   margin: 0px;
+  color:   var(--toc-box-link-color);
 }
 
 div.markdown-toc
@@ -628,16 +641,16 @@ h2{counter-reset:sub-section}
 h3{counter-reset:composite}
 h4{counter-reset:detail}
 h5{counter-reset:more-detail}
-h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) "." counter(section) " ";}
-h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(section) "." counter(sub-section) " ";}
-h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(section) "." counter(sub-section) "." counter(composite) " ";}
-h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(section) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
-h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(section) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+h2:before{color:black;counter-increment:section;content:var(--heading-prefix) "." counter(section) " ";}
+h3:before{color:black;counter-increment:sub-section;content:var(--heading-prefix) "." counter(section) "." counter(sub-section) " ";}
+h4:before{color:black;counter-increment:composite;content:var(--heading-prefix) "." counter(section) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:black;counter-increment:detail;content:var(--heading-prefix) "." counter(section) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:black;counter-increment:more-detail;content:var(--heading-prefix) "." counter(section) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
 
 /* ============ downloads css ============= */
 
 a[href$=".sch"]:after, a[href$=".xlsx"]:after, a[href$=".zip"]:after, a[href$=".tgz"]:after, a[href$=".xml"]:not([no-download^="true"]):after, a[href$=".json"]:not([no-download^="true"]):after, a[href$=".csv"]:after, a[href$=".ttl"]:not([no-download^="true"]):after {
-  content: url(../images/download.png);
+  content: url(../images/download.png) / "Download icon";
   display: inline-block;
   text-decoration: none;
   padding-left: 3px;
@@ -645,14 +658,14 @@ a[href$=".sch"]:after, a[href$=".xlsx"]:after, a[href$=".zip"]:after, a[href$=".
 
 /* =========== external links ============= */
 p a[href^="http://"]:not([no-external^="true"]):after,p a[href^="https://"]:not([no-external^="true"]):after {
-    content: url(../images/external.png);
+    content: url(../images/external.png) / "External link icon";
     display: inline-block;
     text-decoration: none;
     padding-left: 3px;
 }
 
 li a[href^="http://"]:not([no-external^="true"]):after,li a[href^="https://"]:not([no-external^="true"]):after {
-    content: url(../images/external.png);
+    content: url(../images/external.png) / "External link icon";
     display: inline-block;
     text-decoration: none;
     padding-left: 3px;
@@ -769,4 +782,21 @@ li a[href^="http://"]:not([no-external^="true"]):after,li a[href^="https://"]:no
 code[class*="language-"],
 pre[class*="language-"] {
     text-shadow: none;
+}
+
+code[class*="language-txt"],
+pre[class*="language-txt"] {
+    text-shadow: none;
+    font-weight: bold;
+    /*background-color: #eeece9;*/
+    background-color: #ff0000;
+}
+
+a.dependency-table {
+  font-weight: bold;
+  color:   var(--toc-box-link-color);
+}
+
+table.grid {
+  border: 1px black solid;
 }
