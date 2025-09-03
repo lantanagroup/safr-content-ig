@@ -469,7 +469,7 @@ define &quot;SDE All Procedures&quot;:
             or Meds in &quot;Zanamivir&quot;)
       and exists(&quot;Initial Population&quot;)
       and NHSNHelpers.&quot;Normalize Interval&quot;(RPSMedRequest.authoredOn) during &quot;Measurement Period&quot;
-    return SharedResource.MedicationRequestResource(RPSMedRequest,
+    return MedicationRequestResource(RPSMedRequest,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-medicationrequest'}})"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -1870,20 +1870,23 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalDailyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="MedicationRequestResource"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define function MedicationRequestResource(medicationRequest MedicationRequest, profileURLs List&lt;FHIR.canonical&gt;):
+               <valueString value="//
+ // Measure Specific Resource Creation Functions
+ //
+
+ define function MedicationRequestResource(medicationRequest MedicationRequest, profileURLs List&lt;FHIR.canonical&gt;):
   medicationRequest m
   return MedicationRequest{
     id: FHIR.id {value: 'LCR-' + m.id},
-    meta: MetaElement(medicationRequest, profileURLs),
+    meta: SharedResource.MetaElement(medicationRequest, profileURLs),
     extension: m.extension,
     status: m.status,
-    statusReason: m.statusReason,
     intent: m.intent,
     category: m.category,
     priority: m.priority,
@@ -1900,7 +1903,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
     instantiatesCanonical: m.instantiatesCanonical,
     instantiatesUri: m.instantiatesUri,
     courseOfTherapyType: m.courseOfTherapyType,
-    dosageInstruction: MedicationRequestDosageInstruction(m.dosageInstruction)
+    dosageInstruction: SharedResource.MedicationRequestDosageInstruction(m.dosageInstruction)
   }"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -3842,7 +3845,6 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <mustSupport value="id"></mustSupport>
             <mustSupport value="extension"></mustSupport>
             <mustSupport value="status"></mustSupport>
-            <mustSupport value="statusReason"></mustSupport>
             <mustSupport value="intent"></mustSupport>
             <mustSupport value="category"></mustSupport>
             <mustSupport value="priority"></mustSupport>
@@ -3908,7 +3910,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
    <title value="NHSN Acute Care Hospital Daily Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2025-07-17T15:37:55-05:00"></date>
+   <date value="2025-09-03T16:39:43-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="All encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period. "></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>
