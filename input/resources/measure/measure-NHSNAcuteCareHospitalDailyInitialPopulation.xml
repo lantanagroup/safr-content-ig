@@ -3905,12 +3905,12 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
       <system value="https://nhsnlink.org"></system>
       <value value="NHSNAcuteCareHospitalDailyInitialPopulation"></value>
    </identifier>
-   <version value="1.0.0-dev"></version>
+   <version value="1.0.1-dev"></version>
    <name value="NHSNAcuteCareHospitalDailyInitialPopulation"></name>
    <title value="NHSN Acute Care Hospital Daily Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2025-09-03T16:39:43-05:00"></date>
+   <date value="2025-09-09T13:01:31-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="All encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period. "></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>
