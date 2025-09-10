@@ -2,24 +2,24 @@
 
 This implementation guide (IG) defines the following actors: a data source, a dQM evaluation engine, a measure source, and a data aggregator.  
 
-<b>Note:</b> A given system may play the role of multiple actors. For example, an EHR could serve as both the data source and dQM evaluation engine when calculating a measure internally. Likewise, a system such as NHSNLink, which resides at NHSN and queries the data source remotely may act as the dQM evaluation engine and MeasureReport recipient, evaluating the data, producing, and validating MeasureReport bundles. 
+<b>Note:</b> A given system may play the role of multiple actors. For example, an electronic health record (EHR) could serve as both the data source and dQM evaluation engine when calculating a measure internally. Likewise, a system such as NHSNLink, which resides at the National Healthcare Safety Network (NHSN) and queries the data source remotely may act as the dQM evaluation engine and MeasureReport recipient, evaluating the data, producing, and validating MeasureReport bundles. 
 
 The actors defined here are used in the Reporting Scenarios section of the [Specification](specification.html) page in this IG. 
 
 - <b>Data Source:</b> The EHRs for facilities reporting to NHSN serve as the data source.   
-- <b>Measure Source:</b> NHSN stores FHIR resources used for dQM reporting, such as Measure, Library, ValueSet, etc. that systems can query for the latest measure content before querying the EHR FHIR server and performing measure evaluation.   
+- <b>Measure Source:</b> NHSN stores Fast Healthcare Interoperability Resources (FHIR) resources used for dQM reporting, such as Measure, Library, ValueSet, etc. that systems can query for the latest measure content before querying the EHR FHIR server and performing measure evaluation.   
 - <b>dQM Evaluation Engine:</b>  Requests and queries patients from the EHR FHIR server and evaluates the data against the dQM retrieved from the Measure Source. The dQM evaluation engine validates the data against the profiles in this IG. 
-- <b>MeasureReport Recipient:</b> SN ingests the MeasureReport bundles from the dQM evaluation engine.  
+- <b>MeasureReport Recipient:</b> NHSN ingests the MeasureReport bundles from the dQM evaluation engine.  
 
 ### Use Cases
 
-This implementation guide (IG) serves a wide variety of National Healthcare Safety Network (NHSN) use cases.
+This IG serves a wide variety of NHSN use cases.
 
 ### Use Case 1: Acute Care Hospital (ACH) Monthly
 
 #### Description
 
-The NHSN Acute Care Hospital (ACH) monthly digital quality measure (dQM) enables facilities to electronically report line-level data to NHSN for the following modules, which provide monthly event rates back to the facility. These dQMs include:
+The NHSN ACH Monthly dQM enables facilities to electronically report line-level data to NHSN for the following modules, which provide monthly event rates back to the facility. These dQMs include:
 
 - Glycemic Control (includes hyperglycemia and medication-related hypoglycemia events)
 - Bacteremia & Fungemia Surveillance (includes Hospital-Onset Bacteremia & Fungemia events)
@@ -32,7 +32,7 @@ The facility works with NHSN to define a patients of interest (POI) list. The PO
 
 #### Initial Population
 
-The initial population in the ACH Monthly dQM is defined as all encounters for patients of any age in an Emergency Department (ED), observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period. Once an individual patient meets the population criteria, the line-level data needed to calculate metrics, benchmark, and or stratify the individual protocol measures is submitted to NHSN. 
+The initial population in the ACH Monthly dQM is defined as all encounters for patients of any age in an Emergency Department (ED), observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period. Once an individual patient meets the population criteria, the line-level data needed to calculate metrics, to benchmark, and/or to stratify the individual protocol measures is submitted to NHSN. 
 
 #### Additional Use Case Information References
 
@@ -49,15 +49,15 @@ For specific information on the individual NHSN protocols and metrics see:
 - [Submitting Organization](Organization-organization-example-submitting-organization.html) 
 - [Submitting Device](Device-device-example-submitting-device.html) 
 
-POI List
+#### POI List
 
 - [ACH Monthly Patients Of Interest](List-list-example-ach-monthly-patients-of-interest.html)
 
-Subject List Measure Report
+#### Subject List Measure Report
 
 - [ACH Monthly Subject List](MeasureReport-measurereport-example-ach-monthly-subjectlist1.html)
 
-Individual Measure Report
+#### Individual Measure Report
 
 - [ACH Monthly Individual Measure Report List](List-list-example-ach-monthly-individual-measurereport-list.html)
 
@@ -203,7 +203,7 @@ For all bed censuses and counts, the following bed types should be <u>excluded</
 
 #### Description
 
-The NHSN Respiratory Pathogens Surveillance (RPS) module enables the measurement of facility and unit-specific incidence and prevalence of Coronavirus 2019 (COVID-19), Influenza, and Respiratory Syncytial Virus (RSV) disease among patients admitted to the hospital (inpatient, observation, or short stay status), and specific associated patient outcomes. The RPS module offers a mechanism for ongoing monitoring of infectious respiratory viral illness among hospitalized patients with minimal human resource expenditure via 100% electronically automated data capture. This initial version of the module is based on electronic data capture and upload of demographic, administrative, and clinical data from the facility’s electronic source systems such as the electronic health record (EHR), patient registration system (admission, discharge, and transfer [ADT] data), laboratory information system, and pharmacy electronic medication administration system.
+The NHSN Respiratory Pathogens Surveillance (RPS) module enables the measurement of facility and unit-specific incidence and prevalence of Coronavirus 2019 (COVID-19), Influenza, and Respiratory Syncytial Virus (RSV) disease among patients admitted to the hospital (inpatient, observation, or short stay status), and specific associated patient outcomes. The RPS module offers a mechanism for ongoing monitoring of infectious respiratory viral illness among hospitalized patients with minimal human resource expenditure via 100% electronically automated data capture. This initial version of the module is based on electronic data capture and upload of demographic, administrative, and clinical data from the facility’s electronic source systems such as the EHR, patient registration system (admission, discharge, and transfer [ADT] data), laboratory information system, and pharmacy electronic medication administration system.
 
 RPS module data collected via the ACH Daily dQM may be used by facilities for quality improvement and patient care planning purposes, as well as by local, state, and federal public health agencies in coordination and response to public health outbreaks. Facilities will have access to their data via the analysis functions of NHSN.
 
@@ -233,15 +233,15 @@ The ACH Daily Initial Population includes all encounters with an inpatient, obse
 - [Submitting Organization](Organization-organization-example-submitting-organization.html)
 - [Submitting Device](Device-device-example-submitting-device.html)
 
-POI List
+#### POI List
 
 - [ACH Daily Patients Of Interest](List-list-example-ach-daily-patients-of-interest.html)
 
-Subject List Measure Report
+#### Subject List Measure Report
 
 - [ACH Daily Subject List](MeasureReport-measurereport-example-ach-daily-subjectlist.html)
 
-Individual Measure Report
+#### Individual Measure Report
 
 - [ACH Daily Individual Measure Report List](List-list-example-ach-daily-individual-measurereport-list.html)
 

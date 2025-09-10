@@ -2,7 +2,7 @@ Profile: AcuteCareHospitalMonthlyReportingMedicationAdministration
 Parent: MedicationAdministration
 Id: ach-monthly-medicationadministration
 Title: "ACH Monthly Event MedicationAdministration"
-Description: "This profile contains Required and Must Support data elements for reporting medication administration information to the NHSN Acute Care Hospital (ACH) Monthly Digital Quality Measure. This profile is based on the [HL7 FHIR® R4 MedicationAdministration Resource v4.0.1](http://hl7.org/fhir/R4/medicationadministration.html)."
+Description: "This profile contains Required and Must Support data elements for reporting medication administration information to the NHSN ACH Monthly dQM. This profile is based on the [HL7 FHIR® R4 MedicationAdministration Resource v4.0.1](http://hl7.org/fhir/R4/medicationadministration.html)."
 * ^status = #active
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1

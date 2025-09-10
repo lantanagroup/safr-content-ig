@@ -20,12 +20,12 @@ This IG uses specific terminology to flag statements that have relevance for the
 
 The following rules regarding Must Support elements apply to all Profiles in this guide. The Must Support definitions are not inherited from other IGs, even for profiles in this guide that are derived from another guide.
 
-Sender:
+##### Sender
 
-* If the data element is available in the FHIR API/EHR, the data element *SHALL* be provided (either through submission or response to a query) for measure calculation or risk adjustment.
+* If the data element is available in the Fast Healthcare Interoperability Resources (FHIR) application programming interface (API) or electronic health record (EHR), the data element *SHALL* be provided (either through submission or response to a query) for measure calculation or risk adjustment.
 * If the sender does not capture/store the data, the data are not available, or sharing of the data is not authorized, the system **SHOULD NOT** send the element if the element is not marked as mandatory (lower cardinality of 0).
 
-Receiver: 
+##### Receiver
 
 * The receiver **SHALL** be capable of processing resource instances containing must-support data elements without generating an error or causing the application to fail.
 * The receiver **SHALL** be able to process resource instances containing must-support data elements asserting missing information (data absent reason extension).
@@ -53,16 +53,16 @@ When NHSNLink pulls data from EHRs, both NHSNLink and the NHSN application resid
 
 <div>
 <figure class="figure">
-    <figcaption class="figure-caption"><strong>Figure 3: Process Flow from EHR to NHSN</strong></figcaption>
-    <img src="NHSNProcessFlow.PNG" alt="Figure 3: Process flow from EHR to NHSN" title="Figure 3: Process flow from EHR to NHSN" class="img-responsive img-rounded center-block" width="75%">
+    <figcaption class="figure-caption"><strong>Figure 2: Process Flow from EHR to NHSN</strong></figcaption>
+    <img src="NHSNProcessFlow.PNG" alt="Figure 2: Process flow from EHR to NHSN" title="Figure 2: Process flow from EHR to NHSN" class="img-responsive img-rounded center-block" width="75%">
 </figure>
 <p></p>
 </div>
 
 <div>
 <figure class="figure">
-    <figcaption class="figure-caption"><strong>Figure 4: How NHSNLink Works</strong></figcaption>
-    <img src="HowNHSNWorks.PNG" alt="Figure 4: How NHSNLink Works" title="Figure 4: How NHSNLink Works" class="img-responsive img-rounded center-block" width="75%">
+    <figcaption class="figure-caption"><strong>Figure 3: How NHSNLink Works</strong></figcaption>
+    <img src="HowNHSNWorks.PNG" alt="Figure 3: How NHSNLink Works" title="Figure 3: How NHSNLink Works" class="img-responsive img-rounded center-block" width="75%">
 </figure>
 <p></p>
 </div>

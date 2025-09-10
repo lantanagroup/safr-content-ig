@@ -2,7 +2,7 @@ Profile: AcuteCareHospitalMonthlyReportingSpecimen
 Parent: Specimen
 Id: ach-monthly-specimen
 Title: "ACH Monthly Event Specimen"
-Description: "This profile contains Required and Must Support data elements for reporting specimen information to the NHSN Acute Care Hospital (ACH) Monthly Digital Quality Measure. This profile is based on the [HL7 FHIR® R4 Specimen Profile v4.0.1](http://hl7.org/fhir/R4/specimen.html)."
+Description: "This profile contains Required and Must Support data elements for reporting specimen information to the NHSN ACH Monthly dQM. This profile is based on the [HL7 FHIR® R4 Specimen Profile v4.0.1](http://hl7.org/fhir/R4/specimen.html)."
 * ^status = #active
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
