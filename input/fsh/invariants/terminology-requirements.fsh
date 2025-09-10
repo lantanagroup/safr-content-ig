@@ -25,8 +25,8 @@ Expression: "class.memberOf('http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ValueSet/
 
 Invariant: location-type-initial-population
 Description: "Location: (Location type from 'Inpatient, Emergency, and Observation Locations')"
-Severity: #error
-Expression: "type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists()"
+Severity: #warning
+Expression: "type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists() or where(location.partOf.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists())"
 
 /* Invariant tests
 Invariant: encounter-ach-initial-population1
