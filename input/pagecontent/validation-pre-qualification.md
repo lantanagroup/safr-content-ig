@@ -28,22 +28,19 @@ Validation and subsequent pre-qualification occur after data evaluation and befo
 <p></p>
 </div>
 <p>
-  Figure 1, above, represents the process flow for pre-qualification. This process includes:
+  Figure 1 (above) represents the process flow for pre-qualification. This process includes:
   <ol>
-    <li>Primary dQM data is retrieve from the EHR Data Source through a secure FHIR API using the Patients of Interest List and the dQM definitions that the facility is enrolled in.</li>
-    <li>This data goes through an initial evaluation within involves data normalization and determination of what data is reportable.
+    <li>Data retrieval: Primary dQM data is retrieved from the EHR Data Source through a secure FHIR API. This uses the Patients of Interest List and the dQM definitions in which the facility is enrolled.</li>
+    <li>Initial evaluation: The data goes through an initial evaluation, which includes normalization and determination of what data is reportable.</li>
+    <li>Filtering: Data determined to be reportable continues through the process. Data that is not reportable is discarded and does not move forward.</li>
+    <li>Augmentation: Reportable data is augmented with related supplemental data retrieved from the same EHR Data Source API.</li>
+    <li>Validation and bundling: The submission dataset is validated and packaged into a MeasureReport bundle.</li>
+    <li>Pre-qualification: The dataset undergoes pre-qualification, which identifies potential issues (errors, warnings, informational). Each issue is categorized.</li>
+    <li>Acceptability check: A key component of each category is acceptability, used to determine whether an issue is acceptable for submission to the NHSN Application.</li>
+    <li>Submission outcome:
       <ul>
-        <li>Data this is determines as reportable, will continue through the process.</li>
-        <li>Data that is not reportable is discarded and does not continue further in the process.</li>
-      </ul>
-    </li>
-    <li>The data this is reportable is augmented with related supplemental data retrieve from the same EHR Data Source API.</li>
-    <li>The submission dataset is subject to an initial validation and bundled up into a MeasureReport bundle.</li>
-    <li>A pre-qualification process is run on the submission dataset which identifies potential issues (errors, warnings and informational) which are categorized.</li>
-    <li>A key component of every category is “acceptability”, which is used to determine if the type of issue is considered acceptable for submission to the NHSN Application.
-      <ul>
-        <li>If a submission has not issues or only "acceptable" issues the submission is successful and sent to the NHSN Appliaction.</li>
-        <li>If one or more unacceptable categories exist within a submission dataset, the entire dataset will not be sent to the NHSN Application and a review and remediation process can take place.</li>
+        <li>If no issues exist, or only “acceptable” issues are found, the submission is successful and sent to the NHSN Application.</li>
+        <li>If one or more unacceptable issues exist, the dataset is not sent forward. Instead, it undergoes a review and remediation process</li>
       </ul>
     </li>
   </ol>

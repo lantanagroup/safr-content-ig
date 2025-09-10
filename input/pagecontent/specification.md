@@ -53,30 +53,20 @@ When NHSNLink pulls data from EHRs, both NHSNLink and the NHSN application resid
 
 <div>
 <figure class="figure">
-    <figcaption class="figure-caption"><strong>Figure 1: Process Flow from EHR to NHSN</strong></figcaption>
-    <img src="NHSNProcessFlow.PNG" alt="Figure 1: Process flow from EHR to NHSN" title="Figure 1: Process flow from EHR to NHSN" class="img-responsive img-rounded center-block" width="75%">
-</figure>
-<p></p>
-</div>
-
-<div>
-<figure class="figure">
-    <figcaption class="figure-caption"><strong>Figure 2: How NHSNLink Works</strong></figcaption>
-    <img src="nhsnlink-interactions.png" alt="Figure 2: Flowchart showing the process NHSNLink uses collect and provide data to NHSN as described in the body of the text" title="Figure 2: How NHSNLink Works" class="img-responsive img-rounded center-block" width="75%">
+    <figcaption class="figure-caption"><strong>Figure 1: How NHSNLink Works</strong></figcaption>
+    <img src="nhsnlink-interactions.png" alt="Figure 1: Flowchart showing the process NHSNLink uses collect and provide data to NHSN as described in the body of the text" title="Figure 1: How NHSNLink Works" class="img-responsive img-rounded center-block" width="75%">
 </figure>
 <p>
     API = application programming interface; dQM = digital quality measure; FHIR = Fast Healthcare Interoperability Resources; SAMS = Secure Access Management Services.
 </p>
 <p>
-  Figure 2, above, shows the process NHSNLink uses collect and provide data to NHSN. This process includes:
+  Figure 2 (above) illustrates the process of how healthcare facility data flows securely into NHSN through NHSNLink. This process includes:
   <ol>
-    <li>In the NHSN Application, the facility enrolls in the digital measure reporting plan; FHIR dQM selection is made and then communicated to the NHSNLink API engine.
-        <ul><li>This starts with the facility's readiness to report digital quality measure and that facility has signed NHSN data-use agreements for secure data-sharing.</li></ul>
-    </li>
-    <li>The Facility Environment (doing the reporting) has an authentication mechanism securing their EHR FHIR Server. It is this server from which a Patients of Interest List is extracted and provided to NHSNLink. NHSNLink uses this list to query the Facilities EHR Server using this Patients of Interest List and query the data defined by dQM the dQMs that the facility is enrolled in.</li>
-    <li>NHSNLink then evaluate and filter data as defined by dQM, bundles it into a MeasureReport bundle and applies a pre-qualification process on the data.</li>
-    <li>NHSNLink then submit MeasureReport bundle for patients meeting dQM definition to the NHSN Application through the CDC Cloud.</li>
-    <li>THe NHSN Application ingests and analyzes MeasureReport bundles and makes reports available via secure NHSN user interface.</li>
+    <li>Enrollment and readiness: In the NHSN Application, the facility enrolls in the digital measure reporting plan,The facility selects FHIR dQMs, which are then communicated to the NHSNLink API engine. This step confirms the facility’s readiness to report digital quality measures and that it has signed the NHSN data-use agreements required for secure data sharing.</li>
+    <li>Authentication and patient list: The facility’s EHR FHIR server is secured by an authentication mechanism. From this server, a Patients of Interest List is extracted and provided to NHSNLink. NHSNLink uses this list to query the facility’s EHR server for the data defined by the dQMs the facility is enrolled in.</li>
+    <li>Evaluation and pre-qualification: NHSNLink evaluates and filters the data as defined by each dQM, bundles the data into a MeasureReport, and applies a pre-qualification process on the data.</li>
+    <li>Submission: NHSNLink submits the MeasureReport bundles for patients meeting the dQM definitions to the NHSN Application through the CDC Cloud.</li>
+    <li>Ingestion and reporting: The NHSN Application ingests and analyzes the MeasureReport bundles and makes reports available to facilities via secure NHSN user interface.</li>
   </ol>
 </p>
 </div>
