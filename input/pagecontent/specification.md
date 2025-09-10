@@ -62,7 +62,7 @@ When NHSNLink pulls data from EHRs, both NHSNLink and the NHSN application resid
 <div>
 <figure class="figure">
     <figcaption class="figure-caption"><strong>Figure 2: How NHSNLink Works</strong></figcaption>
-    <img src="nhsnlink-interactions.PNG" alt="Figure 2: How NHSNLink Works" title="Figure 2: How NHSNLink Works" class="img-responsive img-rounded center-block" width="75%">
+    <img src="nhsnlink-interactions.png" alt="Figure 2: Flowchart showing the process NHSNLink uses collect and provide data to NHSN as described in the body of the text" title="Figure 2: How NHSNLink Works" class="img-responsive img-rounded center-block" width="75%">
 </figure>
 <p>
     API = application programming interface; dQM = digital quality measure; FHIR = Fast Healthcare Interoperability Resources; SAMS = Secure Access Management Services.
@@ -70,7 +70,7 @@ When NHSNLink pulls data from EHRs, both NHSNLink and the NHSN application resid
 <p>
   Figure 2, above, shows the process NHSNLink uses collect and provide data to NHSN. This process includes:
   <ol>
-    <li>In the NHSN Application, the facility is enrolled in digital measure reporting plan; FHIR dQM selection is made and then communicated to the NHSNLink API engine.
+    <li>In the NHSN Application, the facility enrolls in the digital measure reporting plan; FHIR dQM selection is made and then communicated to the NHSNLink API engine.
         <ul><li>This starts with the facility's readiness to report digital quality measure and that facility has signed NHSN data-use agreements for secure data-sharing.</li></ul>
     </li>
     <li>The Facility Environment (doing the reporting) has an authentication mechanism securing their EHR FHIR Server. It is this server from which a Patients of Interest List is extracted and provided to NHSNLink. NHSNLink uses this list to query the Facilities EHR Server using this Patients of Interest List and query the data defined by dQM the dQMs that the facility is enrolled in.</li>
