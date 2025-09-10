@@ -22,11 +22,31 @@ Validation and subsequent pre-qualification occur after data evaluation and befo
 
 <div>
 <figure class="figure">
-    <figcaption class="figure-caption"><strong>Figure 2: Process Flow for Pre-qualification </strong></figcaption>
-    <img src="SubmissionDiagram.PNG" alt="Figure 2: Process Flow for Pre-qualification" title="Figure 2: Process Flow for Pre-qualification" class="img-responsive img-rounded center-block" width="75%">
+    <figcaption class="figure-caption"><strong>Figure 1: Process Flow for Pre-qualification </strong></figcaption>
+    <img src="SubmissionDiagram.PNG" alt="Figure 1: Process Flow for Pre-qualification" title="Figure 1: Process Flow for Pre-qualification" class="img-responsive img-rounded center-block" width="75%">
 </figure>
 <p></p>
 </div>
-
-Pre-qualification categorization is technology agnostic; the frameworks and programming languages used to implement above do not matter. This allows the evaluation and submission of data to NHSN through multiple systems and pathways, provided prequalification results are acceptable. Similarly, the technology used to implement pre-qualification categorization to determine and assert only acceptable issues exist within a given submission dataset is not mandated.  
+<p>
+  Figure 1, above, the process flow for pre-qualification. This process includes:
+  <ol>
+    <li>Primary dQM data is retrieve from the EHR Data Source through a secure FHIR API using the Patients of Interest List and the dQM definitions that the facility is enrolled in.</li>
+    <li>This data goes through an initial evaluation within involves data normalization and determination of what data is reportable.
+      <ul>
+        <li>Data this is determines as reportable, will continue through the process.</li>
+        <li>Data that is not reportable is discarded and does not continue further in the process.</li>
+      </ul>
+    </li>
+    <li>The data this is reportable is augmented with related supplemental data retrieve from the same EHR Data Source API.</li>
+    <li>The submission dataset is subject to an initial validation and bundled up into a MeasureReport bundle.</li>
+    <li>A pre-qualification process is run on the submission dataset which identifies potential issues (errors, warnings and informational) which are categorized.</li>
+    <li>A key component of every category is “acceptability”, which is used to determine if the type of issue is considered acceptable for submission to the NHSN Application.
+      <ul>
+        <li>If a submission has not issues or only "acceptable" issues the submission is successful and sent to the NHSN Appliaction.</li>
+        <li>If one or more unacceptable categories exist within a submission dataset, the entire dataset will not be sent to the NHSN Application and a review and remediation process can take place.</li>
+      </ul>
+    </li>
+  </ol>
+</p>
+Pre-qualification categorization is technology agnostic; the frameworks and programming languages used to implement above do not matter. This allows the evaluation and submission of data to NHSN through multiple systems and pathways, provided pre-qualification results are acceptable. Similarly, the technology used to implement pre-qualification categorization to determine and assert only acceptable issues exist within a given submission dataset is not mandated.  
 
