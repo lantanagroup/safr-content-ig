@@ -21,12 +21,12 @@ Validation and subsequent pre-qualification occur after data evaluation and befo
 <div>
 <figure class="figure">
     <figcaption class="figure-caption"><strong>Figure 1: Process Flow for Pre-qualification </strong></figcaption>
-    <img src="SubmissionDiagram.PNG" alt="Figure 1: Process Flow for Pre-qualification" title="Figure 1: Process Flow for Pre-qualification" class="img-responsive img-rounded center-block" width="75%">
+    <img src="SubmissionDiagram.PNG" alt="Figure 1: Process Flowchart for the Pre-qualification process as described in the body of the text" title="Figure 1: Process Flow for Pre-qualification" class="img-responsive img-rounded center-block" width="75%">
 </figure>
 <p></p>
 </div>
 <p>
-  Figure 1, above, the process flow for pre-qualification. This process includes:
+  Figure 1, above, represents the process flow for pre-qualification. This process includes:
   <ol>
     <li>Primary dQM data is retrieve from the EHR Data Source through a secure FHIR API using the Patients of Interest List and the dQM definitions that the facility is enrolled in.</li>
     <li>This data goes through an initial evaluation within involves data normalization and determination of what data is reportable.
