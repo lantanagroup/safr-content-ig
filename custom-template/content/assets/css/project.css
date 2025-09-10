@@ -589,7 +589,7 @@ ul.markdown-toc
 
 ul.markdown-toc p
 {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: bold;
   margin: 5px;
   padding: 0px;
@@ -616,7 +616,7 @@ div.markdown-toc
 
 div.markdown-toc p
 {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: bold;
   margin: 5px;
   padding: 0px;
@@ -792,6 +792,7 @@ pre[class*="language-txt"] {
     background-color: #ff0000;
 }
 
+
 a.dependency-table {
   font-weight: bold;
   color:   var(--toc-box-link-color);
@@ -799,4 +800,8 @@ a.dependency-table {
 
 table.grid {
   border: 1px black solid;
+}
+
+table.grid td {
+  padding: 7px;
 }

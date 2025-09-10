@@ -330,7 +330,7 @@ function processIntro(md) {
 
 function fixTitle(s) {
   if (s.indexOf("FHIR") == -1)
-    return s+" (FHIR IG)";
+    return s;
   else
     return s;
 }
