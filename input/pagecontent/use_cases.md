@@ -25,6 +25,10 @@ The NHSN ACH Monthly dQM enables facilities to electronically report line-level 
 - Bacteremia & Fungemia Surveillance (includes Hospital-Onset Bacteremia & Fungemia events)
 - Clostridioides difficile Surveillance (includes Healthcare facility-onset, antibiotic-Treated CDI events)
 - Sepsis Surveillance (includes Adult Community-onset Sepsis events)
+- Venous Thromboembolism (VTE)-related Prophylaxis and event rates (under development)
+- Late-Onset Sepsis / Meningitis (LOS/MEN) (under development)
+- Hospital-onset Acute Kidney Injury (HAKI) (under development)
+- Opioid-related Adverse Events (ORAE) (under development)
 
 #### Patients of Interest
 
@@ -209,7 +213,7 @@ RPS module data collected via the ACH Daily dQM may be used by facilities for qu
 
 #### Patients of Interest
 
-The facility will work with NHSN to define a POI list. This is often the entire in-patient inpatient, observation, or short stay population at the facility. The data for the patients in the list are then extracted and evaluated against the measure criteria for the initial population (see below).
+The facility will work with NHSN to define a POI list. This is often the entire inpatient, observation, or short stay population at the facility. The data for the patients in the list are then extracted and evaluated against the measure criteria for the initial population (see below).
 
 #### Initial Population
 
