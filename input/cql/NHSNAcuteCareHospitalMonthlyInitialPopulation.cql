@@ -158,7 +158,8 @@ define "SDE DiagnosticReport Lab":
       "Initial Population" IP
       where NHSNHelpers."Normalize Interval"(DiagnosticReports.effective) overlaps IP.period))
   return DiagnosticReportLabResource(DiagnosticReports,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-diagnosticreport-lab'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-diagnosticreport-lab'}},
+  {"LAB", "Radiology", "Pathology", "Cardiology"})
  
 define "SDE DiagnosticReport Note":
   "DiagnosticReports" DiagnosticReports
@@ -464,7 +465,7 @@ define function DiagnosticReportCategory(category List<CodeableConcept>):
     coding: DiagnosticReportCoding(c.coding)
   }
 
-define function DiagnosticReportLabResource(diagnosticReport DiagnosticReport, profileURLs List<FHIR.canonical>):
+define function DiagnosticReportLabResource(diagnosticReport DiagnosticReport, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
   diagnosticReport d
   return DiagnosticReport{
     id: FHIR.id{value: 'LCR-' + d.id},
@@ -472,7 +473,7 @@ define function DiagnosticReportLabResource(diagnosticReport DiagnosticReport, p
     extension: d.extension,
     basedOn: d.basedOn,
     status: d.status,
-    category: DiagnosticReportCategory(d.category),
+    category: FilterCodeableConcepts(DiagnosticReportCategory(d.category), acceptedCategories),
     code: d.code,
     subject: d.subject,
     encounter: d.encounter,
