@@ -2,7 +2,7 @@ Profile: AcuteCareHospitalDailyEventObservation
 Parent: Observation
 Id: ach-daily-observation
 Title: "ACH Daily Event Observation"
-Description: "This profile contains Required and Must Support data elements for reporting observation information for the NHSN ACH Daily dQM. This profile is based on the [HL7 FHIR® R4 Observation Resource v4.0.1](https://hl7.org/fhir/R4/observation.html)."
+Description: "This profile contains Required and Must Support data elements for reporting observation information for the NHSN Acute Care Hospital (ACH) Daily Digital Quality Measure. This profile is based on the [HL7 FHIR® R4 Observation Resource v4.0.1](https://hl7.org/fhir/R4/observation.html)."
 * ^status = #active
 * id 1..
 * basedOn MS
