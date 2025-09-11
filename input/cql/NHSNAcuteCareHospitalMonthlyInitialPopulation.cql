@@ -13,7 +13,8 @@ codesystem "V2-0074": 'http://terminology.hl7.org/CodeSystem/v2-0074'
 codesystem "Condition Category": 'http://terminology.hl7.org/CodeSystem/condition-category'
 codesystem "US Core Condition Category": 'http://hl7.org/fhir/us/core/CodeSystem/condition-category'
 codesystem "Condition Clinical Status": 'http://terminology.hl7.org/CodeSystem/condition-clinical'
-codesystem "SNOMEDCT": 'http://www.snomed.org/'
+codesystem "SNOMEDCT": 'http://snomed.info/sct'
+codesystem "MedicationRequest Category": 'http://terminology.hl7.org/CodeSystem/medicationrequest-category'
 
 valueset "Inpatient, Emergency, and Observation Locations": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265'
 valueset "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292'
@@ -50,6 +51,14 @@ code "active": 'active' from "Condition Clinical Status" display 'active'
 //code for Procedure category
 code "Surgical procedure": '3877713003' from "SNOMEDCT" display 'Surgical procedure'
 code "Diagnostic procedure": '103693007' from "SNOMEDCT" display 'Diagnostic procedure'
+
+//code for MedicationRequest category
+code "inpatient": 'inpatient' from "MedicationRequest Category" display 'Inpatient'
+code "outpatient": 'outpatient' from "MedicationRequest Category" display 'Outpatient'
+
+//code for ServiceRequest category (also uses Surgical procedure from Procedure categories)
+code "Laboratory procedure": '108252007' from "SNOMEDCT" display 'Laboratory procedure'
+code "Imaging": '363679005' from "SNOMEDCT" display 'Imaging'
 
 parameter "Measurement Period" 
     default Interval[@2022-01-01T00:00:00.0, @2022-01-31T23:59:59.0)
@@ -148,7 +157,7 @@ define "SDE DiagnosticReport Lab":
     and exists(
       "Initial Population" IP
       where NHSNHelpers."Normalize Interval"(DiagnosticReports.effective) overlaps IP.period))
-  return SharedResource.DiagnosticReportLabResource(DiagnosticReports,
+  return DiagnosticReportLabResource(DiagnosticReports,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-diagnosticreport-lab'}})
  
 define "SDE DiagnosticReport Note":
@@ -208,8 +217,9 @@ define "SDE Medication Request":
   where exists(
     "Initial Population" IP
     where MedicationRequests.authoredOn during IP.period)
-  return SharedResource.MedicationRequestResource(MedicationRequests,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-medicationrequest'}})
+  return MedicationRequestResource(MedicationRequests,
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-medicationrequest'}},
+  {"inpatient", "outpatient"})
 
 define "SDE Medication":
   ("SDE Medication Request"
@@ -225,8 +235,9 @@ define "SDE Observation Lab Category":
     and exists(
       "Initial Population" IP
       where NHSNHelpers."Normalize Interval"(Observations.effective) overlaps IP.period)
-  return SharedResource.ObservationLabResource(Observations,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-observation-lab'}})
+  return ObservationLabResource(Observations,
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-observation-lab'}},
+  {"imaging", "procedure", "vital-signs", "laboratory"})
 
 //Vital Signs Observation has its own profile in FHIR Base
 define "SDE Observation Vital Signs Category":
@@ -236,7 +247,8 @@ define "SDE Observation Vital Signs Category":
       "Initial Population" IP
       where NHSNHelpers."Normalize Interval"(Observations.effective) overlaps IP.period)
   return ObservationVitalSignsResource(Observations,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-observation-vitals'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-observation-vitals'}},
+  {"imaging", "procedure", "vital-signs", "laboratory"})
 
 //Defaulting to base FHIR profile as there are no individual profiles in US Core 3.1.1 that cover these Observation categories
 define "SDE Observation Category":
@@ -249,7 +261,8 @@ define "SDE Observation Category":
       "Initial Population" IP
       where NHSNHelpers."Normalize Interval"(Observations.effective) overlaps IP.period)
   return ObservationResource(Observations,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-observation'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-observation'}},
+  {"imaging", "procedure", "vital-signs", "laboratory"})
 
 define "SDE Coverage": 
 	[Coverage] Coverages
@@ -265,7 +278,8 @@ define "SDE Procedure":
     "Initial Population" IP
     where NHSNHelpers."Normalize Interval"(Procedures.performed) overlaps IP.period)
      return ProcedureResource(Procedures,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-procedure'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-procedure'}},
+  {"Surgical procedure", "Diagnostic procedure"})
 
 define "SDE Specimen":
   [Specimen] Specimens
@@ -280,8 +294,9 @@ define "SDE Service Request":
   [ServiceRequest] ServiceRequests
   where exists("Initial Population" IP
     where ServiceRequests.authoredOn during IP.period)
-  return SharedResource.ServiceRequestResource(ServiceRequests,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-servicerequest'}})
+  return ServiceRequestResource(ServiceRequests,
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-servicerequest'}},
+  {"Laboratory procedure", "Surgical procedure", "Imaging"})
 
 define "SDE Minimal Patient":
   Patient p
@@ -434,6 +449,41 @@ define function DeviceResource(device Device, profileURLs List<FHIR.canonical>):
     parent: d.parent
   }
 
+define function DiagnosticReportCoding(coding List<Coding>):
+  coding c
+  return Coding{
+    system: c.system,
+    version: c.version,
+    code: c.code,
+    display: c.display
+  }
+
+define function DiagnosticReportCategory(category List<CodeableConcept>):
+  category c
+  return CodeableConcept{
+    coding: DiagnosticReportCoding(c.coding)
+  }
+
+define function DiagnosticReportLabResource(diagnosticReport DiagnosticReport, profileURLs List<FHIR.canonical>):
+  diagnosticReport d
+  return DiagnosticReport{
+    id: FHIR.id{value: 'LCR-' + d.id},
+    meta: SharedResource.MetaElement(d, profileURLs),
+    extension: d.extension,
+    basedOn: d.basedOn,
+    status: d.status,
+    category: DiagnosticReportCategory(d.category),
+    code: d.code,
+    subject: d.subject,
+    encounter: d.encounter,
+    effective: d.effective,
+    issued: d.issued,
+    specimen: d.specimen,
+    result: d.result,
+    conclusion: d.conclusion,
+    conclusionCode: d.conclusionCode
+  }
+
 define function DiagnosticReportResource(diagnosticReport DiagnosticReport, profileURLs List<FHIR.canonical>):
   diagnosticReport d
   return DiagnosticReport{
@@ -456,7 +506,90 @@ define function DiagnosticReportResource(diagnosticReport DiagnosticReport, prof
     conclusionCode: d.conclusionCode
   }
 
-define function ObservationResource(observation Observation, profileURLs List<FHIR.canonical>):
+define function EncounterHospitalization(hospitalization FHIR.Encounter.Hospitalization):
+  hospitalization h
+  return FHIR.Encounter.Hospitalization{
+    origin: h.origin,
+    admitSource: h.admitSource,
+    reAdmission: h.reAdmission,
+    dietPreference: h.dietPreference,
+    dischargeDisposition: h.dischargeDisposition
+  }
+
+define function EncounterResource(encounter Encounter, profileURLs List<FHIR.canonical>):
+  encounter e
+  return Encounter{
+    id: FHIR.id{value: 'LCR-' + e.id},
+    meta: SharedResource.MetaElement(e, profileURLs),
+    extension: e.extension,
+    identifier: SharedResource.EncounterIdentifier(e.identifier),
+    status: e.status,
+    statusHistory: SharedResource.EncounterStatusHistory(e.statusHistory),
+    class: e.class,
+    classHistory: SharedResource.EncounterClassHistory(e.classHistory),
+    type: e.type,
+    subject: e.subject,
+    period: e.period,
+    reasonCode: e.reasonCode,
+    diagnosis: SharedResource.EncounterDiagnosis(e.diagnosis),
+    hospitalization: EncounterHospitalization(e.hospitalization),
+    location: SharedResource.EncounterLocation(e.location),
+    partOf: e.partOf
+  }
+
+define function LocationResource(location Location, profileURLs List<FHIR.canonical>):
+  location l
+  return Location{
+    id: FHIR.id {value: 'LCR-' + l.id},
+    meta: SharedResource.MetaElement(l, profileURLs),
+    extension: l.extension,
+    status: l.status,
+    name: l.name,
+    alias: l.alias,
+    type: l.type,
+    physicalType: l.physicalType,
+    managingOrganization: l.managingOrganization,
+    partOf: l.partOf
+  }
+
+define function MedicationRequestResource(medicationRequest MedicationRequest, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
+  medicationRequest m
+  return MedicationRequest{
+    id: FHIR.id {value: 'LCR-' + m.id},
+    meta: SharedResource.MetaElement(medicationRequest, profileURLs),
+    extension: m.extension,
+    status: m.status,
+    statusReason: m.statusReason,
+    intent: m.intent,
+    category: FilterCodeableConcepts(m.category, acceptedCategories),
+    priority: m.priority,
+    doNotPerform: m.doNotPerform,
+    reported: m.reported,
+    medication: m.medication,
+    subject: m.subject,
+    encounter: m.encounter,
+    authoredOn: m.authoredOn,
+    requester: m.requester,
+    recorder: m.recorder,
+    reasonCode: m.reasonCode,
+    reasonReference: m.reasonReference,
+    instantiatesCanonical: m.instantiatesCanonical,
+    instantiatesUri: m.instantiatesUri,
+    courseOfTherapyType: m.courseOfTherapyType,
+    dosageInstruction: SharedResource.MedicationRequestDosageInstruction(m.dosageInstruction)
+  }
+
+define function ObservationLabReferenceRange(referenceRange List<FHIR.Observation.ReferenceRange>):
+  referenceRange rR
+  return FHIR.Observation.ReferenceRange{
+    low: rR.low,
+    high: rR.high,
+    type: rR.type,
+    appliesTo: rR.appliesTo,
+    age: rR.age
+  }
+
+define function ObservationLabResource(observation Observation, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
   observation o
   return Observation{
     id: FHIR.id {value: 'LCR-' + o.id},
@@ -464,23 +597,55 @@ define function ObservationResource(observation Observation, profileURLs List<FH
     extension: o.extension,
     partOf: o.partOf,
     status: o.status,
-    category: o.category,
+    category: FilterCodeableConcepts(SharedResource.ObservationLabCategory(o.category), acceptedCategories),
     code: o.code,
     subject: o.subject,
-    focus: o.focus,
     encounter: o.encounter,
     effective: o.effective,
     issued: o.issued,
-    performer: o.performer,
     value: o.value,
     dataAbsentReason: o.dataAbsentReason,
     interpretation: o.interpretation,
-    note: o.note,
     bodySite: o.bodySite,
     method: o.method,
     specimen: o.specimen,
-    device: o.device,
-    referenceRange: SharedResource.ObservationReferenceRange(o.referenceRange),
+    referenceRange: ObservationLabReferenceRange(o.referenceRange),
+    hasMember: o.hasMember,
+    derivedFrom: o.derivedFrom,
+    component: SharedResource.ObservationComponent(o.component)
+  }
+
+define function ObservationReferenceRange(referenceRange List<FHIR.Observation.ReferenceRange>):
+  referenceRange rR
+  return FHIR.Observation.ReferenceRange{
+    low: rR.low,
+    high: rR.high,
+    type: rR.type,
+    appliesTo: rR.appliesTo,
+    age: rR.age
+  }
+
+define function ObservationResource(observation Observation, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
+  observation o
+  return Observation{
+    id: FHIR.id {value: 'LCR-' + o.id},
+    meta: SharedResource.MetaElement(o, profileURLs),
+    extension: o.extension,
+    partOf: o.partOf,
+    status: o.status,
+    category: FilterCodeableConcepts(o.category, acceptedCategories),
+    code: o.code,
+    subject: o.subject,
+    encounter: o.encounter,
+    effective: o.effective,
+    issued: o.issued,
+    value: o.value,
+    dataAbsentReason: o.dataAbsentReason,
+    interpretation: o.interpretation,
+    bodySite: o.bodySite,
+    method: o.method,
+    specimen: o.specimen,
+    referenceRange: ObservationReferenceRange(o.referenceRange),
     hasMember: o.hasMember,
     derivedFrom: o.derivedFrom,
     component: SharedResource.ObservationComponent(o.component)
@@ -513,7 +678,7 @@ define function ObservationVitalSignsComponent(component List<FHIR.Observation.C
     referenceRange: SharedResource.ObservationReferenceRange(c.referenceRange)
   }
 
-define function ObservationVitalSignsResource(observation Observation, profileURLs List<FHIR.canonical>):
+define function ObservationVitalSignsResource(observation Observation, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
   observation o
   return Observation{
     id: FHIR.id {value: 'LCR-' + o.id},
@@ -521,7 +686,7 @@ define function ObservationVitalSignsResource(observation Observation, profileUR
     extension: o.extension,
     partOf: o.partOf,
     status: o.status,
-    category: ObservationVitalSignsCategory(o.category),
+    category: FilterCodeableConcepts(ObservationVitalSignsCategory(o.category), acceptedCategories),
     code: o.code,
     subject: o.subject,
     focus: o.focus,
@@ -543,52 +708,72 @@ define function ObservationVitalSignsResource(observation Observation, profileUR
     component: ObservationVitalSignsComponent(o.component)
   }
 
-define function ProcedurePerformer(performer List<FHIR.Procedure.Performer>):
-  performer p
-  return FHIR.Procedure.Performer{
-    function: p.function,
-    actor: p.actor,
-    onBehalfOf: p.onBehalfOf
-  }
 
-define function ProcedureFocalDevice(device List<FHIR.Procedure.FocalDevice>):
-  device d
-  return FHIR.Procedure.FocalDevice{
-    action: d.action,
-    manipulated: d.manipulated
-  }
-
-define function ProcedureResource(procedure Procedure, profileURLs List<FHIR.canonical>):
+define function ProcedureResource(procedure Procedure, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
   procedure p
   return Procedure{
     id: FHIR.id {value: 'LCR-' + p.id},
     meta: SharedResource.MetaElement(p, profileURLs),
     extension: p.extension,
-    instantiatesCanonical: p.instantiatesCanonical,
-    instantiatesUri: p.instantiatesUri,
     basedOn: p.basedOn,
     partOf: p.partOf,
     status: p.status,
-    statusReason: p.statusReason,
-    category: p.category,
+    category: FilterCodeableConcepts({p.category}, acceptedCategories)[0],
     code: p.code,
     subject: p.subject,
     encounter: p.encounter,
     performed: p.performed,
-    recorder: p.recorder,
-    asserter: p.asserter,
-    performer: ProcedurePerformer(p.performer),
     location: p.location,
     reasonCode: p.reasonCode,
     reasonReference: p.reasonReference,
-    bodySite: p.bodySite,
-    outcome: p.outcome,
-    report: p.report,
-    complication: p.complication,
-    complicationDetail: p.complicationDetail,
-    followUp: p.followUp,
-    note: p.note,
-    focalDevice: ProcedureFocalDevice(p.focalDevice),
-    usedReference: p.usedReference,
-    usedCode: p.usedCode
+    bodySite: p.bodySite
+  }
+
+  define function ServiceRequestResource(serviceRequest ServiceRequest, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
+  serviceRequest sR
+  return ServiceRequest{
+    id: FHIR.id {value: 'LCR-' + sR.id},
+    meta: SharedResource.MetaElement(sR, profileURLs),
+    extension: sR.extension,
+    basedOn: sR.basedOn,
+    status: sR.status,
+    intent: sR.intent,
+    category: FilterCodeableConcepts(sR.category, acceptedCategories),
+    priority: sR.priority,
+    doNotPerform: sR.doNotPerform,
+    code: sR.code,
+    quantity: sR.quantity,
+    subject: sR.subject,
+    encounter: sR.encounter,
+    occurrence: sR.occurrence,
+    asNeeded: sR.asNeeded,
+    authoredOn: sR.authoredOn,
+    requester: sR.requester,
+    specimen: sR.specimen
+  }
+
+  define function SpecimenCollection(collection FHIR.Specimen.Collection):
+  collection c
+  return FHIR.Specimen.Collection{
+    collector: c.collector,
+    collected: c.collected,
+    quantity: c.quantity,
+    bodySite: c.bodySite
+  }
+
+  define function SpecimenResource(specimen Specimen, profileURLs List<FHIR.canonical>):
+  specimen s
+  return Specimen{
+    id: FHIR.id {value: 'LCR-' + s.id},
+    meta: SharedResource.MetaElement(s, profileURLs),
+    extension: s.extension,
+    identifier: s.identifier,
+    accessionIdentifier: s.accessionIdentifier,
+    status: s.status,
+    type: s.type,
+    subject: s.subject,
+    parent: s.parent,
+    request: s.request,
+    collection: SpecimenCollection(s.collection),
+    note: s.note
   }
