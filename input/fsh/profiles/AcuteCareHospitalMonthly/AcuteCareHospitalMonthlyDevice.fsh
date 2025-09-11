@@ -2,7 +2,7 @@ Profile: AcuteCareHospitalMonthlyDevice
 Parent: Device
 Id: ach-monthly-device
 Title: "ACH Monthly Event Device"
-Description: "This profile contains Required and Must Support data elements for reporting device information to the NHSN ACH Monthly dQM. This profile covers both implantable and other types of devices and is based on the [HL7 FHIR® R4 Device Resource v4.0.1](https://hl7.org/fhir/R4/device.html)."
+Description: "This profile contains Required and Must Support data elements for reporting device information to the NHSN Acute Care Hospital (ACH) Monthly Digital Quality Measure. This profile covers both implantable and other types of devices and is based on the [HL7 FHIR® R4 Device Resource v4.0.1](https://hl7.org/fhir/R4/device.html)."
 * ^status = #active
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
