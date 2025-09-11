@@ -1,3 +1,4 @@
+
 This page provides an organized list of the primary Fast Healthcare Interoperability Resources (FHIR) artifacts defined as part of this implementation guide.
 
 <!-- Taken from xslt - If there is a description in the group, then show the descriptions table column. Not sure if this is needed
