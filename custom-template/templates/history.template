@@ -16,7 +16,7 @@
   <link href="assets-hist/css/fhir-nhsn.css" rel="stylesheet"/>
 
   <script type="application/javascript" src="https://hl7.org/fhir/history-cm.js"> </script>
-  <script type="application/javascript" src="https://hl7.org/fhir/history.js"> </script>
+  <script type="application/javascript" src="assets-hist/js/history.js"> </script>
   <link href="history.css" rel="stylesheet"/>
   <!-- header.template starts here -->
 $header$  
