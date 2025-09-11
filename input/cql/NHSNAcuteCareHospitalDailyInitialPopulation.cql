@@ -1,4 +1,4 @@
-library NHSNAcuteCareHospitalDailyInitialPopulation version '1.0.1-dev'
+library NHSNAcuteCareHospitalDailyInitialPopulation version '1.0.0-dev'
 
 using FHIR version '4.0.1'
 
@@ -442,7 +442,7 @@ define "SDE Covid or Influenza Medication Ordered":
             or Meds in "Zanamivir")
       and exists("Initial Population")
       and NHSNHelpers."Normalize Interval"(RPSMedRequest.authoredOn) during "Measurement Period"
-    return MedicationRequestResource(RPSMedRequest,
+    return SharedResource.MedicationRequestResource(RPSMedRequest,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-medicationrequest'}})
 
 define "SDE Medication":
@@ -531,36 +531,3 @@ define "Observations":
 
 define "DiagnosticReports":
   [DiagnosticReport]
-
- //
- // Measure Specific Resource Creation Functions
- //
-
- define function MedicationRequestResource(medicationRequest MedicationRequest, profileURLs List<FHIR.canonical>):
-  medicationRequest m
-  return MedicationRequest{
-    id: FHIR.id {value: 'LCR-' + m.id},
-    meta: SharedResource.MetaElement(medicationRequest, profileURLs),
-    extension: m.extension,
-    status: m.status,
-    intent: m.intent,
-    category: m.category,
-    priority: m.priority,
-    doNotPerform: m.doNotPerform,
-    reported: m.reported,
-    medication: m.medication,
-    subject: m.subject,
-    encounter: m.encounter,
-    authoredOn: m.authoredOn,
-    requester: m.requester,
-    recorder: m.recorder,
-    reasonCode: m.reasonCode,
-    reasonReference: m.reasonReference,
-    instantiatesCanonical: m.instantiatesCanonical,
-    instantiatesUri: m.instantiatesUri,
-    courseOfTherapyType: m.courseOfTherapyType,
-    dosageInstruction: SharedResource.MedicationRequestDosageInstruction(m.dosageInstruction)
-  }
-
-    
-    
