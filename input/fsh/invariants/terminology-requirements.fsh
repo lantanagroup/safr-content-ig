@@ -23,6 +23,14 @@ Description: "Encounter: (class must be from ACH Daily encounter class) or (type
 Severity: #error
 Expression: "class.memberOf('http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ValueSet/ach-daily-encounter-class') or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307')).exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143')).exists() or where(location.location.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists())"
 
+
+Invariant: encounter-location-type-initial-population
+Description: "Encounter: references at least one Location where type is from 'Inpatient, Emergency, and Observation Locations'"
+Severity: #warning
+Expression: "location.where(location.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists()).exists() or location.where(location.resolve().partOf.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists()).exists()"
+
+/*
+Removing because MEASDEV-1977 called for the creation of an additional invariant for "ACH Daily and Monthly Encounter profiles" to validate the presence of an HSLOC code in Location.type
 Invariant: location-type-initial-population
 Description: "Location: (Location type from 'Inpatient, Emergency, and Observation Locations')"
 Severity: #warning
