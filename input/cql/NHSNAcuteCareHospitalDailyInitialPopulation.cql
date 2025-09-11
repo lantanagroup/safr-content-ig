@@ -442,14 +442,14 @@ define "SDE Covid or Influenza Medication Ordered":
             or Meds in "Zanamivir")
       and exists("Initial Population")
       and NHSNHelpers."Normalize Interval"(RPSMedRequest.authoredOn) during "Measurement Period"
-    return SharedResource.MedicationRequestResource(RPSMedRequest,
+    return MedicationRequestResource(RPSMedRequest,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-medicationrequest'}})
 
 define "SDE Medication":
   ("SDE Covid or Influenza Medication Ordered"
   union "SDE Covid or Influenza Medication Administered") MedReqOrAdmin
   where MedReqOrAdmin.medication is FHIR.Reference
-  return MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication),
+  return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication),
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-medication'}})
 
 //To catch all isolation precautions
@@ -535,101 +535,6 @@ define "DiagnosticReports":
  //
  // Measure Specific Resource Creation Functions
  //
- 
-define function MedicationIngredient(ingredient List<FHIR.Medication.Ingredient>):
-  ingredient i
-  return FHIR.Medication.Ingredient{
-    item: i.item,
-    strength: i.strength
-  }
-
-define function MedicationBatch(batch FHIR.Medication.Batch):
-  batch b
-  return FHIR.Medication.Batch{
-    lotNumber: b.lotNumber,
-    expirationDate: b.expirationDate
-  }
-
-define function MedicationResource(medication Medication, profileURLs List<FHIR.canonical>):
-  medication m
-  return Medication{
-    id: FHIR.id {value: 'LCR-' + m.id},
-    meta: SharedResource.MetaElement(m, profileURLs),
-    extension: m.extension,
-    code: m.code,
-    status: m.status,
-    manufacturer: m.manufacturer,
-    form: m.form,
-    amount: m.amount,
-    ingredient: MedicationIngredient(m.ingredient),
-    batch: MedicationBatch(m.batch)
-  }
-
-define function MedicationAdministrationPerformer(performer List<FHIR.MedicationAdministration.Performer>):
-  performer p
-  return FHIR.MedicationAdministration.Performer{
-    function: p.function,
-    actor: p.actor
-  }
-
-define function MedicationAdministrationDosage(dosage FHIR.MedicationAdministration.Dosage):
-  dosage d
-  return FHIR.MedicationAdministration.Dosage{
-    text: d.text,
-    site: d.site,
-    route: d.route,
-    method: d.method,
-    dose: d.dose,
-    rate: d.rate
-  }
-
-define function MedicationAdministrationResource(medicationAdministration MedicationAdministration, profileURLs List<FHIR.canonical>):
-  medicationAdministration m
-  return MedicationAdministration{
-    id: FHIR.id {value: 'LCR-' + m.id},
-    meta: SharedResource.MetaElement(m, profileURLs),
-    extension: m.extension,
-    instantiates: m.instantiates,
-    partOf: m.partOf,
-    status: m.status,
-    statusReason: m.statusReason,
-    category: m.category,
-    medication: m.medication,
-    subject: m.subject,
-    context: m.context,
-    supportingInformation: m.supportingInformation,
-    effective: m.effective,
-    performer: MedicationAdministrationPerformer(m.performer),
-    reasonCode: m.reasonCode,
-    reasonReference: m.reasonReference,
-    request: m.request,
-    device: m.device,
-    note: m.note,
-    dosage: MedicationAdministrationDosage(m.dosage),
-    eventHistory: m.eventHistory
-  }
-
- define function MedicationRequestDoseAndRate(doseAndRate List<FHIR.Dosage.DoseAndRate>):
-  doseAndRate dR
-  return FHIR.Dosage.DoseAndRate{
-    type: dR.type,
-    dose: dR.dose,
-    rate: dR.rate
-  }
-
-define function MedicationRequestDosageInstruction(dosageInstruction List<FHIR.Dosage>):
-  dosageInstruction dI
-  return FHIR.Dosage{
-    text: dI.text,
-    patientInstruction: dI.patientInstruction,
-    timing: dI.timing,
-    asNeeded: dI.asNeeded,
-    site: dI.site,
-    route: dI.route,
-    method: dI.method,
-    doseAndRate: MedicationRequestDoseAndRate(dI.doseAndRate)
-  }
-
  define function MedicationRequestResource(medicationRequest MedicationRequest, profileURLs List<FHIR.canonical>):
   medicationRequest m
   return MedicationRequest{
@@ -653,7 +558,7 @@ define function MedicationRequestDosageInstruction(dosageInstruction List<FHIR.D
     instantiatesCanonical: m.instantiatesCanonical,
     instantiatesUri: m.instantiatesUri,
     courseOfTherapyType: m.courseOfTherapyType,
-    dosageInstruction: MedicationRequestDosageInstruction(m.dosageInstruction)
+    dosageInstruction: SharedResource.MedicationRequestDosageInstruction(m.dosageInstruction)
   }
 
     

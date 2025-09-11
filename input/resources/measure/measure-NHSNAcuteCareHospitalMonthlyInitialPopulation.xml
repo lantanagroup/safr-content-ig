@@ -417,8 +417,9 @@ define &quot;SDE Observation Vital Signs Category&quot;:
   where exists(
     &quot;Initial Population&quot; IP
     where NHSNHelpers.&quot;Normalize Interval&quot;(MedicationAdministrations.effective) overlaps IP.period)
-  return SharedResource.MedicationAdministrationResource(MedicationAdministrations,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-medicationadministration'}})"></valueString>
+  return MedicationAdministrationResource(MedicationAdministrations,
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-medicationadministration'}},
+  {&quot;inpatient&quot;, &quot;outpatient&quot;})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="14"></valueInteger>
@@ -1645,35 +1646,35 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="MedicationAdministrationResource"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define function MedicationAdministrationResource(medicationAdministration MedicationAdministration, profileURLs List&lt;FHIR.canonical&gt;):
+               <valueString value="define function MedicationAdministrationResource(medicationAdministration MedicationAdministration, profileURLs List&lt;FHIR.canonical&gt;, acceptedCategories List&lt;System.Code&gt;):
   medicationAdministration m
   return MedicationAdministration{
     id: FHIR.id {value: 'LCR-' + m.id},
-    meta: MetaElement(m, profileURLs),
+    meta: SharedResource.MetaElement(m, profileURLs),
     extension: m.extension,
     instantiates: m.instantiates,
     partOf: m.partOf,
     status: m.status,
     statusReason: m.statusReason,
-    category: m.category,
+    category: FilterCodeableConcepts({m.category}, acceptedCategories)[0],
     medication: m.medication,
     subject: m.subject,
     context: m.context,
     supportingInformation: m.supportingInformation,
     effective: m.effective,
-    performer: MedicationAdministrationPerformer(m.performer),
+    performer: SharedResource.MedicationAdministrationPerformer(m.performer),
     reasonCode: m.reasonCode,
     reasonReference: m.reasonReference,
     request: m.request,
     device: m.device,
     note: m.note,
-    dosage: MedicationAdministrationDosage(m.dosage),
+    dosage: SharedResource.MedicationAdministrationDosage(m.dosage),
     eventHistory: m.eventHistory
   }"></valueString>
             </extension>
@@ -3282,7 +3283,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
    <title value="NHSN dQM Acute Care Hospital Monthly Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2025-09-11T10:43:32-05:00"></date>
+   <date value="2025-09-11T15:14:20-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Acute Care Hospital Monthly Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>

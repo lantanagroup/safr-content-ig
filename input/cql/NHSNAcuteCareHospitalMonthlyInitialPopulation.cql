@@ -210,8 +210,9 @@ define "SDE Medication Administration":
   where exists(
     "Initial Population" IP
     where NHSNHelpers."Normalize Interval"(MedicationAdministrations.effective) overlaps IP.period)
-  return SharedResource.MedicationAdministrationResource(MedicationAdministrations,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-medicationadministration'}})
+  return MedicationAdministrationResource(MedicationAdministrations,
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-medicationadministration'}},
+  {"inpatient", "outpatient"})
  
 define "SDE Medication Request":
   [MedicationRequest] MedicationRequests 
@@ -578,6 +579,32 @@ define function MedicationRequestResource(medicationRequest MedicationRequest, p
     instantiatesUri: m.instantiatesUri,
     courseOfTherapyType: m.courseOfTherapyType,
     dosageInstruction: SharedResource.MedicationRequestDosageInstruction(m.dosageInstruction)
+  }
+
+  define function MedicationAdministrationResource(medicationAdministration MedicationAdministration, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
+  medicationAdministration m
+  return MedicationAdministration{
+    id: FHIR.id {value: 'LCR-' + m.id},
+    meta: SharedResource.MetaElement(m, profileURLs),
+    extension: m.extension,
+    instantiates: m.instantiates,
+    partOf: m.partOf,
+    status: m.status,
+    statusReason: m.statusReason,
+    category: FilterCodeableConcepts({m.category}, acceptedCategories)[0],
+    medication: m.medication,
+    subject: m.subject,
+    context: m.context,
+    supportingInformation: m.supportingInformation,
+    effective: m.effective,
+    performer: SharedResource.MedicationAdministrationPerformer(m.performer),
+    reasonCode: m.reasonCode,
+    reasonReference: m.reasonReference,
+    request: m.request,
+    device: m.device,
+    note: m.note,
+    dosage: SharedResource.MedicationAdministrationDosage(m.dosage),
+    eventHistory: m.eventHistory
   }
 
 define function ObservationLabReferenceRange(referenceRange List<FHIR.Observation.ReferenceRange>):
