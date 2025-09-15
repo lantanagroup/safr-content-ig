@@ -49,7 +49,7 @@ The general reporting workflows are detailed in the [Reporting Scenarios](https:
 
 #### NHSNLink Pull from NHSN
 
-When NHSNLink pulls data from EHRs, both NHSNLink and the NHSN application reside within an NHSN-controlled environment. NHSNLink first retrieves the latest FHIR measures and related resources from the measure source and extracts the data requirements for each measure. NHSNLink queries the data source for data; evaluates the data against a measure; prepares bundles containing MeasureReport and supporting resources; and then performs pre-qualification (see NHSNLink FHIR Validation and Pre-qualification section below). Additionally, it conducts measure-specific FHIR validation checks, before making the data available to NHSN back-end systems. In this scenario, the data source SHALL have a FHIR API that, at a minimum, provides read access to all resources required by the measure(s). 
+When NHSNLink pulls data from EHRs, both NHSNLink and the NHSN application reside within an NHSN-controlled environment. NHSNLink first retrieves the latest FHIR measures and related resources from the measure source and extracts the data requirements for each measure. NHSNLink queries the data source for data; evaluates the data against a measure; prepares bundles containing MeasureReport and supporting resources; and then performs pre-qualification. Additionally, it conducts measure-specific FHIR validation checks, before making the data available to NHSN back-end systems. In this scenario, the data source SHALL have a FHIR API that, at a minimum, provides read access to all resources required by the measure(s). 
 
 <div>
 <figure class="figure">
@@ -60,9 +60,9 @@ When NHSNLink pulls data from EHRs, both NHSNLink and the NHSN application resid
     API = application programming interface; dQM = digital quality measure; FHIR = Fast Healthcare Interoperability Resources; SAMS = Secure Access Management Services.
 </p>
 <p>
-  Figure 2 (above) illustrates the process of how healthcare facility data flows securely into NHSN through NHSNLink. This process includes:
+  Figure 1 (above) illustrates the process of how healthcare facility data flows securely into NHSN through NHSNLink. This process includes:
   <ol>
-    <li>Enrollment and readiness: In the NHSN Application, the facility enrolls in the digital measure reporting plan,The facility selects FHIR dQMs, which are then communicated to the NHSNLink API engine. This step confirms the facility’s readiness to report digital quality measures and that it has signed the NHSN data-use agreements required for secure data sharing.</li>
+    <li>Enrollment and readiness: In the NHSN Application, the facility enrolls in the digital measure reporting plan. The facility selects FHIR dQMs, which are then communicated to the NHSNLink API engine. This step confirms the facility’s readiness to report digital quality measures and that it has signed the NHSN data-use agreements required for secure data sharing.</li>
     <li>Authentication and patient list: The facility’s EHR FHIR server is secured by an authentication mechanism. From this server, a Patients of Interest List is extracted and provided to NHSNLink. NHSNLink uses this list to query the facility’s EHR server for the data defined by the dQMs the facility is enrolled in.</li>
     <li>Evaluation and pre-qualification: NHSNLink evaluates and filters the data as defined by each dQM, bundles the data into a MeasureReport, and applies a pre-qualification process on the data.</li>
     <li>Submission: NHSNLink submits the MeasureReport bundles for patients meeting the dQM definitions to the NHSN Application through the CDC Cloud.</li>
