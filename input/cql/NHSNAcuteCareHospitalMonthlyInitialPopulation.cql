@@ -359,6 +359,27 @@ define function ConditionResource(condition Condition, profileURLs List<FHIR.can
     note: c.note
   }
 
+define function CoverageClass(class List<FHIR.Coverage.Class>):
+  class c
+  return FHIR.Coverage.Class{
+    value: c.value,
+    name: c.name
+  }
+
+define function CoverageResource(coverage Coverage, profileURLs List<FHIR.canonical>):
+  coverage c
+  return Coverage{
+    id: FHIR.id{value: 'LCR-' + c.id},
+    meta: SharedResource.MetaElement(c, profileURLs),
+    extension: c.extension,
+    status: c.status,
+    type: c.type,
+    beneficiary: c.beneficiary,
+    relationship: c.relationship,
+    period: c.period,
+    payor: c.payor
+  }
+
 define function DeviceUdiCarrier(udiCarrier List<FHIR.Device.UdiCarrier>):
   udiCarrier u
   return FHIR.Device.UdiCarrier{

@@ -66,20 +66,6 @@
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
             <valueCoding>
                <system value="http://terminology.hl7.org/CodeSystem/observation-category"></system>
-               <code value="social-history"></code>
-               <display value="Social History"></display>
-            </valueCoding>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
-            <valueCoding>
-               <system value="http://terminology.hl7.org/CodeSystem/observation-category"></system>
-               <code value="survey"></code>
-               <display value="Survey"></display>
-            </valueCoding>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
-            <valueCoding>
-               <system value="http://terminology.hl7.org/CodeSystem/observation-category"></system>
                <code value="imaging"></code>
                <display value="Imaging"></display>
             </valueCoding>
@@ -94,29 +80,8 @@
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
             <valueCoding>
                <system value="http://terminology.hl7.org/CodeSystem/condition-category"></system>
-               <code value="problem-list-item"></code>
-               <display value="Problem List Item"></display>
-            </valueCoding>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
-            <valueCoding>
-               <system value="http://terminology.hl7.org/CodeSystem/condition-clinical"></system>
-               <code value="active"></code>
-               <display value="active"></display>
-            </valueCoding>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
-            <valueCoding>
-               <system value="http://terminology.hl7.org/CodeSystem/condition-category"></system>
                <code value="encounter-diagnosis"></code>
                <display value="Encounter Diagnosis"></display>
-            </valueCoding>
-         </extension>
-         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode">
-            <valueCoding>
-               <system value="http://hl7.org/fhir/us/core/CodeSystem/condition-category"></system>
-               <code value="health-concern"></code>
-               <display value="Health Concern"></display>
             </valueCoding>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -270,7 +235,7 @@ define &quot;SDE Encounter&quot;:
   where exists(
     &quot;Initial Population&quot; IP
     where NHSNHelpers.&quot;Normalize Interval&quot;(Procedures.performed) overlaps IP.period)
-  return SharedResource.ProcedureResource(Procedures,
+     return ProcedureResource(Procedures,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-procedure'}})"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -424,9 +389,9 @@ define &quot;SDE Observation Vital Signs Category&quot;:
                <valueString value="//Defaulting to base FHIR profile as there are no individual profiles in US Core 3.1.1 that cover these Observation categories
 define &quot;SDE Observation Category&quot;:
   &quot;Observations&quot; Observations 
-  where ((exists(Observations.category Category where Category ~ &quot;social-history&quot;))
+  where (/*(exists(Observations.category Category where Category ~ &quot;social-history&quot;))
     or (exists(Observations.category Category where Category ~ &quot;survey&quot;))
-    or (exists(Observations.category Category where Category ~ &quot;imaging&quot;))
+    or */(exists(Observations.category Category where Category ~ &quot;imaging&quot;))
     or (exists(Observations.category Category where Category ~ &quot;procedure&quot;)))
     and exists(
       &quot;Initial Population&quot; IP
@@ -468,17 +433,18 @@ define &quot;SDE Observation Category&quot;:
 //============================================================================
 define &quot;SDE Condition&quot;:
   &quot;Conditions&quot; Conditions 
-  where exists(
+    where exists(
     &quot;Initial Population&quot; IP
-    //Check for Problem List Conditions that were recorded before or during IP
-    where (
+//Check for Problem List Conditions that were recorded before or during IP 
+     where /*(
       Conditions.recordedDate before end of IP.period
       and exists(Conditions.category categories
         where categories ~ &quot;problem-list-item&quot;)
       and Conditions.clinicalStatus ~ &quot;active&quot;
-    )
-    //Check for Encounter Diagnosis Conditions that reference an IP encounter
-    or (
+    )*/
+//Check for Encounter Diagnosis Conditions that reference an IP encounter
+//  or
+   (
       (exists(IP.diagnosis Diagnoses
           where GetCondition(Diagnoses.condition).id = Conditions.id
         )
@@ -486,12 +452,13 @@ define &quot;SDE Condition&quot;:
       )
       and exists (Conditions.category categories
         where categories ~ &quot;encounter-diagnosis&quot;
-          or categories ~ &quot;health-concern&quot;)
+      //or categories ~ health-concern&quot;)  
     )
+   )
   )
   return ConditionResource(Conditions,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-condition'}},
-  {&quot;problem-list-item&quot;, &quot;encounter-diagnosis&quot;, &quot;health-concern&quot;})"></valueString>
+   {&quot;encounter-diagnosis&quot;})"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="17"></valueInteger>
@@ -1146,7 +1113,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="ProcedureResource"></valueString>
@@ -1156,7 +1123,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
   procedure p
   return Procedure{
     id: FHIR.id {value: 'LCR-' + p.id},
-    meta: MetaElement(p, profileURLs),
+    meta: SharedResource.MetaElement(p, profileURLs),
     extension: p.extension,
     instantiatesCanonical: p.instantiatesCanonical,
     instantiatesUri: p.instantiatesUri,
@@ -1193,7 +1160,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="ProcedurePerformer"></valueString>
@@ -1213,7 +1180,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="ProcedureFocalDevice"></valueString>
@@ -1816,6 +1783,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
                <valueString value="//
 //Measure Specific Resource Creation Functions
 //
+
 define function ConditionResource(condition Condition, profileURLs List&lt;FHIR.canonical&gt;, acceptedCategories List&lt;System.Code&gt;):
   condition c
   return Condition{
@@ -1851,9 +1819,9 @@ define function ConditionResource(condition Condition, profileURLs List&lt;FHIR.
             </extension>
             <extension url="statement">
                <valueString value="define function FilterCodeableConcepts(codes List&lt;FHIR.CodeableConcept&gt;, accepted List&lt;System.Code&gt;):
-	if Count(accepted) &gt; 0
-		then RemoveUnaccepted(codes, accepted)
-	else codes"></valueString>
+  if Count(accepted) &gt; 0
+    then RemoveUnaccepted(codes, accepted)
+  else codes"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="73"></valueInteger>
@@ -2614,16 +2582,6 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
-            <display value="Code system Condition Clinical Status"></display>
-            <resource value="http://terminology.hl7.org/CodeSystem/condition-clinical"></resource>
-         </relatedArtifact>
-         <relatedArtifact>
-            <type value="depends-on"></type>
-            <display value="Code system US Core Condition Category"></display>
-            <resource value="http://hl7.org/fhir/us/core/CodeSystem/condition-category"></resource>
-         </relatedArtifact>
-         <relatedArtifact>
-            <type value="depends-on"></type>
             <display value="Value set Encounter Inpatient"></display>
             <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307"></resource>
          </relatedArtifact>
@@ -3337,7 +3295,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
    <title value="NHSN dQM Acute Care Hospital Monthly Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2025-07-29T07:47:59-05:00"></date>
+   <date value="2025-09-18T14:24:08-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Acute Care Hospital Monthly Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>
