@@ -580,7 +580,7 @@ define &quot;SDE All Observations&quot;:
   (&quot;SDE Covid or Influenza Medication Ordered&quot;
   union &quot;SDE Covid or Influenza Medication Administered&quot;) MedReqOrAdmin
   where MedReqOrAdmin.medication is FHIR.Reference
-  return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication),
+  return MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication),
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-medication'}})"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -785,7 +785,7 @@ define &quot;SDE COVID And Influenza Specimen&quot;:
 define &quot;SDE All ServiceRequests&quot;:
   [ServiceRequest] SR
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.ServiceRequestResource(SR,
+  return ServiceRequestResource(SR,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-servicerequest'}})"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -2267,7 +2267,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalDailyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="MedicationResource"></valueString>
@@ -2277,7 +2277,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   medication m
   return Medication{
     id: FHIR.id {value: 'LCR-' + m.id},
-    meta: MetaElement(m, profileURLs),
+    meta: SharedResource.MetaElement(m, profileURLs),
     extension: m.extension,
     code: m.code,
     status: m.status,
@@ -2294,13 +2294,17 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalDailyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="MedicationIngredient"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define function MedicationIngredient(ingredient List&lt;FHIR.Medication.Ingredient&gt;):
+               <valueString value="//
+ // Measure Specific Resource Creation Functions
+ //
+ 
+define function MedicationIngredient(ingredient List&lt;FHIR.Medication.Ingredient&gt;):
   ingredient i
   return FHIR.Medication.Ingredient{
     item: i.item,
@@ -2313,7 +2317,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalDailyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="MedicationBatch"></valueString>
@@ -2367,6 +2371,57 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
             <extension url="libraryName">
+               <valueString value="NHSNAcuteCareHospitalDailyInitialPopulation"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="ServiceRequestResource"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function ServiceRequestResource(serviceRequest ServiceRequest, profileURLs List&lt;FHIR.canonical&gt;):
+  serviceRequest sR
+  return ServiceRequest{
+    id: FHIR.id {value: 'LCR-' + sR.id},
+    meta: SharedResource.MetaElement(sR, profileURLs),
+    extension: sR.extension,
+    instantiatesCanonical: sR.instantiatesCanonical,
+    instantiatesUri: sR.instantiatesUri,
+    basedOn: sR.basedOn,
+    replaces: sR.replaces,
+    requisition: sR.requisition,
+    status: sR.status,
+    intent: sR.intent,
+    category: sR.category,
+    priority: sR.priority,
+    doNotPerform: sR.doNotPerform,
+    code: sR.code,
+    orderDetail: sR.orderDetail,
+    quantity: sR.quantity,
+    subject: sR.subject,
+    encounter: sR.encounter,
+    occurrence: sR.occurrence,
+    asNeeded: sR.asNeeded,
+    authoredOn: sR.authoredOn,
+    performerType: sR.performerType,
+    performer: sR.performer,
+    locationCode: sR.locationCode,
+    locationReference: sR.locationReference,
+    reasonCode: sR.reasonCode,
+    reasonReference: sR.reasonReference,
+    insurance: sR.insurance,
+    supportingInfo: sR.supportingInfo,
+    specimen: sR.specimen,
+    bodySite: sR.bodySite,
+    note: sR.note,
+    patientInstruction: sR.patientInstruction,
+    relevantHistory: sR.relevantHistory
+  }"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="104"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
+            <extension url="libraryName">
                <valueString value="SharedResourceCreation"></valueString>
             </extension>
             <extension url="name">
@@ -2398,7 +2453,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="104"></valueInteger>
+               <valueInteger value="105"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2425,7 +2480,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="105"></valueInteger>
+               <valueInteger value="106"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2445,7 +2500,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="106"></valueInteger>
+               <valueInteger value="107"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition">
@@ -2466,7 +2521,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="107"></valueInteger>
+               <valueInteger value="108"></valueInteger>
             </extension>
          </extension>
          <name value="EffectiveDataRequirements"></name>
@@ -3908,7 +3963,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
    <title value="NHSN Acute Care Hospital Daily Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2025-07-17T15:37:55-05:00"></date>
+   <date value="2025-09-18T08:08:11-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="All encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period. "></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>

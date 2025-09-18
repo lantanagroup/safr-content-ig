@@ -463,7 +463,7 @@ define "SDE All Observations":
 define "SDE All ServiceRequests":
   [ServiceRequest] SR
   where exists("Initial Population")
-  return SharedResource.ServiceRequestResource(SR,
+  return ServiceRequestResource(SR,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-servicerequest'}})
 
 //To catch all isolation precautions
@@ -656,5 +656,43 @@ define function MedicationRequestDosageInstruction(dosageInstruction List<FHIR.D
     dosageInstruction: MedicationRequestDosageInstruction(m.dosageInstruction)
   }
 
+define function ServiceRequestResource(serviceRequest ServiceRequest, profileURLs List<FHIR.canonical>):
+  serviceRequest sR
+  return ServiceRequest{
+    id: FHIR.id {value: 'LCR-' + sR.id},
+    meta: SharedResource.MetaElement(sR, profileURLs),
+    extension: sR.extension,
+    instantiatesCanonical: sR.instantiatesCanonical,
+    instantiatesUri: sR.instantiatesUri,
+    basedOn: sR.basedOn,
+    replaces: sR.replaces,
+    requisition: sR.requisition,
+    status: sR.status,
+    intent: sR.intent,
+    category: sR.category,
+    priority: sR.priority,
+    doNotPerform: sR.doNotPerform,
+    code: sR.code,
+    orderDetail: sR.orderDetail,
+    quantity: sR.quantity,
+    subject: sR.subject,
+    encounter: sR.encounter,
+    occurrence: sR.occurrence,
+    asNeeded: sR.asNeeded,
+    authoredOn: sR.authoredOn,
+    performerType: sR.performerType,
+    performer: sR.performer,
+    locationCode: sR.locationCode,
+    locationReference: sR.locationReference,
+    reasonCode: sR.reasonCode,
+    reasonReference: sR.reasonReference,
+    insurance: sR.insurance,
+    supportingInfo: sR.supportingInfo,
+    specimen: sR.specimen,
+    bodySite: sR.bodySite,
+    note: sR.note,
+    patientInstruction: sR.patientInstruction,
+    relevantHistory: sR.relevantHistory
+  }
     
     
