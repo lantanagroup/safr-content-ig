@@ -1,35 +1,14 @@
 #!/bin/bash
 #DO NOT EDIT WITH WINDOWS
 #exit 1
-# Usage:
-# _updateCQFTooling.sh <skipPrompts[-y|--yes]>
-################################################
 
-skipPrompts=false
-FORCE=false
-
-# Check for true in parameters <skipPrompts>
-while [ "$#" -gt 0 ]; do
-    case $1 in
-    -f|--force)  FORCE=true ;;
-    -y|--yes)  skipPrompts=true ; FORCE=true ;;
-    *)  echo "Unknown parameter passed: $1.  Exiting"; exit 1 ;;
-    esac
-    shift
-done
-
-r=snapshots
-g=org.opencds.cqf
-a=tooling-cli
-v=3.6.0
-
-dlurl='https://oss.sonatype.org/service/local/repositories/releases/content/org/opencds/cqf/'${a}'/'${v}'/'${a}'-'${v}'.jar'
-#dlurl='https://oss.sonatype.org/service/local/artifact/maven/redirect?r='${r}'&g='${g}'&a='${a}'&v='${v}''
-
-echo ${dlurl}
+# this script is only intended for downloading release packages
+# snapshot versions must be downloaded 'manually'
+v=3.9.1
+tooling_jar=tooling-cli-${v}.jar
+dlurl='https://repo1.maven.org/maven2/org/opencds/cqf/tooling-cli/'${v}'/'${tooling_jar}
 
 input_cache_path=./input-cache/
-tooling_jar=${a}-${v}.jar
 
 set -e
 if ! type "curl" > /dev/null; then
@@ -62,16 +41,14 @@ fi
 if $upgrade ; then
 	message="Overwrite $jarlocation? [Y/N] "
 else
-	if [ $FORCE != true ]; then
-		#echo Will place tooling jar here: $input_cache_path$tooling_jar
-		echo Will place tooling jar here: $jarlocation
-		message="Ok? [Y/N]"
-	fi
+	#echo Will place tooling jar here: $input_cache_path$tooling_jar
+	echo Will place tooling jar here: $jarlocation
+	message="Ok? [Y/N]"
 fi
 
-if [[ $FORCE == true ]] || [[ "$response" =~ ^[yY].*$ ]]; then
-	echo "Downloading most recent tooling to $jarlocationname - it's ~170 MB, so this may take a bit"
-#	wget "https://oss.sonatype.org/service/local/repositories/snapshots/content/org/opencds/cqf/tooling/1.0-SNAPSHOT/tooling-1.0-20200107.163002-6-jar-with-dependencies.jar" -O "$jarlocation"
+read -r -p "$message" response
+if [[ "$response" =~ ^([yY])$ ]]; then
+	echo "Downloading tooling v$v to $jarlocationname - it's ~210 MB, so this may take a bit"
 	curl $dlurl -L -o "$jarlocation" --create-dirs
 	echo "Download complete."
 else
