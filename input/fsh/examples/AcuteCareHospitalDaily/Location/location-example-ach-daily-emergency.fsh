@@ -10,7 +10,7 @@ Usage: #example
 * alias[0] = "ED"
 * alias[+] = "EDPAV"
 * mode = #instance
-* type = $v3-RoleCode#HOSP "Hospital"
+* type = $hsloc.html#1108-0 "Emergency Department"
 * telecom[0].system = #phone
 * telecom[=].value = "916-734-3790"
 * telecom[=].rank = 1
