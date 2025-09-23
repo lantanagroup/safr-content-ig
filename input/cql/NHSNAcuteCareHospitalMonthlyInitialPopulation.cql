@@ -448,6 +448,37 @@ define function DiagnosticReportResource(diagnosticReport DiagnosticReport, prof
     conclusionCode: d.conclusionCode
   }
 
+define function EncounterHospitalization(hospitalization FHIR.Encounter.Hospitalization):
+  hospitalization h
+  return FHIR.Encounter.Hospitalization{
+    origin: h.origin,
+    admitSource: h.admitSource,
+    reAdmission: h.reAdmission,
+    dietPreference: h.dietPreference,
+    dischargeDisposition: h.dischargeDisposition
+  }
+
+define function EncounterResource(encounter Encounter, profileURLs List<FHIR.canonical>):
+  encounter e
+  return Encounter{
+    id: FHIR.id{value: 'LCR-' + e.id},
+    meta: SharedResource.MetaElement(e, profileURLs),
+    extension: e.extension,
+    identifier: SharedResource.EncounterIdentifier(e.identifier),
+    status: e.status,
+    statusHistory: SharedResource.EncounterStatusHistory(e.statusHistory),
+    class: e.class,
+    classHistory: SharedResource.EncounterClassHistory(e.classHistory),
+    type: e.type,
+    subject: e.subject,
+    period: e.period,
+    reasonCode: e.reasonCode,
+    diagnosis: SharedResource.EncounterDiagnosis(e.diagnosis),
+    hospitalization: EncounterHospitalization(e.hospitalization),
+    location: SharedResource.EncounterLocation(e.location),
+    partOf: e.partOf
+  }
+
 define function ObservationResource(observation Observation, profileURLs List<FHIR.canonical>):
   observation o
   return Observation{
