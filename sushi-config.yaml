@@ -9,7 +9,7 @@ name: NHSNMeasures
 status: active
 date: 2025-06-24
 copyrightYear: 2023+
-version: 1.0.0
+version: 2.0.0
 releaseLabel: Release 1
 jurisdiction: urn:iso:std:iso:3166#US
 extension:
@@ -24,10 +24,14 @@ publisher:
 
 
 dependencies:
-  hl7.fhir.extensions.r5: 4.0.1
-  hl7.fhir.us.core: 
+  hl7.fhir.us.core:
+    version: 6.1.0
+    uri: http://hl7.org/fhir/us/core/v610/ImplementationGuide/hl7.fhir.us.core.v610
+    id: uscore6
+  hl7.fhir.us.core.v311:
     version: 3.1.1
-    id: uscore
+    uri: http://hl7.org/fhir/us/core/v311/ImplementationGuide/hl7.fhir.us.core.v311
+    id: uscore3
   fhir.cqf.common:
     version: 4.0.1
     id: cqf
@@ -35,11 +39,14 @@ dependencies:
     version: 3.0.0
     id: cqfm
   hl7.fhir.us.davinci-deqm: 
-    version: 3.1.0
+    version: 5.0.0
     id: deqm
   hl7.fhir.us.qicore: 
     version: 4.1.1
     id: qicore
+  hl7.fhir.extensions.r5:
+        version: 5.1.0
+
 
 description: "This content describes the specifications for the for the Health Level Seven International® (HL7) Fast Healthcare Interoperability Resources® (FHIR) digital quality measures (dQMs) reported to the National Healthcare Safety Network (NHSN)."
 parameters:

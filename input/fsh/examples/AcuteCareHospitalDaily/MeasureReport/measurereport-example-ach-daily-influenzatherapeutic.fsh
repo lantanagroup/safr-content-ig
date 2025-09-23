@@ -1,5 +1,5 @@
 Instance: measurereport-example-ach-daily-influenzatherapeutic
-InstanceOf: MeasureReport
+InstanceOf: DEQMIndividualMeasureReportProfile
 Title: "MeasureReport - Example Individual ACH Daily Influenza Therapeutic"
 Description: "MeasureReport - Example Individual ACH Daily Influenza Therapeutic"
 Usage: #example

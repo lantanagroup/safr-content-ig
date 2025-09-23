@@ -5,8 +5,8 @@ Description: "Observation - Example ACH Monthly Pass2 Lab: Glucose in Capillary 
 Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-monthly-pass2-glucose)
-* category[Laboratory] = $observation-category#laboratory "Laboratory"
-* category[Laboratory].text = "Laboratory"
+* category[us-core] = $observation-category#laboratory "Laboratory"
+* category[us-core].text = "Laboratory"
 * code = $loinc#41653-7 "Glucose [Mass/volume] in Capillary blood by Glucometer"
 * code.text = "Glucose"
 * subject = Reference(patient-example-ach-monthly-pass2)
@@ -25,8 +25,8 @@ Description: "Observation - Example ACH Monthly Pass2 Lab: Glucose in Capillary 
 Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-monthly-pass2-glucose)
-* category[Laboratory] = $observation-category#laboratory "Laboratory"
-* category[Laboratory].text = "Laboratory"
+* category[us-core] = $observation-category#laboratory "Laboratory"
+* category[us-core].text = "Laboratory"
 * code = $loinc#41653-7 "Glucose [Mass/volume] in Capillary blood by Glucometer"
 * code.text = "Glucose"
 * subject = Reference(patient-example-ach-monthly-pass2)
