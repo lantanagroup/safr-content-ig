@@ -1,57 +1,10 @@
 {
   "resourceType": "Library",
   "id": "NHSNAcuteCareHospitalDailyInitialPopulation",
-  "contained": [ {
-    "resourceType": "Parameters",
-    "id": "options",
-    "parameter": [ {
-      "name": "translatorVersion",
-      "valueString": "3.11.0"
-    }, {
-      "name": "option",
-      "valueString": "EnableDateRangeOptimization"
-    }, {
-      "name": "option",
-      "valueString": "EnableAnnotations"
-    }, {
-      "name": "option",
-      "valueString": "EnableLocators"
-    }, {
-      "name": "option",
-      "valueString": "DisableListDemotion"
-    }, {
-      "name": "option",
-      "valueString": "DisableListPromotion"
-    }, {
-      "name": "analyzeDataRequirements",
-      "valueBoolean": false
-    }, {
-      "name": "collapseDataRequirements",
-      "valueBoolean": true
-    }, {
-      "name": "compatibilityLevel",
-      "valueString": "1.5"
-    }, {
-      "name": "enableCqlOnly",
-      "valueBoolean": false
-    }, {
-      "name": "errorLevel",
-      "valueString": "Info"
-    }, {
-      "name": "signatureLevel",
-      "valueString": "Overloads"
-    }, {
-      "name": "validateUnits",
-      "valueBoolean": true
-    }, {
-      "name": "verifyOnly",
-      "valueBoolean": false
-    } ]
-  } ],
   "extension": [ {
-    "url": "http://hl7.org/fhir/StructureDefinition/cqf-cqlOptions",
+    "url": "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-softwaresystem",
     "valueReference": {
-      "reference": "#options"
+      "reference": "Device/cqf-tooling"
     }
   } ],
   "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNAcuteCareHospitalDailyInitialPopulation",
