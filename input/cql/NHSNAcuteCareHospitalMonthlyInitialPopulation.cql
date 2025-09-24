@@ -119,15 +119,7 @@ define "SDE Condition":
     where exists(
     "Initial Population" IP
 //Check for Problem List Conditions that were recorded before or during IP 
-     where /*(
-      Conditions.recordedDate before end of IP.period
-      and exists(Conditions.category categories
-        where categories ~ "problem-list-item")
-      and Conditions.clinicalStatus ~ "active"
-    )*/
-//Check for Encounter Diagnosis Conditions that reference an IP encounter
-//  or
-   (
+     where 
       (exists(IP.diagnosis Diagnoses
           where GetCondition(Diagnoses.condition).id = Conditions.id
         )
@@ -135,9 +127,7 @@ define "SDE Condition":
       )
       and exists (Conditions.category categories
         where categories ~ "encounter-diagnosis"
-      //or categories ~ health-concern")  
     )
-   )
   )
   return ConditionResource(Conditions,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-condition'}},
@@ -363,59 +353,12 @@ define function ConditionResource(condition Condition, profileURLs List<FHIR.can
     clinicalStatus: c.clinicalStatus,
     verificationStatus: c.verificationStatus,
     category: FilterCodeableConcepts(c.category, acceptedCategories),
-    severity: c.severity,
     code: c.code,
-    bodySite: c.bodySite,
     subject: c.subject,
     encounter: c.encounter,
     onset: c.onset,
     abatement: c.abatement,
-    recordedDate: c.recordedDate,
-    stage: SharedResource.ConditionStage(c.stage),
-    evidence: SharedResource.ConditionEvidence(c.evidence),
-    note: c.note
-  }
-
-define function DeviceUdiCarrier(udiCarrier List<FHIR.Device.UdiCarrier>):
-  udiCarrier u
-  return FHIR.Device.UdiCarrier{
-    deviceIdentifier: u.deviceIdentifier,
-    issuer: u.issuer,
-    jurisdiction: u.jurisdiction,
-    carrierAIDC: u.carrierAIDC,
-    carrierHRF: u.carrierHRF,
-    entryType: u.entryType
-  }
-
-define function DeviceDeviceName(deviceName List<FHIR.Device.DeviceName>):
-  deviceName d
-  return FHIR.Device.DeviceName{
-    name: d.name,
-    type: d.type
-  }
-
-define function DeviceSpecialization(specialization List<FHIR.Device.Specialization>):
-  specialization s
-  return FHIR.Device.Specialization{
-    systemType: s.systemType,
-    version: s.version
-  }
-
-define function DeviceVersion(version List<FHIR.Device.Version>):
-  version v
-  return FHIR.Device.Version{
-    type: v.type,
-    component: v.component,
-    value: v.value
-  }
-
-define function DeviceProperty(deviceProperty List<FHIR.Device.Property>):
-  deviceProperty d
-  return FHIR.Device.Property{
-    id: d.id,
-    type: d.type,
-    valueQuantity: d.valueQuantity,
-    valueCode: d.valueCode
+    recordedDate: c.recordedDate
   }
 
 define function DeviceResource(device Device, profileURLs List<FHIR.canonical>):
@@ -424,30 +367,14 @@ define function DeviceResource(device Device, profileURLs List<FHIR.canonical>):
     id: FHIR.id{value: 'LCR-' + d.id},
     meta: SharedResource.MetaElement(d, profileURLs),
     extension: d.extension,
-    definition: d.definition,
-    udiCarrier: DeviceUdiCarrier(d.udiCarrier),
     status: d.status,
-    statusReason: d.statusReason,
-    distinctIdentifier: d.distinctIdentifier,
-    manufacturer: d.manufacturer,
-    manufactureDate: d.manufactureDate,
     expirationDate: d.expirationDate,
     lotNumber: d.lotNumber,
     serialNumber: d.serialNumber,
-    deviceName: DeviceDeviceName(d.deviceName),
     modelNumber: d.modelNumber,
     partNumber: d.partNumber,
     type: d.type,
-    specialization: DeviceSpecialization(d.specialization),
-    version: DeviceVersion(d.version),
-    property: DeviceProperty(d.property),
     patient: d.patient,
-    owner: d.owner,
-    contact: d.contact,
-    location: d.location,
-    url: d.url,
-    note: d.note,
-    safety: d.safety,
     parent: d.parent
   }
 

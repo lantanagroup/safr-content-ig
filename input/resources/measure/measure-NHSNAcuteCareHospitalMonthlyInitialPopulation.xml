@@ -484,15 +484,7 @@ define &quot;SDE Condition&quot;:
     where exists(
     &quot;Initial Population&quot; IP
 //Check for Problem List Conditions that were recorded before or during IP 
-     where /*(
-      Conditions.recordedDate before end of IP.period
-      and exists(Conditions.category categories
-        where categories ~ &quot;problem-list-item&quot;)
-      and Conditions.clinicalStatus ~ &quot;active&quot;
-    )*/
-//Check for Encounter Diagnosis Conditions that reference an IP encounter
-//  or
-   (
+     where 
       (exists(IP.diagnosis Diagnoses
           where GetCondition(Diagnoses.condition).id = Conditions.id
         )
@@ -500,9 +492,7 @@ define &quot;SDE Condition&quot;:
       )
       and exists (Conditions.category categories
         where categories ~ &quot;encounter-diagnosis&quot;
-      //or categories ~ health-concern&quot;)  
     )
-   )
   )
   return ConditionResource(Conditions,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-condition'}},
@@ -1280,137 +1270,19 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
     id: FHIR.id{value: 'LCR-' + d.id},
     meta: SharedResource.MetaElement(d, profileURLs),
     extension: d.extension,
-    definition: d.definition,
-    udiCarrier: DeviceUdiCarrier(d.udiCarrier),
     status: d.status,
-    statusReason: d.statusReason,
-    distinctIdentifier: d.distinctIdentifier,
-    manufacturer: d.manufacturer,
-    manufactureDate: d.manufactureDate,
     expirationDate: d.expirationDate,
     lotNumber: d.lotNumber,
     serialNumber: d.serialNumber,
-    deviceName: DeviceDeviceName(d.deviceName),
     modelNumber: d.modelNumber,
     partNumber: d.partNumber,
     type: d.type,
-    specialization: DeviceSpecialization(d.specialization),
-    version: DeviceVersion(d.version),
-    property: DeviceProperty(d.property),
     patient: d.patient,
-    owner: d.owner,
-    contact: d.contact,
-    location: d.location,
-    url: d.url,
-    note: d.note,
-    safety: d.safety,
     parent: d.parent
   }"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="52"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="DeviceUdiCarrier"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define function DeviceUdiCarrier(udiCarrier List&lt;FHIR.Device.UdiCarrier&gt;):
-  udiCarrier u
-  return FHIR.Device.UdiCarrier{
-    deviceIdentifier: u.deviceIdentifier,
-    issuer: u.issuer,
-    jurisdiction: u.jurisdiction,
-    carrierAIDC: u.carrierAIDC,
-    carrierHRF: u.carrierHRF,
-    entryType: u.entryType
-  }"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="53"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="DeviceDeviceName"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define function DeviceDeviceName(deviceName List&lt;FHIR.Device.DeviceName&gt;):
-  deviceName d
-  return FHIR.Device.DeviceName{
-    name: d.name,
-    type: d.type
-  }"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="54"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="DeviceSpecialization"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define function DeviceSpecialization(specialization List&lt;FHIR.Device.Specialization&gt;):
-  specialization s
-  return FHIR.Device.Specialization{
-    systemType: s.systemType,
-    version: s.version
-  }"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="55"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="DeviceVersion"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define function DeviceVersion(version List&lt;FHIR.Device.Version&gt;):
-  version v
-  return FHIR.Device.Version{
-    type: v.type,
-    component: v.component,
-    value: v.value
-  }"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="56"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="DeviceProperty"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define function DeviceProperty(deviceProperty List&lt;FHIR.Device.Property&gt;):
-  deviceProperty d
-  return FHIR.Device.Property{
-    id: d.id,
-    type: d.type,
-    valueQuantity: d.valueQuantity,
-    valueCode: d.valueCode
-  }"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="57"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1448,7 +1320,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="58"></valueInteger>
+               <valueInteger value="53"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1467,7 +1339,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="59"></valueInteger>
+               <valueInteger value="54"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1491,7 +1363,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="60"></valueInteger>
+               <valueInteger value="55"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1513,7 +1385,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="61"></valueInteger>
+               <valueInteger value="56"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1535,7 +1407,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="62"></valueInteger>
+               <valueInteger value="57"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1577,7 +1449,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="63"></valueInteger>
+               <valueInteger value="58"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1596,7 +1468,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="64"></valueInteger>
+               <valueInteger value="59"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1618,7 +1490,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="65"></valueInteger>
+               <valueInteger value="60"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1641,7 +1513,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="66"></valueInteger>
+               <valueInteger value="61"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1663,7 +1535,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="67"></valueInteger>
+               <valueInteger value="62"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1697,7 +1569,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="68"></valueInteger>
+               <valueInteger value="63"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1735,7 +1607,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="69"></valueInteger>
+               <valueInteger value="64"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1754,7 +1626,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="70"></valueInteger>
+               <valueInteger value="65"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1777,7 +1649,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="71"></valueInteger>
+               <valueInteger value="66"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1815,7 +1687,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="72"></valueInteger>
+               <valueInteger value="67"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1837,7 +1709,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="73"></valueInteger>
+               <valueInteger value="68"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1855,7 +1727,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
   )"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="74"></valueInteger>
+               <valueInteger value="69"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1873,7 +1745,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
   )"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="75"></valueInteger>
+               <valueInteger value="70"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1897,60 +1769,16 @@ define function ConditionResource(condition Condition, profileURLs List&lt;FHIR.
     clinicalStatus: c.clinicalStatus,
     verificationStatus: c.verificationStatus,
     category: FilterCodeableConcepts(c.category, acceptedCategories),
-    severity: c.severity,
     code: c.code,
-    bodySite: c.bodySite,
     subject: c.subject,
     encounter: c.encounter,
     onset: c.onset,
     abatement: c.abatement,
-    recordedDate: c.recordedDate,
-    stage: SharedResource.ConditionStage(c.stage),
-    evidence: SharedResource.ConditionEvidence(c.evidence),
-    note: c.note
+    recordedDate: c.recordedDate
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="76"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="ConditionStage"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define function ConditionStage(stage List&lt;FHIR.Condition.Stage&gt;):
-  stage s
-  return FHIR.Condition.Stage{
-    summary: s.summary,
-    assessment: s.assessment,
-    type: s.type
-  }"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="77"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="ConditionEvidence"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define function ConditionEvidence(evidence List&lt;FHIR.Condition.Evidence&gt;):
-  evidence e
-  return FHIR.Condition.Evidence{
-    code: e.code,
-    detail: e.detail
-  }"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="78"></valueInteger>
+               <valueInteger value="71"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1982,7 +1810,7 @@ define function ConditionResource(condition Condition, profileURLs List&lt;FHIR.
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="79"></valueInteger>
+               <valueInteger value="72"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2000,7 +1828,7 @@ define function ConditionResource(condition Condition, profileURLs List&lt;FHIR.
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="80"></valueInteger>
+               <valueInteger value="73"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2021,7 +1849,7 @@ define function ConditionResource(condition Condition, profileURLs List&lt;FHIR.
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="81"></valueInteger>
+               <valueInteger value="74"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2057,7 +1885,7 @@ define function ConditionResource(condition Condition, profileURLs List&lt;FHIR.
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="82"></valueInteger>
+               <valueInteger value="75"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2084,7 +1912,7 @@ define function ConditionResource(condition Condition, profileURLs List&lt;FHIR.
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="83"></valueInteger>
+               <valueInteger value="76"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2104,7 +1932,7 @@ define function ConditionResource(condition Condition, profileURLs List&lt;FHIR.
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="84"></valueInteger>
+               <valueInteger value="77"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2125,7 +1953,7 @@ define function ConditionResource(condition Condition, profileURLs List&lt;FHIR.
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="85"></valueInteger>
+               <valueInteger value="78"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2160,7 +1988,7 @@ define function ConditionResource(condition Condition, profileURLs List&lt;FHIR.
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="86"></valueInteger>
+               <valueInteger value="79"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2196,7 +2024,7 @@ define function ConditionResource(condition Condition, profileURLs List&lt;FHIR.
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="87"></valueInteger>
+               <valueInteger value="80"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2216,7 +2044,7 @@ define function ConditionResource(condition Condition, profileURLs List&lt;FHIR.
   return E"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="88"></valueInteger>
+               <valueInteger value="81"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2233,7 +2061,7 @@ define function ConditionResource(condition Condition, profileURLs List&lt;FHIR.
   return E"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="89"></valueInteger>
+               <valueInteger value="82"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2273,7 +2101,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="90"></valueInteger>
+               <valueInteger value="83"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2295,7 +2123,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="91"></valueInteger>
+               <valueInteger value="84"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2324,7 +2152,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="92"></valueInteger>
+               <valueInteger value="85"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2350,7 +2178,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="93"></valueInteger>
+               <valueInteger value="86"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2371,7 +2199,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="94"></valueInteger>
+               <valueInteger value="87"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2393,7 +2221,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="95"></valueInteger>
+               <valueInteger value="88"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2420,7 +2248,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="96"></valueInteger>
+               <valueInteger value="89"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2439,7 +2267,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="97"></valueInteger>
+               <valueInteger value="90"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2458,7 +2286,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="98"></valueInteger>
+               <valueInteger value="91"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2478,7 +2306,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   end"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="99"></valueInteger>
+               <valueInteger value="92"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2496,7 +2324,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   )"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="100"></valueInteger>
+               <valueInteger value="93"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2529,7 +2357,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="101"></valueInteger>
+               <valueInteger value="94"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2553,7 +2381,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="102"></valueInteger>
+               <valueInteger value="95"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2574,7 +2402,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="103"></valueInteger>
+               <valueInteger value="96"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -2596,7 +2424,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="104"></valueInteger>
+               <valueInteger value="97"></valueInteger>
             </extension>
          </extension>
          <name value="EffectiveDataRequirements"></name>
@@ -3125,30 +2953,14 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <profile value="http://hl7.org/fhir/StructureDefinition/Device"></profile>
             <mustSupport value="id"></mustSupport>
             <mustSupport value="extension"></mustSupport>
-            <mustSupport value="definition"></mustSupport>
-            <mustSupport value="udiCarrier"></mustSupport>
             <mustSupport value="status"></mustSupport>
-            <mustSupport value="statusReason"></mustSupport>
-            <mustSupport value="distinctIdentifier"></mustSupport>
-            <mustSupport value="manufacturer"></mustSupport>
-            <mustSupport value="manufactureDate"></mustSupport>
             <mustSupport value="expirationDate"></mustSupport>
             <mustSupport value="lotNumber"></mustSupport>
             <mustSupport value="serialNumber"></mustSupport>
-            <mustSupport value="deviceName"></mustSupport>
             <mustSupport value="modelNumber"></mustSupport>
             <mustSupport value="partNumber"></mustSupport>
             <mustSupport value="type"></mustSupport>
-            <mustSupport value="specialization"></mustSupport>
-            <mustSupport value="version"></mustSupport>
-            <mustSupport value="property"></mustSupport>
             <mustSupport value="patient"></mustSupport>
-            <mustSupport value="owner"></mustSupport>
-            <mustSupport value="contact"></mustSupport>
-            <mustSupport value="location"></mustSupport>
-            <mustSupport value="url"></mustSupport>
-            <mustSupport value="note"></mustSupport>
-            <mustSupport value="safety"></mustSupport>
             <mustSupport value="parent"></mustSupport>
          </dataRequirement>
          <dataRequirement>
@@ -3231,17 +3043,12 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <mustSupport value="clinicalStatus"></mustSupport>
             <mustSupport value="verificationStatus"></mustSupport>
             <mustSupport value="category"></mustSupport>
-            <mustSupport value="severity"></mustSupport>
             <mustSupport value="code"></mustSupport>
-            <mustSupport value="bodySite"></mustSupport>
             <mustSupport value="subject"></mustSupport>
             <mustSupport value="encounter"></mustSupport>
             <mustSupport value="onset"></mustSupport>
             <mustSupport value="abatement"></mustSupport>
             <mustSupport value="recordedDate"></mustSupport>
-            <mustSupport value="stage"></mustSupport>
-            <mustSupport value="evidence"></mustSupport>
-            <mustSupport value="note"></mustSupport>
             <mustSupport value="encounter.id"></mustSupport>
          </dataRequirement>
          <dataRequirement>
@@ -3342,7 +3149,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
    <title value="NHSN dQM Acute Care Hospital Monthly Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2025-09-24T08:24:25-05:00"></date>
+   <date value="2025-09-24T15:31:25-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Acute Care Hospital Monthly Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>
