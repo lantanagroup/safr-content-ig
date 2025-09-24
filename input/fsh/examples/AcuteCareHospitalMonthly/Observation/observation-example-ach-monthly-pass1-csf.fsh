@@ -5,8 +5,8 @@ Description: "Observation - Example ACH Monthly Pass1 - Lab: Serratia marcescens
 Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-monthly-pass1-csf)
-* category[Laboratory] = $observation-category#laboratory "Laboratory"
-* category[Laboratory].text = "Laboratory"
+* category[us-core] = $observation-category#laboratory "Laboratory"
+* category[us-core].text = "Laboratory"
 * code = $loinc#61402-4 "Serratia marcescens DNA [Presence] in Specimen by NAA with probe detection"
 * code.text = "Serratia marcescens DNA"
 * subject = Reference(patient-example-ach-monthly-pass1)

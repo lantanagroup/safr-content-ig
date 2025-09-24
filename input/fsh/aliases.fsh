@@ -58,3 +58,5 @@ Alias: $daig-serv-section = http://hl7.org/fhir/ValueSet/diagnostic-service-sect
 
 Alias: $bed-capacity-code-system = http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-code
 Alias: $DiagnosticReportStatus = http://hl7.org/fhir/diagnostic-report-status
+//Alias: $us-core-condition-code = http://hl7.org/fhir/us/core/ValueSet/us-core-condition-code|6.1.0
+//Alias: $us-core-patient = http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient

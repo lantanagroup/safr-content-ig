@@ -9,7 +9,7 @@ name: NHSNMeasures
 status: active
 date: 2025-06-24
 copyrightYear: 2023+
-version: 1.0.0
+version: 2.0.0
 releaseLabel: Release 1
 jurisdiction: urn:iso:std:iso:3166#US
 extension:
@@ -24,22 +24,41 @@ publisher:
 
 
 dependencies:
-  hl7.fhir.extensions.r5: 4.0.1
-  hl7.fhir.us.core: 
-    version: 3.1.1
+  hl7.fhir.us.nhsn-dqm:
+    version: 1.0.0
+    id: dqm
+
+  hl7.fhir.us.core:
+    version: 6.1.0
+    uri: http://hl7.org/fhir/us/core/ImplementationGuide/hl7.fhir.us.core
     id: uscore
+    reason: |
+      Needed for systems supporting USCDI v3
+  hl7.fhir.us.core.v311:
+    version: 3.1.1
+    uri: http://hl7.org/fhir/us/core/v311/ImplementationGuide/hl7.fhir.us.core.v311
+    id: uscore3
+    reason: |
+      Needed for systems supporting USCDI v1
   fhir.cqf.common:
     version: 4.0.1
     id: cqf
+  hl7.fhir.uv.crmi:
+    version: 1.0.0
+    uri: http://hl7.org/fhir/uv/crmi/ImplementationGuide/hl7.fhir.uv.crmi
+    id: crmi
   hl7.fhir.us.cqfmeasures: 
-    version: 3.0.0
+    version: 5.0.0
     id: cqfm
   hl7.fhir.us.davinci-deqm: 
-    version: 3.1.0
+    version: 5.0.0
     id: deqm
   hl7.fhir.us.qicore: 
-    version: 4.1.1
+    version: 6.0.0
     id: qicore
+  hl7.fhir.extensions.r5:
+        version: 5.2.0
+
 
 description: "This content describes the specifications for the for the Health Level Seven International® (HL7) Fast Healthcare Interoperability Resources® (FHIR) digital quality measures (dQMs) reported to the National Healthcare Safety Network (NHSN)."
 parameters:
@@ -56,10 +75,15 @@ parameters:
   default-publisher: true
   #default-jurisdiction: true
   default-copyright: true
+  usage-stats-opt-out: true # Opt out for regular building. Should opt in for final publication. in ig.ini as well
   path-pages:
     - input/pagecontent
     - input/intro-notes
     #- input/includes
+
+  version-comparison-master: 1.0.0
+  version-comparison:
+    - 1.0.0
 
   
   special-url-base: 
@@ -70,7 +94,7 @@ parameters:
   special-url:
     - http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference
     - http://fhir.org/guides/cqf/common/Library/FHIRCommon
-    - http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference
+#    - http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference
     - http://fhir.org/guides/cqf/common/Library/FHIRHelpers
 
 #    - http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.population.description

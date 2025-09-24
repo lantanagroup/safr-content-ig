@@ -109,3 +109,21 @@ Usage: #example
 * entry[=].resource = servicerequest-example-ach-daily-rsvlabbtg-rsv
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Specimen/specimen-example-ach-daily-rsvlabbtg"
 * entry[=].resource = specimen-example-ach-daily-rsvlabbtg
+
+// Added resources that were missing from the bundle
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Medication/medication-example-ach-daily-initialpopulationpass"
+* entry[=].resource = medication-example-ach-daily-initialpopulationpass
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Medication/medication-example-ach-daily-negativepcr"
+* entry[=].resource = medication-example-ach-daily-negativepcr
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Medication/medication-example-ach-daily-influenzatherapeutic"
+* entry[=].resource = medication-example-ach-daily-influenzatherapeutic
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Medication/medication-example-ach-daily-rsvlabbtg-1"
+* entry[=].resource = medication-example-ach-daily-rsvlabbtg-1
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Medication/medication-example-ach-daily-rsvlabbtg-2"
+* entry[=].resource = medication-example-ach-daily-rsvlabbtg-2
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Location/location-example-ach-daily-emergency"
+* entry[=].resource = location-example-ach-daily-emergency
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Location/location-example-ach-daily-hospital"
+* entry[=].resource = location-example-ach-daily-hospital
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Location/location-example-ach-daily-inpatient"
+* entry[=].resource = location-example-ach-daily-inpatient

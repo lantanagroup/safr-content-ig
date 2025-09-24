@@ -1,8 +1,9 @@
 Profile: AcuteCareHospitalMonthlyReportingMedicationRequest
-Parent: USCoreMedicationRequestProfile
+Parent: USCoreMedicationRequestProfile|6.1.0
 Id: ach-monthly-medicationrequest
 Title: "ACH Monthly Event MedicationRequest"
 Description: "This profile contains Required and Must Support data elements for reporting medication request (order) information to the NHSN Acute Care Hospital (ACH) Monthly Digital Quality Measure. This profile is based on the [HL7 FHIR® US Core MedicationRequest Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-medicationrequest.html)."
+* ^baseDefinition = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest|6.1.0"
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 * statusReason from http://hl7.org/fhir/ValueSet/medicationrequest-status-reason (extensible)

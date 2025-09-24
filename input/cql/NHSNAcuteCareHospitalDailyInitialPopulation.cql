@@ -1,4 +1,4 @@
-library NHSNAcuteCareHospitalDailyInitialPopulation version '1.0.0-dev'
+library NHSNAcuteCareHospitalDailyInitialPopulation version '2.0.0-dev'
 
 using FHIR version '4.0.1'
 

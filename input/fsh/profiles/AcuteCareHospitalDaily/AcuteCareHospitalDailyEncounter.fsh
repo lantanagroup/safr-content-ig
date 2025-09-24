@@ -1,9 +1,9 @@
 Profile: AcuteCareHospitalDailyEventEncounter
-Parent: USCoreEncounterProfile
+Parent: USCoreEncounterProfile|6.1.0
 Id: ach-daily-encounter
 Title: "ACH Daily Event Encounter"
 Description: "This profile contains Required and Must Support data elements for reporting encounter information for the NHSN Acute Care Hospital (ACH) Daily Digital Quality Measure. This profile is based on the [HL7 FHIR® US Core Encounter Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-encounter.html)."
-
+* ^baseDefinition = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter|6.1.0"
 * obeys encounter-ach-daily-initial-population and encounter-location-type-initial-population
 
 * id 1..

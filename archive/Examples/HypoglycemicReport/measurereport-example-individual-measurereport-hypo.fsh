@@ -92,7 +92,7 @@ Usage: #example
 * extension[=].valueReference = Reference(Condition/condition-example-diagnosis-hypo2)
 * status = #complete
 * type = #individual
-* measure = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation|1.0.0-cibuild"
+* measure = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNGlycemicControlHypoglycemicInitialPopulation|2.0.0-cibuild"
 * subject = Reference(Patient/patient-example-hypo)
 * date = "2022-11-15T21:03:38+00:00"
 * reporter = Reference(organization-example-submitting-organization)
