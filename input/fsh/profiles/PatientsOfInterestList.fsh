@@ -1,3 +1,5 @@
+/*
+replaced by dQM profile
 Profile: PatientsOfInterestList
 Parent: List
 Id: poi-list
@@ -10,3 +12,4 @@ Description: "A Patients of Interest List defines all individual Patients consid
 * identifier 1..
 * entry.item only Reference(USCorePatientProfile)
   * ^short = "Patient Of Interest reference"
+*/

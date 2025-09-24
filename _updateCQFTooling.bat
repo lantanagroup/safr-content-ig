@@ -1,18 +1,19 @@
 @ECHO OFF
 
-
+tooling-cli-3.9.1.jar 
 SET var_r=snapshots
-SET var_g=org.opencds.cqf
+REM SET var_g=org.opencds.cqf
 SET var_a=tooling-cli
-SET var_v=3.6.0
+SET var_v=3.9.1
 REM '${a}'/'${v}'/'${a}'-'${v}'.jar
 
 REM SET "dlurl=https://oss.sonatype.org/service/local/artifact/maven/redirect?r=snapshots&g=org.opencds.cqf&a=tooling-cli&v=3.1.0-SNAPSHOT"
-SET "dlurl=https://oss.sonatype.org/service/local/repositories/releases/content/org/opencds/cqf/%var_a%/%var_v%/%var_a%-%var_v%.jar"
+SET "dlurl=https://repo1.maven.org/maven2/org/opencds/cqf/%var_a%/%var_v%/%var_a%-%var_v%.jar"
 REM ECHO "durl=%dlurlssss%"
 REM SET tooling_jar=tooling-cli-3.1.0-SNAPSHOT.jar
 SET tooling_jar=%var_a%-%var_v%-SNAPSHOT.jar
 REM ECHO "tooling_jar=%tooling_jarssss%"
+
 
 SET input_cache_path=%~dp0input-cache\
 

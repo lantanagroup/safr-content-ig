@@ -3,7 +3,7 @@
 SET var_r=snapshots
 SET var_g=org.opencds.cqf
 SET var_a=tooling-cli
-SET var_v=3.6.0
+SET var_v=3.9.1
 
 REM SET tooling_jar=tooling-cli-3.1.0-SNAPSHOT.jar
 REM SET tooling_jar=tooling-cli-3.1.0-SNAPSHOT.jar

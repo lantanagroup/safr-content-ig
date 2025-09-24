@@ -4,7 +4,7 @@
  "canonical" : "http://fhir.org/guides/gov.cdc.nhsn.measures",
  "introduction" : "...",
  "list" : [{
-  "version" : "1.0.0-cibuild",
+  "version" : "2.0.0-cibuild",
   "desc" : "Continuous Integration Build (latest in version control)",
   "path" : "http://build.fhir.org/ig/gov.cdc.nhsn.measures",
   "status" : "ci-build",
