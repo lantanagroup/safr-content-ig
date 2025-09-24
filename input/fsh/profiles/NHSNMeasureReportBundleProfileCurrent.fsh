@@ -1,8 +1,19 @@
 Profile: NHSNMeasureReportBundleProfile
-Parent: Bundle
+Parent: http://hl7.org/fhir/us/nhsn-dqm/StructureDefinition/nhsn-measurereport-bundle
 Id: nhsn-measurereport-bundle
 Title: "NHSN MeasureReport Bundle"
 Description: "This profile defines a valid Submission Bundle to NHSN with all resources contained within. The Bundle is comprised of entry slices representing the data source Organization, a Patients of Interest (POI) List, one Subject List MeasureReport per reportable measure, an Individual MeasureReport List, individual MeasureReports, and the underlying patient-centric clinical information."
+
+* obeys bundle-all-measurereport-measure-contains-version
+
+* entry[submitting-device] 1..1
+* entry[poi-list] 1..1
+* entry[subjectlist-measurereport] 1..1
+
+* entry[patient].resource only CrossMeasurePatient
+
+
+/* Requirements for Release 1.0.0 before dQM IG
 * obeys bundle-no-modifier-extensions and bundle-contain-all-measurereport-references and bundle-all-measurereport-measure-contains-version
 * . ^short = "A Bundle contains a collection of Resources"
 // WARNING: The constraint index in the following rule (e.g., constraint[0]) may be incorrect.
@@ -43,3 +54,4 @@ Description: "This profile defines a valid Submission Bundle to NHSN with all re
   * resource 1..
   * resource only CrossMeasurePatient
     * ^short = "The Bundle entry for a Patient associated with an Individual Measure Report"
+    */

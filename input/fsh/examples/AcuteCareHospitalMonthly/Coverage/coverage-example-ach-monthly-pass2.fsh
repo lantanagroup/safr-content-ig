@@ -12,4 +12,5 @@ Usage: #example
 * beneficiary = Reference(patient-example-ach-monthly-pass2)
 * relationship = $subscriber-relationship#self "Self"
 * payor.display = "PayerComm"
-* payor.reference = "http://example.org/fhir/Organization/PayerComm"
+//* payor.reference = "http://example.org/fhir/Organization/PayerComm"
+* payor = Reference(organization-coverage-example-ach-monthly-payercomm)

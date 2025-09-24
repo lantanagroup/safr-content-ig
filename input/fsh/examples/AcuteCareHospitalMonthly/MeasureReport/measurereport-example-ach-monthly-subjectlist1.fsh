@@ -11,12 +11,17 @@ Usage: #example
 * contained = list-example-ach-monthly-individual-measurereport-list
 * status = #complete
 * type = #subject-list
-* measure = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation|1.0.0-cibuild"
+* measure = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation|2.0.0-cibuild"
+* date = "2022-08-02T23:59:59+00:00"
+* reporter = Reference(organization-example-submitting-organization)
 * period.start = "2022-08-01T00:00:00+00:00"
 * period.end = "2022-08-31T23:59:59+00:00"
-* group.population.code = $measure-population#initial-population "Initial Population"
-* group.population.count = 1
-* group.population.subjectResults = Reference(list-example-ach-monthly-individual-measurereport-list)
+* group
+  * extension[scoring].valueCodeableConcept = $measure-scoring#cohort
+  * population
+    * code = $measure-population#initial-population "Initial Population"
+    * count = 1
+    * subjectResults = Reference(list-example-ach-monthly-individual-measurereport-list)
 
 
 

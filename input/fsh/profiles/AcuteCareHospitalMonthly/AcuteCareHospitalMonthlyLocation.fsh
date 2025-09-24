@@ -1,9 +1,9 @@
 Profile: AcuteCareHospitalMonthlyReportingLocation
-Parent: USCoreLocation
+Parent: USCoreLocation|6.1.0
 Id: ach-monthly-location
 Title: "ACH Monthly Event Location"
 Description: "This profile contains Required and Must Support data elements for reporting location information to the NHSN Acute Care Hospital (ACH) Monthly Digital Quality Measure. This profile is based on the [HL7 FHIR® US Core Location Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-location.html)."
-
+* ^baseDefinition = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-location|6.1.0"
 // The constraint should not be on location but referenced through Encounter. The requirement is not that all locations have this binding, but that an encounter either has a location with a code in the valueSet or an Encounter.class with a specific value or an Encounter.type with a specific valueSet
 //* obeys location-type-initial-population
 * id 1..

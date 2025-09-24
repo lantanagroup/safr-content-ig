@@ -11,14 +11,14 @@ groups:
       - StructureDefinition/nhsn-subject-bundle
       - StructureDefinition/subjectlist-measurereport
       - StructureDefinition/ip-measurereport-list
-      - StructureDefinition/poi-list
+#      - StructureDefinition/poi-list
 
   cross-measure:
     name: Cross-Measure Profiles
     resources:
       - StructureDefinition/cross-measure-patient
-      - StructureDefinition/nhsn-submitting-organization
-      - StructureDefinition/nhsn-submitting-device
+#      - StructureDefinition/nhsn-submitting-organization
+#      - StructureDefinition/nhsn-submitting-device
       
   ach-monthly:
     name: Acute Care Hospital (ACH) Monthly Reporting Profiles
@@ -149,17 +149,17 @@ groups:
      - StructureDefinition/link-original-element-value-extension
      - StructureDefinition/link-original-mapped-concept-extension
      
-  ext-extensions:
-    name: "CQF Tooling Extensions"
-    description: "Externally defined extentions that have not been published."
-    resources:
+  #ext-extensions:
+  #  name: "CQF Tooling Extensions"
+  #  description: "Externally defined extentions that have not been published."
+  #  resources:
      #- StructureDefinition/extension-MeasureReport.population.description
-      StructureDefinition/extension-MeasureReport.supplementalDataElement.reference:
-        name: Measure Report Supplemental Data Element Reference (R5 surrogate extension)
-        description: This extension is not defined by this IG. CQF Tooling uses this extension, but the extension is yet unpublished.
-      StructureDefinition/extension-criteriaReference:
-        name: Measure Report Criteria Reference (R5 surrogate extension)
-        description: This extension is not defined by this IG. CQF Tooling uses this extension, but the extension is yet unpublished.
+      #StructureDefinition/extension-MeasureReport.supplementalDataElement.reference:
+      #  name: Measure Report Supplemental Data Element Reference (R5 surrogate extension)
+      #  description: This extension is not defined by this IG. CQF Tooling uses this extension, but the extension is yet unpublished.
+  #    StructureDefinition/extension-criteriaReference:
+  #      name: Measure Report Criteria Reference (R5 surrogate extension)
+  #      description: This extension is not defined by this IG. CQF Tooling uses this extension, but the extension is yet unpublished.
 
 
   ach-monthly-ex:

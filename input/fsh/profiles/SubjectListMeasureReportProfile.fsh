@@ -1,5 +1,5 @@
 Profile: SubjectListMeasureReportProfile
-Parent: MeasureReport
+Parent: DEQMSubjectListMeasureReport
 Id: subjectlist-measurereport
 Title: "Subject-List MeasureReport Profile"
 Description: "A Subject-List MeasureReport contains the count of subjects (i.e. patients) in the Initial Population. It also references the Individual MeasureReport List."
@@ -11,6 +11,20 @@ Description: "A Subject-List MeasureReport contains the count of subjects (i.e. 
 * contained contains ip-measurereport-list 1..1
 * contained[ip-measurereport-list] only IndividualMeasureReportList
   * ^short = "The Individual MeasureReport List pointed to by MeasureReport.group.population.subjectResults"
+
+
+
+* group 1..1 MS
+  * ^short = "Initial population group"
+  * population 1..1 MS
+    * ^short = "Initial population"
+    * code = $measure-population#initial-population "Initial Population"
+    * count 1..
+    * subjectResults only Reference(IndividualMeasureReportList)
+      * ^short = "List referencing all individual measure reports for this measure"
+      * reference 1..
+
+/* Older Release Requirements 1.0.0 before inheriting from DEQMSubjectListMeasureReport 
 * type only code
 * type = #subject-list (exactly)
 * type MS SU
@@ -26,3 +40,4 @@ Description: "A Subject-List MeasureReport contains the count of subjects (i.e. 
     * subjectResults only Reference(IndividualMeasureReportList)
       * ^short = "List referencing all individual measure reports for this measure"
       * reference 1..
+      */

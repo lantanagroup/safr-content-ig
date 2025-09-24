@@ -276,13 +276,13 @@
           </td>
         </tr>
         {% endif %}
-        {% if Measure.extension.where(url = 'http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-parameter').exists() %}
+        {% if Measure.extension.where(url = 'http://hl7.org/fhir/StructureDefinition/cqf-inputParameters').exists() %}
         <tr>
             <th scope="row"><b>Parameters: </b></th>
             <td style="padding-left: 4px;">
                 <table class="grid-dict">
                     <tr><th><b>name</b></th><th><b>use</b></th><th><b>min</b></th><th><b>max</b></th><th><b>type</b></th></tr>
-                    {% for extension in Measure.extension.where(url = 'http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-parameter') %}
+                    {% for extension in Measure.extension.where(url = 'http://hl7.org/fhir/StructureDefinition/cqf-inputParameters') %}
                     <tr>
                         <td>{{extension.valueParameterDefinition.name}}</td>
                         <td>{{extension.valueParameterDefinition.use}}</td>
@@ -295,13 +295,13 @@
             </td>
         </tr>
         {% endif %}
-        {% if Measure.extension.where(url = 'http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-dataRequirement').exists() %}
+        {% if Measure.extension.where(url = 'http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-effectiveDataRequirements').exists() %}
         <tr>
           <th scope="row"><b>Data Requirements: </b></th>
           <td style="padding-left: 4px;">
                 <table class="grid-dict">
                     <tr><th><b>type</b></th><th><b>path</b></th><th><b>valueSet or system</b></th><th><b>code</b></th></tr>
-                    {% for extension in Measure.extension.where(url = 'http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-dataRequirement') %}
+                    {% for extension in Measure.extension.where(url = 'http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-effectiveDataRequirements') %}
                         <tr>
                             <td>{{extension.valueDataRequirement.type}}</td>
                             <td>{{extension.valueDataRequirement.codeFilter.first().path}}</td>
@@ -319,13 +319,13 @@
           </td>
         </tr>
         {% endif %}
-        {% if Measure.extension.where(url = 'http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode').exists() %}
+        {% if Measure.extension.where(url = 'http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode').exists() %}
         <tr>
           <th scope="row"><b>Direct Reference Codes: </b></th>
           <td style="padding-left: 4px;">
                 <table class="grid-dict">
                     <tr><th><b>display</b></th><th><b>code</b></th><th><b>system</b></th></tr>
-                    {% for extension in Measure.extension.where(url = 'http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-directReferenceCode') %}
+                    {% for extension in Measure.extension.where(url = 'http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode') %}
                         <tr>
                             <td>{{extension.valueCoding.display.escape('html')}}</td>
                             <td>{{extension.valueCoding.code}}</td>
@@ -618,11 +618,11 @@
         </tr>
         {% endif %}
         -->
-        {% if Measure.extension.where(url = 'http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition').exists() %}
+        {% if Measure.extension.where(url = 'http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition').exists() %}
         <tr>
           <th scope="row"><b>Logic Definitions: </b></th>
           <td style="padding-left: 4px;">
-            {% for extension in Measure.extension.where(url = 'http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-logicDefinition') %}
+            {% for extension in Measure.extension.where(url = 'http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition') %}
                 <table class="grid-dict">
                     <tr><th><b>Library Name</b></th><th><b>Name</b></th><th><b>sequence</b></th></tr>
                     <tr>
