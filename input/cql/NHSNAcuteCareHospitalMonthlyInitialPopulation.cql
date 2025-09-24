@@ -192,7 +192,7 @@ define "SDE Location":
   "Get Locations from IP Encounters in Measurement Period" Locations
   where exists("Initial Population")
   and Locations is not null
-  return SharedResource.LocationResource(Locations,
+  return LocationResource(Locations,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-location'}})
  
 define "SDE Medication Administration":
