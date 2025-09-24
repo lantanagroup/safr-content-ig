@@ -36,8 +36,15 @@
   <a name="acknowledgements"></a>
   <h3>Acknowledgements</h3>
   <p>
+
     Lantana Consulting Group produced and developed the content in this IG under contract to the Division of Healthcare Quality Promotion (DHQP) in the National Center for Emerging and Zoonotic Infectious Diseases (NCEZID) at the Centers for Disease Control and Prevention (CDC).
-    <table class="spec-table" id="acknowledgements_table">
+    <table class="grid" id="acknowledgements_table">
+      <tr>
+        <th>Role</th>
+        <th>Name</th>
+        <th>Organization</th>
+        <th>Email Address</th>
+      </tr>
       <tr>
         <td>Primary Editor</td>
         <td>Rick Geimer</td>
@@ -59,7 +66,7 @@
       <tr>
         <td>Co-Editor</td>
         <td>Andrea Benin</td>
-        <td>DHQP, CDC</td>
+        <td>CDC</td>
         <td>aqb4@cdc.gov</td>
       </tr>
       <tr>
