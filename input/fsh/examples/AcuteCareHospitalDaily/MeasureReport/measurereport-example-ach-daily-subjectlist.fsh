@@ -9,12 +9,17 @@ Usage: #example
 * contained = list-example-ach-daily-individual-measurereport-list
 * status = #complete
 * type = #subject-list
-* measure = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNAcuteCareHospitalDailyInitialPopulation|1.0.0-cibuild"
+* measure = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNAcuteCareHospitalDailyInitialPopulation|2.0.0-cibuild"
+* date = "2022-09-01T23:59:59+00:00"
+* reporter = Reference(organization-example-submitting-organization)
 * period.start = "2022-08-01T00:00:00+00:00"
 * period.end = "2022-08-31T23:59:59+00:00"
-* group.population.code = $measure-population#initial-population "Initial Population"
-* group.population.count = 4
-* group.population.subjectResults = Reference(list-example-ach-daily-individual-measurereport-list)
+* group
+  * extension[scoring].valueCodeableConcept = $measure-scoring#cohort
+  * population
+    * code = $measure-population#initial-population "Initial Population"
+    * count = 4
+    * subjectResults = Reference(list-example-ach-daily-individual-measurereport-list)
 
 
 Instance: list-example-ach-daily-individual-measurereport-list

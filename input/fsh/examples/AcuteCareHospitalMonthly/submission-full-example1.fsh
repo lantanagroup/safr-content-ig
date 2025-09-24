@@ -163,3 +163,43 @@ Usage: #example
 * entry[=].resource = servicerequest-example-ach-monthly-pass3-cdiff
 * entry[+].fullUrl = "http://nhsnlink.org/fhir/Specimen/specimen-example-ach-monthly-pass3-stool"
 * entry[=].resource = specimen-example-ach-monthly-pass3-stool
+
+// Added resources that were missing from the bundle
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Medication/medication-example-vancomycin-15"
+* entry[=].resource = medication-example-vancomycin-15
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Medication/medication-example-dex4-tablet"
+* entry[=].resource = medication-example-dex4-tablet
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Medication/medication-example-heparin"
+* entry[=].resource = medication-example-heparin
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Medication/medication-example-insulin-lispro"
+* entry[=].resource = medication-example-insulin-lispro
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Medication/medication-example-metformin-1000"
+* entry[=].resource = medication-example-metformin-1000
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Medication/medication-example-enoxaparin"
+* entry[=].resource = medication-example-enoxaparin
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Medication/medication-example-metronidazole"
+* entry[=].resource = medication-example-metronidazole
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Medication/medication-example-cipro-500"
+* entry[=].resource = medication-example-cipro-500
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Location/location-example-ach-monthly-nicu-level-iii"
+* entry[=].resource = location-example-ach-monthly-nicu-level-iii
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Location/location-example-ach-monthly-emergency"
+* entry[=].resource = location-example-ach-monthly-emergency
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Location/location-example-ach-monthly-inpatient"
+* entry[=].resource = location-example-ach-monthly-inpatient
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Location/location-example-ach-monthly-crit-part"
+* entry[=].resource = location-example-ach-monthly-crit-part
+
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Location/location-example-ach-monthly-crit"
+* entry[=].resource = location-example-ach-monthly-crit
+
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Location/location-example-ach-monthly-medsurg"
+* entry[=].resource = location-example-ach-monthly-medsurg
+
+
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Organization/organization-coverage-example-ach-monthly-medicaid"
+* entry[=].resource = organization-coverage-example-ach-monthly-medicaid
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Organization/organization-coverage-example-ach-monthly-payercomm"
+* entry[=].resource = organization-coverage-example-ach-monthly-payercomm
+* entry[+].fullUrl = "http://nhsnlink.org/fhir/Organization/organization-coverage-example-ach-monthly-nationfirst"
+* entry[=].resource = organization-coverage-example-ach-monthly-nationfirst

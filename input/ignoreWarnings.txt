@@ -2,27 +2,6 @@
 
 # Errors caused by underlying specifications
 
-# Error caused by an invalid rule in the IG Publisher. Issue logged here: https://github.com/hapifhir/org.hl7.fhir.core/issues/1378
-
-# Error caused by an in invalid DEQM 3.1.0 constraint. This issue is addressed in DEQM 4.0.0, but the IG is not ready to adopt because of underlying dependencies. Issue logged here: https://jira.hl7.org/browse/FHIR-41656
-
-
-# This is an error in the DEQM STU3 specification that was later relaxed by DEQM STU4. The core IG Publisher produces an error if there is a measurescore for for a cohort MeasureReport 
-MeasureReport.group.measureScore: minimum required = 1, but only found 0 (from http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0)
-%Slice 'Bundle.entry:individual-measurereport': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0). Note that other slices are allowed in addition to this required slice
-
-
-# This is a consequential error/warning/info based on a resource not validating because of a DEQM STU3 specification issue
-Slice 'Bundle.entry:subject-list': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-measurereport-bundle|1.0.0). Note that other slices are allowed in addition to this required slice
-Unable to find a profile match for MeasureReport/measurereport-example-ach-daily-initialpopulationpass among choices: http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm
-Details for MeasureReport/measurereport-example-ach-daily-initialpopulationpass matching against profile http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0
-Unable to find a profile match for MeasureReport/measurereport-example-ach-daily-negativepcr among choices: http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm
-Details for MeasureReport/measurereport-example-ach-daily-negativepcr matching against profile http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0
-Unable to find a profile match for MeasureReport/measurereport-example-ach-daily-influenzatherapeutic among choices: http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm
-Details for MeasureReport/measurereport-example-ach-daily-influenzatherapeutic matching against profile http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0
-Unable to find a profile match for MeasureReport/measurereport-example-ach-daily-rsvlabbtg among choices: http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm
-Details for MeasureReport/measurereport-example-ach-daily-rsvlabbtg matching against profile http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0
-
 
 Slice 'MeasureReport.contained:ip-measurereport-list': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/subjectlist-measurereport|1.0.0). Note that other slices are allowed in addition to this required slice
 Unable to find a profile match for #list-example-ach-monthly-individual-measurereport-list among choices: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list
@@ -40,14 +19,6 @@ Unable to find a profile match for MeasureReport/measurereport-example-individua
 Details for MeasureReport/measurereport-example-individual-ach-monthly-pass2 matching against profile http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0
 Unable to find a profile match for MeasureReport/measurereport-example-individual-ach-monthly-pass3 among choices: http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm
 Details for MeasureReport/measurereport-example-individual-ach-monthly-pass3 matching against profile http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0
-
-
-
-# Example of MedicationRequest, reportedBoolean is allowed
-%reported.ofType(boolean): This element does not match any known slice defined in the profile http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-medicationrequest|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-
-# Example of Medication, ingredient.itemCodeableConcept is allowed 
-This element does not match any known slice defined in the profile http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-medication|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
 
 
 
@@ -77,34 +48,11 @@ Reference to draft CodeSystem http://hl7.org/fhir/diagnostic-report-status|4.0.1
 %Pinned the version of http://terminology.hl7.org/%
 
 
-# Slices in bundles are not defined for clinical data.
-This element does not match any known slice defined in the profile http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-subject-bundle|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-This element does not match any known slice defined in the profile http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/nhsn-measurereport-bundle|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-
 # Slices for supplemental data extension not defined for clinical data.
-This element does not match any known slice defined in the profile http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-
-# Slice does not match because of issue with IG Publisher generating errors on MeasureReport
-This element does not match any known slice defined in the profile http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cohort-measure-cqfm|3.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-
-
-
-
-# Best Practice Recommendation: Condition resource 
-
-
-
-
-# Externally defined artifacts recreated in this IG for use by tools and validation. Ignore publisher issues. These should go aware when external tools are updated to correct the problems
-The nominated WG 'cqi' means that the publisher should be 'HL7 International / Clinical Quality Information' but 'CDC National Healthcare Safety Network (NHSN)' was found
-The nominated WG 'cqi' means that the contact url should be 'http://www.hl7.org/Special/committees/cqi' but it was not found
+This element does not match any known slice defined in the profile http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|5.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
 
 
 # WARNING: Invalid Invariant - CQMF STU3 uses an incorrect variant expression "value.startsWith(library).not()", it was later corrected to "expression.contains('.').not()" in STU4, for which this resource passes
-Constraint failed: cqm-4: 'Group population criteria SHOULD be simple expression names found within the primary library for the measure. The criteria SHOULD NOT include a namespace.' (defined in http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/measure-cqfm)
-
-
-
 INFORMATION: StructureDefinition/ach-daily-diagnosticreport-lab: StructureDefinition.snapshot.element[21].slicing.discriminator[0]: The discriminator type 'pattern' is deprecated in R5+. For future compatibility, you could consider using type=value with a pattern[x] instead (if this is not an inherited slicing)
 INFORMATION: StructureDefinition/ach-daily-observation-lab: StructureDefinition.snapshot.element[22].slicing.discriminator[0]: The discriminator type 'pattern' is deprecated in R5+. For future compatibility, you could consider using type=value with a pattern[x] instead (if this is not an inherited slicing)
 INFORMATION: StructureDefinition/ach-monthly-diagnosticreport-lab: StructureDefinition.snapshot.element[21].slicing.discriminator[0]: The discriminator type 'pattern' is deprecated in R5+. For future compatibility, you could consider using type=value with a pattern[x] instead (if this is not an inherited slicing)
@@ -129,29 +77,9 @@ No definition could be found for URL value 'https://www.cdc.gov/nhsn/OrgID'
 
 
 # WARNING: This IG has dependencies on older IG versions by design as these are the versions most likely to be supported in production at this time.
-WARNING: ImplementationGuide/gov.cdc.nhsn.measures: ImplementationGuide.dependsOn[2]: The ImplementationGuide uses package hl7.fhir.us.core#3.1.1 released on 2020-08-28, but the most recent appropriate version is 8.0.0. This reference is getting old and the more recent version should be considered
-WARNING: ImplementationGuide/gov.cdc.nhsn.measures: ImplementationGuide.dependsOn[4]: The ImplementationGuide uses package hl7.fhir.us.cqfmeasures#3.0.0 released on 2022-04-28, but the most recent appropriate version is 5.0.0. This reference is getting old and the more recent version should be considered
-WARNING: ImplementationGuide/gov.cdc.nhsn.measures: ImplementationGuide.dependsOn[5]: The ImplementationGuide uses package hl7.fhir.us.davinci-deqm#3.1.0 released on 2022-11-21, but the most recent appropriate version is 5.0.0. This reference is getting old and the more recent version should be considered
-WARNING: ImplementationGuide/gov.cdc.nhsn.measures: ImplementationGuide.dependsOn[6]: The ImplementationGuide uses package hl7.fhir.us.qicore#4.1.1 released on 2022-03-31, but the most recent appropriate version is 7.0.1. This reference is getting old and the more recent version should be considered
-
-
-# Correct VSAC ValueSet URL that cannot be accessed by the publisher
-A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1311'
-A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1308'
-A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2097'
-A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2098'
-A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2099'
-A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2100'
-A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2101'
-A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2102'
-A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2103'
-A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2119'
-A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2104'
-A definition could not be found for Canonical URL 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.3616.200.110.102.2105'
+The ImplementationGuide uses package hl7.fhir.us.core#6.1.0 released on 2023-06-30, but the most recent appropriate version is 8.0.0. This reference is getting old and the more recent version should be considered
+The ImplementationGuide uses package hl7.fhir.us.qicore#6.0.0 released on 2024-03-01, but the most recent appropriate version is 7.0.1. This reference is getting old and the more recent version should be considered
 
 
 # Base NHSN website url with no artifact definition, Added to url by CQFTooling.
 No definition could be found for URL value 'https://www.cdc.gov/nhsn/index.html'
-
-# Description generated by CQFTooling that does not include html
-INFORMATION: Measure/NHSNAcuteCareHospitalDailyInitialPopulation: Measure.contained[0]/*Library/effective-data-requirements*/.extension[81].extension[2].value.ofType(string): The string value contains text that looks like embedded HTML tags. If this content is rendered to HTML without appropriate post-processing, it may be a security risk

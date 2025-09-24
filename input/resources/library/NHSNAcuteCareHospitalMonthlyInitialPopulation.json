@@ -60,7 +60,7 @@
     }
   } ],
   "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNAcuteCareHospitalMonthlyInitialPopulation",
-  "version": "1.0.0-dev",
+  "version": "2.0.0-cibuild",
   "name": "NHSNAcuteCareHospitalMonthlyInitialPopulation",
   "type": {
     "coding": [ {
