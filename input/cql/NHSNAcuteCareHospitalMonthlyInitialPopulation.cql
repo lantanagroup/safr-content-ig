@@ -119,15 +119,7 @@ define "SDE Condition":
     where exists(
     "Initial Population" IP
 //Check for Problem List Conditions that were recorded before or during IP 
-     where /*(
-      Conditions.recordedDate before end of IP.period
-      and exists(Conditions.category categories
-        where categories ~ "problem-list-item")
-      and Conditions.clinicalStatus ~ "active"
-    )*/
-//Check for Encounter Diagnosis Conditions that reference an IP encounter
-//  or
-   (
+     where 
       (exists(IP.diagnosis Diagnoses
           where GetCondition(Diagnoses.condition).id = Conditions.id
         )
@@ -135,9 +127,7 @@ define "SDE Condition":
       )
       and exists (Conditions.category categories
         where categories ~ "encounter-diagnosis"
-      //or categories ~ health-concern")  
     )
-   )
   )
   return ConditionResource(Conditions,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-condition'}},
@@ -363,17 +353,12 @@ define function ConditionResource(condition Condition, profileURLs List<FHIR.can
     clinicalStatus: c.clinicalStatus,
     verificationStatus: c.verificationStatus,
     category: FilterCodeableConcepts(c.category, acceptedCategories),
-    severity: c.severity,
     code: c.code,
-    bodySite: c.bodySite,
     subject: c.subject,
     encounter: c.encounter,
     onset: c.onset,
     abatement: c.abatement,
-    recordedDate: c.recordedDate,
-    stage: SharedResource.ConditionStage(c.stage),
-    evidence: SharedResource.ConditionEvidence(c.evidence),
-    note: c.note
+    recordedDate: c.recordedDate
   }
 
 define function DeviceUdiCarrier(udiCarrier List<FHIR.Device.UdiCarrier>):
