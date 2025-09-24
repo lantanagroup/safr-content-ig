@@ -133,6 +133,14 @@ define "SDE Condition":
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-condition'}},
    {"encounter-diagnosis"})
 
+define "SDE Coverage": 
+	[Coverage] Coverages
+  where exists(
+    "Initial Population" IP
+    where Coverages.period overlaps IP.period)
+  return CoverageResource(Coverages,
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-coverage'}})
+
 define "SDE Device":
   [Device] Devices 
   where exists("Initial Population")
@@ -256,14 +264,6 @@ define "SDE Observation Category":
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-observation'}},
   {"imaging", "procedure", "vital-signs", "laboratory"})
 
-define "SDE Coverage": 
-	[Coverage] Coverages
-  where exists(
-    "Initial Population" IP
-    where Coverages.period overlaps IP.period)
-  return SharedResource.CoverageResource(Coverages,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-coverage'}})
-
 define "SDE Procedure":
   [Procedure] Procedures 
   where exists(
@@ -359,6 +359,19 @@ define function ConditionResource(condition Condition, profileURLs List<FHIR.can
     onset: c.onset,
     abatement: c.abatement,
     recordedDate: c.recordedDate
+  }
+
+define function CoverageResource(coverage Coverage, profileURLs List<FHIR.canonical>):
+  coverage c
+  return Coverage{
+    id: FHIR.id{value: 'LCR-' + c.id},
+    meta: SharedResource.MetaElement(c, profileURLs),
+    extension: c.extension,
+    status: c.status,
+    type: c.type,
+    beneficiary: c.beneficiary,
+    period: c.period,
+    payor: c.payor
   }
 
 define function DeviceResource(device Device, profileURLs List<FHIR.canonical>):
