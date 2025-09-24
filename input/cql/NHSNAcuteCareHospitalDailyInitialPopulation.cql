@@ -535,7 +535,6 @@ define "DiagnosticReports":
  //
  // Measure Specific Resource Creation Functions
  //
-
  define function MedicationRequestResource(medicationRequest MedicationRequest, profileURLs List<FHIR.canonical>):
   medicationRequest m
   return MedicationRequest{

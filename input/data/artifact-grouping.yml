@@ -21,7 +21,7 @@ groups:
       - StructureDefinition/nhsn-submitting-device
       
   ach-monthly:
-    name: Acute Care Hospital Monthly Reporting Profiles
+    name: Acute Care Hospital (ACH) Monthly Reporting Profiles
     resources:
       - StructureDefinition/ach-monthly-encounter
       - StructureDefinition/ach-monthly-location
@@ -57,7 +57,7 @@ groups:
   #     - StructureDefinition/hypoglycemic-reporting-specimen      
 
   ach-daily:
-    name: Acute Care Hospital Daily Event Reporting Profiles
+    name: ACH Daily Event Reporting Profiles
     resources:
       - StructureDefinition/ach-daily-encounter
       - StructureDefinition/ach-daily-location
@@ -93,10 +93,10 @@ groups:
     resources:
       # - Measure/NHSNGlycemicControlHypoglycemicInitialPopulation
       Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation:
-        name: NHSN Acute Care Hospital Monthly Initial Population Measure
-        description: The Acute Care Hospital Monthly Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period.
+        name: NHSN ACH Monthly Initial Population Measure
+        description: The ACH Monthly Initial Population includes all encounters for patients of any age in an emergency department (ED), observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period.
       Measure/NHSNAcuteCareHospitalDailyInitialPopulation:
-        name: NHSN Acute Care Hospital Daily Initial Population Measure
+        name: NHSN ACH Daily Initial Population Measure
         description: All encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
 
       # - Measure/NHSNBedCapacityMeasure
@@ -105,14 +105,14 @@ groups:
     name: "Knowledge Artifacts: Measure Libraries"
     resources:
       Library/NHSNAcuteCareHospitalMonthlyInitialPopulation:
-        name: NHSN Acute Care Hospital Monthly Initial Population Library
-        description: Library of NHSN dQM Acute Care Hospital Monthly Initial Population Measure
+        name: NHSN ACH Monthly Initial Population Library
+        description: Library of NHSN dQM ACH Monthly Initial Population Measure
       #  Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
       #   name: NHSN Glycemic ControlHypoglycemic Initial Population
       #   description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
       Library/NHSNAcuteCareHospitalDailyInitialPopulation:
-        name: NHSN Acute Care Hospital Daily Initial Population Library
-        description: Library of NHSN Acute Care Hospital Daily Initial Population Measure
+        name: NHSN ACH Daily Initial Population Library
+        description: Library of NHSN ACH Daily Initial Population Measure
       # Library/NHSNBedCapacityMeasure:
       #   name: NHSN Bed Capacity Reporting Initial Population
       #   description: Library of NHSN Bed Capacity Initial Population Measure
@@ -202,7 +202,7 @@ groups:
         description: Example Separated ACH Daily Submission Influenza Therapeutic Bundle
       Bundle/bundle-example-ach-daily-subject-rsvlabbtg:
         name: Example ACH Daily Submission RSV Lab BTG Bundle
-        description: Example Separated RPS Daily Submission RSV Lab BTG Bundle
+        description: Example Separated ACH Daily Submission RSV Lab BTG Bundle
 
         
 #  bed-ex:

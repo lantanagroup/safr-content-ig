@@ -1,54 +1,57 @@
 @ECHO OFF
-
-
-SET var_r=snapshots
-SET var_g=org.opencds.cqf
-SET var_a=tooling-cli
-SET var_v=3.6.0
-REM '${a}'/'${v}'/'${a}'-'${v}'.jar
-
-REM SET "dlurl=https://oss.sonatype.org/service/local/artifact/maven/redirect?r=snapshots&g=org.opencds.cqf&a=tooling-cli&v=3.1.0-SNAPSHOT"
-SET "dlurl=https://oss.sonatype.org/service/local/repositories/releases/content/org/opencds/cqf/%var_a%/%var_v%/%var_a%-%var_v%.jar"
-REM ECHO "durl=%dlurlssss%"
-REM SET tooling_jar=tooling-cli-3.1.0-SNAPSHOT.jar
-SET tooling_jar=%var_a%-%var_v%-SNAPSHOT.jar
-REM ECHO "tooling_jar=%tooling_jarssss%"
-
+SET version=3.9.1
+SET tooling_jar=tooling-cli-%version%.jar
+SET "dlurl=https://repo1.maven.org/maven2/org/opencds/cqf/tooling-cli/%version%/%tooling_jar%%"
 SET input_cache_path=%~dp0input-cache\
+SET skipPrompts=false
+IF "%~1"=="/f" SET skipPrompts=true
 
 FOR %%x IN ("%CD%") DO SET upper_path=%%~dpx
 
 IF NOT EXIST "%input_cache_path%%tooling_jar%" (
-	IF NOT EXIST "%upper_path%%tooling_jar%" (
-		SET jarlocation=%input_cache_path%%tooling_jar%
-		SET jarlocationname=Input Cache
-		ECHO IG Refresh is not yet in input-cache or parent folder.
-		REM we don't use jarlocation below because it will be empty because we're in a bracketed if statement
-		GOTO create
-	) ELSE (
-		ECHO IG RefreshFOUND in parent folder
-		SET jarlocation=%upper_path%%tooling_jar%
-		SET jarlocationname=Parent folder
-		GOTO:upgrade
-	)
+   IF NOT EXIST "%upper_path%%tooling_jar%" (
+      SET jarlocation=%input_cache_path%%tooling_jar%
+      SET jarlocationname=Input Cache
+      ECHO IG Refresh is not yet in input-cache or parent folder.
+      REM we don't use jarlocation below because it will be empty because we're in a bracketed if statement
+      GOTO create
+   ) ELSE (
+      ECHO IG RefreshFOUND in parent folder
+      SET jarlocation=%upper_path%%tooling_jar%
+      SET jarlocationname=Parent folder
+      GOTO:upgrade
+   )
 ) ELSE (
-	ECHO IG Refresh FOUND in input-cache
-	SET jarlocation=%input_cache_path%%tooling_jar%
-	SET jarlocationname=Input Cache
-	GOTO:upgrade
+   ECHO IG Refresh FOUND in input-cache
+   SET jarlocation=%input_cache_path%%tooling_jar%
+   SET jarlocationname=Input Cache
+   GOTO:upgrade
 )
 
 :create
 ECHO Will place refresh jar here: %input_cache_path%%tooling_jar%
-MKDIR "%input_cache_path%" 2> NUL
+IF "%skipPrompts%"=="false" (
+    SET /p create="Ok? [Y/N] "
+    IF /I "%create%"=="Y" goto:mkdir
+) ELSE goto:mkdir
+
+:mkdir
+    mkdir "%input_cache_path%" 2> NUL
 GOTO:download
 
 :upgrade
-ECHO Overwriting jar
-GOTO:download
+IF "%skipPrompts%"=="false" (
+    SET /p overwrite="Overwrite %jarlocation%? (Y/N) "
+    IF /I "%overwrite%"=="Y" (
+        GOTO:download
+    )
+) ELSE (
+    GOTO:download
+)
+GOTO:done
 
 :download
-ECHO Downloading most recent refresh to %jarlocationname% - it's ~70 MB, so this may take a bit
+ECHO Downloading tooling v%version% to %jarlocationname% - it's ~210 MB, so this may take a bit
 
 FOR /f "tokens=4-5 delims=. " %%i IN ('ver') DO SET VERSION=%%i.%%j
 IF "%version%" == "10.0" GOTO win10
@@ -62,7 +65,7 @@ GOTO done
 
 :win10
 POWERSHELL -command "if ('System.Net.WebClient' -as [type]) {(new-object System.Net.WebClient).DownloadFile('%dlurl%','%jarlocation%') } else { Invoke-WebRequest -Uri '%dlurl%' -Outfile '%jarlocation%' }"
-ECHO Download complete
+ECHO Download complete.
 GOTO done
 
 :win7
@@ -77,4 +80,6 @@ ECHO This script does not yet support Windows %winver%.  Please ask for help on 
 GOTO done
 
 :done
-PAUSE
+IF "%skipPrompts%"=="false" (
+    PAUSE
+)
