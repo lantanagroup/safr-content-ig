@@ -1,4 +1,4 @@
-library NHSNAcuteCareHospitalDailyInitialPopulation version '1.0.0-dev'
+library NHSNAcuteCareHospitalDailyInitialPopulation version '2.0.0-dev'
 
 using FHIR version '4.0.1'
 
@@ -442,7 +442,7 @@ define "SDE Covid or Influenza Medication Ordered":
             or Meds in "Zanamivir")
       and exists("Initial Population")
       and NHSNHelpers."Normalize Interval"(RPSMedRequest.authoredOn) during "Measurement Period"
-    return SharedResource.MedicationRequestResource(RPSMedRequest,
+    return MedicationRequestResource(RPSMedRequest,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-medicationrequest'}})
 
 define "SDE Medication":
@@ -463,7 +463,7 @@ define "SDE All Observations":
 define "SDE All ServiceRequests":
   [ServiceRequest] SR
   where exists("Initial Population")
-  return SharedResource.ServiceRequestResource(SR,
+  return ServiceRequestResource(SR,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-servicerequest'}})
 
 //To catch all isolation precautions
@@ -531,3 +531,73 @@ define "Observations":
 
 define "DiagnosticReports":
   [DiagnosticReport]
+
+ //
+ // Measure Specific Resource Creation Functions
+ //
+ define function MedicationRequestResource(medicationRequest MedicationRequest, profileURLs List<FHIR.canonical>):
+  medicationRequest m
+  return MedicationRequest{
+    id: FHIR.id {value: 'LCR-' + m.id},
+    meta: SharedResource.MetaElement(medicationRequest, profileURLs),
+    extension: m.extension,
+    status: m.status,
+    intent: m.intent,
+    category: m.category,
+    priority: m.priority,
+    doNotPerform: m.doNotPerform,
+    reported: m.reported,
+    medication: m.medication,
+    subject: m.subject,
+    encounter: m.encounter,
+    authoredOn: m.authoredOn,
+    requester: m.requester,
+    recorder: m.recorder,
+    reasonCode: m.reasonCode,
+    reasonReference: m.reasonReference,
+    instantiatesCanonical: m.instantiatesCanonical,
+    instantiatesUri: m.instantiatesUri,
+    courseOfTherapyType: m.courseOfTherapyType,
+    dosageInstruction: SharedResource.MedicationRequestDosageInstruction(m.dosageInstruction)
+  }
+
+define function ServiceRequestResource(serviceRequest ServiceRequest, profileURLs List<FHIR.canonical>):
+  serviceRequest sR
+  return ServiceRequest{
+    id: FHIR.id {value: 'LCR-' + sR.id},
+    meta: SharedResource.MetaElement(sR, profileURLs),
+    extension: sR.extension,
+    instantiatesCanonical: sR.instantiatesCanonical,
+    instantiatesUri: sR.instantiatesUri,
+    basedOn: sR.basedOn,
+    replaces: sR.replaces,
+    requisition: sR.requisition,
+    status: sR.status,
+    intent: sR.intent,
+    category: sR.category,
+    priority: sR.priority,
+    doNotPerform: sR.doNotPerform,
+    code: sR.code,
+    orderDetail: sR.orderDetail,
+    quantity: sR.quantity,
+    subject: sR.subject,
+    encounter: sR.encounter,
+    occurrence: sR.occurrence,
+    asNeeded: sR.asNeeded,
+    authoredOn: sR.authoredOn,
+    performerType: sR.performerType,
+    performer: sR.performer,
+    locationCode: sR.locationCode,
+    locationReference: sR.locationReference,
+    reasonCode: sR.reasonCode,
+    reasonReference: sR.reasonReference,
+    insurance: sR.insurance,
+    supportingInfo: sR.supportingInfo,
+    specimen: sR.specimen,
+    bodySite: sR.bodySite,
+    note: sR.note,
+    patientInstruction: sR.patientInstruction,
+    relevantHistory: sR.relevantHistory
+  }
+    
+    

@@ -5,8 +5,8 @@ Description: "Observation - Example ACH Monthly Pass3 - Lab: Clostridioides diff
 Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-monthly-pass3-cdiff)
-* category[Laboratory] = $observation-category#laboratory "Laboratory"
-* category[Laboratory].text = "Laboratory"
+* category[us-core] = $observation-category#laboratory "Laboratory"
+* category[us-core].text = "Laboratory"
 * code = $sct#5933001 "Clostridioides difficile (organism)"
 * code.text = "C. Diff."
 * subject = Reference(patient-example-ach-monthly-pass3)

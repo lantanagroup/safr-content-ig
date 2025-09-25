@@ -5,8 +5,8 @@ Description: "Observation - Example ACH Monthly Pass2 Hemo - Lab: Glucose in Cap
 Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-monthly-pass2-hemo-a1c)
-* category[Laboratory] = $observation-category#laboratory "Laboratory"
-* category[Laboratory].text = "Laboratory"
+* category[us-core] = $observation-category#laboratory "Laboratory"
+* category[us-core].text = "Laboratory"
 * code = $loinc#4548-4 "Hemoglobin A1c/Hemoglobin.total in Blood"
 * code.text = "Hemoglobin A1c"
 * subject = Reference(patient-example-ach-monthly-pass2)

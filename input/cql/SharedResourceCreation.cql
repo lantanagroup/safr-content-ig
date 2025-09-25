@@ -43,7 +43,7 @@ define function ConditionEvidence(evidence List<FHIR.Condition.Evidence>):
     detail: e.detail
   }
 
-define function ConditionResource(condition Condition, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
+define function ConditionResource(condition Condition, profileURLs List<FHIR.canonical>):
   condition c
   return Condition{
     id: FHIR.id {value: 'LCR-' + c.id},

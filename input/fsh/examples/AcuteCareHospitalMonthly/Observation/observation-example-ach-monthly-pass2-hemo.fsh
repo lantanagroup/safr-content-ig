@@ -5,8 +5,8 @@ Description: "Observation - Example ACH Monthly Pass2 - Lab: Bacteria identified
 Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-monthly-pass2-hemo)
-* category[Laboratory] = $observation-category#laboratory "Laboratory"
-* category[Laboratory].text = "Laboratory"
+* category[us-core] = $observation-category#laboratory "Laboratory"
+* category[us-core].text = "Laboratory"
 * code = $loinc#600-7 "Bacteria identified in Blood by Culture"
 * code.text = "Bacteria identified in Blood by Culture"
 * subject = Reference(patient-example-ach-monthly-pass2)

@@ -2548,7 +2548,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
       <system value="https://nhsnlink.org"></system>
       <value value="nhsnglycemiccontrolhypoglycemicinitialpopulation"></value>
    </identifier>
-   <version value="1.0.0-dev"></version>
+   <version value="2.0.0-cibuild"></version>
    <name value="NHSNGlycemicControlHypoglycemicInitialPopulation"></name>
    <title value="NHSN Glycemic Control, Hypoglycemia Initial Population"></title>
    <status value="draft"></status>
