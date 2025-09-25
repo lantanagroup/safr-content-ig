@@ -168,7 +168,8 @@ define "SDE DiagnosticReport Note":
       "Initial Population" IP
       where NHSNHelpers."Normalize Interval"(DiagnosticReports.effective) overlaps IP.period)
   return DiagnosticReportResource(DiagnosticReports,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-diagnosticreport-note'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-diagnosticreport-note'}},
+  {"Radiology", "Pathology", "Cardiology", "LAB"})
 
 define "SDE DiagnosticReport Others":
   [DiagnosticReport] DiagnosticReports
@@ -179,7 +180,8 @@ define "SDE DiagnosticReport Others":
     and exists("Initial Population" IP
       where NHSNHelpers."Normalize Interval"(DiagnosticReports.effective) overlaps IP.period)
   return DiagnosticReportResource(DiagnosticReports,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-diagnosticreport'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-diagnosticreport'}},
+  {"Radiology", "Pathology", "Cardiology", "LAB"})
 //#End DiagnosticReport block
 
 define "SDE Encounter": 
@@ -426,7 +428,7 @@ define function DiagnosticReportLabResource(diagnosticReport DiagnosticReport, p
     conclusionCode: d.conclusionCode
   }
 
-define function DiagnosticReportResource(diagnosticReport DiagnosticReport, profileURLs List<FHIR.canonical>):
+define function DiagnosticReportResource(diagnosticReport DiagnosticReport, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
   diagnosticReport d
   return DiagnosticReport{
     id: FHIR.id{value: 'LCR-' + d.id},
@@ -434,14 +436,12 @@ define function DiagnosticReportResource(diagnosticReport DiagnosticReport, prof
     extension: d.extension,
     basedOn: d.basedOn,
     status: d.status,
-    category: d.category,
+    category: FilterCodeableConcepts(d.category, acceptedCategories),
     code: d.code,
     subject: d.subject,
     encounter: d.encounter,
     effective: d.effective,
     issued: d.issued,
-    performer: d.performer,
-    resultsInterpreter: d.resultsInterpreter,
     specimen: d.specimen,
     result: d.result,
     conclusion: d.conclusion,
