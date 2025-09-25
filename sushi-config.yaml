@@ -81,9 +81,9 @@ parameters:
     - input/intro-notes
     #- input/includes
 
-  version-comparison-master: 1.0.0
-  version-comparison:
-    - 1.0.0
+  #version-comparison-master: 1.0.0
+  #version-comparison:
+  #  - 1.0.0
 
   
   special-url-base: 
