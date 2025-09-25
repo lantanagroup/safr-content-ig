@@ -17,6 +17,7 @@ build_bat_url=$scriptdlroot/_build.bat
 
 skipPrompts=false
 FORCE=false
+keepScripts=false
 
 if ! type "curl" > /dev/null; then
 	echo "ERROR: Script needs curl to download latest IG Publisher. Please install curl."
@@ -28,6 +29,10 @@ while [ "$#" -gt 0 ]; do
     -f|--force)  FORCE=true ;;
     -y|--yes)  skipPrompts=true ; FORCE=true ;;
     *)  echo "Unknown parameter passed: $1.  Exiting"; exit 1 ;;
+    esac
+    case $2 in
+    -k|--keep)  keepScripts=true ;;
+    *)  echo "Unknown parameter passed: $2.  Exiting"; exit 1 ;;
     esac
     shift
 done
@@ -91,8 +96,8 @@ else
 fi
 if [[ $skipPrompts == true ]] || [[ $response =~ ^[yY].*$ ]]; then
 
-	echo "Downloading most recent publisher to $jarlocationname - it's ~100 MB, so this may take a bit"
-	curl -L $dlurl -o "$jarlocation" --create-dirs
+  echo "Downloading most recent publisher to $jarlocationname - it's ~100 MB, so this may take a bit"
+  curl -L $dlurl -o "$jarlocation" --create-dirs
 else
 	echo cancelled publisher update
 fi
@@ -100,45 +105,49 @@ fi
 if [[ $skipPrompts != true ]]; then
     message="Update scripts? (enter 'y' or 'Y' to continue, any other key to cancel)?"
     read -r -p "$message" response
-  fi
+fi
 
 if [[ $skipPrompts == true ]] || [[ $response =~ ^[yY].*$ ]]; then
-  echo "Downloading most recent scripts "
+  if [[ keepScripts == true ]]; then
+    echo "Downloading most recent scripts "
 
-  curl -L $build_bat_url -o /tmp/_build.new
-  cp /tmp/_build.new _build.bat
-  rm /tmp/_build.new
+    curl -L $build_bat_url -o /tmp/_build.new
+    cp /tmp/_build.new _build.bat
+    rm /tmp/_build.new
 
 
-  curl -L $build_sh_url -o /tmp/_build.new
-  cp /tmp/_build.new _build.sh
-  chmod +x _build.sh
-  rm /tmp/_build.new
+    curl -L $build_sh_url -o /tmp/_build.new
+    cp /tmp/_build.new _build.sh
+    chmod +x _build.sh
+    rm /tmp/_build.new
 
-  curl -L $update_bat_url -o /tmp/_updatePublisher.new
-  cp /tmp/_updatePublisher.new _updatePublisher.bat
-  rm /tmp/_updatePublisher.new
+    curl -L $update_bat_url -o /tmp/_updatePublisher.new
+    cp /tmp/_updatePublisher.new _updatePublisher.bat
+    rm /tmp/_updatePublisher.new
 
-  curl -L $gen_bat_url -o /tmp/_genonce.new
-  cp /tmp/_genonce.new _genonce.bat
-  rm /tmp/_genonce.new
+    curl -L $gen_bat_url -o /tmp/_genonce.new
+    cp /tmp/_genonce.new _genonce.bat
+    rm /tmp/_genonce.new
 
-  curl -L $gencont_bat_url -o /tmp/_gencontinuous.new
-  cp /tmp/_gencontinuous.new _gencontinuous.bat
-  rm /tmp/_gencontinuous.new
+    curl -L $gencont_bat_url -o /tmp/_gencontinuous.new
+    cp /tmp/_gencontinuous.new _gencontinuous.bat
+    rm /tmp/_gencontinuous.new
 
-  curl -L $gencont_sh_url -o /tmp/_gencontinuous.new
-  cp /tmp/_gencontinuous.new _gencontinuous.sh
-  chmod +x _gencontinuous.sh
-  rm /tmp/_gencontinuous.new
+    curl -L $gencont_sh_url -o /tmp/_gencontinuous.new
+    cp /tmp/_gencontinuous.new _gencontinuous.sh
+    chmod +x _gencontinuous.sh
+    rm /tmp/_gencontinuous.new
 
-  curl -L $gen_sh_url -o /tmp/_genonce.new
-  cp /tmp/_genonce.new _genonce.sh
-  chmod +x _genonce.sh
-  rm  /tmp/_genonce.new
+    curl -L $gen_sh_url -o /tmp/_genonce.new
+    cp /tmp/_genonce.new _genonce.sh
+    chmod +x _genonce.sh
+    rm  /tmp/_genonce.new
 
-  curl -L $update_sh_url -o /tmp/_updatePublisher.new
-  cp /tmp/_updatePublisher.new _updatePublisher.sh
-  chmod +x _updatePublisher.sh
-  rm /tmp/_updatePublisher.new
+    curl -L $update_sh_url -o /tmp/_updatePublisher.new
+    cp /tmp/_updatePublisher.new _updatePublisher.sh
+    chmod +x _updatePublisher.sh
+    rm /tmp/_updatePublisher.new
+  else
+    echo "Skipped downloading most recent scripts "
+  fi
 fi
