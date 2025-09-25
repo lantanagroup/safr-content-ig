@@ -1,7 +1,7 @@
 
-|||
+
 |---|---|
-|*Official URL*: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ImplementationGuide/gov.cdc.nhsn.measures|*Version*: 1.0.0|
+|*Official URL*: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ImplementationGuide/gov.cdc.nhsn.measures|*Version*: 2.0.0 - cibuild|
 |*NPM package name*: gov.cdc.nhsn.measures|*ComputableName*: NHSNMeasures|
 |*Copyright/Legal*: [License](license.html)|
 {:.grid}
@@ -17,9 +17,9 @@ CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM)
 ### IG Dependencies
 
 This IG Contains the following dependencies on other IGs.
-
+<div class="dependency-table">
 {% include dependency-table.xhtml %}
-
+</div>
 ### Global Profiles
 
 {% include globals-table.xhtml %}

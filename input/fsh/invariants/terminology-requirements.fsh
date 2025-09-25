@@ -7,10 +7,12 @@ Encounter Invariant:
 OR (Encounter.type = "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307',  or "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292’ or  "Observation Services": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143'
 OR (Encounter.location:Location.type in http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265)
 */
+
 Invariant: encounter-ach-monthly-initial-population
 Description: "Encounter: (class must be from ACH Monthly encounter class) or (type from 'Encounter Inpatient', 'Emergency Department Visit', or 'Observation Services') or (Encounter location type from 'Inpatient, Emergency, and Observation Locations')"
 Severity: #error
-Expression: "class.memberOf('http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ValueSet/ach-encounter-class') or class.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.274') or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307')).exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292')).exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143')).exists() or location.where(location.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists()).exists()"
+Expression: "class.memberOf('http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ValueSet/ach-monthly-encounter-class') or class.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.274') or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307')).exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292')).exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143')).exists() or location.where(location.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists()).exists()"
+
 //class.memberOf('http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ValueSet/ach-encounter-class').exists()               or class.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.274') or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307')).exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292')).exists() or           type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143')).exists() or where(location.location.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists())"
 
 
@@ -19,12 +21,27 @@ Expression: "class.memberOf('http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ValueSet/
 Invariant: encounter-ach-daily-initial-population
 Description: "Encounter: (class must be from ACH Daily encounter class) or (type from 'Encounter Inpatient' or 'Observation Services') or (Encounter location type from 'Inpatient, Emergency, and Observation Locations')"
 Severity: #error
-Expression: "class.memberOf('http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ValueSet/rps-encounter-class').exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307')).exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143')).exists() or where(location.location.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists())"
+Expression: "class.memberOf('http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ValueSet/ach-daily-encounter-class') or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307')).exists() or type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1111.143')).exists() or where(location.location.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists())"
 
+
+Invariant: encounter-location-type-initial-population
+Description: "Encounter: references at least one Location where type is from 'Inpatient, Emergency, and Observation Locations'"
+Severity: #warning
+Expression: "location.where(location.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists()).exists() or location.where(location.resolve().partOf.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists()).exists()"
+
+Invariant: dqm-Con-2
+Description: "At least one Condition.category SHALL be encounter-diagnosis, problem-list-item, or health-concern"
+Severity: #error
+Expression: "category.where(coding.where(system = 'http://terminology.hl7.org/CodeSystem/condition-category' and code='encounter-diagnosis').exists()).exists() or category.where(coding.memberOf('http://hl7.org/fhir/us/core/ValueSet/us-core-problem-or-health-concern')).exists()"
+XPath: "true()"
+
+
+/*
+Removing because MEASDEV-1977 called for the creation of an additional invariant for "ACH Daily and Monthly Encounter profiles" to validate the presence of an HSLOC code in Location.type
 Invariant: location-type-initial-population
 Description: "Location: (Location type from 'Inpatient, Emergency, and Observation Locations')"
-Severity: #error
-Expression: "type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists()"
+Severity: #warning
+Expression: "type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists() or where(location.partOf.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists())"
 
 /* Invariant tests
 Invariant: encounter-ach-initial-population1

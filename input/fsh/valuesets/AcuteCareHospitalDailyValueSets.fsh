@@ -1,6 +1,6 @@
-ValueSet: AcuteCareHospitalDailyEventEncounterStatus
+ValueSet: AcuteCareHospitalDailyEncounterStatus
 Id: ach-daily-encounter-status
-Title: "Acute Care Hospital Daily Event Encounter Status ValueSet"
+Title: "ACH Daily Encounter Status ValueSet"
 Description: "A set of codes indicating the status of the encounter."
 * $encounter-status#in-progress	"In Progress"
 * $encounter-status#finished "Finished"
@@ -14,7 +14,7 @@ Description: "A set of codes indicating the status of the encounter."
 
 ValueSet: AcuteCareHospitalDailyEventEncounterClass
 Id: ach-daily-encounter-class
-Title: "Acute Care Hospital Daily Encounter Class ValueSet"
+Title: "ACH Daily Encounter Class ValueSet"
 Description: "A set of codes indicating the encounter class that represent inpatient, observation and short stay concepts."
 * $v3-ActCode#ACUTE	"inpatient acute"
 * $v3-ActCode#IMP	"inpatient encounter"
@@ -28,11 +28,11 @@ Description: "A set of codes indicating the encounter class that represent inpat
 
 ValueSet: AcuteCareHospitalDailyEventDiagnosticReportStatus
 Id: ach-daily-diagnostic-report-status
-Title: "Acute Care Hospital Daily Diagnostic Report Status ValueSet"
+Title: "ACH Daily Diagnostic Report Status ValueSet"
 Description: "A set of codes indicating the status of the diagnostic report."
-* $v3-ActCode#final	"Final"
-* $v3-ActCode#registered	"Registered"
-* $v3-ActCode#preliminary	"Preliminary"
-* $v3-ActCode#partial	"Partial"
+* $DiagnosticReportStatus#final	"Final"
+* $DiagnosticReportStatus#registered	"Registered"
+* $DiagnosticReportStatus#preliminary	"Preliminary"
+* $DiagnosticReportStatus#partial	"Partial"
 * ^copyright = "This Valueset is not copyrighted."
 * ^experimental = false

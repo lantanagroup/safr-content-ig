@@ -1,0 +1,50 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "LTCPneumoniaMedReq2",
+  "subject": {
+    "reference": "Patient/LTCPneumonia"
+  },
+  "medicationCodeableConcept":{
+    "coding":[
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "331055",
+        "display": "Amoxicillin 1000mg oral tablet"
+      }
+    ]
+  },
+  "authoredOn": "2025-01-09T00:00:00.000Z",
+  "dosageInstruction": [
+    {
+      "text": "30 to 60 minutes before dental procedure",
+      "route": {
+        "coding":[
+          {
+            "system": "http://snomed.info/sct",
+            "code": "26643006",
+            "display": "Oral"
+          }
+        ]
+      },
+      "doseAndRate": [
+        {
+          "doseQuantity":{
+            "value": "2"
+          },
+          "rateQuantity": {
+            "value": "1",
+            "unit": "day"
+          }
+        }
+      ]
+    }
+  ],
+  "dispenseRequest": {
+    "expectedSupplyDuration": {
+      "value": 1,
+      "unit": "days",
+      "system": "http://unitsofmeasure.org",
+      "code": "d"
+    }
+  }
+}

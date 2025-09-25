@@ -1,6 +1,6 @@
 Instance: diagnosticreport-example-ach-monthly-pass2-lab-cbc
 InstanceOf: AcuteCareHospitalMonthlyLabDiagnosticReport
-Title: "DiagnosticReport - Example Initial Population Pass"
+Title: "DiagnosticReport - Example ACH Monthly Initial Population Pass"
 Description: "DiagnosticReport - Example Initial Population Pass - CBC panel - Blood by Automated count"
 Usage: #example
 * status = #final

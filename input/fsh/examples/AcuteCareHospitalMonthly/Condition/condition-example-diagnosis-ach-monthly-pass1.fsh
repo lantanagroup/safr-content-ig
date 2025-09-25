@@ -1,6 +1,6 @@
 Instance: condition-example-diagnosis-ach-monthly-pass1
 InstanceOf: AcuteCareHospitalMonthlyReportingCondition
-Title: "Condition - Example Diagnosis ACH Monthly ass1"
+Title: "Condition - Example Diagnosis ACH Monthly Pass1"
 Description: "Condition - Example Diagnosis ACH Monthly Pass1 - Encounter Diagnosis: Bacteremia"
 Usage: #example
 * verificationStatus.coding.version = "4.0.0"

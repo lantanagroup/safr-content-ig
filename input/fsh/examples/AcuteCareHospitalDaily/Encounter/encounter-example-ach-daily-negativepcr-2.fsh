@@ -10,8 +10,8 @@ Usage: #example
 * status.extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-element-value-extension"
 * status.extension.valueString = "TRIAGED"
 * class = $v3-ActCode#IMP "Inpatient Encounter"
-* type = $sct#453701000124103 "In-person encounter"
-* type.text = "In-person encounter"
+* type = $sct#32485007 "Hospital admission (procedure)"
+* type.text = "Hospital admission (procedure)"
 * subject.reference = "Patient/patient-example-ach-daily-negativepcr"
 * subject.display = "ACHDaily, NegativePCR"
 * period.start = "2024-01-02T06:01:00Z"
@@ -24,12 +24,12 @@ Usage: #example
 * hospitalization.dischargeDisposition.text = "Deceased (expired)"
 //* location[0].location.display = "UH Adult Emergency Department"
 * location[0].location.display = "EMERGENCY - PAVILION"
-* location[=].location = Reference(location-example-hypo-emergency)
+* location[=].location = Reference(location-example-ach-daily-emergency)
 * location[=].period.start = "2022-08-11T18:52:00Z"
 * location[=].period.end = "2022-08-17T16:09:00Z"
 //* location[+].location.display = "UH 7C MED ACUTE CARE"
 * location[+].location.display = "Health Hospital Location"
-* location[=].location = Reference(location-example-hypo-hospital)
+* location[=].location = Reference(location-example-ach-daily-hospital)
 * location[=].period.start = "2022-08-17T16:09:00Z"
 * location[=].period.end = "2022-08-22T19:01:00Z"
 /* location[+].location.display = "7129"

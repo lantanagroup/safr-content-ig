@@ -7,10 +7,10 @@ packageId: gov.cdc.nhsn.measures
 title: CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) Content Package IG
 name: NHSNMeasures
 status: active
-date: 2023-09-14
-copyrightYear: 2023+
-version: 1.0.0-cibuild  
-releaseLabel: Continuous Integration
+date: 2025-09-24
+copyrightYear: 2025+
+version: 2.0.0-cibuild
+releaseLabel: Release 2 ci-build
 jurisdiction: urn:iso:std:iso:3166#US
 extension:
   - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
@@ -24,17 +24,26 @@ publisher:
 
 
 dependencies:
-  hl7.fhir.extensions.r5: 4.0.1
-  hl7.fhir.us.core: 
-    version: 3.1.1
+  hl7.fhir.us.nhsn-dqm:
+    version: 1.0.0
+    id: dqm
+
+  hl7.fhir.us.core:
+    version: 6.1.0
+    uri: http://hl7.org/fhir/us/core/ImplementationGuide/hl7.fhir.us.core
     id: uscore
+    reason: |
+      Needed for systems supporting USCDI v3
+  hl7.fhir.us.core.v311:
+    version: 3.1.1
+    uri: http://hl7.org/fhir/us/core/v311/ImplementationGuide/hl7.fhir.us.core.v311
+    id: uscore3
+    reason: |
+      Needed for systems supporting USCDI v1
   fhir.cqf.common:
     version: 4.0.1
-    uri: http://fhir.org/guides/cqf/common/ImplementationGuide/cqf.fhir.common
     id: cqf
-  hl7.fhir.us.cqfmeasures: 3.0.0
-  hl7.fhir.us.davinci-deqm: 3.1.0
-  hl7.fhir.us.qicore: 6.0.0
+  hl7.fhir.us.qicore: 4.1.1
 
 description: "This content describes the specifications for the for the Health Level Seven International® (HL7) Fast Healthcare Interoperability Resources® (FHIR) digital quality measures (dQMs) reported to the National Healthcare Safety Network (NHSN)."
 parameters:
@@ -45,15 +54,21 @@ parameters:
   path-liquid: templates\liquid
   excludettl: 'true'
   excludemap: 'true'
+  pin-canonicals: pin-multiples
 
   default-contact: true
   default-publisher: true
   #default-jurisdiction: true
   default-copyright: true
+  usage-stats-opt-out: true # Opt out for regular building. Should opt in for final publication. in ig.ini as well
   path-pages:
     - input/pagecontent
     - input/intro-notes
     #- input/includes
+
+  version-comparison-master: 1.0.0
+  version-comparison:
+    - 1.0.0
 
   
   special-url-base: 
@@ -64,7 +79,7 @@ parameters:
   special-url:
     - http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.supplementalDataElement.reference
     - http://fhir.org/guides/cqf/common/Library/FHIRCommon
-    - http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference
+#    - http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference
     - http://fhir.org/guides/cqf/common/Library/FHIRHelpers
 
 #    - http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.population.description
@@ -88,7 +103,7 @@ menu:
   License: license.html
   Support:
     FHIR Spec: http://hl7.org/fhir/R4/index.html
-    HL7 NHSN dQM IG CI Build: https://build.fhir.org/ig/HL7/nhsn-dqm/index.html
+#    HL7 NHSN dQM IG CI Build: https://build.fhir.org/ig/HL7/nhsn-dqm/index.html
     US Core IG 3.1.1: https://hl7.org/fhir/us/core/STU3.1.1/index.html
     Clinical Quality Framework: https://www.fhir.org/guides/cqf/common/
     Da Vinci DEQM IG 3.1: https://hl7.org/fhir/us/davinci-deqm/STU3.1/index.html
@@ -116,8 +131,6 @@ pages:
     title: NHSN Implementation Guide Resource
   changes.xml:
     title: IG Change History 
-  history.xml:
-    title: IG Version History Directory
 
 
 # groups:
@@ -494,14 +507,14 @@ resources:
    #  description: Measure Report Population Description - This extension is not defined by this IG. CQF Tooling uses this extension, but the extension is yet unpublished.
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
-   StructureDefinition/extension-MeasureReport.supplementalDataElement.reference:
-     name: Measure Report Supplemental Data Element Reference (R5 surrogate extension)
-     description: Measure Report Supplemental Data Element Reference - This extension is not defined by this IG.  CQF Tooling uses this extension, but the extension is yet unpublished.
+  #  StructureDefinition/extension-MeasureReport.supplementalDataElement.reference:
+    #  name: Measure Report Supplemental Data Element Reference (R5 surrogate extension)
+    #  description: Measure Report Supplemental Data Element Reference - This extension is not defined by this IG.  CQF Tooling uses this extension, but the extension is yet unpublished.
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
-   StructureDefinition/extension-criteriaReference:
-     name: Measure Report Criteria Reference (R5 surrogate extension)
-     description: Measure Report Criteria Reference - This extension is not defined by this IG.  CQF Tooling uses this extension, but the extension is yet unpublished.
+  #  StructureDefinition/extension-criteriaReference:
+    #  name: Measure Report Criteria Reference (R5 surrogate extension)
+    #  description: Measure Report Criteria Reference - This extension is not defined by this IG.  CQF Tooling uses this extension, but the extension is yet unpublished.
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
 
   #  Measure/NHSNGlycemicControlHypoglycemicInitialPopulation:
@@ -510,10 +523,14 @@ resources:
   #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation:
-     name: NHSN dQM Acute Care Hospital Monthly Initial Population
+     name: NHSN dQM Acute Care Hospital Monthly Initial Population Measure
      description: The Acute Care Hospital Monthly Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period.
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
+   Measure/NHSNAcuteCareHospitalDailyInitialPopulation:
+     name: NHSN dQM Acute Care Hospital Daily Initial Population Measure
+     description: All encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
+
   #  Measure/NHSNRespiratoryPathogensSurveillanceInitialPopulation:
   #    name: NHSN Respiratory Pathogens Surveillance Initial Population
   #    description: The Respiratory Pathogens Surveillance Initial Population includes all encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
@@ -535,10 +552,14 @@ resources:
   #    exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    Library/NHSNAcuteCareHospitalMonthlyInitialPopulation:
-     name: NHSN dQM Acute Care Hospital Monthly Initial Population
+     name: NHSN Acute Care Hospital Monthly Initial Population Library
      description: Library of NHSN dQM Acute Care Hospital Monthly Initial Population Measure
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
-   
+
+   Library/NHSNAcuteCareHospitalDailyInitialPopulation:
+     name: NHSN Acute Care Hospital Daily Initial Population Library
+     description: Library of NHSN dQM Acute Care Hospital Daily Initial Population Measure
+
    
    Library/NHSNHelpers:
      name: NHSN Helpers
@@ -551,7 +572,7 @@ resources:
    
    Library/FHIRHelpers:
      name: FHIR Helpers
-     description: "This library defines functions to convert between FHIR data types and CQL system-defined types, as well as functions to support FHIRPath implementation. For more information, the FHIRHelpers wiki page: https://github.com/cqframework/clinical_quality_language/wiki/FHIRHelpers"
+     description: "This library defines functions to convert between FHIR data types and CQL system-defined types, as well as functions to support FHIRPath implementation. For more information, the FHIRHelpers wiki page: https://github.com/cqframework/clinical_quality_language/wiki/FHIRHelpers. This locally defined version includes modifications from the original library."
      #exampleCanonical: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/
    
    #Library/MATGlobalCommonFunctionsFHIR4:

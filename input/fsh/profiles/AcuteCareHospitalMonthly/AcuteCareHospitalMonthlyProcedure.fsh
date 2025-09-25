@@ -1,9 +1,10 @@
 Profile: AcuteCareHospitalMonthlyReportingProcedure
-Parent: USCoreProcedureProfile
+Parent: USCoreProcedureProfile|6.1.0
 Id: ach-monthly-procedure
 Title: "ACH Monthly Event Procedure"
-Description: "This profile contains Required and Must Support data elements for reporting procedure information to the NHSN Acute Care Hospital (ACH) Monthly Digital Quality Measures. This profile is based on the [HL7 FHIR® US Core Procedure Profile v3.1.1](http://hl7.org/fhir/R4/servicerequest.html)."
+Description: "This profile contains Required and Must Support data elements for reporting procedure information to the NHSN Acute Care Hospital (ACH) Monthly Digital Quality Measure. This profile is based on the [HL7 FHIR® US Core Procedure Profile v3.1.1](http://hl7.org/fhir/R4/servicerequest.html)."
 * ^status = #active
+* ^baseDefinition = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-procedure|6.1.0"
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 * subject.reference 1.. MS

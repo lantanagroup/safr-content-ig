@@ -1,14 +1,14 @@
 {
     "package-id": "gov.cdc.nhsn.measures",
-    "version": "1.0.0-draft",
-    "path": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/1.0.0-draft",
+    "version": "2.0.0",
+    "path": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/2.0.0",
     "mode": "working",
-    "status": "draft",
-    "sequence": "R 1",
-    "desc": "CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) Content Package IG Release 1 Draft, 1.0.0-draft - US Realm",
+    "status": "preview",
+    "sequence": "R 2",
+    "desc": "CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) Content Package IG Release 2, 2.0.0 - US Realm\n \nCDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQMs) Content Package IG Release 1, US Realm. This IG contains the ACH Monthly and Daily dQMs based on FHIR R4, US Core 3.1.1, QI Core 4.1.1, Quality Measure IG 3.0.0, CQF Common FHIR Assets 4.0.1, and DEQM 3.1.0",
     "first": true,
 	"category": "Public Health",
 	"title": "CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) Content Package IG",
 	"ci-build": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/ci",
-	"introduction": "The content of the CDC National Healthcare Safety Network (NHSN) Digital Quality Measures (dQM) implementation guide (IG) outlines the standards for electronically submitting surveillance data for Acute Care Hospital (ACH) Monthly and Respiratory Pathogens Surveillance (RPS) Daily dQMs. This IG complies with the NHSN dQM Reporting Implementation Guide, published by Health Level Seven International (HL7®) International for general requirements for submissions to NHSN."
+	"introduction": "This implementation guide defines the standards for the electronic submission of surveillance data for the Acute Care Hospital (ACH) Monthly and ACH Daily digital quality measures (dQMs) to the National Healthcare Safety Network (NHSN). It establishes a content model and interoperability framework that enables the use of Fast Healthcare Interoperability Resources (FHIR®) for computable, standards-based data exchange between healthcare providers and public health systems.\n \nThe guide is based on HL7 FHIR Release 4 and incorporates several aligned standards to ensure consistency, reusability, and alignment with national quality measurement efforts. It allows for the dynamic extraction of relevant data from electronic health records (EHRs) via FHIR APIs, replacing traditional static data submissions. This approach enables more timely, accurate, and flexible reporting of public health surveillance data to NHSN. "
 }

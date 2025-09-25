@@ -1,8 +1,8 @@
 Profile: AcuteCareHospitalMonthlyReportingSpecimen
-Parent: Specimen
+Parent: USCoreSpecimenProfile
 Id: ach-monthly-specimen
 Title: "ACH Monthly Event Specimen"
-Description: "This profile contains Required and Must Support data elements for reporting specimen information to the NHSN Acute Care Hospital (ACH) Monthly Digital Quality Measures. This profile is based on the [HL7 FHIR® R4 Specimen Profile v4.0.1](http://hl7.org/fhir/R4/specimen.html)."
+Description: "This profile contains Required and Must Support data elements for reporting specimen information to the NHSN Acute Care Hospital (ACH) Monthly Digital Quality Measure. This profile is based on the [HL7 FHIR® R4 Specimen Profile v4.0.1](http://hl7.org/fhir/R4/specimen.html)."
 * ^status = #active
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
@@ -10,8 +10,9 @@ Description: "This profile contains Required and Must Support data elements for 
 * accessionIdentifier MS
 * status MS
 //* type from http://terminology.hl7.org/ValueSet/v2-0487 (required)
-* type from $SpecimenType (extensible)
-* type 1..
+* type from http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1099.54 (extensible)
+//Requirement now inherited by USCoreSpecimenProfile
+//* type 1..
 * collection 1.. 
 * collection.collected[x] 1..
 * collection.bodySite from http://hl7.org/fhir/ValueSet/body-site (extensible)

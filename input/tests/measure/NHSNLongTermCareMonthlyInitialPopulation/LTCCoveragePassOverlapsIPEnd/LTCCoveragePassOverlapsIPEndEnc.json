@@ -1,0 +1,48 @@
+{
+    "resourceType": "Encounter",
+    "id": "LTCCoveragePassOverlapsIPEndEnc",
+    "meta": {
+        "versionId": "5",
+        "lastUpdated": "2024-04-01T19:43:55.894+00:00",
+        "source": "#8095130e244425aa",
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter"
+        ]
+    },
+    "status": "finished",
+    "class": {
+        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+        "code": "SS",
+        "display": "short stay"
+    },
+    "subject": {
+        "reference": "Patient/LTCCoveragePassOverlapsIPEnd"
+    },
+    "period": {
+        "start": "2025-01-01T00:00:00.000Z",
+        "end": "2025-01-05T10:00:00.000Z"
+    },
+    "hospitalization": {
+        "dischargeDisposition": {
+            "coding": [
+                {
+                    "system": "http://terminology.hl7.org/CodeSystem/discharge-disposition",
+                    "code": "home",
+                    "display": "home"
+                }
+            ]
+        }
+    },
+    "location": [
+        {
+            "location": {
+                "reference": "Location/LocACH2175"
+            },
+            "status": "completed",
+            "period": {
+                "start": "2024-03-01T10:00:00.000Z",
+                "end": "2024-03-31T10:00:00.000Z"
+            }
+        }
+    ]
+}

@@ -3,25 +3,25 @@
 
 groups:
   submission:
-    name: Current NHSN Report Submission
-    description: "Note: By default, a modifier extension may not be included in Report Submission Bundle data to NHSN until NHSN accepts the said extension's meaning is accepted by NHSN. See [Modifier Extensions](https://build.fhir.org/extensibility.html#modifierExtension) for additional information."
+    name: Current NHSN Report Submissions
+    description: "**Note:** By default, a modifier extension may not be included in Report Submission Bundle data for NHSN until NHSN accepts the meaning of the said. See [Modifier Extensions](https://build.fhir.org/extensibility.html#modifierExtension) for additional information."
     resources:
       - StructureDefinition/nhsn-measurereport-bundle
       - StructureDefinition/nhsn-submission-header-bundle
       - StructureDefinition/nhsn-subject-bundle
       - StructureDefinition/subjectlist-measurereport
       - StructureDefinition/ip-measurereport-list
-      - StructureDefinition/poi-list
+#      - StructureDefinition/poi-list
 
   cross-measure:
-    name: Cross-Measure profiles
+    name: Cross-Measure Profiles
     resources:
       - StructureDefinition/cross-measure-patient
-      - StructureDefinition/nhsn-submitting-organization
-      - StructureDefinition/nhsn-submitting-device
+#      - StructureDefinition/nhsn-submitting-organization
+#      - StructureDefinition/nhsn-submitting-device
       
   ach-monthly:
-    name: Acute Care Hospital Monthly Reporting Profiles
+    name: Acute Care Hospital (ACH) Monthly Reporting Profiles
     resources:
       - StructureDefinition/ach-monthly-encounter
       - StructureDefinition/ach-monthly-location
@@ -42,22 +42,22 @@ groups:
       - StructureDefinition/ach-monthly-medicationadministration
       - StructureDefinition/ach-monthly-medicationrequest
       
-  hypo:
-    name: Hypoglycemic Event Reporting profiles
-    resources:
-      - StructureDefinition/hypoglycemic-reporting-condition
-      - StructureDefinition/hypoglycemic-reporting-coverage
-      - StructureDefinition/hypoglycemic-reporting-encounter
-      - StructureDefinition/hypoglycemic-reporting-observation-lab
-      - StructureDefinition/hypoglycemic-reporting-location
-      - StructureDefinition/hypoglycemic-reporting-medication
-      - StructureDefinition/hypoglycemic-reporting-medicationadministration
-      - StructureDefinition/hypoglycemic-reporting-medicationrequest
-      - StructureDefinition/hypoglycemic-reporting-servicerequest
-      - StructureDefinition/hypoglycemic-reporting-specimen      
+  # hypo:
+  #   name: Hypoglycemic Event Reporting profiles
+  #   resources:
+  #     - StructureDefinition/hypoglycemic-reporting-condition
+  #     - StructureDefinition/hypoglycemic-reporting-coverage
+  #     - StructureDefinition/hypoglycemic-reporting-encounter
+  #     - StructureDefinition/hypoglycemic-reporting-observation-lab
+  #     - StructureDefinition/hypoglycemic-reporting-location
+  #     - StructureDefinition/hypoglycemic-reporting-medication
+  #     - StructureDefinition/hypoglycemic-reporting-medicationadministration
+  #     - StructureDefinition/hypoglycemic-reporting-medicationrequest
+  #     - StructureDefinition/hypoglycemic-reporting-servicerequest
+  #     - StructureDefinition/hypoglycemic-reporting-specimen      
 
   ach-daily:
-    name: Acute Care Hospital Daily Event Reporting Profiles
+    name: ACH Daily Event Reporting Profiles
     resources:
       - StructureDefinition/ach-daily-encounter
       - StructureDefinition/ach-daily-location
@@ -98,25 +98,30 @@ groups:
   #     - CodeSystem/healthcare-capacity-codes
 
   measures:
-    name: "Knowledge Artifacts: Digital Quality Measure"
+    name: "Knowledge Artifacts: Digital Quality Measures"
     resources:
-      - Measure/NHSNGlycemicControlHypoglycemicInitialPopulation
-      - Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation
-      - Measure/NHSNAcuteCareHospitalDailyInitialPopulation
+      # - Measure/NHSNGlycemicControlHypoglycemicInitialPopulation
+      Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation:
+        name: NHSN ACH Monthly Initial Population Measure
+        description: The ACH Monthly Initial Population includes all encounters for patients of any age in an emergency department (ED), observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period.
+      Measure/NHSNAcuteCareHospitalDailyInitialPopulation:
+        name: NHSN ACH Daily Initial Population Measure
+        description: All encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
+
       # - Measure/NHSNBedCapacityMeasure
 
   libs:
     name: "Knowledge Artifacts: Measure Libraries"
     resources:
-      Library/NHSNdQMAcuteCareHospitalMonthlyInitialPopulation:
-        name: NHSN dQM Acute Care Hospital Monthly Initial Population
-        description: Library of NHSN dQM Acute Care Hospital Monthly Initial Population Measure
-      Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
-        name: NHSN Glycemic ControlHypoglycemic Initial Population
-        description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
+      Library/NHSNAcuteCareHospitalMonthlyInitialPopulation:
+        name: NHSN ACH Monthly Initial Population Library
+        description: Library of NHSN dQM ACH Monthly Initial Population Measure
+      #  Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
+      #   name: NHSN Glycemic ControlHypoglycemic Initial Population
+      #   description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
       Library/NHSNAcuteCareHospitalDailyInitialPopulation:
-        name: NHSN Acute Care Hospital Daily Initial Population
-        description: Library of NHSN Acute Care Hospital Daily Initial Population Measure
+        name: NHSN ACH Daily Initial Population Library
+        description: Library of NHSN ACH Daily Initial Population Measure
       # Library/NHSNBedCapacityMeasure:
       #   name: NHSN Bed Capacity Reporting Initial Population
       #   description: Library of NHSN Bed Capacity Initial Population Measure
@@ -153,17 +158,17 @@ groups:
      - StructureDefinition/link-original-element-value-extension
      - StructureDefinition/link-original-mapped-concept-extension
      
-  ext-extensions:
-    name: "Extensions: Externally Defined"
-    description: "Extensions are externally defined artifacts that are not yet published."
-    resources:
+  #ext-extensions:
+  #  name: "CQF Tooling Extensions"
+  #  description: "Externally defined extentions that have not been published."
+  #  resources:
      #- StructureDefinition/extension-MeasureReport.population.description
-      StructureDefinition/extension-MeasureReport.supplementalDataElement.reference:
-        name: Measure Report Supplemental Data Element Reference (R5 surrogate extension)
-        description: Measure Report Supplemental Data Element Reference - This extension is not defined by this IG.  CQF Tooling uses this extension, but the extension is yet unpublished.
-      StructureDefinition/extension-criteriaReference:
-        name: Measure Report Criteria Reference (R5 surrogate extension)
-        description: Measure Report Criteria Reference - This extension is not defined by this IG.  CQF Tooling uses this extension, but the extension is yet unpublished.
+      #StructureDefinition/extension-MeasureReport.supplementalDataElement.reference:
+      #  name: Measure Report Supplemental Data Element Reference (R5 surrogate extension)
+      #  description: This extension is not defined by this IG. CQF Tooling uses this extension, but the extension is yet unpublished.
+  #    StructureDefinition/extension-criteriaReference:
+  #      name: Measure Report Criteria Reference (R5 surrogate extension)
+  #      description: This extension is not defined by this IG. CQF Tooling uses this extension, but the extension is yet unpublished.
 
 
   ach-monthly-ex:
@@ -175,13 +180,13 @@ groups:
       Bundle/bundle-example-ach-monthly-header:
         name: Example ACH Monthly Submission Header Bundle
         description: Example Separated ACH Monthly Submission Header Bundle
-      Bundle/bundle-example-ach-monthly-subject-ach-monthly-pass1:
+      Bundle/bundle-example-ach-monthly-subject-ach-pass1:
         name: Example ACH Monthly Submission Subject Bundle 1
         description: Example Separated ACH Monthly Submission Subject Bundle 1 for LOS/MEN
-      Bundle/bundle-example-ach-monthly-subject-ach-monthly-pass2:
+      Bundle/bundle-example-ach-monthly-subject-ach-pass2:
         name: Example ACH Monthly Submission Subject Bundle 2
         description: Example Separated ACH Monthly Submission Subject Bundle 2 for Hypoglycemia and VTE
-      Bundle/bundle-example-ach-monthly-subject-ach-monthly-pass3:
+      Bundle/bundle-example-ach-monthly-subject-ach-pass3:
         name: Example ACH Monthly Submission Subject Bundle 3
         description: Example Separated ACH Monthly Submission Subject Bundle 3 for CDI and VTE
 
@@ -206,7 +211,7 @@ groups:
         description: Example Separated ACH Daily Submission Influenza Therapeutic Bundle
       Bundle/bundle-example-ach-daily-subject-rsvlabbtg:
         name: Example ACH Daily Submission RSV Lab BTG Bundle
-        description: Example Separated RPS Daily Submission RSV Lab BTG Bundle
+        description: Example Separated ACH Daily Submission RSV Lab BTG Bundle
 
         
 #  bed-ex:

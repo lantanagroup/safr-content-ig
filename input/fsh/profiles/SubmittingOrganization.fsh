@@ -1,11 +1,13 @@
+
+/* Replaces after Release 1.0.0, by inheriting from dQM
 Profile: SubmittingOrganization
-Parent: Organization
+Parent: NHSNSubmittingOrganization
 Id: nhsn-submitting-organization
 Title: "NHSN Submitting Organization"
 Description: "This profile includes the name and identifier of the organization submitting the report Bundle, and may include other information about the organization."
-* ^version = "1.0.0"
+* ^version = "1.0.0-cibuild"
 * ^status = #active
-* ^date = "2023-05-15T19:23:44-07:00"
+/* ^date = "2023-05-15T19:23:44-07:00"
 * ^jurisdiction = urn:iso:std:iso:3166#US
 * identifier ^slicing.discriminator.type = #value
   * ^slicing.discriminator.path = "system"
@@ -16,4 +18,8 @@ Description: "This profile includes the name and identifier of the organization 
   * system 1..
   * system = "https://www.cdc.gov/nhsn/OrgID"
   * value 1.. MS
+
+
+// TODO - Review whether this requirement is still needed. The dQM IG does not require name
 * name 1..
+*/

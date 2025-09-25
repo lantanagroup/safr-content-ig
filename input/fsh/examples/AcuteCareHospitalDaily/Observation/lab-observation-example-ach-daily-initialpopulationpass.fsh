@@ -4,8 +4,8 @@ Title: "Lab Observation - ACH Daily Observation Example Initial Population Pass"
 Description: "Lab Observation - Example ACH Daily Observation Initial Population Pass"
 Usage: #example
 * status = #final
-* category = $observation-category#laboratory "Laboratory"
-* category.text = "Laboratory"
+* category[us-core] = $observation-category#laboratory "Laboratory"
+* category[us-core].text = "Laboratory"
 * code = $loinc#94500-6 "SARS-CoV-2 (COVID-19) RNA [Presence] in Respiratory system specimen by NAA with probe detection"
 * code.text = "SARS-CoV-2 RNA Resp Ql NAA+probe"
 * subject.reference = "Patient/patient-example-ach-daily-initialpopulationpass"

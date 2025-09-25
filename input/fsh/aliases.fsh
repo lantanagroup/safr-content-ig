@@ -1,5 +1,5 @@
 Alias: $library-type = http://terminology.hl7.org/CodeSystem/library-type
-Alias: $v3-ActCode = http://terminology.hl7.org/CodeSystem/v3-ActCode
+Alias: $v3-ActCode = http://terminology.hl7.org/CodeSystem/v3-ActCode|9.0.0
 Alias: $nhsnlink = https://nhsnlink.org
 Alias: $condition-ver-status = http://terminology.hl7.org/CodeSystem/condition-ver-status
 Alias: $condition-category = http://terminology.hl7.org/CodeSystem/condition-category
@@ -57,4 +57,6 @@ Alias: $vital-sign-profile = http://hl7.org/fhir/StructureDefinition/vitalsigns
 Alias: $daig-serv-section = http://hl7.org/fhir/ValueSet/diagnostic-service-sections
 
 Alias: $bed-capacity-code-system = http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-code
-
+Alias: $DiagnosticReportStatus = http://hl7.org/fhir/diagnostic-report-status
+//Alias: $us-core-condition-code = http://hl7.org/fhir/us/core/ValueSet/us-core-condition-code|6.1.0
+//Alias: $us-core-patient = http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient

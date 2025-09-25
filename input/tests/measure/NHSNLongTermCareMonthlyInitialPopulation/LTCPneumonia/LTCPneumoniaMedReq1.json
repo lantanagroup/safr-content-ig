@@ -1,0 +1,49 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "LTCPneumoniaMedReq1",
+  "subject": {
+    "reference": "Patient/LTCPneumonia"
+  },
+  "medicationCodeableConcept":{
+    "coding":[
+      {
+        "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+        "code": "199885",
+        "display": "Levofloxacin 500mg Oral Tablet"
+      }
+    ]
+  },
+  "authoredOn": "2025-01-01T00:00:00.000Z",
+  "dosageInstruction": [
+    {
+      "route": {
+        "coding":[
+          {
+            "system": "http://snomed.info/sct",
+            "code": "26643006",
+            "display": "Oral"
+          }
+        ]
+      },
+      "doseAndRate": [
+        {
+          "doseQuantity":{
+            "value": "1"
+          },
+          "rateQuantity": {
+            "value": "1",
+            "unit": "day"
+          }
+        }
+      ]
+    }
+  ],
+  "dispenseRequest": {
+    "expectedSupplyDuration": {
+      "value": 7,
+      "unit": "days",
+      "system": "http://unitsofmeasure.org",
+      "code": "d"
+    }
+  }
+}

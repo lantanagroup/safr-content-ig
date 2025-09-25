@@ -9,15 +9,6 @@
       </coding>
     </valueCodeableConcept>
   </extension>
-  <extension url="http://hl7.org/fhir/StructureDefinition/patient-genderIdentity">
-    <valueCodeableConcept>
-      <coding>
-        <system value="http://hl7.org/fhir/gender-identity" />
-        <code value="transgender-female" />
-        <display value="transgender-female" />
-      </coding>
-    </valueCodeableConcept>
-  </extension>
   <extension url="http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex">
     <valueCode value="M" />
   </extension>

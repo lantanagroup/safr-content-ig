@@ -1,16 +1,15 @@
-library NHSNAcuteCareHospitalDailyInitialPopulation version '1.0.0-dev'
+library NHSNAcuteCareHospitalDailyInitialPopulation version '2.0.0-dev'
 
 using FHIR version '4.0.1'
 
 include FHIRHelpers version '4.0.2' called FHIRHelpers
 include NHSNHelpers version '0.0.002' called NHSNHelpers
-include SharedResourceCreation version '0.1.009' called SharedResource
+include SharedResourceCreation version '0.1.010' called SharedResource
 
 codesystem "ActCode": 'http://terminology.hl7.org/CodeSystem/v3-ActCode' 
 codesystem "LOINC": 'http://loinc.org' 
 codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category' 
 codesystem "RXNORM": 'http://www.nlm.nih.gov/research/umls/rxnorm'
-
 
 valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307' 
 valueset "Inpatient, Emergency, and Observation Locations": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265' 
@@ -138,7 +137,7 @@ define "RSV Observation":
       and Observations.status in {'final','registered','preliminary','partial'}
       and exists("Initial Population")
 
-define "RPS Observation":
+define "ACH Daily Observation":
   "RSV Observation"
   union "COVID And Influenza Observation"
 
@@ -181,7 +180,7 @@ define "RSV DiagnosticReport":
     where exists("Initial Population")
       and Reports.status in {'final','registered','preliminary','partial'}
 
-define "RPS DiagnosticReport":
+define "ACH Daily DiagnosticReport":
   "COVID And Influenza DiagnosticReport"
     union "RSV DiagnosticReport"
 
@@ -238,7 +237,7 @@ define "RSV DiagnosticReport Observations":
     where Reports.result.references(Observations)
   )
 
-define "RPS DiagnosticReport Result from Lab":
+define "ACH Daily DiagnosticReport Result from Lab":
   "COVID and Influenza DiagnosticReport Result from Lab"
     union "RSV DiagnosticReport Result from Lab"
 
@@ -266,7 +265,7 @@ define "RSV DiagnosticReport Result from Lab PRE Admission":
 define "SDE IP Encounters":
   "Initial Population" IP
   return SharedResource.EncounterResource(IP, 
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-encounter'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-encounter'}})
 
 define "SDE Encounter": 
   "Encounters" Encounters
@@ -287,90 +286,90 @@ define "SDE Location":
   [Location] Locations
   where exists("Initial Population")
   return SharedResource.LocationResource(Locations,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-location'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-location'}})
    
 define "SDE Encounter Discharge Dispositions":
 	"Initial Population" DischargeDispositions 
   where DischargeDispositions.hospitalization.dischargeDisposition in "Discharge Disposition"
   return SharedResource.EncounterResource(DischargeDispositions,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-encounter'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-encounter'}})
 
 //return the Observation during the Measurement Period
-define "SDE RPSObservation":
-  "RPS Observation" Observations
+define "SDE ACH Daily Observation":
+  "ACH Daily Observation" Observations
     return SharedResource.ObservationLabResource(Observations,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation-lab'}})
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-observation-lab'}})
 
 //return the RSV Observation Pre Admission    
 define "SDE RSV PRE Admission Observation":
   "RSV PRE Admission Observation" Observations
     return SharedResource.ObservationLabResource(Observations, 
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation-lab'}})
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-observation-lab'}})
 
 //return the COVID-19 and Influenza Observation Pre Admission
 define "SDE COVID And Influenza PRE Admission Observation":
   "COVID And Influenza PRE Admission Observation" Observations
     return SharedResource.ObservationLabResource(Observations,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation-lab'}})
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-observation-lab'}})
 
 //return the Specimen related to the Observation during the Measurement Period
-define "SDE RPS Specimen":
-  "RPS Observation" ObservationWithSpecimen
+define "SDE ACH Daily Specimen":
+  "ACH Daily Observation" ObservationWithSpecimen
     let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
     return SharedResource.SpecimenResource(Specimen,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-specimen'}})
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-specimen'}})
 
 //return the Specimen related to the RSV Observation Pre Admission
 define "SDE RSV Specimen":
   "RSV PRE Admission Observation" ObservationWithSpecimen
     let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
     return SharedResource.SpecimenResource(Specimen,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-specimen'}})
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-specimen'}})
 
 //return the Specimen related to the COVID-19 And Influenza Observation Pre Admission
 define "SDE COVID And Influenza Specimen":
   "COVID And Influenza PRE Admission Observation" ObservationWithSpecimen
     let Specimen: GetSpecimen(ObservationWithSpecimen.specimen)
     return SharedResource.SpecimenResource(Specimen,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-specimen'}})
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-specimen'}})
 
 //return the DiagnosticReport during the Measurement Period
-define "SDE RPS DiagnosticReport":
-  "RPS DiagnosticReport" Reports
+define "SDE ACH Daily DiagnosticReport":
+  "ACH Daily DiagnosticReport" Reports
     return SharedResource.DiagnosticReportLabResource(Reports,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-diagnosticreport-lab'}})
 
 //return the COVID-19 And Influenza DiagnosticReport pre admission
 define "SDE COVID And Influenza DiagnosticReport":
   "COVID And Influenza DiagnosticReport" Reports
     return SharedResource.DiagnosticReportLabResource(Reports,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-diagnosticreport-lab'}})
 
 //return the RSV DiagnosticReport pre admission
 define "SDE RSV DiagnosticReport":
   "RSV DiagnosticReport" Reports
     return SharedResource.DiagnosticReportLabResource(Reports,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-diagnosticreport-lab'}})
 
 //return the DiagnosticReport based on the result during the Measurement Period    
-define "SDE RPS DiagnosticReport Result from Lab":
-  "RPS DiagnosticReport Result from Lab" Reports
+define "SDE ACH Daily DiagnosticReport Result from Lab":
+  "ACH Daily DiagnosticReport Result from Lab" Reports
     return SharedResource.DiagnosticReportLabResource(Reports,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-diagnosticreport-lab'}})
 
 //return the COVID-19 and Influenza DiagnosticReport based on the result pre admission
 define "SDE COVID and Influenza DiagnosticReport Result from Lab":
   "COVID and Influenza DiagnosticReport Result from Lab" Reports
     return SharedResource.DiagnosticReportLabResource(Reports,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-diagnosticreport-lab'}})
 
 //return the RSV DiagnosticReport based on the result pre admission
 define "SDE RSV DiagnosticReport Result from Lab":
   "RSV DiagnosticReport Result from Lab" Reports
     return SharedResource.DiagnosticReportLabResource(Reports,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-diagnosticreport-lab'}})
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-diagnosticreport-lab'}})
   
-define "SDE RPS ServiceRequest":
+define "SDE ACH Daily ServiceRequest":
   ([ServiceRequest: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] 
   union  [ServiceRequest: "COVID_19 (Tests for SARS_CoV_2 Antigen)"] 
   union  [ServiceRequest: "Influenza (Tests for influenza A or B virus Nucleic Acid)"]
@@ -382,14 +381,14 @@ define "SDE RPS ServiceRequest":
       and ServiceRequests.status ~ 'completed'
       and exists("Initial Population")
   return SharedResource.ServiceRequestResource(ServiceRequests,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-servicerequest'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-servicerequest'}})
 
 define "SDE Isolation Precautions Implemented":
   [Procedure: "Transmission Based Precaution Types"] IsolationPrecautions
     where NHSNHelpers."Normalize Interval"(IsolationPrecautions.performed) during "Measurement Period"
     and exists("Initial Population")
   return SharedResource.ProcedureResource(IsolationPrecautions,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-procedure'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-procedure'}})
 
 define "SDE Covid or Influenza Medication Administered":
   [MedicationAdministration] RPSMedAdmin
@@ -417,7 +416,7 @@ define "SDE Covid or Influenza Medication Administered":
       and exists("Initial Population")
       and NHSNHelpers."Normalize Interval"(RPSMedAdmin.effective) during "Measurement Period"
     return SharedResource.MedicationAdministrationResource(RPSMedAdmin,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-medicationadministration'}})
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-medicationadministration'}})
 
 define "SDE Covid or Influenza Medication Ordered":
   [MedicationRequest] RPSMedRequest
@@ -443,36 +442,36 @@ define "SDE Covid or Influenza Medication Ordered":
             or Meds in "Zanamivir")
       and exists("Initial Population")
       and NHSNHelpers."Normalize Interval"(RPSMedRequest.authoredOn) during "Measurement Period"
-    return SharedResource.MedicationRequestResource(RPSMedRequest,
-    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-medicationrequest'}})
+    return MedicationRequestResource(RPSMedRequest,
+    {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-medicationrequest'}})
 
 define "SDE Medication":
   ("SDE Covid or Influenza Medication Ordered"
   union "SDE Covid or Influenza Medication Administered") MedReqOrAdmin
   where MedReqOrAdmin.medication is FHIR.Reference
   return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication),
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-medication'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-medication'}})
 
 //To catch all isolation precautions
 define "SDE All Observations":
   "Observations" O
   where exists("Initial Population")
   return SharedResource.ObservationLabResource(O,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-observation'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-observation'}})
 
 //To catch all isolation precautions
 define "SDE All ServiceRequests":
   [ServiceRequest] SR
   where exists("Initial Population")
-  return SharedResource.ServiceRequestResource(SR,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-servicerequest'}})
+  return ServiceRequestResource(SR,
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-servicerequest'}})
 
 //To catch all isolation precautions
 define "SDE All Procedures":
   [Procedure] P
   where exists("Initial Population")
   return SharedResource.ProcedureResource(P,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/rps-procedure'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-procedure'}})
 
 
 //-----------------------------------------------------
@@ -532,3 +531,73 @@ define "Observations":
 
 define "DiagnosticReports":
   [DiagnosticReport]
+
+ //
+ // Measure Specific Resource Creation Functions
+ //
+ define function MedicationRequestResource(medicationRequest MedicationRequest, profileURLs List<FHIR.canonical>):
+  medicationRequest m
+  return MedicationRequest{
+    id: FHIR.id {value: 'LCR-' + m.id},
+    meta: SharedResource.MetaElement(medicationRequest, profileURLs),
+    extension: m.extension,
+    status: m.status,
+    intent: m.intent,
+    category: m.category,
+    priority: m.priority,
+    doNotPerform: m.doNotPerform,
+    reported: m.reported,
+    medication: m.medication,
+    subject: m.subject,
+    encounter: m.encounter,
+    authoredOn: m.authoredOn,
+    requester: m.requester,
+    recorder: m.recorder,
+    reasonCode: m.reasonCode,
+    reasonReference: m.reasonReference,
+    instantiatesCanonical: m.instantiatesCanonical,
+    instantiatesUri: m.instantiatesUri,
+    courseOfTherapyType: m.courseOfTherapyType,
+    dosageInstruction: SharedResource.MedicationRequestDosageInstruction(m.dosageInstruction)
+  }
+
+define function ServiceRequestResource(serviceRequest ServiceRequest, profileURLs List<FHIR.canonical>):
+  serviceRequest sR
+  return ServiceRequest{
+    id: FHIR.id {value: 'LCR-' + sR.id},
+    meta: SharedResource.MetaElement(sR, profileURLs),
+    extension: sR.extension,
+    instantiatesCanonical: sR.instantiatesCanonical,
+    instantiatesUri: sR.instantiatesUri,
+    basedOn: sR.basedOn,
+    replaces: sR.replaces,
+    requisition: sR.requisition,
+    status: sR.status,
+    intent: sR.intent,
+    category: sR.category,
+    priority: sR.priority,
+    doNotPerform: sR.doNotPerform,
+    code: sR.code,
+    orderDetail: sR.orderDetail,
+    quantity: sR.quantity,
+    subject: sR.subject,
+    encounter: sR.encounter,
+    occurrence: sR.occurrence,
+    asNeeded: sR.asNeeded,
+    authoredOn: sR.authoredOn,
+    performerType: sR.performerType,
+    performer: sR.performer,
+    locationCode: sR.locationCode,
+    locationReference: sR.locationReference,
+    reasonCode: sR.reasonCode,
+    reasonReference: sR.reasonReference,
+    insurance: sR.insurance,
+    supportingInfo: sR.supportingInfo,
+    specimen: sR.specimen,
+    bodySite: sR.bodySite,
+    note: sR.note,
+    patientInstruction: sR.patientInstruction,
+    relevantHistory: sR.relevantHistory
+  }
+    
+    

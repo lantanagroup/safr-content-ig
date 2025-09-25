@@ -1,0 +1,9 @@
+{
+  "resourceType": "MedicationRequest",
+  "id": "LTCMedicationRequestPassDuringIPMedReq",
+  "subject": {
+    "reference": "Patient/LTCMedicationRequestPassDuringIP",
+    "display": "Donald Duck"
+  },
+  "authoredOn": "2025-01-03T00:00:00.000Z"
+}

@@ -1,8 +1,9 @@
 Profile: AcuteCareHospitalMonthlyReportingLabObservation
-Parent: USCoreLaboratoryResultObservationProfile
+Parent: USCoreLaboratoryResultObservationProfile|6.1.0
 Id: ach-monthly-observation-lab
 Title: "ACH Monthly Event Lab Result Observation"
-Description: "This profile contains Required and Must Support data elements for reporting laboratory result information to the NHSN Acute Care Hospital (ACH) Monthly Digital Quality Measures. This profile is based on the [HL7 FHIR® US Core Lab Observation Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-observation-lab.html)."
+Description: "This profile contains Required and Must Support data elements for reporting laboratory result information to the NHSN Acute Care Hospital (ACH) Monthly Digital Quality Measure. This profile is based on the [HL7 FHIR® US Core Lab Observation Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-observation-lab.html)."
+* ^baseDefinition = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab|6.1.0"
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 * encounter MS

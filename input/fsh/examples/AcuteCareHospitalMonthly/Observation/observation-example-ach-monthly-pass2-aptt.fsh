@@ -5,8 +5,8 @@ Description: "Observation - Example ACH Monthly Pass2 Lab: aPTT in Blood by Coag
 Usage: #example
 * status = #final
 * basedOn = Reference(servicerequest-example-ach-monthly-pass2-aptt)
-* category[Laboratory] = $observation-category#laboratory "Laboratory"
-* category[Laboratory].text = "Laboratory"
+* category[us-core] = $observation-category#laboratory "Laboratory"
+* category[us-core].text = "Laboratory"
 * code = $loinc#3173-2  "aPTT in Blood by Coagulation assay"
 * code.text = "aPTT"
 * subject = Reference(patient-example-ach-monthly-pass2)

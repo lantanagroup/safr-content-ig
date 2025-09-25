@@ -4,8 +4,8 @@ Title: "Lab Observation - ACH Daily Observation Example RSV Lab BTG"
 Description: "Lab Observation - Example ACH Daily Observation RSV Lab BTG"
 Usage: #example
 * status = #final
-* category = $observation-category#laboratory "Laboratory"
-* category.text = "Laboratory"
+* category[us-core] = $observation-category#laboratory "Laboratory"
+* category[us-core].text = "Laboratory"
 * code = $loinc#31949-1 "Respiratory syncytial virus Ag [Presence] in Throat"
 * code.text = "RSV Ag Ql (Throat)"
 * subject.reference = "Patient/patient-example-ach-daily-rsvlabbtg"

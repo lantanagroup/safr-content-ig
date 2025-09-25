@@ -64,7 +64,7 @@
                 <valueString value="http://hl7.org/fhir/5.0/StructureDefinition/extension-MeasureReport.population.description"/>
             </extension>
         </extension>-->
-        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
+        <!--<extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-parameter">
             <extension url="code">
                 <valueString value="special-url"/>
             </extension>
@@ -79,7 +79,7 @@
             <extension url="value">
                 <valueString value="http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/extension-criteriaReference"/>
             </extension>
-        </extension>
+        </extension>-->
 
         <grouping id="submission">
             <name value="Current NHSN Report Submission"/>
@@ -134,14 +134,14 @@
             <description value="An Individual MeasureReport List contains references to all Individual MeasureReports for a given NHSN measure; each MeasureReport pertains to an individual patient within the Initial Population of a given measure."/>
             <groupingId value="submission"/>
         </resource>
-        <resource>
+        <!--<resource>
             <reference>
                 <reference value="StructureDefinition/poi-list"/>
             </reference>
             <name value="Patients of Interest List Profile"/>
             <description value="A Patients of Interest List defines all individual Patients considered for inclusion in NHSN Measure reporting"/>
             <groupingId value="submission"/>
-        </resource>
+        </resource>-->
         <resource>
             <reference>
                 <reference value="StructureDefinition/cross-measure-patient"/>
@@ -150,22 +150,22 @@
             <description value="This profile contains NHSN-specific Required and Must-Support elements for reporting Patient information on public-health surveillance measures to NHSN (https://www.cdc.gov/nhsn/index.html)."/>
             <groupingId value="cross-measure"/>
         </resource>
-        <resource>
+        <!--<resource>
             <reference>
                 <reference value="StructureDefinition/nhsn-submitting-organization"/>
             </reference>
             <name value="Submitting Organization"/>
             <description value="This profile includes the name and identifier of the organization submitting the report Bundle, and may include other information about the organization."/>
             <groupingId value="cross-measure"/>
-        </resource>
-        <resource>
+        </resource>-->
+        <!--<resource>
             <reference>
                 <reference value="StructureDefinition/nhsn-submitting-device"/>
             </reference>
             <name value="Submitting Device"/>
             <description value="This profile includes the name and version of the device or software submitting the report Bundle, and may include other information about the device."/>
             <groupingId value="cross-measure"/>
-        </resource>
+        </resource>-->
         <resource>
             <reference>
                 <reference value="StructureDefinition/hypoglycemic-reporting-condition"/>
@@ -302,7 +302,16 @@
             <description value="Library of NHSN dQM Acute Care Hospital Initial Population Measure"/>
             <groupingId value="libs"/>
         </resource>
-
+        
+        
+        <resource>
+            <reference>
+                <reference value="Library/FHIRHelpers"/>
+            </reference>
+            <name value="FHIR Helpers"/>
+            <description value="This library defines functions to convert between FHIR data types and CQL system-defined types, as well as functions to support FHIRPath implementation. For more information, the FHIRHelpers wiki page: https://github.com/cqframework/clinical_quality_language/wiki/FHIRHelpers. This locally defined version includes modifications from the original library."/>
+            <groupingId value="ext-libs"/>
+        </resource>
         <!-- 
         <resource>
             <reference>
@@ -866,11 +875,6 @@
             <page>
                 <nameUrl value="changes.html"/>
                 <title value="IG Change History"/>
-                <generation value="html"/>
-            </page>
-            <page>
-                <nameUrl value="history.html"/>
-                <title value="History"/>
                 <generation value="html"/>
             </page>
         </page>

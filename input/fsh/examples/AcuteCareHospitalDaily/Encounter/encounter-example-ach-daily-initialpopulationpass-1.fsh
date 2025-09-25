@@ -10,8 +10,8 @@ Usage: #example
 * status.extension.url = "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-element-value-extension"
 * status.extension.valueString = "TRIAGED"
 * class = $v3-ActCode#EMER "emergency"
-* type = $sct#4525004 "Emergency department patient visit"
-* type.text = "Emergency department patient visit"
+* type = $sct#183452005 "Emergency hospital admission (procedure)"
+* type.text = "Emergency hospital admission"
 * subject.reference = "Patient/patient-example-ach-daily-initialpopulationpass"
 * subject.display = "ACHDaily, InitialPopulationPass"
 * period.start = "2024-01-01T08:00:00Z"
@@ -26,12 +26,12 @@ Usage: #example
 
 //* location[0].location.display = "UH Adult Emergency Department"
 * location[0].location.display = "EMERGENCY - PAVILION"
-* location[=].location = Reference(location-example-hypo-emergency)
+* location[=].location = Reference(location-example-ach-daily-emergency)
 * location[=].period.start = "2022-08-17T16:25:00Z"
 * location[=].period.end = "2022-08-17T17:01:00Z"
 //* location[+].location.display = "UH 7C MED ACUTE CARE"
 * location[+].location.display = "Health Hospital Location"
-* location[=].location = Reference(location-example-hypo-hospital)
+* location[=].location = Reference(location-example-ach-daily-hospital)
 * location[=].period.start = "2022-08-11T18:52:00Z"
 * location[=].period.end = "2022-08-17T16:09:00Z"
 /* location[+].location.display = "UH 7B MED ACUTE CARE"
