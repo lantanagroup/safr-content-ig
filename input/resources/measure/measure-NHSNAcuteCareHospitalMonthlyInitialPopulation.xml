@@ -674,7 +674,7 @@ define &quot;SDE DiagnosticReport Lab&quot;:
     &quot;Initial Population&quot; IP
     where NHSNHelpers.&quot;Normalize Interval&quot;(Specimens.collection.collected) overlaps IP.period
   )
-  return SharedResource.SpecimenResource(Specimens,
+  return SpecimenResource(Specimens,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-specimen'}})"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -2300,7 +2300,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
             <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SpecimenResource"></valueString>
@@ -2310,20 +2310,16 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   specimen s
   return Specimen{
     id: FHIR.id {value: 'LCR-' + s.id},
-    meta: MetaElement(s, profileURLs),
+    meta: SharedResource.MetaElement(s, profileURLs),
     extension: s.extension,
     identifier: s.identifier,
     accessionIdentifier: s.accessionIdentifier,
     status: s.status,
     type: s.type,
     subject: s.subject,
-    receivedTime: s.receivedTime,
     parent: s.parent,
     request: s.request,
     collection: SpecimenCollection(s.collection),
-    processing: SpecimenProcessing(s.processing),
-    container: SpecimenContainer(s.container),
-    condition: s.condition,
     note: s.note
   }"></valueString>
             </extension>
@@ -2333,7 +2329,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
             <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SpecimenCollection"></valueString>
@@ -2344,58 +2340,12 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   return FHIR.Specimen.Collection{
     collector: c.collector,
     collected: c.collected,
-    &quot;duration&quot;: c.&quot;duration&quot;,
     quantity: c.quantity,
-    method: c.method,
-    bodySite: c.bodySite,
-    fastingStatus: c.fastingStatus
+    bodySite: c.bodySite
   }"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="94"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="SpecimenProcessing"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define function SpecimenProcessing(processing List&lt;FHIR.Specimen.Processing&gt;):
-  processing p
-  return FHIR.Specimen.Processing{
-    description: p.description,
-    procedure: p.procedure,
-    additive: p.additive,
-    time: p.time
-  }"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="95"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="SpecimenContainer"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define function SpecimenContainer(container List&lt;FHIR.Specimen.Container&gt;):
-  container c
-  return FHIR.Specimen.Container{
-    description: c.description,
-    type: c.type,
-    capacity: c.capacity,
-    specimenQuantity: c.specimenQuantity,
-    additive: c.additive
-  }"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="96"></valueInteger>
             </extension>
          </extension>
          <name value="EffectiveDataRequirements"></name>
@@ -3079,12 +3029,8 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <mustSupport value="status"></mustSupport>
             <mustSupport value="type"></mustSupport>
             <mustSupport value="subject"></mustSupport>
-            <mustSupport value="receivedTime"></mustSupport>
             <mustSupport value="parent"></mustSupport>
             <mustSupport value="request"></mustSupport>
-            <mustSupport value="processing"></mustSupport>
-            <mustSupport value="container"></mustSupport>
-            <mustSupport value="condition"></mustSupport>
             <mustSupport value="note"></mustSupport>
          </dataRequirement>
       </Library>
@@ -3094,6 +3040,11 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
    </extension>
    <extension url="http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-effectiveDataRequirements">
       <valueCanonical value="#effective-data-requirements"></valueCanonical>
+   </extension>
+   <extension url="http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-softwaresystem">
+      <valueReference>
+         <reference value="Device/cqf-tooling"></reference>
+      </valueReference>
    </extension>
    <url value="http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation"></url>
    <identifier>
@@ -3105,7 +3056,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
    <title value="NHSN dQM Acute Care Hospital Monthly Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2025-09-24T16:08:06-05:00"></date>
+   <date value="2025-09-29T15:24:04-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="The Acute Care Hospital Monthly Initial Population includes all encounters for patients of any age in an ED, observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period."></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>
