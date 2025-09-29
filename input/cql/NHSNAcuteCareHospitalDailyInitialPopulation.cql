@@ -561,6 +561,46 @@ define "DiagnosticReports":
     dosageInstruction: SharedResource.MedicationRequestDosageInstruction(m.dosageInstruction)
   }
 
+define function "GetProcedureExtensions"(domainResource DomainResource):
+  domainResource.extension E
+    where E.url != 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-recorded'
+     return E
+
+define function ProcedureResource(procedure Procedure, profileURLs List<FHIR.canonical>):
+  procedure p
+  return Procedure{
+    id: FHIR.id {value: 'LCR-' + p.id},
+    meta: SharedResource.MetaElement(p, profileURLs),
+    extension: GetProcedureExtensions(p), 
+    instantiatesCanonical: p.instantiatesCanonical,
+    instantiatesUri: p.instantiatesUri,
+    basedOn: p.basedOn,
+    partOf: p.partOf,
+    status: p.status,
+    statusReason: p.statusReason,
+    category: p.category,
+    code: p.code,
+    subject: p.subject,
+    encounter: p.encounter,
+    performed: p.performed,
+    recorder: p.recorder,
+    asserter: p.asserter,
+    performer: SharedResource.ProcedurePerformer(p.performer),
+    location: p.location,
+    reasonCode: p.reasonCode,
+    reasonReference: p.reasonReference,
+    bodySite: p.bodySite,
+    outcome: p.outcome,
+    report: p.report,
+    complication: p.complication,
+    complicationDetail: p.complicationDetail,
+    followUp: p.followUp,
+    note: p.note,
+    focalDevice: SharedResource.ProcedureFocalDevice(p.focalDevice),
+    usedReference: p.usedReference,
+    usedCode: p.usedCode
+  }
+
 define function ServiceRequestResource(serviceRequest ServiceRequest, profileURLs List<FHIR.canonical>):
   serviceRequest sR
   return ServiceRequest{
