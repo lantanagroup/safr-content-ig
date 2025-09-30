@@ -716,7 +716,6 @@ define function ProcedureResource(procedure Procedure, profileURLs List<FHIR.can
     occurrence: sR.occurrence,
     asNeeded: sR.asNeeded,
     authoredOn: sR.authoredOn,
-    requester: sR.requester,
     specimen: sR.specimen
   }
 
