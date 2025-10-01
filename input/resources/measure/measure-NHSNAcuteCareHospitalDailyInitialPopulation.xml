@@ -393,7 +393,7 @@ define &quot;SDE RSV DiagnosticReport&quot;:
                <valueString value="//return the Observation during the Measurement Period
 define &quot;SDE ACH Daily Observation&quot;:
   &quot;ACH Daily Observation&quot; Observations
-    return SharedResource.ObservationLabResource(Observations,
+    return ObservationLabResource(Observations,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-observation-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -521,7 +521,7 @@ define &quot;SDE All Procedures&quot;:
 define &quot;SDE All Observations&quot;:
   &quot;Observations&quot; O
   where exists(&quot;Initial Population&quot;)
-  return SharedResource.ObservationLabResource(O,
+  return ObservationLabResource(O,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-observation'}})"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -705,7 +705,7 @@ define &quot;SDE IP Encounters&quot;:
                <valueString value="//return the RSV Observation Pre Admission    
 define &quot;SDE RSV PRE Admission Observation&quot;:
   &quot;RSV PRE Admission Observation&quot; Observations
-    return SharedResource.ObservationLabResource(Observations, 
+    return ObservationLabResource(Observations, 
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-observation-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -821,7 +821,7 @@ define &quot;SDE COVID And Influenza DiagnosticReport&quot;:
                <valueString value="//return the COVID-19 and Influenza Observation Pre Admission
 define &quot;SDE COVID And Influenza PRE Admission Observation&quot;:
   &quot;COVID And Influenza PRE Admission Observation&quot; Observations
-    return SharedResource.ObservationLabResource(Observations,
+    return ObservationLabResource(Observations,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-observation-lab'}})"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -1595,7 +1595,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
             <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalDailyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="ObservationLabResource"></valueString>
@@ -1605,7 +1605,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
   observation o
   return Observation{
     id: FHIR.id {value: 'LCR-' + o.id},
-    meta: MetaElement(o, profileURLs),
+    meta: SharedResource.MetaElement(o, profileURLs),
     extension: o.extension,
     basedOn: o.basedOn,
     partOf: o.partOf,
@@ -1626,10 +1626,10 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
     method: o.method,
     specimen: o.specimen,
     device: o.device,
-    referenceRange: ObservationReferenceRange(o.referenceRange),
+    referenceRange: SharedResource.ObservationReferenceRange(o.referenceRange),
     hasMember: o.hasMember,
     derivedFrom: o.derivedFrom,
-    component: ObservationComponent(o.component)
+    component: SharedResource.ObservationComponent(o.component)
   }"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -1638,7 +1638,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
             <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalDailyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="ObservationLabCategory"></valueString>
@@ -1657,7 +1657,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
             <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalDailyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="ObservationLabCoding"></valueString>
@@ -1666,8 +1666,6 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
                <valueString value="define function ObservationLabCoding(coding List&lt;Coding&gt;):
   coding c
   return Coding{
-    id: c.id,
-    extension: c.extension,
     system: c.system,
     version: c.version,
     code: c.code,
@@ -4099,7 +4097,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
    <title value="NHSN Acute Care Hospital Daily Initial Population"></title>
    <status value="draft"></status>
    <experimental value="false"></experimental>
-   <date value="2025-09-24T16:08:06-05:00"></date>
+   <date value="2025-10-01T11:03:51-05:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="All encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period. "></description>
    <copyright value="Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets."></copyright>
