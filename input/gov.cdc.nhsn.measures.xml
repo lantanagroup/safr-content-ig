@@ -246,14 +246,14 @@
             <description value="This profile contains Required and Must Support data elements for reporting blood glucose specimen information to the NHSN Glycemic Control, Hypoglycemia Module. This profile is based on the [HL7 FHIR R4 Specimen Profile v4.0.1](http://hl7.org/fhir/R4/specimen.html)."/>
             <groupingId value="hypo"/>
         </resource>
-        <resource>
+        <!--<resource>
             <reference>
                 <reference value="Measure/NHSNGlycemicControlHypoglycemicInitialPopulation"/>
             </reference>
             <name value="NHSN Glycemic Control, Hypoglycemia Initial Population"/>
             <description value="The Hypoglycemia Initial Population includes all inpatient encounters (including ED/Observation visits that end within one hour of the start of the inpatient encounter) during the measurement period for patients of all ages in which at least one diabetic medication was ordered or administered during the encounter."/>
             <groupingId value="measures"/>
-        </resource>
+        </resource>-->
         <resource>
             <reference>
                 <reference value="Measure/NHSNdQMAcuteCareHospitalMonthlyInitialPopulation"/>
@@ -278,14 +278,14 @@
             <description value="Shared Resource Creation Library"/>
             <groupingId value="libs"/>
         </resource>
-        <resource>
+        <!--<resource>
             <reference>
                 <reference value="Library/NHSNGlycemicControlHypoglycemicInitialPopulation"/>
             </reference>
             <name value="NHSNGlycemicControlHypoglycemicInitialPopulation"/>
             <description value="Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure"/>
             <groupingId value="libs"/>
-        </resource>
+        </resource>-->
         <resource>
             <reference>
                 <reference value="Library/NHSNAcuteCareHospitalDailyInitialPopulation"/>
@@ -379,23 +379,23 @@
             <description value="Device - Submitting Device Example 1"/>
             <groupingId value="example"/>
         </resource>
-        <resource>
+        <!--<resource>
             <reference>
                 <reference value="List/list-example-patients-of-interest"/>
             </reference>
             <name value="List - Example Patients of Interest List 1"/>
             <description value="List - Patients of Interest Example 1"/>
             <groupingId value="example"/>
-        </resource>
+        </resource>-->
 
-        <resource>
+        <!--<resource>
             <reference>
                 <reference value="MeasureReport/measurereport-example-subjectlist1"/>
             </reference>
             <name value="MeasureReport - Example Subject List 1"/>
             <description value="Measure Report - Subject List Example 1"/>
             <groupingId value="example"/>
-        </resource>
+        </resource>-->
 
         <resource>
             <reference>
@@ -475,14 +475,14 @@
             <description value="Condition - Example Hypo Diagnosis Sameresultdiffday 1"/>
             <groupingId value="example"/>
         </resource>
-        <resource>
+        <!--<resource>
             <reference>
                 <reference value="Condition/condition-example-diagnosis-sameresultdiffday2"/>
             </reference>
             <name value="Condition - Hypo Diagnosis Example Sameersultdiffday 2"/>
             <description value="Condition - Example Hypo Diagnosis Sameresultdiffday 2"/>
             <groupingId value="example"/>
-        </resource>
+        </resource>-->
 
         <resource>
             <reference>
