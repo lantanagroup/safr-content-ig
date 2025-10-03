@@ -1,11 +1,66 @@
 <div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R5/fhir-single.xsd">
 	<p>
-    This provides a list of changes to the NHSN Measures IG since its initial release
+    This provides a list of changes to the NHSN Measures IG
   </p>
+  <a name="2.0.0="> </a>
+  <h3>Release 2.0.0</h3>
+  <ul>
+    <li><b>Update Implementation Guide Dependencies (US Core and Measure Related IGs)</b>
+      <ul>
+        <li>Updated the following IG dependencies:
+            <ul>
+              <li>Updated US Core IG dependency from <a href="https://hl7.org/fhir/us/core/STU3.1.1/">US Core 3.1.1</a> to <a href="https://hl7.org/fhir/us/core/STU6.1/">US Core 6.1.0</a></li>
+              <li>Added a dependency to the <a href="https://hl7.org/fhir/us/nhsn-dqm/STU1/">NHSN Digital Quality Measure (dQM) Reporting Implementation Guide</a> used for reporting artifacts including MeasureReport, Patients of Interest List, and other reporting framework artifacts.</li>
+              <li>Updated quality Measures IG dependency from <a href="https://hl7.org/fhir/us/cqfmeasures/STU3/">CQF Measures 3.0.0</a> to <a href="https://hl7.org/fhir/us/cqfmeasures/STU5/">CQF Measures 5.0.0</a>. This includes several Measure related artifact extensions changing from CQFM to CRMI StructureDefinitions.</li>
+              <li>Added a dependency to the <a href="https://hl7.org/fhir/uv/crmi/STU1/">Canonical Resource Management Infrastructure Implementation Guide</a> used for ValueSet definition and Measure extensions. This includes several Measure related artifact extensions changing from CQFM to CRMI StructureDefinitions.</li>
+              <li>Updated Data Exchange For Quality Measures (DeQM) IG dependency from <a href="https://hl7.org/fhir/us/davinci-deqm/STU3.1/">DeQM 3.1.0</a> to <a href="https://hl7.org/fhir/us/davinci-deqm/STU5/">DeQM 5.0.0</a></li>
+              <li>Updated Quality Improvement (QI) Core IG dependency from <a href="https://hl7.org/fhir/us/qicore/STU4.1.1/">QI Core 4.1.1</a> to <a href="https://hl7.org/fhir/us/qicore/STU6/">QI Core 6.0.0</a></li>
+            </ul>
+        </li>
+        <li>This affected the following definitional artifacts:
+          <ul>
+            <li>Update <a href="StructureDefinition-cross-measure-patient.html">Cross-Measure Patient Profile</a> from <a href="https://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-patient.html">US Core 3.1.1 US Core Patient</a> to <a href="https://hl7.org/fhir/us/qicore/STU6/StructureDefinition-qicore-patient.html">QI Core 6.1 Patient</a>, which is based on <a href="https://hl7.org/fhir/us/core/STU6.1/StructureDefinition-us-core-patient.html">US Core 6.1 Patient Profile</a></li>
+            <li>Updated the <a href="StructureDefinition-ip-measurereport-list.html">NHSN Individual MeasureReport List</a> from the FHIR standard base List resource to the <a href="https://hl7.org/fhir/us/davinci-deqm/STU5/StructureDefinition-indv-measurereport-deqm.html">DEQM Individual MeasureReport Profile</a></li>
+            <li>Updated the <a href="StructureDefinition-subjectlist-measurereport.html">Subject-List MeasureReport Profile</a> from the FHIR standard base MeasureReport resource to the <a href="https://hl7.org/fhir/us/davinci-deqm/STU5/StructureDefinition-subjectlist-measurereport-deqm.html">DEQM Subject List MeasureReport</a></li>
+            <li>Updated the <a href="StructureDefinition-nhsn-measurereport-bundle.html">NHSN MeasureReport Bundle</a> from the FHIR standard base Bundle resource to the <a href="http://hl7.org/fhir/us/nhsn-dqm/STU1/StructureDefinition-nhsn-measurereport-bundle.html">HL7 NHSN MeasureReport Bundle Profile</a></li>
+            <li>Removed the Submitting Organization Profile and using the <a href="https://hl7.org/fhir/us/nhsn-dqm/STU1/StructureDefinition-nhsn-submitting-organization.html">HL7 NHSN dQM Submitting Profile</a></li>
+            <li>Removed the Patients of Interest Profile and using the <a href="https://hl7.org/fhir/us/nhsn-dqm/STU1/StructureDefinition-poi-list.html">HL7 NHSN dQM Patients-Of-Interest List</a></li>
+            <li>Removed the SubmittingDevice Profile and using the <a href="https://hl7.org/fhir/us/nhsn-dqm/STU1/StructureDefinition-nhsn-submitting-device.html">HL7 NHSN dQM Submitting Device</a></li>
+            <li>US Core 6.1 updates for Acute Care Hospital Monthly Profiles:
+                <ul>
+                  <li>Apply both US Core 6.1 Condition Profile constraints into a single <a href="StructureDefinition-ach-monthly-condition.html">ACH Monthly Event Condition Profile</a></li>
+                  <li><a href="StructureDefinition-ach-monthly-encounter.html">ACH Monthly Event Encounter</a></li>
+                  <li><a href="StructureDefinition-ach-monthly-device.html">ACH Event Implantable Device</a></li>
+                  <li><a href="StructureDefinition-ach-monthly-diagnosticreport-lab.html">ACH Monthly Event Diagnostic Report (Lab)</a></li>
+                  <li><a href="StructureDefinition-ach-monthly-observation-lab.html">ACH Monthly Event Lab Result Observation</a></li>
+                  <li><a href="StructureDefinition-ach-monthly-location.html">ACH Monthly Event Location</a></li>
+                  <li><a href="StructureDefinition-ach-monthly-medication.html">ACH Monthly Event Medication</a></li>
+                  <li><a href="StructureDefinition-ach-monthly-medicationrequest.html">ACH Monthly Event MedicationRequest</a></li>
+                  <li><a href="StructureDefinition-ach-monthly-diagnosticreport-note.html">ACH Monthly Event Diagnostic Report - Report and Note</a></li>
+                  <li><a href="StructureDefinition-ach-monthly-procedure.html">ACH Monthly Event Procedure</a></li>
+                  <li><a href="StructureDefinition-ach-monthly-specimen.html">ACH Monthly Event Specimen</a></li>
+                </ul> 
+            </li>
+            <li>US Core 6.1 updates for Acute Care Hospital Daily Profiles:
+              <ul>
+                <li><a href="StructureDefinition-ach-daily-encounter.html">ACH Daily Event Encounter</a></li>
+                <li><a href="StructureDefinition-ach-daily-diagnosticreport-lab.html">ACH Daily Event Diagnostic Report (Lab)</a></li>
+                <li><a href="StructureDefinition-ach-daily-observation-lab.html">ACH Daily Event Lab Result Observation</a></li>
+                <li><a href="StructureDefinition-ach-daily-location.html">ACH Daily Event Location</a></li>
+                <li><a href="StructureDefinition-ach-daily-medication.html">ACH Daily Event Medication</a></li>
+                <li><a href="StructureDefinition-ach-daily-medicationrequest.html">ACH Daily Event MedicationRequest</a></li>
+                <li><a href="StructureDefinition-ach-daily-procedure.html">ACH Daily Event Procedure</a></li>
+                <li><a href="StructureDefinition-ach-daily-specimen.html">ACH Daily Event Specimen</a></li>
+              </ul> 
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  
   <a name="1.0.0"> </a>
-	<p>
-		<b>2025 - NHSN Measures - Initial Release</b> based on FHIR R4
-  </p>
+  <h3>Release 1.0.0</h3>
   <ul>
     <li>Initial version</li>
   </ul>
