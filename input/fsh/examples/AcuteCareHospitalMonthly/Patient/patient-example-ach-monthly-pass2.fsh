@@ -15,9 +15,6 @@ Usage: #example
 * extension[=].extension[=].valueString = "Non Hispanic or Latino"
 * extension[+].url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex"
 * extension[=].valueCode = #F
-// Not supported by US Core 3.1.1, Can be added for later versions
-//* extension[+].url = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity"
-//* extension[=].valueCodeableConcept = $sct#446141000124107 "Identifies as female gender (finding)"
 
 * identifier.use = #usual
 * identifier.type = $v2-0203#MR "Medical record number"

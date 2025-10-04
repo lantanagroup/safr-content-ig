@@ -20,14 +20,14 @@ Description: "This profile defines a valid Submission Header Bundle. The Bundle 
     submitting-organization 1..1 and
     submitting-device 1..1 and
     poi-list 0..1 and
-    subject-list 1..*
+    subjectlist-measurereport 1..*
 /*     and
     individual-measurereport 0..* and
     patient 1..1
 */
 * entry[submitting-organization] ^short = "The Submitting Organization: the organization that is the source of the data"
   * resource 1..
-  * resource only SubmittingOrganization
+  * resource only NHSNSubmittingOrganization
     * ^short = "Bundle entry for submitting organization"
 * entry[submitting-device] ^short = "The Submitting Device: the device or software that is submitting the data"
   * resource 1..
@@ -37,7 +37,7 @@ Description: "This profile defines a valid Submission Header Bundle. The Bundle 
   * resource 1..
   * resource only PatientsOfInterestList
     * ^short = "The Bundle entry for Patients of Interest List"
-* entry[subject-list] ^short = "Summary Measure Report: For each measure, there is one Summary MeasureReport. The Summary MeasureReport includes the population count and a link to the List of Individual MeasureReports that are included in the summary"
+* entry[subjectlist-measurereport] ^short = "Summary Measure Report: For each measure, there is one Summary MeasureReport. The Summary MeasureReport includes the population count and a link to the List of Individual MeasureReports that are included in the summary"
   * resource 1..
   * resource only SubjectListMeasureReportProfile
     * ^short = "The Bundle entry for a Summary Measure Report"

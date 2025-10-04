@@ -4,7 +4,7 @@
   "meta": {
     "versionId": "8",
     "lastUpdated": "2019-04-25T15:36:46.000-04:00",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/shareablevalueset", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-valueset-cqfm" ]
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/shareablevalueset", "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishablevalueset" ]
   },
   "extension": [ {
     "url": "http://hl7.org/fhir/StructureDefinition/valueset-effectiveDate",
