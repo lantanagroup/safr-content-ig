@@ -3,13 +3,15 @@
   <a name="overview"></a>
   <h3>Overview</h3>
   <p>The content of The Centers for Disease Control and Prevention (CDC) National Healthcare Safety Network (NHSN) Digital Quality Measures (dQMs) Content Package implementation guide (IG) defines the standards for reporting the initial population and supplemental data elements needed for calculating metrics for the CDC NHSN dQMs Content Package. This IG does not define how to calculate a specific NHSN dQM or event of interest.</p>
-  <p>This IG complies with the NHSN dQM Reporting IG, published by Health Level Seven International (HL7®) International for general requirements for submissions to NHSN. The [NHSN dQM Reporting IG](https://hl7.org/fhir/us/nhsn-dqm/) specifications will be revised in accordance with any changes to NHSN reporting requirements. The figure below shows how the CDC NHSN dQM IG fits into the broader landscape of HL7 FHIR and NHSN IGs.</p>
-  <div>
-    <figure class="figure">
-        <figcaption class="figure-caption"><strong>Figure 1: NHSN Implementation Guide Hierarchy</strong></figcaption>
-        <img src="IG_Relationships.PNG" alt="Figure 1: NHSN Implementation Guide Hierarchy" title="Figure 1: NHSN Implementation Guide Hierarchy" class="img-responsive img-rounded center-block" width="75%"></img>
-    </figure>
-  </div>
+  <p class="new-content">
+    This IG complies with the NHSN dQM Reporting IG, published by Health Level Seven International (HL7®) International for general requirements for submissions to NHSN. The [NHSN dQM Reporting IG](https://hl7.org/fhir/us/nhsn-dqm/) specifications will be revised in accordance with any changes to NHSN reporting requirements. The figure below shows how the CDC NHSN dQM IG fits into the broader landscape of HL7 FHIR and NHSN IGs.
+    <div>
+      <figure class="figure">
+          <figcaption class="figure-caption"><strong>Figure 1: NHSN Implementation Guide Hierarchy</strong></figcaption>
+          <img src="IG_Relationships.PNG" alt="Figure 1: NHSN Implementation Guide Hierarchy" title="Figure 1: NHSN Implementation Guide Hierarchy" class="img-responsive img-rounded center-block" width="75%"></img>
+      </figure>
+    </div>
+  </p>
   <a name="purpose"></a>
   <h3>Purpose</h3>
   <p>
@@ -19,14 +21,16 @@
   <p>
     This IG has the following dependencies:
     <ol>
-      <li><a name="nhsn_dqm_reporting">HL7 FHIR NHSN dQM Reporting, Release 1.0.0</a>: <a href="https://build.fhir.org/ig/HL7/nhsn-dqm/artifacts.html">https://build.fhir.org/ig/HL7/nhsn-dqm/artifacts.html</a></li>
+      <!-- <li><a name="nhsn_dqm_reporting">HL7 FHIR NHSN dQM Reporting, Edition 1</a>: <a href="https://build.fhir.org/ig/HL7/nhsn-dqm/artifacts.html">https://build.fhir.org/ig/HL7/nhsn-dqm/artifacts.html</a></li> -->
       <li><a name="fhir_r4" href="{{site.data.fhir.path}}">HL7 FHIR Release 4</a></li>
-      <li><a name="us_core" href="{{site.data.fhir.ver.uscore3}}">US Core 3.1.1</a></li>
       <li><a name="us_core" href="{{site.data.fhir.ver.uscore}}">US Core 6.1.0</a></li>
+      <li><a name="us_core3" href="{{site.data.fhir.ver.uscore3}}">US Core 3.1.1</a></li>
       <li><a name="qi_core" href="{{site.data.fhir.ver.qicore}}">QI Core 4.1.1</a></li>
-      <li><a name="cqf_measures" href="{{site.data.fhir.ver.cqfm}}">Quality Measure IG 3.0.0</a></li>
+      <li><a name="nhsn_dqm" href="{{site.data.fhir.ver.dqm}}">HL7 NHSN dQM 1.0.0</a></li>
+      <li><a name="crmi" href="{{site.data.fhir.ver.crmi}}">HL7 CRMI 1.0.0</a></li>
+      <li><a name="cqf_measures" href="{{site.data.fhir.ver.cqfm}}">Quality Measure IG 5.0.0</a></li>
       <li><a name="cqf_common" href="{{site.data.fhir.ver.cqf}}">Clinical Quality Framework Common FHIR Assets 4.0.1</a></li>
-      <li><a name="deqm" href="{{site.data.fhir.ver.deqm}}">Data Exchange for Quality Measures (DEQM) 3.1.0</a></li>
+      <li><a name="deqm" href="{{site.data.fhir.ver.deqm}}">Data Exchange for Quality Measures (DEQM) 5.0.0</a></li>
     </ol>
   </p>
   <a name="audience"></a>
