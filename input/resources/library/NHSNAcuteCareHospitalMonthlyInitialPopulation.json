@@ -60,7 +60,7 @@
     }
   } ],
   "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNAcuteCareHospitalMonthlyInitialPopulation",
-  "version": "1.0.1-dev",
+  "version": "2.0.0-cibuild",
   "name": "NHSNAcuteCareHospitalMonthlyInitialPopulation",
   "type": {
     "coding": [ {
@@ -112,6 +112,10 @@
     "type": "depends-on",
     "display": "Code system Condition Clinical Status",
     "resource": "http://terminology.hl7.org/CodeSystem/condition-clinical"
+  }, {
+    "type": "depends-on",
+    "display": "Code system SNOMEDCT",
+    "resource": "http://www.snomed.org/"
   }, {
     "type": "depends-on",
     "display": "Value set Inpatient, Emergency, and Observation Locations",
@@ -200,6 +204,12 @@
     "max": "*",
     "type": "Condition"
   }, {
+    "name": "SDE Coverage",
+    "use": "out",
+    "min": 0,
+    "max": "*",
+    "type": "Coverage"
+  }, {
     "name": "SDE Device",
     "use": "out",
     "min": 0,
@@ -277,12 +287,6 @@
     "min": 0,
     "max": "*",
     "type": "Observation"
-  }, {
-    "name": "SDE Coverage",
-    "use": "out",
-    "min": 0,
-    "max": "*",
-    "type": "Coverage"
   }, {
     "name": "SDE Procedure",
     "use": "out",
@@ -389,6 +393,10 @@
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Observation" ],
     "mustSupport": [ "id", "extension", "basedOn", "partOf", "status", "category", "code", "subject", "focus", "encounter", "effective", "issued", "performer", "value", "dataAbsentReason", "interpretation", "note", "bodySite", "method", "specimen", "device", "referenceRange", "hasMember", "derivedFrom", "component" ]
   }, {
+    "type": "Coverage",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Coverage" ],
+    "mustSupport": [ "period", "id", "extension", "status", "type", "beneficiary", "payor" ]
+  }, {
     "type": "Device",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Device" ],
     "mustSupport": [ "id", "extension", "definition", "udiCarrier", "status", "statusReason", "distinctIdentifier", "manufacturer", "manufactureDate", "expirationDate", "lotNumber", "serialNumber", "deviceName", "modelNumber", "partNumber", "type", "specialization", "version", "property", "patient", "owner", "contact", "location", "url", "note", "safety", "parent" ]
@@ -404,10 +412,6 @@
     "type": "Medication",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Medication" ],
     "mustSupport": [ "id", "extension", "code", "status", "manufacturer", "form", "amount", "ingredient", "batch" ]
-  }, {
-    "type": "Coverage",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Coverage" ],
-    "mustSupport": [ "period", "id", "extension", "status", "type", "policyHolder", "subscriber", "subscriberId", "beneficiary", "dependent", "relationship", "payor", "class", "order", "network", "subrogation", "contract" ]
   }, {
     "type": "Procedure",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Procedure" ],

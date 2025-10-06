@@ -1405,7 +1405,7 @@ define function &quot;GetMedicationFrom&quot;(choice Choice&lt;FHIR.CodeableConc
       <system value="https://nhsnlink.org"></system>
       <value value="NHSNLongTermCareMonthlyInitialPopulation"></value>
    </identifier>
-   <version value="1.0.0-dev"></version>
+   <version value="2.0.0-cibuild"></version>
    <name value="NHSNLongTermCareMonthlyInitialPopulation"></name>
    <title value="NHSN Long Term Care Monthly Initial Population"></title>
    <status value="draft"></status>

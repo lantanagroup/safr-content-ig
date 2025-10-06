@@ -5,7 +5,7 @@ FROM lantanagroup/measure-builder:latest AS build
 
 WORKDIR /work
 COPY . .
-# Forcing script without prompts
+# Forcing script without prompts and don't update scripts (in order to run with more heap space)
 RUN bash _updatePublisher.sh --yes
 RUN bash _updateCQFTooling.sh --yes
 RUN sushi .
