@@ -60,7 +60,7 @@
     }
   } ],
   "url": "http://www.cdc.gov/nhsn/fhirportal/dqm/ig/Library/NHSNAcuteCareHospitalMonthlyInitialPopulation",
-  "version": "1.0.0-dev",
+  "version": "2.0.0-cibuild",
   "name": "NHSNAcuteCareHospitalMonthlyInitialPopulation",
   "type": {
     "coding": [ {
@@ -115,11 +115,7 @@
   }, {
     "type": "depends-on",
     "display": "Code system SNOMEDCT",
-    "resource": "http://snomed.info/sct"
-  }, {
-    "type": "depends-on",
-    "display": "Code system MedicationRequest Category",
-    "resource": "http://terminology.hl7.org/CodeSystem/medicationrequest-category"
+    "resource": "http://www.snomed.org/"
   }, {
     "type": "depends-on",
     "display": "Value set Inpatient, Emergency, and Observation Locations",
@@ -208,6 +204,12 @@
     "max": "*",
     "type": "Condition"
   }, {
+    "name": "SDE Coverage",
+    "use": "out",
+    "min": 0,
+    "max": "*",
+    "type": "Coverage"
+  }, {
     "name": "SDE Device",
     "use": "out",
     "min": 0,
@@ -285,12 +287,6 @@
     "min": 0,
     "max": "*",
     "type": "Observation"
-  }, {
-    "name": "SDE Coverage",
-    "use": "out",
-    "min": 0,
-    "max": "*",
-    "type": "Coverage"
   }, {
     "name": "SDE Procedure",
     "use": "out",
@@ -391,11 +387,15 @@
   }, {
     "type": "DiagnosticReport",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/DiagnosticReport" ],
-    "mustSupport": [ "id", "extension", "basedOn", "status", "category", "code", "subject", "encounter", "effective", "issued", "specimen", "result", "conclusion", "conclusionCode", "performer", "resultsInterpreter" ]
+    "mustSupport": [ "id", "extension", "basedOn", "status", "category", "code", "subject", "encounter", "effective", "issued", "performer", "resultsInterpreter", "specimen", "result", "conclusion", "conclusionCode" ]
   }, {
     "type": "Observation",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Observation" ],
-    "mustSupport": [ "id", "extension", "partOf", "status", "category", "code", "subject", "encounter", "effective", "issued", "value", "dataAbsentReason", "interpretation", "bodySite", "method", "specimen", "referenceRange", "hasMember", "derivedFrom", "component", "focus", "performer", "note", "device" ]
+    "mustSupport": [ "id", "extension", "basedOn", "partOf", "status", "category", "code", "subject", "focus", "encounter", "effective", "issued", "performer", "value", "dataAbsentReason", "interpretation", "note", "bodySite", "method", "specimen", "device", "referenceRange", "hasMember", "derivedFrom", "component" ]
+  }, {
+    "type": "Coverage",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Coverage" ],
+    "mustSupport": [ "period", "id", "extension", "status", "type", "beneficiary", "payor" ]
   }, {
     "type": "Device",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Device" ],
@@ -413,13 +413,9 @@
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Medication" ],
     "mustSupport": [ "id", "extension", "code", "status", "manufacturer", "form", "amount", "ingredient", "batch" ]
   }, {
-    "type": "Coverage",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Coverage" ],
-    "mustSupport": [ "period", "id", "extension", "status", "type", "policyHolder", "subscriber", "subscriberId", "beneficiary", "dependent", "relationship", "payor", "class", "order", "network", "subrogation", "contract" ]
-  }, {
     "type": "Procedure",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Procedure" ],
-    "mustSupport": [ "performed", "id", "extension", "basedOn", "partOf", "status", "category", "code", "subject", "encounter", "location", "reasonCode", "reasonReference", "bodySite" ]
+    "mustSupport": [ "performed", "id", "extension", "instantiatesCanonical", "instantiatesUri", "basedOn", "partOf", "status", "statusReason", "category", "code", "subject", "encounter", "recorder", "asserter", "performer", "location", "reasonCode", "reasonReference", "bodySite", "outcome", "report", "complication", "complicationDetail", "followUp", "note", "focalDevice", "usedReference", "usedCode" ]
   }, {
     "type": "Specimen",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Specimen" ],
@@ -427,7 +423,7 @@
   }, {
     "type": "ServiceRequest",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/ServiceRequest" ],
-    "mustSupport": [ "authoredOn", "id", "extension", "basedOn", "status", "intent", "category", "priority", "doNotPerform", "code", "quantity", "subject", "encounter", "occurrence", "asNeeded", "requester", "specimen" ]
+    "mustSupport": [ "authoredOn", "id", "extension", "instantiatesCanonical", "instantiatesUri", "basedOn", "replaces", "requisition", "status", "intent", "category", "priority", "doNotPerform", "code", "orderDetail", "quantity", "subject", "encounter", "occurrence", "asNeeded", "requester", "performerType", "performer", "locationCode", "locationReference", "reasonCode", "reasonReference", "insurance", "supportingInfo", "specimen", "bodySite", "note", "patientInstruction", "relevantHistory" ]
   } ],
   "content": [ {
     "contentType": "text/cql",

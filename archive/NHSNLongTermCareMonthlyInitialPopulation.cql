@@ -1,4 +1,4 @@
-library NHSNLongTermCareMonthlyInitialPopulation version '1.0.0-dev'
+library NHSNLongTermCareMonthlyInitialPopulation version '2.0.0-cibuild'
 
 using FHIR version '4.0.1'
 

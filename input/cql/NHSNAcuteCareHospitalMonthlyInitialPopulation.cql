@@ -1,4 +1,4 @@
-library NHSNAcuteCareHospitalMonthlyInitialPopulation version '1.0.0-dev'
+library NHSNAcuteCareHospitalMonthlyInitialPopulation version '2.0.0-cibuild'
 
 using FHIR version '4.0.1'
 
@@ -133,6 +133,14 @@ define "SDE Condition":
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-condition'}},
    {"encounter-diagnosis"})
 
+define "SDE Coverage": 
+	[Coverage] Coverages
+  where exists(
+    "Initial Population" IP
+    where Coverages.period overlaps IP.period)
+  return CoverageResource(Coverages,
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-coverage'}})
+
 define "SDE Device":
   [Device] Devices 
   where exists("Initial Population")
@@ -160,7 +168,8 @@ define "SDE DiagnosticReport Note":
       "Initial Population" IP
       where NHSNHelpers."Normalize Interval"(DiagnosticReports.effective) overlaps IP.period)
   return DiagnosticReportResource(DiagnosticReports,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-diagnosticreport-note'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-diagnosticreport-note'}},
+  {"Radiology", "Pathology", "Cardiology", "LAB"})
 
 define "SDE DiagnosticReport Others":
   [DiagnosticReport] DiagnosticReports
@@ -171,7 +180,8 @@ define "SDE DiagnosticReport Others":
     and exists("Initial Population" IP
       where NHSNHelpers."Normalize Interval"(DiagnosticReports.effective) overlaps IP.period)
   return DiagnosticReportResource(DiagnosticReports,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-diagnosticreport'}})
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-diagnosticreport'}},
+  {"Radiology", "Pathology", "Cardiology", "LAB"})
 //#End DiagnosticReport block
 
 define "SDE Encounter": 
@@ -256,14 +266,6 @@ define "SDE Observation Category":
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-observation'}},
   {"imaging", "procedure", "vital-signs", "laboratory"})
 
-define "SDE Coverage": 
-	[Coverage] Coverages
-  where exists(
-    "Initial Population" IP
-    where Coverages.period overlaps IP.period)
-  return SharedResource.CoverageResource(Coverages,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-coverage'}})
-
 define "SDE Procedure":
   [Procedure] Procedures 
   where exists(
@@ -279,7 +281,7 @@ define "SDE Specimen":
     "Initial Population" IP
     where NHSNHelpers."Normalize Interval"(Specimens.collection.collected) overlaps IP.period
   )
-  return SharedResource.SpecimenResource(Specimens,
+  return SpecimenResource(Specimens,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-specimen'}})
 
 define "SDE Service Request":
@@ -361,46 +363,17 @@ define function ConditionResource(condition Condition, profileURLs List<FHIR.can
     recordedDate: c.recordedDate
   }
 
-define function DeviceUdiCarrier(udiCarrier List<FHIR.Device.UdiCarrier>):
-  udiCarrier u
-  return FHIR.Device.UdiCarrier{
-    deviceIdentifier: u.deviceIdentifier,
-    issuer: u.issuer,
-    jurisdiction: u.jurisdiction,
-    carrierAIDC: u.carrierAIDC,
-    carrierHRF: u.carrierHRF,
-    entryType: u.entryType
-  }
-
-define function DeviceDeviceName(deviceName List<FHIR.Device.DeviceName>):
-  deviceName d
-  return FHIR.Device.DeviceName{
-    name: d.name,
-    type: d.type
-  }
-
-define function DeviceSpecialization(specialization List<FHIR.Device.Specialization>):
-  specialization s
-  return FHIR.Device.Specialization{
-    systemType: s.systemType,
-    version: s.version
-  }
-
-define function DeviceVersion(version List<FHIR.Device.Version>):
-  version v
-  return FHIR.Device.Version{
-    type: v.type,
-    component: v.component,
-    value: v.value
-  }
-
-define function DeviceProperty(deviceProperty List<FHIR.Device.Property>):
-  deviceProperty d
-  return FHIR.Device.Property{
-    id: d.id,
-    type: d.type,
-    valueQuantity: d.valueQuantity,
-    valueCode: d.valueCode
+define function CoverageResource(coverage Coverage, profileURLs List<FHIR.canonical>):
+  coverage c
+  return Coverage{
+    id: FHIR.id{value: 'LCR-' + c.id},
+    meta: SharedResource.MetaElement(c, profileURLs),
+    extension: c.extension,
+    status: c.status,
+    type: c.type,
+    beneficiary: c.beneficiary,
+    period: c.period,
+    payor: c.payor
   }
 
 define function DeviceResource(device Device, profileURLs List<FHIR.canonical>):
@@ -409,30 +382,14 @@ define function DeviceResource(device Device, profileURLs List<FHIR.canonical>):
     id: FHIR.id{value: 'LCR-' + d.id},
     meta: SharedResource.MetaElement(d, profileURLs),
     extension: d.extension,
-    definition: d.definition,
-    udiCarrier: DeviceUdiCarrier(d.udiCarrier),
     status: d.status,
-    statusReason: d.statusReason,
-    distinctIdentifier: d.distinctIdentifier,
-    manufacturer: d.manufacturer,
-    manufactureDate: d.manufactureDate,
     expirationDate: d.expirationDate,
     lotNumber: d.lotNumber,
     serialNumber: d.serialNumber,
-    deviceName: DeviceDeviceName(d.deviceName),
     modelNumber: d.modelNumber,
     partNumber: d.partNumber,
     type: d.type,
-    specialization: DeviceSpecialization(d.specialization),
-    version: DeviceVersion(d.version),
-    property: DeviceProperty(d.property),
     patient: d.patient,
-    owner: d.owner,
-    contact: d.contact,
-    location: d.location,
-    url: d.url,
-    note: d.note,
-    safety: d.safety,
     parent: d.parent
   }
 
@@ -471,7 +428,7 @@ define function DiagnosticReportLabResource(diagnosticReport DiagnosticReport, p
     conclusionCode: d.conclusionCode
   }
 
-define function DiagnosticReportResource(diagnosticReport DiagnosticReport, profileURLs List<FHIR.canonical>):
+define function DiagnosticReportResource(diagnosticReport DiagnosticReport, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
   diagnosticReport d
   return DiagnosticReport{
     id: FHIR.id{value: 'LCR-' + d.id},
@@ -479,14 +436,12 @@ define function DiagnosticReportResource(diagnosticReport DiagnosticReport, prof
     extension: d.extension,
     basedOn: d.basedOn,
     status: d.status,
-    category: d.category,
+    category: FilterCodeableConcepts(d.category, acceptedCategories),
     code: d.code,
     subject: d.subject,
     encounter: d.encounter,
     effective: d.effective,
     issued: d.issued,
-    performer: d.performer,
-    resultsInterpreter: d.resultsInterpreter,
     specimen: d.specimen,
     result: d.result,
     conclusion: d.conclusion,
@@ -537,6 +492,47 @@ define function LocationResource(location Location, profileURLs List<FHIR.canoni
     physicalType: l.physicalType,
     managingOrganization: l.managingOrganization,
     partOf: l.partOf
+  }
+
+define function MedicationRequestRepeat(repeat FHIR.Timing.Repeat):
+  repeat r
+  return FHIR.Timing.Repeat{
+    bounds: r.bounds,
+    count: r.count,
+    countMax: r.countMax,
+    "duration": r."duration",
+    durationMax: r.durationMax,
+    durationUnit: r.durationUnit,
+    frequency: r.frequency,
+    frequencyMax: r.frequencyMax,
+    period: r.period,
+    periodMax: r.periodMax,
+    periodUnit: r.periodUnit,
+    dayOfWeek: r.dayOfWeek,
+    timeOfDay: r.timeOfDay,
+    "when": r."when",
+    offset: r.offset
+  }
+
+define function MedicationRequestTiming(timing FHIR.Timing):
+  timing t
+  return FHIR.Timing{
+    event: t.event,
+    repeat: MedicationRequestRepeat(t.repeat),
+    code: t.code
+  }
+
+define function MedicationRequestDosageInstruction(dosageInstruction List<FHIR.Dosage>):
+  dosageInstruction dI
+  return FHIR.Dosage{
+    text: dI.text,
+    patientInstruction: dI.patientInstruction,
+    timing: MedicationRequestTiming(dI.timing),
+    asNeeded: dI.asNeeded,
+    site: dI.site,
+    route: dI.route,
+    method: dI.method,
+    doseAndRate: SharedResource.MedicationRequestDoseAndRate(dI.doseAndRate)
   }
 
 define function MedicationRequestResource(medicationRequest MedicationRequest, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
@@ -602,6 +598,23 @@ define function ObservationLabReferenceRange(referenceRange List<FHIR.Observatio
     age: rR.age
   }
 
+define function ObservationLabCoding(coding List<Coding>):
+  coding c
+  return Coding{
+    system: c.system,
+    version: c.version,
+    code: c.code,
+    display: c.display,
+    userSelected: c.userSelected
+  }
+
+define function ObservationLabCategory(category List<CodeableConcept>):
+  category c
+  return CodeableConcept{
+    coding: ObservationLabCoding(c.coding),
+    text: c.text
+  }
+
 define function ObservationLabResource(observation Observation, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
   observation o
   return Observation{
@@ -610,7 +623,7 @@ define function ObservationLabResource(observation Observation, profileURLs List
     extension: o.extension,
     partOf: o.partOf,
     status: o.status,
-    category: FilterCodeableConcepts(SharedResource.ObservationLabCategory(o.category), acceptedCategories),
+    category: FilterCodeableConcepts(ObservationLabCategory(o.category), acceptedCategories),
     code: o.code,
     subject: o.subject,
     encounter: o.encounter,
@@ -691,6 +704,16 @@ define function ObservationVitalSignsComponent(component List<FHIR.Observation.C
     referenceRange: SharedResource.ObservationReferenceRange(c.referenceRange)
   }
 
+define function ObservationVitalSignsReferenceRange(referenceRange List<FHIR.Observation.ReferenceRange>):
+  referenceRange rR
+  return FHIR.Observation.ReferenceRange{
+    low: rR.low,
+    high: rR.high,
+    type: rR.type,
+    appliesTo: rR.appliesTo,
+    age: rR.age
+  }
+
 define function ObservationVitalSignsResource(observation Observation, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
   observation o
   return Observation{
@@ -702,32 +725,32 @@ define function ObservationVitalSignsResource(observation Observation, profileUR
     category: FilterCodeableConcepts(ObservationVitalSignsCategory(o.category), acceptedCategories),
     code: o.code,
     subject: o.subject,
-    focus: o.focus,
     encounter: o.encounter,
     effective: o.effective,
     issued: o.issued,
-    performer: o.performer,
     value: o.value,
     dataAbsentReason: o.dataAbsentReason,
     interpretation: o.interpretation,
-    note: o.note,
     bodySite: o.bodySite,
     method: o.method,
     specimen: o.specimen,
-    device: o.device,
-    referenceRange: SharedResource.ObservationReferenceRange(o.referenceRange),
+    referenceRange: ObservationVitalSignsReferenceRange(o.referenceRange),
     hasMember: o.hasMember,
     derivedFrom: o.derivedFrom,
     component: ObservationVitalSignsComponent(o.component)
   }
 
-
+ define function "GetProcedureExtensions"(domainResource DomainResource):
+  domainResource.extension E
+    where E.url != 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-recorded'
+     return E
+ 
 define function ProcedureResource(procedure Procedure, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
   procedure p
   return Procedure{
     id: FHIR.id {value: 'LCR-' + p.id},
     meta: SharedResource.MetaElement(p, profileURLs),
-    extension: p.extension,
+    extension: GetProcedureExtensions(p), 
     basedOn: p.basedOn,
     partOf: p.partOf,
     status: p.status,

@@ -29,6 +29,13 @@ Description: "Encounter: references at least one Location where type is from 'In
 Severity: #warning
 Expression: "location.where(location.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists()).exists() or location.where(location.resolve().partOf.resolve().type.where(coding.memberOf('http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1046.265')).exists()).exists()"
 
+Invariant: dqm-Con-2
+Description: "At least one Condition.category SHALL be encounter-diagnosis, problem-list-item, or health-concern"
+Severity: #error
+Expression: "category.where(coding.where(system = 'http://terminology.hl7.org/CodeSystem/condition-category' and code='encounter-diagnosis').exists()).exists() or category.where(coding.memberOf('http://hl7.org/fhir/us/core/ValueSet/us-core-problem-or-health-concern')).exists()"
+XPath: "true()"
+
+
 /*
 Removing because MEASDEV-1977 called for the creation of an additional invariant for "ACH Daily and Monthly Encounter profiles" to validate the presence of an HSLOC code in Location.type
 Invariant: location-type-initial-population

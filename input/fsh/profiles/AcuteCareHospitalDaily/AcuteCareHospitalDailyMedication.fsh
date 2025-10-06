@@ -1,8 +1,9 @@
 Profile: AcuteCareHospitalDailyEventMedication
-Parent: USCoreMedicationProfile
+Parent: USCoreMedicationProfile|6.1.0
 Id: ach-daily-medication
 Title: "ACH Daily Event Medication"
 Description: "This profile contains Required and Must Support data elements for reporting medication information for the NHSN Acute Care Hospital (ACH) Daily Digital Quality Measure. This profile is based on the [HL7 FHIR® US Core Medication Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-medication.html)."
+* ^baseDefinition = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medication|6.1.0"
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 * code from http://hl7.org/fhir/us/core/ValueSet/us-core-medication-codes (extensible)
