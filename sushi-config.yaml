@@ -56,8 +56,8 @@ dependencies:
   hl7.fhir.us.qicore: 
     version: 6.0.0
     id: qicore
-  hl7.fhir.extensions.r5:
-        version: 5.2.0
+  hl7.fhir.extensions.r4:
+    version: 5.2.0
 
 
 description: "This content describes the specifications for the for the Health Level Seven International® (HL7) Fast Healthcare Interoperability Resources® (FHIR) digital quality measures (dQMs) reported to the National Healthcare Safety Network (NHSN)."
@@ -81,9 +81,9 @@ parameters:
     - input/intro-notes
     #- input/includes
 
-  version-comparison-master: 1.0.0
-  version-comparison:
-    - 1.0.0
+  #version-comparison-master: 1.0.0
+  #version-comparison:
+  #  - 1.0.0
 
   
   special-url-base: 

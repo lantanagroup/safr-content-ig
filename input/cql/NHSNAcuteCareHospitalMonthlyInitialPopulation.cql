@@ -281,7 +281,7 @@ define "SDE Specimen":
     "Initial Population" IP
     where NHSNHelpers."Normalize Interval"(Specimens.collection.collected) overlaps IP.period
   )
-  return SharedResource.SpecimenResource(Specimens,
+  return SpecimenResource(Specimens,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-specimen'}})
 
 define "SDE Service Request":
@@ -494,6 +494,47 @@ define function LocationResource(location Location, profileURLs List<FHIR.canoni
     partOf: l.partOf
   }
 
+define function MedicationRequestRepeat(repeat FHIR.Timing.Repeat):
+  repeat r
+  return FHIR.Timing.Repeat{
+    bounds: r.bounds,
+    count: r.count,
+    countMax: r.countMax,
+    "duration": r."duration",
+    durationMax: r.durationMax,
+    durationUnit: r.durationUnit,
+    frequency: r.frequency,
+    frequencyMax: r.frequencyMax,
+    period: r.period,
+    periodMax: r.periodMax,
+    periodUnit: r.periodUnit,
+    dayOfWeek: r.dayOfWeek,
+    timeOfDay: r.timeOfDay,
+    "when": r."when",
+    offset: r.offset
+  }
+
+define function MedicationRequestTiming(timing FHIR.Timing):
+  timing t
+  return FHIR.Timing{
+    event: t.event,
+    repeat: MedicationRequestRepeat(t.repeat),
+    code: t.code
+  }
+
+define function MedicationRequestDosageInstruction(dosageInstruction List<FHIR.Dosage>):
+  dosageInstruction dI
+  return FHIR.Dosage{
+    text: dI.text,
+    patientInstruction: dI.patientInstruction,
+    timing: MedicationRequestTiming(dI.timing),
+    asNeeded: dI.asNeeded,
+    site: dI.site,
+    route: dI.route,
+    method: dI.method,
+    doseAndRate: SharedResource.MedicationRequestDoseAndRate(dI.doseAndRate)
+  }
+
 define function MedicationRequestResource(medicationRequest MedicationRequest, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
   medicationRequest m
   return MedicationRequest{
@@ -557,6 +598,23 @@ define function ObservationLabReferenceRange(referenceRange List<FHIR.Observatio
     age: rR.age
   }
 
+define function ObservationLabCoding(coding List<Coding>):
+  coding c
+  return Coding{
+    system: c.system,
+    version: c.version,
+    code: c.code,
+    display: c.display,
+    userSelected: c.userSelected
+  }
+
+define function ObservationLabCategory(category List<CodeableConcept>):
+  category c
+  return CodeableConcept{
+    coding: ObservationLabCoding(c.coding),
+    text: c.text
+  }
+
 define function ObservationLabResource(observation Observation, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
   observation o
   return Observation{
@@ -565,7 +623,7 @@ define function ObservationLabResource(observation Observation, profileURLs List
     extension: o.extension,
     partOf: o.partOf,
     status: o.status,
-    category: FilterCodeableConcepts(SharedResource.ObservationLabCategory(o.category), acceptedCategories),
+    category: FilterCodeableConcepts(ObservationLabCategory(o.category), acceptedCategories),
     code: o.code,
     subject: o.subject,
     encounter: o.encounter,
@@ -646,6 +704,16 @@ define function ObservationVitalSignsComponent(component List<FHIR.Observation.C
     referenceRange: SharedResource.ObservationReferenceRange(c.referenceRange)
   }
 
+define function ObservationVitalSignsReferenceRange(referenceRange List<FHIR.Observation.ReferenceRange>):
+  referenceRange rR
+  return FHIR.Observation.ReferenceRange{
+    low: rR.low,
+    high: rR.high,
+    type: rR.type,
+    appliesTo: rR.appliesTo,
+    age: rR.age
+  }
+
 define function ObservationVitalSignsResource(observation Observation, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
   observation o
   return Observation{
@@ -657,20 +725,16 @@ define function ObservationVitalSignsResource(observation Observation, profileUR
     category: FilterCodeableConcepts(ObservationVitalSignsCategory(o.category), acceptedCategories),
     code: o.code,
     subject: o.subject,
-    focus: o.focus,
     encounter: o.encounter,
     effective: o.effective,
     issued: o.issued,
-    performer: o.performer,
     value: o.value,
     dataAbsentReason: o.dataAbsentReason,
     interpretation: o.interpretation,
-    note: o.note,
     bodySite: o.bodySite,
     method: o.method,
     specimen: o.specimen,
-    device: o.device,
-    referenceRange: SharedResource.ObservationReferenceRange(o.referenceRange),
+    referenceRange: ObservationVitalSignsReferenceRange(o.referenceRange),
     hasMember: o.hasMember,
     derivedFrom: o.derivedFrom,
     component: ObservationVitalSignsComponent(o.component)
