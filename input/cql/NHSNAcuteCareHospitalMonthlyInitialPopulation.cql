@@ -740,13 +740,17 @@ define function ObservationVitalSignsResource(observation Observation, profileUR
     component: ObservationVitalSignsComponent(o.component)
   }
 
-
+ define function "GetProcedureExtensions"(domainResource DomainResource):
+  domainResource.extension E
+    where E.url != 'http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-recorded'
+     return E
+ 
 define function ProcedureResource(procedure Procedure, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
   procedure p
   return Procedure{
     id: FHIR.id {value: 'LCR-' + p.id},
     meta: SharedResource.MetaElement(p, profileURLs),
-    extension: p.extension,
+    extension: GetProcedureExtensions(p), 
     basedOn: p.basedOn,
     partOf: p.partOf,
     status: p.status,
