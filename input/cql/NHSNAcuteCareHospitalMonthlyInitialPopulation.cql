@@ -557,6 +557,23 @@ define function ObservationLabReferenceRange(referenceRange List<FHIR.Observatio
     age: rR.age
   }
 
+define function ObservationLabCoding(coding List<Coding>):
+  coding c
+  return Coding{
+    system: c.system,
+    version: c.version,
+    code: c.code,
+    display: c.display,
+    userSelected: c.userSelected
+  }
+
+define function ObservationLabCategory(category List<CodeableConcept>):
+  category c
+  return CodeableConcept{
+    coding: ObservationLabCoding(c.coding),
+    text: c.text
+  }
+
 define function ObservationLabResource(observation Observation, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
   observation o
   return Observation{
@@ -565,7 +582,7 @@ define function ObservationLabResource(observation Observation, profileURLs List
     extension: o.extension,
     partOf: o.partOf,
     status: o.status,
-    category: FilterCodeableConcepts(SharedResource.ObservationLabCategory(o.category), acceptedCategories),
+    category: FilterCodeableConcepts(ObservationLabCategory(o.category), acceptedCategories),
     code: o.code,
     subject: o.subject,
     encounter: o.encounter,
@@ -646,6 +663,16 @@ define function ObservationVitalSignsComponent(component List<FHIR.Observation.C
     referenceRange: SharedResource.ObservationReferenceRange(c.referenceRange)
   }
 
+define function ObservationVitalSignsReferenceRange(referenceRange List<FHIR.Observation.ReferenceRange>):
+  referenceRange rR
+  return FHIR.Observation.ReferenceRange{
+    low: rR.low,
+    high: rR.high,
+    type: rR.type,
+    appliesTo: rR.appliesTo,
+    age: rR.age
+  }
+
 define function ObservationVitalSignsResource(observation Observation, profileURLs List<FHIR.canonical>, acceptedCategories List<System.Code>):
   observation o
   return Observation{
@@ -657,20 +684,16 @@ define function ObservationVitalSignsResource(observation Observation, profileUR
     category: FilterCodeableConcepts(ObservationVitalSignsCategory(o.category), acceptedCategories),
     code: o.code,
     subject: o.subject,
-    focus: o.focus,
     encounter: o.encounter,
     effective: o.effective,
     issued: o.issued,
-    performer: o.performer,
     value: o.value,
     dataAbsentReason: o.dataAbsentReason,
     interpretation: o.interpretation,
-    note: o.note,
     bodySite: o.bodySite,
     method: o.method,
     specimen: o.specimen,
-    device: o.device,
-    referenceRange: SharedResource.ObservationReferenceRange(o.referenceRange),
+    referenceRange: ObservationVitalSignsReferenceRange(o.referenceRange),
     hasMember: o.hasMember,
     derivedFrom: o.derivedFrom,
     component: ObservationVitalSignsComponent(o.component)

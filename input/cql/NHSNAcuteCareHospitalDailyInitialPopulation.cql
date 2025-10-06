@@ -297,19 +297,19 @@ define "SDE Encounter Discharge Dispositions":
 //return the Observation during the Measurement Period
 define "SDE ACH Daily Observation":
   "ACH Daily Observation" Observations
-    return SharedResource.ObservationLabResource(Observations,
+    return ObservationLabResource(Observations,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-observation-lab'}})
 
 //return the RSV Observation Pre Admission    
 define "SDE RSV PRE Admission Observation":
   "RSV PRE Admission Observation" Observations
-    return SharedResource.ObservationLabResource(Observations, 
+    return ObservationLabResource(Observations, 
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-observation-lab'}})
 
 //return the COVID-19 and Influenza Observation Pre Admission
 define "SDE COVID And Influenza PRE Admission Observation":
   "COVID And Influenza PRE Admission Observation" Observations
-    return SharedResource.ObservationLabResource(Observations,
+    return ObservationLabResource(Observations,
     {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-observation-lab'}})
 
 //return the Specimen related to the Observation during the Measurement Period
@@ -456,7 +456,7 @@ define "SDE Medication":
 define "SDE All Observations":
   "Observations" O
   where exists("Initial Population")
-  return SharedResource.ObservationLabResource(O,
+  return ObservationLabResource(O,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-observation'}})
 
 //To catch all isolation precautions
@@ -559,6 +559,54 @@ define "DiagnosticReports":
     instantiatesUri: m.instantiatesUri,
     courseOfTherapyType: m.courseOfTherapyType,
     dosageInstruction: SharedResource.MedicationRequestDosageInstruction(m.dosageInstruction)
+  }
+
+define function ObservationLabCoding(coding List<Coding>):
+  coding c
+  return Coding{
+    system: c.system,
+    version: c.version,
+    code: c.code,
+    display: c.display,
+    userSelected: c.userSelected
+  }
+
+define function ObservationLabCategory(category List<CodeableConcept>):
+  category c
+  return CodeableConcept{
+    coding: ObservationLabCoding(c.coding),
+    text: c.text
+  }
+
+define function ObservationLabResource(observation Observation, profileURLs List<FHIR.canonical>):
+  observation o
+  return Observation{
+    id: FHIR.id {value: 'LCR-' + o.id},
+    meta: SharedResource.MetaElement(o, profileURLs),
+    extension: o.extension,
+    basedOn: o.basedOn,
+    partOf: o.partOf,
+    status: o.status,
+    category: ObservationLabCategory(o.category),
+    code: o.code,
+    subject: o.subject,
+    focus: o.focus,
+    encounter: o.encounter,
+    effective: o.effective,
+    issued: o.issued,
+    performer: o.performer,
+    value: o.value,
+    dataAbsentReason: o.dataAbsentReason,
+    interpretation: o.interpretation,
+    note: o.note,
+    bodySite: o.bodySite,
+    method: o.method,
+    specimen: o.specimen,
+    device: o.device,
+    referenceRange: SharedResource.ObservationReferenceRange(o.referenceRange),
+    hasMember: o.hasMember,
+    derivedFrom: o.derivedFrom,
+    component: SharedResource.ObservationComponent(o.component)
   }
 
 define function ServiceRequestResource(serviceRequest ServiceRequest, profileURLs List<FHIR.canonical>):
