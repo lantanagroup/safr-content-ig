@@ -190,12 +190,12 @@ define "SDE Encounter":
   and exists(
     "Initial Population" IP
     where Encounters.period overlaps IP.period)
-  return SharedResource.EncounterResource(Encounters,
+  return EncounterResource(Encounters,
   {FHIR.canonical{value: 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter'}})
 
 define "SDE IP Encounters":
   "Initial Population" IP
-  return SharedResource.EncounterResource(IP, 
+  return EncounterResource(IP, 
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-encounter'}})
 
 define "SDE Location":
