@@ -535,6 +535,47 @@ define "DiagnosticReports":
  //
  // Measure Specific Resource Creation Functions
  //
+define function MedicationRequestRepeat(repeat FHIR.Timing.Repeat):
+  repeat r
+  return FHIR.Timing.Repeat{
+    bounds: r.bounds,
+    count: r.count,
+    countMax: r.countMax,
+    "duration": r."duration",
+    durationMax: r.durationMax,
+    durationUnit: r.durationUnit,
+    frequency: r.frequency,
+    frequencyMax: r.frequencyMax,
+    period: r.period,
+    periodMax: r.periodMax,
+    periodUnit: r.periodUnit,
+    dayOfWeek: r.dayOfWeek,
+    timeOfDay: r.timeOfDay,
+    "when": r."when",
+    offset: r.offset
+  }
+
+define function MedicationRequestTiming(timing FHIR.Timing):
+  timing t
+  return FHIR.Timing{
+    event: t.event,
+    repeat: MedicationRequestRepeat(t.repeat),
+    code: t.code
+  }
+
+define function MedicationRequestDosageInstruction(dosageInstruction List<FHIR.Dosage>):
+  dosageInstruction dI
+  return FHIR.Dosage{
+    text: dI.text,
+    patientInstruction: dI.patientInstruction,
+    timing: MedicationRequestTiming(dI.timing),
+    asNeeded: dI.asNeeded,
+    site: dI.site,
+    route: dI.route,
+    method: dI.method,
+    doseAndRate: SharedResource.MedicationRequestDoseAndRate(dI.doseAndRate)
+  }
+
  define function MedicationRequestResource(medicationRequest MedicationRequest, profileURLs List<FHIR.canonical>):
   medicationRequest m
   return MedicationRequest{
@@ -558,7 +599,7 @@ define "DiagnosticReports":
     instantiatesCanonical: m.instantiatesCanonical,
     instantiatesUri: m.instantiatesUri,
     courseOfTherapyType: m.courseOfTherapyType,
-    dosageInstruction: SharedResource.MedicationRequestDosageInstruction(m.dosageInstruction)
+    dosageInstruction: MedicationRequestDosageInstruction(m.dosageInstruction)
   }
 
 define function ObservationLabCoding(coding List<Coding>):
