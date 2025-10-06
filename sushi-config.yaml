@@ -56,8 +56,8 @@ dependencies:
   hl7.fhir.us.qicore: 
     version: 6.0.0
     id: qicore
-  hl7.fhir.extensions.r5:
-        version: 5.2.0
+  hl7.fhir.extensions.r4:
+    version: 5.2.0
 
 
 description: "This content describes the specifications for the for the Health Level Seven International® (HL7) Fast Healthcare Interoperability Resources® (FHIR) digital quality measures (dQMs) reported to the National Healthcare Safety Network (NHSN)."
@@ -67,9 +67,17 @@ parameters:
 
   apply-jurisdiction: true
   path-liquid: templates\liquid
-  excludettl: 'true'
-  excludemap: 'true'
+  excludettl: true
+  excludemap: true
   pin-canonicals: pin-multiples
+
+  wantGen-ttl: false
+  wantGen-ttl-html: false
+  no-expansions-files: true
+  no-ig-database: true
+  version-comparison-master: 1.0.0
+  version-comparison:
+    - 1.0.0
 
   default-contact: true
   default-publisher: true
@@ -125,6 +133,7 @@ menu:
     QI Core IG 4.1.1: https://hl7.org/fhir/us/qicore/STU4.1.1/
     CQL Spec: http://cql.hl7.org/index.html
     FHIR Clinical Guidelines: http://hl7.org/fhir/uv/cpg
+  Change Log: changes.html
     
 
 pages:

@@ -11,6 +11,7 @@ NHSN only recognizes the data element 'sex', with male and female as the only ac
 For data submitted for patient.gender, and/or patient.extension (birthsex) that do not align with male or female, NHSN will label those responses as not reported. As national standards update, this resource will also be updated."
 
 * ^baseDefinition = "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-patient|6.0.0"
+* obeys patient-full-name
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 * extension[us-core-race] ^short = "US Core Race Extension (If present, must include at least one of the required codes. Preferably this would include at least a code in the ombCategory slice.)"
