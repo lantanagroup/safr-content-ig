@@ -380,7 +380,7 @@ define "SDE ACH Daily ServiceRequest":
     where ServiceRequests.intent ~ 'order'
       and ServiceRequests.status ~ 'completed'
       and exists("Initial Population")
-  return SharedResource.ServiceRequestResource(ServiceRequests,
+  return ServiceRequestResource(ServiceRequests,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-servicerequest'}})
 
 define "SDE Isolation Precautions Implemented":

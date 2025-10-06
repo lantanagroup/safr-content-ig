@@ -159,7 +159,7 @@ define &quot;Initial Population&quot;:
     where ServiceRequests.intent ~ 'order'
       and ServiceRequests.status ~ 'completed'
       and exists(&quot;Initial Population&quot;)
-  return SharedResource.ServiceRequestResource(ServiceRequests,
+  return ServiceRequestResource(ServiceRequests,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-daily-servicerequest'}})"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -1323,7 +1323,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
             <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalDailyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="ServiceRequestResource"></valueString>
@@ -1333,7 +1333,7 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
   serviceRequest sR
   return ServiceRequest{
     id: FHIR.id {value: 'LCR-' + sR.id},
-    meta: MetaElement(sR, profileURLs),
+    meta: SharedResource.MetaElement(sR, profileURLs),
     extension: sR.extension,
     instantiatesCanonical: sR.instantiatesCanonical,
     instantiatesUri: sR.instantiatesUri,
@@ -1353,7 +1353,6 @@ define function EncounterDiagnosis(diagnosis List&lt;FHIR.Encounter.Diagnosis&gt
     occurrence: sR.occurrence,
     asNeeded: sR.asNeeded,
     authoredOn: sR.authoredOn,
-    requester: sR.requester,
     performerType: sR.performerType,
     performer: sR.performer,
     locationCode: sR.locationCode,
@@ -3294,7 +3293,6 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <mustSupport value="occurrence"></mustSupport>
             <mustSupport value="asNeeded"></mustSupport>
             <mustSupport value="authoredOn"></mustSupport>
-            <mustSupport value="requester"></mustSupport>
             <mustSupport value="performerType"></mustSupport>
             <mustSupport value="performer"></mustSupport>
             <mustSupport value="locationCode"></mustSupport>
@@ -3336,7 +3334,6 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <mustSupport value="occurrence"></mustSupport>
             <mustSupport value="asNeeded"></mustSupport>
             <mustSupport value="authoredOn"></mustSupport>
-            <mustSupport value="requester"></mustSupport>
             <mustSupport value="performerType"></mustSupport>
             <mustSupport value="performer"></mustSupport>
             <mustSupport value="locationCode"></mustSupport>
@@ -3378,7 +3375,6 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <mustSupport value="occurrence"></mustSupport>
             <mustSupport value="asNeeded"></mustSupport>
             <mustSupport value="authoredOn"></mustSupport>
-            <mustSupport value="requester"></mustSupport>
             <mustSupport value="performerType"></mustSupport>
             <mustSupport value="performer"></mustSupport>
             <mustSupport value="locationCode"></mustSupport>
@@ -3420,7 +3416,6 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <mustSupport value="occurrence"></mustSupport>
             <mustSupport value="asNeeded"></mustSupport>
             <mustSupport value="authoredOn"></mustSupport>
-            <mustSupport value="requester"></mustSupport>
             <mustSupport value="performerType"></mustSupport>
             <mustSupport value="performer"></mustSupport>
             <mustSupport value="locationCode"></mustSupport>
@@ -3462,7 +3457,6 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <mustSupport value="occurrence"></mustSupport>
             <mustSupport value="asNeeded"></mustSupport>
             <mustSupport value="authoredOn"></mustSupport>
-            <mustSupport value="requester"></mustSupport>
             <mustSupport value="performerType"></mustSupport>
             <mustSupport value="performer"></mustSupport>
             <mustSupport value="locationCode"></mustSupport>
@@ -3504,7 +3498,6 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <mustSupport value="occurrence"></mustSupport>
             <mustSupport value="asNeeded"></mustSupport>
             <mustSupport value="authoredOn"></mustSupport>
-            <mustSupport value="requester"></mustSupport>
             <mustSupport value="performerType"></mustSupport>
             <mustSupport value="performer"></mustSupport>
             <mustSupport value="locationCode"></mustSupport>
@@ -3546,7 +3539,6 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <mustSupport value="occurrence"></mustSupport>
             <mustSupport value="asNeeded"></mustSupport>
             <mustSupport value="authoredOn"></mustSupport>
-            <mustSupport value="requester"></mustSupport>
             <mustSupport value="performerType"></mustSupport>
             <mustSupport value="performer"></mustSupport>
             <mustSupport value="locationCode"></mustSupport>
