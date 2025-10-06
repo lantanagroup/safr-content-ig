@@ -281,7 +281,7 @@ define "SDE Specimen":
     "Initial Population" IP
     where NHSNHelpers."Normalize Interval"(Specimens.collection.collected) overlaps IP.period
   )
-  return SharedResource.SpecimenResource(Specimens,
+  return SpecimenResource(Specimens,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-specimen'}})
 
 define "SDE Service Request":

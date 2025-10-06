@@ -676,7 +676,7 @@ define &quot;SDE DiagnosticReport Lab&quot;:
     &quot;Initial Population&quot; IP
     where NHSNHelpers.&quot;Normalize Interval&quot;(Specimens.collection.collected) overlaps IP.period
   )
-  return SharedResource.SpecimenResource(Specimens,
+  return SpecimenResource(Specimens,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-specimen'}})"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -2330,7 +2330,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
             <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SpecimenResource"></valueString>
@@ -2340,20 +2340,16 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   specimen s
   return Specimen{
     id: FHIR.id {value: 'LCR-' + s.id},
-    meta: MetaElement(s, profileURLs),
+    meta: SharedResource.MetaElement(s, profileURLs),
     extension: s.extension,
     identifier: s.identifier,
     accessionIdentifier: s.accessionIdentifier,
     status: s.status,
     type: s.type,
     subject: s.subject,
-    receivedTime: s.receivedTime,
     parent: s.parent,
     request: s.request,
     collection: SpecimenCollection(s.collection),
-    processing: SpecimenProcessing(s.processing),
-    container: SpecimenContainer(s.container),
-    condition: s.condition,
     note: s.note
   }"></valueString>
             </extension>
@@ -2363,7 +2359,7 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
             <extension url="libraryName">
-               <valueString value="SharedResourceCreation"></valueString>
+               <valueString value="NHSNAcuteCareHospitalMonthlyInitialPopulation"></valueString>
             </extension>
             <extension url="name">
                <valueString value="SpecimenCollection"></valueString>
@@ -2374,11 +2370,8 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
   return FHIR.Specimen.Collection{
     collector: c.collector,
     collected: c.collected,
-    &quot;duration&quot;: c.&quot;duration&quot;,
     quantity: c.quantity,
-    method: c.method,
-    bodySite: c.bodySite,
-    fastingStatus: c.fastingStatus
+    bodySite: c.bodySite
   }"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -3103,12 +3096,8 @@ define function PatientName(name List&lt;FHIR.HumanName&gt;):
             <mustSupport value="status"></mustSupport>
             <mustSupport value="type"></mustSupport>
             <mustSupport value="subject"></mustSupport>
-            <mustSupport value="receivedTime"></mustSupport>
             <mustSupport value="parent"></mustSupport>
             <mustSupport value="request"></mustSupport>
-            <mustSupport value="processing"></mustSupport>
-            <mustSupport value="container"></mustSupport>
-            <mustSupport value="condition"></mustSupport>
             <mustSupport value="note"></mustSupport>
          </dataRequirement>
       </Library>
