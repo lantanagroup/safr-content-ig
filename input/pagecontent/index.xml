@@ -4,7 +4,7 @@
   <h3>Overview</h3>
   <p>The content of The Centers for Disease Control and Prevention (CDC) National Healthcare Safety Network (NHSN) Digital Quality Measures (dQMs) Content Package implementation guide (IG) defines the standards for reporting the initial population and supplemental data elements needed for calculating metrics for the CDC NHSN dQMs Content Package. This IG does not define how to calculate a specific NHSN dQM or event of interest.</p>
   <p class="new-content">
-    This IG complies with the NHSN dQM Reporting IG, published by Health Level Seven International (HL7®) International for general requirements for submissions to NHSN. The [NHSN dQM Reporting IG](https://hl7.org/fhir/us/nhsn-dqm/) specifications will be revised in accordance with any changes to NHSN reporting requirements. The figure below shows how the CDC NHSN dQM IG fits into the broader landscape of HL7 FHIR and NHSN IGs.
+    This IG complies with the NHSN dQM Reporting IG, published by Health Level Seven International (HL7®) International for general requirements for submissions to NHSN. The <a href="https://hl7.org/fhir/us/nhsn-dqm/">NHSN dQM Reporting IG</a> specifications will be revised in accordance with any changes to NHSN reporting requirements. The figure below shows how the CDC NHSN dQM IG fits into the broader landscape of HL7 FHIR and NHSN IGs.
     <div>
       <figure class="figure">
           <figcaption class="figure-caption"><strong>Figure 1: NHSN Implementation Guide Hierarchy</strong></figcaption>
