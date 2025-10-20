@@ -109,6 +109,13 @@ define "Get Locations from IP Encounters in Measurement Period":
     let locationReference: LE.location
     return NHSNHelpers.GetLocation(locationReference))
 
+define "Medication IDs":
+  ("SDE Medication Request"
+  union "SDE Medication Administration") MedReqOrAdmin
+  where MedReqOrAdmin.medication is FHIR.Reference
+    and exists("Initial Population") //No longer need to check for timing here because it's checked in SDE Medication Request/Administriation
+  return NHSNHelpers.GetId(MedReqOrAdmin.medication.reference)
+
 //============================================================================
 //Supplemental Data Element
 //When FHIR.canonical value is present, US Core 3.1.1 profiles are used
@@ -121,9 +128,9 @@ define "SDE Condition":
 //Check for Problem List Conditions that were recorded before or during IP 
      where 
       (exists(IP.diagnosis Diagnoses
-          where GetCondition(Diagnoses.condition).id = Conditions.id
+          where NHSNHelpers.GetId(Diagnoses.condition.reference) = Conditions.id
         )
-        or GetEncounter(Conditions.encounter).id = IP.id
+        or NHSNHelpers.GetId(Conditions.encounter.reference) = IP.id
       )
       and exists (Conditions.category categories
         where categories ~ "encounter-diagnosis"
@@ -222,13 +229,11 @@ define "SDE Medication Request":
   return MedicationRequestResource(MedicationRequests,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-medicationrequest'}},
   {"inpatient", "outpatient"})
-
+  
 define "SDE Medication":
-  ("SDE Medication Request"
-  union "SDE Medication Administration") MedReqOrAdmin
-  where MedReqOrAdmin.medication is FHIR.Reference
-  and exists("Initial Population") //No longer need to check for timing here because it's checked in SDE Medication Request/Administriation
-  return SharedResource.MedicationResource(GetMedicationFrom(MedReqOrAdmin.medication),
+  [Medication] Medications
+  where Medications.id in "Medication IDs"
+  return SharedResource.MedicationResource(Medications,
   {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-medication'}})
 
 define "SDE Observation Lab Category":
