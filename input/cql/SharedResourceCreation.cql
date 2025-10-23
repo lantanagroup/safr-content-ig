@@ -4,17 +4,14 @@ include FHIRHelpers version '4.0.2'
 
 using FHIR version '4.0.1'
 
-define function "GetIdExtensions"(domainResource DomainResource):
-  domainResource.extension E
-  where E.url.value = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'
-  return E
-
 define function "GetPatientExtensions"(domainResource DomainResource):
   domainResource.extension E
-  where E.url.value = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
-    or E.url.value = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
-    or E.url.value = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
-    or E.url.value = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'
+  where E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'
+    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'
+    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-tribal-affiliation'
+    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'
+    or E.url = 'http://hl7.org/fhir/us/core/StructureDefinition/us-core-sex'
+    or E.url = 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/link-original-resource-id-extension'
   return E
 
 define function "MetaElement"(resource Resource, profileURLs List<FHIR.canonical>):
@@ -512,8 +509,6 @@ define function PatientTelecom(telecom List<FHIR.ContactPoint>):
 define function PatientAddress(address List<FHIR.Address>):
   address a
   return FHIR.Address{
-    id: a.id,
-    extension: a.extension,
     use: a.use,
     type: a.type,
     text: a.text,
@@ -529,8 +524,6 @@ define function PatientAddress(address List<FHIR.Address>):
 define function PatientContact(contact List<FHIR.Patient.Contact>):
   contact c
   return FHIR.Patient.Contact{
-    id: c.id,
-    extension: c.extension,
     relationship: c.relationship,
     name: c.name,
     telecom: c.telecom,
@@ -543,8 +536,6 @@ define function PatientContact(contact List<FHIR.Patient.Contact>):
 define function PatientCommunication(communication List<FHIR.Patient.Communication>):
   communication c
   return FHIR.Patient.Communication{
-    id: c.id,
-    extension: c.extension,
     language: c.language,
     preferred: c.preferred
   }
@@ -552,7 +543,6 @@ define function PatientCommunication(communication List<FHIR.Patient.Communicati
 define function PatientLink(link List<FHIR.Patient.Link>):
   link l
   return FHIR.Patient.Link{
-    id: l.id,
     extension: l.extension,
     modifierExtension: l.modifierExtension,
     other: l.other,
@@ -564,7 +554,7 @@ define function PatientResource(patient Patient, profileURLs List<FHIR.canonical
   return Patient{
     id: FHIR.id{value: 'LCR-' + p.id},
     meta: MetaElement(p, profileURLs),
-    extension: GetPatientExtensions(p) union GetIdExtensions(p),
+    extension: GetPatientExtensions(p),
     identifier: p.identifier,
     active: p.active,
     name: PatientName(p.name),
@@ -575,11 +565,8 @@ define function PatientResource(patient Patient, profileURLs List<FHIR.canonical
     address: PatientAddress(p.address),
     maritalStatus: p.maritalStatus,
     multipleBirth: p.multipleBirth,
-    photo: p.photo,
     contact: PatientContact(p.contact),
     communication: PatientCommunication(p.communication),
-    generalPractitioner: p.generalPractitioner,
-    managingOrganization: p.managingOrganization,
     link: PatientLink(p.link)
   }
 
