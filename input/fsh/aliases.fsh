@@ -29,6 +29,7 @@ Alias: $organization-type = http://terminology.hl7.org/CodeSystem/organization-t
 //Alias: $v2-0487 = http://terminology.hl7.org/CodeSystem/v2-0487  FHIR HL7 v2 Specimen type, replaced with US Core 6.1 identified VS MEASDEV-1619 - Update the Specimen.type binding to match the one used by US Core 6.1+
 Alias: $SpecimenType = http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1099.54
 
+Alias: $compliesWithProfile = http://hl7.org/fhir/StructureDefinition/structuredefinition-compliesWithProfile
 Alias: $condition-clinical = http://terminology.hl7.org/CodeSystem/condition-clinical
 Alias: $sopt = https://nahdo.org/sopt
 Alias: $hsloc.html = https://www.cdc.gov/nhsn/cdaportal/terminology/codesystem/hsloc.html
@@ -53,10 +54,12 @@ Alias: $v2-0136 = http://terminology.hl7.org/CodeSystem/v2-0136
 Alias: $v3-EntityCode = http://terminology.hl7.org/CodeSystem/v3-EntityCode
 Alias: $shareablevalueset = http://hl7.org/fhir/StructureDefinition/shareablevalueset
 Alias: $procedure-code = http://hl7.org/fhir/ValueSet/procedure-code
-Alias: $vital-sign-profile = http://hl7.org/fhir/StructureDefinition/vitalsigns
+//Alias: $vital-sign-profile = http://hl7.org/fhir/StructureDefinition/vitalsigns
 Alias: $daig-serv-section = http://hl7.org/fhir/ValueSet/diagnostic-service-sections
 
 Alias: $bed-capacity-code-system = http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-code
 Alias: $DiagnosticReportStatus = http://hl7.org/fhir/diagnostic-report-status
 //Alias: $us-core-condition-code = http://hl7.org/fhir/us/core/ValueSet/us-core-condition-code|6.1.0
 //Alias: $us-core-patient = http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+
+Alias: $QICoreNotDoneValueSet = http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-notDoneValueSet
