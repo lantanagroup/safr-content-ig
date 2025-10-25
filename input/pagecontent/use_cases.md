@@ -105,7 +105,9 @@ For specific information on the individual NHSN protocols and metrics see:
 
 ##### ACH Monthly IP Diagnostic Report Examples
 
+<!--  Removed as part of MEASDEV-1677: NHSN dQM IG: Remove General Diagnostic Profile and update Diag. Report
 - [DiagnosticReport - Example ACH Monthly Pass2 Cardiopulmonary1](DiagnosticReport-diagnosticreport-example-ach-monthly-pass2-cardiopulmonary.html)
+-->
 - [DiagnosticReport - Example ACH Monthly Pass2 Lab CBC](DiagnosticReport-diagnosticreport-example-ach-monthly-pass2-lab-cbc.html)
 
 ##### ACH Monthly IP Location Examples
