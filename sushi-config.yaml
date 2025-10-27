@@ -73,8 +73,8 @@ parameters:
 
   wantGen-ttl: false
   wantGen-ttl-html: false
-  no-expansions-files: true
-  no-ig-database: true
+  #no-expansions-files: true
+  #no-ig-database: true
   version-comparison-master: 1.0.0
   version-comparison:
     - 1.0.0

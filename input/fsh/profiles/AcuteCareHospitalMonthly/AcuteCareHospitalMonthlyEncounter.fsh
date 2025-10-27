@@ -1,9 +1,9 @@
 Profile: AcuteCareHospitalMonthlyReportingEncounter
-Parent: USCoreEncounterProfile|6.1.0
+Parent: QICoreEncounter|6.0.0
 Id: ach-monthly-encounter
 Title: "ACH Monthly Event Encounter"
-Description: "This profile contains Required and Must Support data elements for reporting encounter information to the NHSN Acute Care Hospital (ACH) Monthly Digital Quality Measure. This profile is based on the [HL7 FHIR® US Core Encounter Profile v3.1.1](http://hl7.org/fhir/us/core/STU3.1.1/StructureDefinition-us-core-encounter.html)."
-* ^baseDefinition = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-encounter|6.1.0"
+Description: "This profile contains Required and Must Support data elements for reporting encounter information to the NHSN Acute Care Hospital (ACH) Monthly Digital Quality Measure. This profile inherits from the QI Core 6.0.0 [Encounter](https://hl7.org/fhir/us/qicore/STU6/StructureDefinition-qicore-encounter.html) profile, which inherits from the US Core 6.1.0 [Encounter](https://hl7.org/fhir/us/core/STU6.1/StructureDefinition-us-core-encounter.html) profile."
+* ^baseDefinition = "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter|6.0.0"
 * obeys encounter-ach-monthly-initial-population and encounter-location-type-initial-population
 //* obeys encounter-ach-initial-population1
 //* obeys encounter-ach-initial-population2
@@ -23,10 +23,12 @@ Description: "This profile contains Required and Must Support data elements for 
 * status ^definition = "triaged | in-progress | finished | onleave | entered-in-error."
 * classHistory MS
 * subject.reference 1.. MS
+* subject only Reference(CrossMeasurePatient)
 * period 1..
 * diagnosis MS
   * use MS
   * rank MS
+  * condition.reference 1.. MS
 * hospitalization
   * origin MS
   * admitSource MS
@@ -34,7 +36,7 @@ Description: "This profile contains Required and Must Support data elements for 
   * reAdmission MS
   * dietPreference from http://hl7.org/fhir/ValueSet/encounter-diet (preferred)
   * dietPreference MS
-  * dischargeDisposition from http://hl7.org/fhir/ValueSet/encounter-discharge-disposition (preferred)
+  * dischargeDisposition from http://hl7.org/fhir/ValueSet/encounter-discharge-disposition (extensible)
 * location 1..
   * ^short = "List of locations where the patient has been. Used in part to discern whether the patient is Inpatient, Emergency and or Observation status."
   * status MS
