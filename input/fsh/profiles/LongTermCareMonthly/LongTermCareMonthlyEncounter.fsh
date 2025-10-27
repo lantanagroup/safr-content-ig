@@ -2,7 +2,7 @@ Profile: LongTermCareMonthlyEventEncounter
 Parent: QICoreEncounter|6.0.0
 Id: ltc-monthly-encounter
 Title: "LTC Monthly Event Encounter"
-Description: "This profile contains Required and Must Support data elements for reporting encounter information to the NHSN Long-term Care Monthly Digital Quality Measure. This profile is based on the [HL7 FHIR® QI Core Encounter Profile v6.0.0](http://hl7.org/fhir/us/qicore/STU6/StructureDefinition-qicore-encounter.html)."
+Description: "This profile contains Required and Must Support data elements for reporting encounter information to the NHSN Long-term Care Monthly Digital Quality Measure. This profile inherits from the QI Core 6.0.0 [Encounter](https://hl7.org/fhir/us/qicore/STU6/StructureDefinition-qicore-encounter.html) profile, which inherits from the US Core 6.1.0 [Encounter](https://hl7.org/fhir/us/core/STU6.1/StructureDefinition-us-core-encounter.html) profile."
 * ^baseDefinition = "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-encounter|6.0.0"
 * obeys encounter-ach-daily-initial-population and encounter-location-type-initial-population
 
@@ -12,23 +12,23 @@ Description: "This profile contains Required and Must Support data elements for 
   * use MS
   * type MS
   * period MS
-* status from AcuteCareHospitalDailyEncounterStatus (required)
-* status ^short = "triaged | in-progress | finished | onleave | entered-in-error"
-* status ^definition = "triaged | in-progress | finished | onleave | entered-in-error."
-* statusHistory.status 1.. // TODO Verify this is actually required when statusHistory is not nor is MS as per the DD
-* classHistory MS
-* subject.reference 1.. MS
+// * status from AcuteCareHospitalDailyEncounterStatus (required)
+// * status ^short = "triaged | in-progress | finished | onleave | entered-in-error"
+// * status ^definition = "triaged | in-progress | finished | onleave | entered-in-error."
+// * statusHistory.status 1.. // TODO Verify this is actually required when statusHistory is not nor is MS as per the DD
+// * classHistory MS
+// * subject.reference 1.. MS
 * period 1..
 * hospitalization
   * admitSource MS
   * reAdmission MS
   * reAdmission from http://terminology.hl7.org/ValueSet/v2-0092 (preferred)
-  * dischargeDisposition from http://hl7.org/fhir/ValueSet/encounter-discharge-disposition (required)
-* location 1..
-  * ^short = "List of locations where the patient has been. Used in part to discern whether the patient is Inpatient, Emergency and or Observation status."
-  * status MS
-  * period 1..
-  * location.reference 1.. MS
+//   * dischargeDisposition from http://hl7.org/fhir/ValueSet/encounter-discharge-disposition (required)
+// * location 1..
+//   * ^short = "List of locations where the patient has been. Used in part to discern whether the patient is Inpatient, Emergency and or Observation status."
+//   * status MS
+//   * period 1..
+//   * location.reference 1.. MS
 
 
   // TODO MEASDEV-703

@@ -43,7 +43,23 @@ dependencies:
   fhir.cqf.common:
     version: 4.0.1
     id: cqf
-        version: 5.2.0
+  hl7.fhir.uv.crmi:
+    version: 1.0.0
+    uri: http://hl7.org/fhir/uv/crmi/ImplementationGuide/hl7.fhir.uv.crmi
+    id: crmi
+  hl7.fhir.us.cqfmeasures: 
+    version: 5.0.0
+    id: cqfm
+  hl7.fhir.us.davinci-deqm: 
+    version: 5.0.0
+    id: deqm
+  hl7.fhir.us.qicore: 
+    version: 6.0.0
+    id: qicore
+  hl7.fhir.extensions.r4:
+    version: 5.2.0
+
+
 description: "This content describes the specifications for the for the Health Level Seven International® (HL7) Fast Healthcare Interoperability Resources® (FHIR) digital quality measures (dQMs) reported to the National Healthcare Safety Network (NHSN)."
 parameters:
 #  path-expansion-params: "../../input/terminology-settings.xml"
@@ -57,8 +73,8 @@ parameters:
 
   wantGen-ttl: false
   wantGen-ttl-html: false
-  no-expansions-files: true
-  no-ig-database: true
+  #no-expansions-files: true
+  #no-ig-database: true
   version-comparison-master: 1.0.0
   version-comparison:
     - 1.0.0
