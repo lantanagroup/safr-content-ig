@@ -1,3 +1,4 @@
+/* Removed as part of MEASDEV-1677: NHSN dQM IG: Remove General Diagnostic Profile and update Diag. Report
 Instance: diagnosticreport-example-ach-monthly-pass2-cardiopulmonary
 InstanceOf: AcuteCareHospitalMonthlyDiagnosticReport
 Title: "DiagnosticReport - Example ACH Monthly Pass2 Cardiopulmonary"
@@ -15,5 +16,5 @@ Usage: #example
 * conclusionCode = $sct#710031008 "Inducible ischemia manifest on stress test post myocardial infarction (finding)"
 * effectiveDateTime = "2024-03-01T23:14:00-05:00"
 * issued = "2024-03-02T08:52:00-05:00"
-
+*/
  
