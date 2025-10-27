@@ -8,7 +8,8 @@ Usage: #example
 * identifier.value = "101888892"
 * status = #active
 * intent = #plan
-* reportedBoolean = true
+// TODO QUESTION ON DD, QI Core does not allow reportedBoolean. Need to discuss
+//* reportedBoolean = true
 * category = $medicationrequest-category#community "Community"
 * category.text = "Home Medication"
 * medicationReference = Reference(medication-example-cipro-500)

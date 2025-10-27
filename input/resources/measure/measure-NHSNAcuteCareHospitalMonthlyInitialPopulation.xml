@@ -398,7 +398,7 @@ define &quot;SDE Observation Vital Signs Category&quot;:
     and exists(&quot;Initial Population&quot; IP
       where NHSNHelpers.&quot;Normalize Interval&quot;(DiagnosticReports.effective) overlaps IP.period)
   return DiagnosticReportResource(DiagnosticReports,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-diagnosticreport'}},
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-diagnosticreport-note'}},
   {&quot;Radiology&quot;, &quot;Pathology&quot;, &quot;Cardiology&quot;, &quot;LAB&quot;})"></valueString>
             </extension>
             <extension url="displaySequence">

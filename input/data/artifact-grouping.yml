@@ -35,7 +35,7 @@ groups:
       - StructureDefinition/ach-monthly-coverage
       #- StructureDefinition/ach-monthly-implantable-device
       - StructureDefinition/ach-monthly-device
-      - StructureDefinition/ach-monthly-diagnosticreport
+      #- StructureDefinition/ach-monthly-diagnosticreport
       - StructureDefinition/ach-monthly-diagnosticreport-lab
       - StructureDefinition/ach-monthly-diagnosticreport-note
       - StructureDefinition/ach-monthly-medication

@@ -1,3 +1,4 @@
+/* Removed as part of MEASDEV-1677: NHSN dQM IG: Remove General Diagnostic Profile and update Diag. Report
 Profile: AcuteCareHospitalMonthlyDiagnosticReport
 Parent: DiagnosticReport
 Id: ach-monthly-diagnosticreport
@@ -22,4 +23,4 @@ Description: "This profile contains Required and Must Support data elements for 
 //* performer MS
 * conclusionCode MS
 //* presentedForm MS
-
+*/
