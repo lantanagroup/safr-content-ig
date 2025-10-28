@@ -180,9 +180,8 @@ define "SDE DiagnosticReport Others":
     and exists("Initial Population" IP
       where NHSNHelpers."Normalize Interval"(DiagnosticReports.effective) overlaps IP.period)
   return DiagnosticReportResource(DiagnosticReports,
-  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-diagnosticreport-note'}},
+  {FHIR.canonical{value: 'http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ach-monthly-diagnosticreport'}},
   {"Radiology", "Pathology", "Cardiology", "LAB"})
-  // Removed as part of MEASDEV-1677: NHSN dQM IG: Remove General Diagnostic Profile and update Diag. Report, ach-monthly-diagnosticreport has been subsumed by ach-monthly-diagnosticreport
 //#End DiagnosticReport block
 
 define "SDE Encounter": 

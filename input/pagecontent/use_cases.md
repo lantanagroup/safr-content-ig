@@ -338,3 +338,55 @@ The ACH Daily Initial Population includes all encounters with an inpatient, obse
 - [Specimen - Example ACH Daily Negative PCR 1](Specimen-specimen-example-ach-daily-negativepcr-1.html)
 - [Specimen - Example ACH Daily Negative PCR 2](Specimen-specimen-example-ach-daily-negativepcr-2.html)
 - [Specimen - Example ACH Daily RSV Lab BTG](Specimen-specimen-example-ach-daily-rsvlabbtg.html)
+
+### Use Case 3: Long-term Care (LTC) Monthly
+
+#### LTC Monthly Description
+
+The NHSN LTC Monthly dQM enables facilities to electronically report line-level data to NHSN for the following modules, which provide monthly event rates back to the facility. These dQMs include:
+
+•	Long-term Care Facilities Antimicrobial Use (LTC-AU) Module
+
+#### LTC Monthly Patients of Interest
+
+The facility works with NHSN to define a patients of interest (POI) list. The POI list is often the long-term care facility’s entire inpatient population. The data for the patients on the list are then extracted and evaluated against the measure criteria for the initial population.
+
+#### LTC Monthly Initial Population
+
+The initial population in the LTC Monthly dQM is defined as all residents in the facility during the reporting period.  Once an individual patient meets the population criteria, the line-level data needed to calculate metrics, to benchmark, and/or stratify the individual protocol measures is submitted to NHSN.
+
+#### LTC Monthly Additional Use Case Information References
+
+For specific information on the individual NHSN protocols and metrics see: TBD
+
+#### LTC Monthly Submission Examples- TBD
+
+#### LTC Monthly Bundle Submission Examples- TBD
+
+#### LTC Monthly POI List- TBD
+
+#### LTC Monthly Subject List Measure Report- TBD
+
+#### LTC Monthly Individual Measure Report- TBD
+
+#### LTC Monthly Initial Population (IP) Examples
+
+##### LTC Monthly IP Patient Examples
+
+Patient-Example LTC Monthly-AU
+
+##### LTC Monthly IP Encounter Examples
+
+#### LTC Monthly Line Level Data Examples
+
+##### LTC Monthly IP Coverage Examples
+
+##### LTC Monthly IP Medication Examples
+
+##### LTC Monthly IP Medication Administration Examples
+
+##### LTC Monthly IP Medication Request Examples
+
+##### LTC Monthly Observation Examples
+
+##### LTC Monthly Specimen Examples

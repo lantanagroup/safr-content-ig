@@ -56,6 +56,7 @@ Alias: $shareablevalueset = http://hl7.org/fhir/StructureDefinition/shareableval
 Alias: $procedure-code = http://hl7.org/fhir/ValueSet/procedure-code
 //Alias: $vital-sign-profile = http://hl7.org/fhir/StructureDefinition/vitalsigns
 Alias: $daig-serv-section = http://hl7.org/fhir/ValueSet/diagnostic-service-sections
+Alias: $request-priority = http://hl7.org/fhir/ValueSet/request-priority
 
 Alias: $bed-capacity-code-system = http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-code
 Alias: $DiagnosticReportStatus = http://hl7.org/fhir/diagnostic-report-status
