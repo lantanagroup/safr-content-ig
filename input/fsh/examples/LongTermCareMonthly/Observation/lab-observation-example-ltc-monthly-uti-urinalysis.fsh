@@ -15,6 +15,6 @@ Usage: #example
 * encounter.display = "Hospital Admission"
 * effectiveDateTime = "2024-02-02T18:12:00-05:00"
 * issued = "2024-02-03T11:42:00-05:00"
-* valueCodeableConcept = $sct#200025001 "Urine culture - E. coli"
+* valueCodeableConcept = $sct#167570003 "Urine culture - E. coli (finding)"
 * valueCodeableConcept.text = "Culture result showed >100,000 CFU/mL of Escherichia coli (E. coli)"
 * specimen = Reference(specimen-example-ltc-monthly-uti-urine)

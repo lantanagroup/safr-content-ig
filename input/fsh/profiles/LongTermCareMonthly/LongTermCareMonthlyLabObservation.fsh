@@ -6,7 +6,7 @@ Description: "This profile contains Required and Must Support data elements for 
 * ^baseDefinition = "http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-observation-lab|6.0.0"
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
-// * subject.reference 1.. MS
+* subject.reference 1.. MS
 * encounter MS
   * reference 1.. MS
 * effective[x] 1..

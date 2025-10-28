@@ -7,6 +7,8 @@ Description: "This profile contains Required and Must Support data elements for 
 * id 1..
 * meta.extension contains ReceivedDate named link-received-date-extension 0..1
 * status ^short = "(QI-Core)(USCDI) active | on-hold | cancelled | completed | entered-in-error | stopped | draft | unknown"
+* statusReason MS
+* statusReason from http://hl7.org/fhir/ValueSet/medicationrequest-status-reason (extensible)
 * category MS
 * category from http://hl7.org/fhir/ValueSet/medicationrequest-category (extensible)
 * priority MS
@@ -70,7 +72,6 @@ Description: "This profile contains Required and Must Support data elements for 
       * offset MS
     * code MS
   * asNeeded[x] MS
-  * site MS
   * route 1.. MS
   * route from http://hl7.org/fhir/ValueSet/route-codes (extensible)
   * method MS

@@ -33,6 +33,7 @@ Description: "This profile contains Required and Must Support data elements for 
 * context.reference 1.. MS
 * reasonCode MS
 * reasonReference MS
+* request MS
 * request.reference 1.. MS
 * request only Reference(AcuteCareHospitalMonthlyReportingMedicationRequest)
 * request ^short = "(QI-Core) Request administration performed against"
