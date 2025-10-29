@@ -1,66 +1,37 @@
-Alias: $library-type = http://terminology.hl7.org/CodeSystem/library-type
-Alias: $v3-ActCode = http://terminology.hl7.org/CodeSystem/v3-ActCode|9.0.0
-Alias: $nhsnlink = https://nhsnlink.org
-Alias: $condition-ver-status = http://terminology.hl7.org/CodeSystem/condition-ver-status|4.0.1
-Alias: $condition-category = http://terminology.hl7.org/CodeSystem/condition-category
-Alias: $sct = http://snomed.info/sct
-//Alias: $icd-9-cm = http://terminology.hl7.org/CodeSystem/ICD-9CM-diagnosiscodes
-Alias: $icd-9-cm = http://hl7.org/fhir/sid/icd-9-cm
-Alias: $v2-0203 = http://terminology.hl7.org/CodeSystem/v2-0203
-Alias: $subscriber-relationship = http://terminology.hl7.org/CodeSystem/subscriber-relationship
-Alias: $coverage-class = http://terminology.hl7.org/CodeSystem/coverage-class
-Alias: $software-system-type = http://hl7.org/fhir/us/cqfmeasures/CodeSystem/software-system-type
-Alias: $v3-ParticipationType = http://terminology.hl7.org/CodeSystem/v3-ParticipationType
-Alias: $admit-source = http://terminology.hl7.org/CodeSystem/admit-source
-Alias: $discharge-disposition = http://terminology.hl7.org/CodeSystem/discharge-disposition
-Alias: $location-physical-type = http://terminology.hl7.org/CodeSystem/location-physical-type
-Alias: $v3-RoleCode = http://terminology.hl7.org/CodeSystem/v3-RoleCode
+Alias: $CRMISoftwareSystemDevice = http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-softwaresystemdevice
+
+
 Alias: $measure-scoring = http://terminology.hl7.org/CodeSystem/measure-scoring
-Alias: $measure-improvement-notation = http://terminology.hl7.org/CodeSystem/measure-improvement-notation
+
 Alias: $measure-population = http://terminology.hl7.org/CodeSystem/measure-population
-Alias: $atc = http://www.whocc.no/atc
-Alias: $rxnorm = http://www.nlm.nih.gov/research/umls/rxnorm
-Alias: $medicationrequest-category = http://terminology.hl7.org/CodeSystem/medicationrequest-category
-Alias: $medicationrequest-course-of-therapy = http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy
-Alias: $dose-rate-type = http://terminology.hl7.org/CodeSystem/dose-rate-type
-Alias: $observation-category = http://terminology.hl7.org/CodeSystem/observation-category
-Alias: $loinc = http://loinc.org
+Alias: $location-physical-type = http://terminology.hl7.org/CodeSystem/location-physical-type|2.0.1
+Alias: $library-type = http://terminology.hl7.org/CodeSystem/library-type
+Alias: $resource-type = http://hl7.org/fhir/resource-types
+
 Alias: $organization-type = http://terminology.hl7.org/CodeSystem/organization-type
-//Alias: $v2-0487 = http://terminology.hl7.org/CodeSystem/v2-0487  FHIR HL7 v2 Specimen type, replaced with US Core 6.1 identified VS MEASDEV-1619 - Update the Specimen.type binding to match the one used by US Core 6.1+
-Alias: $SpecimenType = http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1099.54
 
-Alias: $compliesWithProfile = http://hl7.org/fhir/StructureDefinition/structuredefinition-compliesWithProfile
-Alias: $condition-clinical = http://terminology.hl7.org/CodeSystem/condition-clinical
-Alias: $sopt = https://nahdo.org/sopt
-Alias: $hsloc.html = https://www.cdc.gov/nhsn/cdaportal/terminology/codesystem/hsloc.html
-Alias: $v3-MaritalStatus = http://terminology.hl7.org/CodeSystem/v3-MaritalStatus
-Alias: $v2-0131 = http://terminology.hl7.org/CodeSystem/v2-0131
-Alias: $device-action = http://hl7.org/fhir/device-action
-Alias: $cpt = http://www.ama-assn.org/go/cpt
-Alias: $tests = http://acme.org/tests
-Alias: $icd-9 = http://hl7.org/fhir/sid/icd-9
-Alias: $measure-type = http://terminology.hl7.org/CodeSystem/measure-type
-Alias: $measure-data-usage = http://terminology.hl7.org/CodeSystem/measure-data-usage
-Alias: $v2-0488 = http://terminology.hl7.org/CodeSystem/v2-0488
-Alias: $dose-rate-type_1 = http://epic.com/CodeSystem/dose-rate-type
-Alias: $encounter-class = http://example.com/CodeSystem/encounter-class
-Alias: $encounter-status = http://hl7.org/fhir/encounter-status
-Alias: $v3-ObservationInterpretation = http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation
-Alias: $condition-category_1 = http://open.epic.com/FHIR/StructureDefinition/condition-category
-Alias: $icd-10-cm = http://hl7.org/fhir/sid/icd-10-cm
-Alias: $icd-10-pcs = http://www.cms.gov/Medicare/Coding/ICD10
-Alias: $coverage-type = http://open.epic.com/FHIR/StructureDefinition/coverage-type
-Alias: $v2-0136 = http://terminology.hl7.org/CodeSystem/v2-0136
-Alias: $v3-EntityCode = http://terminology.hl7.org/CodeSystem/v3-EntityCode
-Alias: $shareablevalueset = http://hl7.org/fhir/StructureDefinition/shareablevalueset
-Alias: $procedure-code = http://hl7.org/fhir/ValueSet/procedure-code
-//Alias: $vital-sign-profile = http://hl7.org/fhir/StructureDefinition/vitalsigns
-Alias: $daig-serv-section = http://hl7.org/fhir/ValueSet/diagnostic-service-sections
-Alias: $request-priority = http://hl7.org/fhir/ValueSet/request-priority
+Alias: $MeasureTypeCS = http://terminology.hl7.org/CodeSystem/measure-type
 
-Alias: $bed-capacity-code-system = http://www.cdc.gov/nhsn/fhirportal/dqm/ig/CodeSystem/healthcare-capacity-code
-Alias: $DiagnosticReportStatus = http://hl7.org/fhir/diagnostic-report-status
-//Alias: $us-core-condition-code = http://hl7.org/fhir/us/core/ValueSet/us-core-condition-code|6.1.0
-//Alias: $us-core-patient = http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
+Alias: $communication-category = http://terminology.hl7.org/CodeSystem/communication-category
+Alias: $measure-report-status = http://hl7.org/fhir/measure-report-status
+Alias: $measure-report-type = http://hl7.org/fhir/measure-report-type
+Alias: $usage-context-type = http://terminology.hl7.org/CodeSystem/usage-context-type
 
-Alias: $QICoreNotDoneValueSet = http://hl7.org/fhir/us/qicore/StructureDefinition/qicore-notDoneValueSet
+Alias: $cqfm-scoringUnit = http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-scoringUnit
+
+Alias: $aggregate-method = http://hl7.org/fhir/us/cqfmeasures/CodeSystem/aggregate-method
+Alias: $cqfm-criteriaReference = http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-criteriaReference
+Alias: $cqfm-aggregateMethod = http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-aggregateMethod
+Alias: $reporting-frequency = http://hl7.org/fhir/us/safr/StructureDefinition/reporting-frequency
+Alias: $emergency-activation = http://hl7.org/fhir/us/safr/StructureDefinition/emergency-activation
+
+Alias: $hrd-example-codes = http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes
+
+Alias: $loinc = http://loinc.org
+Alias: $sct = http://snomed.info/sct
+Alias: $ucum = http://unitsofmeasure.org
+
+Alias: $MeasureImprovementNotation = http://terminology.hl7.org/CodeSystem/measure-improvement-notation 
+
+Alias: $v3-ActCode = http://terminology.hl7.org/CodeSystem/v3-ActCode|9.0.0
+Alias: $v2-0203 = http://terminology.hl7.org/CodeSystem/v2-0203

@@ -1,9 +1,0 @@
-{
-  "resourceType": "MedicationRequest",
-  "id": "LTCMedicationRequestFailBeforeIPMedReq",
-  "subject": {
-    "reference": "Patient/LTCMedicationRequestFailBeforeIP",
-    "display": "Donald Duck"
-  },
-  "authoredOn": "2024-12-31T00:00:00.000Z"
-}

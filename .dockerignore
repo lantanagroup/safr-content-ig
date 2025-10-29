@@ -1,8 +1,0 @@
-bundles/
-temp/
-template/
-input-cache/
-node_modules/
-.vscode
-.git
-.gitignore

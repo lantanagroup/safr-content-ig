@@ -1,85 +1,38 @@
 == Suppressed Messages ==
 
-# Errors caused by underlying specifications
+# 01 - IG Defined CodeSystem represents a CodeSystem defined by NHSN specifically for the program that this IG addresses. This IG defines the CodeSystem for use of these codes in the FHIR ecosystem
+INFORMATION: CodeSystem/us-safr-bed-capacity-example-codes: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
+INFORMATION: CodeSystem/us-safr-bed-capacity-group-example-codes: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
+INFORMATION: CodeSystem/us-safr-hrd-example-codes: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
+INFORMATION: CodeSystem/us-safr-hrd-supply-days-example-codes: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 
-
-Slice 'MeasureReport.contained:ip-measurereport-list': a matching slice is required, but not found (from http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/subjectlist-measurereport|1.0.0). Note that other slices are allowed in addition to this required slice
-Unable to find a profile match for #list-example-ach-monthly-individual-measurereport-list among choices: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list
-Details for #list-example-ach-monthly-individual-measurereport-list matching against profile http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list|1.0.0
-Details for #list-example-ach-monthly-individual-measurereport-list matching against profile http://hl7.org/fhir/StructureDefinition/List|4.0.1
-
-This element does not match any known slice defined in the profile http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/subjectlist-measurereport|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-Unable to find a profile match for #list-example-ach-daily-individual-measurereport-list among choices: http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list
-Details for #list-example-ach-daily-individual-measurereport-list matching against profile http://www.cdc.gov/nhsn/fhirportal/dqm/ig/StructureDefinition/ip-measurereport-list|1.0.0
-Details for #list-example-ach-daily-individual-measurereport-list matching against profile http://hl7.org/fhir/StructureDefinition/List|4.0.1
-
-Unable to find a profile match for MeasureReport/measurereport-example-individual-ach-monthly-pass1 among choices: http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm
-Details for MeasureReport/measurereport-example-individual-ach-monthly-pass1 matching against profile http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0
-Unable to find a profile match for MeasureReport/measurereport-example-individual-ach-monthly-pass2 among choices: http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm
-Details for MeasureReport/measurereport-example-individual-ach-monthly-pass2 matching against profile http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0
-Unable to find a profile match for MeasureReport/measurereport-example-individual-ach-monthly-pass3 among choices: http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm
-Details for MeasureReport/measurereport-example-individual-ach-monthly-pass3 matching against profile http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|3.1.0
+# 02 - Information Message about using experimental CodeSystem. The code system is only for example use in this IG and only used by example resources. The CodeSystem follows the requirements on TSMG
+Reference to experimental CodeSystem http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-group-example-codes|1.0.0
+Reference to experimental CodeSystem http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes|1.0.0
 
 
 
 
-# NHSN does not use (and may strip) performer in Observations. They are not included in samples in this IG
-Best Practice Recommendation: In general, all observations should have a performer
+# 03 - Deprecated pattern slicing from an inherited US Core profile
+INFORMATION: StructureDefinition/us-safr-submitting-organization: StructureDefinition.snapshot.element[9].slicing.discriminator[0]: The discriminator type 'pattern' is deprecated in R5+. For future compatibility, you could consider using type=value with a pattern[x] instead (if this is not an inherited slicing)
 
-# Custom template contains javascript required for the IG
-The <script> containing the javascript 'try {       var curr'... is illegal and not allowed on the HL7 ci-build - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 ci-build (if it is justified and needed)%
-The <script> containing the javascript '$(document).ready(fu'... is illegal and not allowed on the HL7 ci-build - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 ci-build (if it is justified and needed)%
-The <script> containing the javascript 'anchors.options.visi'... is illegal and not allowed on the HL7 ci-build - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 ci-build (if it is justified and needed)%
+# 04 - Repeating pattern requirement inherited from US Core organization
+INFORMATION: StructureDefinition/us-safr-submitting-organization: StructureDefinition.snapshot.element[10].pattern.ofType(Identifier): The repeating element has a pattern. The pattern will apply to all the repeats (this has not been clear to all users)
+INFORMATION: StructureDefinition/us-safr-submitting-organization: StructureDefinition.snapshot.element[11].pattern.ofType(Identifier): The repeating element has a pattern. The pattern will apply to all the repeats (this has not been clear to all users)
+INFORMATION: StructureDefinition/us-safr-submitting-organization: StructureDefinition.snapshot.element[12].pattern.ofType(Identifier): The repeating element has a pattern. The pattern will apply to all the repeats (this has not been clear to all users)
 
+# 05 - Information Message regarding a deprecated extension (maxValueSet), that was inherited through the FHIR R4 standard itself.
+INFORMATION: StructureDefinition/us-safr-measure-bundle: StructureDefinition.snapshot.element[4].binding.extension[0]: The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.2.0 is deprecated
 
-# Extensions meant to have a context of Element.
-Review the extension type for link-original-mapped-concept-extension: extensions should not have a context of Element unless it's really intended that they can be used anywhere
-Review the extension type for link-original-element-value-extension: extensions should not have a context of Element unless it's really intended that they can be used anywhere
+# 06 - Per CQFM - Computable measures must use text/cql-expression or text/cql-identifier for all criteria
+The expression language text/cql-identifier is not supported, so can't be validated
 
+# 07 - Warning derived from a profile that was inherited from. Default behavior is acceptable
+WARNING: StructureDefinition/us-safr-submitting-organization: StructureDefinition.snapshot.element[35].binding.valueSet: There are multiple different potential matches for the url 'http://hl7.org/fhir/us/core/ValueSet/us-core-usps-state'. It might be a good idea to fix to the correct version to reduce the likelihood of a wrong version being selected by an implementation/implementer. Using version '7.0.0', found versions: 3.1.1, 6.1.0, 7.0.0. Suggested fix: change the canonical reference from 'http://hl7.org/fhir/us/core/ValueSet/us-core-usps-state' to 'http://hl7.org/fhir/us/core/ValueSet/us-core-usps-state|7.0.0'
 
-# Code system is proper even though noted as draft.
-Reference to draft CodeSystem http://hl7.org/fhir/encounter-status|4.0.1
-Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/medicationrequest-category|1.0.0
-Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/dose-rate-type|1.0.0
-Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/condition-ver-status|4.0.1 from hl7.fhir.r4.core#4.0.1
-Reference to draft CodeSystem http://hl7.org/fhir/diagnostic-report-status|4.0.1
+# 08 - This IG is using the last published balloted version of DEQM and will change to a published version of DEQM before publishing
+WARNING: ImplementationGuide/hl7.fhir.us.safr: ImplementationGuide.dependsOn[6]: The ImplementationGuide uses package hl7.fhir.us.davinci-deqm#5.0.0-ballot released on 2024-08-27, but the most recent appropriate version is 4.0.0. This reference is getting old and the more recent version should be considered
 
-# Pinned versions of VS/CS via pin-canonicals parameter
-%Pinned the version of http://terminology.hl7.org/%
-
-
-# Slices for supplemental data extension not defined for clinical data.
-This element does not match any known slice defined in the profile http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/indv-measurereport-deqm|5.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-
-
-# WARNING: Invalid Invariant - CQMF STU3 uses an incorrect variant expression "value.startsWith(library).not()", it was later corrected to "expression.contains('.').not()" in STU4, for which this resource passes
-INFORMATION: StructureDefinition/ach-daily-diagnosticreport-lab: StructureDefinition.snapshot.element[21].slicing.discriminator[0]: The discriminator type 'pattern' is deprecated in R5+. For future compatibility, you could consider using type=value with a pattern[x] instead (if this is not an inherited slicing)
-INFORMATION: StructureDefinition/ach-daily-observation-lab: StructureDefinition.snapshot.element[22].slicing.discriminator[0]: The discriminator type 'pattern' is deprecated in R5+. For future compatibility, you could consider using type=value with a pattern[x] instead (if this is not an inherited slicing)
-INFORMATION: StructureDefinition/ach-monthly-diagnosticreport-lab: StructureDefinition.snapshot.element[21].slicing.discriminator[0]: The discriminator type 'pattern' is deprecated in R5+. For future compatibility, you could consider using type=value with a pattern[x] instead (if this is not an inherited slicing)
-INFORMATION: StructureDefinition/ach-monthly-observation-lab: StructureDefinition.snapshot.element[22].slicing.discriminator[0]: The discriminator type 'pattern' is deprecated in R5+. For future compatibility, you could consider using type=value with a pattern[x] instead (if this is not an inherited slicing)
-
-
-# INFORMATION: Notice where contained subject list resource cannot be processed
-Unable to check the stated count 4 because the subject list cannot be fully processed (Subject reference MeasureReport resolved to a #list-example-ach-daily-individual-measurereport-list, which could not be processed)
-Unable to check the stated count 1 because the subject list cannot be fully processed (Subject reference MeasureReport resolved to a #list-example-ach-monthly-individual-measurereport-list, which could not be processed)
-
-
-# WARNING: An example proprietary code system, not meant to be validated
-A definition for CodeSystem 'http://www.example.com/prorpietary' could not be found, so the code cannot be validated
-
-# INFORMATION: maxValueSet is used by tooling for R4.
-The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet%
-
-# WARNING: Descriptive URLs are not expected to resolve
-%URL value 'urn:oid:%
-No definition could be found for URL value 'https://nhsnlink.org'
-No definition could be found for URL value 'https://www.cdc.gov/nhsn/OrgID'
-
-
-# WARNING: This IG has dependencies on older IG versions by design as these are the versions most likely to be supported in production at this time.
-The ImplementationGuide uses package hl7.fhir.us.core#6.1.0 released on 2023-06-30, but the most recent appropriate version is 8.0.0. This reference is getting old and the more recent version should be considered
-The ImplementationGuide uses package hl7.fhir.us.qicore#6.0.0 released on 2024-03-01, but the most recent appropriate version is 7.0.1. This reference is getting old and the more recent version should be considered
-
-
-# Base NHSN website url with no artifact definition, Added to url by CQFTooling.
-No definition could be found for URL value 'https://www.cdc.gov/nhsn/index.html'
+# 10 - The entry in bundle represents data included per the requirements of the IG (All referenced resources must be included in bundle), but not explicitly identified as a slice.
+INFORMATION: Bundle/HospitalBedCapacityReportBundle: Bundle.entry[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measurereport-bundle|1.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Bundle/HRDMeasureReportBundle: Bundle.entry[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measurereport-bundle|1.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
