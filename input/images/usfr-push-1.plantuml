@@ -1,0 +1,20 @@
+@startuml
+
+package "Healthcare Facility" {
+    node "  Data Source (EHR)    " as EHR
+    node "Measure Evaluation Engine" as MEE1
+}
+
+package "NHSN" {
+    node "Other NHSN System\n(out of scope for this IG)" as other
+    node "Measure Source" as MS
+    node "MeasureReport Recipient" as Recipient
+}
+
+MEE1 -> MS : (1)\n Retrieve Measure Bundle
+EHR  <->  MEE1 : (2)\n Query Data Source\n (FHIR or other API)
+MEE1 -> Recipient : (3)\n Submit MeasureReport Bundle
+Recipient -> other : (4)\n Forward to NHSN Systems
+
+
+@enduml

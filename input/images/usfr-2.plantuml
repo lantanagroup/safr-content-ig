@@ -1,0 +1,58 @@
+@startuml
+' --- Stabilize layout/look across renderers ---
+left to right direction
+skinparam linetype ortho
+skinparam PackageStyle rectangle
+skinparam defaultFontName Monospace
+skinparam dpi 72
+
+package "Healthcare Facility One"   { node "Data Source (EHR)" as EHR1 }
+package "Healthcare Facility Two"   { node "Data Source (EHR)" as EHR2 }
+package "Healthcare Facility Three" { node "Data Source (EHR)" as EHR3 }
+package "Healthcare Facility Four"  { node "Data Source (EHR)" as EHR4 }
+
+package "Jurisdiction One" {
+  node "Measure Evaluation Engine" as MEE1
+  node "MeasureReport Recipient"   as Recipient1
+  node "Data Aggregator"           as DA1
+}
+
+package "Jurisdiction Two" {
+  node "Measure Evaluation Engine" as MEE2
+  node "MeasureReport Recipient"   as Recipient2
+}
+
+package "NHSN" {
+  node "Measure Source" as MS
+  node "MeasureReport Recipient and Other NHSN Systems" as NHSN_Recipient
+}
+
+' ---- layout constraints (hidden) ----
+EHR4 -[hidden]-> EHR3 -[hidden]-> EHR2 -[hidden]-> EHR1
+EHR1 -[hidden]-> MEE1
+MEE1 -[hidden]-> MEE2
+MEE2 -[hidden]-> MS
+MS   -[hidden]-> NHSN_Recipient
+
+' ---- flows ----
+' (1) Retrieve Measures
+MEE1 --> MS : (1)\nRetrieve Measure Bundle
+MEE2 --> MS : (1)\nRetrieve Measure Bundle
+
+' (2) Query data sources
+DA1  --> EHR1 : (2)\nQuery Data Source
+DA1  --> EHR2 : (2)\nQuery Data Source
+MEE2 --> EHR3 : (2)\nQuery Data Source
+MEE2 --> EHR4 : (2)\nQuery Data Source
+
+' (2) Aggregate
+DA1  --> MEE1 : (2)\nAggregate Data\nvia FHIR or other API
+
+' (3) Submit to jurisdiction recipients
+MEE1 --> Recipient1 : (3)\nSubmit MeasureReport Bundle
+MEE2 --> Recipient2 : (3)\nSubmit MeasureReport Bundle
+
+' (4) Submit to NHSN
+MEE1 --> NHSN_Recipient : (4)\nSubmit MeasureReport Bundle
+MEE2 --> NHSN_Recipient : (4)\nSubmit MeasureReport Bundle
+@enduml

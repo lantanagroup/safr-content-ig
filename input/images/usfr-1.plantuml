@@ -1,0 +1,18 @@
+@startuml
+
+package "Healthcare Facility" {
+    node "Data Source (EHR)" as EHR
+}
+
+package "NHSN" {
+    node "Measure Evaluation Engine" as MEE
+    node "Measure Source" as MS
+    node "MeasureReport Recipient and Other NHSN Systems" as Recipient
+}
+
+MEE <-   MS        : (1)\n Retrieve Measure Bundle
+EHR <->  MEE       : (2)\n Query Data Source
+MEE ->   Recipient : (3)\n Submit MeasureReport Bundle
+
+
+@enduml
