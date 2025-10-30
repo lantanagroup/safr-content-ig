@@ -8,5 +8,5 @@ Usage: #example
 * manufacturer = "CQFramework"
 * deviceName.name = "cqf-tooling"
 * deviceName.type = #manufacturer-name
-* type = SoftwareSystemTypeCodes#tooling
+* type = http://terminology.hl7.org/CodeSystem/software-system-type-codes#tooling
 * version.value = "3.1.0-SNAPSHOT"
