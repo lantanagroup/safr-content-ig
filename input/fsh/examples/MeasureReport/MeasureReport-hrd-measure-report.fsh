@@ -27,9 +27,9 @@ Usage: #example
 
 // NHSN extensions
 /*
-* extension[+].url = "http://hl7.org/fhir/us/safr/StructureDefinition/reporting-frequency"
+* extension[+].url = "http://www.cdc.gov/nshn/us-safr/StructureDefinition/reporting-frequency"
 * extension[=].valueCodeableConcept = http://unitsofmeasure.org#d "day"
-* extension[+].url = "http://hl7.org/fhir/us/safr/StructureDefinition/emergency-activation"
+* extension[+].url = "http://www.cdc.gov/nshn/us-safr/StructureDefinition/emergency-activation"
 * extension[=].valueBoolean = false
 * extension[+].url = "http://hl7.org/fhir/us/nhsn-bed-measures/StructureDefinition/reporting-timestamp"
 * extension[=].valueDateTime = "2025-03-05T08:00:00-05:00"

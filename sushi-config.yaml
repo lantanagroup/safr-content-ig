@@ -3,10 +3,10 @@
 # │  used properties are included. For a list of all supported properties and their functions,     │
 # │  see: https://fshschool.org/docs/sushi/configuration/.                                         │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
-id: hl7.fhir.us.safr
-canonical: http://hl7.org/fhir/us/safr
+id: gov.cdc.nhsn.us-safr
+canonical: http://www.cdc.gov/nhsn/us-safr
 name: US-SAFR
-title: US Situational Awareness Framework for Reporting (US SAFR) Implementation Guide
+title: CDC US Situational Awareness Framework for Reporting (US SAFR) Content Implementation Guide
 description: US Situational Awareness Framework for Reporting (US SAFR)
 status: active # draft | active | retired | unknown
 version: 1.0.0
@@ -23,9 +23,9 @@ extension:
   - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-wg
     valueCode: pher
 publisher:
-  name: HL7 International / Public Health
-  url: http://www.hl7.org/Special/committees/pher
-  # email: test@example.org
+  name: CDC National Healthcare Safety Network (NHSN)
+  url: http://www.cdc.gov/nhsn
+  email: nhsn@cdc.gov
 
 # The dependencies property corresponds to IG.dependsOn. The key is the
 # package id and the value is the version (or dev/current). For advanced
@@ -114,6 +114,7 @@ parameters:
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 menu:
   Home: index.html
+  Table of Contents: toc.html
   Actors And Usecases: 
     Actors: actors.html
     Use Cases: usecases.html

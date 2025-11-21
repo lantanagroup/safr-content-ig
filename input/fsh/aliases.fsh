@@ -22,10 +22,10 @@ Alias: $cqfm-scoringUnit = http://hl7.org/fhir/us/cqfmeasures/StructureDefinitio
 Alias: $aggregate-method = http://hl7.org/fhir/us/cqfmeasures/CodeSystem/aggregate-method
 Alias: $cqfm-criteriaReference = http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-criteriaReference
 Alias: $cqfm-aggregateMethod = http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-aggregateMethod
-Alias: $reporting-frequency = http://hl7.org/fhir/us/safr/StructureDefinition/reporting-frequency
-Alias: $emergency-activation = http://hl7.org/fhir/us/safr/StructureDefinition/emergency-activation
+Alias: $reporting-frequency = http://www.cdc.gov/nshn/us-safr/StructureDefinition/reporting-frequency
+Alias: $emergency-activation = http://www.cdc.gov/nshn/us-safr/StructureDefinition/emergency-activation
 
-Alias: $hrd-example-codes = http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes
+Alias: $hrd-example-codes = http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-hrd-example-codes
 
 Alias: $loinc = http://loinc.org
 Alias: $sct = http://snomed.info/sct

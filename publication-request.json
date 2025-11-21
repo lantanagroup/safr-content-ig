@@ -1,7 +1,7 @@
 {
-    "package-id": "hl7.fhir.us.safr",
-    "version": "1.0.0-ballot",
-    "path": "http://hl7.org/fhir/us/safr/2025May",
+    "package-id": "gov.cdc.nhsn.ussafr",
+    "version": "1.0.0",
+    "path": "http://www.cdc.gov/us-safr",
     "mode": "working",
     "status": "ballot",
     "sequence": "STU 1",
