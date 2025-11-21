@@ -17,7 +17,7 @@ Description: "Example of a Hospital Respiratory Disease (HRD) Measure for NHSN r
 Usage: #example
 * extension[+].url = "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-populationBasis"
 * extension[=].valueCode = #boolean
-* url = "http://hl7.org/fhir/us/us/safr/Measure/HospitalRespiratoryDataMeasure"
+* url = "http://hl7.org/fhir/us/safr/Measure/HospitalRespiratoryDataMeasure"
 * version = "1.0.0"
 * name = "HospitalRespiratoryDataMeasure"
 * title = "Measure - HRD Measure Example"

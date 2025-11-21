@@ -13,7 +13,7 @@ Usage: #example
 // * extension[=].valueReference = Reference(bed-capacity-effective-data-requirements)
 // * extension[+].url = "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg"
 // * extension[=].valueCode = #pher
-* url = "http://hl7.org/fhir/us/us-safr/Measure/HrdMeasureWeekly"
+* url = "http://hl7.org/fhir/us-safr/Measure/HrdMeasureWeekly"
 * version = "1.0.0"
 * name = "HRDMeasure"
 * title = "Hospital Respiratory Data Measure for US Situational Awareness Framework for Reporting"
