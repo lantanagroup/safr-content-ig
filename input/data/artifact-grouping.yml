@@ -1,469 +1,469 @@
 
 
 
-groups:
-  submission:
-    name: Current NHSN Report Submissions
-    description: "**Note:** By default, a modifier extension may not be included in Report Submission Bundle data for NHSN until NHSN accepts the meaning of the said. See [Modifier Extensions](https://build.fhir.org/extensibility.html#modifierExtension) for additional information."
-    resources:
-      - StructureDefinition/nhsn-measurereport-bundle
-      - StructureDefinition/nhsn-submission-header-bundle
-      - StructureDefinition/nhsn-subject-bundle
-      - StructureDefinition/subjectlist-measurereport
-      - StructureDefinition/ip-measurereport-list
-#      - StructureDefinition/poi-list
+# groups:
+#   submission:
+#     name: Current NHSN Report Submissions
+#     description: "**Note:** By default, a modifier extension may not be included in Report Submission Bundle data for NHSN until NHSN accepts the meaning of the said. See [Modifier Extensions](https://build.fhir.org/extensibility.html#modifierExtension) for additional information."
+#     resources:
+#       - StructureDefinition/nhsn-measurereport-bundle
+#       - StructureDefinition/nhsn-submission-header-bundle
+#       - StructureDefinition/nhsn-subject-bundle
+#       - StructureDefinition/subjectlist-measurereport
+#       - StructureDefinition/ip-measurereport-list
+# #      - StructureDefinition/poi-list
 
-  cross-measure:
-    name: Cross-Measure Profiles
-    resources:
-      - StructureDefinition/cross-measure-patient
-#      - StructureDefinition/nhsn-submitting-organization
-#      - StructureDefinition/nhsn-submitting-device
+#   cross-measure:
+#     name: Cross-Measure Profiles
+#     resources:
+#       - StructureDefinition/cross-measure-patient
+# #      - StructureDefinition/nhsn-submitting-organization
+# #      - StructureDefinition/nhsn-submitting-device
       
-  ach-monthly:
-    name: Acute Care Hospital (ACH) Monthly Reporting Profiles
-    resources:
-      - StructureDefinition/ach-monthly-encounter
-      - StructureDefinition/ach-monthly-location
-      - StructureDefinition/ach-monthly-observation-lab
-      - StructureDefinition/ach-monthly-observation-vitals
-      - StructureDefinition/ach-monthly-observation
-      - StructureDefinition/ach-monthly-servicerequest
-      - StructureDefinition/ach-monthly-specimen
-      - StructureDefinition/ach-monthly-condition
-      - StructureDefinition/ach-monthly-procedure
-      - StructureDefinition/ach-monthly-coverage
-      #- StructureDefinition/ach-monthly-implantable-device
-      - StructureDefinition/ach-monthly-device
-      #- StructureDefinition/ach-monthly-diagnosticreport
-      - StructureDefinition/ach-monthly-diagnosticreport-lab
-      - StructureDefinition/ach-monthly-diagnosticreport-note
-      - StructureDefinition/ach-monthly-medication
-      - StructureDefinition/ach-monthly-medicationadministration
-      - StructureDefinition/ach-monthly-medicationrequest
+#   ach-monthly:
+#     name: Acute Care Hospital (ACH) Monthly Reporting Profiles
+#     resources:
+#       - StructureDefinition/ach-monthly-encounter
+#       - StructureDefinition/ach-monthly-location
+#       - StructureDefinition/ach-monthly-observation-lab
+#       - StructureDefinition/ach-monthly-observation-vitals
+#       - StructureDefinition/ach-monthly-observation
+#       - StructureDefinition/ach-monthly-servicerequest
+#       - StructureDefinition/ach-monthly-specimen
+#       - StructureDefinition/ach-monthly-condition
+#       - StructureDefinition/ach-monthly-procedure
+#       - StructureDefinition/ach-monthly-coverage
+#       #- StructureDefinition/ach-monthly-implantable-device
+#       - StructureDefinition/ach-monthly-device
+#       #- StructureDefinition/ach-monthly-diagnosticreport
+#       - StructureDefinition/ach-monthly-diagnosticreport-lab
+#       - StructureDefinition/ach-monthly-diagnosticreport-note
+#       - StructureDefinition/ach-monthly-medication
+#       - StructureDefinition/ach-monthly-medicationadministration
+#       - StructureDefinition/ach-monthly-medicationrequest
       
-  # hypo:
-  #   name: Hypoglycemic Event Reporting profiles
-  #   resources:
-  #     - StructureDefinition/hypoglycemic-reporting-condition
-  #     - StructureDefinition/hypoglycemic-reporting-coverage
-  #     - StructureDefinition/hypoglycemic-reporting-encounter
-  #     - StructureDefinition/hypoglycemic-reporting-observation-lab
-  #     - StructureDefinition/hypoglycemic-reporting-location
-  #     - StructureDefinition/hypoglycemic-reporting-medication
-  #     - StructureDefinition/hypoglycemic-reporting-medicationadministration
-  #     - StructureDefinition/hypoglycemic-reporting-medicationrequest
-  #     - StructureDefinition/hypoglycemic-reporting-servicerequest
-  #     - StructureDefinition/hypoglycemic-reporting-specimen      
+#   # hypo:
+#   #   name: Hypoglycemic Event Reporting profiles
+#   #   resources:
+#   #     - StructureDefinition/hypoglycemic-reporting-condition
+#   #     - StructureDefinition/hypoglycemic-reporting-coverage
+#   #     - StructureDefinition/hypoglycemic-reporting-encounter
+#   #     - StructureDefinition/hypoglycemic-reporting-observation-lab
+#   #     - StructureDefinition/hypoglycemic-reporting-location
+#   #     - StructureDefinition/hypoglycemic-reporting-medication
+#   #     - StructureDefinition/hypoglycemic-reporting-medicationadministration
+#   #     - StructureDefinition/hypoglycemic-reporting-medicationrequest
+#   #     - StructureDefinition/hypoglycemic-reporting-servicerequest
+#   #     - StructureDefinition/hypoglycemic-reporting-specimen      
 
-  ach-daily:
-    name: ACH Daily Event Reporting Profiles
-    resources:
-      - StructureDefinition/ach-daily-encounter
-      - StructureDefinition/ach-daily-location
-      - StructureDefinition/ach-daily-observation-lab
-      - StructureDefinition/ach-daily-servicerequest
-      - StructureDefinition/ach-daily-specimen
-      - StructureDefinition/ach-daily-procedure
-      - StructureDefinition/ach-daily-diagnosticreport-lab
-      - StructureDefinition/ach-daily-medication
-      - StructureDefinition/ach-daily-medicationadministration
-      - StructureDefinition/ach-daily-medicationrequest
-      - StructureDefinition/ach-daily-observation
+#   ach-daily:
+#     name: ACH Daily Event Reporting Profiles
+#     resources:
+#       - StructureDefinition/ach-daily-encounter
+#       - StructureDefinition/ach-daily-location
+#       - StructureDefinition/ach-daily-observation-lab
+#       - StructureDefinition/ach-daily-servicerequest
+#       - StructureDefinition/ach-daily-specimen
+#       - StructureDefinition/ach-daily-procedure
+#       - StructureDefinition/ach-daily-diagnosticreport-lab
+#       - StructureDefinition/ach-daily-medication
+#       - StructureDefinition/ach-daily-medicationadministration
+#       - StructureDefinition/ach-daily-medicationrequest
+#       - StructureDefinition/ach-daily-observation
 
-  ltc-monthly:
-    name: Long Term Care Monthly Event Reporting Profiles
-    resources:
-      - StructureDefinition/ltc-monthly-coverage
-      - StructureDefinition/ltc-monthly-encounter
-      - StructureDefinition/ltc-monthly-observation-lab
-      - StructureDefinition/ltc-monthly-medication
-      - StructureDefinition/ltc-monthly-medicationadministration
-      - StructureDefinition/ltc-monthly-medicationrequest
-      - StructureDefinition/ltc-monthly-specimen
+#   ltc-monthly:
+#     name: Long Term Care Monthly Event Reporting Profiles
+#     resources:
+#       - StructureDefinition/ltc-monthly-coverage
+#       - StructureDefinition/ltc-monthly-encounter
+#       - StructureDefinition/ltc-monthly-observation-lab
+#       - StructureDefinition/ltc-monthly-medication
+#       - StructureDefinition/ltc-monthly-medicationadministration
+#       - StructureDefinition/ltc-monthly-medicationrequest
+#       - StructureDefinition/ltc-monthly-specimen
 
 
-  valuesets:
-    name: "Terminology: Profile ValueSets"
-    resources:
-      - ValueSet/ach-monthly-encounter-status
-      - ValueSet/ach-monthly-encounter-class
-      - ValueSet/ach-daily-diagnostic-report-status
-      - ValueSet/ach-daily-encounter-status
-      - ValueSet/ach-daily-encounter-class
+#   valuesets:
+#     name: "Terminology: Profile ValueSets"
+#     resources:
+#       - ValueSet/ach-monthly-encounter-status
+#       - ValueSet/ach-monthly-encounter-class
+#       - ValueSet/ach-daily-diagnostic-report-status
+#       - ValueSet/ach-daily-encounter-status
+#       - ValueSet/ach-daily-encounter-class
 
-  # codesystems:
-  #   name: "Terminology: Profile CodeSystems"
-  #   resources:
-  #     - CodeSystem/healthcare-capacity-codes
+#   # codesystems:
+#   #   name: "Terminology: Profile CodeSystems"
+#   #   resources:
+#   #     - CodeSystem/healthcare-capacity-codes
 
-  measures:
-    name: "Knowledge Artifacts: Digital Quality Measures"
-    resources:
-      # - Measure/NHSNGlycemicControlHypoglycemicInitialPopulation
-      Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation:
-        name: NHSN ACH Monthly Initial Population Measure
-        description: The ACH Monthly Initial Population includes all encounters for patients of any age in an emergency department (ED), observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period.
-      Measure/NHSNAcuteCareHospitalDailyInitialPopulation:
-        name: NHSN ACH Daily Initial Population Measure
-        description: All encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
+#   measures:
+#     name: "Knowledge Artifacts: Digital Quality Measures"
+#     resources:
+#       # - Measure/NHSNGlycemicControlHypoglycemicInitialPopulation
+#       Measure/NHSNAcuteCareHospitalMonthlyInitialPopulation:
+#         name: NHSN ACH Monthly Initial Population Measure
+#         description: The ACH Monthly Initial Population includes all encounters for patients of any age in an emergency department (ED), observation, or inpatient location or all encounters for patients of any age with an ED, observation, inpatient, or short stay status during the measurement period.
+#       Measure/NHSNAcuteCareHospitalDailyInitialPopulation:
+#         name: NHSN ACH Daily Initial Population Measure
+#         description: All encounters with an inpatient, observation, or short stay status for patients of any age during the measurement period.
 
-      # - Measure/NHSNBedCapacityMeasure
+#       # - Measure/NHSNBedCapacityMeasure
 
-  libs:
-    name: "Knowledge Artifacts: Measure Libraries"
-    resources:
-      Library/NHSNAcuteCareHospitalMonthlyInitialPopulation:
-        name: NHSN ACH Monthly Initial Population Library
-        description: Library of NHSN dQM ACH Monthly Initial Population Measure
-      #  Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
-      #   name: NHSN Glycemic ControlHypoglycemic Initial Population
-      #   description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
-      Library/NHSNAcuteCareHospitalDailyInitialPopulation:
-        name: NHSN ACH Daily Initial Population Library
-        description: Library of NHSN ACH Daily Initial Population Measure
-      # Library/NHSNBedCapacityMeasure:
-      #   name: NHSN Bed Capacity Reporting Initial Population
-      #   description: Library of NHSN Bed Capacity Initial Population Measure
+#   libs:
+#     name: "Knowledge Artifacts: Measure Libraries"
+#     resources:
+#       Library/NHSNAcuteCareHospitalMonthlyInitialPopulation:
+#         name: NHSN ACH Monthly Initial Population Library
+#         description: Library of NHSN dQM ACH Monthly Initial Population Measure
+#       #  Library/NHSNGlycemicControlHypoglycemicInitialPopulation:
+#       #   name: NHSN Glycemic ControlHypoglycemic Initial Population
+#       #   description: Library of NHSN Glycemic Control Hypoglycemic Initial Population Measure
+#       Library/NHSNAcuteCareHospitalDailyInitialPopulation:
+#         name: NHSN ACH Daily Initial Population Library
+#         description: Library of NHSN ACH Daily Initial Population Measure
+#       # Library/NHSNBedCapacityMeasure:
+#       #   name: NHSN Bed Capacity Reporting Initial Population
+#       #   description: Library of NHSN Bed Capacity Initial Population Measure
       
 
-  ext-libs:
-    name: "Knowledge Artifacts: Helper and External Libraries"
-    resources:
-      Library/SharedResourceCreation:
-        name: Shared Resource Creation
-        description: A library used to remove data elements from FHIR resources that are deemed unnecessary and/or unwanted by NHSN.
-      Library/NHSNHelpers:
-        name: NHSN Helpers
-        description: This library is a collection of commonly used functions from various third party libraries and other created functions for use within the NHSN Measures.
-      Library/FHIRHelpers:
-        name: FHIR Helpers
-        description: "This library defines functions to convert between FHIR data types and CQL system-defined types, as well as functions to support FHIRPath implementation. For more information, the FHIRHelpers wiki page: https://github.com/cqframework/clinical_quality_language/wiki/FHIRHelpers"
-      #Library/FHIRCommon:
-      #  name: FHIR Common
-      #  description: This library defines terminologies and functions commonly used in FHIR-based CQL artifacts.
-      #Library/MATGlobalCommonFunctionsFHIR4:
-      #  name: MAT Global Common Functions FHIR
-      #  description: Measure Authoring Tool (MAT) Global Common Functions FHIR.
-      #Library/SupplementalDataElementsFHIR4:
-      #  name: Supplemental Data Elements FHIR
-      #  description: This measure illustrates using supplemental data elements to gather additional information about a population.
+#   ext-libs:
+#     name: "Knowledge Artifacts: Helper and External Libraries"
+#     resources:
+#       Library/SharedResourceCreation:
+#         name: Shared Resource Creation
+#         description: A library used to remove data elements from FHIR resources that are deemed unnecessary and/or unwanted by NHSN.
+#       Library/NHSNHelpers:
+#         name: NHSN Helpers
+#         description: This library is a collection of commonly used functions from various third party libraries and other created functions for use within the NHSN Measures.
+#       Library/FHIRHelpers:
+#         name: FHIR Helpers
+#         description: "This library defines functions to convert between FHIR data types and CQL system-defined types, as well as functions to support FHIRPath implementation. For more information, the FHIRHelpers wiki page: https://github.com/cqframework/clinical_quality_language/wiki/FHIRHelpers"
+#       #Library/FHIRCommon:
+#       #  name: FHIR Common
+#       #  description: This library defines terminologies and functions commonly used in FHIR-based CQL artifacts.
+#       #Library/MATGlobalCommonFunctionsFHIR4:
+#       #  name: MAT Global Common Functions FHIR
+#       #  description: Measure Authoring Tool (MAT) Global Common Functions FHIR.
+#       #Library/SupplementalDataElementsFHIR4:
+#       #  name: Supplemental Data Elements FHIR
+#       #  description: This measure illustrates using supplemental data elements to gather additional information about a population.
     
-  extensions:
-    name: Extensions
-    resources:
-     - StructureDefinition/link-received-date-extension
-     - StructureDefinition/link-patient-list-applicable-period-extension
-     - StructureDefinition/link-original-resource-id-extension
-     - StructureDefinition/link-original-element-value-extension
-     - StructureDefinition/link-original-mapped-concept-extension
+#   extensions:
+#     name: Extensions
+#     resources:
+#      - StructureDefinition/link-received-date-extension
+#      - StructureDefinition/link-patient-list-applicable-period-extension
+#      - StructureDefinition/link-original-resource-id-extension
+#      - StructureDefinition/link-original-element-value-extension
+#      - StructureDefinition/link-original-mapped-concept-extension
      
-  #ext-extensions:
-  #  name: "CQF Tooling Extensions"
-  #  description: "Externally defined extentions that have not been published."
-  #  resources:
-     #- StructureDefinition/extension-MeasureReport.population.description
-      #StructureDefinition/extension-MeasureReport.supplementalDataElement.reference:
-      #  name: Measure Report Supplemental Data Element Reference (R5 surrogate extension)
-      #  description: This extension is not defined by this IG. CQF Tooling uses this extension, but the extension is yet unpublished.
-  #    StructureDefinition/extension-criteriaReference:
-  #      name: Measure Report Criteria Reference (R5 surrogate extension)
-  #      description: This extension is not defined by this IG. CQF Tooling uses this extension, but the extension is yet unpublished.
+#   #ext-extensions:
+#   #  name: "CQF Tooling Extensions"
+#   #  description: "Externally defined extentions that have not been published."
+#   #  resources:
+#      #- StructureDefinition/extension-MeasureReport.population.description
+#       #StructureDefinition/extension-MeasureReport.supplementalDataElement.reference:
+#       #  name: Measure Report Supplemental Data Element Reference (R5 surrogate extension)
+#       #  description: This extension is not defined by this IG. CQF Tooling uses this extension, but the extension is yet unpublished.
+#   #    StructureDefinition/extension-criteriaReference:
+#   #      name: Measure Report Criteria Reference (R5 surrogate extension)
+#   #      description: This extension is not defined by this IG. CQF Tooling uses this extension, but the extension is yet unpublished.
 
 
-  ach-monthly-ex:
-    name: "Examples: ACH Monthly Submission Instances"
-    resources:
-      Bundle/submission-full-example1:
-        name: Full ACH Monthly Measure Submission Bundle
-        description: Measure Bundle - Full ACH Monthly Measure Submission Example
-      Bundle/bundle-example-ach-monthly-header:
-        name: Example ACH Monthly Submission Header Bundle
-        description: Example Separated ACH Monthly Submission Header Bundle
-      Bundle/bundle-example-ach-monthly-subject-ach-pass1:
-        name: Example ACH Monthly Submission Subject Bundle 1
-        description: Example Separated ACH Monthly Submission Subject Bundle 1 for LOS/MEN
-      Bundle/bundle-example-ach-monthly-subject-ach-pass2:
-        name: Example ACH Monthly Submission Subject Bundle 2
-        description: Example Separated ACH Monthly Submission Subject Bundle 2 for Hypoglycemia and VTE
-      Bundle/bundle-example-ach-monthly-subject-ach-pass3:
-        name: Example ACH Monthly Submission Subject Bundle 3
-        description: Example Separated ACH Monthly Submission Subject Bundle 3 for CDI and VTE
+#   ach-monthly-ex:
+#     name: "Examples: ACH Monthly Submission Instances"
+#     resources:
+#       Bundle/submission-full-example1:
+#         name: Full ACH Monthly Measure Submission Bundle
+#         description: Measure Bundle - Full ACH Monthly Measure Submission Example
+#       Bundle/bundle-example-ach-monthly-header:
+#         name: Example ACH Monthly Submission Header Bundle
+#         description: Example Separated ACH Monthly Submission Header Bundle
+#       Bundle/bundle-example-ach-monthly-subject-ach-pass1:
+#         name: Example ACH Monthly Submission Subject Bundle 1
+#         description: Example Separated ACH Monthly Submission Subject Bundle 1 for LOS/MEN
+#       Bundle/bundle-example-ach-monthly-subject-ach-pass2:
+#         name: Example ACH Monthly Submission Subject Bundle 2
+#         description: Example Separated ACH Monthly Submission Subject Bundle 2 for Hypoglycemia and VTE
+#       Bundle/bundle-example-ach-monthly-subject-ach-pass3:
+#         name: Example ACH Monthly Submission Subject Bundle 3
+#         description: Example Separated ACH Monthly Submission Subject Bundle 3 for CDI and VTE
 
 
-  ach-daily-ex:
-    name: "Examples: ACH Daily Submission Instances"
-    resources:
-      Bundle/bundle-example-ach-daily-full:
-        name: Full ACH Daily Measure Submission Bundle
-        description: Measure Bundle - Full ACH Daily Measure Submission Example
-      Bundle/bundle-example-ach-daily-header:
-        name: Example ACH Daily Submission Header Bundle
-        description: Example Separated ACH Daily Submission Header Bundle
-      Bundle/bundle-example-ach-daily-subject-initialpopulationpass:
-        name: Example ACH Daily Submission Initial Population Pass Bundle
-        description: Example Separated ACH Daily Submission Initial Population Pass Bundle
-      Bundle/bundle-example-ach-daily-subject-negativepcr:
-        name: Example ACH Daily Submission Negative PCR Bundle
-        description: Example Separated ACH Daily Submission Negative PCR Bundle
-      Bundle/bundle-example-ach-daily-subject-influenzatherapeutic:
-        name: Example ACH Daily Submission Influenza Therapeutic Bundle
-        description: Example Separated ACH Daily Submission Influenza Therapeutic Bundle
-      Bundle/bundle-example-ach-daily-subject-rsvlabbtg:
-        name: Example ACH Daily Submission RSV Lab BTG Bundle
-        description: Example Separated ACH Daily Submission RSV Lab BTG Bundle
+#   ach-daily-ex:
+#     name: "Examples: ACH Daily Submission Instances"
+#     resources:
+#       Bundle/bundle-example-ach-daily-full:
+#         name: Full ACH Daily Measure Submission Bundle
+#         description: Measure Bundle - Full ACH Daily Measure Submission Example
+#       Bundle/bundle-example-ach-daily-header:
+#         name: Example ACH Daily Submission Header Bundle
+#         description: Example Separated ACH Daily Submission Header Bundle
+#       Bundle/bundle-example-ach-daily-subject-initialpopulationpass:
+#         name: Example ACH Daily Submission Initial Population Pass Bundle
+#         description: Example Separated ACH Daily Submission Initial Population Pass Bundle
+#       Bundle/bundle-example-ach-daily-subject-negativepcr:
+#         name: Example ACH Daily Submission Negative PCR Bundle
+#         description: Example Separated ACH Daily Submission Negative PCR Bundle
+#       Bundle/bundle-example-ach-daily-subject-influenzatherapeutic:
+#         name: Example ACH Daily Submission Influenza Therapeutic Bundle
+#         description: Example Separated ACH Daily Submission Influenza Therapeutic Bundle
+#       Bundle/bundle-example-ach-daily-subject-rsvlabbtg:
+#         name: Example ACH Daily Submission RSV Lab BTG Bundle
+#         description: Example Separated ACH Daily Submission RSV Lab BTG Bundle
 
         
-#  bed-ex:
-#    name: "Examples: Bed Capacity Submission Instances"
-#    resources:
-#       Bundle/jurisdiction-bed-capacity-report-example:
-#         name: Jurisdiction Capacity Full Report Bundle Example
-#         description: Example Bundle of jurisdictional report for capacity reporting
-#       MeasureReport/bed-capacity-measurereport-example-hosp:
-#         name: Jurisdiction Capacity Report from a Hospital context example
-#         description: Example MeasureReport of single report for capacity reporting
-#       MeasureReport/bed-capacity-measurereport-example-ipf:
-#         name: Jurisdiction Capacity Report from a Inpatient Psychiatric context example
-#         description: Example MeasureReport of single report for capacity reporting
-#       MeasureReport/bed-capacity-measurereport-example-chld:
-#         name: Jurisdiction Capacity Report from a Children's/Pediatric context example
-#         description: Example MeasureReport of single report for capacity reporting
+# #  bed-ex:
+# #    name: "Examples: Bed Capacity Submission Instances"
+# #    resources:
+# #       Bundle/jurisdiction-bed-capacity-report-example:
+# #         name: Jurisdiction Capacity Full Report Bundle Example
+# #         description: Example Bundle of jurisdictional report for capacity reporting
+# #       MeasureReport/bed-capacity-measurereport-example-hosp:
+# #         name: Jurisdiction Capacity Report from a Hospital context example
+# #         description: Example MeasureReport of single report for capacity reporting
+# #       MeasureReport/bed-capacity-measurereport-example-ipf:
+# #         name: Jurisdiction Capacity Report from a Inpatient Psychiatric context example
+# #         description: Example MeasureReport of single report for capacity reporting
+# #       MeasureReport/bed-capacity-measurereport-example-chld:
+# #         name: Jurisdiction Capacity Report from a Children's/Pediatric context example
+# #         description: Example MeasureReport of single report for capacity reporting
 
 
 
 
 
 
-  # general-examples:
-  #   name: "Knowledge Artifacts: General Examples"
-  #   resources:
-  #     - Device/cqf-tooling
-  #     - Organization/organization-example-submitting-organization
-  #     - Device/device-example-submitting-device
+#   # general-examples:
+#   #   name: "Knowledge Artifacts: General Examples"
+#   #   resources:
+#   #     - Device/cqf-tooling
+#   #     - Organization/organization-example-submitting-organization
+#   #     - Device/device-example-submitting-device
 
-  # ach-examples:
-  #   name: "Knowledge Artifacts: ACH Examples"
-  #   description: "Resource examples for ACH Initial Population Measure."
-  #   resources:
-  #     - Bundle/bundle-example-ach-header
+#   # ach-examples:
+#   #   name: "Knowledge Artifacts: ACH Examples"
+#   #   description: "Resource examples for ACH Initial Population Measure."
+#   #   resources:
+#   #     - Bundle/bundle-example-ach-header
       
-  #     - Bundle/bundle-example-ach-subject-ach-pass1
-  #     - MeasureReport/measurereport-example-individual-ach-ach-pass1
-  #     - Patient/patient-example-ach-ach-pass1
-  #     - Encounter/encounter-example-ach-ach-pass1
-  #     - Coverage/coverage-example-ach-pass1
-  #     - Condition/condition-example-diagnosis-ach-pass1
-  #     - Device/device-example-ach-ach-pass1-central-line
-  #     - MedicationAdministration/medicationadministration-example-ach-pass1-vancomycin
-  #     - MedicationRequest/medicationrequest-example-ach-pass1-vancomycin
-  #     - Observation/observation-example-ach-pass1-blood
-  #     - Observation/observation-example-ach-pass1-csf
-  #     - Observation/observation-example-ach-pass1-gestational-age
-  #     - Observation/observation-example-ach-pass1-vitals-weight
-  #     - Procedure/procedure-example-ach-ach-pass1-central-line
-  #     - Procedure/procedure-example-ach-ach-pass1-lumbar
-  #     - ServiceRequest/servicerequest-example-ach-ach-pass1-blood
-  #     - ServiceRequest/servicerequest-example-ach-ach-pass1-csf
-  #     - Specimen/specimen-example-ach-ach-pass1-blood
-  #     - Specimen/specimen-example-ach-ach-pass1-csf
+#   #     - Bundle/bundle-example-ach-subject-ach-pass1
+#   #     - MeasureReport/measurereport-example-individual-ach-ach-pass1
+#   #     - Patient/patient-example-ach-ach-pass1
+#   #     - Encounter/encounter-example-ach-ach-pass1
+#   #     - Coverage/coverage-example-ach-pass1
+#   #     - Condition/condition-example-diagnosis-ach-pass1
+#   #     - Device/device-example-ach-ach-pass1-central-line
+#   #     - MedicationAdministration/medicationadministration-example-ach-pass1-vancomycin
+#   #     - MedicationRequest/medicationrequest-example-ach-pass1-vancomycin
+#   #     - Observation/observation-example-ach-pass1-blood
+#   #     - Observation/observation-example-ach-pass1-csf
+#   #     - Observation/observation-example-ach-pass1-gestational-age
+#   #     - Observation/observation-example-ach-pass1-vitals-weight
+#   #     - Procedure/procedure-example-ach-ach-pass1-central-line
+#   #     - Procedure/procedure-example-ach-ach-pass1-lumbar
+#   #     - ServiceRequest/servicerequest-example-ach-ach-pass1-blood
+#   #     - ServiceRequest/servicerequest-example-ach-ach-pass1-csf
+#   #     - Specimen/specimen-example-ach-ach-pass1-blood
+#   #     - Specimen/specimen-example-ach-ach-pass1-csf
 
-  #     - Bundle/bundle-example-ach-subject-ach-pass2
-  #     - MeasureReport/measurereport-example-individual-ach-ach-pass2
-  #     - Patient/patient-example-ach-ach-pass2
-  #     - Encounter/encounter-example-ach-ach-pass2-emergency
-  #     - Encounter/encounter-example-ach-ach-pass2-inpatient
-  #     - Coverage/coverage-example-ach-pass2
-  #     - Condition/condition-example-diagnosis-ach-pass2-problem
-  #     - Condition/condition-example-diagnosis-ach-pass2
-  #     - Device/device-example-ach-ach-pass2-compress-hose
-  #     - DiagnosticReport/diagnosticreport-example-ach-ach-pass2-radiology
-  #     - MedicationAdministration/medicationadministration-example-ach-pass2-dex4
-  #     - MedicationAdministration/medicationadministration-example-ach-pass2-heparin-1
-  #     - MedicationAdministration/medicationadministration-example-ach-pass2-heparin-2
-  #     - MedicationAdministration/medicationadministration-example-ach-pass2-insulin-lispro-1
-  #     - MedicationAdministration/medicationadministration-example-ach-pass2-insulin-lispro-2
-  #     - MedicationAdministration/medicationadministration-example-ach-pass2-insulin-lispro-3
-  #     - MedicationAdministration/medicationadministration-example-ach-pass2-insulin-lispro-4
-  #     - MedicationRequest/medicationrequest-example-ach-pass2-dex4-tablet
-  #     - MedicationRequest/medicationrequest-example-ach-pass2-heparin
-  #     - MedicationRequest/medicationrequest-example-ach-pass2-insulin-lispro
-  #     - MedicationRequest/medicationrequest-example-ach-pass2-metformin
-  #     - Observation/observation-example-ach-pass2-aptt
-  #     - Observation/observation-example-ach-pass2-poc-1
-  #     - Observation/observation-example-ach-pass2-poc-2
-  #     - Observation/observation-example-ach-pass2-hemo-a1c
-  #     - Observation/observation-example-ach-pass2-hemo
-  #     - Observation/observation-example-ach-pass2-vitals-weight
-  #     - Procedure/procedure-example-ach-ach-pass2-ivcf
-  #     - ServiceRequest/servicerequest-example-ach-ach-pass2-aptt
-  #     - ServiceRequest/servicerequest-example-ach-ach-pass2-glucose
-  #     - ServiceRequest/servicerequest-example-ach-ach-pass2-hemo-a1c
-  #     - ServiceRequest/servicerequest-example-ach-ach-pass2-hemo
-  #     - Specimen/specimen-example-ach-ach-pass2-blood-1
-  #     - Specimen/specimen-example-ach-ach-pass2-blood-2
+#   #     - Bundle/bundle-example-ach-subject-ach-pass2
+#   #     - MeasureReport/measurereport-example-individual-ach-ach-pass2
+#   #     - Patient/patient-example-ach-ach-pass2
+#   #     - Encounter/encounter-example-ach-ach-pass2-emergency
+#   #     - Encounter/encounter-example-ach-ach-pass2-inpatient
+#   #     - Coverage/coverage-example-ach-pass2
+#   #     - Condition/condition-example-diagnosis-ach-pass2-problem
+#   #     - Condition/condition-example-diagnosis-ach-pass2
+#   #     - Device/device-example-ach-ach-pass2-compress-hose
+#   #     - DiagnosticReport/diagnosticreport-example-ach-ach-pass2-radiology
+#   #     - MedicationAdministration/medicationadministration-example-ach-pass2-dex4
+#   #     - MedicationAdministration/medicationadministration-example-ach-pass2-heparin-1
+#   #     - MedicationAdministration/medicationadministration-example-ach-pass2-heparin-2
+#   #     - MedicationAdministration/medicationadministration-example-ach-pass2-insulin-lispro-1
+#   #     - MedicationAdministration/medicationadministration-example-ach-pass2-insulin-lispro-2
+#   #     - MedicationAdministration/medicationadministration-example-ach-pass2-insulin-lispro-3
+#   #     - MedicationAdministration/medicationadministration-example-ach-pass2-insulin-lispro-4
+#   #     - MedicationRequest/medicationrequest-example-ach-pass2-dex4-tablet
+#   #     - MedicationRequest/medicationrequest-example-ach-pass2-heparin
+#   #     - MedicationRequest/medicationrequest-example-ach-pass2-insulin-lispro
+#   #     - MedicationRequest/medicationrequest-example-ach-pass2-metformin
+#   #     - Observation/observation-example-ach-pass2-aptt
+#   #     - Observation/observation-example-ach-pass2-poc-1
+#   #     - Observation/observation-example-ach-pass2-poc-2
+#   #     - Observation/observation-example-ach-pass2-hemo-a1c
+#   #     - Observation/observation-example-ach-pass2-hemo
+#   #     - Observation/observation-example-ach-pass2-vitals-weight
+#   #     - Procedure/procedure-example-ach-ach-pass2-ivcf
+#   #     - ServiceRequest/servicerequest-example-ach-ach-pass2-aptt
+#   #     - ServiceRequest/servicerequest-example-ach-ach-pass2-glucose
+#   #     - ServiceRequest/servicerequest-example-ach-ach-pass2-hemo-a1c
+#   #     - ServiceRequest/servicerequest-example-ach-ach-pass2-hemo
+#   #     - Specimen/specimen-example-ach-ach-pass2-blood-1
+#   #     - Specimen/specimen-example-ach-ach-pass2-blood-2
 
-  #     - Bundle/bundle-example-ach-subject-ach-pass3
-  #     - MeasureReport/measurereport-example-individual-ach-ach-pass3
-  #     - Patient/patient-example-ach-ach-pass3
-  #     - Encounter/encounter-example-ach-ach-pass3-acute
-  #     - Encounter/encounter-example-ach-ach-pass3-short-stay
-  #     - Coverage/coverage-example-ach-pass3
-  #     - Condition/condition-example-diagnosis-ach-pass3-problem
-  #     - Condition/condition-example-diagnosis-ach-pass3
-  #     - Device/device-example-ach-ach-pass3-ivcs-pump
-  #     - MedicationAdministration/medicationadministration-example-ach-pass3-enoxaparin
-  #     - MedicationAdministration/medicationadministration-example-ach-pass3-metronidazole-1
-  #     - MedicationAdministration/medicationadministration-example-ach-pass3-metronidazole-2
-  #     - MedicationAdministration/medicationadministration-example-ach-pass3-metronidazole-3
-  #     - MedicationRequest/medicationrequest-example-ach-pass3-cipro
-  #     - MedicationRequest/medicationrequest-example-ach-pass3-enoxaparin
-  #     - MedicationRequest/medicationrequest-example-ach-pass3-metronidazole
-  #     - Observation/observation-example-ach-pass3-cdiff
-  #     - Observation/observation-example-ach-pass3-vitals-height
-  #     - Observation/observation-example-ach-pass3-vitals-weight
-  #     - Procedure/procedure-example-ach-ach-pass3-transfusion
-  #     - ServiceRequest/servicerequest-example-ach-ach-pass3-cdiff
-  #     - Specimen/specimen-example-ach-ach-pass3-stool
-
-
-  #     - Bundle/submission-full-example1
-  #     - List/list-example-patients-of-interest
-
-  #     - MeasureReport/measurereport-example-subjectlist1
-  #     - List/list-example-individual-measurereport-list
-  #     - list-example-ach-patients-of-interest
+#   #     - Bundle/bundle-example-ach-subject-ach-pass3
+#   #     - MeasureReport/measurereport-example-individual-ach-ach-pass3
+#   #     - Patient/patient-example-ach-ach-pass3
+#   #     - Encounter/encounter-example-ach-ach-pass3-acute
+#   #     - Encounter/encounter-example-ach-ach-pass3-short-stay
+#   #     - Coverage/coverage-example-ach-pass3
+#   #     - Condition/condition-example-diagnosis-ach-pass3-problem
+#   #     - Condition/condition-example-diagnosis-ach-pass3
+#   #     - Device/device-example-ach-ach-pass3-ivcs-pump
+#   #     - MedicationAdministration/medicationadministration-example-ach-pass3-enoxaparin
+#   #     - MedicationAdministration/medicationadministration-example-ach-pass3-metronidazole-1
+#   #     - MedicationAdministration/medicationadministration-example-ach-pass3-metronidazole-2
+#   #     - MedicationAdministration/medicationadministration-example-ach-pass3-metronidazole-3
+#   #     - MedicationRequest/medicationrequest-example-ach-pass3-cipro
+#   #     - MedicationRequest/medicationrequest-example-ach-pass3-enoxaparin
+#   #     - MedicationRequest/medicationrequest-example-ach-pass3-metronidazole
+#   #     - Observation/observation-example-ach-pass3-cdiff
+#   #     - Observation/observation-example-ach-pass3-vitals-height
+#   #     - Observation/observation-example-ach-pass3-vitals-weight
+#   #     - Procedure/procedure-example-ach-ach-pass3-transfusion
+#   #     - ServiceRequest/servicerequest-example-ach-ach-pass3-cdiff
+#   #     - Specimen/specimen-example-ach-ach-pass3-stool
 
 
-  #     - MeasureReport/measurereport-example-individual-measurereport-sameresultdiffday
-  #     - MeasureReport/measurereport-example-individual-measurereport-hypo
+#   #     - Bundle/submission-full-example1
+#   #     - List/list-example-patients-of-interest
+
+#   #     - MeasureReport/measurereport-example-subjectlist1
+#   #     - List/list-example-individual-measurereport-list
+#   #     - list-example-ach-patients-of-interest
 
 
-  #     - Patient/patient-example-sameresultdiffday
-  #     - Patient/patient-example-hypo
+#   #     - MeasureReport/measurereport-example-individual-measurereport-sameresultdiffday
+#   #     - MeasureReport/measurereport-example-individual-measurereport-hypo
 
-  #     - Encounter/encounter-example-hypo-sameresultdiffday
-  #     - Encounter/encounter-example-hypo-hypo
 
-  #     - Location/location-example-hypo-encounter-location-sameresultdiffday
+#   #     - Patient/patient-example-sameresultdiffday
+#   #     - Patient/patient-example-hypo
 
-  #     - Location/location-example-hypo-hospital
-  #     - Location/location-example-hypo-cardiology
-  #     - Location/location-example-hypo-emergency
-  #     #- Location/location-example-hypo-encounter-location-ach-crit
-  #     #- Location/location-example-hypo-encounter-location-ach-emergency
-  #     #- Location/location-example-hypo-encounter-location-ach-inpatient
-  #     #- Location/location-example-hypo-encounter-location-ach-medsurg
-  #     #- Location/location-example-hypo-nicu-level-iii
+#   #     - Encounter/encounter-example-hypo-sameresultdiffday
+#   #     - Encounter/encounter-example-hypo-hypo
+
+#   #     - Location/location-example-hypo-encounter-location-sameresultdiffday
+
+#   #     - Location/location-example-hypo-hospital
+#   #     - Location/location-example-hypo-cardiology
+#   #     - Location/location-example-hypo-emergency
+#   #     #- Location/location-example-hypo-encounter-location-ach-crit
+#   #     #- Location/location-example-hypo-encounter-location-ach-emergency
+#   #     #- Location/location-example-hypo-encounter-location-ach-inpatient
+#   #     #- Location/location-example-hypo-encounter-location-ach-medsurg
+#   #     #- Location/location-example-hypo-nicu-level-iii
       
-  #     - Coverage/coverage-example-sameresultdiffday
+#   #     - Coverage/coverage-example-sameresultdiffday
 
-  #     - Condition/condition-example-diagnosis-sameresultdiffday1
-  #     - Condition/condition-example-diagnosis-sameresultdiffday2
+#   #     - Condition/condition-example-diagnosis-sameresultdiffday1
+#   #     - Condition/condition-example-diagnosis-sameresultdiffday2
 
-  #     - Condition/condition-example-diagnosis-hypo1
-  #     - Condition/condition-example-diagnosis-hypo2
+#   #     - Condition/condition-example-diagnosis-hypo1
+#   #     - Condition/condition-example-diagnosis-hypo2
 
-  #     - Observation/observation-example-hypo-lab-sameresultdiffday1
-  #     - Observation/observation-example-hypo-lab-sameresultdiffday2
-  #     - Observation/observation-example-hypo-lab-sameresultdiffday3
-  #     - Observation/observation-example-hypo-lab-sameresultdiffday4
-  #     - Observation/observation-example-hypo-lab-sameresultdiffday5
-  #     - Observation/observation-example-hypo-lab-sameresultdiffday6
-  #     - Observation/observation-example-hypo-lab-sameresultdiffday7
-  #     - Observation/observation-example-hypo-lab-hypo1
-  #     - Observation/observation-example-hypo-lab-hypo2
-  #     - Observation/observation-example-hypo-lab-hypo3
-  #     - Observation/observation-example-hypo-lab-hypo4
-  #     - Observation/observation-example-hypo-lab-hypo5
-  #     - Observation/observation-example-hypo-lab-hypo6
-  #     - Observation/observation-example-hypo-lab-hypo7
-  #     - Observation/observation-example-hypo-lab-hypo8
+#   #     - Observation/observation-example-hypo-lab-sameresultdiffday1
+#   #     - Observation/observation-example-hypo-lab-sameresultdiffday2
+#   #     - Observation/observation-example-hypo-lab-sameresultdiffday3
+#   #     - Observation/observation-example-hypo-lab-sameresultdiffday4
+#   #     - Observation/observation-example-hypo-lab-sameresultdiffday5
+#   #     - Observation/observation-example-hypo-lab-sameresultdiffday6
+#   #     - Observation/observation-example-hypo-lab-sameresultdiffday7
+#   #     - Observation/observation-example-hypo-lab-hypo1
+#   #     - Observation/observation-example-hypo-lab-hypo2
+#   #     - Observation/observation-example-hypo-lab-hypo3
+#   #     - Observation/observation-example-hypo-lab-hypo4
+#   #     - Observation/observation-example-hypo-lab-hypo5
+#   #     - Observation/observation-example-hypo-lab-hypo6
+#   #     - Observation/observation-example-hypo-lab-hypo7
+#   #     - Observation/observation-example-hypo-lab-hypo8
 
-  #     - MedicationRequest/medicationrequest-example-hypo-sameresultdiffday1
-  #     - MedicationRequest/medicationrequest-example-hypo-sameresultdiffday2
-  #     - MedicationRequest/medicationrequest-example-hypo-hypo1
-  #     - MedicationRequest/medicationrequest-example-hypo-hypo2
-  #     - MedicationRequest/medicationrequest-example-hypo-hypo3
-  #     - MedicationRequest/medicationrequest-example-hypo-hypo4
+#   #     - MedicationRequest/medicationrequest-example-hypo-sameresultdiffday1
+#   #     - MedicationRequest/medicationrequest-example-hypo-sameresultdiffday2
+#   #     - MedicationRequest/medicationrequest-example-hypo-hypo1
+#   #     - MedicationRequest/medicationrequest-example-hypo-hypo2
+#   #     - MedicationRequest/medicationrequest-example-hypo-hypo3
+#   #     - MedicationRequest/medicationrequest-example-hypo-hypo4
 
 
-  #     - MedicationAdministration/medicationadministration-example-hypo-hypo1
+#   #     - MedicationAdministration/medicationadministration-example-hypo-hypo1
       
-  #     - Medication/medication-example-hypo-sameresultdiffday1
-  #     - Medication/medication-example-hypo-sameresultdiffday2
-  #     - Medication/medication-example-hypo-hypo1
-  #     - Medication/medication-example-hypo-hypo2
-  #     - Medication/medication-example-hypo-hypo3
-  #     - Medication/medication-example-hypo-hypo4
+#   #     - Medication/medication-example-hypo-sameresultdiffday1
+#   #     - Medication/medication-example-hypo-sameresultdiffday2
+#   #     - Medication/medication-example-hypo-hypo1
+#   #     - Medication/medication-example-hypo-hypo2
+#   #     - Medication/medication-example-hypo-hypo3
+#   #     - Medication/medication-example-hypo-hypo4
 
       
-  #     - Medication/medication-example-cipro-500
-  #     - Medication/medication-example-dex4-tablet
-  #     - Medication/medication-example-enoxaparin
-  #     - Medication/medication-example-heparin
-  #     - Medication/medication-example-insulin-lispro
-  #     - Medication/medication-example-metformin-1000
-  #     - Medication/medication-example-metronidazole
-  #     - Medication/medication-example-vancomycin-15
+#   #     - Medication/medication-example-cipro-500
+#   #     - Medication/medication-example-dex4-tablet
+#   #     - Medication/medication-example-enoxaparin
+#   #     - Medication/medication-example-heparin
+#   #     - Medication/medication-example-insulin-lispro
+#   #     - Medication/medication-example-metformin-1000
+#   #     - Medication/medication-example-metronidazole
+#   #     - Medication/medication-example-vancomycin-15
 
-  #     - ServiceRequest/servicerequest-example-hypo-sameresultdiffday1
+#   #     - ServiceRequest/servicerequest-example-hypo-sameresultdiffday1
 
-  #     - Specimen/specimen-example-hypo-sameresultdiffday1
+#   #     - Specimen/specimen-example-hypo-sameresultdiffday1
 
-  # rps-examples:
-  #   name: "Knowledge Artifacts: RPS Examples"
-  #   description: "Resource examples for RPS Initial Population Measure."
-  #   resources:
-  #     - Patient/patient-example-rps-influenzatherapeutic
-  #     - Patient/patient-example-rps-initialpopulationpass
-  #     - Patient/patient-example-rps-negativepcr
-  #     - Patient/patient-example-rps-rsvlabbtg
+#   # rps-examples:
+#   #   name: "Knowledge Artifacts: RPS Examples"
+#   #   description: "Resource examples for RPS Initial Population Measure."
+#   #   resources:
+#   #     - Patient/patient-example-rps-influenzatherapeutic
+#   #     - Patient/patient-example-rps-initialpopulationpass
+#   #     - Patient/patient-example-rps-negativepcr
+#   #     - Patient/patient-example-rps-rsvlabbtg
 
-  #     - Encounter/encounter-example-rps-influenzatherapeutic
-  #     - Encounter/encounter-example-rps-initialpopulationpass-1
-  #     - Encounter/encounter-example-rps-initialpopulationpass-2
-  #     - Encounter/encounter-example-rps-negativepcr-1
-  #     - Encounter/encounter-example-rps-negativepcr-2
-  #     - Encounter/encounter-example-rps-rsvlabbtg
+#   #     - Encounter/encounter-example-rps-influenzatherapeutic
+#   #     - Encounter/encounter-example-rps-initialpopulationpass-1
+#   #     - Encounter/encounter-example-rps-initialpopulationpass-2
+#   #     - Encounter/encounter-example-rps-negativepcr-1
+#   #     - Encounter/encounter-example-rps-negativepcr-2
+#   #     - Encounter/encounter-example-rps-rsvlabbtg
 
-  #     - Coverage/coverage-example-rps-influenzatherapeutic
-  #     - Coverage/coverage-example-rps-initialpopulationpass
-  #     - Coverage/coverage-example-rps-negativepcr
-  #     - Coverage/coverage-example-rps-rsvlabbtg
+#   #     - Coverage/coverage-example-rps-influenzatherapeutic
+#   #     - Coverage/coverage-example-rps-initialpopulationpass
+#   #     - Coverage/coverage-example-rps-negativepcr
+#   #     - Coverage/coverage-example-rps-rsvlabbtg
 
-  #     - Condition/condition-example-diagnosis-rps-influenzatherapeutic
-  #     - Condition/condition-example-diagnosis-rps-initialpopulationpass
-  #     - Condition/condition-example-diagnosis-rps-negativepcr
-  #     - Condition/condition-example-diagnosis-rps-rsvlabbtg
+#   #     - Condition/condition-example-diagnosis-rps-influenzatherapeutic
+#   #     - Condition/condition-example-diagnosis-rps-initialpopulationpass
+#   #     - Condition/condition-example-diagnosis-rps-negativepcr
+#   #     - Condition/condition-example-diagnosis-rps-rsvlabbtg
       
-  #     - Immunization/immunization-example-rps-influenzatherapeutic
+#   #     - Immunization/immunization-example-rps-influenzatherapeutic
       
-  #     - Observation/observation-example-rps-initialpopulationpass
-  #     - Observation/observation-example-rps-negativepcr-1
-  #     - Observation/observation-example-rps-negativepcr-2
-  #     - Observation/observation-example-rps-rsvlabbtg
+#   #     - Observation/observation-example-rps-initialpopulationpass
+#   #     - Observation/observation-example-rps-negativepcr-1
+#   #     - Observation/observation-example-rps-negativepcr-2
+#   #     - Observation/observation-example-rps-rsvlabbtg
 
-  #     - MedicationRequest/medicationrequest-example-rps-influenzatherapeutic
-  #     - MedicationRequest/medicationrequest-example-rps-initialpopulationpass
-  #     - MedicationRequest/medicationrequest-example-rps-negativepcr
-  #     - MedicationRequest/medicationrequest-example-rps-rsvlabbtg-1
-  #     - MedicationRequest/medicationrequest-example-rps-rsvlabbtg-2
+#   #     - MedicationRequest/medicationrequest-example-rps-influenzatherapeutic
+#   #     - MedicationRequest/medicationrequest-example-rps-initialpopulationpass
+#   #     - MedicationRequest/medicationrequest-example-rps-negativepcr
+#   #     - MedicationRequest/medicationrequest-example-rps-rsvlabbtg-1
+#   #     - MedicationRequest/medicationrequest-example-rps-rsvlabbtg-2
 
-  #     - MedicationAdministration/medicationadministration-example-rps-influenzatherapeutic
-  #     - MedicationAdministration/medicationadministration-example-rps-initialpopulationpass-1
-  #     - MedicationAdministration/medicationadministration-example-rps-initialpopulationpass-2
-  #     - MedicationAdministration/medicationadministration-example-rps-negativepcr
-  #     - MedicationAdministration/medicationadministration-example-rps-rsvlabbtg-1
-  #     - MedicationAdministration/medicationadministration-example-rps-rsvlabbtg-2
+#   #     - MedicationAdministration/medicationadministration-example-rps-influenzatherapeutic
+#   #     - MedicationAdministration/medicationadministration-example-rps-initialpopulationpass-1
+#   #     - MedicationAdministration/medicationadministration-example-rps-initialpopulationpass-2
+#   #     - MedicationAdministration/medicationadministration-example-rps-negativepcr
+#   #     - MedicationAdministration/medicationadministration-example-rps-rsvlabbtg-1
+#   #     - MedicationAdministration/medicationadministration-example-rps-rsvlabbtg-2
 
-  #     - Medication/medication-example-rps-influenzatherapeutic
-  #     - Medication/medication-example-rps-initialpopulationpass
-  #     - Medication/medication-example-rps-rsvlabbtg-1
-  #     - Medication/medication-example-rps-rsvlabbtg-2
-  #     - Medication/medication-example-rps-negativepcr
+#   #     - Medication/medication-example-rps-influenzatherapeutic
+#   #     - Medication/medication-example-rps-initialpopulationpass
+#   #     - Medication/medication-example-rps-rsvlabbtg-1
+#   #     - Medication/medication-example-rps-rsvlabbtg-2
+#   #     - Medication/medication-example-rps-negativepcr
 
-  #     - Specimen/specimen-example-rps-initialpopulationpass
-  #     - Specimen/specimen-example-rps-negativepcr-1
-  #     - Specimen/specimen-example-rps-negativepcr-2
-  #     - Specimen/specimen-example-rps-rsvlabbtg
+#   #     - Specimen/specimen-example-rps-initialpopulationpass
+#   #     - Specimen/specimen-example-rps-negativepcr-1
+#   #     - Specimen/specimen-example-rps-negativepcr-2
+#   #     - Specimen/specimen-example-rps-rsvlabbtg

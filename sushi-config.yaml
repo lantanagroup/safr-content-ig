@@ -9,10 +9,10 @@ name: US-SAFR
 title: CDC US Situational Awareness Framework for Reporting (US SAFR) Content Implementation Guide
 description: US Situational Awareness Framework for Reporting (US SAFR)
 status: active # draft | active | retired | unknown
-version: 1.0.0
+version: 0.0.1
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2025+
-releaseLabel: STU 1 ballot # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
+releaseLabel: STU 0.0.1 draft # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
 # license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
 jurisdiction: urn:iso:std:iso:3166#US "United States of America" # https://www.hl7.org/fhir/valueset-jurisdiction.html
 extension:
@@ -247,17 +247,4 @@ menu:
 # See the individual option definitions below for more detail.
 #
 instanceOptions:
-  # When set to true, slices must be referred to by name and not only by a numeric index in order to be used
-  # in an Instance's assignment rule. All slices appear in the order in which they are specified in FSH rules.
-  # While SUSHI defaults to false for legacy reasons, manualSliceOrding is recommended for new projects.
   manualSliceOrdering: true # true | false
-  # Determines for which types of Instances SUSHI will automatically set meta.profile
-  # if InstanceOf references a profile:
-  #
-  # setMetaProfile: always # always | never | inline-only | standalone-only
-  #
-  #
-  # Determines for which types of Instances SUSHI will automatically set id
-  # if InstanceOf references a profile:
-  #
-  # setId: always # always | standalone-only

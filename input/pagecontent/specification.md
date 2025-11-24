@@ -46,10 +46,7 @@ The following reporting scenarios use the Actors defined on the [Actors](actors.
 In this scenario both the Data Source and Digital Quality Measure Evaluation Engine reside at the reporting facility, and may be the same system (e.g., an EHR that performs it’s own internal measure evaluation). The Measure Evaluation Engine first retrieves the latest FHIR measures and related resources from the measure repository and extracts the data requirements for each measure. The Measure Evaluation Engine queries the Data Source for data that it will evaluate against a measure and prepares Bundle containing MeasureReport and supporting resources, then sends it to the MeasureReport Recipient (NHSN). 
 
 In this scenario the Measure Evaluation Engine SHALL perform a FHIR POST or PUT to push the MeasureReport Bundle to the MeasureReport Recipient (NHSN).
-<figure>
-  {% include usfr-push-1.svg %}
-  <figcaption></figcaption>
-</figure>
+
 
 1. **Retrieve Measure Bundle:** The Measure Evaluation Engine uses an HTTP GET against the measure repository for an [USSafrMeasureBundle](StructureDefinition-us-safr-measure-bundle.html) containing a [CQFMContinuousVariableMeasure]({{site.data.fhir.ver.cqfm}}/StructureDefinition-cv-measure-cqfm.html) <!--[CRMIShareableMeasure]({{site.data.fhir.ver.crmi}}/StructureDefinition-crmi-shareablemeasure.html)--> and related resources. The exact Bundle(s) to retrieve is determined out of band by the facility and MeasureReport Recipient (NHSN) during onboarding and subsequent discussions. After retrieving the Bundle, the Measure evaluation engine parses the contents to determine which resources are needed from the Data Source, then proceeds to step 2.
 
@@ -65,10 +62,7 @@ In this scenario the Measure Evaluation Engine SHALL perform a FHIR POST or PUT 
 In this scenario, both the Digital Quality Measure Evaluation Engine and the MeasureReport Recipient reside within an Public Health Agency (NHSN) controlled environment, and may be the same system. The Measure Evaluation Engine first retrieves the latest FHIR measures and related resources from the measure repository and extracts the data requirements for each measure. The Measure Evaluation Engine queries the Data Source for data that it will evaluate against a measure and prepares Bundle containing MeasureReport and supporting resources.
 In this scenario the Data Source SHALL have a FHIR API that at a minimum provides read access to all US Core profiles. Some measures may require additional FHIR resources beyond US Core, such as MedicationAdministration.
 
-<figure>
-  {%include usfr-1.svg %}
-  <figcaption></figcaption>
-</figure>
+
 
 1. **Retrieve Measure Bundle:** The Measure Evaluation Engine uses an HTTP GET against the measure repository for an [USSafrMeasureBundle](StructureDefinition-us-safr-measure-bundle.html) containing a [CQFMContinuousVariableMeasure]({{site.data.fhir.ver.cqfm}}/StructureDefinition-cv-measure-cqfm.html)<!--[CRMIShareableMeasure]({{site.data.fhir.ver.crmi}}/StructureDefinition-crmi-shareablemeasure.html)--> and related resources. The exact Bundle(s) to retrieve is determined out of band by the facility and MeasureReport Recipient (NHSN) during onboarding and subsequent discussions. After retrieving the Bundle, the Measure evaluation engine parses the contents to determine which resources are needed from the Data Source, then proceeds to step 2.
 
@@ -82,10 +76,7 @@ In this scenario, a state/jurisdiction retrieves the measure bundle from NHSN an
 
 In this scenario the state/jurisdiction SHALL have a FHIR API that at a minimum provides read access to all US Core profiles. Some measures may require additional FHIR resources beyond US Core, such as MedicationAdministration.
 
-<figure>
-  {% include usfr-2.svg %}
-  <figcaption></figcaption>
-</figure>
+
 
 1. **Retrieve Measure Bundle:** The state/jurisdiction Measure Evaluation Engine uses an HTTP GET to retrieve the [USSafrMeasureBundle](StructureDefinition-us-safr-measure-bundle.html) containing a [CQFMContinuousVariableMeasure]({{site.data.fhir.ver.cqfm}}/StructureDefinition-cv-measure-cqfm.html)<!--[CRMIShareableMeasure]({{site.data.fhir.ver.crmi}}/StructureDefinition-crmi-shareablemeasure.html)--> and related resources from the measure repository. The exact Bundle(s) to retrieve is determined out of band by the facility and MeasureReport Recipient (NHSN) during onboarding and subsequent discussions. After retrieving the Bundle, the Measure evaluation engine parses the contents to determine which resources are needed from the Data Source, then proceeds to step 2.
 
