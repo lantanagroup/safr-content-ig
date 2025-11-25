@@ -1,6 +1,6 @@
 ### Overview
 
-The US Situational Awareness Framework for Reporting (US SAFR) Implementation Guide (IG) establishes a standardized, FHIR-based approach to support public health 
+Hiiiiiiiiiiiiiiiiiiiiii The US Situational Awareness Framework for Reporting (US SAFR) Implementation Guide (IG) establishes a standardized, FHIR-based approach to support public health 
 decision-making during emergencies. By enhancing situational awareness, this IG aims to provide a real-time, national or jurisdictional view of healthcare system capacity, 
 respiratory disease trends, and other critical public health metrics. The guide is designed to facilitate seamless data exchange between healthcare facilities and
 public health authorities (federal and/or jurisdictional),thereby strengthening the nation’s emergency preparedness and response capabilities.
