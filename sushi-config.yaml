@@ -20,8 +20,6 @@ extension:
     valueCode: trial-use
   - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm
     valueInteger: 1
-  - url: http://hl7.org/fhir/StructureDefinition/structuredefinition-wg
-    valueCode: pher
 publisher:
   name: CDC National Healthcare Safety Network (NHSN)
   url: http://www.cdc.gov/nhsn
@@ -32,6 +30,9 @@ publisher:
 # use cases, the value can be an object with keys for id, uri, and version.
 #
 dependencies:
+  hl7.fhir.us.safr:
+    version: current
+    id: ussafr
   hl7.fhir.us.core:
     version: 6.1.0
     id: uscore
@@ -101,7 +102,7 @@ parameters:
     - input/pagecontent
     - input/intro-notes
     - fsh-generated/includes
-  auto-oid-root: 2.16.840.1.113883.4.642.40.53
+#  auto-oid-root: 2.16.840.1.113883.4.642.40.53
 # validation: [allow-any-extensions, no-broken-links]
 #
 # ╭────────────────────────────────────────────menu.xml────────────────────────────────────────────╮

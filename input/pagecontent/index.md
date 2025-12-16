@@ -1,6 +1,6 @@
 ### Overview
 
-Hiiiiiiiiiiiiiiiiiiiiii The US Situational Awareness Framework for Reporting (US SAFR) Implementation Guide (IG) establishes a standardized, FHIR-based approach to support public health 
+The US Situational Awareness Framework for Reporting (US SAFR) Implementation Guide (IG) establishes a standardized, FHIR-based approach to support public health 
 decision-making during emergencies. By enhancing situational awareness, this IG aims to provide a real-time, national or jurisdictional view of healthcare system capacity, 
 respiratory disease trends, and other critical public health metrics. The guide is designed to facilitate seamless data exchange between healthcare facilities and
 public health authorities (federal and/or jurisdictional),thereby strengthening the nation’s emergency preparedness and response capabilities.
@@ -55,7 +55,7 @@ The US SAFR IG harmonizes with and extends the following standards:
 2. **[DEQM (US Realm):]({{site.data.fhir.ver.deqm}}/index.html)** Ensures alignment with existing US-specific quality measurement standards.
 3. **[NHSN Bed Connectivity Initiative:](https://www.cdc.gov/nhsn/bed-capacity/index.html)** Standardizes real-time bed capacity reporting across hospitals and jurisdictions.
 4. **[Hospital Respiratory Data Reporting:](https://www.cdc.gov/nhsn/psc/hospital-respiratory-reporting.html)** Establishes reporting standards for COVID-19, influenza, RSV, and related data.
-5. **[NHSN dQM Reporting:](http://hl7.org/fhir/us/nhsn-dqm/ImplementationGuide/hl7.fhir.us.nhsn-dqm)** Defines the standard framework for reporting patient line-level clinical data using a digital Quality Measure (dQM). Whereas, US SAFR focuses on situational awareness reporting excluding protected health information.
+5. **[NHSN dQM Reporting:](http://hl7.org/fhir/us/nhsn-dqm)** Defines the standard framework for reporting patient line-level clinical data using a digital Quality Measure (dQM). Whereas, US SAFR focuses on situational awareness reporting excluding protected health information.
 
 By aligning with these standards, US SAFR supports a unified reporting framework for healthcare capacity and situational awareness data.
 
