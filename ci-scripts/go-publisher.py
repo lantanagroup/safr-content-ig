@@ -1,7 +1,9 @@
 
+from functools import singledispatchmethod
 import sys
 import glob
 import os.path
+import fnmatch
 import time
 from datetime import datetime
 
@@ -21,11 +23,12 @@ import yaml
 #
 #  Usage: python go_publisher.py [Github repo url] [Local output path (absolute or relative)] {-b [repo branch id]}
 #         -b branch is optional
+#           Example:  python go_publisher.py https://github.com/lantanagroup/nhsn-measures publish -b release1
 #
 #   NOTE: Builds can be quite large, 1 GB+ and can take well more than an hour to build 
 #
 #
-#  After building, one could run a web host to try it out in a browser. CD to the output folder and run: jekyll server -s webroot
+#  After building, one could run a web host to try it out in a browser. cd to the output folder and run: jekyll server -s webroot
 #  The url will be indicated in the terminal
 #
 # 
@@ -39,13 +42,17 @@ import yaml
 #
 #########################################################################################
 
-# TODO Immediate, Make sure it builds well using the history and other template files. Need documentation for this.
+# DONE? Immediate, Make sure it builds well using the history and other template files. Need documentation for this.
 # TODO Support for pub repo parameter, handle auto 
 # TODO need to handle exceptions. e.g. if failing to create a folder, need to bail.
 # TODO Later? Need an initialization "mode". Add parameter to initialize. Add a means to check the pub repo for initialization files.
-# TODO Add check to see if cql files existing in IG repo/input/cql (and subfolders) and run cqf tooling if so.
-# TODO Consider downloading the default templates from an authoritative source instead of using hard coded variables 
+# DONE? Add check to see if cql files existing in IG repo/input/cql (and subfolders) and run cqf tooling if so.
+# DONE? Consider downloading the default templates from an authoritative source instead of using hard coded variables 
+# TODO, add version check. Should not have a version built that the publication-request is asking for.
 
+# TODO Use different cqf tooling version repo/ manifest: view-source:https://repo1.maven.org/maven2/org/opencds/cqf/tooling-cli/maven-metadata.xml
+
+# TODO for jara jar run, look into no-sushi option (as it would have run already.)
 
 IG_PUBLISHER_URL = "https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar"
 CQF_TOOLING_REPO = "https://oss.sonatype.org/service/local/repositories/releases/content/org/opencds/cqf/tooling-cli"
@@ -65,16 +72,43 @@ class bcolors:
 
 pub_repos = {'ig-history': 'https://github.com/HL7/fhir-ig-history-template.git', 'ig-registry': 'https://github.com/FHIR/ig-registry.git'}
 
-default_config = {'server-type': 'asp-old'}
+
+reduce_file_patterns = ['**/*.ttl*', '**/*.r4b.tgz', '**/*.db', '**/qa-tx.html', '**/*.json1', '**/*.json2', '**/*.xml1', '**/*.xml2', '**/excels.zip']
+
+accessibility_update_file_patterns = ['**/qa*.html', '**/StructureDefinition-*.html', '**/StructureDefinition-*.xml']
+accessibility_old_string = ['<span style="opacity: 0.5">', '<span style=\\"opacity: 0.5\\">', '&lt;span style=\\&quot;opacity: 0.5\\&quot;&gt;', '<a style="opacity: 0.5; opacity: 0.5', '<a style=\\"opacity: 0.5; opacity: 0.5', '&lt;a style=\&quot;opacity: 0.5; opacity: 0.5', 'background-color: red', 'background-color: green']
+accessibility_new_string = ['<span style="opacity: 0.87; font-style: italic;">', '<span style=\\"opacity: 0.87; font-style: italic;\\">', '&lt;span style=\\&quot;opacity: 0.87; font-style: italic;\\&quot;&gt;', '<a style="opacity: 0.87; opacity: 0.87; font-style: italic;', '<a style=\\"opacity: 0.5; opacity: 0.5', '&lt;a style=\\&quot;opacity: 0.87; opacity: 0.87; font-style: italic', 'background-color: #B60000', 'background-color: #006600']
+
+
+
+
+#'&lt;span style=\\&quot;opacity: 0.5\\&quot;&gt;'
+
+#'&lt;span style=\\&quot;opacity: 0.87; font-style: italic\\&quot;&gt;'
+
+#&lt;a style=\&quot;opacity: 0.5; opacity: 0.5
+#&lt;a style=\&quot;opacity: 0.5; opacity: 0.5
+
+
+
+
+default_config = {'server-type': 'asp-new'}
+
+# Need to add more canonical types to add to the web.config forwarder
+canonical_patterns = ['ImplementationGuide-', 'StructureDefinition-', 'CodeSystem', 'ValueSet', 'SearchParameter', 'OperationDefinition', 'Library', 'Measure', 'ActivityDefinition', 'DeviceDefinition', 'EventDefinition', 'ObservationDefinition', 'PlanDefinition', 'Questionnaire', 'SpecimenDefinition']
 
 def main():
     parser = argparse.ArgumentParser(description="""FHIR IG Publisher - Full Publication Setup Script""")
     parser.add_argument('ig_repo', type=repo_url_arg, help="Path to FHIR IG Repository", nargs='?')    
     parser.add_argument('output_path', type=output_folder_arg, help="Output Folder path", nargs='?')
+    #parser.add_argument('output_path', type=output_folder_arg_bypass, help="Output Folder path", nargs='?')
     parser.add_argument('-b', '--branch', help="Repository Branch")
+    parser.add_argument('-p', '--pauses', action='store_true', help='Enable pauses (wait for key press) between steps')
+    parser.add_argument('-r', '--reduce', action='store_true', help='Reduce output size (postprocess removal of unneeded files)')
+    parser.add_argument('-a', '--access', action='store_true', help='Modify files to be more Section 508 accessibility compliant')
+
     
     args = parser.parse_args()
-
    
     if not (args.ig_repo and args.output_path):
         parser.print_help()
@@ -83,6 +117,45 @@ def main():
     start = time.time()
 
     directory_path = Path(args.output_path)
+
+    ### Testing
+
+    # current_time = time.time()
+    # os.chdir(directory_path)
+    # print(str(directory_path))
+    # ig_repo_path = Path('./nhsn-measures').resolve()
+    # fix_accessibility()
+    # exit()
+    # #ig_repo_path = Path('./nhsn-measures').resolve()
+    # #print(str(ig_repo_path))
+
+    # base_pub_folder = str(Path('./webroot/ig/').resolve())
+    # #print(base_pub_folder)
+    
+    # pub_req = str(Path(str(ig_repo_path) + '/publication-request.json').resolve())
+    # #print(pub_req)
+    # with open(pub_req, 'r') as file:
+    #     config_data = json.load(file)
+    
+    # version_pub_folder = str(Path('./webroot/ig/' + config_data['version']).resolve())
+    # #print(version_pub_folder)
+
+    # # for pattern in accessibility_update_file_patterns:
+    # #     for filepath in glob.glob(base_pub_folder + pattern, recursive=True):
+    # #         #print("Updating file for Section 508 compliance: " + filepath)
+    # #         replace_strings_in_file(filepath, accessibility_old_string, accessibility_new_string)
+    
+    # for pattern in accessibility_update_file_patterns:
+    #     for filepath in glob.glob(version_pub_folder + pattern, recursive=True):
+    #         #print("Updating file for Section 508 compliance: " + filepath)
+    #         replace_strings_in_file(filepath, accessibility_old_string, accessibility_new_string)
+
+    # end = time.time()
+    # print("Full execution time (in seconds)", end - start)
+
+    # exit()
+    ### Testing
+
     try:
         directory_path.mkdir()
         print(f"Directory '{directory_path}' created successfully.")
@@ -102,19 +175,19 @@ def main():
     ig_repo_path = clone_repos(args.ig_repo, args.branch)
 
 
-      
-
-    
-
     current_time = time.time()
     print("Current execution time (in seconds)", current_time - start)
-
+    print("Starting to initialize output folder - " + str(ig_repo_path))
+    if(args.pauses):
+        input("Press enter to continue")
     initialize_output_folder(ig_repo_path=ig_repo_path)
+
+    print("Starting to initialize templates - " + str(ig_repo_path))
+    if(args.pauses):
+        input("Press enter to continue")
 
     initialize_templates(ig_repo_path=ig_repo_path)
 
-
-    
 
     current_time = time.time()
     print("Set up complete - Current execution time (in seconds)", current_time - start)
@@ -122,6 +195,8 @@ def main():
 
     ig_build_start_time = time.time()
     print("Starting to run IG Build - " + str(ig_repo_path))
+    if(args.pauses):
+        input("Press enter to continue")
     run_ig_build(ig_repo_path=ig_repo_path)
     ig_build_end_time = time.time()       
     print(f"IG Build complete -  IG build time (in seconds) {str(ig_build_end_time - ig_build_start_time)}")
@@ -132,11 +207,32 @@ def main():
     full_build_start_time = time.time()
     print("Starting to run full build -")
     
-
+    if(args.pauses):
+        input("Press enter to continue")
     run_full_build(publish_path=str(Path('.').parent.resolve()), ig_repo_path=ig_repo_path)
     full_build_end_time = time.time()
     
     print(f"Full Build complete -  IG build time (in seconds) {str(full_build_end_time - full_build_start_time)}")
+
+
+    if(args.reduce):
+        print(f"Removing excess files")
+        if(args.pauses):
+            input("Press enter to continue")
+        reduce_files()
+    
+    print(f"Updating web.config files")
+
+    if(args.pauses):
+            input("Press enter to continue")
+    write_web_configs(ig_repo_path=ig_repo_path)
+
+    if(args.access):
+        print(f"Modifying files to be more Section 508 accessibility compliant")
+        if(args.pauses):
+            input("Press enter to continue")
+
+        fix_accessibility()
 
     end = time.time()
     print("Full execution time (in seconds)", end - start)
@@ -144,6 +240,29 @@ def main():
 
 ####################### END OF main() #######################
 
+def reduce_files():
+    file_size_bytes = 0
+    for pattern in reduce_file_patterns:
+        for filepath in glob.glob('./webroot/ig/' + pattern, recursive=True):
+            print("Removing file: " + filepath)
+            file_size_bytes = file_size_bytes + os.path.getsize(filepath)
+            os.remove(filepath)
+
+    print("Total File Size Removed: " + str(format_file_size(file_size_bytes)))
+
+
+
+def format_file_size(size_in_bytes):
+    if size_in_bytes < 1024:
+        return f"{size_in_bytes} bytes"
+    elif size_in_bytes < 1024**2:
+        return f"{size_in_bytes / 1024:.2f} KB"
+    elif size_in_bytes < 1024**3:
+        return f"{size_in_bytes / (1024**2):.2f} MB"
+    elif size_in_bytes < 1024**4:
+        return f"{size_in_bytes / (1024**3):.2f} GB"
+    else:
+        return f"{size_in_bytes / (1024**4):.2f} TB"
 
 
 
@@ -406,17 +525,84 @@ def run_ig_build(ig_repo_path):
 
 def run_full_build(publish_path, ig_repo_path):
 
-    #current_path = str(Path('.').)
-    #os.system(f"java -jar publisher.jar -go-publish -source {ig_repo_path} -o ./publisher.jar") # Cloning
-    #print(f"java -jar publisher.jar -go-publish -source {ig_repo_path}  -web {publish_path}\\webroot -registry {publish_path}\\ig-registry\\fhir-ig-list.json -history {publish_path}\\ig-history -templates {publish_path}\\templates")
-    #print(f"java -jar publisher.jar -go-publish -source {ig_repo_path} -web {str(Path(publish_path + '\\webroot').resolve())} -registry {str(Path(publish_path + '\\ig-registry\\fhir-ig-list.json').resolve())} -history {str(Path(publish_path + '\\ig-history').resolve())} -templates {str(Path(publish_path + '\\templates').resolve())}")
+
     print("Running full versioned IG build")
-    full_build_command = f"java -jar publisher.jar -go-publish -source {str(Path(ig_repo_path).resolve())} -web {str(Path(publish_path + '/webroot').resolve())} -registry {str(Path(publish_path + '/ig-registry/fhir-ig-list.json').resolve())} -history {str(Path(publish_path + '/ig-history').resolve())} -templates {str(Path(publish_path + '/templates').resolve())}"
+    full_build_command = f"java \"-Dfile.encoding=UTF-8\" -jar publisher.jar -go-publish -source {str(Path(ig_repo_path).resolve())} -web {str(Path(publish_path + '/webroot').resolve())} -registry {str(Path(publish_path + '/ig-registry/fhir-ig-list.json').resolve())} -history {str(Path(publish_path + '/ig-history').resolve())} -templates {str(Path(publish_path + '/templates').resolve())}"
     print(full_build_command)
     os.system(full_build_command)
-    #java -jar publisher.jar -go-publish -source .\nhsn-measures\ -web C:\dev\fhir\web\Publish\webroot -registry C:\dev\fhir\web\Publish\ig-registry\fhir-ig-list.json -history
- #C:\dev\fhir\web\Publish\ig-history -templates C:\dev\fhir\web\Publish\templates
 
+
+
+def write_web_configs(ig_repo_path):
+    # TODO Add Canonical version support "|1.0.0" to redirect to right version. 
+    # This would need to be placed in the default web_config variable xml in this script
+    # Consider additional mime type accept content (xml/json) 
+    # May also need to tighten up the rules as some supportive files are oddly getting caught up in the redirect
+
+    # read IG version from publication-request.json
+    base_web_config = str(Path('./webroot/ig/web.config').resolve())
+    print(base_web_config)
+    
+    with open(str(ig_repo_path) + '/publication-request.json', 'r') as file:
+        config_data = json.load(file)
+    
+    version_web_config = str(Path('./webroot/ig/' + config_data['version'] + "/web.config").resolve())
+    print(version_web_config)
+    
+    os.remove(base_web_config)
+    
+    with open(base_web_config, "w") as web_config_file:
+        web_config_file.write(web_config)
+
+
+    
+    os.remove(version_web_config)
+    
+    with open(version_web_config, "w") as web_config_file:
+        web_config_file.write(web_config)
+
+def fix_accessibility():
+
+    for pattern in accessibility_update_file_patterns:
+        for filepath in glob.glob('./webroot/ig/' + pattern, recursive=True):
+            print("Updating file for Section 508 compliance: " + filepath)
+            replace_strings_in_file(filepath, accessibility_old_string, accessibility_new_string)
+
+
+def replace_strings_in_file(filepath, old_string, new_string):
+    """
+    Replaces all occurrences of old_string with new_string in the specified file. (being used to update files for Section 508 compliance)
+
+    Args:
+        filepath (str): The path to the file.
+        old_string (str[]): The string to be replaced.
+        new_string (str[]): The string to replace with.
+    """
+    modified = False
+    try:
+        # Read the file's content
+        with open(filepath, 'r', encoding="utf8") as file:
+            file_content = file.read()
+
+        for i in range(len(old_string)):
+            # Replace all occurrences of the old string with the new string
+            if old_string[i] in file_content:
+                #print('Found the string: ' + old_string[i])
+                file_content = file_content.replace(old_string[i], new_string[i])
+                modified = True
+
+        if modified:
+            # Write the modified content back to the file
+            with open(filepath, 'w', encoding="utf8") as file:
+                file.write(file_content)
+            #print(f"Successfully replaced '{old_string}' with '{new_string}' in '{filepath}'.")
+            #input("Press enter to continue")
+
+    except FileNotFoundError:
+        print(f"Error: File '{filepath}' not found.")
+    except Exception as e:
+        print(f"An error occurred: {e} in file {filepath}")
+    
 
 def repo_url_arg(string):
     if( not validators.url(string)):
@@ -430,6 +616,8 @@ def output_folder_arg(string):
     else:        
         return string
 
+def output_folder_arg_bypass(string):
+    return string
 
 package_registry_template = '''{
   "packages" : [
@@ -637,5 +825,20 @@ publication_feed_template = '''<?xml version="1.0" encoding="UTF-8"?>
       </item>
    </channel>
 </rss>'''
+
+
+web_config = '''<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <system.webServer>
+        <rewrite>
+            <rules>
+                <rule name="All-Segments-html">
+                    <match url="^(ActivityDefinition|ActorDefinition|CapabilityStatement|ChargeItemDefinition|Citation|CodeSystem|CompartmentDefinition|ConceptMap|ConditionDefinition|DeviceDefinition|EventDefinition|Evidence|EvidenceVariable|ExampleScenario|GraphDefinition|ImplementationGuide|Library|Measure|MessageDefinition|NamingSystem|ObservationDefinition|OperationDefinition|PlanDefinition|Questionnaire|Requirements|SearchParameter|SpecimenDefinition|StructureDefinition|StructureMap|SubscriptionTopic|TerminologyCapabilities|TestPlan|TestScript|ValueSet)\\/([A-Za-z0-9\\-\\.]{1,64})" />
+                    <action type="Redirect" url="{R:1}-{R:2}.html"  redirectType="Found" />
+                </rule>
+            </rules>
+        </rewrite>
+    </system.webServer>
+</configuration>'''
 
 main()
