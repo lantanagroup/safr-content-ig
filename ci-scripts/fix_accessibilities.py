@@ -9,6 +9,8 @@ import zipfile
 import tempfile
 import shutil
 
+#SAFR Content IG does not utilize the NHSN-MS label
+support_nhsn_ms_tagging = False
 
 target_tables = ['tbl-key-inner', 'tbl-diff-inner', 'tbl-snap-inner', 'all-tbl-key-inner', 'all-tbl-diff-inner', 'all-tbl-snap-inner']
 target_table_diff = 'tbl-diff-inner'
@@ -161,50 +163,51 @@ def fix_accessibility_in_file(file_path):
         #   # TODO Replace the 
         #   print(desc_element[0].text)
         #   exit()
+        
+        if support_nhsn_ms_tagging:
+          has_ms_label = False
+          if nhsn_ms_label in desc_element[0].text:
+            has_ms_label = True
+            description_text = etree.tostring(desc_element[0], pretty_print=True, encoding='unicode')
+            description_text = description_text.replace(nhsn_ms_label, '<div title="' + nhsn_ms_message + '" style="display: inline-block;">' + nhsn_ms_label + '</div>')
+            #print(description_text)
+            new_description = html.fromstring(description_text)
+            #print(etree.tostring(new_description, pretty_print=True, encoding='unicode'))
+            parent = desc_element[0].getparent()
+            parent.replace(desc_element[0], new_description)
+          for span in ms_element:
+            #print("Span Text: " + span.text +" ; has label: " + str(has_ms_label) + "; in desc: " + desc_element[0].text)
+            if span.text == 'S':
+              if has_ms_label:
 
-        has_ms_label = False
-        if nhsn_ms_label in desc_element[0].text:
-          has_ms_label = True
-          description_text = etree.tostring(desc_element[0], pretty_print=True, encoding='unicode')
-          description_text = description_text.replace(nhsn_ms_label, '<div title="' + nhsn_ms_message + '" style="display: inline-block;">' + nhsn_ms_label + '</div>')
-          #print(description_text)
-          new_description = html.fromstring(description_text)
-          #print(etree.tostring(new_description, pretty_print=True, encoding='unicode'))
-          parent = desc_element[0].getparent()
-          parent.replace(desc_element[0], new_description)
-        for span in ms_element:
-          #print("Span Text: " + span.text +" ; has label: " + str(has_ms_label) + "; in desc: " + desc_element[0].text)
-          if span.text == 'S':
-            if has_ms_label:
-
-              # Found a Must Support that is not marked as NR or NRT, change to bold
-              #print("Bold " + ms_element[0].text)
-              span.attrib["title"] = nhsn_ms_message
-              replace_style(span, "font-weight", "400", replace_only_if_exists=False)
-              replace_style(span, "background-color", new_red, replace_only_if_exists=True)
-              
-            else:
-              # Found a Must Support that is marked as NR or NRT, change to italic
-              #print("Italic " + ms_element[0].text)
-              span.attrib["title"] = nhsn_not_ms_message
-              if modify_ms_color and target_table_diff in target_id:
-                replace_style(span, "font-style", "italic", replace_only_if_exists=False)
-                replace_style(span, "background-color", "#694f4f", replace_only_if_exists=True)
-              else:
+                # Found a Must Support that is not marked as NR or NRT, change to bold
+                #print("Bold " + ms_element[0].text)
+                span.attrib["title"] = nhsn_ms_message
                 replace_style(span, "font-weight", "400", replace_only_if_exists=False)
                 replace_style(span, "background-color", new_red, replace_only_if_exists=True)
+                
+              else:
+                # Found a Must Support that is marked as NR or NRT, change to italic
+                #print("Italic " + ms_element[0].text)
+                span.attrib["title"] = nhsn_not_ms_message
+                if modify_ms_color and target_table_diff in target_id:
+                  replace_style(span, "font-style", "italic", replace_only_if_exists=False)
+                  replace_style(span, "background-color", "#694f4f", replace_only_if_exists=True)
+                else:
+                  replace_style(span, "font-weight", "400", replace_only_if_exists=False)
+                  replace_style(span, "background-color", new_red, replace_only_if_exists=True)
 
-              
+                
 
 
 
-            #nhsn_ms_message
-            #nhsn_not_ms_message
-          # and ("(NR)" in td.text or "(NRT)" in td.text):
-          #   parent_td = td.getparent()
-          #   if parent_td is not None:
-          #     # Gray out the Must Support S
-          #     parent_td.attrib["style"] = parent_td.attrib["style"].rstrip("; ") + "; color: gray;"
+              #nhsn_ms_message
+              #nhsn_not_ms_message
+            # and ("(NR)" in td.text or "(NRT)" in td.text):
+            #   parent_td = td.getparent()
+            #   if parent_td is not None:
+            #     # Gray out the Must Support S
+            #     parent_td.attrib["style"] = parent_td.attrib["style"].rstrip("; ") + "; color: gray;"
 
 
   with open(file_path, "wb") as f:

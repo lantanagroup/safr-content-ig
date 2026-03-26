@@ -23,7 +23,7 @@ import yaml
 #
 #  Usage: python go_publisher.py [Github repo url] [Local output path (absolute or relative)] {-b [repo branch id]}
 #         -b branch is optional
-#           Example:  python go_publisher.py https://github.com/lantanagroup/nhsn-measures publish -b release1
+#           Example:  python go_publisher.py https://github.com/lantanagroup/safr-content-ig publish -b release1
 #
 #   NOTE: Builds can be quite large, 1 GB+ and can take well more than an hour to build 
 #
@@ -41,6 +41,13 @@ import yaml
 #           Without these templates, this script currently creates the a default set of templates (that are not automatically maintained)
 #
 #########################################################################################
+
+# TODO R2 Split up components per CI build. Adding copy below
+# call sushi .
+# copy .\fsh-generated\resources\ImplementationGuide-gov.cdc.nhsn.measures.json .\input\data\ig.json
+# TODO R2, copy of package-feed.xml, package-registry.json, publication-feed.xml, and publish-setup.json 
+#       (making sure they look correct in comparison to what can be found in some in the registry) https://github.com/FHIR/ig-registry/blob/master/package-feeds.json
+#       Perhaps only the package-feed.xml and publish-setup.json. See: https://hl7.org.au/publish-setup.json
 
 # DONE? Immediate, Make sure it builds well using the history and other template files. Need documentation for this.
 # TODO Support for pub repo parameter, handle auto 

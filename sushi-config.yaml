@@ -91,6 +91,7 @@ pages:
 #
 parameters:
   path-expansion-params: '../../exp-params.json'  #Support for US SNOMED CT - path is relative to [base]/fsh-generated/resources
+  path-binary: input/cql
   apply-jurisdiction: true
   apply-publisher: true
   excludettl: true
