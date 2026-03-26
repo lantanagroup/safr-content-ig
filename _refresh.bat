@@ -1,0 +1,37 @@
+@ECHO OFF
+
+SET var_r=snapshots
+SET var_g=org.opencds.cqf
+SET var_a=tooling-cli
+SET var_v=3.9.1
+
+REM SET tooling_jar=tooling-cli-3.1.0-SNAPSHOT.jar
+REM SET tooling_jar=tooling-cli-3.1.0-SNAPSHOT.jar
+SET tooling_jar=%var_a%-%var_v%.jar
+SET input_cache_path=%~dp0input-cache
+SET resources_path=%~dp0/input/resources
+SET ig_ini_path=%~dp0ig.ini
+
+ECHO Checking internet connection...
+PING tx.fhir.org -n 1 -w 1000 | FINDSTR TTL && GOTO isonline
+ECHO We're offline...
+SET fsoption=
+GOTO igpublish
+
+:isonline
+ECHO We're online, setting publish to local sandbox FHIR server
+:: SET fsoption=-fs https://cqf-ruler.nhsnlink.org/fhir
+
+:igpublish
+
+SET JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF-8
+:: -d %fsoption%
+IF EXIST "%input_cache_path%\%tooling_jar%" (
+	ECHO running: JAVA -jar "%input_cache_path%\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d -ss=false -timestamp=true
+	JAVA -jar "%input_cache_path%\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d -ss=false -timestamp=true
+) ELSE If exist "..\%tooling_jar%" (
+	ECHO running: JAVA -jar "..\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d -ss=false -timestamp=true
+	JAVA -jar "..\%tooling_jar%" -RefreshIG -ini="%ig_ini_path%" -t -d -ss=false -timestamp=true
+) ELSE (
+	ECHO IG Refresh NOT FOUND in input-cache or parent folder.  Please run _updateCQFTooling.  Aborting...
+)
