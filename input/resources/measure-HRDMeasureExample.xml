@@ -1,0 +1,3309 @@
+<Measure xmlns="http://hl7.org/fhir">
+   <id value="HRDMeasureExample"></id>
+   <meta>
+      <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm"></profile>
+   </meta>
+   <contained>
+      <Library xmlns="http://hl7.org/fhir">
+         <id value="effective-data-requirements"></id>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
+            <valueCoding>
+               <system value="http://snomed.info/sct"></system>
+               <code value="409528009"></code>
+               <display value="Surgical face mask (physical object)"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/location-physical-type"></system>
+               <code value="bd"></code>
+               <display value="Bed"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
+            <valueCoding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
+               <code value="CHLD"></code>
+               <display value="Children's or Pediatric"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
+            <valueCoding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
+               <code value="HOSP"></code>
+               <display value="Hospital"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
+            <valueCoding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
+               <code value="OTH"></code>
+               <display value="Other facility-within-facility or subunit"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
+            <valueCoding>
+               <system value="http://snomed.info/sct"></system>
+               <code value="1141676007"></code>
+               <display value="Patient gown (physical object)"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
+            <valueCoding>
+               <system value="http://terminology.hl7.org/CodeSystem/observation-category"></system>
+               <code value="laboratory"></code>
+               <display value="Laboratory"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
+            <valueCoding>
+               <system value="http://snomed.info/sct"></system>
+               <code value="260373001"></code>
+               <display value="Detected"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
+            <valueCoding>
+               <system value="http://snomed.info/sct"></system>
+               <code value="462245005"></code>
+               <display value="Nitrile surgical glove, powdered (physical object)"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
+            <valueCoding>
+               <system value="http://snomed.info/sct"></system>
+               <code value="706724001"></code>
+               <display value="Face shield (physical object)"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
+            <valueCoding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
+               <code value="IPF"></code>
+               <display value="Inpatient Psychiatric"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
+            <valueCoding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
+               <code value="IRF"></code>
+               <display value="Inpatient Rehabilitation"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
+            <valueCoding>
+               <system value="http://snomed.info/sct"></system>
+               <code value="409533008"></code>
+               <display value="Air-purifying respirator (physical object)"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Devices"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Devices&quot;:
+  [Device]"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="0"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="OR Surgical Mask Supply in Days Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;OR Surgical Mask Supply in Days Stratifier&quot;:
+  Floor( Count(
+    &quot;Devices&quot; Devices
+    where Devices.type ~ &quot;Surgical mask&quot;
+  ) / 10 )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="1"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="IsBedLocation"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;IsBedLocation&quot;:
+  Location.physicalType ~ &quot;Bed&quot;"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="2"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="LocationIsCHLD"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;LocationIsCHLD&quot;:
+  exists(
+    Location.type types
+    where types ~ &quot;CHLD&quot;
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="3"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="LocationIsHOSP"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;LocationIsHOSP&quot;:
+  exists(
+    Location.type types
+    where types ~ &quot;HOSP&quot;
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="4"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="LocationIsOTH"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;LocationIsOTH&quot;:
+  exists(
+    Location.type types
+    where types ~ &quot;OTH&quot;
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="5"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Pediatric ICU Beds Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Pediatric ICU Beds Initial Population&quot;:
+  IsBedLocation
+  and LocationIsCHLD
+  and (
+    LocationIsHOSP
+    or LocationIsOTH
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="6"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Encounters"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Encounters&quot;:
+  [Encounter]"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="7"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="EncounterCheck"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;EncounterCheck&quot;:
+  exists(&quot;Encounters&quot; Encounters
+  where Encounters.period overlaps &quot;Measurement Period&quot;)"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="8"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Occupied Pediatric ICU Beds Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Occupied Pediatric ICU Beds Initial Population&quot;:
+  &quot;Pediatric ICU Beds Initial Population&quot;
+  and EncounterCheck"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="9"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Adult ICU Beds Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Adult ICU Beds Initial Population&quot;:
+  IsBedLocation
+  and (
+    LocationIsHOSP
+    or LocationIsOTH
+  )
+  and not LocationIsCHLD"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="10"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Gown Supply in Days Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Gown Supply in Days Stratifier&quot;:
+  Floor( Count(
+    &quot;Devices&quot; Devices
+    where Devices.type ~ &quot;Patient gown&quot;
+  ) / 5 )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="11"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Gown 3 Day Supply Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Gown 3 Day Supply Stratifier&quot;:
+  if &quot;Gown Supply in Days Stratifier&quot; &gt; 3 then 'y'
+  else 'n'"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="12"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Adult ICU Beds Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Adult ICU Beds Initial Population&quot;:
+  IsBedLocation
+  and (
+    LocationIsHOSP
+    or LocationIsOTH
+  )
+  and not LocationIsCHLD"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="13"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="COVID_19 Observations"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//Functions and Helpers
+define &quot;COVID_19 Observations&quot;:
+  [Observation: &quot;COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)&quot;] 
+    union [Observation: &quot;COVID_19 (Tests for SARS_CoV_2 Antigen)&quot;]"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="14"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Count Confirmed COVID_19 Patients in Bed Location"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Count Confirmed COVID_19 Patients in Bed Location&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs&quot;( &quot;Encounters&quot;, &quot;COVID_19 Observations&quot; )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="15"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Adult ICU COVID_19 Patients Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Adult ICU COVID_19 Patients Stratifier&quot;:
+  if &quot;Adult ICU Beds Initial Population&quot; then
+    &quot;Count Confirmed COVID_19 Patients in Bed Location&quot;
+  else 0"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="16"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Glove Supply in Days Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Glove Supply in Days Stratifier&quot;:
+  Floor( Count(
+    &quot;Devices&quot; Devices
+    where Devices.type ~ &quot;Surgical glove&quot;
+  ) / 15 )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="17"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Face Shield Supply in Days Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Face Shield Supply in Days Stratifier&quot;:
+  Floor( Count(
+    &quot;Devices&quot; Devices
+    where Devices.type ~ &quot;Face shield&quot;
+  ) / 10 )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="18"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Face Shield 3 Day Supply Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Face Shield 3 Day Supply Stratifier&quot;:
+  if &quot;Face Shield Supply in Days Stratifier&quot; &gt; 3 then 'y'
+  else 'n'"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="19"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="LocationIsIPF"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;LocationIsIPF&quot;:
+  exists(
+    Location.type types
+    where types ~ &quot;IPF&quot;
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="20"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="LocationIsIRF"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;LocationIsIRF&quot;:
+  exists(
+    Location.type types
+    where types ~ &quot;IRF&quot;
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="21"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Pediatric Inpatient Beds Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Pediatric Inpatient Beds Initial Population&quot;:
+  IsBedLocation
+  and LocationIsHOSP
+  and LocationIsCHLD
+  and not (
+    LocationIsIPF
+    or LocationIsIRF
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="22"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Influenza Observations"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Influenza Observations&quot;:
+  [Observation: &quot;Influenza (Tests for influenza A or B virus Nucleic Acid)&quot;] 
+    union [Observation: &quot;Influenza (Tests for influenza A or B virus Antigen)&quot;]"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="23"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Count Confirmed Influenza Patients in Bed Location"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Count Confirmed Influenza Patients in Bed Location&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs&quot;( &quot;Encounters&quot;, &quot;Influenza Observations&quot; )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="24"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Pediatric Inpatient Influenza Patients Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Pediatric Inpatient Influenza Patients Stratifier&quot;:
+  if &quot;Pediatric Inpatient Beds Initial Population&quot; then
+    &quot;Count Confirmed Influenza Patients in Bed Location&quot;
+  else 0"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="25"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="RSV Observations"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;RSV Observations&quot;:
+  [Observation: &quot;RSV (Tests for RSV Antigen)&quot;] 
+    union [Observation: &quot;RSV (Tests for RSV Nucleic Acid)&quot;]"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="26"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Count Confirmed RSV Patients in Bed Location"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Count Confirmed RSV Patients in Bed Location&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs&quot;( &quot;Encounters&quot;, &quot;RSV Observations&quot; )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="27"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Pediatric ICU RSV Patients Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Pediatric ICU RSV Patients Stratifier&quot;:
+  if &quot;Pediatric ICU Beds Initial Population&quot; then
+    &quot;Count Confirmed RSV Patients in Bed Location&quot;
+  else 0"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="28"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Adult Inpatient Beds Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Adult Inpatient Beds Initial Population&quot;:
+  IsBedLocation
+  and LocationIsHOSP
+  and (
+    LocationIsIPF
+    or LocationIsIRF
+  )
+  and not LocationIsCHLD"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="29"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Adult Inpatient COVID_19 Patients Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//Stratifiers
+//COVID_19
+define &quot;Adult Inpatient COVID_19 Patients Stratifier&quot;:
+  if &quot;Adult Inpatient Beds Initial Population&quot; then
+    &quot;Count Confirmed COVID_19 Patients in Bed Location&quot;
+  else 0"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="30"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Face Shield Supply in Days Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Face Shield Supply in Days Stratifier&quot;:
+  Floor( Count(
+    &quot;Devices&quot; Devices
+    where Devices.type ~ &quot;Face shield&quot;
+  ) / 10 )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="31"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Patients"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Patients&quot;:
+  [Patient]"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="32"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Newly Admitted Encounters"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Newly Admitted Encounters&quot;:
+  &quot;Encounters&quot; Encounters
+  where Encounters.status in { 'in-progress', 'arrived', 'triaged' }"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="33"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Newly Admitted RSV Patient IDs"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Newly Admitted RSV Patient IDs&quot;:
+  &quot;Get Confirmed Patient IDs&quot;( &quot;Newly Admitted Encounters&quot;, &quot;RSV Observations&quot; )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="34"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="New RSV Patients with Unknown Age Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;New RSV Patients with Unknown Age Stratifier&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs in Bed Location and Unknown Age&quot;( &quot;Newly Admitted RSV Patient IDs&quot; )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="35"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Inpatient Beds Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//Initial Populations
+define &quot;Inpatient Beds Initial Population&quot;:
+  IsBedLocation
+  and LocationIsHOSP
+  and (
+    LocationIsIPF
+    or LocationIsIRF
+    or LocationIsCHLD
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="36"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Occupied Inpatient Beds Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Occupied Inpatient Beds Initial Population&quot;:
+  &quot;Inpatient Beds Initial Population&quot;
+  and EncounterCheck"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="37"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Pediatric ICU COVID_19 Patients Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Pediatric ICU COVID_19 Patients Stratifier&quot;:
+  if &quot;Pediatric ICU Beds Initial Population&quot; then
+    &quot;Count Confirmed COVID_19 Patients in Bed Location&quot;
+  else 0"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="38"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Gown Supply in Days Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Gown Supply in Days Stratifier&quot;:
+  Floor( Count(
+    &quot;Devices&quot; Devices
+    where Devices.type ~ &quot;Patient gown&quot;
+  ) / 5 )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="39"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="New Adult RSV Patients Between 65 to 74 Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;New Adult RSV Patients Between 65 to 74 Stratifier&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted RSV Patient IDs&quot;, 65, 74 )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="40"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Adult ICU Influenza Patients Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Adult ICU Influenza Patients Stratifier&quot;:
+  if &quot;Adult ICU Beds Initial Population&quot; then
+    &quot;Count Confirmed Influenza Patients in Bed Location&quot;
+  else 0"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="41"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Glove Supply in Days Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Glove Supply in Days Stratifier&quot;:
+  Floor( Count(
+    &quot;Devices&quot; Devices
+    where Devices.type ~ &quot;Surgical glove&quot;
+  ) / 15 )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="42"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Glove 3 Day Supply Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Glove 3 Day Supply Stratifier&quot;:
+  if &quot;Glove Supply in Days Stratifier&quot; &gt; 3 then 'y'
+  else 'n'"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="43"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Newly Admitted COVID_19 Patient IDs"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Newly Admitted COVID_19 Patient IDs&quot;:
+  &quot;Get Confirmed Patient IDs&quot;( &quot;Newly Admitted Encounters&quot;, &quot;COVID_19 Observations&quot; )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="44"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="New Adult COVID_19 Patients Between 50 to 64 Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;New Adult COVID_19 Patients Between 50 to 64 Stratifier&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted COVID_19 Patient IDs&quot;, 50, 64 )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="45"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Occupied Adult ICU Beds Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Occupied Adult ICU Beds Initial Population&quot;:
+  &quot;Adult ICU Beds Initial Population&quot;
+  and EncounterCheck"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="46"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Adult Inpatient Influenza Patients Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//Influenza
+define &quot;Adult Inpatient Influenza Patients Stratifier&quot;:
+  if &quot;Adult Inpatient Beds Initial Population&quot; then
+    &quot;Count Confirmed Influenza Patients in Bed Location&quot;
+  else 0"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="47"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="New Pediatric COVID_19 Patients Between 0 to 4 Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;New Pediatric COVID_19 Patients Between 0 to 4 Stratifier&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted COVID_19 Patient IDs&quot; , 0, 4 )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="48"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Pediatric Inpatient RSV Patients Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Pediatric Inpatient RSV Patients Stratifier&quot;:
+  if &quot;Pediatric Inpatient Beds Initial Population&quot; then
+    &quot;Count Confirmed RSV Patients in Bed Location&quot;
+  else 0"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="49"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="New Pediatric RSV Patients Between 0 to 4 Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;New Pediatric RSV Patients Between 0 to 4 Stratifier&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted RSV Patient IDs&quot; , 0, 4 )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="50"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="N95 Mask Supply in Days Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//Devices (Supply is divided by average used per day (estimated))
+define &quot;N95 Mask Supply in Days Stratifier&quot;:
+  Floor( Count(
+    &quot;Devices&quot; Devices
+    where Devices.type ~ &quot;N95 mask&quot;
+  ) / 10 )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="51"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="New Pediatric COVID_19 Patients Between 5 to 17 Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;New Pediatric COVID_19 Patients Between 5 to 17 Stratifier&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted COVID_19 Patient IDs&quot;, 5, 17 )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="52"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="New Adult RSV Patients Between 50 to 64 Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;New Adult RSV Patients Between 50 to 64 Stratifier&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted RSV Patient IDs&quot;, 50, 64 )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="53"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="New Adult COVID_19 Patients Between 65 to 74 Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;New Adult COVID_19 Patients Between 65 to 74 Stratifier&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted COVID_19 Patient IDs&quot;, 65, 74 )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="54"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Newly Admitted Influenza Patient IDs"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Newly Admitted Influenza Patient IDs&quot;:
+  &quot;Get Confirmed Patient IDs&quot;( &quot;Newly Admitted Encounters&quot;, &quot;Influenza Observations&quot; )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="55"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="New Pediatric Influenza Patients Between 5 to 17 Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;New Pediatric Influenza Patients Between 5 to 17 Stratifier&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted Influenza Patient IDs&quot;, 5, 17 )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="56"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="ICU Beds Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;ICU Beds Initial Population&quot;:
+  IsBedLocation
+  and (
+    LocationIsHOSP
+    or LocationIsOTH
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="57"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Adult ICU RSV Patients Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Adult ICU RSV Patients Stratifier&quot;:
+  if &quot;Adult ICU Beds Initial Population&quot; then
+    &quot;Count Confirmed RSV Patients in Bed Location&quot;
+  else 0"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="58"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="New Adult Influenza Patients Between 18 to 49 Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;New Adult Influenza Patients Between 18 to 49 Stratifier&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted Influenza Patient IDs&quot;, 18, 49 )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="59"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="New Adult RSV Patients 75 and Above Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;New Adult RSV Patients 75 and Above Stratifier&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs in Bed Location Above Specified Age&quot;( &quot;Newly Admitted RSV Patient IDs&quot;, 75 )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="60"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Pediatric Inpatient Beds Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Pediatric Inpatient Beds Initial Population&quot;:
+  IsBedLocation
+  and LocationIsHOSP
+  and LocationIsCHLD
+  and not (
+    LocationIsIPF
+    or LocationIsIRF
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="61"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="New Adult Influenza Patients Between 50 to 64 Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;New Adult Influenza Patients Between 50 to 64 Stratifier&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted Influenza Patient IDs&quot;, 50, 64 )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="62"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="New Pediatric Influenza Patients Between 0 to 4 Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;New Pediatric Influenza Patients Between 0 to 4 Stratifier&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted Influenza Patient IDs&quot; , 0, 4 )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="63"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="N95 Mask Supply in Days Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//Devices (Supply is divided by average used per day (estimated))
+define &quot;N95 Mask Supply in Days Stratifier&quot;:
+  Floor( Count(
+    &quot;Devices&quot; Devices
+    where Devices.type ~ &quot;N95 mask&quot;
+  ) / 10 )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="64"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="N95 Mask 3 Day Supply Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;N95 Mask 3 Day Supply Stratifier&quot;:
+  if &quot;N95 Mask Supply in Days Stratifier&quot; &gt; 3 then 'y'
+  else 'n'"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="65"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Adult Inpatient RSV Patients Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//RSV
+define &quot;Adult Inpatient RSV Patients Stratifier&quot;:
+  if &quot;Adult Inpatient Beds Initial Population&quot; then
+    &quot;Count Confirmed RSV Patients in Bed Location&quot;
+  else 0"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="66"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Pediatric ICU Beds Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Pediatric ICU Beds Initial Population&quot;:
+  IsBedLocation
+  and LocationIsCHLD
+  and (
+    LocationIsHOSP
+    or LocationIsOTH
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="67"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="New Adult RSV Patients Between 18 to 49 Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;New Adult RSV Patients Between 18 to 49 Stratifier&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted RSV Patient IDs&quot;, 18, 49 )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="68"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Occupied Adult Inpatient Beds Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Occupied Adult Inpatient Beds Initial Population&quot;:
+  &quot;Adult Inpatient Beds Initial Population&quot;
+  and EncounterCheck"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="69"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="New Adult COVID_19 Patients Between 18 to 49 Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;New Adult COVID_19 Patients Between 18 to 49 Stratifier&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted COVID_19 Patient IDs&quot;, 18, 49 )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="70"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="OR Surgical Mask Supply in Days Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;OR Surgical Mask Supply in Days Stratifier&quot;:
+  Floor( Count(
+    &quot;Devices&quot; Devices
+    where Devices.type ~ &quot;Surgical mask&quot;
+  ) / 10 )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="71"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="OR Surgical Mask 3 Day Supply Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;OR Surgical Mask 3 Day Supply Stratifier&quot;:
+  if &quot;OR Surgical Mask Supply in Days Stratifier&quot; &gt; 3 then 'y'
+  else 'n'"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="72"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Adult Inpatient Beds Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Adult Inpatient Beds Initial Population&quot;:
+  IsBedLocation
+  and LocationIsHOSP
+  and (
+    LocationIsIPF
+    or LocationIsIRF
+  )
+  and not LocationIsCHLD"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="73"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="ICU Beds Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;ICU Beds Initial Population&quot;:
+  IsBedLocation
+  and (
+    LocationIsHOSP
+    or LocationIsOTH
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="74"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Occupied ICU Beds Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Occupied ICU Beds Initial Population&quot;:
+  &quot;ICU Beds Initial Population&quot;
+  and EncounterCheck"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="75"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="New Influenza Patients with Unknown Age Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;New Influenza Patients with Unknown Age Stratifier&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs in Bed Location and Unknown Age&quot;( &quot;Newly Admitted Influenza Patient IDs&quot; )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="76"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Pediatric ICU Influenza Patients Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Pediatric ICU Influenza Patients Stratifier&quot;:
+  if &quot;Pediatric ICU Beds Initial Population&quot; then
+    &quot;Count Confirmed Influenza Patients in Bed Location&quot;
+  else 0"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="77"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="New Adult Influenza Patients Between 65 to 74 Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;New Adult Influenza Patients Between 65 to 74 Stratifier&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted Influenza Patient IDs&quot;, 65, 74 )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="78"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="New Pediatric RSV Patients Between 5 to 17 Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;New Pediatric RSV Patients Between 5 to 17 Stratifier&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted RSV Patient IDs&quot;, 5, 17 )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="79"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Pediatric Inpatient COVID_19 Patients Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Pediatric Inpatient COVID_19 Patients Stratifier&quot;:
+  if &quot;Pediatric Inpatient Beds Initial Population&quot; then
+    &quot;Count Confirmed COVID_19 Patients in Bed Location&quot;
+  else 0"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="80"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Occupied Pediatric Inpatient Beds Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Occupied Pediatric Inpatient Beds Initial Population&quot;:
+  &quot;Pediatric Inpatient Beds Initial Population&quot;
+  and EncounterCheck"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="81"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Inpatient Beds Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="//Initial Populations
+define &quot;Inpatient Beds Initial Population&quot;:
+  IsBedLocation
+  and LocationIsHOSP
+  and (
+    LocationIsIPF
+    or LocationIsIRF
+    or LocationIsCHLD
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="82"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="New Adult COVID_19 Patients 75 and Above Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;New Adult COVID_19 Patients 75 and Above Stratifier&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs in Bed Location Above Specified Age&quot;( &quot;Newly Admitted COVID_19 Patient IDs&quot;, 75 )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="83"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="New COVID_19 Patients with Unknown Age Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;New COVID_19 Patients with Unknown Age Stratifier&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs in Bed Location and Unknown Age&quot;( &quot;Newly Admitted COVID_19 Patient IDs&quot; )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="84"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="New Adult Influenza Patients 75 and Above Stratifier"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;New Adult Influenza Patients 75 and Above Stratifier&quot;:
+  Count(
+    &quot;Get Confirmed Patient IDs in Bed Location Above Specified Age&quot;( &quot;Newly Admitted Influenza Patient IDs&quot;, 75 )
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="85"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="FHIRHelpers"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="ToConcept"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function ToConcept(concept FHIR.CodeableConcept):
+    if concept is null then
+        null
+    else
+        System.Concept {
+            codes: concept.coding C return ToCode(C),
+            display: concept.text.value
+        }"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="86"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="FHIRHelpers"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="ToCode"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function ToCode(coding FHIR.Coding):
+    if coding is null then
+        null
+    else
+        System.Code {
+          code: coding.code.value,
+          system: coding.system.value,
+          version: coding.version.value,
+          display: coding.display.value
+        }"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="87"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="FHIRHelpers"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="ToInterval"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function ToInterval(period FHIR.Period):
+    if period is null then
+        null
+    else
+        if period.&quot;start&quot; is null then
+            Interval(period.&quot;start&quot;.value, period.&quot;end&quot;.value]
+        else
+            Interval[period.&quot;start&quot;.value, period.&quot;end&quot;.value]"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="88"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Get Confirmed Patient IDs"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function &quot;Get Confirmed Patient IDs&quot;( Encounters List&lt;FHIR.Encounter&gt;, Observations List&lt;FHIR.Observation&gt; ):
+  Distinct(
+    Encounters Encounter
+    where exists(
+      Observations Labs
+      where exists(
+        Labs.category category
+        where category ~ &quot;laboratory&quot;
+      )
+      and Encounter.subject = Labs.subject
+      and Labs.value ~ &quot;detected&quot;
+      and &quot;Normalize Interval&quot;( Labs.effective ) overlaps Encounter.period
+    )
+    return Encounter.subject
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="89"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Normalize Interval"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function &quot;Normalize Interval&quot;( choice Choice&lt;FHIR.dateTime, FHIR.Period, FHIR.Timing, FHIR.instant&gt; ):
+  case
+	  when choice is FHIR.dateTime then
+    	Interval[FHIRHelpers.ToDateTime(choice as FHIR.dateTime), FHIRHelpers.ToDateTime(choice as FHIR.dateTime)]
+		when choice is FHIR.Period then
+  		FHIRHelpers.ToInterval(choice as FHIR.Period)
+		when choice is FHIR.instant then
+			Interval[FHIRHelpers.ToDateTime(choice as FHIR.instant), FHIRHelpers.ToDateTime(choice as FHIR.instant)]
+		when choice is FHIR.Timing then
+		  Message(null as Interval&lt;DateTime&gt;, true, '1', 'Error', 'Cannot compute a single interval from a Timing type')
+		else
+			null as Interval&lt;DateTime&gt;
+	end"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="90"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="FHIRHelpers"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="ToDateTime"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function ToDateTime(value dateTime): value.value"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="91"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="FHIRHelpers"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="ToDateTime"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function ToDateTime(value instant): value.value"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="92"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Get Confirmed Patient IDs in Bed Location and Unknown Age"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function &quot;Get Confirmed Patient IDs in Bed Location and Unknown Age&quot;( PatientIDs List&lt;FHIR.Reference&gt; ):
+  PatientIDs PatientID
+  where exists(
+    &quot;Patients&quot; Patients
+    where Patients.id = GetId( PatientID.reference )
+    and Patients.birthDate = null
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="93"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="FHIRHelpers"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="ToString"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function ToString(value string): value.value"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="94"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="GetId"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function &quot;GetId&quot;( uri String ):
+  Last(Split(uri, '/'))"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="95"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="FHIRHelpers"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="ToString"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function ToString(value EncounterStatus): value.value"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="96"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Get Confirmed Patient IDs in Bed Location Between Specified Ages"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( PatientIDs List&lt;FHIR.Reference&gt;, low System.Integer, high System.Integer ):
+  PatientIDs PatientID
+  where exists(
+    &quot;Patients&quot; Patients
+    let PatientAge: CalculateAgeInYearsAt( Patients.birthDate, start of &quot;Measurement Period&quot; )
+    where Patients.id = GetId( PatientID.reference )
+    and PatientAge &gt;= low
+    and PatientAge &lt;= high
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="97"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="FHIRHelpers"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="ToDate"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function ToDate(value date): value.value"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="98"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="HRDMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Get Confirmed Patient IDs in Bed Location Above Specified Age"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function &quot;Get Confirmed Patient IDs in Bed Location Above Specified Age&quot;( PatientIDs List&lt;FHIR.Reference&gt;, age System.Integer ):
+  PatientIDs PatientID
+  where exists(
+    &quot;Patients&quot; Patients
+    let PatientAge: CalculateAgeInYearsAt( Patients.birthDate, start of &quot;Measurement Period&quot; )
+    where Patients.id = GetId( PatientID.reference )
+    and PatientAge &gt;= age
+  )"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="99"></valueInteger>
+            </extension>
+         </extension>
+         <name value="EffectiveDataRequirements"></name>
+         <status value="active"></status>
+         <type>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/library-type"></system>
+               <code value="module-definition"></code>
+            </coding>
+         </type>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Library FHIRHelpers"></display>
+            <resource value="http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Code system SNOMEDCT"></display>
+            <resource value="http://snomed.info/sct"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Code system LocationPhysicalType"></display>
+            <resource value="http://terminology.hl7.org/CodeSystem/location-physical-type"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Code system HealthcareCapacity"></display>
+            <resource value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Code system Observation Category"></display>
+            <resource value="http://terminology.hl7.org/CodeSystem/observation-category"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1142"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set COVID_19 (Tests for SARS_CoV_2 Antigen)"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1158"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Influenza (Tests for influenza A or B virus Nucleic Acid)"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.336"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set Influenza (Tests for influenza A or B virus Antigen)"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.337"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set RSV (Tests for RSV Antigen)"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1311"></resource>
+         </relatedArtifact>
+         <relatedArtifact>
+            <type value="depends-on"></type>
+            <display value="Value set RSV (Tests for RSV Nucleic Acid)"></display>
+            <resource value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1312"></resource>
+         </relatedArtifact>
+         <parameter>
+            <name value="Measurement Period"></name>
+            <use value="in"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="Period"></type>
+         </parameter>
+         <parameter>
+            <name value="OR Surgical Mask Supply in Days Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="Occupied Pediatric ICU Beds Initial Population"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="boolean"></type>
+         </parameter>
+         <parameter>
+            <name value="Adult ICU Beds Initial Population"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="boolean"></type>
+         </parameter>
+         <parameter>
+            <name value="Gown 3 Day Supply Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="string"></type>
+         </parameter>
+         <parameter>
+            <name value="Adult ICU COVID_19 Patients Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="Glove Supply in Days Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="Face Shield 3 Day Supply Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="string"></type>
+         </parameter>
+         <parameter>
+            <name value="Pediatric Inpatient Influenza Patients Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="Pediatric ICU RSV Patients Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="Adult Inpatient COVID_19 Patients Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="Face Shield Supply in Days Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="New RSV Patients with Unknown Age Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="Occupied Inpatient Beds Initial Population"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="boolean"></type>
+         </parameter>
+         <parameter>
+            <name value="Pediatric ICU COVID_19 Patients Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="Gown Supply in Days Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="New Adult RSV Patients Between 65 to 74 Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="Adult ICU Influenza Patients Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="Glove 3 Day Supply Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="string"></type>
+         </parameter>
+         <parameter>
+            <name value="New Adult COVID_19 Patients Between 50 to 64 Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="Occupied Adult ICU Beds Initial Population"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="boolean"></type>
+         </parameter>
+         <parameter>
+            <name value="Adult Inpatient Influenza Patients Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="New Pediatric COVID_19 Patients Between 0 to 4 Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="Pediatric Inpatient RSV Patients Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="New Pediatric RSV Patients Between 0 to 4 Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="N95 Mask Supply in Days Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="New Pediatric COVID_19 Patients Between 5 to 17 Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="New Adult RSV Patients Between 50 to 64 Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="New Adult COVID_19 Patients Between 65 to 74 Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="New Pediatric Influenza Patients Between 5 to 17 Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="ICU Beds Initial Population"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="boolean"></type>
+         </parameter>
+         <parameter>
+            <name value="Adult ICU RSV Patients Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="New Adult Influenza Patients Between 18 to 49 Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="New Adult RSV Patients 75 and Above Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="Pediatric Inpatient Beds Initial Population"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="boolean"></type>
+         </parameter>
+         <parameter>
+            <name value="New Adult Influenza Patients Between 50 to 64 Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="New Pediatric Influenza Patients Between 0 to 4 Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="N95 Mask 3 Day Supply Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="string"></type>
+         </parameter>
+         <parameter>
+            <name value="Adult Inpatient RSV Patients Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="Pediatric ICU Beds Initial Population"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="boolean"></type>
+         </parameter>
+         <parameter>
+            <name value="New Adult RSV Patients Between 18 to 49 Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="Occupied Adult Inpatient Beds Initial Population"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="boolean"></type>
+         </parameter>
+         <parameter>
+            <name value="New Adult COVID_19 Patients Between 18 to 49 Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="OR Surgical Mask 3 Day Supply Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="string"></type>
+         </parameter>
+         <parameter>
+            <name value="Adult Inpatient Beds Initial Population"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="boolean"></type>
+         </parameter>
+         <parameter>
+            <name value="Occupied ICU Beds Initial Population"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="boolean"></type>
+         </parameter>
+         <parameter>
+            <name value="New Influenza Patients with Unknown Age Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="Pediatric ICU Influenza Patients Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="New Adult Influenza Patients Between 65 to 74 Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="New Pediatric RSV Patients Between 5 to 17 Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="Pediatric Inpatient COVID_19 Patients Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="Occupied Pediatric Inpatient Beds Initial Population"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="boolean"></type>
+         </parameter>
+         <parameter>
+            <name value="Inpatient Beds Initial Population"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="boolean"></type>
+         </parameter>
+         <parameter>
+            <name value="New Adult COVID_19 Patients 75 and Above Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="New COVID_19 Patients with Unknown Age Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <parameter>
+            <name value="New Adult Influenza Patients 75 and Above Stratifier"></name>
+            <use value="out"></use>
+            <min value="0"></min>
+            <max value="1"></max>
+            <type value="integer"></type>
+         </parameter>
+         <dataRequirement>
+            <type value="Device"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Device"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Device"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Device"></profile>
+            <mustSupport value="type"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Location"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Location"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Location"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Location"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="period"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Device"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Device"></profile>
+            <mustSupport value="type"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Observation"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
+            <mustSupport value="code"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1142"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Observation"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
+            <mustSupport value="code"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1158"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Device"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Device"></profile>
+            <mustSupport value="type"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Device"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Device"></profile>
+            <mustSupport value="type"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Location"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Location"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Observation"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
+            <mustSupport value="code"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.336"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Observation"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
+            <mustSupport value="code"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.337"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Observation"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
+            <mustSupport value="code"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1311"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Observation"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Observation"></profile>
+            <mustSupport value="code"></mustSupport>
+            <codeFilter>
+               <path value="code"></path>
+               <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1312"></valueSet>
+            </codeFilter>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Device"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Device"></profile>
+            <mustSupport value="type"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Patient"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Patient"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Patient"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Patient"></profile>
+            <mustSupport value="id"></mustSupport>
+            <mustSupport value="birthDate"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="status"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Device"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Device"></profile>
+            <mustSupport value="type"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Patient"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Patient"></profile>
+            <mustSupport value="birthDate"></mustSupport>
+            <mustSupport value="id"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Device"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Device"></profile>
+            <mustSupport value="type"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Device"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Device"></profile>
+            <mustSupport value="type"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Patient"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Patient"></profile>
+            <mustSupport value="birthDate"></mustSupport>
+            <mustSupport value="id"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Device"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Device"></profile>
+            <mustSupport value="type"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Device"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Device"></profile>
+            <mustSupport value="type"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="status"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="status"></mustSupport>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Encounter"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
+            <mustSupport value="status"></mustSupport>
+         </dataRequirement>
+      </Library>
+   </contained>
+   <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-populationBasis">
+      <valueCode value="boolean"></valueCode>
+   </extension>
+   <extension url="http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-softwaresystem">
+      <valueReference>
+         <reference value="Device/cqf-tooling"></reference>
+      </valueReference>
+   </extension>
+   <extension url="http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-effectiveDataRequirements">
+      <valueCanonical value="#effective-data-requirements"></valueCanonical>
+   </extension>
+   <url value="http://hl7.org/fhir/us/safr/Measure/HRDMeasureExample"></url>
+   <version value="1.0.0"></version>
+   <name value="HRDMeasureExample"></name>
+   <title value="HRD Measure"></title>
+   <experimental value="true"></experimental>
+   <date value="2026-03-05T18:26:30-04:00"></date>
+   <description value="Hospital Respiratory Data Measure Example"></description>
+   <library value="http://hl7.org/fhir/us/safr/Library/HRDMeasure"></library>
+   <scoring>
+      <coding>
+         <system value="http://terminology.hl7.org/CodeSystem/measure-scoring"></system>
+         <code value="cohort"></code>
+         <display value="Cohort"></display>
+      </coding>
+   </scoring>
+   <group>
+      <code>
+         <coding>
+            <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+            <code value="numInPtBeds"></code>
+         </coding>
+      </code>
+      <population id="d2e4301">
+         <code>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/measure-population"></system>
+               <code value="initial-population"></code>
+               <display value="Initial Population"></display>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Inpatient Beds Initial Population"></expression>
+         </criteria>
+      </population>
+      <stratifier id="unknownC19">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfC19NewAdmUnk"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="New COVID_19 Patients with Unknown Age Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="unknownFlu">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfFluNewAdmUnk"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="New Influenza Patients with Unknown Age Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="unknownRsv">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfRSVNewAdmUnk"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="New RSV Patients with Unknown Age Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="n95-3day">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="N95Mask3DaySupply"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="N95 Mask 3 Day Supply Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="n95Mask">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="N95MaskSupplyDays"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="N95 Mask Supply in Days Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="or-surgical-mask-3day">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="surgMask3DaySupply"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="OR Surgical Mask 3 Day Supply Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="orSurgMask">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="surgMaskSupplyDays"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="OR Surgical Mask Supply in Days Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="face-shield-3-day">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="shield3DaySupply"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Face Shield 3 Day Supply Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="faceShield">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="shieldSupplyDays"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Face Shield Supply in Days Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="gown-3-day">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="gown3DaySupply"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Gown 3 Day Supply Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="gown">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="gownSupplyDays"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Gown Supply in Days Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="glove-3-day">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="glove3DaySupply"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Glove 3 Day Supply Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="glove">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="gloveSupplyDays"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Glove Supply in Days Stratifier"></expression>
+         </criteria>
+      </stratifier>
+   </group>
+   <group>
+      <code>
+         <coding>
+            <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+            <code value="numInPtBedsOcc"></code>
+         </coding>
+      </code>
+      <population id="d2e4301-occupied">
+         <code>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/measure-population"></system>
+               <code value="initial-population"></code>
+               <display value="Initial Population"></display>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Occupied Inpatient Beds Initial Population"></expression>
+         </criteria>
+      </population>
+   </group>
+   <group>
+      <code>
+         <coding>
+            <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+            <code value="numInPtBedsAdult"></code>
+         </coding>
+      </code>
+      <population id="d2e4301-adult-inpatient">
+         <code>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/measure-population"></system>
+               <code value="initial-population"></code>
+               <display value="Initial Population"></display>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Adult Inpatient Beds Initial Population"></expression>
+         </criteria>
+      </population>
+      <stratifier id="adultInpC19">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfC19HospPatsAdult"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Adult Inpatient COVID_19 Patients Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="adultInpFlu">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfFluHospPatsAdult"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Adult Inpatient Influenza Patients Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="adultInpRsv">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfRSVHospPatsAdult"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Adult Inpatient RSV Patients Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="adult18to49C19">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfC19NewAdmAdult18to49"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="New Adult COVID_19 Patients Between 18 to 49 Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="adult50to64C19">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfC19NewAdmAdult50to64"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="New Adult COVID_19 Patients Between 50 to 64 Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="adult65to74C19">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfC19NewAdmAdult65to74"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="New Adult COVID_19 Patients Between 65 to 74 Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="adult75andUpC19">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfC19NewAdmAdult75plus"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="New Adult COVID_19 Patients 75 and Above Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="adult18to49Flu">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfFluNewAdmAdult18to49"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="New Adult Influenza Patients Between 18 to 49 Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="adult50to64Flu">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfFluNewAdmAdult50to64"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="New Adult Influenza Patients Between 50 to 64 Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="adult65to74Flu">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfFluNewAdmAdult65to74"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="New Adult Influenza Patients Between 65 to 74 Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="adult75andUpFlu">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfFluNewAdmAdult75plus"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="New Adult Influenza Patients 75 and Above Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="adult18to49Rsv">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfRSVNewAdmAdult18to49"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="New Adult RSV Patients Between 18 to 49 Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="adult50to64Rsv">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfRSVNewAdmAdult50to64"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="New Adult RSV Patients Between 50 to 64 Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="adult65to74Rsv">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfRSVNewAdmAdult65to74"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="New Adult RSV Patients Between 65 to 74 Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="adult75andUpRsv">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfRSVNewAdmAdult75plus"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="New Adult RSV Patients 75 and Above Stratifier"></expression>
+         </criteria>
+      </stratifier>
+   </group>
+   <group>
+      <code>
+         <coding>
+            <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+            <code value="numInPtBedsOccAdult"></code>
+         </coding>
+      </code>
+      <population id="d2e4301-occupied-adult-inpatient">
+         <code>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/measure-population"></system>
+               <code value="initial-population"></code>
+               <display value="Initial Population"></display>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Occupied Adult Inpatient Beds Initial Population"></expression>
+         </criteria>
+      </population>
+   </group>
+   <group>
+      <code>
+         <coding>
+            <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+            <code value="numInPtBedsPed"></code>
+         </coding>
+      </code>
+      <population id="d2e4301-ped-inpatient">
+         <code>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/measure-population"></system>
+               <code value="initial-population"></code>
+               <display value="Initial Population"></display>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Pediatric Inpatient Beds Initial Population"></expression>
+         </criteria>
+      </population>
+      <stratifier id="pedInpC19">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfC19HospPatsPed"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Pediatric Inpatient COVID_19 Patients Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="pedInpFlu">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfFluHospPatsPed"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Pediatric Inpatient Influenza Patients Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="pedInpRsv">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfRSVHospPatsPed"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Pediatric Inpatient RSV Patients Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="ped0to4C19">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfC19NewAdmPed0to4"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="New Pediatric COVID_19 Patients Between 0 to 4 Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="ped5to17C19">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfC19NewAdmPed5to17"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="New Pediatric COVID_19 Patients Between 5 to 17 Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="ped0to4Flu">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfFluNewAdmPed0to4"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="New Pediatric Influenza Patients Between 0 to 4 Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="ped5to17Flu">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfFluNewAdmPed5to17"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="New Pediatric Influenza Patients Between 5 to 17 Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="ped0to4Rsv">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfRSVNewAdmPed0to4"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="New Pediatric RSV Patients Between 0 to 4 Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="ped5to17Rsv">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfRSVNewAdmPed5to17"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="New Pediatric RSV Patients Between 5 to 17 Stratifier"></expression>
+         </criteria>
+      </stratifier>
+   </group>
+   <group>
+      <code>
+         <coding>
+            <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+            <code value="numInPtBedsOccPed"></code>
+         </coding>
+      </code>
+      <population id="d2e4301-occupied-ped-inpatient">
+         <code>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/measure-population"></system>
+               <code value="initial-population"></code>
+               <display value="Initial Population"></display>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Occupied Pediatric Inpatient Beds Initial Population"></expression>
+         </criteria>
+      </population>
+   </group>
+   <group>
+      <code>
+         <coding>
+            <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+            <code value="numICUBeds"></code>
+         </coding>
+      </code>
+      <population id="d2e4301-icu">
+         <code>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/measure-population"></system>
+               <code value="initial-population"></code>
+               <display value="Initial Population"></display>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="ICU Beds Initial Population"></expression>
+         </criteria>
+      </population>
+   </group>
+   <group>
+      <code>
+         <coding>
+            <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+            <code value="numICUBedsOcc"></code>
+         </coding>
+      </code>
+      <population id="d2e4301-occupied-icu">
+         <code>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/measure-population"></system>
+               <code value="initial-population"></code>
+               <display value="Initial Population"></display>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Occupied ICU Beds Initial Population"></expression>
+         </criteria>
+      </population>
+   </group>
+   <group>
+      <code>
+         <coding>
+            <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+            <code value="numICUBedsAdult"></code>
+         </coding>
+      </code>
+      <population id="d2e4301-adult-icu">
+         <code>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/measure-population"></system>
+               <code value="initial-population"></code>
+               <display value="Initial Population"></display>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Adult ICU Beds Initial Population"></expression>
+         </criteria>
+      </population>
+      <stratifier id="adultIcuC19">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfC19ICUPatsAdult"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Adult ICU COVID_19 Patients Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="adultIcuFlu">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfFluICUPatsAdult"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Adult ICU Influenza Patients Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="adultIcuRsv">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfRSVICUPatsAdult"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Adult ICU RSV Patients Stratifier"></expression>
+         </criteria>
+      </stratifier>
+   </group>
+   <group>
+      <code>
+         <coding>
+            <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+            <code value="numICUBedsOccAdult"></code>
+         </coding>
+      </code>
+      <population id="d2e4301-occupied-adult-icu">
+         <code>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/measure-population"></system>
+               <code value="initial-population"></code>
+               <display value="Initial Population"></display>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Occupied Adult ICU Beds Initial Population"></expression>
+         </criteria>
+      </population>
+   </group>
+   <group>
+      <code>
+         <coding>
+            <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+            <code value="numICUBedsPed"></code>
+         </coding>
+      </code>
+      <population id="d2e4301-ped-icu">
+         <code>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/measure-population"></system>
+               <code value="initial-population"></code>
+               <display value="Initial Population"></display>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Pediatric ICU Beds Initial Population"></expression>
+         </criteria>
+      </population>
+      <stratifier id="pedIcuC19">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfC19ICUPatsPed"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Pediatric ICU COVID_19 Patients Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="pedIcuFlu">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfFluICUPatsPed"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Pediatric ICU Influenza Patients Stratifier"></expression>
+         </criteria>
+      </stratifier>
+      <stratifier id="pedIcuRsv">
+         <code>
+            <coding>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+               <code value="numConfRSVICUPatsPed"></code>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Pediatric ICU RSV Patients Stratifier"></expression>
+         </criteria>
+      </stratifier>
+   </group>
+   <group>
+      <code>
+         <coding>
+            <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-hrd-example-codes"></system>
+            <code value="numICUBedsOccPed"></code>
+         </coding>
+      </code>
+      <population id="d2e4301-occupied-ped-icu">
+         <code>
+            <coding>
+               <system value="http://terminology.hl7.org/CodeSystem/measure-population"></system>
+               <code value="initial-population"></code>
+               <display value="Initial Population"></display>
+            </coding>
+         </code>
+         <criteria>
+            <language value="text/cql-identifier"></language>
+            <expression value="Occupied Pediatric ICU Beds Initial Population"></expression>
+         </criteria>
+      </population>
+   </group>
+</Measure>

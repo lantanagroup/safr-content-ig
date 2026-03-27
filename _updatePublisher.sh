@@ -91,8 +91,8 @@ else
 fi
 if [[ $skipPrompts == true ]] || [[ $response =~ ^[yY].*$ ]]; then
 
-  echo "Downloading most recent publisher to $jarlocationname - it's ~100 MB, so this may take a bit"
-  curl -L $dlurl -o "$jarlocation" --create-dirs
+	echo "Downloading most recent publisher to $jarlocationname - it's ~100 MB, so this may take a bit"
+	curl -L $dlurl -o "$jarlocation" --create-dirs
 else
 	echo cancelled publisher update
 fi
@@ -100,7 +100,7 @@ fi
 if [[ $skipPrompts != true ]]; then
     message="Update scripts? (enter 'y' or 'Y' to continue, any other key to cancel)?"
     read -r -p "$message" response
-fi
+  fi
 
 if [[ $skipPrompts == true ]] || [[ $response =~ ^[yY].*$ ]]; then
   echo "Downloading most recent scripts "

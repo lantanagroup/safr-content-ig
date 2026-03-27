@@ -1,4 +1,6 @@
-The US SAFR IG includes practical use cases demonstrating its application across various levels of healthcare resource management. These use cases highlight the framework’s ability to address immediate and strategic challenges. For more context, see [Reporting Scenarios](specification.html).
+The US SAFR IG includes example use cases demonstrating its application across various levels of healthcare resource management. These use cases highlight the framework’s ability to address immediate and strategic challenges. For more context, see [Reporting Scenarios](specification.html) where the data exchange methods are detailed. Federal agencies will typically receive data from NHSN.
+
+Note: the use cases here are **examples only**, and are specific to the example measures included in this IG for Bed Capacity and Hospital Respiratory Data (HRD) reporting. However, the framework that this IG creates can be used for other situational awareness use cases beyond Bed Capacity and HRD.
 
 ### United States Situational Awareness for Facilitation of Response Measure Reporting Use Cases
 
@@ -11,7 +13,7 @@ During a severe flu season, hospitals in a specific jurisdiction experience a hi
 
 **1. Bed and Staffing Allocation**
 - Hospitals use US SAFR to report real-time bed occupancy and availability every 15 minutes, categorized by bed type.
-- Hospital administrators leverage this data to monitor capacity and prioritize staffing where it is most urgently needed.
+- Hospital administrators leverage this data to monitor hospital capacity and prioritize staffing where it is most urgently needed.
 
 **2. Resource Allocation**
 - By analyzing near real-time bed occupancy and patient influx data, hospitals coordinate with temporary staffing agencies or reallocate internal staff to address shortages effectively.
@@ -32,15 +34,15 @@ During a severe flu season, hospitals in a specific jurisdiction experience a hi
 **2. Trend Analysis and Early Warning System**
 - Analysis of surge data enables early detection of trends, guiding preventative measures like vaccination campaigns or public advisories in affected areas.
 
-#### Use Case #2: Emergency Response Coordination for Natural Disaster Evacuations
+#### Use Case #2: Emergency Response Coordination for Natural Disaster Evacuations (Declaration of Emergency)
 
 **Scenario**
-In response to an approaching hurricane on the Texas coastline, state emergency management and health departments plan for hospital evacuations and patient redistribution to inland facilities.
+In response to an approaching hurricane on the Texas coastline, local and state emergency management and health departments plan for hospital evacuations of patients to inland facilities.
 
 **Facility/Hospital-Level Use**
 
 **1. Resource Mobilization and Preparedness**
-- Coastal hospitals report real-time bed availability and anticipated needs using US SAFR, enabling inland hospitals to prepare and allocate space in advance.
+- Coastal hospitals report real-time bed availability and anticipated needs using US SAFR to local and state officials, enabling inland hospitals to prepare and allocate resources in advance.
 
 **2. Evacuation Logistics**
 - Real-time data supports collaboration with EMS and transport services, identifying available ICU and specialty care beds at inland facilities for safe patient transfers.
@@ -48,7 +50,7 @@ In response to an approaching hurricane on the Texas coastline, state emergency 
 **Jurisdiction-Level Use**
 
 **1. Cross-Hospital Coordination**
-- State health departments monitor bed capacity across facilities and direct ambulances to locations with adequate resources.
+- Local and state officials monitor bed capacity across facilities and direct ambulances to locations with adequate resources.
 
 **2. Resource Allocation Across Jurisdictions**
 - Aggregated data informs the deployment of critical supplies, ensuring inland hospitals are prepared to receive evacuees.
@@ -56,7 +58,7 @@ In response to an approaching hurricane on the Texas coastline, state emergency 
 **Federal-Level Use**
 
 **1. Emergency Support and Resource Allocation**
-- Federal agencies assess regional capacity and deploy FEMA medical personnel or National Guard resources as needed.
+- Federal agencies assess regional capacity and deploy FEMA medical personnel or National Guard resources as needed. 
 
 **2.Unified Federal and State Response**
 - US SAFR facilitates coordinated federal-state responses, optimizing resource distribution and avoiding redundancies.
@@ -73,7 +75,6 @@ For all bed censuses and counts, the following bed types should be <u>excluded</
 1. Virtual beds or locations in the EMR that are not physical spaces (i.e., beds used for interoperative phase of care or in certain operative settings or virtual staging areas for admissions.)
 2. Beds no longer in use, even in case of surge
 3. Blocked beds (i.e., beds blocked due to logistical or maintenance challenges, staffing restrictions, isolation, etc.) 
-
 
 #### Unit Inclusion Criteria
 
@@ -97,7 +98,7 @@ For all bed censuses and counts, the following bed types should be <u>excluded</
    <tbody>
       <tr>
          <td style="column-width:30%">
-            <a href="Measure-BedCapacityMeasure.html" title="Measure/BedCapacityMeasure">Measure - Bed Capacity Measure
+            <a href="Measure-BedCapacityMeasureExample.html" title="Measure/BedCapacityMeasureExample">Measure - Bed Capacity Measure
                Example</a>
          </td>
          <td>
@@ -106,21 +107,12 @@ For all bed censuses and counts, the following bed types should be <u>excluded</
       </tr>
       <tr>
          <td style="column-width:30%">
-            <a href="Library-BedCapacityLibrary.html" title="Library/BedCapacityLibrary">Library - Library of Bed
+            <a href="Library-BedCapacityMeasure.html" title="Library/BedCapacityMeasure">Library - Library of Bed
                Capacity Measure Example</a>
          </td>
          <td>
             <p>This library contains CQL logic for evaluating structural measures related to bed capacity reporting
                capabilities.</p>
-         </td>
-      </tr>
-      <tr>
-         <td style="column-width:30%">
-            <a href="Bundle-BedCapacityMeasureBundle.html" title="Bundle/BedCapacityMeasureBundle">Bundle - Bed Capacity
-               Measure Bundle Example</a>
-         </td>
-         <td>
-            <p>This Bundle resource is an example of a Bed Capacity Measure Bundle.</p>
          </td>
       </tr>
       <tr>

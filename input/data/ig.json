@@ -96,11 +96,11 @@
     "resource": [
       {
         "reference": {
-          "reference": "Measure/BedCapacityMeasure"
+          "reference": "Measure/BedCapacityMeasureExample"
         },
-        "description": "Bed Capacity Measure includes counts of specific bed types within the context of a given healthcare context or setting.",
+        "description": "Bed Capacity Measure Example includes counts of specific bed types within the context of a given healthcare context or setting.",
         "exampleBoolean": false,
-        "name": "Bed Capacity"
+        "name": "Bed Capacity Measure Example"
       },
       {
         "reference": {
@@ -115,7 +115,7 @@
         },
         "name": "Bundle - Bed Capacity Report Bundle Example",
         "description": "Bundle containing a measure report and all referenced resources for NHSN bed capacity reporting.",
-        "exampleCanonical": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/StructureDefinition/us-safr-measurereport-bundle"
+        "exampleCanonical": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/StructureDefinition/nhsn-safr-measurereport-bundle"
       },
       {
         "reference": {
@@ -131,7 +131,15 @@
         },
         "name": "Bundle - HRD Measure Report Bundle Example",
         "description": "Bundle containing a measure report and all referenced resources for NHSN Hospital Respiratory Disease (HRD) reporting",
-        "exampleCanonical": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/StructureDefinition/us-safr-measurereport-bundle"
+        "exampleCanonical": "http://www.cdc.gov/nhsn/fhirportal/us-safr/ig/StructureDefinition/us-safr-measurereport-bundle"
+      },
+      {
+        "reference": {
+          "reference": "Bundle/USSAFRMeasureBundleExample"
+        },
+        "name": "Bundle - US SAFR Measure Bundle Example",
+        "description": "Bundle containing a measure for NHSN reporting.",
+        "exampleCanonical": "http://www.cdc.gov/nhsn/fhirportal/us-safr/ig/StructureDefinition/us-safr-measure-bundle"
       },
       {
         "reference": {
@@ -211,6 +219,21 @@
         "name": "Hospital Respiratory Data Supply Days Code System",
         "description": "This CodeSystem defines coded concepts for supply days in Hospital Respiratory Data reporting for US SAFR IG. This is an example CodeSystem and is experimental, and is expected to be replaced when a permanent location is identified.",
         "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "Measure/HRDMeasureExample"
+        },
+        "description": "Hospital Respiratory Data Measure Example",
+        "exampleBoolean": false,
+        "name": "HRD Measure"
+      },
+      {
+        "reference": {
+          "reference": "Library/HRDMeasure"
+        },
+        "exampleBoolean": false,
+        "name": "HRDMeasure"
       },
       {
         "reference": {
