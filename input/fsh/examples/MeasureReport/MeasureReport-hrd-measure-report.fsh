@@ -8,7 +8,7 @@ Usage: #example
 * extension[scoring].valueCodeableConcept = $measure-scoring#continuous-variable "Continuous Variable"
 * status = $measure-report-status#complete
 * type = $measure-report-type#individual
-* measure = "http://hl7.org/fhir/us/safr/Measure/HRDMeasureExample|1.0.0"
+* measure = "http://www.cdc.gov/nhsn/fhirportal/safr/ig/Measure/HRDMeasure|1.0.0"
 * date = "2025-03-05T08:15:00-05:00"
 // Reporting period
 * period.start = "2025-03-05T00:00:00-05:00"
@@ -55,139 +55,139 @@ TODO, will need output with summary
 
 ///////////// Group numInPtBeds /////////////
 * group[+].id = "numInPtBeds-capacity-group"
-* group[=].code = HRDExampleCS#numInPtBeds "Number Inpatient Beds"
+* group[=].code = HRDCS#numInPtBeds "Number Inpatient Beds"
 * group[=].population[+].id = "numInPtBeds-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
 * group[=].population[=].count = 100
 
 * group[=].stratifier[+].id = "numConfC19NewAdmUnk-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfC19NewAdmUnk 
+* group[=].stratifier[=].code = HRDCS#numConfC19NewAdmUnk 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfFluNewAdmUnk-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfFluNewAdmUnk 
+* group[=].stratifier[=].code = HRDCS#numConfFluNewAdmUnk 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfRSVNewAdmUnk-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfRSVNewAdmUnk 
+* group[=].stratifier[=].code = HRDCS#numConfRSVNewAdmUnk 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 
 
 
 * group[=].stratifier[+].id = "N95MaskSupplyDays-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#N95MaskSupplyDays 
+* group[=].stratifier[=].code = HRDCS#N95MaskSupplyDays 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "surgMaskSupplyDays-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#surgMaskSupplyDays 
+* group[=].stratifier[=].code = HRDCS#surgMaskSupplyDays 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "shieldSupplyDays-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#shieldSupplyDays 
+* group[=].stratifier[=].code = HRDCS#shieldSupplyDays 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "gownSupplyDays-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#gownSupplyDays 
+* group[=].stratifier[=].code = HRDCS#gownSupplyDays 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "gloveSupplyDays-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#gloveSupplyDays 
+* group[=].stratifier[=].code = HRDCS#gloveSupplyDays 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 
 * group[=].stratifier[+].id = "N95Mask3DaySupply-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#N95Mask3DaySupply 
+* group[=].stratifier[=].code = HRDCS#N95Mask3DaySupply 
 * group[=].stratifier[=].stratum[+].value.text = "n"
 
 * group[=].stratifier[+].id = "surgMask3DaySupply-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#surgMask3DaySupply 
+* group[=].stratifier[=].code = HRDCS#surgMask3DaySupply 
 * group[=].stratifier[=].stratum[+].value.text = "n"
 
 * group[=].stratifier[+].id = "shield3DaySupply-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#shield3DaySupply 
+* group[=].stratifier[=].code = HRDCS#shield3DaySupply 
 * group[=].stratifier[=].stratum[+].value.text = "n"
 
 * group[=].stratifier[+].id = "gown3DaySupply-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#gown3DaySupply 
+* group[=].stratifier[=].code = HRDCS#gown3DaySupply 
 * group[=].stratifier[=].stratum[+].value.text = "n"
 
 * group[=].stratifier[+].id = "glove3DaySupply-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#glove3DaySupply 
+* group[=].stratifier[=].code = HRDCS#glove3DaySupply 
 * group[=].stratifier[=].stratum[+].value.text = "n"
 
 
 
 ///////////// Group numInPtBedsAdult /////////////
 * group[+].id = "numInPtBedsAdult-capacity-group"
-* group[=].code = HRDExampleCS#numInPtBedsAdult 
+* group[=].code = HRDCS#numInPtBedsAdult 
 * group[=].population[+].id = "numInPtBedsAdult-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
 * group[=].population[=].count = 80
 
 * group[=].stratifier[+].id = "numConfC19HospPatsAdult-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfC19HospPatsAdult 
+* group[=].stratifier[=].code = HRDCS#numConfC19HospPatsAdult 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfFluHospPatsAdult-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfFluHospPatsAdult 
+* group[=].stratifier[=].code = HRDCS#numConfFluHospPatsAdult 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfRSVHospPatsAdult-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfRSVHospPatsAdult 
+* group[=].stratifier[=].code = HRDCS#numConfRSVHospPatsAdult 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 
 * group[=].stratifier[+].id = "numConfC19NewAdmAdult18to49-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfC19NewAdmAdult18to49 
+* group[=].stratifier[=].code = HRDCS#numConfC19NewAdmAdult18to49 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfC19NewAdmAdult50to64-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfC19NewAdmAdult50to64 
+* group[=].stratifier[=].code = HRDCS#numConfC19NewAdmAdult50to64 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfC19NewAdmAdult65to74-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfC19NewAdmAdult65to74 
+* group[=].stratifier[=].code = HRDCS#numConfC19NewAdmAdult65to74 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfC19NewAdmAdult75plus-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfC19NewAdmAdult75plus 
+* group[=].stratifier[=].code = HRDCS#numConfC19NewAdmAdult75plus 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 
 
 * group[=].stratifier[+].id = "numConfFluNewAdmAdult18to49-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfFluNewAdmAdult18to49 
+* group[=].stratifier[=].code = HRDCS#numConfFluNewAdmAdult18to49 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfFluNewAdmAdult50to64-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfFluNewAdmAdult50to64 
+* group[=].stratifier[=].code = HRDCS#numConfFluNewAdmAdult50to64 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfFluNewAdmAdult65to74-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfFluNewAdmAdult65to74 
+* group[=].stratifier[=].code = HRDCS#numConfFluNewAdmAdult65to74 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfFluNewAdmAdult75plus-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfFluNewAdmAdult75plus 
+* group[=].stratifier[=].code = HRDCS#numConfFluNewAdmAdult75plus 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 
 
 * group[=].stratifier[+].id = "numConfRSVNewAdmAdult18to49-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfRSVNewAdmAdult18to49 
+* group[=].stratifier[=].code = HRDCS#numConfRSVNewAdmAdult18to49 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfRSVNewAdmAdult50to64-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfRSVNewAdmAdult50to64 
+* group[=].stratifier[=].code = HRDCS#numConfRSVNewAdmAdult50to64 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfRSVNewAdmAdult65to74-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfRSVNewAdmAdult65to74 
+* group[=].stratifier[=].code = HRDCS#numConfRSVNewAdmAdult65to74 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfRSVNewAdmAdult75plus-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfRSVNewAdmAdult75plus 
+* group[=].stratifier[=].code = HRDCS#numConfRSVNewAdmAdult75plus 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 
@@ -196,56 +196,56 @@ TODO, will need output with summary
 
 ///////////// Group numInPtBedsPed /////////////
 * group[+].id = "numInPtBedsPed-capacity-group"
-* group[=].code = HRDExampleCS#numInPtBedsPed 
+* group[=].code = HRDCS#numInPtBedsPed 
 * group[=].population[+].id = "numInPtBedsPed-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
 * group[=].population[=].count = 20
 
 
 * group[=].stratifier[+].id = "numConfC19HospPatsPed-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfC19HospPatsPed 
+* group[=].stratifier[=].code = HRDCS#numConfC19HospPatsPed 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfFluHospPatsPed-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfFluHospPatsPed 
+* group[=].stratifier[=].code = HRDCS#numConfFluHospPatsPed 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfRSVHospPatsPed-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfRSVHospPatsPed 
+* group[=].stratifier[=].code = HRDCS#numConfRSVHospPatsPed 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 
 
 * group[=].stratifier[+].id = "numConfC19NewAdmPed0to4-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfC19NewAdmPed0to4 
+* group[=].stratifier[=].code = HRDCS#numConfC19NewAdmPed0to4 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfC19NewAdmPed5to17-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfC19NewAdmPed5to17 
+* group[=].stratifier[=].code = HRDCS#numConfC19NewAdmPed5to17 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 
 * group[=].stratifier[+].id = "numConfFluNewAdmPed0to4-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfFluNewAdmPed0to4 
+* group[=].stratifier[=].code = HRDCS#numConfFluNewAdmPed0to4 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfFluNewAdmPed5to17-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfFluNewAdmPed5to17 
+* group[=].stratifier[=].code = HRDCS#numConfFluNewAdmPed5to17 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 
 * group[=].stratifier[+].id = "numConfRSVNewAdmPed0to4-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfRSVNewAdmPed0to4 
+* group[=].stratifier[=].code = HRDCS#numConfRSVNewAdmPed0to4 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfRSVNewAdmPed5to17-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfRSVNewAdmPed5to17 
+* group[=].stratifier[=].code = HRDCS#numConfRSVNewAdmPed5to17 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 
 ///////////// Group numICUBeds /////////////
 * group[+].id = "numICUBeds-capacity-group"
-* group[=].code = HRDExampleCS#numICUBeds 
+* group[=].code = HRDCS#numICUBeds 
 * group[=].population[+].id = "numICUBeds-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
 * group[=].population[=].count = 0
@@ -253,62 +253,62 @@ TODO, will need output with summary
 
 ///////////// Group numICUBedsAdult /////////////
 * group[+].id = "numICUBedsAdult-capacity-group"
-* group[=].code = HRDExampleCS#numICUBedsAdult 
+* group[=].code = HRDCS#numICUBedsAdult 
 * group[=].population[+].id = "numICUBedsAdult-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
 * group[=].population[=].count = 0
 
 
 * group[=].stratifier[+].id = "numConfC19ICUPatsAdult-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfC19ICUPatsAdult 
+* group[=].stratifier[=].code = HRDCS#numConfC19ICUPatsAdult 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfFluICUPatsAdult-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfFluICUPatsAdult 
+* group[=].stratifier[=].code = HRDCS#numConfFluICUPatsAdult 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfRSVICUPatsAdult-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfRSVICUPatsAdult 
+* group[=].stratifier[=].code = HRDCS#numConfRSVICUPatsAdult 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 
 ///////////// Group numICUBedsPed /////////////
 * group[+].id = "numICUBedsPed-capacity-group"
-* group[=].code = HRDExampleCS#numICUBedsPed 
+* group[=].code = HRDCS#numICUBedsPed 
 * group[=].population[+].id = "numICUBedsPed-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
 * group[=].population[=].count = 0
 
 * group[=].stratifier[+].id = "numConfC19ICUPatsPed-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfC19ICUPatsPed 
+* group[=].stratifier[=].code = HRDCS#numConfC19ICUPatsPed 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfFluICUPatsPed-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfFluICUPatsPed 
+* group[=].stratifier[=].code = HRDCS#numConfFluICUPatsPed 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 * group[=].stratifier[+].id = "numConfRSVICUPatsPed-stratifier"
-* group[=].stratifier[=].code = HRDExampleCS#numConfRSVICUPatsPed 
+* group[=].stratifier[=].code = HRDCS#numConfRSVICUPatsPed 
 * group[=].stratifier[=].stratum[+].value.text = "0"
 
 
 ///////////// Group numInPtBedsOcc /////////////
 * group[+].id = "numInPtBedsOcc-capacity-group"
-* group[=].code = HRDExampleCS#numInPtBedsOcc 
+* group[=].code = HRDCS#numInPtBedsOcc 
 * group[=].population[+].id = "numInPtBedsOcc-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
 * group[=].population[=].count = 100
 
 ///////////// Group numInPtBedsOccAdult /////////////
 * group[+].id = "numInPtBedsOccAdult-capacity-group"
-* group[=].code = HRDExampleCS#numInPtBedsOccAdult 
+* group[=].code = HRDCS#numInPtBedsOccAdult 
 * group[=].population[+].id = "numInPtBedsOccAdult-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
 * group[=].population[=].count = 80
 
 ///////////// Group numInPtBedsOccPed /////////////
 * group[+].id = "numInPtBedsOccPed-capacity-group"
-* group[=].code = HRDExampleCS#numInPtBedsOccPed 
+* group[=].code = HRDCS#numInPtBedsOccPed 
 * group[=].population[+].id = "numInPtBedsOccPed-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
 * group[=].population[=].count = 20
@@ -317,21 +317,21 @@ TODO, will need output with summary
 
 ///////////// Group numICUBedsOcc /////////////
 * group[+].id = "numICUBedsOcc-capacity-group"
-* group[=].code = HRDExampleCS#numICUBedsOcc 
+* group[=].code = HRDCS#numICUBedsOcc 
 * group[=].population[+].id = "numICUBedsOcc-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
 * group[=].population[=].count = 0
 
 ///////////// Group numICUBedsOccAdult /////////////
 * group[+].id = "numICUBedsOccAdult-capacity-group"
-* group[=].code = HRDExampleCS#numICUBedsOccAdult 
+* group[=].code = HRDCS#numICUBedsOccAdult 
 * group[=].population[+].id = "numICUBedsOccAdult-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
 * group[=].population[=].count = 0
 
 ///////////// Group numICUBedsOccPed /////////////
 * group[+].id = "numICUBedsOccPed-capacity-group"
-* group[=].code = HRDExampleCS#numICUBedsOccPed 
+* group[=].code = HRDCS#numICUBedsOccPed 
 * group[=].population[+].id = "numICUBedsOccPed-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
 * group[=].population[=].count = 0

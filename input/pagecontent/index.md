@@ -19,7 +19,7 @@ during public health emergencies.
 
 ### Background ###
 The COVID-19 pandemic revealed significant gaps in the ability to monitor healthcare system stress and capacity. This project integrates and generalizes previous initiatives, 
-including [SANER - Situational Awareness for Novel Epidemic Response IG (universal realm)](https://build.fhir.org/ig/HL7/fhir-saner/index.html) and 
+including [SANER - Situational Awareness for Novel Epidemic Response IG (universal realm)](https://hl7.org/fhir/uv/saner/index.html) and 
 [DEQM - Data Exchange for Quality Measure IG (US realm)]({{site.data.fhir.ver.deqm}}/index.html), into a unified framework tailored for the US. Key highlights include:
 
 1. Standardized definitions of healthcare bed capacity and other metrics.
@@ -51,7 +51,7 @@ The guide ensures alignment with existing initiatives, such as SANER and DEQM, w
 
 The US SAFR IG harmonizes with and extends the following standards:
 
-1. **[SANER (Universal Realm):](https://build.fhir.org/ig/HL7/fhir-saner/index.html)** Provides the foundation for situational awareness reporting globally. US SAFR adapts SANER for US-specific requirements while maintaining interoperability.
+1. **[SANER (Universal Realm):](https://hl7.org/fhir/uv/saner/index.html)** Provides the foundation for situational awareness reporting globally. US SAFR adapts SANER for US-specific requirements while maintaining interoperability.
 2. **[DEQM (US Realm):]({{site.data.fhir.ver.deqm}}/index.html)** Ensures alignment with existing US-specific quality measurement standards.
 3. **[NHSN Bed Connectivity Initiative:](https://www.cdc.gov/nhsn/bed-capacity/index.html)** Standardizes real-time bed capacity reporting across hospitals and jurisdictions.
 4. **[Hospital Respiratory Data Reporting:](https://www.cdc.gov/nhsn/psc/hospital-respiratory-reporting.html)** Establishes reporting standards for COVID-19, influenza, RSV, and related data.
@@ -66,11 +66,26 @@ Other FHIR standard related dependencies:
 ### Out of Scope ###
 Subscriptions is not covered in this IG currently, but future versions will plan to incorporate [FHIR Subscriptions R5 Backport](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/) to support emergencies that require rapid changes in reporting.
 
-### Acknowledgements ###
+### Acknowledgements
 
-This implementation guide is a product of the [HL7 International–Public Health Work Group](http://www.hl7.org/Special/committees/pher/).
+Lantana Consulting Group, Inc. produced and developed the content in this IG under contract to the Division of Healthcare Quality Promotion (DHQP) in the National Center for Emerging and Zoonotic Infectious Diseases (NCEZID) at the Centers for Disease Control and Prevention (CDC).
 
- 
+
+| Role           | Name                  | Organization             | Email Address                       |
+|----------------|-----------------------|--------------------------|-------------------------------------|
+| Primary Editor | Shanai Thornton       | Lantana Consulting Group | shanai.thornton@lantanagroup.com    |
+| Primary Editor | Rick Geimer           | Lantana Consulting Group | rick.geimer@lantanagroup.com        |
+| Primary Editor | Corey Spears          | Lantana Consulting Group | corey.spears@lantanagroup.com       |
+| Co-Editor      | Arvind Jagannathan    | Lantana Consulting Group | arvind.jagannathan@lantanagroup.com |
+| Co-Editor      | Andrea Benin          | CDC                      | aqb4@cdc.gov                        |
+| Co-Editor      | Kristina Betz         | CDC                      | rly7@cdc.gov                        |
+| Co-Editor      | David deRoode         | Lantana Consulting Group | david.deroode@lantanagroup.com      |
+| Co-Editor      | Ming Dunajick         | Lantana Consulting Group | ming.dunajick@lantanagroup.com      |
+
+
+
+
+
 
 
 

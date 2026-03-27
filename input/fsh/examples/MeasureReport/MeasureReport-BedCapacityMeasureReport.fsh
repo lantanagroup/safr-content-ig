@@ -9,7 +9,7 @@ Usage: #example
 // Basic metadata
 * status = $measure-report-status#complete
 * type = $measure-report-type#individual
-* measure = "http://hl7.org/fhir/us/safr/Measure/BedCapacityMeasureExample|1.0.0"
+* measure = "http://www.cdc.gov/nhsn/fhirportal/safr/ig/Measure/BedCapacityMeasure|1.0.0"
 * date = "2025-03-05T08:15:00-05:00"
 // Reporting period
 * period.start = "2025-03-05T00:00:00-05:00"
@@ -482,7 +482,7 @@ Usage: #example
 /*
 ///////////// Group SurgeInactiveTotalOccupied /////////////
 * group[+].id = "SurgeInactiveTotalOccupied-bed-capacity-group"
-* group[=].code = http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes#SurgeInactiveTotalOccupied
+* group[=].code = http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-bed-capacity-codes#SurgeInactiveTotalOccupied
 * group[=].population[+].id = "SurgeInactiveTotalOccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
 * group[=].population[=].count = 0
@@ -537,7 +537,7 @@ Usage: #example
 /*
 ///////////// Group SurgeInactiveNonICUOccupied /////////////
 * group[+].id = "SurgeInactiveNonICUOccupied-bed-capacity-group"
-* group[=].code = http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes#SurgeInactiveNonICUOccupied
+* group[=].code = http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-bed-capacity-codes#SurgeInactiveNonICUOccupied
 * group[=].population[+].id = "SurgeInactiveNonICUOccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
 * group[=].population[=].count = 0

@@ -74,7 +74,7 @@
   }, {
     "type": "depends-on",
     "display": "Code system HealthcareCapacity",
-    "resource": "http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes"
+    "resource": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-bed-capacity-codes"
   }, {
     "type": "depends-on",
     "display": "Value set Emergency Department Visit",

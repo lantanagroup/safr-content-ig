@@ -25,7 +25,7 @@ Alias: $cqfm-aggregateMethod = http://hl7.org/fhir/us/cqfmeasures/StructureDefin
 Alias: $reporting-frequency = http://www.cdc.gov/nhsn/fhirportal/safr/ig/StructureDefinition/reporting-frequency
 Alias: $emergency-activation = http://www.cdc.gov/nhsn/fhirportal/safr/ig/StructureDefinition/emergency-activation
 
-Alias: $hrd-example-codes = http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-hrd-example-codes
+Alias: $hrd-codes = http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-hrd-codes
 
 Alias: $loinc = http://loinc.org
 Alias: $sct = http://snomed.info/sct

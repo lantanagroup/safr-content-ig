@@ -11,10 +11,10 @@
       "valueInteger": 1
     }
   ],
-  "url": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/ImplementationGuide/gov.cdc.nhsn.us-safr",
-  "version": "0.0.1",
-  "name": "NHSN-SAFR",
-  "title": "CDC US Situational Awareness Framework for Reporting (US SAFR) Content Implementation Guide",
+  "url": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/ImplementationGuide/gov.cdc.nhsn.safr",
+  "version": "1.0.0",
+  "name": "NHSNSAFR",
+  "title": "CDC NHSN Situational Awareness Framework for Reporting (NHSN SAFR) Content Implementation Guide",
   "status": "active",
   "publisher": "CDC National Healthcare Safety Network (NHSN)",
   "contact": [
@@ -32,7 +32,7 @@
       ]
     }
   ],
-  "description": "US Situational Awareness Framework for Reporting (US SAFR)",
+  "description": "NHSN Situational Awareness Framework for Reporting (NHSN SAFR)",
   "jurisdiction": [
     {
       "coding": [
@@ -44,7 +44,7 @@
       ]
     }
   ],
-  "packageId": "gov.cdc.nhsn.us-safr",
+  "packageId": "gov.cdc.nhsn.safr",
   "fhirVersion": [
     "4.0.1"
   ],
@@ -90,6 +90,12 @@
       "version": "6.0.0",
       "uri": "http://hl7.org/fhir/us/qicore/ImplementationGuide/hl7.fhir.us.qicore",
       "id": "hl7_fhir_us_qicore"
+    },
+    {
+      "packageId": "hl7.fhir.uv.xver-r5.r4",
+      "version": "0.1.0",
+      "uri": "http://hl7.org/fhir/uv/xver/ImplementationGuide/hl7.fhir.uv.xver-r5.r4",
+      "id": "hl7_fhir_uv_xver_r5_r4"
     }
   ],
   "definition": {
@@ -119,27 +125,19 @@
       },
       {
         "reference": {
-          "reference": "Bundle/HRDMeasureBundle"
-        },
-        "name": "Bundle - HRD Measure Bundle Example",
-        "description": "This Bundle resource is an example of a Hospital Respiratory Data (HRD) Measure Bundle.",
-        "exampleCanonical": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/StructureDefinition/us-safr-measure-bundle"
-      },
-      {
-        "reference": {
           "reference": "Bundle/HRDMeasureReportBundle"
         },
         "name": "Bundle - HRD Measure Report Bundle Example",
         "description": "Bundle containing a measure report and all referenced resources for NHSN Hospital Respiratory Disease (HRD) reporting",
-        "exampleCanonical": "http://www.cdc.gov/nhsn/fhirportal/us-safr/ig/StructureDefinition/us-safr-measurereport-bundle"
+        "exampleCanonical": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/StructureDefinition/nhsn-safr-measurereport-bundle"
       },
       {
         "reference": {
-          "reference": "Bundle/USSAFRMeasureBundleExample"
+          "reference": "Bundle/NHSNSAFRMeasureBundleExample"
         },
-        "name": "Bundle - US SAFR Measure Bundle Example",
+        "name": "Bundle - NHSN SAFR Measure Bundle Example",
         "description": "Bundle containing a measure for NHSN reporting.",
-        "exampleCanonical": "http://www.cdc.gov/nhsn/fhirportal/us-safr/ig/StructureDefinition/us-safr-measure-bundle"
+        "exampleBoolean": true
       },
       {
         "reference": {
@@ -182,7 +180,7 @@
       },
       {
         "reference": {
-          "reference": "CodeSystem/us-safr-bed-capacity-example-codes"
+          "reference": "CodeSystem/nhsn-safr-bed-capacity-example-codes"
         },
         "name": "Healthcare Bed Capacity Reporting Code System",
         "description": "This CodeSystem defines coded concepts for Healthcare Capacity reporting to US SAFR. This is an example CodeSystem and is experimental, and is expected to be replaced by LOINC codes once they have been assigned.",
@@ -190,7 +188,7 @@
       },
       {
         "reference": {
-          "reference": "CodeSystem/us-safr-bed-capacity-group-example-codes"
+          "reference": "CodeSystem/nhsn-safr-bed-capacity-group-example-codes"
         },
         "name": "Healthcare Bed Capacity Reporting Group Code System",
         "description": "This CodeSystem defines coded concepts for Healthcare Capacity Group reporting to US SAFR. This is an example CodeSystem and is experimental, and is expected to be replaced by LOINC codes once they have been assigned.",
@@ -198,15 +196,7 @@
       },
       {
         "reference": {
-          "reference": "Measure/HrdMeasure"
-        },
-        "name": "Hospital Respiratory Data Measure for US Situational Awareness Framework for Reporting",
-        "description": "US Situational Awareness Framework for Reporting - Hospital Respiratory Data Measure",
-        "exampleBoolean": true
-      },
-      {
-        "reference": {
-          "reference": "CodeSystem/us-safr-hrd-example-codes"
+          "reference": "CodeSystem/nhsn-safr-hrd-example-codes"
         },
         "name": "Hospital Respiratory Data Reporting Code System",
         "description": "This CodeSystem defines coded concepts for Hospital Respiratory Data reporting for US SAFR IG. This is an example CodeSystem and is experimental, and is expected to be replaced by LOINC codes once they have been assigned.",
@@ -214,7 +204,7 @@
       },
       {
         "reference": {
-          "reference": "CodeSystem/us-safr-hrd-supply-days-example-codes"
+          "reference": "CodeSystem/nhsn-safr-hrd-supply-days-example-codes"
         },
         "name": "Hospital Respiratory Data Supply Days Code System",
         "description": "This CodeSystem defines coded concepts for supply days in Hospital Respiratory Data reporting for US SAFR IG. This is an example CodeSystem and is experimental, and is expected to be replaced when a permanent location is identified.",
@@ -261,26 +251,10 @@
       },
       {
         "reference": {
-          "reference": "Library/HRDMeasureLibrary"
-        },
-        "name": "Library - HRD Measure Example",
-        "description": "This library contains CQL logic for evaluating structural measures related to hospital respiratory disease reporting capabilities",
-        "exampleBoolean": true
-      },
-      {
-        "reference": {
           "reference": "Location/MemorialHospitalFacility"
         },
         "name": "Location - Hospital Facility Example",
         "description": "Example of a Hospital Facility for NHSN reporting.",
-        "exampleBoolean": true
-      },
-      {
-        "reference": {
-          "reference": "Measure/HospitalRespiratoryDataMeasure"
-        },
-        "name": "Measure - HRD Measure Example",
-        "description": "Example of a Hospital Respiratory Disease (HRD) Measure for NHSN reporting.",
         "exampleBoolean": true
       },
       {
@@ -305,7 +279,7 @@
         },
         "name": "Organization - Submitting Hospital Organization Example",
         "description": "Organization - Example of a Submitting Hospital Organization",
-        "exampleCanonical": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/StructureDefinition/us-safr-submitting-organization"
+        "exampleCanonical": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/StructureDefinition/nhsn-safr-submitting-organization"
       },
       {
         "reference": {
@@ -356,7 +330,7 @@
       },
       {
         "reference": {
-          "reference": "StructureDefinition/us-safr-measure-bundle"
+          "reference": "StructureDefinition/nhsn-safr-measure-bundle"
         },
         "name": "US SAFR Measure Bundle",
         "description": "This profile defines a Bundle provided by the MeasureServer containing a Measure resource and enables the inclusion of all related resources (ValueSet, Library, etc.).\r\n\r\nIf this fails, use the following FHIRPath expression to discover missing resources: \r\nBundle.entry.resource.descendants().reference.where($this.startsWith('#').not()).where((%resource.entry.fullUrl.join('|')&'|').contains(($this&'|')).not())",
@@ -364,7 +338,7 @@
       },
       {
         "reference": {
-          "reference": "StructureDefinition/us-safr-measurereport-bundle"
+          "reference": "StructureDefinition/nhsn-safr-measurereport-bundle"
         },
         "name": "US SAFR Measure Report Bundle",
         "description": "This profile defines a valid submission bundle to NHSN, federal and jurisdictional Public Health Agencies including State, Tribal, Local and Territorial (STLT) Health Departments with all resources contained within. The Bundle is comprised of entry slices representing the data \r\nsubmitting organization, submitting device, and individual MeasureReports.\r\n\r\nIf this fails, use the following FHIRPath expression to discover missing resources: \r\nBundle.entry.resource.descendants().reference.where($this.startsWith('#').not()).where((%resource.entry.fullUrl.join('|')&'|').contains(($this&'|')).not())",
@@ -388,7 +362,7 @@
       },
       {
         "reference": {
-          "reference": "StructureDefinition/us-safr-submitting-organization"
+          "reference": "StructureDefinition/nhsn-safr-submitting-organization"
         },
         "name": "US SAFR Submitting Organization",
         "description": "This profile includes the name and identifier of the organization submitting the report Bundle, and may include other information about the organization.",
@@ -439,7 +413,7 @@
       },
       {
         "code": "releaselabel",
-        "value": "STU 0.0.1 draft"
+        "value": "STU 1.0.0"
       },
       {
         "code": "path-expansion-params",

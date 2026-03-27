@@ -1,7 +1,7 @@
 {
   "resourceType": "Library",
   "id": "FHIRHelpers",
-  "url": "http://hl7.org/fhir/Library/FHIRHelpers",
+  "url": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/Library/FHIRHelpers",
   "version": "4.0.1",
   "name": "FHIRHelpers",
   "type": {

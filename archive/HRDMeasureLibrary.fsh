@@ -1,17 +1,16 @@
 Instance: HRDMeasureLibrary
 InstanceOf: CRMIComputableLibrary|1.0.0
-Title: "Library - HRD Measure Example"
+Title: "Library - HRD Measure"
 Description: "This library contains CQL logic for evaluating structural measures related to hospital respiratory disease reporting capabilities"
-Usage: #example
 * url = "http://www.cdc.gov/nhsn/fhirportal/safr/ig/Library/HRDMeasureLibrary"
 * version = "1.0.0"
 * name = "HRDMeasureLibrary"
-* title = "Library - HRD Measure Example"
+* title = "Library - HRD Measure"
 * status = #active
 * experimental = false
 * type = $library-type#logic-library
 * date = "2025-03-13"
-* publisher = "Example Healthcare Organization"
+* publisher = "Lantana Consulting Group"
 * description = "This library contains CQL logic for evaluating structural measures related to hospital respiratory disease reporting capabilities"
 * useContext.code = $usage-context-type#focus
 * useContext.valueCodeableConcept = $sct#64572001 "Disease"

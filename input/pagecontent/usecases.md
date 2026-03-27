@@ -92,14 +92,13 @@ For all bed censuses and counts, the following bed types should be <u>excluded</
 - Psych Psychiatric
 - Rehab Rehabilitation
 
-#### Bed Capacity Example
+#### Bed Capacity
 <table class="grid">
    <col style="width:20%" />
    <tbody>
       <tr>
          <td style="column-width:30%">
-            <a href="Measure-BedCapacityMeasureExample.html" title="Measure/BedCapacityMeasureExample">Measure - Bed Capacity Measure
-               Example</a>
+            <a href="Measure-BedCapacityMeasure.html" title="Measure/BedCapacityMeasure">Measure - Bed Capacity Measure</a>
          </td>
          <td>
             <p>Example of a bed capacity measure for ICU, ED, and Pediatric beds for NHSN reporting.</p>
@@ -108,7 +107,7 @@ For all bed censuses and counts, the following bed types should be <u>excluded</
       <tr>
          <td style="column-width:30%">
             <a href="Library-BedCapacityMeasure.html" title="Library/BedCapacityMeasure">Library - Library of Bed
-               Capacity Measure Example</a>
+               Capacity Measure</a>
          </td>
          <td>
             <p>This library contains CQL logic for evaluating structural measures related to bed capacity reporting

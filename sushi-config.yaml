@@ -31,7 +31,7 @@ publisher:
 #
 dependencies:
   hl7.fhir.us.safr:
-    version: 1.0.0-ballot
+    version: current
     id: ussafr
   hl7.fhir.us.core:
     version: 6.1.0
@@ -94,7 +94,7 @@ pages:
 #
 parameters:
   path-expansion-params: '../../exp-params.json'  #Support for US SNOMED CT - path is relative to [base]/fsh-generated/resources
-  path-binary: input/cql
+#  path-binary: input/cql
   apply-jurisdiction: true
   apply-publisher: true
   excludettl: true
