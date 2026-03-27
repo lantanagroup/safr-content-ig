@@ -14,19 +14,16 @@ fi
 
 echo "$txoption"
 
-sushi .
-cp ./fsh-generated/resources/ImplementationGuide-gov.cdc.nhsn.us-safr.json ./input/data/ig.json
-
 export JAVA_TOOL_OPTIONS="$JAVA_TOOL_OPTIONS -Dfile.encoding=UTF-8"
 
 publisher=$input_cache_path/$publisher_jar
 if test -f "$publisher"; then
-	java -Xmx15000m -jar $publisher -no-sushi -ig . $txoption $*
+	java -jar $publisher -ig . $txoption $*
 
 else
 	publisher=../$publisher_jar
 	if test -f "$publisher"; then
-		java -Xmx15000m -jar $publisher -no-sushi -ig . $txoption $*
+		java -jar $publisher -ig . $txoption $*
 	else
 		echo IG Publisher NOT FOUND in input-cache or parent folder.  Please run _updatePublisher.  Aborting...
 	fi

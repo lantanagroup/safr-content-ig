@@ -1,0 +1,439 @@
+{
+  "resourceType": "ImplementationGuide",
+  "id": "gov.cdc.nhsn.us-safr",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "trial-use"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    }
+  ],
+  "url": "http://www.cdc.gov/nhsn/fhirportal/us-safr/ig/ImplementationGuide/gov.cdc.nhsn.us-safr",
+  "version": "0.0.1",
+  "name": "USSAFR",
+  "title": "CDC US Situational Awareness Framework for Reporting (US SAFR) Content Implementation Guide",
+  "status": "active",
+  "publisher": "CDC National Healthcare Safety Network (NHSN)",
+  "contact": [
+    {
+      "name": "CDC National Healthcare Safety Network (NHSN)",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://www.cdc.gov/nhsn"
+        },
+        {
+          "system": "email",
+          "value": "nhsn@cdc.gov"
+        }
+      ]
+    }
+  ],
+  "description": "US Situational Awareness Framework for Reporting (US SAFR)",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "US",
+          "system": "urn:iso:std:iso:3166",
+          "display": "United States of America"
+        }
+      ]
+    }
+  ],
+  "packageId": "gov.cdc.nhsn.us-safr",
+  "fhirVersion": [
+    "4.0.1"
+  ],
+  "dependsOn": [
+    {
+      "id": "ussafr",
+      "packageId": "hl7.fhir.us.safr",
+      "version": "current",
+      "uri": "http://hl7.org/fhir/us/safr/ImplementationGuide/hl7.fhir.us.safr"
+    },
+    {
+      "id": "uscore",
+      "packageId": "hl7.fhir.us.core",
+      "version": "6.1.0",
+      "uri": "http://hl7.org/fhir/us/core/ImplementationGuide/hl7.fhir.us.core"
+    },
+    {
+      "id": "cqf",
+      "packageId": "fhir.cqf.common",
+      "uri": "http://fhir.org/guides/cqf/common/ImplementationGuide/fhir.cqf.common",
+      "version": "4.0.1"
+    },
+    {
+      "id": "crmi",
+      "packageId": "hl7.fhir.uv.crmi",
+      "version": "1.0.0",
+      "uri": "http://hl7.org/fhir/uv/crmi/ImplementationGuide/hl7.fhir.uv.crmi"
+    },
+    {
+      "id": "cqfm",
+      "packageId": "hl7.fhir.us.cqfmeasures",
+      "version": "5.0.0",
+      "uri": "http://hl7.org/fhir/us/cqfmeasures/ImplementationGuide/hl7.fhir.us.cqfmeasures"
+    },
+    {
+      "id": "deqm",
+      "packageId": "hl7.fhir.us.davinci-deqm",
+      "version": "5.0.0",
+      "uri": "http://hl7.org/fhir/us/davinci-deqm/ImplementationGuide/hl7.fhir.us.davinci-deqm"
+    },
+    {
+      "packageId": "hl7.fhir.us.qicore",
+      "version": "6.0.0",
+      "uri": "http://hl7.org/fhir/us/qicore/ImplementationGuide/hl7.fhir.us.qicore",
+      "id": "hl7_fhir_us_qicore"
+    }
+  ],
+  "definition": {
+    "resource": [
+      {
+        "reference": {
+          "reference": "Measure/BedCapacityMeasureExample"
+        },
+        "description": "Bed Capacity Measure Example includes counts of specific bed types within the context of a given healthcare context or setting.",
+        "exampleBoolean": false,
+        "name": "Bed Capacity Measure Example"
+      },
+      {
+        "reference": {
+          "reference": "Library/BedCapacityMeasure"
+        },
+        "exampleBoolean": false,
+        "name": "BedCapacityMeasure"
+      },
+      {
+        "reference": {
+          "reference": "Bundle/HospitalBedCapacityReportBundle"
+        },
+        "name": "Bundle - Bed Capacity Report Bundle Example",
+        "description": "Bundle containing a measure report and all referenced resources for NHSN bed capacity reporting.",
+        "exampleCanonical": "http://www.cdc.gov/nhsn/fhirportal/us-safr/ig/StructureDefinition/us-safr-measurereport-bundle"
+      },
+      {
+        "reference": {
+          "reference": "Bundle/HRDMeasureReportBundle"
+        },
+        "name": "Bundle - HRD Measure Report Bundle Example",
+        "description": "Bundle containing a measure report and all referenced resources for NHSN Hospital Respiratory Disease (HRD) reporting",
+        "exampleCanonical": "http://www.cdc.gov/nhsn/fhirportal/us-safr/ig/StructureDefinition/us-safr-measurereport-bundle"
+      },
+      {
+        "reference": {
+          "reference": "Bundle/USSAFRMeasureBundleExample"
+        },
+        "name": "Bundle - US SAFR Measure Bundle Example",
+        "description": "Bundle containing a measure for NHSN reporting.",
+        "exampleCanonical": "http://www.cdc.gov/nhsn/fhirportal/us-safr/ig/StructureDefinition/us-safr-measure-bundle"
+      },
+      {
+        "reference": {
+          "reference": "Location/CHLDBed4"
+        },
+        "name": "Children's Bed 4",
+        "description": "A bed located in the Children's Department of the hospital.",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Device/cqf-tooling"
+        },
+        "name": "Device - CQF Tooling System Example",
+        "description": "Example of a Software System Device instance for describing tooling that was used to process artifacts.",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Location/EDBed1"
+        },
+        "name": "Emergency Dept. Bed 1",
+        "description": "A bed located in the Emergency Department.",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Encounter/encounter-example-ach-ach-pass2-emergency"
+        },
+        "name": "Encounter - Example ACH Pass2 - Emergency",
+        "description": "Encounter - Example ACH Pass2 - Emergency department visit",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/us-safr-bed-capacity-example-codes"
+        },
+        "name": "Healthcare Bed Capacity Reporting Code System",
+        "description": "This CodeSystem defines coded concepts for Healthcare Capacity reporting to US SAFR. This is an example CodeSystem and is experimental, and is expected to be replaced by LOINC codes once they have been assigned.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/us-safr-bed-capacity-group-example-codes"
+        },
+        "name": "Healthcare Bed Capacity Reporting Group Code System",
+        "description": "This CodeSystem defines coded concepts for Healthcare Capacity Group reporting to US SAFR. This is an example CodeSystem and is experimental, and is expected to be replaced by LOINC codes once they have been assigned.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/us-safr-hrd-example-codes"
+        },
+        "name": "Hospital Respiratory Data Reporting Code System",
+        "description": "This CodeSystem defines coded concepts for Hospital Respiratory Data reporting for US SAFR IG. This is an example CodeSystem and is experimental, and is expected to be replaced by LOINC codes once they have been assigned.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/us-safr-hrd-supply-days-example-codes"
+        },
+        "name": "Hospital Respiratory Data Supply Days Code System",
+        "description": "This CodeSystem defines coded concepts for supply days in Hospital Respiratory Data reporting for US SAFR IG. This is an example CodeSystem and is experimental, and is expected to be replaced when a permanent location is identified.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "Measure/HRDMeasureExample"
+        },
+        "description": "Hospital Respiratory Data Measure Example",
+        "exampleBoolean": false,
+        "name": "HRD Measure"
+      },
+      {
+        "reference": {
+          "reference": "Library/HRDMeasure"
+        },
+        "exampleBoolean": false,
+        "name": "HRDMeasure"
+      },
+      {
+        "reference": {
+          "reference": "Location/IPFBed3"
+        },
+        "name": "Inpatient Psychiatric Bed 3",
+        "description": "A bed located in the Inpatient Psychiatric Department of the hospital.",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Location/IRFBed2"
+        },
+        "name": "Inpatient Rehabilitation Bed 2",
+        "description": "A bed located in Inpatient Rehabilitation department of the hospital.",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Location/ICUBed6"
+        },
+        "name": "Intensive Care Unit Bed 6",
+        "description": "A bed located in the ICU Unit of the hospital.",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Location/MemorialHospitalFacility"
+        },
+        "name": "Location - Hospital Facility Example",
+        "description": "Example of a Hospital Facility for NHSN reporting.",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "MeasureReport/BedCapacityMeasureReport"
+        },
+        "name": "MeasureReport - Bed Capacity MeasureReport Example",
+        "description": "Example MeasureReport for NHSN bed capacity monitoring showing ICU, ED, and Pediatric bed capacity",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "MeasureReport/HRDMeasureReport"
+        },
+        "name": "MeasureReport - HRD MeasureReport Example",
+        "description": "This Bundle resource is an example of a Hospital Respiratory Data (HRD) MeasureReport.",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Organization/MemorialHospitalOrganization"
+        },
+        "name": "Organization - Submitting Hospital Organization Example",
+        "description": "Organization - Example of a Submitting Hospital Organization",
+        "exampleCanonical": "http://www.cdc.gov/nhsn/fhirportal/us-safr/ig/StructureDefinition/us-safr-submitting-organization"
+      },
+      {
+        "reference": {
+          "reference": "Location/OTHBed5"
+        },
+        "name": "Other Facility Bed 3",
+        "description": "A bed located in an subunit of the facility.",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Patient/ed-pat-1"
+        },
+        "name": "Patient - Example ED Patient 1",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Location/PEDSBed7"
+        },
+        "name": "Pediatric Bed 7",
+        "description": "A bed located in the Pediatrics Unit of the hospital.",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "CapabilityStatement/SafrCapabilityStatementDataAggregator"
+        },
+        "name": "US SAFR Data Aggregator CapabilityStatement",
+        "description": "This statement defines the expected capabilities of a system that aggregates data from multiple Data Source actors before measure evaluation and then plays the role of a Data Source once aggregation is complete. An example would be a state public health agency aggregating data from all facilities in the state before using those data to produce a MeasureReport containing bed capacity data for the entire state. When FHIR enabled, a Data Aggregator acts as a [US Core Server](http://hl7.org/fhir/us/core/STU6.1/CapabilityStatement-us-core-server.html) when playing the role of a Data Source after aggregation. During aggregation, the Data Aggregator acts similar to the SANER options for aggregation, but implements its own CapabilityStatement due to the incompatibilities between DEQM and SANER.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CapabilityStatement/SafrCapabilityStatementEvaluationEngine"
+        },
+        "name": "US SAFR Data Evaluation Engine CapabilityStatement",
+        "description": "This statement defines the expected capabilities of a system  that retrieves data from the Data Source and evaluates those data against one or more measures \r\nretrieved from the Measure Source. The resulting MeasureReport bundle and related resources are then sent to the MeasureReport recipient. The Measure Evaluation Engine acts as a \r\n[US Core Client](https://www.hl7.org/fhir/us/core/STU6.1/CapabilityStatement-us-core-client.html), \r\na [DEQM Reporter Client](https://www.hl7.org/fhir/us/davinci-deqm/STU4/CapabilityStatement-reporter-client.html), and implements the $evaluation-measure operation.\r\n\r\nNote: FHIR queries are not always required. In the case, an EHR retrieves data from it's own internal data store using non-FHIR methods or imports data from other systems that are not FHIR-enabled.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CapabilityStatement/SafrCapabilityStatementDataSource"
+        },
+        "name": "US SAFR Data Source CapabilityStatement",
+        "description": "This statement defines the expected capabilities of a system containing data (typically patient data, but could be situational awareness data) \r\nthat will be evaluated against one or more measures. This may be a FHIR server, an EHR with a FHIR endpoint (facade), an internal data store when the Data Source \r\nand Measure Evaluation Engine actors are played by the same system such as an EHR that does it’s own measure evaluation, or it may be a system containing other data \r\nsuch as situational awareness data that is reporting via CSV or other format. When FHIR enabled, the Data Source acts as a \r\n[US Core Server](https://hl7.org/fhir/us/core/STU6.1/CapabilityStatement-us-core-server.html).\r\n\r\nNote: US Core Server is only needed for external evaluation engines. Examples of where this is not needed, is an EHR querying it's own data source using proprietary data access methods.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/us-safr-measure-bundle"
+        },
+        "name": "US SAFR Measure Bundle",
+        "description": "This profile defines a Bundle provided by the MeasureServer containing a Measure resource and enables the inclusion of all related resources (ValueSet, Library, etc.).\r\n\r\nIf this fails, use the following FHIRPath expression to discover missing resources: \r\nBundle.entry.resource.descendants().reference.where($this.startsWith('#').not()).where((%resource.entry.fullUrl.join('|')&'|').contains(($this&'|')).not())",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/us-safr-measurereport-bundle"
+        },
+        "name": "US SAFR Measure Report Bundle",
+        "description": "This profile defines a valid submission bundle to NHSN, federal and jurisdictional Public Health Agencies including State, Tribal, Local and Territorial (STLT) Health Departments with all resources contained within. The Bundle is comprised of entry slices representing the data \r\nsubmitting organization, submitting device, and individual MeasureReports.\r\n\r\nIf this fails, use the following FHIRPath expression to discover missing resources: \r\nBundle.entry.resource.descendants().reference.where($this.startsWith('#').not()).where((%resource.entry.fullUrl.join('|')&'|').contains(($this&'|')).not())",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CapabilityStatement/SafrCapabilityStatementmeasurerepository"
+        },
+        "name": "US SAFR Measure Source CapabilityStatement",
+        "description": "This statement defines the expected capabilities of a system at NHSN, federal and jurisdictional Public Health Agencies including State, Tribal, Local and Territorial (STLT) Health Departments that stores FHIR resources such as Measure, Library, ValueSet, etc. that are used for \r\nMeasure Reporting. The Measure Evaluation Engine queries the Measure Source for the latest Measure content before querying the Patient Data Source and performing measure evaluation. \r\nThe Measure Source acts as a [CQFM Publishable Measure Repository](https://hl7.org/fhir/us/cqfmeasures/measure-repository-service.html#publishable-measure-repository).",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CapabilityStatement/SafrCapabilityStatementMeasureReportRecipient"
+        },
+        "name": "US SAFR MeasureReport Recipient CapabilityStatement",
+        "description": "This statement defines the expected capabilities of a system at NHSN, federal and jurisdictional Public Health Agencies including State, Tribal, Local and Territorial (STLT) Health Departments that receives MeasureReport bundles from the Measure Evaluation Engine and validates \r\nthe result against the profiles in this implementation guide, and potentially other measure-specific profiles that are distributed with the measures themselves. The MeasureReport Recipient acts as a \r\n[DEQM Receiver Server](https://www.hl7.org/fhir/us/davinci-deqm/STU4/CapabilityStatement-receiver-server.html), provides write access to Bundle resources containing \r\nMeasureReport and other related resources, and implements the $validate operation.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/us-safr-submitting-organization"
+        },
+        "name": "US SAFR Submitting Organization",
+        "description": "This profile includes the name and identifier of the organization submitting the report Bundle, and may include other information about the organization.",
+        "exampleBoolean": false
+      }
+    ],
+    "page": {
+      "nameUrl": "toc.html",
+      "title": "Table of Contents",
+      "generation": "html",
+      "page": [
+        {
+          "nameUrl": "index.html",
+          "title": "US Situational Awareness Framework for Reporting Home",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "actors.html",
+          "title": "actors",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "usecases.html",
+          "title": "Use Cases",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "specification.html",
+          "title": "Specification",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "security.html",
+          "title": "Security",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "downloads.html",
+          "title": "Downloads",
+          "generation": "markdown"
+        }
+      ]
+    },
+    "parameter": [
+      {
+        "code": "copyrightyear",
+        "value": "2025+"
+      },
+      {
+        "code": "releaselabel",
+        "value": "STU 0.0.1 draft"
+      },
+      {
+        "code": "path-expansion-params",
+        "value": "../../exp-params.json"
+      },
+      {
+        "code": "apply-jurisdiction",
+        "value": "true"
+      },
+      {
+        "code": "apply-publisher",
+        "value": "true"
+      },
+      {
+        "code": "excludettl",
+        "value": "true"
+      },
+      {
+        "code": "path-liquid",
+        "value": "templates\\liquid"
+      },
+      {
+        "code": "path-pages",
+        "value": "input/pagecontent"
+      },
+      {
+        "code": "path-pages",
+        "value": "input/intro-notes"
+      },
+      {
+        "code": "path-pages",
+        "value": "fsh-generated/includes"
+      }
+    ]
+  }
+}

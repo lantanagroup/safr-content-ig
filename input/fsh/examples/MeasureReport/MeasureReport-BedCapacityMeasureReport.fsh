@@ -9,7 +9,7 @@ Usage: #example
 // Basic metadata
 * status = $measure-report-status#complete
 * type = $measure-report-type#individual
-* measure = Canonical(HrdMeasure|1.0.0-ballot)
+* measure = "http://hl7.org/fhir/us/safr/Measure/BedCapacityMeasureExample|1.0.0"
 * date = "2025-03-05T08:15:00-05:00"
 // Reporting period
 * period.start = "2025-03-05T00:00:00-05:00"
@@ -31,1055 +31,601 @@ Usage: #example
 * improvementNotation = $MeasureImprovementNotation#increase "Increased score indicates improvement"
 
 
-///////////// Group Beds /////////////
-* group[+].id = "AllBeds-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#AllBeds "All Beds"
-* group[=].measureScore.value = 97.25
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "Beds-initial-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 182
-* group[=].population[+].id = "Beds-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 182
-* group[=].population[+].id = "Beds-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
-* group[=].population[=].count = 5
-* group[=].stratifier[0].id = "Beds-status-stratifier"
-* group[=].stratifier[0].code.text = "All Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "AllBedsOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 177
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "AllBedsUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 5
 
-///////////// Group AdultTotal /////////////
-* group[+].id = "AdultTotal-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#AdultTotal "Adult Total Beds"
-* group[=].measureScore.value = 97.25
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "AdultTotal-initial-population"
+///////////// Group AllBedsOccupied /////////////
+///////////// Group All inpatient beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "AllBedsOccupied-bed-capacity-group"
+* group[=].code = $loinc#112579-8
+* group[=].population[+].id = "AllBedsOccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 182
-* group[=].population[+].id = "AdultTotal-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 182
-* group[=].population[+].id = "AdultTotal-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
-* group[=].population[=].count = 5
-* group[=].stratifier[0].id = "AdultTotal-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Adult Total Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "AdultTotalOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 177
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "AdultTotalUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 5
-
-///////////// Group AdultICU /////////////
-* group[+].id = "AdultICU-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#AdultICU "Adult ICU Beds"
-* group[=].measureScore.value = 94.12
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "AdultICU-initial-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 34
-* group[=].population[+].id = "AdultICU-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 34
-* group[=].population[+].id = "AdultICU-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
-* group[=].population[=].count = 2
-* group[=].stratifier[0].id = "AdultICU-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Adult ICU Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "AdultICUOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 32
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "AdultICUUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 2
-
-///////////// Group AdultICULOC /////////////
-* group[+].id = "AdultICULOC-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#AdultICULOC "Adult ICU-LOC Beds"
-* group[=].measureScore.value = 91.43
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "AdultICULOC-initial-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 35
-* group[=].population[+].id = "AdultICULOC-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 35
-* group[=].population[+].id = "AdultICULOC-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
-* group[=].population[=].count = 3
-* group[=].stratifier[0].id = "AdultICULOC-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Adult ICU-LOC Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "AdultICULOCOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 32
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "AdultICULOCUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 3
-
-///////////// Group AdultNonICU /////////////
-* group[+].id = "AdultNonICU-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#AdultNonICU "Adult Non-ICU Beds"
-* group[=].measureScore.value = 84.77
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "AdultNonICU-initial-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 302
-* group[=].population[+].id = "AdultNonICU-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 302
-* group[=].population[+].id = "AdultNonICU-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
-* group[=].population[=].count = 46
-* group[=].stratifier[0].id = "AdultNonICU-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Adult Non-ICU Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "AdultNonICUOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 256
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "AdultNonICUUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 46
-
-///////////// Group AdultPCU /////////////
-* group[+].id = "AdultPCU-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#AdultPCU "Adult PCU Beds"
-* group[=].measureScore.value = 0.00
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "AdultPCU-initial-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 145
-* group[=].population[+].id = "AdultPCU-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 145
-* group[=].population[+].id = "AdultPCU-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
-* group[=].population[=].count = 145
-* group[=].stratifier[0].id = "AdultPCU-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Adult PCU Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "AdultPCUOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "AdultPCUUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 145
-
-///////////// Group AdultMTMS /////////////
-* group[+].id = "AdultMTMS-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#AdultMTMS "Adult MT/MS Beds"
-* group[=].measureScore.value = 100.00
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "AdultMTMS-initial-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 3
-* group[=].population[+].id = "AdultMTMS-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 3
-* group[=].population[+].id = "AdultMTMS-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "AdultMTMS-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Adult MT/MS Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "AdultMTMSOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 3
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "AdultMTMSUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group AdultObs /////////////
-* group[+].id = "AdultObs-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#AdultObs "Adult OBS Beds"
-* group[=].measureScore.value = 68.97
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "AdultObs-initial-population"
+///////////// Group AllBedsUnoccupied /////////////
+///////////// Group All inpatient beds:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "AllBedsUnoccupied-bed-capacity-group"
+* group[=].code = $loinc#112578-0
+* group[=].population[+].id = "AllBedsUnoccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 145
-* group[=].population[+].id = "AdultObs-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 145
-* group[=].population[+].id = "AdultObs-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
-* group[=].population[=].count = 45
-* group[=].stratifier[0].id = "AdultObs-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Adult OBS Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "AdultObsOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 100
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "AdultObsUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 45
-
-///////////// Group PedsTotal /////////////
-* group[+].id = "PedsTotal-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#PedsTotal "Peds Total Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "PedsTotal-initial-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 145
-* group[=].population[+].id = "PedsTotal-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 145
-* group[=].population[+].id = "PedsTotal-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "PedsTotal-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Peds Total Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "PedsTotalOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "PedsTotalUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group PedsICU /////////////
-* group[+].id = "PedsICU-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#PedsICU "Peds ICU Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "PedsICU-initial-population"
+///////////// Group AdultTotalOccupied /////////////
+///////////// Group Adult inpatient beds:Num:Pt:Facility:Qn:Occupied.total /////////////
+* group[+].id = "AdultTotalOccupied-bed-capacity-group"
+* group[=].code = $loinc#112577-2
+* group[=].population[+].id = "AdultTotalOccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 145
-* group[=].population[+].id = "PedsICU-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 145
-* group[=].population[+].id = "PedsICU-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "PedsICU-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Peds ICU Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "PedsICUOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "PedsICUUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group PedsICULOC /////////////
-* group[+].id = "PedsICULOC-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#PedsICULOC "Peds ICU-LOC Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "PedsICULOC-initial-population"
+///////////// Group AdultTotalUnoccupied /////////////
+///////////// Group Adult inpatient beds:Num:Pt:Facility:Qn:Unoccupied.total /////////////
+* group[+].id = "AdultTotalUnoccupied-bed-capacity-group"
+* group[=].code = $loinc#112576-4
+* group[=].population[+].id = "AdultTotalUnoccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 145
-* group[=].population[+].id = "PedsICULOC-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 145
-* group[=].population[+].id = "PedsICULOC-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "PedsICULOC-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Peds ICU-LOC Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "PedsICULOCOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "PedsICULOCUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group PedsNonICU /////////////
-* group[+].id = "PedsNonICU-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#PedsNonICU "Peds Non-ICU Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "PedsNonICU-initial-population"
+///////////// Group AdultICUOccupied /////////////
+///////////// Group Adult intensive care unit beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "AdultICUOccupied-bed-capacity-group"
+* group[=].code = $loinc#112575-6
+* group[=].population[+].id = "AdultICUOccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 145
-* group[=].population[+].id = "PedsNonICU-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 145
-* group[=].population[+].id = "PedsNonICU-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "PedsNonICU-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Peds Non-ICU Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "PedsNonICUOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "PedsNonICUUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group PedsPCU /////////////
-* group[+].id = "PedsPCU-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#PedsPCU "Peds PCU Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "PedsPCU-initial-population"
+///////////// Group AdultICUUnoccupied /////////////
+///////////// Group Adult intensive care unit beds:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "AdultICUUnoccupied-bed-capacity-group"
+* group[=].code = $loinc#112574-9
+* group[=].population[+].id = "AdultICUUnoccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 145
-* group[=].population[+].id = "PedsPCU-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 145
-* group[=].population[+].id = "PedsPCU-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "PedsPCU-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Peds PCU Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "PedsPCUOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "PedsPCUUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group PedsMTMS /////////////
-* group[+].id = "PedsMTMS-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#PedsMTMS "Peds MT/MS Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "PedsMTMS-initial-population"
+///////////// Group AdultICULOCOccupied /////////////
+///////////// Group Adult intensive care unit (level of care) beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "AdultICULOCOccupied-bed-capacity-group"
+* group[=].code = $loinc#112573-1
+* group[=].population[+].id = "AdultICULOCOccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 145
-* group[=].population[+].id = "PedsMTMS-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 145
-* group[=].population[+].id = "PedsMTMS-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "PedsMTMS-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Peds MT/MS Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "PedsMTMSOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "PedsMTMSUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group PedsObs /////////////
-* group[+].id = "PedsObs-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#PedsObs "Peds OBS Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "PedsObs-initial-population"
+///////////// Group AdultNonICUOccupied /////////////
+///////////// Group Adult non-intensive care unit beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "AdultNonICUOccupied-bed-capacity-group"
+* group[=].code = $loinc#112572-3
+* group[=].population[+].id = "AdultNonICUOccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 145
-* group[=].population[+].id = "PedsObs-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 145
-* group[=].population[+].id = "PedsObs-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "PedsObs-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Peds OBS Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "PedsObsOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "PedsObsUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group SpecialtyTotal /////////////
-* group[+].id = "SpecialtyTotal-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#SpecialtyTotal "Specialty Total Beds"
-* group[=].measureScore.value = 66.67
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "SpecialtyTotal-initial-population"
+///////////// Group AdultNonICUUnoccupied /////////////
+///////////// Group Adult non-intensive care unit beds:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "AdultNonICUUnoccupied-bed-capacity-group"
+* group[=].code = $loinc#112571-5
+* group[=].population[+].id = "AdultNonICUUnoccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 36
-* group[=].population[+].id = "SpecialtyTotal-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 36
-* group[=].population[+].id = "SpecialtyTotal-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
-* group[=].population[=].count = 12
-* group[=].stratifier[0].id = "SpecialtyTotal-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Specialty Total Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "SpecialtyTotalOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 24
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "SpecialtyTotalUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 12
-
-///////////// Group SpecialtyNonCrib /////////////
-* group[+].id = "SpecialtyNonCrib-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#SpecialtyNonCrib "Specialty (Non-Crib) Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "SpecialtyNonCrib-initial-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 36
-* group[=].population[+].id = "SpecialtyNonCrib-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 36
-* group[=].population[+].id = "SpecialtyNonCrib-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "SpecialtyNonCrib-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Specialty (Non-Crib) Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "SpecialtyNonCribOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "SpecialtyNonCribUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group OB /////////////
-* group[+].id = "OB-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#OB "Specialty OB Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "OB-initial-population"
+///////////// Group AdultPCUOccupied /////////////
+///////////// Group Adult progressive care unit beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "AdultPCUOccupied-bed-capacity-group"
+* group[=].code = $loinc#112570-7
+* group[=].population[+].id = "AdultPCUOccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 36
-* group[=].population[+].id = "OB-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 36
-* group[=].population[+].id = "OB-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "OB-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Specialty OB Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "OBOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "OBUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group NICU /////////////
-* group[+].id = "NICU-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#NICU "Specialty NICU Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "NICU-initial-population"
+///////////// Group AdultPCUUnoccupied /////////////
+///////////// Group Adult progressive care unit beds:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "AdultPCUUnoccupied-bed-capacity-group"
+* group[=].code = $loinc#112569-9
+* group[=].population[+].id = "AdultPCUUnoccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 36
-* group[=].population[+].id = "NICU-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 36
-* group[=].population[+].id = "NICU-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "NICU-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Specialty NICU Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "NICUOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "NICUUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group NICU4 /////////////
-* group[+].id = "NICU4-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#NICU4 "Specialty NICU 4 Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "NICU4-initial-population"
+///////////// Group AdultMTMSOccupied /////////////
+///////////// Group Adult medicine telemetry and general acute care beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "AdultMTMSOccupied-bed-capacity-group"
+* group[=].code = $loinc#112568-1
+* group[=].population[+].id = "AdultMTMSOccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 36
-* group[=].population[+].id = "NICU4-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 36
-* group[=].population[+].id = "NICU4-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "NICU4-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Specialty NICU 4 Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "NICU4Occupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "NICU4Unoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group NICU3 /////////////
-* group[+].id = "NICU3-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#NICU3 "Specialty NICU 3 Occupied Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "NICU3-initial-population"
+///////////// Group AdultMTMSUnoccupied /////////////
+///////////// Group Adult medicine telemetry and general acute care beds:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "AdultMTMSUnoccupied-bed-capacity-group"
+* group[=].code = $loinc#112567-3
+* group[=].population[+].id = "AdultMTMSUnoccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 36
-* group[=].population[+].id = "NICU3-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 36
-* group[=].population[+].id = "NICU3-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "NICU3-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Specialty NICU 3 Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "NICU3Occupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "NICU3Unoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group NICU3Plus /////////////
-* group[+].id = "NICU3Plus-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#NICU3Plus "Specialty NICU 3 Plus Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "NICU3Plus-initial-population"
+///////////// Group AdultObsOccupied /////////////
+///////////// Group Adult observation beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "AdultObsOccupied-bed-capacity-group"
+* group[=].code = $loinc#112566-5
+* group[=].population[+].id = "AdultObsOccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 36
-* group[=].population[+].id = "NICU3Plus-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 36
-* group[=].population[+].id = "NICU3Plus-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "NICU3Plus-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Specialty NICU 3 Plus Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "NICU3PlusOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "NICU3PlusUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group NICU2 /////////////
-* group[+].id = "NICU2-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#NICU2 "Specialty NICU 2 Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "NICU2-initial-population"
+///////////// Group AdultObsUnoccupied /////////////
+///////////// Group Adult observation beds:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "AdultObsUnoccupied-bed-capacity-group"
+* group[=].code = $loinc#112565-7
+* group[=].population[+].id = "AdultObsUnoccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 36
-* group[=].population[+].id = "NICU2-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 36
-* group[=].population[+].id = "NICU2-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "NICU2-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Specialty NICU 2 Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "NICU2Occupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "NICU2Unoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group Nursery /////////////
-* group[+].id = "Nursery-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#Nursery "Specialty Nursery Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "Nursery-initial-population"
+///////////// Group PedsTotalOccupied /////////////
+///////////// Group Pediatric inpatient beds:Num:Pt:Facility:Qn:Occupied.total /////////////
+* group[+].id = "PedsTotalOccupied-bed-capacity-group"
+* group[=].code = $loinc#112564-0
+* group[=].population[+].id = "PedsTotalOccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 36
-* group[=].population[+].id = "Nursery-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 36
-* group[=].population[+].id = "Nursery-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "Nursery-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Specialty Nursery Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "NurseryOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "NurseryUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group NICU1 /////////////
-* group[+].id = "NICU1-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#NICU1 "Specialty NICU 1 Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "NICU1-initial-population"
+///////////// Group PedsTotalUnoccupied /////////////
+///////////// Group Pediatric inpatient beds:Num:Pt:Facility:Qn:Unoccupied.total /////////////
+* group[+].id = "PedsTotalUnoccupied-bed-capacity-group"
+* group[=].code = $loinc#112563-2
+* group[=].population[+].id = "PedsTotalUnoccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 36
-* group[=].population[+].id = "NICU1-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 36
-* group[=].population[+].id = "NICU1-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "NICU1-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Specialty NICU 1 Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "NICU1Occupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "NICU1Unoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group AdultPsych /////////////
-* group[+].id = "AdultPsych-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#AdultPsych "Specialty Adult Psych Beds"
-* group[=].measureScore.value = 10.00
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "AdultPsych-initial-population"
+///////////// Group PedsICUOccupied /////////////
+///////////// Group Pediatric intensive care unit beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "PedsICUOccupied-bed-capacity-group"
+* group[=].code = $loinc#112562-4
+* group[=].population[+].id = "PedsICUOccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 20
-* group[=].population[+].id = "AdultPsych-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 20
-* group[=].population[+].id = "AdultPsych-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
-* group[=].population[=].count = 18
-* group[=].stratifier[0].id = "AdultPsych-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Specialty Adult Psych Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "AdultPsychOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 2
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "AdultPsychUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 18
-
-///////////// Group PedsPsych /////////////
-* group[+].id = "PedsPsych-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#PedsPsych "Specialty Peds Psych Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "PedsPsych-initial-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 20
-* group[=].population[+].id = "PedsPsych-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 20
-* group[=].population[+].id = "PedsPsych-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "PedsPsych-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Specialty Peds Psych Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "PedsPsychOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "PedsPsychUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group Rehab /////////////
-* group[+].id = "Rehab-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#Rehab "Specialty Rehab Beds"
-* group[=].measureScore.value = 50.00
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "Rehab-initial-population"
+///////////// Group PedsICUUnoccupied /////////////
+///////////// Group Pediatric intensive care unit beds:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "PedsICUUnoccupied-bed-capacity-group"
+* group[=].code = $loinc#112561-6
+* group[=].population[+].id = "PedsICUUnoccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 30
-* group[=].population[+].id = "Rehab-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 30
-* group[=].population[+].id = "Rehab-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
-* group[=].population[=].count = 15
-* group[=].stratifier[0].id = "Rehab-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Specialty Rehab Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "RehabOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 15
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "RehabUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 15
-
-///////////// Group SurgeActiveTotal /////////////
-* group[+].id = "SurgeActiveTotal-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#SurgeActiveTotal "Surge Total Active Beds"
-* group[=].measureScore.value = 50.00
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "SurgeActiveTotal-initial-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 20
-* group[=].population[+].id = "SurgeActiveTotal-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 20
-* group[=].population[+].id = "SurgeActiveTotal-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
-* group[=].population[=].count = 10
-* group[=].stratifier[0].id = "SurgeActiveTotal-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Surge Total Active Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "SurgeActiveTotalOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 10
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "SurgeActiveTotalUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 10
-
-///////////// Group SurgeInactiveTotal /////////////
-* group[+].id = "SurgeInactiveTotal-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#SurgeInactiveTotal "Surge Total Inactive Occupied Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "SurgeInactiveTotal-initial-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 20
-* group[=].population[+].id = "SurgeInactiveTotal-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 20
-* group[=].population[+].id = "SurgeInactiveTotal-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "SurgeInactiveTotal-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Surge Total Inactive Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "SurgeInactiveTotalOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "SurgeInactiveTotalUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group SurgeActiveICU /////////////
-* group[+].id = "SurgeActiveICU-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#SurgeActiveICU "Surge ICU Active Beds"
-* group[=].measureScore.value = 20.00
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "SurgeActiveICU-initial-population"
+///////////// Group PedsICULOCOccupied /////////////
+///////////// Group Pediatric intensive care unit (level of care) beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "PedsICULOCOccupied-bed-capacity-group"
+* group[=].code = $loinc#112560-8
+* group[=].population[+].id = "PedsICULOCOccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 10
-* group[=].population[+].id = "SurgeActiveICU-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 10
-* group[=].population[+].id = "SurgeActiveICU-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
-* group[=].population[=].count = 8
-* group[=].stratifier[0].id = "SurgeActiveICU-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Surge ICU Active Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "SurgeActiveICUOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 2
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "SurgeActiveICUUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 8
-
-///////////// Group SurgeInactiveICU /////////////
-* group[+].id = "SurgeInactiveICU-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#SurgeInactiveICU "Surge ICU Inactive Occupied Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "SurgeInactiveICU-initial-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 10
-* group[=].population[+].id = "SurgeInactiveICU-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 10
-* group[=].population[+].id = "SurgeInactiveICU-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "SurgeInactiveICU-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Surge ICU Inactive Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "SurgeInactiveICUOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "SurgeInactiveICUUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group SurgeActiveNonICU /////////////
-* group[+].id = "SurgeActiveNonICU-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#SurgeActiveNonICU "Surge Non-ICU Active Beds"
-* group[=].measureScore.value = 40.00
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "SurgeActiveNonICU-initial-population"
+///////////// Group PedsNonICUOccupied /////////////
+///////////// Group Pediatric non-intensive care unit beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "PedsNonICUOccupied-bed-capacity-group"
+* group[=].code = $loinc#112559-0
+* group[=].population[+].id = "PedsNonICUOccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 10
-* group[=].population[+].id = "SurgeActiveNonICU-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 10
-* group[=].population[+].id = "SurgeActiveNonICU-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
-* group[=].population[=].count = 6
-* group[=].stratifier[0].id = "SurgeActiveNonICU-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Surge Non-ICU Active Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "SurgeActiveNonICUOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 4
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "SurgeActiveNonICUUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 6
-
-///////////// Group SurgeInactiveNonICU /////////////
-* group[+].id = "SurgeInactiveNonICU-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#SurgeInactiveNonICU "Surge Non-ICU Inactive Occupied Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "SurgeInactiveNonICU-initial-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 10
-* group[=].population[+].id = "SurgeInactiveNonICU-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 10
-* group[=].population[+].id = "SurgeInactiveNonICU-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "SurgeInactiveNonICU-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Surge Non-ICU Inactive Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "SurgeInactiveNonICUOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "SurgeInactiveNonICUUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group Burn /////////////
-* group[+].id = "Burn-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#Burn "Burn Beds"
-* group[=].measureScore.value = 10.00
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "Burn-initial-population"
+///////////// Group PedsNonICUUnoccupied /////////////
+///////////// Group Pediatric non-intensive care unit beds:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "PedsNonICUUnoccupied-bed-capacity-group"
+* group[=].code = $loinc#112558-2
+* group[=].population[+].id = "PedsNonICUUnoccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 10
-* group[=].population[+].id = "Burn-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 10
-* group[=].population[+].id = "Burn-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
-* group[=].population[=].count = 9
-* group[=].stratifier[0].id = "Burn-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Burn Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "BurnOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 1
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "BurnUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 9
-
-///////////// Group NegativePressure /////////////
-* group[+].id = "NegativePressure-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#NegativePressure "Neg Pressure Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "NegativePressure-initial-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 10
-* group[=].population[+].id = "NegativePressure-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 10
-* group[=].population[+].id = "NegativePressure-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "NegativePressure-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Neg Pressure Unoccupied Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "NegativePressureOccupied"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "NegativePressureUnoccupied"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group AdultED /////////////
-* group[+].id = "AdultED-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#AdultED "Adult ED Total Beds"
-* group[=].measureScore.value = 33.33
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "AdultED-initial-population"
+///////////// Group PedsPCUOccupied /////////////
+///////////// Group Pediatric progressive care unit beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "PedsPCUOccupied-bed-capacity-group"
+* group[=].code = $loinc#112557-4
+* group[=].population[+].id = "PedsPCUOccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 30
-* group[=].population[+].id = "AdultED-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 30
-* group[=].population[+].id = "AdultED-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
-* group[=].population[=].count = 20
-* group[=].stratifier[0].id = "AdultED-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Adult ED Admitted Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "AdultEDCensus"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 10
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "AdultEDAdmittedCensus"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 20
-
-///////////// Group PedsED /////////////
-* group[+].id = "PedsED-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#PedsED "Peds ED Beds"
-* group[=].measureScore.value = 0
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "PedsED-initial-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 30
-* group[=].population[+].id = "PedsED-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 30
-* group[=].population[+].id = "PedsED-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
 * group[=].population[=].count = 0
-* group[=].stratifier[0].id = "PedsED-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Peds ED Admitted Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "PedsEDCensus"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 0
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "PedsEDAdmittedCensus"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 0
 
-///////////// Group TotalED /////////////
-* group[+].id = "TotalED-bed-capacity-group"
-* group[=].code = BedCapacityGroupExampleCS#TotalED "Total ED Beds"
-* group[=].measureScore.value = 33.33
-* group[=].measureScore.unit = "%"
-* group[=].measureScore.code = #%
-* group[=].measureScore.system = "http://unitsofmeasure.org"
-* group[=].population[+].id = "TotalED-initial-population"
+///////////// Group PedsPCUUnoccupied /////////////
+///////////// Group Pediatric progressive care unit beds:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "PedsPCUUnoccupied-bed-capacity-group"
+* group[=].code = $loinc#112556-6
+* group[=].population[+].id = "PedsPCUUnoccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 30
-* group[=].population[+].id = "TotalED-measure-population"
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].population[=].count = 30
-* group[=].population[+].id = "TotalED-measure-observation" 
-* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-observation "Measure Observation"
-* group[=].population[=].count = 20
-* group[=].stratifier[0].id = "TotalED-beds-status-stratifier"
-* group[=].stratifier[0].code.text = "Total ED Admitted Beds Status"
-* group[=].stratifier[0].stratum[0].value.text = "Occupied"
-* group[=].stratifier[0].stratum[0].population[0].id = "TotalEDCensus"
-* group[=].stratifier[0].stratum[0].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[0].population[0].count = 10
-* group[=].stratifier[0].stratum[1].value.text = "Available"
-* group[=].stratifier[0].stratum[1].population[0].id = "TotalEDAdmittedCensus"
-* group[=].stratifier[0].stratum[1].population[0].code = http://terminology.hl7.org/CodeSystem/measure-population#measure-population "Measure Population"
-* group[=].stratifier[0].stratum[1].population[0].count = 20
+* group[=].population[=].count = 0
+
+///////////// Group PedsMTMSOccupied /////////////
+///////////// Group Pediatric medicine telemetry and general acute care beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "PedsMTMSOccupied-bed-capacity-group"
+* group[=].code = $loinc#112555-8
+* group[=].population[+].id = "PedsMTMSOccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group PedsMTMSUnoccupied /////////////
+///////////// Group Pediatric medicine telemetry and general acute care beds:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "PedsMTMSUnoccupied-bed-capacity-group"
+* group[=].code = $loinc#112554-1
+* group[=].population[+].id = "PedsMTMSUnoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group PedsObsOccupied /////////////
+///////////// Group Pediatric observation beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "PedsObsOccupied-bed-capacity-group"
+* group[=].code = $loinc#112553-3
+* group[=].population[+].id = "PedsObsOccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group PedsObsUnoccupied /////////////
+///////////// Group Pediatric observation beds:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "PedsObsUnoccupied-bed-capacity-group"
+* group[=].code = $loinc#112552-5
+* group[=].population[+].id = "PedsObsUnoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group SpecialtyTotalOccupied /////////////
+///////////// Group Specialty beds:Num:Pt:Facility:Qn:Occupied.total /////////////
+* group[+].id = "SpecialtyTotalOccupied-bed-capacity-group"
+* group[=].code = $loinc#112551-7
+* group[=].population[+].id = "SpecialtyTotalOccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group SpecialtyTotalUnoccupied /////////////
+///////////// Group Specialty beds:Num:Pt:Facility:Qn:Unoccupied.total /////////////
+* group[+].id = "SpecialtyTotalUnoccupied-bed-capacity-group"
+* group[=].code = $loinc#112550-9
+* group[=].population[+].id = "SpecialtyTotalUnoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group SpecialtyNonCribOccupied /////////////
+///////////// Group Specialty non-crib beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "SpecialtyNonCribOccupied-bed-capacity-group"
+* group[=].code = $loinc#112549-1
+* group[=].population[+].id = "SpecialtyNonCribOccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group SpecialtyNonCribUnoccupied /////////////
+///////////// Group Specialty non-crib beds:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "SpecialtyNonCribUnoccupied-bed-capacity-group"
+* group[=].code = $loinc#112548-3
+* group[=].population[+].id = "SpecialtyNonCribUnoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group OBOccupied /////////////
+///////////// Group Specialty obstetric beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "OBOccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112547-5
+* group[=].population[+].id = "OBOccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group OBUnoccupied /////////////
+///////////// Group Specialty obstetric beds:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "OBUnoccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112546-7
+* group[=].population[+].id = "OBUnoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group NICUTotalOccupied /////////////
+///////////// Group Specialty neonatal intensive care unit beds:Num:Pt:Facility:Qn:Occupied.total /////////////
+* group[+].id = "NICUTotalOccupied-bed-capacity-group"
+* group[=].code = $loinc#112545-9
+* group[=].population[+].id = "NICUTotalOccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group NICUTotalUnoccupied /////////////
+///////////// Group Specialty neonatal intensive care unit beds:Num:Pt:Facility:Qn:Unoccupied.total /////////////
+* group[+].id = "NICUTotalUnoccupied-bed-capacity-group"
+* group[=].code = $loinc#112544-2
+* group[=].population[+].id = "NICUTotalUnoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group NICU4Occupied /////////////
+///////////// Group Specialty neonatal intensive care unit-level 4 beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "NICU4Occupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112543-4
+* group[=].population[+].id = "NICU4Occupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group NICU4Unoccupied /////////////
+///////////// Group Specialty neonatal intensive care unit-level 4 beds:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "NICU4Unoccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112542-6
+* group[=].population[+].id = "NICU4Unoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group NICU3Unoccupied /////////////
+///////////// Group Specialty neonatal intensive care unit-level 3 plus beds:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "NICU3Unoccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112541-8
+* group[=].population[+].id = "NICU3Unoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group NICU3PlusOccupied /////////////
+///////////// Group Specialty neonatal intensive care unit-level 3 plus beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "NICU3PlusOccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112540-0
+* group[=].population[+].id = "NICU3PlusOccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group NICU3PlusUnoccupied /////////////
+///////////// Group Specialty neonatal intensive care unit-level 3:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "NICU3PlusUnoccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112539-2
+* group[=].population[+].id = "NICU3PlusUnoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group NICU3Occupied /////////////
+///////////// Group Specialty neonatal intensive care unit-level 3:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "NICU3Occupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112538-4
+* group[=].population[+].id = "NICU3Occupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group NICU2Occupied /////////////
+///////////// Group Specialty neonatal intensive care unit-level 2:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "NICU2Occupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112537-6
+* group[=].population[+].id = "NICU2Occupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group NICU2Unoccupied /////////////
+///////////// Group Specialty neonatal intensive care unit-level 2:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "NICU2Unoccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112536-8
+* group[=].population[+].id = "NICU2Unoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group NurseryOccupied /////////////
+///////////// Group Specialty nursery beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "NurseryOccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112535-0
+* group[=].population[+].id = "NurseryOccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group NurseryUnoccupied /////////////
+///////////// Group Specialty nursery beds:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "NurseryUnoccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112534-3
+* group[=].population[+].id = "NurseryUnoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group NICU1Occupied /////////////
+///////////// Group Specialty neonatal intensive care unit-level 1:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "NICU1Occupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112533-5
+* group[=].population[+].id = "NICU1Occupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group NICU1Unoccupied /////////////
+///////////// Group Specialty neonatal intensive care unit-level 1:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "NICU1Unoccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112532-7
+* group[=].population[+].id = "NICU1Unoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group AdultPsychOccupied /////////////
+///////////// Group Specialty adult psychiatric beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "AdultPsychOccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112531-9
+* group[=].population[+].id = "AdultPsychOccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group AdultPsychUnoccupied /////////////
+///////////// Group Specialty adult psychiatric beds:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "AdultPsychUnoccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112530-1
+* group[=].population[+].id = "AdultPsychUnoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group PedsPsychOccupied /////////////
+///////////// Group Specialty pediatric psychiatric beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "PedsPsychOccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112529-3
+* group[=].population[+].id = "PedsPsychOccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group PedsPsychUnoccupied /////////////
+///////////// Group Specialty pediatric psychiatric beds:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "PedsPsychUnoccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112528-5
+* group[=].population[+].id = "PedsPsychUnoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group RehabOccupied /////////////
+///////////// Group Specialty rehabilitation beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "RehabOccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112527-7
+* group[=].population[+].id = "RehabOccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group RehabUnoccupied /////////////
+///////////// Group Specialty rehabilitation beds:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "RehabUnoccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112526-9
+* group[=].population[+].id = "RehabUnoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group SurgeActiveTotalOccupied /////////////
+///////////// Group Surge-active:Num:Pt:Facility:Qn:Occupied.total /////////////
+* group[+].id = "SurgeActiveTotalOccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112525-1
+* group[=].population[+].id = "SurgeActiveTotalOccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group SurgeActiveTotalUnoccupied /////////////
+///////////// Group Surge-active:Num:Pt:Facility:Qn:Unoccupied.total /////////////
+* group[+].id = "SurgeActiveTotalUnoccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112524-4
+* group[=].population[+].id = "SurgeActiveTotalUnoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+/*
+///////////// Group SurgeInactiveTotalOccupied /////////////
+* group[+].id = "SurgeInactiveTotalOccupied-bed-capacity-group"
+* group[=].code = http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes#SurgeInactiveTotalOccupied
+* group[=].population[+].id = "SurgeInactiveTotalOccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+*/
+///////////// Group SurgeInactiveTotalUnoccupied /////////////
+///////////// Group Surge-inactive:Num:Pt:Facility:Qn:Unoccupied.total /////////////
+* group[+].id = "SurgeInactiveTotalUnoccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112523-6
+* group[=].population[+].id = "SurgeInactiveTotalUnoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group SurgeActiveICUOccupied /////////////
+///////////// Group Surge intensive care unit beds-active:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "SurgeActiveICUOccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112522-8
+* group[=].population[+].id = "SurgeActiveICUOccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group SurgeActiveICUUnoccupied /////////////
+///////////// Group Surge intensive care unit beds-active:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "SurgeActiveICUUnoccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112521-0
+* group[=].population[+].id = "SurgeActiveICUUnoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group SurgeInactiveICUUnoccupied /////////////
+///////////// Group Surge intensive care unit beds-inactive:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "SurgeInactiveICUUnoccupied-bed-capacity-group"
+* group[=].code = http://loinc.org#112520-2
+* group[=].population[+].id = "SurgeInactiveICUUnoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group SurgeActiveNonICUOccupied /////////////
+///////////// Group Surge non-intensive care unit beds-active:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "SurgeActiveNonICUOccupied-bed-capacity-group"
+* group[=].code = $loinc#112519-4
+* group[=].population[+].id = "SurgeActiveNonICUOccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group SurgeActiveNonICUUnoccupied /////////////
+///////////// Group Surge non-intensive care unit beds-active:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "SurgeActiveNonICUUnoccupied-bed-capacity-group"
+* group[=].code = $loinc#112518-6
+* group[=].population[+].id = "SurgeActiveNonICUUnoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+/*
+///////////// Group SurgeInactiveNonICUOccupied /////////////
+* group[+].id = "SurgeInactiveNonICUOccupied-bed-capacity-group"
+* group[=].code = http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes#SurgeInactiveNonICUOccupied
+* group[=].population[+].id = "SurgeInactiveNonICUOccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+*/
+///////////// Group SurgeInactiveNonICUUnoccupied /////////////
+///////////// Group Surge non-intensive care unit beds-inactive:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "SurgeInactiveNonICUUnoccupied-bed-capacity-group"
+* group[=].code = $loinc#112517-8
+* group[=].population[+].id = "SurgeInactiveNonICUUnoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group BurnOccupied /////////////
+///////////// Group Burn beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "BurnOccupied-bed-capacity-group"
+* group[=].code = $loinc#112516-0
+* group[=].population[+].id = "BurnOccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group BurnUnoccupied /////////////
+///////////// Group Burn beds:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "BurnUnoccupied-bed-capacity-group"
+* group[=].code = $loinc#112515-2
+* group[=].population[+].id = "BurnUnoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group NegativePressureOccupied /////////////
+///////////// Group Negative pressure beds:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "NegativePressureOccupied-bed-capacity-group"
+* group[=].code = $loinc#112514-5
+* group[=].population[+].id = "NegativePressureOccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group NegativePressureUnoccupied /////////////
+///////////// Group Negative pressure beds:Num:Pt:Facility:Qn:Unoccupied /////////////
+* group[+].id = "NegativePressureUnoccupied-bed-capacity-group"
+* group[=].code = $loinc#112513-7
+* group[=].population[+].id = "NegativePressureUnoccupied-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group AdultEDCensus /////////////
+///////////// Group Adult emergency department beds:Num:Pt:Facility:Qn:Occupied.total /////////////
+* group[+].id = "AdultEDCensus-bed-capacity-group"
+* group[=].code = $loinc#112512-9
+* group[=].population[+].id = "AdultEDCensus-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group AdultEDAdmittedCensus /////////////
+///////////// Group Adult emergency department beds-admitted:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "AdultEDAdmittedCensus-bed-capacity-group"
+* group[=].code = $loinc#112511-1
+* group[=].population[+].id = "AdultEDAdmittedCensus-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group PedsEDTotalCensus /////////////
+///////////// Group Pediatric emergency department beds:Num:Pt:Facility:Qn:Occupied.total /////////////
+* group[+].id = "PedsEDTotalCensus-bed-capacity-group"
+* group[=].code = $loinc#112510-3
+* group[=].population[+].id = "PedsEDTotalCensus-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group PedsEDAdmittedCensus /////////////
+///////////// Group Pediatric emergency department beds-admitted:Num:Pt:Facility:Qn:Occupied /////////////
+* group[+].id = "PedsEDAdmittedCensus-bed-capacity-group"
+* group[=].code = $loinc#112509-5
+* group[=].population[+].id = "PedsEDAdmittedCensus-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group TotalEDCensus /////////////
+///////////// Group Emergency department beds:Num:Pt:Facility:Qn:Occupied.total /////////////
+* group[+].id = "TotalEDCensus-bed-capacity-group"
+* group[=].code = $loinc#112508-7
+* group[=].population[+].id = "TotalEDCensus-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
+
+///////////// Group TotalEDAdmittedCensus /////////////
+///////////// Group Emergency department beds-admitted:Num:Pt:Facility:Qn:Occupied.total /////////////
+* group[+].id = "TotalEDAdmittedCensus-bed-capacity-group"
+* group[=].code = $loinc#112507-9
+* group[=].population[+].id = "TotalEDAdmittedCensus-initial-population"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0

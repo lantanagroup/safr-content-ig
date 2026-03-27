@@ -1,14 +1,11 @@
 <Measure xmlns="http://hl7.org/fhir">
-   <id value="BedCapacityMeasure"></id>
+   <id value="BedCapacityMeasureExample"></id>
    <meta>
       <profile value="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm"></profile>
    </meta>
    <contained>
       <Library xmlns="http://hl7.org/fhir">
          <id value="effective-data-requirements"></id>
-         <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-wg">
-            <valueCode value="pher"/>
-         </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
             <valueCoding>
                <system value="http://terminology.hl7.org/CodeSystem/location-physical-type"></system>
@@ -18,35 +15,35 @@
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
             <valueCoding>
-               <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
                <code value="CHLD"></code>
                <display value="Children's or Pediatric"></display>
             </valueCoding>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
             <valueCoding>
-               <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
                <code value="IPF"></code>
                <display value="Inpatient Psychiatric"></display>
             </valueCoding>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
             <valueCoding>
-               <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
                <code value="OTH"></code>
                <display value="Other facility-within-facility or subunit"></display>
             </valueCoding>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
             <valueCoding>
-               <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
                <code value="HOSP"></code>
                <display value="Hospital"></display>
             </valueCoding>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
             <valueCoding>
-               <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
+               <system value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
                <code value="IRF"></code>
                <display value="Inpatient Rehabilitation"></display>
             </valueCoding>
@@ -168,26 +165,6 @@
                <valueString value="BedCapacityMeasure"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="Peds ED Census Initial Population"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;Peds ED Census Initial Population&quot;:
-  IsBedLocation
-  and exists(
-    [Encounter: &quot;Emergency Department Visit&quot;] EDVisit
-    where EDVisit.period overlaps &quot;Measurement Period&quot;
-  )
-  and &quot;LocationIsCHLD&quot;"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="7"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="BedCapacityMeasure"></valueString>
-            </extension>
-            <extension url="name">
                <valueString value="LocationIsIPF"></valueString>
             </extension>
             <extension url="statement">
@@ -198,7 +175,7 @@
   )"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="8"></valueInteger>
+               <valueInteger value="7"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -216,7 +193,7 @@
   )"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="9"></valueInteger>
+               <valueInteger value="8"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -234,7 +211,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="10"></valueInteger>
+               <valueInteger value="9"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -252,7 +229,7 @@
   )"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="11"></valueInteger>
+               <valueInteger value="10"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -270,7 +247,7 @@
   and &quot;LocationIsCHLD&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="12"></valueInteger>
+               <valueInteger value="11"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -287,7 +264,7 @@
   and &quot;LocationIsHOSP&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="13"></valueInteger>
+               <valueInteger value="12"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -305,7 +282,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="14"></valueInteger>
+               <valueInteger value="13"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -323,7 +300,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="15"></valueInteger>
+               <valueInteger value="14"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -341,7 +318,7 @@
   )"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="16"></valueInteger>
+               <valueInteger value="15"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -360,7 +337,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="17"></valueInteger>
+               <valueInteger value="16"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -378,7 +355,7 @@
   and &quot;LocationIsCHLD&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="18"></valueInteger>
+               <valueInteger value="17"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -394,6 +371,26 @@
   and NoEncounterCheck
   and &quot;LocationIsHOSP&quot;
   and &quot;LocationIsIRF&quot;
+  and &quot;LocationIsCHLD&quot;"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="18"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="BedCapacityMeasure"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="Peds ED Total Census Initial Population"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define &quot;Peds ED Total Census Initial Population&quot;:
+  IsBedLocation
+  and exists(
+    [Encounter: &quot;Emergency Department Visit&quot;] EDVisit
+    where EDVisit.period overlaps &quot;Measurement Period&quot;
+  )
   and &quot;LocationIsCHLD&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
@@ -424,25 +421,6 @@
                <valueString value="BedCapacityMeasure"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="Surge Inactive Total Beds Occupied Initial Population"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;Surge Inactive Total Beds Occupied Initial Population&quot;:
-  IsBedLocation
-  and EncounterCheck
-  and &quot;LocationIsHOSP&quot;
-  and &quot;LocationIsCHLD&quot;
-  and &quot;LocationIsOTH&quot;"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="21"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="BedCapacityMeasure"></valueString>
-            </extension>
-            <extension url="name">
                <valueString value="Peds NonICU Beds Unoccupied Initial Population"></valueString>
             </extension>
             <extension url="statement">
@@ -454,7 +432,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="22"></valueInteger>
+               <valueInteger value="21"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -474,7 +452,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="23"></valueInteger>
+               <valueInteger value="22"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -493,7 +471,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="24"></valueInteger>
+               <valueInteger value="23"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -513,7 +491,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="25"></valueInteger>
+               <valueInteger value="24"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -532,7 +510,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="26"></valueInteger>
+               <valueInteger value="25"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -549,7 +527,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="27"></valueInteger>
+               <valueInteger value="26"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -567,7 +545,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="28"></valueInteger>
+               <valueInteger value="27"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -585,7 +563,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="29"></valueInteger>
+               <valueInteger value="28"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -604,7 +582,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="30"></valueInteger>
+               <valueInteger value="29"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -624,7 +602,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="31"></valueInteger>
+               <valueInteger value="30"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -641,7 +619,7 @@
   and &quot;LocationIsIRF&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="32"></valueInteger>
+               <valueInteger value="31"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -660,7 +638,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="33"></valueInteger>
+               <valueInteger value="32"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -679,7 +657,7 @@
   and &quot;LocationIsCHLD&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="34"></valueInteger>
+               <valueInteger value="33"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -698,7 +676,7 @@
   and &quot;LocationIsIPF&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="35"></valueInteger>
+               <valueInteger value="34"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -716,7 +694,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="36"></valueInteger>
+               <valueInteger value="35"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -734,7 +712,7 @@
   and &quot;LocationIsCHLD&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="37"></valueInteger>
+               <valueInteger value="36"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -754,7 +732,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="38"></valueInteger>
+               <valueInteger value="37"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -771,7 +749,7 @@
   and &quot;LocationIsHOSP&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="39"></valueInteger>
+               <valueInteger value="38"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -788,7 +766,7 @@
   and &quot;LocationIsHOSP&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="40"></valueInteger>
+               <valueInteger value="39"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -807,7 +785,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="41"></valueInteger>
+               <valueInteger value="40"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -824,7 +802,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="42"></valueInteger>
+               <valueInteger value="41"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -842,7 +820,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="43"></valueInteger>
+               <valueInteger value="42"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -862,7 +840,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="44"></valueInteger>
+               <valueInteger value="43"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -881,7 +859,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="45"></valueInteger>
+               <valueInteger value="44"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -900,7 +878,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="46"></valueInteger>
+               <valueInteger value="45"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -918,7 +896,7 @@
   and &quot;LocationIsCHLD&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="47"></valueInteger>
+               <valueInteger value="46"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -937,7 +915,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="48"></valueInteger>
+               <valueInteger value="47"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -959,7 +937,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="49"></valueInteger>
+               <valueInteger value="48"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -978,7 +956,7 @@
   and &quot;LocationIsCHLD&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="50"></valueInteger>
+               <valueInteger value="49"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -996,7 +974,7 @@
   and &quot;LocationIsCHLD&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="51"></valueInteger>
+               <valueInteger value="50"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1013,7 +991,7 @@
   and &quot;LocationIsIRF&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="52"></valueInteger>
+               <valueInteger value="51"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1032,7 +1010,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="53"></valueInteger>
+               <valueInteger value="52"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1051,7 +1029,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="54"></valueInteger>
+               <valueInteger value="53"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1072,7 +1050,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="55"></valueInteger>
+               <valueInteger value="54"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1091,7 +1069,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="56"></valueInteger>
+               <valueInteger value="55"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1109,7 +1087,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="57"></valueInteger>
+               <valueInteger value="56"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1129,7 +1107,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="58"></valueInteger>
+               <valueInteger value="57"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1151,7 +1129,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="59"></valueInteger>
+               <valueInteger value="58"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1169,7 +1147,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="60"></valueInteger>
+               <valueInteger value="59"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1187,7 +1165,7 @@
   and &quot;LocationIsIPF&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="61"></valueInteger>
+               <valueInteger value="60"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1206,7 +1184,7 @@
   and &quot;LocationIsIPF&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="62"></valueInteger>
+               <valueInteger value="61"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1223,7 +1201,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="63"></valueInteger>
+               <valueInteger value="62"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1242,7 +1220,7 @@
   and &quot;LocationIsCHLD&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="64"></valueInteger>
+               <valueInteger value="63"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1262,7 +1240,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="65"></valueInteger>
+               <valueInteger value="64"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1281,7 +1259,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="66"></valueInteger>
+               <valueInteger value="65"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1298,7 +1276,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="67"></valueInteger>
+               <valueInteger value="66"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1317,7 +1295,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="68"></valueInteger>
+               <valueInteger value="67"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1335,25 +1313,7 @@
   and &quot;LocationIsCHLD&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="69"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="BedCapacityMeasure"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="Surge Inactive NonICU Beds Occupied Initial Population"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;Surge Inactive NonICU Beds Occupied Initial Population&quot;:
-  IsBedLocation
-  and EncounterCheck
-  and &quot;LocationIsHOSP&quot;
-  and &quot;LocationIsCHLD&quot;"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="70"></valueInteger>
+               <valueInteger value="68"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1370,7 +1330,7 @@
   and &quot;LocationIsHOSP&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="71"></valueInteger>
+               <valueInteger value="69"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1389,7 +1349,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="72"></valueInteger>
+               <valueInteger value="70"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1406,7 +1366,7 @@
   and &quot;LocationIsCHLD&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="73"></valueInteger>
+               <valueInteger value="71"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1429,7 +1389,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="74"></valueInteger>
+               <valueInteger value="72"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1447,7 +1407,7 @@
   and &quot;LocationIsCHLD&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="75"></valueInteger>
+               <valueInteger value="73"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1466,7 +1426,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="76"></valueInteger>
+               <valueInteger value="74"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1482,7 +1442,7 @@
   and EncounterCheck"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="77"></valueInteger>
+               <valueInteger value="75"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1502,7 +1462,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="78"></valueInteger>
+               <valueInteger value="76"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1520,7 +1480,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="79"></valueInteger>
+               <valueInteger value="77"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1538,7 +1498,7 @@
   and &quot;LocationIsOTH&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="80"></valueInteger>
+               <valueInteger value="78"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1557,7 +1517,7 @@
   and &quot;LocationIsCHLD&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="81"></valueInteger>
+               <valueInteger value="79"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1576,7 +1536,7 @@
   and &quot;LocationIsCHLD&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="82"></valueInteger>
+               <valueInteger value="80"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1597,7 +1557,7 @@
   and &quot;LocationIsCHLD&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="83"></valueInteger>
+               <valueInteger value="81"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1618,7 +1578,30 @@
         }"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="84"></valueInteger>
+               <valueInteger value="82"></valueInteger>
+            </extension>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
+            <extension url="libraryName">
+               <valueString value="FHIRHelpers"></valueString>
+            </extension>
+            <extension url="name">
+               <valueString value="ToCode"></valueString>
+            </extension>
+            <extension url="statement">
+               <valueString value="define function ToCode(coding FHIR.Coding):
+    if coding is null then
+        null
+    else
+        System.Code {
+          code: coding.code.value,
+          system: coding.system.value,
+          version: coding.version.value,
+          display: coding.display.value
+        }"></valueString>
+            </extension>
+            <extension url="displaySequence">
+               <valueInteger value="83"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1639,7 +1622,7 @@
             Interval[period.&quot;start&quot;.value, period.&quot;end&quot;.value]"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="85"></valueInteger>
+               <valueInteger value="84"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1653,10 +1636,9 @@
                <valueString value="define function ToString(value EncounterStatus): value.value"></valueString>
             </extension>
             <extension url="displaySequence">
-               <valueInteger value="86"></valueInteger>
+               <valueInteger value="85"></valueInteger>
             </extension>
          </extension>
-		 <url value="http://www.cdc.gov/nshn/us-safr/Library/EffectiveDataRequirements"/>
          <name value="EffectiveDataRequirements"></name>
          <status value="active"></status>
          <type>
@@ -1673,12 +1655,12 @@
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Code system LocationPhysicalType"></display>
-            <resource value="http://terminology.hl7.org/CodeSystem/location-physical-type"></resource>
+            <resource value="http://terminology.hl7.org/CodeSystem/location-physical-type|2.0.1"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Code system HealthcareCapacity"></display>
-            <resource value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></resource>
+            <resource value="http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -1701,13 +1683,6 @@
          </parameter>
          <parameter>
             <name value="All Beds Unoccupied Initial Population"></name>
-            <use value="out"></use>
-            <min value="0"></min>
-            <max value="1"></max>
-            <type value="boolean"></type>
-         </parameter>
-         <parameter>
-            <name value="Peds ED Census Initial Population"></name>
             <use value="out"></use>
             <min value="0"></min>
             <max value="1"></max>
@@ -1770,14 +1745,14 @@
             <type value="boolean"></type>
          </parameter>
          <parameter>
-            <name value="Peds ICULOC Beds Occupied Initial Population"></name>
+            <name value="Peds ED Total Census Initial Population"></name>
             <use value="out"></use>
             <min value="0"></min>
             <max value="1"></max>
             <type value="boolean"></type>
          </parameter>
          <parameter>
-            <name value="Surge Inactive Total Beds Occupied Initial Population"></name>
+            <name value="Peds ICULOC Beds Occupied Initial Population"></name>
             <use value="out"></use>
             <min value="0"></min>
             <max value="1"></max>
@@ -2120,13 +2095,6 @@
             <type value="boolean"></type>
          </parameter>
          <parameter>
-            <name value="Surge Inactive NonICU Beds Occupied Initial Population"></name>
-            <use value="out"></use>
-            <min value="0"></min>
-            <max value="1"></max>
-            <type value="boolean"></type>
-         </parameter>
-         <parameter>
             <name value="Adult ICU Beds Unoccupied Initial Population"></name>
             <use value="out"></use>
             <min value="0"></min>
@@ -2235,6 +2203,22 @@
             <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
          </dataRequirement>
          <dataRequirement>
+            <type value="Location"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Location"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Location"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
+         </dataRequirement>
+         <dataRequirement>
+            <type value="Location"></type>
+            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
+         </dataRequirement>
+         <dataRequirement>
             <type value="Encounter"></type>
             <profile value="http://hl7.org/fhir/StructureDefinition/Encounter"></profile>
             <mustSupport value="type"></mustSupport>
@@ -2243,22 +2227,6 @@
                <path value="type"></path>
                <valueSet value="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292"></valueSet>
             </codeFilter>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
-         </dataRequirement>
-         <dataRequirement>
-            <type value="Location"></type>
-            <profile value="http://hl7.org/fhir/StructureDefinition/Location"></profile>
          </dataRequirement>
          <dataRequirement>
             <type value="Encounter"></type>
@@ -2320,25 +2288,27 @@
          </dataRequirement>
       </Library>
    </contained>
+   <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-populationBasis">
+      <valueCode value="boolean"></valueCode>
+   </extension>
    <extension url="http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-softwaresystem">
       <valueReference>
          <reference value="Device/cqf-tooling"></reference>
       </valueReference>
    </extension>
-   <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-populationBasis">
-      <valueCode value="boolean"></valueCode>
+   <extension url="http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-effectiveDataRequirements">
+      <valueCanonical value="#effective-data-requirements"></valueCanonical>
    </extension>
-   <extension id="effective-data-requirements" url="http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-effectiveDataRequirements">
-      <valueCanonical value="#effective-data-requirements"/>
-   </extension>
-   <url value="http://www.cdc.gov/nshn/us-safr/Measure/BedCapacityMeasure"></url>
+   <url value="http://hl7.org/fhir/us/safr/Measure/BedCapacityMeasureExample"></url>
    <version value="1.0.0"></version>
-   <name value="BedCapacityMeasure"></name>
-   <title value="Bed Capacity"></title>
+   <name value="BedCapacityMeasureExample"></name>
+   <title value="Bed Capacity Measure Example"></title>
+   <status value="draft"></status>
    <experimental value="true"></experimental>
-   <date value="2025-09-13T15:32:06-04:00"></date>
-   <description value="Bed Capacity Measure includes counts of specific bed types within the context of a given healthcare context or setting."></description>
-   <library value="http://www.cdc.gov/nshn/us-safr/Library/BedCapacityMeasure"></library>
+   <date value="2026-03-09T13:53:49-04:00"></date>
+   <publisher value="HL7 International / Public Health"></publisher>
+   <description value="Bed Capacity Measure Example includes counts of specific bed types within the context of a given healthcare context or setting."></description>
+   <library value="http://hl7.org/fhir/us/safr/Library/BedCapacityMeasure"></library>
    <scoring>
       <coding>
          <system value="http://terminology.hl7.org/CodeSystem/measure-scoring"></system>
@@ -2349,11 +2319,8 @@
    <group>
       <code>
          <coding>
-		 
-		 
-		 
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="AllBedsOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112579-8"></code>
          </coding>
       </code>
       <population id="d2e4301">
@@ -2373,8 +2340,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="AllBedsUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112578-0"></code>
          </coding>
       </code>
       <population id="d2e4378">
@@ -2394,8 +2361,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="AdultTotalOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112577-2"></code>
          </coding>
       </code>
       <population id="d2e4455">
@@ -2415,8 +2382,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="AdultTotalUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112576-4"></code>
          </coding>
       </code>
       <population id="d2e4533">
@@ -2436,8 +2403,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="AdultICUOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112575-6"></code>
          </coding>
       </code>
       <population id="d2e4610">
@@ -2457,8 +2424,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="AdultICUUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112574-9"></code>
          </coding>
       </code>
       <population id="d2e4687">
@@ -2478,8 +2445,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="AdultICULOCOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112573-1"></code>
          </coding>
       </code>
       <population id="d2e4764">
@@ -2499,8 +2466,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="AdultNonICUOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112572-3"></code>
          </coding>
       </code>
       <population id="d2e4918">
@@ -2520,8 +2487,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="AdultNonICUUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112571-5"></code>
          </coding>
       </code>
       <population id="d2e4996">
@@ -2541,8 +2508,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="AdultPCUOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112570-7"></code>
          </coding>
       </code>
       <population id="d2e5073">
@@ -2562,8 +2529,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="AdultPCUUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112569-9"></code>
          </coding>
       </code>
       <population id="d2e5150">
@@ -2583,8 +2550,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="AdultMTMSOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112568-1"></code>
          </coding>
       </code>
       <population id="d2e5227">
@@ -2604,8 +2571,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="AdultMTMSUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112567-3"></code>
          </coding>
       </code>
       <population id="d2e5304">
@@ -2625,8 +2592,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="AdultObsOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112566-5"></code>
          </coding>
       </code>
       <population id="d2e5381">
@@ -2646,8 +2613,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="AdultObsUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112565-7"></code>
          </coding>
       </code>
       <population id="d2e5459">
@@ -2667,8 +2634,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="PedsTotalOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112564-0"></code>
          </coding>
       </code>
       <population id="d2e5536">
@@ -2688,8 +2655,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="PedsTotalUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112563-2"></code>
          </coding>
       </code>
       <population id="d2e5613">
@@ -2709,8 +2676,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="PedsICUOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112562-4"></code>
          </coding>
       </code>
       <population id="d2e5690">
@@ -2730,8 +2697,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="PedsICUUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112561-6"></code>
          </coding>
       </code>
       <population id="d2e5767">
@@ -2751,8 +2718,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="PedsICULOCOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112560-8"></code>
          </coding>
       </code>
       <population id="d2e5844">
@@ -2772,8 +2739,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="PedsNonICUOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112559-0"></code>
          </coding>
       </code>
       <population id="d2e5999">
@@ -2793,8 +2760,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="PedsNonICUUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112558-2"></code>
          </coding>
       </code>
       <population id="d2e6076">
@@ -2814,8 +2781,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="PedsPCUOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112557-4"></code>
          </coding>
       </code>
       <population id="d2e6153">
@@ -2835,8 +2802,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="PedsPCUUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112556-6"></code>
          </coding>
       </code>
       <population id="d2e6230">
@@ -2856,8 +2823,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="PedsMTMSOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112555-8"></code>
          </coding>
       </code>
       <population id="d2e6307">
@@ -2877,8 +2844,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="PedsMTMSUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112554-1"></code>
          </coding>
       </code>
       <population id="d2e6385">
@@ -2898,8 +2865,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="PedsObsOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112553-3"></code>
          </coding>
       </code>
       <population id="d2e6462">
@@ -2919,8 +2886,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="PedsObsUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112552-5"></code>
          </coding>
       </code>
       <population id="d2e6539">
@@ -2940,8 +2907,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="SpecialtyTotalOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112551-7"></code>
          </coding>
       </code>
       <population id="d2e6616">
@@ -2961,8 +2928,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="SpecialtyTotalUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112550-9"></code>
          </coding>
       </code>
       <population id="d2e6693">
@@ -2982,8 +2949,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="SpecialtyNonCribOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112549-1"></code>
          </coding>
       </code>
       <population id="d2e6770">
@@ -3003,8 +2970,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="SpecialtyNonCribUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112548-3"></code>
          </coding>
       </code>
       <population id="d2e6848">
@@ -3024,8 +2991,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="OBOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112547-5"></code>
          </coding>
       </code>
       <population id="d2e6925">
@@ -3045,8 +3012,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="OBUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112546-7"></code>
          </coding>
       </code>
       <population id="d2e7002">
@@ -3066,8 +3033,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="NICUOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112545-9"></code>
          </coding>
       </code>
       <population id="d2e7079">
@@ -3087,8 +3054,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="NICUUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112544-2"></code>
          </coding>
       </code>
       <population id="d2e7156">
@@ -3108,8 +3075,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="NICU4Occupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112543-4"></code>
          </coding>
       </code>
       <population id="d2e7233">
@@ -3129,8 +3096,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="NICU4Unoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112542-6"></code>
          </coding>
       </code>
       <population id="d2e7311">
@@ -3150,8 +3117,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="NICU3PlusOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112540-0"></code>
          </coding>
       </code>
       <population id="d2e7388">
@@ -3171,8 +3138,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="NICU3PlusUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112539-2"></code>
          </coding>
       </code>
       <population id="d2e7465">
@@ -3192,8 +3159,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="NICU3Occupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112538-4"></code>
          </coding>
       </code>
       <population id="d2e7542">
@@ -3213,8 +3180,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="NICU3Unoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112541-8"></code>
          </coding>
       </code>
       <population id="d2e7619">
@@ -3234,8 +3201,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="NICU2Occupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112537-6"></code>
          </coding>
       </code>
       <population id="d2e7696">
@@ -3255,8 +3222,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="NICU2Unoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112536-8"></code>
          </coding>
       </code>
       <population id="d2e7774">
@@ -3276,8 +3243,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="NICU1Occupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112533-5"></code>
          </coding>
       </code>
       <population id="d2e7851">
@@ -3297,8 +3264,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="NICU1Unoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112532-7"></code>
          </coding>
       </code>
       <population id="d2e7928">
@@ -3318,8 +3285,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="NurseryOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112535-0"></code>
          </coding>
       </code>
       <population id="d2e8005">
@@ -3339,8 +3306,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="NurseryUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112534-3"></code>
          </coding>
       </code>
       <population id="d2e8082">
@@ -3360,8 +3327,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="AdultPsychOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112531-9"></code>
          </coding>
       </code>
       <population id="d2e8159">
@@ -3381,8 +3348,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="AdultPsychUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112530-1"></code>
          </coding>
       </code>
       <population id="d2e8237">
@@ -3402,8 +3369,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="PedsPsychOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112529-3"></code>
          </coding>
       </code>
       <population id="d2e8314">
@@ -3423,8 +3390,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="PedsPsychUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112528-5"></code>
          </coding>
       </code>
       <population id="d2e8391">
@@ -3444,8 +3411,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="RehabOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112527-7"></code>
          </coding>
       </code>
       <population id="d2e8468">
@@ -3465,8 +3432,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="RehabUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112526-9"></code>
          </coding>
       </code>
       <population id="d2e8545">
@@ -3486,8 +3453,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="SurgeActiveTotalOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112525-1"></code>
          </coding>
       </code>
       <population id="d2e8622">
@@ -3507,8 +3474,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="SurgeActiveTotalUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112524-4"></code>
          </coding>
       </code>
       <population id="d2e8700">
@@ -3528,29 +3495,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="SurgeInactiveTotalOccupied"></code>
-         </coding>
-      </code>
-      <population id="d2e8777">
-         <code>
-            <coding>
-               <system value="http://terminology.hl7.org/CodeSystem/measure-population"></system>
-               <code value="initial-population"></code>
-               <display value="Initial Population"></display>
-            </coding>
-         </code>
-         <criteria>
-            <language value="text/cql-identifier"></language>
-            <expression value="Surge Inactive Total Beds Occupied Initial Population"></expression>
-         </criteria>
-      </population>
-   </group>
-   <group>
-      <code>
-         <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="SurgeInactiveTotalUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112523-6"></code>
          </coding>
       </code>
       <population id="d2e8854">
@@ -3570,8 +3516,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="SurgeActiveICUOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112522-8"></code>
          </coding>
       </code>
       <population id="d2e8931">
@@ -3591,8 +3537,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="SurgeActiveICUUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112521-0"></code>
          </coding>
       </code>
       <population id="d2e9008">
@@ -3612,8 +3558,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="SurgeInactiveICUUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112520-2"></code>
          </coding>
       </code>
       <population id="d2e9163">
@@ -3633,8 +3579,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="SurgeActiveNonICUOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112519-4"></code>
          </coding>
       </code>
       <population id="d2e9240">
@@ -3654,8 +3600,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="SurgeActiveNonICUUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112518-6"></code>
          </coding>
       </code>
       <population id="d2e9317">
@@ -3675,29 +3621,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="SurgeInactiveNonICUOccupied"></code>
-         </coding>
-      </code>
-      <population id="d2e9394">
-         <code>
-            <coding>
-               <system value="http://terminology.hl7.org/CodeSystem/measure-population"></system>
-               <code value="initial-population"></code>
-               <display value="Initial Population"></display>
-            </coding>
-         </code>
-         <criteria>
-            <language value="text/cql-identifier"></language>
-            <expression value="Surge Inactive NonICU Beds Occupied Initial Population"></expression>
-         </criteria>
-      </population>
-   </group>
-   <group>
-      <code>
-         <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="SurgeInactiveNonICUUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112517-8"></code>
          </coding>
       </code>
       <population id="d2e9471">
@@ -3717,8 +3642,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="BurnOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112516-0"></code>
          </coding>
       </code>
       <population id="d2e9548">
@@ -3738,8 +3663,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="BurnUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112515-2"></code>
          </coding>
       </code>
       <population id="d2e9626">
@@ -3759,8 +3684,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="NegativePressureOccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112514-5"></code>
          </coding>
       </code>
       <population id="d2e9703">
@@ -3780,8 +3705,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="NegativePressureUnoccupied"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112513-7"></code>
          </coding>
       </code>
       <population id="d2e9780">
@@ -3801,8 +3726,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="AdultEDCensus"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112512-9"></code>
          </coding>
       </code>
       <population id="d2e9857">
@@ -3822,8 +3747,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="AdultEDAdmittedCensus"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112511-1"></code>
          </coding>
       </code>
       <population id="d2e9934">
@@ -3843,8 +3768,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="PedsEDCensus"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112510-3"></code>
          </coding>
       </code>
       <population id="d2e10011">
@@ -3857,15 +3782,15 @@
          </code>
          <criteria>
             <language value="text/cql-identifier"></language>
-            <expression value="Peds ED Census Initial Population"></expression>
+            <expression value="Peds ED Total Census Initial Population"></expression>
          </criteria>
       </population>
    </group>
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="PedsEDAdmittedCensus"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112509-5"></code>
          </coding>
       </code>
       <population id="d2e10089">
@@ -3885,8 +3810,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="TotalEDCensus"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112508-7"></code>
          </coding>
       </code>
       <population id="d2e10166">
@@ -3906,8 +3831,8 @@
    <group>
       <code>
          <coding>
-            <system value="http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-example-codes"></system>
-            <code value="TotalEDAdmittedCensus"></code>
+            <system value="http://loinc.org"></system>
+            <code value="112507-9"></code>
          </coding>
       </code>
       <population id="d2e10243">
