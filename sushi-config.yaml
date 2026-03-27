@@ -9,10 +9,10 @@ name: NHSN-SAFR
 title: CDC NHSN Situational Awareness Framework for Reporting (NHSN SAFR) Content Implementation Guide
 description: NHSN Situational Awareness Framework for Reporting (NHSN SAFR)
 status: active # draft | active | retired | unknown
-version: 0.0.1
+version: 1.0.0
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2025+
-releaseLabel: STU 0.0.1 draft # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
+releaseLabel: STU 1.0.0 # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
 # license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
 jurisdiction: urn:iso:std:iso:3166#US "United States of America" # https://www.hl7.org/fhir/valueset-jurisdiction.html
 extension:
