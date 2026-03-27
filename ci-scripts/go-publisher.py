@@ -569,14 +569,15 @@ def write_web_configs(ig_repo_path):
     version_web_config = str(Path('./webroot/ig/' + config_data['version'] + "/web.config").resolve())
     print(version_web_config)
     
-    os.remove(base_web_config)
+    if(Path(base_web_config).is_file()):
+        os.remove(base_web_config)
     
     with open(base_web_config, "w") as web_config_file:
         web_config_file.write(web_config)
 
 
-    
-    os.remove(version_web_config)
+    if(Path(version_web_config).is_file()):
+        os.remove(version_web_config)
     
     with open(version_web_config, "w") as web_config_file:
         web_config_file.write(web_config)

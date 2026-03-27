@@ -31,7 +31,7 @@ publisher:
 #
 dependencies:
   hl7.fhir.us.safr:
-    version: current
+    version: 1.0.0-ballot
     id: ussafr
   hl7.fhir.us.core:
     version: 6.1.0
