@@ -105,8 +105,7 @@
                <valueString value="Devices"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Devices&quot;:
-  [Device]"></valueString>
+               <valueString value="define &quot;Devices&quot;:   [Device]"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="0"></valueInteger>
@@ -120,11 +119,7 @@
                <valueString value="OR Surgical Mask Supply in Days Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;OR Surgical Mask Supply in Days Stratifier&quot;:
-  Floor( Count(
-    &quot;Devices&quot; Devices
-    where Devices.type ~ &quot;Surgical mask&quot;
-  ) / 10 )"></valueString>
+               <valueString value="define &quot;OR Surgical Mask Supply in Days Stratifier&quot;:   Floor( Count(     &quot;Devices&quot; Devices     where Devices.type ~ &quot;Surgical mask&quot;   ) / 10 )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="1"></valueInteger>
@@ -138,8 +133,7 @@
                <valueString value="IsBedLocation"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;IsBedLocation&quot;:
-  Location.physicalType ~ &quot;Bed&quot;"></valueString>
+               <valueString value="define &quot;IsBedLocation&quot;:   Location.physicalType ~ &quot;Bed&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="2"></valueInteger>
@@ -153,11 +147,7 @@
                <valueString value="LocationIsCHLD"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;LocationIsCHLD&quot;:
-  exists(
-    Location.type types
-    where types ~ &quot;CHLD&quot;
-  )"></valueString>
+               <valueString value="define &quot;LocationIsCHLD&quot;:   exists(     Location.type types     where types ~ &quot;CHLD&quot;   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="3"></valueInteger>
@@ -171,11 +161,7 @@
                <valueString value="LocationIsHOSP"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;LocationIsHOSP&quot;:
-  exists(
-    Location.type types
-    where types ~ &quot;HOSP&quot;
-  )"></valueString>
+               <valueString value="define &quot;LocationIsHOSP&quot;:   exists(     Location.type types     where types ~ &quot;HOSP&quot;   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="4"></valueInteger>
@@ -189,11 +175,7 @@
                <valueString value="LocationIsOTH"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;LocationIsOTH&quot;:
-  exists(
-    Location.type types
-    where types ~ &quot;OTH&quot;
-  )"></valueString>
+               <valueString value="define &quot;LocationIsOTH&quot;:   exists(     Location.type types     where types ~ &quot;OTH&quot;   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="5"></valueInteger>
@@ -207,13 +189,7 @@
                <valueString value="Pediatric ICU Beds Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Pediatric ICU Beds Initial Population&quot;:
-  IsBedLocation
-  and LocationIsCHLD
-  and (
-    LocationIsHOSP
-    or LocationIsOTH
-  )"></valueString>
+               <valueString value="define &quot;Pediatric ICU Beds Initial Population&quot;:   IsBedLocation   and LocationIsCHLD   and (     LocationIsHOSP     or LocationIsOTH   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="6"></valueInteger>
@@ -227,8 +203,7 @@
                <valueString value="Encounters"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Encounters&quot;:
-  [Encounter]"></valueString>
+               <valueString value="define &quot;Encounters&quot;:   [Encounter]"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="7"></valueInteger>
@@ -242,9 +217,7 @@
                <valueString value="EncounterCheck"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;EncounterCheck&quot;:
-  exists(&quot;Encounters&quot; Encounters
-  where Encounters.period overlaps &quot;Measurement Period&quot;)"></valueString>
+               <valueString value="define &quot;EncounterCheck&quot;:   exists(&quot;Encounters&quot; Encounters   where Encounters.period overlaps &quot;Measurement Period&quot;)"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="8"></valueInteger>
@@ -258,9 +231,7 @@
                <valueString value="Occupied Pediatric ICU Beds Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Occupied Pediatric ICU Beds Initial Population&quot;:
-  &quot;Pediatric ICU Beds Initial Population&quot;
-  and EncounterCheck"></valueString>
+               <valueString value="define &quot;Occupied Pediatric ICU Beds Initial Population&quot;:   &quot;Pediatric ICU Beds Initial Population&quot;   and EncounterCheck"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="9"></valueInteger>
@@ -274,13 +245,7 @@
                <valueString value="Adult ICU Beds Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult ICU Beds Initial Population&quot;:
-  IsBedLocation
-  and (
-    LocationIsHOSP
-    or LocationIsOTH
-  )
-  and not LocationIsCHLD"></valueString>
+               <valueString value="define &quot;Adult ICU Beds Initial Population&quot;:   IsBedLocation   and (     LocationIsHOSP     or LocationIsOTH   )   and not LocationIsCHLD"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="10"></valueInteger>
@@ -294,11 +259,7 @@
                <valueString value="Gown Supply in Days Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Gown Supply in Days Stratifier&quot;:
-  Floor( Count(
-    &quot;Devices&quot; Devices
-    where Devices.type ~ &quot;Patient gown&quot;
-  ) / 5 )"></valueString>
+               <valueString value="define &quot;Gown Supply in Days Stratifier&quot;:   Floor( Count(     &quot;Devices&quot; Devices     where Devices.type ~ &quot;Patient gown&quot;   ) / 5 )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="11"></valueInteger>
@@ -312,9 +273,7 @@
                <valueString value="Gown 3 Day Supply Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Gown 3 Day Supply Stratifier&quot;:
-  if &quot;Gown Supply in Days Stratifier&quot; &gt; 3 then 'y'
-  else 'n'"></valueString>
+               <valueString value="define &quot;Gown 3 Day Supply Stratifier&quot;:   if &quot;Gown Supply in Days Stratifier&quot; &gt; 3 then 'y'   else 'n'"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="12"></valueInteger>
@@ -328,13 +287,7 @@
                <valueString value="Adult ICU Beds Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult ICU Beds Initial Population&quot;:
-  IsBedLocation
-  and (
-    LocationIsHOSP
-    or LocationIsOTH
-  )
-  and not LocationIsCHLD"></valueString>
+               <valueString value="define &quot;Adult ICU Beds Initial Population&quot;:   IsBedLocation   and (     LocationIsHOSP     or LocationIsOTH   )   and not LocationIsCHLD"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="13"></valueInteger>
@@ -348,10 +301,7 @@
                <valueString value="COVID_19 Observations"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//Functions and Helpers
-define &quot;COVID_19 Observations&quot;:
-  [Observation: &quot;COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)&quot;] 
-    union [Observation: &quot;COVID_19 (Tests for SARS_CoV_2 Antigen)&quot;]"></valueString>
+               <valueString value="//Functions and Helpers define &quot;COVID_19 Observations&quot;:   [Observation: &quot;COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)&quot;]      union [Observation: &quot;COVID_19 (Tests for SARS_CoV_2 Antigen)&quot;]"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="14"></valueInteger>
@@ -365,10 +315,7 @@ define &quot;COVID_19 Observations&quot;:
                <valueString value="Count Confirmed COVID_19 Patients in Bed Location"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Count Confirmed COVID_19 Patients in Bed Location&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs&quot;( &quot;Encounters&quot;, &quot;COVID_19 Observations&quot; )
-  )"></valueString>
+               <valueString value="define &quot;Count Confirmed COVID_19 Patients in Bed Location&quot;:   Count(     &quot;Get Confirmed Patient IDs&quot;( &quot;Encounters&quot;, &quot;COVID_19 Observations&quot; )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="15"></valueInteger>
@@ -382,10 +329,7 @@ define &quot;COVID_19 Observations&quot;:
                <valueString value="Adult ICU COVID_19 Patients Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult ICU COVID_19 Patients Stratifier&quot;:
-  if &quot;Adult ICU Beds Initial Population&quot; then
-    &quot;Count Confirmed COVID_19 Patients in Bed Location&quot;
-  else 0"></valueString>
+               <valueString value="define &quot;Adult ICU COVID_19 Patients Stratifier&quot;:   if &quot;Adult ICU Beds Initial Population&quot; then     &quot;Count Confirmed COVID_19 Patients in Bed Location&quot;   else 0"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="16"></valueInteger>
@@ -399,11 +343,7 @@ define &quot;COVID_19 Observations&quot;:
                <valueString value="Glove Supply in Days Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Glove Supply in Days Stratifier&quot;:
-  Floor( Count(
-    &quot;Devices&quot; Devices
-    where Devices.type ~ &quot;Surgical glove&quot;
-  ) / 15 )"></valueString>
+               <valueString value="define &quot;Glove Supply in Days Stratifier&quot;:   Floor( Count(     &quot;Devices&quot; Devices     where Devices.type ~ &quot;Surgical glove&quot;   ) / 15 )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="17"></valueInteger>
@@ -417,11 +357,7 @@ define &quot;COVID_19 Observations&quot;:
                <valueString value="Face Shield Supply in Days Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Face Shield Supply in Days Stratifier&quot;:
-  Floor( Count(
-    &quot;Devices&quot; Devices
-    where Devices.type ~ &quot;Face shield&quot;
-  ) / 10 )"></valueString>
+               <valueString value="define &quot;Face Shield Supply in Days Stratifier&quot;:   Floor( Count(     &quot;Devices&quot; Devices     where Devices.type ~ &quot;Face shield&quot;   ) / 10 )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="18"></valueInteger>
@@ -435,9 +371,7 @@ define &quot;COVID_19 Observations&quot;:
                <valueString value="Face Shield 3 Day Supply Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Face Shield 3 Day Supply Stratifier&quot;:
-  if &quot;Face Shield Supply in Days Stratifier&quot; &gt; 3 then 'y'
-  else 'n'"></valueString>
+               <valueString value="define &quot;Face Shield 3 Day Supply Stratifier&quot;:   if &quot;Face Shield Supply in Days Stratifier&quot; &gt; 3 then 'y'   else 'n'"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="19"></valueInteger>
@@ -451,11 +385,7 @@ define &quot;COVID_19 Observations&quot;:
                <valueString value="LocationIsIPF"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;LocationIsIPF&quot;:
-  exists(
-    Location.type types
-    where types ~ &quot;IPF&quot;
-  )"></valueString>
+               <valueString value="define &quot;LocationIsIPF&quot;:   exists(     Location.type types     where types ~ &quot;IPF&quot;   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="20"></valueInteger>
@@ -469,11 +399,7 @@ define &quot;COVID_19 Observations&quot;:
                <valueString value="LocationIsIRF"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;LocationIsIRF&quot;:
-  exists(
-    Location.type types
-    where types ~ &quot;IRF&quot;
-  )"></valueString>
+               <valueString value="define &quot;LocationIsIRF&quot;:   exists(     Location.type types     where types ~ &quot;IRF&quot;   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="21"></valueInteger>
@@ -487,14 +413,7 @@ define &quot;COVID_19 Observations&quot;:
                <valueString value="Pediatric Inpatient Beds Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Pediatric Inpatient Beds Initial Population&quot;:
-  IsBedLocation
-  and LocationIsHOSP
-  and LocationIsCHLD
-  and not (
-    LocationIsIPF
-    or LocationIsIRF
-  )"></valueString>
+               <valueString value="define &quot;Pediatric Inpatient Beds Initial Population&quot;:   IsBedLocation   and LocationIsHOSP   and LocationIsCHLD   and not (     LocationIsIPF     or LocationIsIRF   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="22"></valueInteger>
@@ -508,9 +427,7 @@ define &quot;COVID_19 Observations&quot;:
                <valueString value="Influenza Observations"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Influenza Observations&quot;:
-  [Observation: &quot;Influenza (Tests for influenza A or B virus Nucleic Acid)&quot;] 
-    union [Observation: &quot;Influenza (Tests for influenza A or B virus Antigen)&quot;]"></valueString>
+               <valueString value="define &quot;Influenza Observations&quot;:   [Observation: &quot;Influenza (Tests for influenza A or B virus Nucleic Acid)&quot;]      union [Observation: &quot;Influenza (Tests for influenza A or B virus Antigen)&quot;]"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="23"></valueInteger>
@@ -524,10 +441,7 @@ define &quot;COVID_19 Observations&quot;:
                <valueString value="Count Confirmed Influenza Patients in Bed Location"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Count Confirmed Influenza Patients in Bed Location&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs&quot;( &quot;Encounters&quot;, &quot;Influenza Observations&quot; )
-  )"></valueString>
+               <valueString value="define &quot;Count Confirmed Influenza Patients in Bed Location&quot;:   Count(     &quot;Get Confirmed Patient IDs&quot;( &quot;Encounters&quot;, &quot;Influenza Observations&quot; )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="24"></valueInteger>
@@ -541,10 +455,7 @@ define &quot;COVID_19 Observations&quot;:
                <valueString value="Pediatric Inpatient Influenza Patients Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Pediatric Inpatient Influenza Patients Stratifier&quot;:
-  if &quot;Pediatric Inpatient Beds Initial Population&quot; then
-    &quot;Count Confirmed Influenza Patients in Bed Location&quot;
-  else 0"></valueString>
+               <valueString value="define &quot;Pediatric Inpatient Influenza Patients Stratifier&quot;:   if &quot;Pediatric Inpatient Beds Initial Population&quot; then     &quot;Count Confirmed Influenza Patients in Bed Location&quot;   else 0"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="25"></valueInteger>
@@ -558,9 +469,7 @@ define &quot;COVID_19 Observations&quot;:
                <valueString value="RSV Observations"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;RSV Observations&quot;:
-  [Observation: &quot;RSV (Tests for RSV Antigen)&quot;] 
-    union [Observation: &quot;RSV (Tests for RSV Nucleic Acid)&quot;]"></valueString>
+               <valueString value="define &quot;RSV Observations&quot;:   [Observation: &quot;RSV (Tests for RSV Antigen)&quot;]      union [Observation: &quot;RSV (Tests for RSV Nucleic Acid)&quot;]"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="26"></valueInteger>
@@ -574,10 +483,7 @@ define &quot;COVID_19 Observations&quot;:
                <valueString value="Count Confirmed RSV Patients in Bed Location"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Count Confirmed RSV Patients in Bed Location&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs&quot;( &quot;Encounters&quot;, &quot;RSV Observations&quot; )
-  )"></valueString>
+               <valueString value="define &quot;Count Confirmed RSV Patients in Bed Location&quot;:   Count(     &quot;Get Confirmed Patient IDs&quot;( &quot;Encounters&quot;, &quot;RSV Observations&quot; )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="27"></valueInteger>
@@ -591,10 +497,7 @@ define &quot;COVID_19 Observations&quot;:
                <valueString value="Pediatric ICU RSV Patients Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Pediatric ICU RSV Patients Stratifier&quot;:
-  if &quot;Pediatric ICU Beds Initial Population&quot; then
-    &quot;Count Confirmed RSV Patients in Bed Location&quot;
-  else 0"></valueString>
+               <valueString value="define &quot;Pediatric ICU RSV Patients Stratifier&quot;:   if &quot;Pediatric ICU Beds Initial Population&quot; then     &quot;Count Confirmed RSV Patients in Bed Location&quot;   else 0"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="28"></valueInteger>
@@ -608,14 +511,7 @@ define &quot;COVID_19 Observations&quot;:
                <valueString value="Adult Inpatient Beds Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult Inpatient Beds Initial Population&quot;:
-  IsBedLocation
-  and LocationIsHOSP
-  and (
-    LocationIsIPF
-    or LocationIsIRF
-  )
-  and not LocationIsCHLD"></valueString>
+               <valueString value="define &quot;Adult Inpatient Beds Initial Population&quot;:   IsBedLocation   and LocationIsHOSP   and (     LocationIsIPF     or LocationIsIRF   )   and not LocationIsCHLD"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="29"></valueInteger>
@@ -629,12 +525,7 @@ define &quot;COVID_19 Observations&quot;:
                <valueString value="Adult Inpatient COVID_19 Patients Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//Stratifiers
-//COVID_19
-define &quot;Adult Inpatient COVID_19 Patients Stratifier&quot;:
-  if &quot;Adult Inpatient Beds Initial Population&quot; then
-    &quot;Count Confirmed COVID_19 Patients in Bed Location&quot;
-  else 0"></valueString>
+               <valueString value="//Stratifiers //COVID_19 define &quot;Adult Inpatient COVID_19 Patients Stratifier&quot;:   if &quot;Adult Inpatient Beds Initial Population&quot; then     &quot;Count Confirmed COVID_19 Patients in Bed Location&quot;   else 0"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="30"></valueInteger>
@@ -648,11 +539,7 @@ define &quot;Adult Inpatient COVID_19 Patients Stratifier&quot;:
                <valueString value="Face Shield Supply in Days Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Face Shield Supply in Days Stratifier&quot;:
-  Floor( Count(
-    &quot;Devices&quot; Devices
-    where Devices.type ~ &quot;Face shield&quot;
-  ) / 10 )"></valueString>
+               <valueString value="define &quot;Face Shield Supply in Days Stratifier&quot;:   Floor( Count(     &quot;Devices&quot; Devices     where Devices.type ~ &quot;Face shield&quot;   ) / 10 )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="31"></valueInteger>
@@ -666,8 +553,7 @@ define &quot;Adult Inpatient COVID_19 Patients Stratifier&quot;:
                <valueString value="Patients"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Patients&quot;:
-  [Patient]"></valueString>
+               <valueString value="define &quot;Patients&quot;:   [Patient]"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="32"></valueInteger>
@@ -681,9 +567,7 @@ define &quot;Adult Inpatient COVID_19 Patients Stratifier&quot;:
                <valueString value="Newly Admitted Encounters"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Newly Admitted Encounters&quot;:
-  &quot;Encounters&quot; Encounters
-  where Encounters.status in { 'in-progress', 'arrived', 'triaged' }"></valueString>
+               <valueString value="define &quot;Newly Admitted Encounters&quot;:   &quot;Encounters&quot; Encounters   where Encounters.status in { 'in-progress', 'arrived', 'triaged' }"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="33"></valueInteger>
@@ -697,8 +581,7 @@ define &quot;Adult Inpatient COVID_19 Patients Stratifier&quot;:
                <valueString value="Newly Admitted RSV Patient IDs"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Newly Admitted RSV Patient IDs&quot;:
-  &quot;Get Confirmed Patient IDs&quot;( &quot;Newly Admitted Encounters&quot;, &quot;RSV Observations&quot; )"></valueString>
+               <valueString value="define &quot;Newly Admitted RSV Patient IDs&quot;:   &quot;Get Confirmed Patient IDs&quot;( &quot;Newly Admitted Encounters&quot;, &quot;RSV Observations&quot; )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="34"></valueInteger>
@@ -712,10 +595,7 @@ define &quot;Adult Inpatient COVID_19 Patients Stratifier&quot;:
                <valueString value="New RSV Patients with Unknown Age Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;New RSV Patients with Unknown Age Stratifier&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs in Bed Location and Unknown Age&quot;( &quot;Newly Admitted RSV Patient IDs&quot; )
-  )"></valueString>
+               <valueString value="define &quot;New RSV Patients with Unknown Age Stratifier&quot;:   Count(     &quot;Get Confirmed Patient IDs in Bed Location and Unknown Age&quot;( &quot;Newly Admitted RSV Patient IDs&quot; )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="35"></valueInteger>
@@ -729,15 +609,7 @@ define &quot;Adult Inpatient COVID_19 Patients Stratifier&quot;:
                <valueString value="Inpatient Beds Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//Initial Populations
-define &quot;Inpatient Beds Initial Population&quot;:
-  IsBedLocation
-  and LocationIsHOSP
-  and (
-    LocationIsIPF
-    or LocationIsIRF
-    or LocationIsCHLD
-  )"></valueString>
+               <valueString value="//Initial Populations define &quot;Inpatient Beds Initial Population&quot;:   IsBedLocation   and LocationIsHOSP   and (     LocationIsIPF     or LocationIsIRF     or LocationIsCHLD   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="36"></valueInteger>
@@ -751,9 +623,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="Occupied Inpatient Beds Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Occupied Inpatient Beds Initial Population&quot;:
-  &quot;Inpatient Beds Initial Population&quot;
-  and EncounterCheck"></valueString>
+               <valueString value="define &quot;Occupied Inpatient Beds Initial Population&quot;:   &quot;Inpatient Beds Initial Population&quot;   and EncounterCheck"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="37"></valueInteger>
@@ -767,10 +637,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="Pediatric ICU COVID_19 Patients Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Pediatric ICU COVID_19 Patients Stratifier&quot;:
-  if &quot;Pediatric ICU Beds Initial Population&quot; then
-    &quot;Count Confirmed COVID_19 Patients in Bed Location&quot;
-  else 0"></valueString>
+               <valueString value="define &quot;Pediatric ICU COVID_19 Patients Stratifier&quot;:   if &quot;Pediatric ICU Beds Initial Population&quot; then     &quot;Count Confirmed COVID_19 Patients in Bed Location&quot;   else 0"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="38"></valueInteger>
@@ -784,11 +651,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="Gown Supply in Days Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Gown Supply in Days Stratifier&quot;:
-  Floor( Count(
-    &quot;Devices&quot; Devices
-    where Devices.type ~ &quot;Patient gown&quot;
-  ) / 5 )"></valueString>
+               <valueString value="define &quot;Gown Supply in Days Stratifier&quot;:   Floor( Count(     &quot;Devices&quot; Devices     where Devices.type ~ &quot;Patient gown&quot;   ) / 5 )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="39"></valueInteger>
@@ -802,10 +665,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="New Adult RSV Patients Between 65 to 74 Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;New Adult RSV Patients Between 65 to 74 Stratifier&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted RSV Patient IDs&quot;, 65, 74 )
-  )"></valueString>
+               <valueString value="define &quot;New Adult RSV Patients Between 65 to 74 Stratifier&quot;:   Count(     &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted RSV Patient IDs&quot;, 65, 74 )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="40"></valueInteger>
@@ -819,10 +679,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="Adult ICU Influenza Patients Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult ICU Influenza Patients Stratifier&quot;:
-  if &quot;Adult ICU Beds Initial Population&quot; then
-    &quot;Count Confirmed Influenza Patients in Bed Location&quot;
-  else 0"></valueString>
+               <valueString value="define &quot;Adult ICU Influenza Patients Stratifier&quot;:   if &quot;Adult ICU Beds Initial Population&quot; then     &quot;Count Confirmed Influenza Patients in Bed Location&quot;   else 0"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="41"></valueInteger>
@@ -836,11 +693,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="Glove Supply in Days Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Glove Supply in Days Stratifier&quot;:
-  Floor( Count(
-    &quot;Devices&quot; Devices
-    where Devices.type ~ &quot;Surgical glove&quot;
-  ) / 15 )"></valueString>
+               <valueString value="define &quot;Glove Supply in Days Stratifier&quot;:   Floor( Count(     &quot;Devices&quot; Devices     where Devices.type ~ &quot;Surgical glove&quot;   ) / 15 )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="42"></valueInteger>
@@ -854,9 +707,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="Glove 3 Day Supply Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Glove 3 Day Supply Stratifier&quot;:
-  if &quot;Glove Supply in Days Stratifier&quot; &gt; 3 then 'y'
-  else 'n'"></valueString>
+               <valueString value="define &quot;Glove 3 Day Supply Stratifier&quot;:   if &quot;Glove Supply in Days Stratifier&quot; &gt; 3 then 'y'   else 'n'"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="43"></valueInteger>
@@ -870,8 +721,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="Newly Admitted COVID_19 Patient IDs"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Newly Admitted COVID_19 Patient IDs&quot;:
-  &quot;Get Confirmed Patient IDs&quot;( &quot;Newly Admitted Encounters&quot;, &quot;COVID_19 Observations&quot; )"></valueString>
+               <valueString value="define &quot;Newly Admitted COVID_19 Patient IDs&quot;:   &quot;Get Confirmed Patient IDs&quot;( &quot;Newly Admitted Encounters&quot;, &quot;COVID_19 Observations&quot; )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="44"></valueInteger>
@@ -885,10 +735,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="New Adult COVID_19 Patients Between 50 to 64 Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;New Adult COVID_19 Patients Between 50 to 64 Stratifier&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted COVID_19 Patient IDs&quot;, 50, 64 )
-  )"></valueString>
+               <valueString value="define &quot;New Adult COVID_19 Patients Between 50 to 64 Stratifier&quot;:   Count(     &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted COVID_19 Patient IDs&quot;, 50, 64 )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="45"></valueInteger>
@@ -902,9 +749,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="Occupied Adult ICU Beds Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Occupied Adult ICU Beds Initial Population&quot;:
-  &quot;Adult ICU Beds Initial Population&quot;
-  and EncounterCheck"></valueString>
+               <valueString value="define &quot;Occupied Adult ICU Beds Initial Population&quot;:   &quot;Adult ICU Beds Initial Population&quot;   and EncounterCheck"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="46"></valueInteger>
@@ -918,11 +763,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="Adult Inpatient Influenza Patients Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//Influenza
-define &quot;Adult Inpatient Influenza Patients Stratifier&quot;:
-  if &quot;Adult Inpatient Beds Initial Population&quot; then
-    &quot;Count Confirmed Influenza Patients in Bed Location&quot;
-  else 0"></valueString>
+               <valueString value="//Influenza define &quot;Adult Inpatient Influenza Patients Stratifier&quot;:   if &quot;Adult Inpatient Beds Initial Population&quot; then     &quot;Count Confirmed Influenza Patients in Bed Location&quot;   else 0"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="47"></valueInteger>
@@ -936,10 +777,7 @@ define &quot;Adult Inpatient Influenza Patients Stratifier&quot;:
                <valueString value="New Pediatric COVID_19 Patients Between 0 to 4 Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;New Pediatric COVID_19 Patients Between 0 to 4 Stratifier&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted COVID_19 Patient IDs&quot; , 0, 4 )
-  )"></valueString>
+               <valueString value="define &quot;New Pediatric COVID_19 Patients Between 0 to 4 Stratifier&quot;:   Count(     &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted COVID_19 Patient IDs&quot; , 0, 4 )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="48"></valueInteger>
@@ -953,10 +791,7 @@ define &quot;Adult Inpatient Influenza Patients Stratifier&quot;:
                <valueString value="Pediatric Inpatient RSV Patients Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Pediatric Inpatient RSV Patients Stratifier&quot;:
-  if &quot;Pediatric Inpatient Beds Initial Population&quot; then
-    &quot;Count Confirmed RSV Patients in Bed Location&quot;
-  else 0"></valueString>
+               <valueString value="define &quot;Pediatric Inpatient RSV Patients Stratifier&quot;:   if &quot;Pediatric Inpatient Beds Initial Population&quot; then     &quot;Count Confirmed RSV Patients in Bed Location&quot;   else 0"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="49"></valueInteger>
@@ -970,10 +805,7 @@ define &quot;Adult Inpatient Influenza Patients Stratifier&quot;:
                <valueString value="New Pediatric RSV Patients Between 0 to 4 Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;New Pediatric RSV Patients Between 0 to 4 Stratifier&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted RSV Patient IDs&quot; , 0, 4 )
-  )"></valueString>
+               <valueString value="define &quot;New Pediatric RSV Patients Between 0 to 4 Stratifier&quot;:   Count(     &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted RSV Patient IDs&quot; , 0, 4 )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="50"></valueInteger>
@@ -987,12 +819,7 @@ define &quot;Adult Inpatient Influenza Patients Stratifier&quot;:
                <valueString value="N95 Mask Supply in Days Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//Devices (Supply is divided by average used per day (estimated))
-define &quot;N95 Mask Supply in Days Stratifier&quot;:
-  Floor( Count(
-    &quot;Devices&quot; Devices
-    where Devices.type ~ &quot;N95 mask&quot;
-  ) / 10 )"></valueString>
+               <valueString value="//Devices (Supply is divided by average used per day (estimated)) define &quot;N95 Mask Supply in Days Stratifier&quot;:   Floor( Count(     &quot;Devices&quot; Devices     where Devices.type ~ &quot;N95 mask&quot;   ) / 10 )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="51"></valueInteger>
@@ -1006,10 +833,7 @@ define &quot;N95 Mask Supply in Days Stratifier&quot;:
                <valueString value="New Pediatric COVID_19 Patients Between 5 to 17 Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;New Pediatric COVID_19 Patients Between 5 to 17 Stratifier&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted COVID_19 Patient IDs&quot;, 5, 17 )
-  )"></valueString>
+               <valueString value="define &quot;New Pediatric COVID_19 Patients Between 5 to 17 Stratifier&quot;:   Count(     &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted COVID_19 Patient IDs&quot;, 5, 17 )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="52"></valueInteger>
@@ -1023,10 +847,7 @@ define &quot;N95 Mask Supply in Days Stratifier&quot;:
                <valueString value="New Adult RSV Patients Between 50 to 64 Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;New Adult RSV Patients Between 50 to 64 Stratifier&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted RSV Patient IDs&quot;, 50, 64 )
-  )"></valueString>
+               <valueString value="define &quot;New Adult RSV Patients Between 50 to 64 Stratifier&quot;:   Count(     &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted RSV Patient IDs&quot;, 50, 64 )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="53"></valueInteger>
@@ -1040,10 +861,7 @@ define &quot;N95 Mask Supply in Days Stratifier&quot;:
                <valueString value="New Adult COVID_19 Patients Between 65 to 74 Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;New Adult COVID_19 Patients Between 65 to 74 Stratifier&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted COVID_19 Patient IDs&quot;, 65, 74 )
-  )"></valueString>
+               <valueString value="define &quot;New Adult COVID_19 Patients Between 65 to 74 Stratifier&quot;:   Count(     &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted COVID_19 Patient IDs&quot;, 65, 74 )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="54"></valueInteger>
@@ -1057,8 +875,7 @@ define &quot;N95 Mask Supply in Days Stratifier&quot;:
                <valueString value="Newly Admitted Influenza Patient IDs"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Newly Admitted Influenza Patient IDs&quot;:
-  &quot;Get Confirmed Patient IDs&quot;( &quot;Newly Admitted Encounters&quot;, &quot;Influenza Observations&quot; )"></valueString>
+               <valueString value="define &quot;Newly Admitted Influenza Patient IDs&quot;:   &quot;Get Confirmed Patient IDs&quot;( &quot;Newly Admitted Encounters&quot;, &quot;Influenza Observations&quot; )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="55"></valueInteger>
@@ -1072,10 +889,7 @@ define &quot;N95 Mask Supply in Days Stratifier&quot;:
                <valueString value="New Pediatric Influenza Patients Between 5 to 17 Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;New Pediatric Influenza Patients Between 5 to 17 Stratifier&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted Influenza Patient IDs&quot;, 5, 17 )
-  )"></valueString>
+               <valueString value="define &quot;New Pediatric Influenza Patients Between 5 to 17 Stratifier&quot;:   Count(     &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted Influenza Patient IDs&quot;, 5, 17 )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="56"></valueInteger>
@@ -1089,12 +903,7 @@ define &quot;N95 Mask Supply in Days Stratifier&quot;:
                <valueString value="ICU Beds Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;ICU Beds Initial Population&quot;:
-  IsBedLocation
-  and (
-    LocationIsHOSP
-    or LocationIsOTH
-  )"></valueString>
+               <valueString value="define &quot;ICU Beds Initial Population&quot;:   IsBedLocation   and (     LocationIsHOSP     or LocationIsOTH   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="57"></valueInteger>
@@ -1108,10 +917,7 @@ define &quot;N95 Mask Supply in Days Stratifier&quot;:
                <valueString value="Adult ICU RSV Patients Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult ICU RSV Patients Stratifier&quot;:
-  if &quot;Adult ICU Beds Initial Population&quot; then
-    &quot;Count Confirmed RSV Patients in Bed Location&quot;
-  else 0"></valueString>
+               <valueString value="define &quot;Adult ICU RSV Patients Stratifier&quot;:   if &quot;Adult ICU Beds Initial Population&quot; then     &quot;Count Confirmed RSV Patients in Bed Location&quot;   else 0"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="58"></valueInteger>
@@ -1125,10 +931,7 @@ define &quot;N95 Mask Supply in Days Stratifier&quot;:
                <valueString value="New Adult Influenza Patients Between 18 to 49 Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;New Adult Influenza Patients Between 18 to 49 Stratifier&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted Influenza Patient IDs&quot;, 18, 49 )
-  )"></valueString>
+               <valueString value="define &quot;New Adult Influenza Patients Between 18 to 49 Stratifier&quot;:   Count(     &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted Influenza Patient IDs&quot;, 18, 49 )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="59"></valueInteger>
@@ -1142,10 +945,7 @@ define &quot;N95 Mask Supply in Days Stratifier&quot;:
                <valueString value="New Adult RSV Patients 75 and Above Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;New Adult RSV Patients 75 and Above Stratifier&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs in Bed Location Above Specified Age&quot;( &quot;Newly Admitted RSV Patient IDs&quot;, 75 )
-  )"></valueString>
+               <valueString value="define &quot;New Adult RSV Patients 75 and Above Stratifier&quot;:   Count(     &quot;Get Confirmed Patient IDs in Bed Location Above Specified Age&quot;( &quot;Newly Admitted RSV Patient IDs&quot;, 75 )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="60"></valueInteger>
@@ -1159,14 +959,7 @@ define &quot;N95 Mask Supply in Days Stratifier&quot;:
                <valueString value="Pediatric Inpatient Beds Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Pediatric Inpatient Beds Initial Population&quot;:
-  IsBedLocation
-  and LocationIsHOSP
-  and LocationIsCHLD
-  and not (
-    LocationIsIPF
-    or LocationIsIRF
-  )"></valueString>
+               <valueString value="define &quot;Pediatric Inpatient Beds Initial Population&quot;:   IsBedLocation   and LocationIsHOSP   and LocationIsCHLD   and not (     LocationIsIPF     or LocationIsIRF   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="61"></valueInteger>
@@ -1180,10 +973,7 @@ define &quot;N95 Mask Supply in Days Stratifier&quot;:
                <valueString value="New Adult Influenza Patients Between 50 to 64 Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;New Adult Influenza Patients Between 50 to 64 Stratifier&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted Influenza Patient IDs&quot;, 50, 64 )
-  )"></valueString>
+               <valueString value="define &quot;New Adult Influenza Patients Between 50 to 64 Stratifier&quot;:   Count(     &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted Influenza Patient IDs&quot;, 50, 64 )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="62"></valueInteger>
@@ -1197,10 +987,7 @@ define &quot;N95 Mask Supply in Days Stratifier&quot;:
                <valueString value="New Pediatric Influenza Patients Between 0 to 4 Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;New Pediatric Influenza Patients Between 0 to 4 Stratifier&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted Influenza Patient IDs&quot; , 0, 4 )
-  )"></valueString>
+               <valueString value="define &quot;New Pediatric Influenza Patients Between 0 to 4 Stratifier&quot;:   Count(     &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted Influenza Patient IDs&quot; , 0, 4 )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="63"></valueInteger>
@@ -1214,12 +1001,7 @@ define &quot;N95 Mask Supply in Days Stratifier&quot;:
                <valueString value="N95 Mask Supply in Days Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//Devices (Supply is divided by average used per day (estimated))
-define &quot;N95 Mask Supply in Days Stratifier&quot;:
-  Floor( Count(
-    &quot;Devices&quot; Devices
-    where Devices.type ~ &quot;N95 mask&quot;
-  ) / 10 )"></valueString>
+               <valueString value="//Devices (Supply is divided by average used per day (estimated)) define &quot;N95 Mask Supply in Days Stratifier&quot;:   Floor( Count(     &quot;Devices&quot; Devices     where Devices.type ~ &quot;N95 mask&quot;   ) / 10 )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="64"></valueInteger>
@@ -1233,9 +1015,7 @@ define &quot;N95 Mask Supply in Days Stratifier&quot;:
                <valueString value="N95 Mask 3 Day Supply Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;N95 Mask 3 Day Supply Stratifier&quot;:
-  if &quot;N95 Mask Supply in Days Stratifier&quot; &gt; 3 then 'y'
-  else 'n'"></valueString>
+               <valueString value="define &quot;N95 Mask 3 Day Supply Stratifier&quot;:   if &quot;N95 Mask Supply in Days Stratifier&quot; &gt; 3 then 'y'   else 'n'"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="65"></valueInteger>
@@ -1249,11 +1029,7 @@ define &quot;N95 Mask Supply in Days Stratifier&quot;:
                <valueString value="Adult Inpatient RSV Patients Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//RSV
-define &quot;Adult Inpatient RSV Patients Stratifier&quot;:
-  if &quot;Adult Inpatient Beds Initial Population&quot; then
-    &quot;Count Confirmed RSV Patients in Bed Location&quot;
-  else 0"></valueString>
+               <valueString value="//RSV define &quot;Adult Inpatient RSV Patients Stratifier&quot;:   if &quot;Adult Inpatient Beds Initial Population&quot; then     &quot;Count Confirmed RSV Patients in Bed Location&quot;   else 0"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="66"></valueInteger>
@@ -1267,13 +1043,7 @@ define &quot;Adult Inpatient RSV Patients Stratifier&quot;:
                <valueString value="Pediatric ICU Beds Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Pediatric ICU Beds Initial Population&quot;:
-  IsBedLocation
-  and LocationIsCHLD
-  and (
-    LocationIsHOSP
-    or LocationIsOTH
-  )"></valueString>
+               <valueString value="define &quot;Pediatric ICU Beds Initial Population&quot;:   IsBedLocation   and LocationIsCHLD   and (     LocationIsHOSP     or LocationIsOTH   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="67"></valueInteger>
@@ -1287,10 +1057,7 @@ define &quot;Adult Inpatient RSV Patients Stratifier&quot;:
                <valueString value="New Adult RSV Patients Between 18 to 49 Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;New Adult RSV Patients Between 18 to 49 Stratifier&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted RSV Patient IDs&quot;, 18, 49 )
-  )"></valueString>
+               <valueString value="define &quot;New Adult RSV Patients Between 18 to 49 Stratifier&quot;:   Count(     &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted RSV Patient IDs&quot;, 18, 49 )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="68"></valueInteger>
@@ -1304,9 +1071,7 @@ define &quot;Adult Inpatient RSV Patients Stratifier&quot;:
                <valueString value="Occupied Adult Inpatient Beds Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Occupied Adult Inpatient Beds Initial Population&quot;:
-  &quot;Adult Inpatient Beds Initial Population&quot;
-  and EncounterCheck"></valueString>
+               <valueString value="define &quot;Occupied Adult Inpatient Beds Initial Population&quot;:   &quot;Adult Inpatient Beds Initial Population&quot;   and EncounterCheck"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="69"></valueInteger>
@@ -1320,10 +1085,7 @@ define &quot;Adult Inpatient RSV Patients Stratifier&quot;:
                <valueString value="New Adult COVID_19 Patients Between 18 to 49 Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;New Adult COVID_19 Patients Between 18 to 49 Stratifier&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted COVID_19 Patient IDs&quot;, 18, 49 )
-  )"></valueString>
+               <valueString value="define &quot;New Adult COVID_19 Patients Between 18 to 49 Stratifier&quot;:   Count(     &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted COVID_19 Patient IDs&quot;, 18, 49 )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="70"></valueInteger>
@@ -1337,11 +1099,7 @@ define &quot;Adult Inpatient RSV Patients Stratifier&quot;:
                <valueString value="OR Surgical Mask Supply in Days Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;OR Surgical Mask Supply in Days Stratifier&quot;:
-  Floor( Count(
-    &quot;Devices&quot; Devices
-    where Devices.type ~ &quot;Surgical mask&quot;
-  ) / 10 )"></valueString>
+               <valueString value="define &quot;OR Surgical Mask Supply in Days Stratifier&quot;:   Floor( Count(     &quot;Devices&quot; Devices     where Devices.type ~ &quot;Surgical mask&quot;   ) / 10 )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="71"></valueInteger>
@@ -1355,9 +1113,7 @@ define &quot;Adult Inpatient RSV Patients Stratifier&quot;:
                <valueString value="OR Surgical Mask 3 Day Supply Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;OR Surgical Mask 3 Day Supply Stratifier&quot;:
-  if &quot;OR Surgical Mask Supply in Days Stratifier&quot; &gt; 3 then 'y'
-  else 'n'"></valueString>
+               <valueString value="define &quot;OR Surgical Mask 3 Day Supply Stratifier&quot;:   if &quot;OR Surgical Mask Supply in Days Stratifier&quot; &gt; 3 then 'y'   else 'n'"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="72"></valueInteger>
@@ -1371,14 +1127,7 @@ define &quot;Adult Inpatient RSV Patients Stratifier&quot;:
                <valueString value="Adult Inpatient Beds Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Adult Inpatient Beds Initial Population&quot;:
-  IsBedLocation
-  and LocationIsHOSP
-  and (
-    LocationIsIPF
-    or LocationIsIRF
-  )
-  and not LocationIsCHLD"></valueString>
+               <valueString value="define &quot;Adult Inpatient Beds Initial Population&quot;:   IsBedLocation   and LocationIsHOSP   and (     LocationIsIPF     or LocationIsIRF   )   and not LocationIsCHLD"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="73"></valueInteger>
@@ -1392,12 +1141,7 @@ define &quot;Adult Inpatient RSV Patients Stratifier&quot;:
                <valueString value="ICU Beds Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;ICU Beds Initial Population&quot;:
-  IsBedLocation
-  and (
-    LocationIsHOSP
-    or LocationIsOTH
-  )"></valueString>
+               <valueString value="define &quot;ICU Beds Initial Population&quot;:   IsBedLocation   and (     LocationIsHOSP     or LocationIsOTH   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="74"></valueInteger>
@@ -1411,9 +1155,7 @@ define &quot;Adult Inpatient RSV Patients Stratifier&quot;:
                <valueString value="Occupied ICU Beds Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Occupied ICU Beds Initial Population&quot;:
-  &quot;ICU Beds Initial Population&quot;
-  and EncounterCheck"></valueString>
+               <valueString value="define &quot;Occupied ICU Beds Initial Population&quot;:   &quot;ICU Beds Initial Population&quot;   and EncounterCheck"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="75"></valueInteger>
@@ -1427,10 +1169,7 @@ define &quot;Adult Inpatient RSV Patients Stratifier&quot;:
                <valueString value="New Influenza Patients with Unknown Age Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;New Influenza Patients with Unknown Age Stratifier&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs in Bed Location and Unknown Age&quot;( &quot;Newly Admitted Influenza Patient IDs&quot; )
-  )"></valueString>
+               <valueString value="define &quot;New Influenza Patients with Unknown Age Stratifier&quot;:   Count(     &quot;Get Confirmed Patient IDs in Bed Location and Unknown Age&quot;( &quot;Newly Admitted Influenza Patient IDs&quot; )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="76"></valueInteger>
@@ -1444,10 +1183,7 @@ define &quot;Adult Inpatient RSV Patients Stratifier&quot;:
                <valueString value="Pediatric ICU Influenza Patients Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Pediatric ICU Influenza Patients Stratifier&quot;:
-  if &quot;Pediatric ICU Beds Initial Population&quot; then
-    &quot;Count Confirmed Influenza Patients in Bed Location&quot;
-  else 0"></valueString>
+               <valueString value="define &quot;Pediatric ICU Influenza Patients Stratifier&quot;:   if &quot;Pediatric ICU Beds Initial Population&quot; then     &quot;Count Confirmed Influenza Patients in Bed Location&quot;   else 0"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="77"></valueInteger>
@@ -1461,10 +1197,7 @@ define &quot;Adult Inpatient RSV Patients Stratifier&quot;:
                <valueString value="New Adult Influenza Patients Between 65 to 74 Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;New Adult Influenza Patients Between 65 to 74 Stratifier&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted Influenza Patient IDs&quot;, 65, 74 )
-  )"></valueString>
+               <valueString value="define &quot;New Adult Influenza Patients Between 65 to 74 Stratifier&quot;:   Count(     &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted Influenza Patient IDs&quot;, 65, 74 )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="78"></valueInteger>
@@ -1478,10 +1211,7 @@ define &quot;Adult Inpatient RSV Patients Stratifier&quot;:
                <valueString value="New Pediatric RSV Patients Between 5 to 17 Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;New Pediatric RSV Patients Between 5 to 17 Stratifier&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted RSV Patient IDs&quot;, 5, 17 )
-  )"></valueString>
+               <valueString value="define &quot;New Pediatric RSV Patients Between 5 to 17 Stratifier&quot;:   Count(     &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( &quot;Newly Admitted RSV Patient IDs&quot;, 5, 17 )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="79"></valueInteger>
@@ -1495,10 +1225,7 @@ define &quot;Adult Inpatient RSV Patients Stratifier&quot;:
                <valueString value="Pediatric Inpatient COVID_19 Patients Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Pediatric Inpatient COVID_19 Patients Stratifier&quot;:
-  if &quot;Pediatric Inpatient Beds Initial Population&quot; then
-    &quot;Count Confirmed COVID_19 Patients in Bed Location&quot;
-  else 0"></valueString>
+               <valueString value="define &quot;Pediatric Inpatient COVID_19 Patients Stratifier&quot;:   if &quot;Pediatric Inpatient Beds Initial Population&quot; then     &quot;Count Confirmed COVID_19 Patients in Bed Location&quot;   else 0"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="80"></valueInteger>
@@ -1512,9 +1239,7 @@ define &quot;Adult Inpatient RSV Patients Stratifier&quot;:
                <valueString value="Occupied Pediatric Inpatient Beds Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;Occupied Pediatric Inpatient Beds Initial Population&quot;:
-  &quot;Pediatric Inpatient Beds Initial Population&quot;
-  and EncounterCheck"></valueString>
+               <valueString value="define &quot;Occupied Pediatric Inpatient Beds Initial Population&quot;:   &quot;Pediatric Inpatient Beds Initial Population&quot;   and EncounterCheck"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="81"></valueInteger>
@@ -1528,15 +1253,7 @@ define &quot;Adult Inpatient RSV Patients Stratifier&quot;:
                <valueString value="Inpatient Beds Initial Population"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="//Initial Populations
-define &quot;Inpatient Beds Initial Population&quot;:
-  IsBedLocation
-  and LocationIsHOSP
-  and (
-    LocationIsIPF
-    or LocationIsIRF
-    or LocationIsCHLD
-  )"></valueString>
+               <valueString value="//Initial Populations define &quot;Inpatient Beds Initial Population&quot;:   IsBedLocation   and LocationIsHOSP   and (     LocationIsIPF     or LocationIsIRF     or LocationIsCHLD   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="82"></valueInteger>
@@ -1550,10 +1267,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="New Adult COVID_19 Patients 75 and Above Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;New Adult COVID_19 Patients 75 and Above Stratifier&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs in Bed Location Above Specified Age&quot;( &quot;Newly Admitted COVID_19 Patient IDs&quot;, 75 )
-  )"></valueString>
+               <valueString value="define &quot;New Adult COVID_19 Patients 75 and Above Stratifier&quot;:   Count(     &quot;Get Confirmed Patient IDs in Bed Location Above Specified Age&quot;( &quot;Newly Admitted COVID_19 Patient IDs&quot;, 75 )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="83"></valueInteger>
@@ -1567,10 +1281,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="New COVID_19 Patients with Unknown Age Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;New COVID_19 Patients with Unknown Age Stratifier&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs in Bed Location and Unknown Age&quot;( &quot;Newly Admitted COVID_19 Patient IDs&quot; )
-  )"></valueString>
+               <valueString value="define &quot;New COVID_19 Patients with Unknown Age Stratifier&quot;:   Count(     &quot;Get Confirmed Patient IDs in Bed Location and Unknown Age&quot;( &quot;Newly Admitted COVID_19 Patient IDs&quot; )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="84"></valueInteger>
@@ -1584,10 +1295,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="New Adult Influenza Patients 75 and Above Stratifier"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define &quot;New Adult Influenza Patients 75 and Above Stratifier&quot;:
-  Count(
-    &quot;Get Confirmed Patient IDs in Bed Location Above Specified Age&quot;( &quot;Newly Admitted Influenza Patient IDs&quot;, 75 )
-  )"></valueString>
+               <valueString value="define &quot;New Adult Influenza Patients 75 and Above Stratifier&quot;:   Count(     &quot;Get Confirmed Patient IDs in Bed Location Above Specified Age&quot;( &quot;Newly Admitted Influenza Patient IDs&quot;, 75 )   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="85"></valueInteger>
@@ -1601,14 +1309,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="ToConcept"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define function ToConcept(concept FHIR.CodeableConcept):
-    if concept is null then
-        null
-    else
-        System.Concept {
-            codes: concept.coding C return ToCode(C),
-            display: concept.text.value
-        }"></valueString>
+               <valueString value="define function ToConcept(concept FHIR.CodeableConcept):     if concept is null then         null     else         System.Concept {             codes: concept.coding C return ToCode(C),             display: concept.text.value         }"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="86"></valueInteger>
@@ -1622,16 +1323,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="ToCode"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define function ToCode(coding FHIR.Coding):
-    if coding is null then
-        null
-    else
-        System.Code {
-          code: coding.code.value,
-          system: coding.system.value,
-          version: coding.version.value,
-          display: coding.display.value
-        }"></valueString>
+               <valueString value="define function ToCode(coding FHIR.Coding):     if coding is null then         null     else         System.Code {           code: coding.code.value,           system: coding.system.value,           version: coding.version.value,           display: coding.display.value         }"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="87"></valueInteger>
@@ -1645,14 +1337,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="ToInterval"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define function ToInterval(period FHIR.Period):
-    if period is null then
-        null
-    else
-        if period.&quot;start&quot; is null then
-            Interval(period.&quot;start&quot;.value, period.&quot;end&quot;.value]
-        else
-            Interval[period.&quot;start&quot;.value, period.&quot;end&quot;.value]"></valueString>
+               <valueString value="define function ToInterval(period FHIR.Period):     if period is null then         null     else         if period.&quot;start&quot; is null then             Interval(period.&quot;start&quot;.value, period.&quot;end&quot;.value]         else             Interval[period.&quot;start&quot;.value, period.&quot;end&quot;.value]"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="88"></valueInteger>
@@ -1666,21 +1351,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="Get Confirmed Patient IDs"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define function &quot;Get Confirmed Patient IDs&quot;( Encounters List&lt;FHIR.Encounter&gt;, Observations List&lt;FHIR.Observation&gt; ):
-  Distinct(
-    Encounters Encounter
-    where exists(
-      Observations Labs
-      where exists(
-        Labs.category category
-        where category ~ &quot;laboratory&quot;
-      )
-      and Encounter.subject = Labs.subject
-      and Labs.value ~ &quot;detected&quot;
-      and &quot;Normalize Interval&quot;( Labs.effective ) overlaps Encounter.period
-    )
-    return Encounter.subject
-  )"></valueString>
+               <valueString value="define function &quot;Get Confirmed Patient IDs&quot;( Encounters List&lt;FHIR.Encounter&gt;, Observations List&lt;FHIR.Observation&gt; ):   Distinct(     Encounters Encounter     where exists(       Observations Labs       where exists(         Labs.category category         where category ~ &quot;laboratory&quot;       )       and Encounter.subject = Labs.subject       and Labs.value ~ &quot;detected&quot;       and &quot;Normalize Interval&quot;( Labs.effective ) overlaps Encounter.period     )     return Encounter.subject   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="89"></valueInteger>
@@ -1694,19 +1365,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="Normalize Interval"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define function &quot;Normalize Interval&quot;( choice Choice&lt;FHIR.dateTime, FHIR.Period, FHIR.Timing, FHIR.instant&gt; ):
-  case
-	  when choice is FHIR.dateTime then
-    	Interval[FHIRHelpers.ToDateTime(choice as FHIR.dateTime), FHIRHelpers.ToDateTime(choice as FHIR.dateTime)]
-		when choice is FHIR.Period then
-  		FHIRHelpers.ToInterval(choice as FHIR.Period)
-		when choice is FHIR.instant then
-			Interval[FHIRHelpers.ToDateTime(choice as FHIR.instant), FHIRHelpers.ToDateTime(choice as FHIR.instant)]
-		when choice is FHIR.Timing then
-		  Message(null as Interval&lt;DateTime&gt;, true, '1', 'Error', 'Cannot compute a single interval from a Timing type')
-		else
-			null as Interval&lt;DateTime&gt;
-	end"></valueString>
+               <valueString value="define function &quot;Normalize Interval&quot;( choice Choice&lt;FHIR.dateTime, FHIR.Period, FHIR.Timing, FHIR.instant&gt; ):   case    when choice is FHIR.dateTime then      Interval[FHIRHelpers.ToDateTime(choice as FHIR.dateTime), FHIRHelpers.ToDateTime(choice as FHIR.dateTime)]   when choice is FHIR.Period then     FHIRHelpers.ToInterval(choice as FHIR.Period)   when choice is FHIR.instant then    Interval[FHIRHelpers.ToDateTime(choice as FHIR.instant), FHIRHelpers.ToDateTime(choice as FHIR.instant)]   when choice is FHIR.Timing then     Message(null as Interval&lt;DateTime&gt;, true, '1', 'Error', 'Cannot compute a single interval from a Timing type')   else    null as Interval&lt;DateTime&gt;  end"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="90"></valueInteger>
@@ -1748,13 +1407,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="Get Confirmed Patient IDs in Bed Location and Unknown Age"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define function &quot;Get Confirmed Patient IDs in Bed Location and Unknown Age&quot;( PatientIDs List&lt;FHIR.Reference&gt; ):
-  PatientIDs PatientID
-  where exists(
-    &quot;Patients&quot; Patients
-    where Patients.id = GetId( PatientID.reference )
-    and Patients.birthDate = null
-  )"></valueString>
+               <valueString value="define function &quot;Get Confirmed Patient IDs in Bed Location and Unknown Age&quot;( PatientIDs List&lt;FHIR.Reference&gt; ):   PatientIDs PatientID   where exists(     &quot;Patients&quot; Patients     where Patients.id = GetId( PatientID.reference )     and Patients.birthDate = null   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="93"></valueInteger>
@@ -1782,8 +1435,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="GetId"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define function &quot;GetId&quot;( uri String ):
-  Last(Split(uri, '/'))"></valueString>
+               <valueString value="define function &quot;GetId&quot;( uri String ):   Last(Split(uri, '/'))"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="95"></valueInteger>
@@ -1811,15 +1463,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="Get Confirmed Patient IDs in Bed Location Between Specified Ages"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define function &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( PatientIDs List&lt;FHIR.Reference&gt;, low System.Integer, high System.Integer ):
-  PatientIDs PatientID
-  where exists(
-    &quot;Patients&quot; Patients
-    let PatientAge: CalculateAgeInYearsAt( Patients.birthDate, start of &quot;Measurement Period&quot; )
-    where Patients.id = GetId( PatientID.reference )
-    and PatientAge &gt;= low
-    and PatientAge &lt;= high
-  )"></valueString>
+               <valueString value="define function &quot;Get Confirmed Patient IDs in Bed Location Between Specified Ages&quot;( PatientIDs List&lt;FHIR.Reference&gt;, low System.Integer, high System.Integer ):   PatientIDs PatientID   where exists(     &quot;Patients&quot; Patients     let PatientAge: CalculateAgeInYearsAt( Patients.birthDate, start of &quot;Measurement Period&quot; )     where Patients.id = GetId( PatientID.reference )     and PatientAge &gt;= low     and PatientAge &lt;= high   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="97"></valueInteger>
@@ -1847,14 +1491,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
                <valueString value="Get Confirmed Patient IDs in Bed Location Above Specified Age"></valueString>
             </extension>
             <extension url="statement">
-               <valueString value="define function &quot;Get Confirmed Patient IDs in Bed Location Above Specified Age&quot;( PatientIDs List&lt;FHIR.Reference&gt;, age System.Integer ):
-  PatientIDs PatientID
-  where exists(
-    &quot;Patients&quot; Patients
-    let PatientAge: CalculateAgeInYearsAt( Patients.birthDate, start of &quot;Measurement Period&quot; )
-    where Patients.id = GetId( PatientID.reference )
-    and PatientAge &gt;= age
-  )"></valueString>
+               <valueString value="define function &quot;Get Confirmed Patient IDs in Bed Location Above Specified Age&quot;( PatientIDs List&lt;FHIR.Reference&gt;, age System.Integer ):   PatientIDs PatientID   where exists(     &quot;Patients&quot; Patients     let PatientAge: CalculateAgeInYearsAt( Patients.birthDate, start of &quot;Measurement Period&quot; )     where Patients.id = GetId( PatientID.reference )     and PatientAge &gt;= age   )"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="99"></valueInteger>

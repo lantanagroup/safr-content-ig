@@ -1609,29 +1609,6 @@
                <valueString value="FHIRHelpers"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="ToCode"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define function ToCode(coding FHIR.Coding):
-    if coding is null then
-        null
-    else
-        System.Code {
-          code: coding.code.value,
-          system: coding.system.value,
-          version: coding.version.value,
-          display: coding.display.value
-        }"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="85"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="FHIRHelpers"></valueString>
-            </extension>
-            <extension url="name">
                <valueString value="ToInterval"></valueString>
             </extension>
             <extension url="statement">
@@ -1678,12 +1655,12 @@
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library FHIRHelpers"></display>
-            <resource value="http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1"></resource>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/Library/FHIRHelpers|4.0.1"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Code system LocationPhysicalType"></display>
-            <resource value="http://terminology.hl7.org/CodeSystem/location-physical-type|2.0.1"></resource>
+            <resource value="http://terminology.hl7.org/CodeSystem/location-physical-type"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -2333,7 +2310,7 @@
    <title value="Bed Capacity Measure"></title>
    <status value="draft"></status>
    <experimental value="true"></experimental>
-   <date value="2026-03-09T13:53:49-04:00"></date>
+   <date value="2026-03-27T16:59:59-04:00"></date>
    <publisher value="Lantana Consulting Group"></publisher>
    <description value="Bed Capacity Measure Example includes counts of specific bed types within the context of a given healthcare context or setting."></description>
    <library value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/Library/BedCapacityMeasure"></library>
