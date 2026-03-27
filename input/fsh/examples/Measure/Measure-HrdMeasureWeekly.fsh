@@ -26,7 +26,7 @@ Usage: #example
 * contact.telecom.value = "http://www.hl7.org/Special/committees/pher"
 * description = "US Situational Awareness Framework for Reporting - Hospital Respiratory Data Measure"
 * jurisdiction = urn:iso:std:iso:3166#US "United States of America"
-* library = "http://www.cdc.gov/nhsn/us-safr/Library/HrdMeasureLibrary"
+* library = "http://www.cdc.gov/nhsn/fhirportal/safr/ig/Library/HrdMeasureLibrary"
 * scoring = $measure-scoring#cohort "Cohort"
 * type = $MeasureTypeCS#structure "Structure"
 * group[0].code = $hrd-example-codes#numInPtBeds

@@ -15,7 +15,7 @@ fi
 echo "$txoption"
 
 sushi .
-cp ./fsh-generated/resources/ImplementationGuide-gov.cdc.nhsn.us-safr.json ./input/data/ig.json
+cp ./fsh-generated/resources/ImplementationGuide-gov.cdc.nhsn.safr.json ./input/data/ig.json
 
 export JAVA_TOOL_OPTIONS="$JAVA_TOOL_OPTIONS -Dfile.encoding=UTF-8"
 

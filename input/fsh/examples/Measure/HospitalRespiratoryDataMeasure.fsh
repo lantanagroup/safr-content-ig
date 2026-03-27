@@ -1,6 +1,6 @@
 
 Instance: HRDMeasureBundle
-InstanceOf: USSafrMeasureBundle
+InstanceOf: SafrMeasureBundle
 Title: "Bundle - HRD Measure Bundle Example"
 Description: "This Bundle resource is an example of a Hospital Respiratory Data (HRD) Measure Bundle."
 Usage: #example

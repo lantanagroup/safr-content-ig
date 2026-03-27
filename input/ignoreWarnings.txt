@@ -7,8 +7,8 @@ INFORMATION: CodeSystem/us-safr-hrd-example-codes: CodeSystem: Most code systems
 INFORMATION: CodeSystem/us-safr-hrd-supply-days-example-codes: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
 
 # 02 - Information Message about using experimental CodeSystem. The code system is only for example use in this IG and only used by example resources. The CodeSystem follows the requirements on TSMG
-Reference to experimental CodeSystem http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-bed-capacity-group-example-codes|1.0.0
-Reference to experimental CodeSystem http://www.cdc.gov/nshn/us-safr/CodeSystem/us-safr-hrd-example-codes|1.0.0
+Reference to experimental CodeSystem http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-bed-capacity-group-example-codes|1.0.0
+Reference to experimental CodeSystem http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-hrd-example-codes|1.0.0
 
 
 
@@ -31,8 +31,8 @@ The expression language text/cql-identifier is not supported, so can't be valida
 WARNING: StructureDefinition/us-safr-submitting-organization: StructureDefinition.snapshot.element[35].binding.valueSet: There are multiple different potential matches for the url 'http://hl7.org/fhir/us/core/ValueSet/us-core-usps-state'. It might be a good idea to fix to the correct version to reduce the likelihood of a wrong version being selected by an implementation/implementer. Using version '7.0.0', found versions: 3.1.1, 6.1.0, 7.0.0. Suggested fix: change the canonical reference from 'http://hl7.org/fhir/us/core/ValueSet/us-core-usps-state' to 'http://hl7.org/fhir/us/core/ValueSet/us-core-usps-state|7.0.0'
 
 # 08 - This IG is using the last published balloted version of DEQM and will change to a published version of DEQM before publishing
-WARNING: ImplementationGuide/gov.cdc.nhsn.ussafr: ImplementationGuide.dependsOn[6]: The ImplementationGuide uses package hl7.fhir.us.davinci-deqm#5.0.0-ballot released on 2024-08-27, but the most recent appropriate version is 4.0.0. This reference is getting old and the more recent version should be considered
+WARNING: ImplementationGuide/gov.cdc.nhsn.safr: ImplementationGuide.dependsOn[6]: The ImplementationGuide uses package hl7.fhir.us.davinci-deqm#5.0.0-ballot released on 2024-08-27, but the most recent appropriate version is 4.0.0. This reference is getting old and the more recent version should be considered
 
 # 10 - The entry in bundle represents data included per the requirements of the IG (All referenced resources must be included in bundle), but not explicitly identified as a slice.
-INFORMATION: Bundle/HospitalBedCapacityReportBundle: Bundle.entry[3]: This element does not match any known slice defined in the profile http://www.cdc.gov/nshn/us-safr/StructureDefinition/us-safr-measurereport-bundle|1.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Bundle/HRDMeasureReportBundle: Bundle.entry[3]: This element does not match any known slice defined in the profile http://www.cdc.gov/nshn/us-safr/StructureDefinition/us-safr-measurereport-bundle|1.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Bundle/HospitalBedCapacityReportBundle: Bundle.entry[3]: This element does not match any known slice defined in the profile http://www.cdc.gov/nhsn/fhirportal/safr/ig/StructureDefinition/us-safr-measurereport-bundle|1.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Bundle/HRDMeasureReportBundle: Bundle.entry[3]: This element does not match any known slice defined in the profile http://www.cdc.gov/nhsn/fhirportal/safr/ig/StructureDefinition/us-safr-measurereport-bundle|1.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)

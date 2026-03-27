@@ -3,7 +3,7 @@ InstanceOf: CRMIComputableLibrary|1.0.0
 Title: "Library - HRD Measure Example"
 Description: "This library contains CQL logic for evaluating structural measures related to hospital respiratory disease reporting capabilities"
 Usage: #example
-* url = "http://www.cdc.gov/nhsn/us-safr/Library/HRDMeasureLibrary"
+* url = "http://www.cdc.gov/nhsn/fhirportal/safr/ig/Library/HRDMeasureLibrary"
 * version = "1.0.0"
 * name = "HRDMeasureLibrary"
 * title = "Library - HRD Measure Example"

@@ -5,8 +5,8 @@
 # _updateCQFTooling.sh <skipPrompts[-y|--yes]>
 ################################################
 
-skipPrompts=false
-FORCE=false
+skipPrompts=true
+FORCE=true
 
 # Check for true in parameters <skipPrompts>
 while [ "$#" -gt 0 ]; do
@@ -21,7 +21,7 @@ done
 r=snapshots
 g=org.opencds.cqf
 a=tooling-cli
-v=3.9.1
+v=3.10.0
 
 dlurl='https://repo1.maven.org/maven2/org/opencds/cqf/'${a}'/'${v}'/'${a}'-'${v}'.jar'
 #dlurl='https://oss.sonatype.org/service/local/artifact/maven/redirect?r='${r}'&g='${g}'&a='${a}'&v='${v}''

@@ -1,14 +1,14 @@
 {
-    "package-id": "gov.cdc.nhsn.ussafr",
-    "version": "0.0.1",
-    "path": "http://www.cdc.gov/us-safr",
+    "package-id": "gov.cdc.nhsn.safr",
+    "version": "1.0.0",
+    "path": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/1.0.0",
     "mode": "working",
-    "status": "ballot",
-    "sequence": "STU 0.0.1",
+    "status": "preview",
+    "sequence": "R 1",
     "first": true,
-    "desc": "US Situational Awareness Framework for Reporting (US SAFR) Implementation Guide, 0.0.1 draft - US Realm",
+    "desc": "CDC National Healthcare Safety Network Situational Awareness Framework for Reporting (NHSN SAFR) Implementation Guide, 1.0.0 - US Realm",
 	"category": "Public Health",
-	"title": "US Situational Awareness Framework for Reporting (US SAFR) Implementation Guide",
-	"ci-build": "https://build.fhir.org/ig/HL7/us-safr",
-	"introduction": "The US Situational Awareness Framework for Reporting (US SAFR) Implementation Guide (IG) establishes a standardized, FHIR-based approach to support public health decision-making during emergencies. By enhancing situational awareness, this IG aims to provide a real-time, national view of healthcare system capacity, respiratory disease trends, and other critical public health metrics. The guide is designed to facilitate seamless data exchange between healthcare facilities, public health authorities, and federal agencies, thereby strengthening the nation's emergency preparedness and response capabilities."
+	"title": "NHSN Situational Awareness Framework for Reporting (NHSN SAFR) Implementation Guide",
+	"ci-build": "https://safr-ci.nhsnlink.org/",
+	"introduction": "The NHSN Situational Awareness Framework for Reporting (NHSN SAFR) Implementation Guide (IG) establishes a standardized, FHIR-based approach to support public health decision-making during emergencies."
 }

@@ -49,7 +49,7 @@ import yaml
 #       (making sure they look correct in comparison to what can be found in some in the registry) https://github.com/FHIR/ig-registry/blob/master/package-feeds.json
 #       Perhaps only the package-feed.xml and publish-setup.json. See: https://hl7.org.au/publish-setup.json
 
-# DONE? Immediate, Make sure it builds well using the history and other template files. Need documentation for this.
+# DONE? Immediate, Make sure it builds well using the history and other template files. Need documentation for this.python 
 # TODO Support for pub repo parameter, handle auto 
 # TODO need to handle exceptions. e.g. if failing to create a folder, need to bail.
 # TODO Later? Need an initialization "mode". Add parameter to initialize. Add a means to check the pub repo for initialization files.
@@ -62,10 +62,14 @@ import yaml
 # TODO for jara jar run, look into no-sushi option (as it would have run already.)
 
 IG_PUBLISHER_URL = "https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar"
-CQF_TOOLING_REPO = "https://oss.sonatype.org/service/local/repositories/releases/content/org/opencds/cqf/tooling-cli"
-CQF_TOOLING_URL = "https://oss.sonatype.org/service/local/repositories/releases/content/org/opencds/cqf/tooling-cli/3.6.0/tooling-cli-3.6.0.jar"
+#CQF_TOOLING_REPO = "https://oss.sonatype.org/service/local/repositories/releases/content/org/opencds/cqf/tooling-cli"
+CQF_TOOLING_REPO = "https://repo1.maven.org/maven2/org/opencds/cqf/tooling-cli"
+CQF_TOOLING_MANIFEST = "https://repo1.maven.org/maven2/org/opencds/cqf/tooling-cli/maven-metadata.xml"
+#CQF_TOOLING_URL = "https://oss.sonatype.org/service/local/repositories/releases/content/org/opencds/cqf/tooling-cli/3.6.0/tooling-cli-3.6.0.jar"
+#CQL_TOOLING_URL = "https://repo1.maven.org/maven2/org/opencds/cqf/tooling-cli/3.6.0/tooling-cli-3.6.0.jar"
 DEFAULT_CQF_VERSION = "3.6.0"
 CQF_TOOLING_JAR = "tooling-cli.jar"
+CQF_TOOLING_JAR_PREFIX = "tooling-cli-"
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -337,32 +341,41 @@ def initialize_output_folder(ig_repo_path):
     
   
 def get_latest_cqf_tooling_url():
-    cqf_url = CQF_TOOLING_URL
+    cqf_url = CQF_TOOLING_REPO
 
-    CQF_TOOLING_REPO
-
-    file = urlopen(CQF_TOOLING_REPO)
+    file = urlopen(CQF_TOOLING_MANIFEST)
     data = file.read()
+    #print(data)
     
     file.close()
 
     cqf_data = xmltodict.parse(data)
     
-    current_version = DEFAULT_CQF_VERSION
-    index = 0
-    while index < len(cqf_data['content']['data']['content-item']):
-        #print(cqf_data['content']['data']['content-item'][index]['text'])
-        ValueError
-        try:
-            if(semver.compare(current_version, cqf_data['content']['data']['content-item'][index]['text']) < 0):
-                #print(f"Higher version found: Current Version {current_version}; new version: {cqf_data['content']['data']['content-item'][index]['text']}")
-                current_version = cqf_data['content']['data']['content-item'][index]['text']
-                cqf_url = cqf_data['content']['data']['content-item'][index]['resourceURI'] + 'tooling-cli-' + current_version + '.jar'
-            #else:
-            #    print(f"Lower version found: Current Version {current_version}; new version: {cqf_data['content']['data']['content-item'][index]['text']}")
-        except ValueError as ve:
-            print(f'Non-Semver version found: {cqf_data['content']['data']['content-item'][index]['text']}')
-        index = index + 1
+    #current_version = DEFAULT_CQF_VERSION
+
+    if 'metadata' in cqf_data and 'versioning' in cqf_data['metadata'] and 'latest' in cqf_data['metadata']['versioning']:
+        cqf_url = cqf_url + '/' + cqf_data['metadata']['versioning']['latest'] + '/' + CQF_TOOLING_JAR_PREFIX + cqf_data['metadata']['versioning']['latest'] + '.jar'
+    elif 'metadata' in cqf_data and 'versioning' in cqf_data['metadata'] and 'release' in cqf_data['metadata']['versioning']:
+        cqf_url = cqf_url + '/' + cqf_data['metadata']['versioning']['release'] + '/' + CQF_TOOLING_JAR_PREFIX + cqf_data['metadata']['versioning']['release'] + '.jar'
+    else:
+        print("Could not find latest version in manifest, defaulting to " + DEFAULT_CQF_VERSION)
+        cqf_url = cqf_url + '/' + DEFAULT_CQF_VERSION + '/' + CQF_TOOLING_JAR_PREFIX + DEFAULT_CQF_VERSION + '.jar'
+
+    print("Latest CQF Tooling URL: " + cqf_url)
+
+    # while index < len(cqf_data['content']['data']['content-item']):
+    #     #print(cqf_data['content']['data']['content-item'][index]['text'])
+    #     ValueError
+    #     try:
+    #         if(semver.compare(current_version, cqf_data['content']['data']['content-item'][index]['text']) < 0):
+    #             #print(f"Higher version found: Current Version {current_version}; new version: {cqf_data['content']['data']['content-item'][index]['text']}")
+    #             current_version = cqf_data['content']['data']['content-item'][index]['text']
+    #             cqf_url = cqf_data['content']['data']['content-item'][index]['resourceURI'] + 'tooling-cli-' + current_version + '.jar'
+    #         #else:
+    #         #    print(f"Lower version found: Current Version {current_version}; new version: {cqf_data['content']['data']['content-item'][index]['text']}")
+    #     except ValueError as ve:
+    #         print(f'Non-Semver version found: {cqf_data['content']['data']['content-item'][index]['text']}')
+    #     index = index + 1
 
     return cqf_url
     
@@ -556,14 +569,15 @@ def write_web_configs(ig_repo_path):
     version_web_config = str(Path('./webroot/ig/' + config_data['version'] + "/web.config").resolve())
     print(version_web_config)
     
-    os.remove(base_web_config)
+    if(Path(base_web_config).is_file()):
+        os.remove(base_web_config)
     
     with open(base_web_config, "w") as web_config_file:
         web_config_file.write(web_config)
 
 
-    
-    os.remove(version_web_config)
+    if(Path(version_web_config).is_file()):
+        os.remove(version_web_config)
     
     with open(version_web_config, "w") as web_config_file:
         web_config_file.write(web_config)
