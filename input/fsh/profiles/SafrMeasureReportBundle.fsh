@@ -1,6 +1,6 @@
 Profile: SafrMeasureReportBundle
 Parent: Bundle
-Id: us-safr-measurereport-bundle
+Id: nhsn-safr-measurereport-bundle
 Title: "US SAFR Measure Report Bundle"
 Description: "This profile defines a valid submission bundle to NHSN, federal and jurisdictional Public Health Agencies including State, Tribal, Local and Territorial (STLT) Health Departments with all resources contained within. The Bundle is comprised of entry slices representing the data 
 submitting organization, submitting device, and individual MeasureReports.
@@ -24,7 +24,7 @@ Bundle.entry.resource.descendants().reference.where($this.startsWith('#').not())
 * entry[submitting-organization]
   * ^short = "The Submitting Organization: the organization that is the source of the data"
   * resource 1..
-  * resource only USSafrSubmittingOrganization
+  * resource only SafrSubmittingOrganization
     * ^short = "Bundle entry for submitting organization"
 * entry[submitting-device]
   * ^short = "The Submitting Device: the device that is the source of the data"

@@ -1,6 +1,6 @@
-Profile: USSafrSubmittingOrganization
+Profile: SafrSubmittingOrganization
 Parent: USCoreOrganizationProfile
-Id: us-safr-submitting-organization
+Id: nhsn-safr-submitting-organization
 Title: "US SAFR Submitting Organization"
 Description: "This profile includes the name and identifier of the organization submitting the report Bundle, and may include other information about the organization."
 * ^status = #active

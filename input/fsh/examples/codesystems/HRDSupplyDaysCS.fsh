@@ -1,5 +1,5 @@
 CodeSystem: HRDSupplyDaysExampleCS
-Id: us-safr-hrd-supply-days-example-codes
+Id: nhsn-safr-hrd-supply-days-example-codes
 Title: "Hospital Respiratory Data Supply Days Code System"
 * ^copyright = "This CodeSystem is not copyrighted."
 * ^experimental = true

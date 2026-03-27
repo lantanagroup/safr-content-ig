@@ -1,6 +1,6 @@
-Profile: USSafrMeasureBundle
+Profile: SafrMeasureBundle
 Parent: Bundle
-Id: us-safr-measure-bundle
+Id: nhsn-safr-measure-bundle
 Title: "US SAFR Measure Bundle"
 Description: "This profile defines a Bundle provided by the MeasureServer containing a Measure resource and enables the inclusion of all related resources (ValueSet, Library, etc.).
 

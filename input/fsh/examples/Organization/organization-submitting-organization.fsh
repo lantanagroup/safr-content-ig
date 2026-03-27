@@ -1,6 +1,6 @@
 /*
 Instance: ProviderSubmittingOrganization
-InstanceOf: USSafrSubmittingOrganization
+InstanceOf: SafrSubmittingOrganization
 Title: "Organization - Example Submitting Organization"
 Description: "Organization - Submitting Organization Example"
 Usage: #example
@@ -18,7 +18,7 @@ Usage: #example
 
 // Define the reporting organization
 Instance: MemorialHospitalOrganization
-InstanceOf: USSafrSubmittingOrganization
+InstanceOf: SafrSubmittingOrganization
 Title: "Organization - Submitting Hospital Organization Example"
 Description: "Organization - Example of a Submitting Hospital Organization"
 Usage: #example

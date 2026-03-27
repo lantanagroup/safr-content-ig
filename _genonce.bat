@@ -13,7 +13,7 @@ ECHO We're online
 SET txoption=
 
 call sushi .
-copy .\fsh-generated\resources\ImplementationGuide-gov.cdc.nhsn.us-safr.json .\input\data\ig.json
+copy .\fsh-generated\resources\ImplementationGuide-gov.cdc.nhsn.safr.json .\input\data\ig.json
 
 :igpublish
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ballotUrl="http://www.cdc.gov/us-safr" ciUrl="https://build.fhir.org/ig/HL7/us-safr" defaultVersion="1.0.0-ballot" defaultWorkgroup="pher" gitUrl="https://github.com/lantanagroup/safr-content-ig" url="http://www.cdc.gov/nshn/us-safr">
+<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ballotUrl="http://www.cdc.gov/us-safr" ciUrl="https://build.fhir.org/ig/HL7/us-safr" defaultVersion="1.0.0-ballot" defaultWorkgroup="pher" gitUrl="https://github.com/lantanagroup/safr-content-ig" url="http://www.cdc.gov/nhsn/fhirportal/safr/ig">
 <version code="current" url="https://build.fhir.org/ig/HL7/us-safr"/>
 <version code="1.0.0-ballot" url="http://www.cdc.gov/us-safr"/>
 <artifactPageExtension value="-definitions"/>

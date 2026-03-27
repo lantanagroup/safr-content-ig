@@ -3,11 +3,11 @@
 # │  used properties are included. For a list of all supported properties and their functions,     │
 # │  see: https://fshschool.org/docs/sushi/configuration/.                                         │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
-id: gov.cdc.nhsn.us-safr
-canonical: http://www.cdc.gov/nhsn/fhirportal/us-safr/ig
-name: US-SAFR
-title: CDC US Situational Awareness Framework for Reporting (US SAFR) Content Implementation Guide
-description: US Situational Awareness Framework for Reporting (US SAFR)
+id: gov.cdc.nhsn.safr
+canonical: http://www.cdc.gov/nhsn/fhirportal/safr/ig
+name: NHSN-SAFR
+title: CDC NHSN Situational Awareness Framework for Reporting (NHSN SAFR) Content Implementation Guide
+description: NHSN Situational Awareness Framework for Reporting (NHSN SAFR)
 status: active # draft | active | retired | unknown
 version: 0.0.1
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
@@ -50,6 +50,9 @@ dependencies:
     version: 5.0.0
     id: deqm
   hl7.fhir.us.qicore: 6.0.0
+  hl7.fhir.uv.xver-r5.r4: 
+    version: 0.1.0
+
 #  hl7.fhir.uv.extensions.r4: 5.2.0
   
 #

@@ -1,5 +1,5 @@
 CodeSystem: BedCapacityGroupExampleCS
-Id: us-safr-bed-capacity-group-example-codes
+Id: nhsn-safr-bed-capacity-group-example-codes
 Title: "Healthcare Bed Capacity Reporting Group Code System"
 * ^copyright = "This CodeSystem is not copyrighted."
 * ^experimental = true

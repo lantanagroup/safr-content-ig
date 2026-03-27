@@ -56,7 +56,7 @@ Proposed as of 3/26/2026
 ```
     sushi .
     echo "Copying IG Data..."
-    cp ./fsh-generated/resources/ImplementationGuide-gov.cdc.nhsn.us-safr.json ./input/data/ig.json
+    cp ./fsh-generated/resources/ImplementationGuide-gov.cdc.nhsn.safr.json ./input/data/ig.json
     ls ./input/data/
 ```
 
@@ -84,8 +84,8 @@ Proposed as of 3/26/2026
 12. Bash Script - Prepare Release Files
 ```
     mkdir release
-    cp output/package.tgz output/gov.cdc.nhsn.us-safr.r4.tgz
-    cp output/gov.cdc.nhsn.us-safr.r4.tgz release/gov.cdc.nhsn.us-safr.r4.tgz
+    cp output/package.tgz output/gov.cdc.nhsn.safr.r4.tgz
+    cp output/gov.cdc.nhsn.safr.r4.tgz release/gov.cdc.nhsn.safr.r4.tgz
     cp output/full-ig.zip release/full-ig.zip
     zip -r release/measure-definitions.zip bundles/measure/*
 ```
