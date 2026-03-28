@@ -138,9 +138,7 @@ ECHO.
 ECHO Updating scripts
 IF "%skipPrompts%"=="y" (
 	SET updateScripts=Y
-) ELSE (
-	SET /p updateScripts="Update scripts? (Y/N) "
-)
+) 
 IF /I "%updateScripts%"=="Y" (
 	GOTO scripts
 )

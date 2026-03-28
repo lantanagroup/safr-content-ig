@@ -5,7 +5,7 @@
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 id: gov.cdc.nhsn.safr
 canonical: http://www.cdc.gov/nhsn/fhirportal/safr/ig
-name: NHSN-SAFR
+name: NHSNSAFR
 title: CDC NHSN Situational Awareness Framework for Reporting (NHSN SAFR) Content Implementation Guide
 description: NHSN Situational Awareness Framework for Reporting (NHSN SAFR)
 status: active # draft | active | retired | unknown
@@ -79,6 +79,8 @@ pages:
     title: Specification
   security.md:
     title: Security
+  ImplementationGuide-gov.cdc.nhsn.safr.md:
+    title: NHSN Implementation Guide Resource
   downloads.md:
     title: Downloads    
 #
@@ -131,6 +133,18 @@ menu:
     FHIR Spec: http://hl7.org/fhir/R4/index.html
     CQL Spec: http://cql.hl7.org/index.html
     FHIR Clinical Guidelines: http://hl7.org/fhir/uv/cpg
+
+resources:
+  Library/BedCapacityMeasure:
+    name: BedCapacityMeasure
+    description: "Library containing the Bed Capacity Measure."
+  Library/FHIRHelpers:
+    name: FHIR Helpers
+    description: "This library defines functions to convert between FHIR data types and CQL system-defined types, as well as functions to support FHIRPath implementation. For more information, the FHIRHelpers wiki page: https://github.com/cqframework/clinical_quality_language/wiki/FHIRHelpers. This locally defined version includes modifications from the original library."
+  Library/HRDMeasure:
+    name: HRDMeasure
+    description: "Library for the Hospital Respiratory Data (HRD) Measure."
+
 
 
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮

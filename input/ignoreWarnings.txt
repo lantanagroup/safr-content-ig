@@ -1,42 +1,47 @@
 == Suppressed Messages ==
 
-# 01 - IG Defined CodeSystem represents a CodeSystem defined by NHSN specifically for the program that this IG addresses. This IG defines the CodeSystem for use of these codes in the FHIR ecosystem
-INFORMATION: CodeSystem/us-safr-bed-capacity-example-codes: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
-INFORMATION: CodeSystem/us-safr-bed-capacity-group-example-codes: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
-INFORMATION: CodeSystem/us-safr-hrd-example-codes: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
-INFORMATION: CodeSystem/us-safr-hrd-supply-days-example-codes: CodeSystem: Most code systems defined in HL7 IGs will need to move to THO later during the process. Consider giving this code system a THO URL now (See https://confluence.hl7.org/display/TSMG/Terminology+Play+Book, and/or talk to TSMG)
-
-# 02 - Information Message about using experimental CodeSystem. The code system is only for example use in this IG and only used by example resources. The CodeSystem follows the requirements on TSMG
-Reference to experimental CodeSystem http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-bed-capacity-group-example-codes|1.0.0
-Reference to experimental CodeSystem http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-hrd-example-codes|1.0.0
-
-
-
-
-# 03 - Deprecated pattern slicing from an inherited US Core profile
-INFORMATION: StructureDefinition/us-safr-submitting-organization: StructureDefinition.snapshot.element[9].slicing.discriminator[0]: The discriminator type 'pattern' is deprecated in R5+. For future compatibility, you could consider using type=value with a pattern[x] instead (if this is not an inherited slicing)
-
-# 04 - Repeating pattern requirement inherited from US Core organization
-INFORMATION: StructureDefinition/us-safr-submitting-organization: StructureDefinition.snapshot.element[10].pattern.ofType(Identifier): The repeating element has a pattern. The pattern will apply to all the repeats (this has not been clear to all users)
-INFORMATION: StructureDefinition/us-safr-submitting-organization: StructureDefinition.snapshot.element[11].pattern.ofType(Identifier): The repeating element has a pattern. The pattern will apply to all the repeats (this has not been clear to all users)
-INFORMATION: StructureDefinition/us-safr-submitting-organization: StructureDefinition.snapshot.element[12].pattern.ofType(Identifier): The repeating element has a pattern. The pattern will apply to all the repeats (this has not been clear to all users)
-
-# 05 - Information Message regarding a deprecated extension (maxValueSet), that was inherited through the FHIR R4 standard itself.
-INFORMATION: StructureDefinition/us-safr-measure-bundle: StructureDefinition.snapshot.element[4].binding.extension[0]: The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.2.0 is deprecated
-
-# 06 - Per CQFM - Computable measures must use text/cql-expression or text/cql-identifier for all criteria
+# 01 ⚠️⚠️⚠️ Per CQFM - Computable measures must use text/cql-expression or text/cql-identifier for all criteria ⚠️⚠️⚠️
 The expression language text/cql-identifier is not supported, so can't be validated
 
-# 07 - Warning derived from a profile that was inherited from. Default behavior is acceptable
-WARNING: StructureDefinition/us-safr-submitting-organization: StructureDefinition.snapshot.element[35].binding.valueSet: There are multiple different potential matches for the url 'http://hl7.org/fhir/us/core/ValueSet/us-core-usps-state'. It might be a good idea to fix to the correct version to reduce the likelihood of a wrong version being selected by an implementation/implementer. Using version '7.0.0', found versions: 3.1.1, 6.1.0, 7.0.0. Suggested fix: change the canonical reference from 'http://hl7.org/fhir/us/core/ValueSet/us-core-usps-state' to 'http://hl7.org/fhir/us/core/ValueSet/us-core-usps-state|7.0.0'
+# 02 Custom template contains javascript required for the IG
+The <script> containing the javascript 'try {       var curr'... is illegal and not allowed on the HL7 ci-build - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 ci-build (if it is justified and needed)%
+The <script> containing the javascript '$(document).ready(fu'... is illegal and not allowed on the HL7 ci-build - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 ci-build (if it is justified and needed)%
+The <script> containing the javascript 'anchors.options.visi'... is illegal and not allowed on the HL7 ci-build - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 ci-build (if it is justified and needed)%
 
-# 08 - This IG is using the last published balloted version of DEQM and will change to a published version of DEQM before publishing
-WARNING: ImplementationGuide/gov.cdc.nhsn.safr: ImplementationGuide.dependsOn[6]: The ImplementationGuide uses package hl7.fhir.us.davinci-deqm#5.0.0-ballot released on 2024-08-27, but the most recent appropriate version is 4.0.0. This reference is getting old and the more recent version should be considered
 
-# 09 - The entry in bundle represents data included per the requirements of the IG (All referenced resources must be included in bundle), but not explicitly identified as a slice.
-INFORMATION: Bundle/HospitalBedCapacityReportBundle: Bundle.entry[3]: This element does not match any known slice defined in the profile http://www.cdc.gov/nhsn/fhirportal/safr/ig/StructureDefinition/us-safr-measurereport-bundle|1.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Bundle/HRDMeasureReportBundle: Bundle.entry[3]: This element does not match any known slice defined in the profile http://www.cdc.gov/nhsn/fhirportal/safr/ig/StructureDefinition/us-safr-measurereport-bundle|1.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
 
+# 03 💭💭💭 INFORMATION: Measure Slice not recognized because of a failure to validate due to unknown LOINC codes that were added in LOINC 2.82. See: https://loinc.org/search/?t=1&s=%3Dclasstype%3AClinical+%3Dversionfirstreleased%3A2.82++%3Dclass%3APUBLICHEALTH 💭💭💭
+INFORMATION: Bundle/HospitalBedCapacityReportBundle: Bundle.entry[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measurereport-bundle|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Bundle/NHSNSAFRMeasureBundleExample: Bundle.entry[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measure-bundle|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+
+# 04 ⚠️⚠️⚠️ WARNING: No definition for identifier system. This is the system url NHSN is using and a THO request has been initiated UP-710: Add NHSN Org ID to External System Identifier's page - https://jira.hl7.org/browse/UP-710 ⚠️⚠️⚠️
+No definition could be found for URL value 'https://www.cdc.gov/nhsn/OrgID'
+
+
+# 05 💭💭💭 INFORMATION: Additional resource in bundle (Reporting Facility or Device) that is not part of a slice. This is intended 💭💭💭
+INFORMATION: Measure/BedCapacityMeasure: Measure.extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm|4.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Bundle/HospitalBedCapacityReportBundle: Bundle.entry[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measurereport-bundle|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Bundle/HRDMeasureReportBundle: Bundle.entry[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measurereport-bundle|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Bundle/NHSNSAFRMeasureBundleExample: Bundle.entry[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measure-bundle|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Bundle/NHSNSAFRMeasureBundleExample: Bundle.entry[0].resource.extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm|4.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Measure/HRDMeasure: Measure.extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm|4.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+
+
+# 06 ⚠️⚠️⚠️ WARNING: regarding newer published versions of US Core and QI Core. The versions chosen were done so to meet the current regulatory requirement floor ⚠️⚠️⚠️
+The ImplementationGuide uses package hl7.fhir.us.core#6.1.0 released on 2023-06-30, but the most recent appropriate version is 8.0.1. This reference is getting old and the more recent version should be considered
+The ImplementationGuide uses package hl7.fhir.us.qicore#6.0.0 released on 2024-03-01, but the most recent appropriate version is 7.0.1. This reference is getting old and the more recent version should be considered
+
+# 07 ⚠️⚠️⚠️ WARNING: VSAC ValueSet - Let publisher pin the version during publication. ⚠️⚠️⚠️
+There are multiple different potential matches for the url 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1142'. It might be a good idea to fix to the correct version to reduce the likelihood of a wrong version being selected by an implementation/implementer, or use the [IG Parameter `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Using version '20250218', found versions: 20230125 (from us.nlm.vsac#0.11.0), 20250218 (from us.nlm.vsac#0.22.0). Suggested fix: change the canonical reference from 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1142' to 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1142|20250218'
+There are multiple different potential matches for the url 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1158'. It might be a good idea to fix to the correct version to reduce the likelihood of a wrong version being selected by an implementation/implementer, or use the [IG Parameter `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Using version '20240123', found versions: 20210528 (from us.nlm.vsac#0.11.0), 20240123 (from us.nlm.vsac#0.22.0). Suggested fix: change the canonical reference from 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1158' to 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1158|20240123'
+There are multiple different potential matches for the url 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.336'. It might be a good idea to fix to the correct version to reduce the likelihood of a wrong version being selected by an implementation/implementer, or use the [IG Parameter `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Using version '20250218', found versions: 20230602 (from us.nlm.vsac#0.11.0), 20250218 (from us.nlm.vsac#0.22.0). Suggested fix: change the canonical reference from 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.336' to 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.336|20250218'
+There are multiple different potential matches for the url 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1312'. It might be a good idea to fix to the correct version to reduce the likelihood of a wrong version being selected by an implementation/implementer, or use the [IG Parameter `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Using version '20250218', found versions: 20210120 (from us.nlm.vsac#0.11.0), 20250218 (from us.nlm.vsac#0.22.0). Suggested fix: change the canonical reference from 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1312' to 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1312|20250218'
+
+# 08 ⚠️⚠️⚠️ WARNING: CQL and Measure processing is performed prior to the publisher, so this warning does not apply ⚠️⚠️⚠️
+Artifact library could not be found so no data requirements were inferred.
+
+# 09 💭💭💭  INFORMATION: String incorrectly identified as html. It is CQL. 💭💭💭 
+INFORMATION: Measure/HRDMeasure: Measure.contained[0]/*Library/effective-data-requirements*/.extension[103].extension[2].value.ofType(string): The string value contains text that looks like embedded HTML tags. If this content is rendered to HTML without appropriate post-processing, it may be a security risk
 
 # 10 🚩🚩🚩 ERROR: Unknown LOINC codes that were added in LOINC 2.82. See: https://loinc.org/search/?t=1&s=%3Dclasstype%3AClinical+%3Dversionfirstreleased%3A2.82++%3Dclass%3APUBLICHEALTH 🚩🚩🚩
 Unknown code '112507-9' in the CodeSystem 'http://loinc.org' version '2.81'
@@ -115,3 +120,4 @@ Unknown code '112510-3' in the CodeSystem 'http://loinc.org' version '2.81'
 
 # 11 🚩🚩🚩 ERROR: Measure Slice not recognized because of a failure to validate due to unknown LOINC codes that were added in LOINC 2.82. See: https://loinc.org/search/?t=1&s=%3Dclasstype%3AClinical+%3Dversionfirstreleased%3A2.82++%3Dclass%3APUBLICHEALTH 🚩🚩🚩
 ERROR: Bundle/HospitalBedCapacityReportBundle: Bundle: Slice 'Bundle.entry:measurereport': a matching slice is required, but not found (from http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measurereport-bundle|1.0.0). Note that other slices are allowed in addition to this required slice
+ERROR: Bundle/NHSNSAFRMeasureBundleExample: Bundle: Slice 'Bundle.entry:measure': a matching slice is required, but not found (from http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measure-bundle|1.0.0). Note that other slices are allowed in addition to this required slice

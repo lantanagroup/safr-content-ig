@@ -102,11 +102,11 @@
     "resource": [
       {
         "reference": {
-          "reference": "Measure/BedCapacityMeasureExample"
+          "reference": "Measure/BedCapacityMeasure"
         },
-        "description": "Bed Capacity Measure Example includes counts of specific bed types within the context of a given healthcare context or setting.",
+        "description": "Bed Capacity Measure includes counts of specific bed types within the context of a given healthcare context or setting.",
         "exampleBoolean": false,
-        "name": "Bed Capacity Measure Example"
+        "name": "Bed Capacity Measure"
       },
       {
         "reference": {
@@ -121,7 +121,7 @@
         },
         "name": "Bundle - Bed Capacity Report Bundle Example",
         "description": "Bundle containing a measure report and all referenced resources for NHSN bed capacity reporting.",
-        "exampleCanonical": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/StructureDefinition/nhsn-safr-measurereport-bundle"
+        "exampleBoolean": true
       },
       {
         "reference": {
@@ -129,7 +129,7 @@
         },
         "name": "Bundle - HRD Measure Report Bundle Example",
         "description": "Bundle containing a measure report and all referenced resources for NHSN Hospital Respiratory Disease (HRD) reporting",
-        "exampleCanonical": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/StructureDefinition/nhsn-safr-measurereport-bundle"
+        "exampleBoolean": true
       },
       {
         "reference": {
@@ -180,41 +180,33 @@
       },
       {
         "reference": {
-          "reference": "CodeSystem/nhsn-safr-bed-capacity-example-codes"
+          "reference": "CodeSystem/nhsn-safr-bed-capacity-codes"
         },
         "name": "Healthcare Bed Capacity Reporting Code System",
-        "description": "This CodeSystem defines coded concepts for Healthcare Capacity reporting to US SAFR. This is an example CodeSystem and is experimental, and is expected to be replaced by LOINC codes once they have been assigned.",
+        "description": "This CodeSystem defines coded concepts for Healthcare Capacity reporting for NHSN SAFR.",
         "exampleBoolean": false
       },
       {
         "reference": {
-          "reference": "CodeSystem/nhsn-safr-bed-capacity-group-example-codes"
-        },
-        "name": "Healthcare Bed Capacity Reporting Group Code System",
-        "description": "This CodeSystem defines coded concepts for Healthcare Capacity Group reporting to US SAFR. This is an example CodeSystem and is experimental, and is expected to be replaced by LOINC codes once they have been assigned.",
-        "exampleBoolean": false
-      },
-      {
-        "reference": {
-          "reference": "CodeSystem/nhsn-safr-hrd-example-codes"
+          "reference": "CodeSystem/nhsn-safr-hrd-codes"
         },
         "name": "Hospital Respiratory Data Reporting Code System",
-        "description": "This CodeSystem defines coded concepts for Hospital Respiratory Data reporting for US SAFR IG. This is an example CodeSystem and is experimental, and is expected to be replaced by LOINC codes once they have been assigned.",
+        "description": "This CodeSystem defines coded concepts for Hospital Respiratory Data reporting for NHSN SAFR.",
         "exampleBoolean": false
       },
       {
         "reference": {
-          "reference": "CodeSystem/nhsn-safr-hrd-supply-days-example-codes"
+          "reference": "CodeSystem/nhsn-safr-hrd-supply-days-codes"
         },
         "name": "Hospital Respiratory Data Supply Days Code System",
-        "description": "This CodeSystem defines coded concepts for supply days in Hospital Respiratory Data reporting for US SAFR IG. This is an example CodeSystem and is experimental, and is expected to be replaced when a permanent location is identified.",
+        "description": "This CodeSystem defines coded concepts for supply days in Hospital Respiratory Data reporting for NHSN SAFR.",
         "exampleBoolean": false
       },
       {
         "reference": {
-          "reference": "Measure/HRDMeasureExample"
+          "reference": "Measure/HRDMeasure"
         },
-        "description": "Hospital Respiratory Data Measure Example",
+        "description": "Hospital Respiratory Data Measure",
         "exampleBoolean": false,
         "name": "HRD Measure"
       },
@@ -279,7 +271,7 @@
         },
         "name": "Organization - Submitting Hospital Organization Example",
         "description": "Organization - Example of a Submitting Hospital Organization",
-        "exampleCanonical": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/StructureDefinition/nhsn-safr-submitting-organization"
+        "exampleBoolean": true
       },
       {
         "reference": {
@@ -330,22 +322,6 @@
       },
       {
         "reference": {
-          "reference": "StructureDefinition/nhsn-safr-measure-bundle"
-        },
-        "name": "US SAFR Measure Bundle",
-        "description": "This profile defines a Bundle provided by the MeasureServer containing a Measure resource and enables the inclusion of all related resources (ValueSet, Library, etc.).\r\n\r\nIf this fails, use the following FHIRPath expression to discover missing resources: \r\nBundle.entry.resource.descendants().reference.where($this.startsWith('#').not()).where((%resource.entry.fullUrl.join('|')&'|').contains(($this&'|')).not())",
-        "exampleBoolean": false
-      },
-      {
-        "reference": {
-          "reference": "StructureDefinition/nhsn-safr-measurereport-bundle"
-        },
-        "name": "US SAFR Measure Report Bundle",
-        "description": "This profile defines a valid submission bundle to NHSN, federal and jurisdictional Public Health Agencies including State, Tribal, Local and Territorial (STLT) Health Departments with all resources contained within. The Bundle is comprised of entry slices representing the data \r\nsubmitting organization, submitting device, and individual MeasureReports.\r\n\r\nIf this fails, use the following FHIRPath expression to discover missing resources: \r\nBundle.entry.resource.descendants().reference.where($this.startsWith('#').not()).where((%resource.entry.fullUrl.join('|')&'|').contains(($this&'|')).not())",
-        "exampleBoolean": false
-      },
-      {
-        "reference": {
           "reference": "CapabilityStatement/SafrCapabilityStatementmeasurerepository"
         },
         "name": "US SAFR Measure Source CapabilityStatement",
@@ -358,14 +334,6 @@
         },
         "name": "US SAFR MeasureReport Recipient CapabilityStatement",
         "description": "This statement defines the expected capabilities of a system at NHSN, federal and jurisdictional Public Health Agencies including State, Tribal, Local and Territorial (STLT) Health Departments that receives MeasureReport bundles from the Measure Evaluation Engine and validates \r\nthe result against the profiles in this implementation guide, and potentially other measure-specific profiles that are distributed with the measures themselves. The MeasureReport Recipient acts as a \r\n[DEQM Receiver Server](https://www.hl7.org/fhir/us/davinci-deqm/STU4/CapabilityStatement-receiver-server.html), provides write access to Bundle resources containing \r\nMeasureReport and other related resources, and implements the $validate operation.",
-        "exampleBoolean": false
-      },
-      {
-        "reference": {
-          "reference": "StructureDefinition/nhsn-safr-submitting-organization"
-        },
-        "name": "US SAFR Submitting Organization",
-        "description": "This profile includes the name and identifier of the organization submitting the report Bundle, and may include other information about the organization.",
         "exampleBoolean": false
       }
     ],
@@ -418,10 +386,6 @@
       {
         "code": "path-expansion-params",
         "value": "../../exp-params.json"
-      },
-      {
-        "code": "path-binary",
-        "value": "input/cql"
       },
       {
         "code": "apply-jurisdiction",

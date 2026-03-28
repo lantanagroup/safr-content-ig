@@ -6,9 +6,9 @@ include FHIRHelpers version '4.0.1' called FHIRHelpers
 
 // Terminology definitions
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
-codesystem "LocationPhysicalType": 'http://terminology.hl7.org/CodeSystem/location-physical-type'
+codesystem "LocationPhysicalType": 'http://terminology.hl7.org/CodeSystem/location-physical-type|2.0.1'
 codesystem "HealthcareCapacity": 'http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes'
-codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category'
+codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category|2.0.0'
 
 // Value sets
 valueset "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1142'

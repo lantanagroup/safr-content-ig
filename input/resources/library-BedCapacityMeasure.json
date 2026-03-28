@@ -70,7 +70,7 @@
   }, {
     "type": "depends-on",
     "display": "Code system LocationPhysicalType",
-    "resource": "http://terminology.hl7.org/CodeSystem/location-physical-type"
+    "resource": "http://terminology.hl7.org/CodeSystem/location-physical-type|2.0.1"
   }, {
     "type": "depends-on",
     "display": "Code system HealthcareCapacity",
