@@ -26,7 +26,7 @@ if test -f "$publisher"; then
 else
 	publisher=../$publisher_jar
 	if test -f "$publisher"; then
-		java -jar $publisher -ig . $txoption $*
+		java -jar $publisher -no-sushi -ig . $txoption $*
 	else
 		echo IG Publisher NOT FOUND in input-cache or parent folder.  Please run _updatePublisher.  Aborting...
 	fi

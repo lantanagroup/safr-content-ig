@@ -45,9 +45,7 @@ def main():
 
     fix_accessibilities_in_folder(target_folder)
 
-    print("Processing full_ig.zip: " + str(Path(target_folder + "/full-ig.zip")))
 
-    fix_zip_file_accessibilities(Path(target_folder + "/full-ig.zip"))
     end = time.time()
     print("Full execution time (in seconds)", end - start)
 
@@ -56,6 +54,10 @@ def fix_accessibilities_in_folder(folder_path = default_folder):
     for pattern in accessibility_update_file_patterns:
         for filepath in glob.glob(folder_path + pattern, recursive=True):
             fix_accessibility_in_file(filepath)
+    
+    print("Processing full_ig.zip: " + str(Path(folder_path + "/full-ig.zip")))
+
+    fix_zip_file_accessibilities(Path(folder_path + "/full-ig.zip"))
 
 def fix_accessibility_in_file(file_path):
   print("Updating file for Section 508 compliance: " + file_path)
