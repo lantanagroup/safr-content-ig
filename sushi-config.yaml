@@ -81,7 +81,7 @@ pages:
     title: Security
   ImplementationGuide-gov.cdc.nhsn.safr.md:
     title: NHSN Implementation Guide Resource
-  License.md:
+  license.md:
     title: License
   downloads.md:
     title: Downloads    
