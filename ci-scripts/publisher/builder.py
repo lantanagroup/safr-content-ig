@@ -6,6 +6,12 @@ from .config import CQF_TOOLING_JAR, load_configuration, initialize_webroot
 
 
 def run_ig_build(ig_repo_path):
+    """Run the IG build process on the cloned IG repository. THis is the initial publication run which is needed as a precursor to the full build. The initial run is needed to generate the JSON files from SUSHI and to get the ImplementationGuide.json file into the input folder for the tooling build. The tooling build then generates the full output including the HTML pages. Finally, we run the standard IG Publisher build to ensure we have all the expected output files in place for post processing steps.
+    This function first runs the SUSHI build to generate the initial JSON files from FSH. It then checks for the presence of CQL files in the IG repository. If CQL files are found, it runs the CQF Tooling build using the latest `tooling-cli.jar` to process the CQL and generate the full IG output. If no CQL files are present, it falls back to running the standard IG Publisher build using `publisher.jar` without invoking the tooling. This approach ensures that we get the benefits of the latest tooling for CQL processing when needed, while still supporting non-CQL IGs without forcing them to use the tooling.
+    Args:
+        ig_repo_path: Path to the cloned IG repository on which to run the build.
+    """
+
     os.chdir(ig_repo_path)
     print("Pre building with sushi")
     os.system("sushi .")
@@ -48,6 +54,13 @@ def run_ig_build(ig_repo_path):
 
 
 def run_full_build(publish_path, ig_repo_path):
+    """Run the full IG build process using the publisher and CQF tooling. This is needed to generate the full output including the HTML pages. The full build is run after the initial build and post-processing steps to ensure we have all the expected output files in place for post processing steps.
+    This function runs the full IG build using the latest `publisher.jar` to generate the complete IG output, including HTML pages. It constructs the command with appropriate arguments for source, web output, registry, history, and templates based on the provided paths. 
+    After running the build, it copies the generated version from the build output (located in `input/data/ig.json`) into the `webroot/ig` folder which will act as the default/canonical version of the IG.
+    Args:
+        publish_path: Path to the publish directory.
+        ig_repo_path: Path to the cloned IG repository.
+    """
     print("Running full versioned IG build")
     full_build_command = f"java \"-Dfile.encoding=UTF-8\" -jar publisher.jar -go-publish -source {str(Path(ig_repo_path).resolve())} -web {str(Path(publish_path + '/webroot').resolve())} -registry {str(Path(publish_path + '/ig-registry/fhir-ig-list.json').resolve())} -history {str(Path(publish_path + '/ig-history').resolve())} -templates {str(Path(publish_path + '/templates').resolve())}"
     print(full_build_command)
@@ -60,12 +73,20 @@ def run_full_build(publish_path, ig_repo_path):
             ig_data = json.load(f)
             version = ig_data.get('version', 'unknown')
             print(f"Copying generated version {version} into webroot/ig for post processing steps")
-            shutil.copy(str(Path(publish_path).resolve().joinpath('webroot/ig/' + version)), str(Path(publish_path).resolve().joinpath('webroot/ig/')))
+            print(f'Copying {str(Path(publish_path).resolve().joinpath('webroot/ig/' + version))} to {str(Path(publish_path).resolve().joinpath('webroot/ig/'))}')
+            #shutil.copy(str(Path(publish_path).resolve().joinpath('webroot/ig/' + version)), str(Path(publish_path).resolve().joinpath('webroot/ig/')))
+            shutil.copytree(str(Path(publish_path).resolve().joinpath('webroot/ig/' + version)), str(Path(publish_path).resolve().joinpath('webroot/ig/')), dirs_exist_ok=True)
     else:
         print("Generated version file not found, skipping copy to webroot/ig")
 
 
 def initialize_output_folder(ig_repo_path, IG_PUBLISHER_URL):
+    """Initialize the output folder by downloading the latest publisher.jar and running the initial IG build to generate the necessary JSON files for the full build. This function is a precursor to the full build and is needed to set up the output folder with the initial generated files from SUSHI and the IG Publisher. It first downloads the latest `publisher.jar` from the specified URL, then runs the initial IG build using the `run_ig_build()` function.
+    It checks for the presence of CQL files in the IG repository. If CQL files are found, it also downloads the latest `tooling-cli.jar` to enable the CQF Tooling build during the IG build process. This ensures that if the IG contains CQL, we have the necessary tooling to process it correctly.
+    Args:
+        ig_repo_path: Path to the cloned IG repository.
+        IG_PUBLISHER_URL: URL to download the latest publisher.jar.
+    """
     print("Retrieving the latest build jar files (publisher.jar tooling-cli.jar).")
     os.system(f"curl -L {IG_PUBLISHER_URL} -o ./publisher.jar")
 

@@ -14,6 +14,7 @@ CDC National Healthcare Safety Network (NHSN) Situational Awareness Framework fo
 
 {% capture cross-version-analysis %}{% include cross-version-analysis.xhtml %}{% endcapture %}{{ cross-version-analysis | remove: '<p>' | remove: '</p>'}}
 
+
 ### IG Dependencies
 
 This IG Contains the following dependencies on other IGs.

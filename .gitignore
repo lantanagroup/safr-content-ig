@@ -6,3 +6,6 @@ Thumbs.db
 /temp
 /template
 /publication
+
+/__pycache__
+*.pyc

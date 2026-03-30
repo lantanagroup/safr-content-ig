@@ -2,6 +2,7 @@ import argparse
 import time
 import os
 from pathlib import Path
+import shutil
 
 from .gitops import clone_repos
 from .builder import (
@@ -10,11 +11,20 @@ from .builder import (
     initialize_output_folder,
 )
 from .config import IG_PUBLISHER_URL, load_configuration, initialize_templates
-from .postprocess import reduce_files, write_web_configs, fix_accessibility
+from .postprocess import reduce_files, write_web_configs, run_accessibility_fixer_on_webroot
 from .utils import repo_url_arg, output_folder_arg
 
 
+
+# Suggested improvements:
+# - Add a `--dry-run` option to list target folders before making changes.
+# - Add logging (instead of prints) and a `--verbose` flag.
+# - Consider running accessibility fixes in parallel (careful with CPU/disk IO).\
+# - Add error handling around the external script invocation to catch and log any issues without crashing the whole process.
+# - Consider adding a summary report at the end of the post-processing steps, including how many files were removed and how many were modified for accessibility.
+
 def main():
+    """CLI entrypoint for the publisher package."""
     parser = argparse.ArgumentParser(description="""FHIR IG Publisher - Full Publication Setup Script""")
     parser.add_argument('ig_repo', type=repo_url_arg, help="Path to FHIR IG Repository", nargs='?')
     parser.add_argument('output_path', type=output_folder_arg, help="Output Folder path", nargs='?')
@@ -30,6 +40,7 @@ def main():
 
     start = time.time()
     directory_path = Path(args.output_path)
+
     try:
         directory_path.mkdir()
         print(f"Directory '{directory_path}' created successfully.")
@@ -71,7 +82,8 @@ def main():
 
     if args.access:
         print(f"Modifying files to be more Section 508 accessibility compliant")
-        fix_accessibility()
+        #fix_accessibility()
+        run_accessibility_fixer_on_webroot()
 
     end = time.time()
     print("Full execution time (in seconds)", end - start)

@@ -61,7 +61,7 @@ By aligning with these standards, US SAFR supports a unified reporting framework
 
 Other FHIR standard related dependencies:
 
-{% include dependency-table.xhtml %}
+{% include dependency-table-nontech.xhtml %}
 
 ### Out of Scope ###
 Subscriptions is not covered in this IG currently, but future versions will plan to incorporate [FHIR Subscriptions R5 Backport](https://build.fhir.org/ig/HL7/fhir-subscription-backport-ig/) to support emergencies that require rapid changes in reporting.
@@ -84,7 +84,10 @@ Lantana Consulting Group, Inc. produced and developed the content in this IG und
 
 
 
+### Intellectual Property Considerations
+This implementation guide and the underlying FHIR specification are licensed as public domain under the [FHIR license]({{site.data.fhir.path}}license.html#license). 
 
+{% include ip-statements.xhtml %}
 
 
 

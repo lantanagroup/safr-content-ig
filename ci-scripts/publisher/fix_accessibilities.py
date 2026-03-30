@@ -1,3 +1,10 @@
+"""
+This module provides a script to fix accessibility issues in the generated HTML and ZIP files of the FHIR IG Publisher output. The script processes HTML files in the specified output folder, targeting specific tables and elements to update their styles for better compliance with Section 508 accessibility standards. It also handles the special case of Must Support elements in the differential tables, applying different styling based on whether they are marked as Not Required (NR) or Not Required for Testing (NRT) or (NHSN-MS) in the description. Additionally, the script can process a ZIP file containing the full IG output, extracting it, applying the necessary fixes to the HTML files within, and then rebuilding the ZIP file with the updated content. The script uses the `lxml` library to parse and manipulate the HTML content, and it can be configured to modify colors and styles as needed for better accessibility.
+THis module is intended to be run as a post-processing step after the IG Publisher has generated the HTML and ZIP file output, and it can be invoked from the command line with the path to the output folder to process.
+It can be run through the CLI workflow in `cli.py` or `go_publisher.py` by using the `--access` flag, which will call the `fix_accessibilities_in_folder()` function on the generated output folder.
+However, It can be run separately from the CLI workflow for testing and development purposes, and to allow for flexibility in when and how it is applied to the generated output. 
+"""
+
 import re
 from lxml import html
 from lxml import etree
@@ -29,35 +36,58 @@ accessibility_update_file_patterns = ['**/qa*.html', '**/StructureDefinition-*.h
 
 
 def main():
-    parser = argparse.ArgumentParser(description="""FHIR IG Publisher - 508 Accessibility Fixer""")
-    parser.add_argument('process_path', type=existing_folder_arg, help="Path to existing output folder to process", nargs='?')    
+  """ CLI entrypoint for the accessibility fixer script. This function sets up argument parsing to allow the user to specify the path to the output folder to process for accessibility fixes. If no path is provided, it defaults to a predefined folder. The function then calls `fix_accessibilities_in_folder()` with the specified or default folder path to apply the accessibility fixes to the HTML and ZIP files in that folder. The execution time for the process is measured and printed at the end.
+  Command-line arguments:
+    - `process_path`: Positional argument specifying the path to the existing output folder to process for accessibility fixes. If not provided, it defaults to a predefined folder.
+      Usage:
+      
+    - Run the script with the path to the output folder to process:
+    ```python fix_accessibilities.py path/to/output/folder```
+    - If no path is provided, it will use the default folder:
+    ```python fix_accessibilities.py```
+  """
+  parser = argparse.ArgumentParser(description="""FHIR IG Publisher - 508 Accessibility Fixer""")
+  parser.add_argument('process_path', type=existing_folder_arg, help="Path to existing output folder to process", nargs='?')    
 
-    target_folder = default_folder
-    
-    args = parser.parse_args()
-    if not args.process_path:
-        parser.error('No processing folder specified in arguments. Using: ' + default_folder)
-    else:
-      target_folder = args.process_path
+  target_folder = default_folder
+  
+  args = parser.parse_args()
+  if not args.process_path:
+      parser.error('No processing folder specified in arguments. Using: ' + default_folder)
+  else:
+    target_folder = args.process_path
 
-    start = time.time()
-
-
-    fix_accessibilities_in_folder(target_folder)
+  start = time.time()
 
 
-    end = time.time()
-    print("Full execution time (in seconds)", end - start)
+  fix_accessibilities_in_folder(target_folder)
+
+
+  end = time.time()
+  print("Full execution time (in seconds)", end - start)
 
 def fix_accessibilities_in_folder(folder_path = default_folder):
+  """
+    Apply accessibility fixes to HTML and ZIP files in the specified folder. This function iterates through HTML and ZIP files in the specified folder that match certain patterns (defined in `accessibility_update_file_patterns`), and applies accessibility fixes to those files by calling `fix_accessibility_in_file()`. It also checks for the presence of a ZIP file containing the full IG output, and if found, it extracts the ZIP file, applies accessibility fixes to the HTML files within the extracted content, and then rebuilds the ZIP file with the updated content. This allows for comprehensive application of accessibility fixes to both individual HTML files and those contained within a ZIP archive of the IG output.  
+    Args:
+      folder_path: Path to the folder containing the HTML and ZIP files to process for accessibility fixes. This can be specified as a command-line argument when running the script, or it will default to a predefined folder if no argument is provided.
 
-    for pattern in accessibility_update_file_patterns:
-        for filepath in glob.glob(folder_path + pattern, recursive=True):
-            fix_accessibility_in_file(filepath)
-    
-    print("Processing full_ig.zip: " + str(Path(folder_path + "/full-ig.zip")))
+    Usage:
+    - Run the script with the path to the output folder to process:
+    ```python fix_accessibilities.py path/to/output/folder```
+    - If no path is provided, it will use the default folder:
+    ```python fix_accessibilities.py```
+  """
+  for pattern in accessibility_update_file_patterns:
+      for filepath in glob.glob(folder_path + pattern, recursive=True):
+          fix_accessibility_in_file(filepath)
+  
+  print("Processing full_ig.zip: " + str(Path(folder_path + "/full-ig.zip")))
 
+  try:  
     fix_zip_file_accessibilities(Path(folder_path + "/full-ig.zip"))
+  except FileNotFoundError:
+    print(f'No full-ig.zip file found in {folder_path}, skipping ZIP accessibility fixes.')
 
 def fix_accessibility_in_file(file_path):
   print("Updating file for Section 508 compliance: " + file_path)
@@ -245,6 +275,17 @@ def fix_accessibility_in_file(file_path):
 # - replace_only_if_exists: If True, only replace the property if it already exists.
 def replace_style(element, property_name, new_value, old_value=None, replace_only_if_exists=True):
 
+  """
+    Replace a CSS property in the style attribute of an HTML element with a new value. This function takes an HTML element, the name of the CSS property to replace, the new value for that property, and optional parameters to specify an old value to match and whether to only replace if the property already exists. It parses the existing style attribute of the element, checks for the specified property, and updates its value according to the provided parameters. If the property does not exist and `replace_only_if_exists` is False, it will add the property with the new value. The function then reconstructs the style attribute string and updates it on the element. It returns a boolean indicating whether a replacement was made.
+    Parameters:
+    - element: The HTML element whose style attribute is to be modified.
+    - property_name: The name of the CSS property to replace or add.
+    - new_value: The new value for the specified CSS property.
+    - old_value: (Optional) The old value to match before replacing. If None, any existing value will be replaced.
+    - replace_only_if_exists: A boolean flag indicating whether to only replace the property if it already exists in the style attribute. If True, the function will only replace the property if it is already present; if False, it will add the property with the new value if it does not exist.
+    Returns:
+    - A boolean indicating whether a replacement was made (True if the property was replaced or added, False otherwise).
+  """
   replaced = False
   style_attr = element.get('style')
   if style_attr:
@@ -267,52 +308,68 @@ def replace_style(element, property_name, new_value, old_value=None, replace_onl
   return replaced
 
 def fix_zip_file_accessibilities(zip_path: Path) -> None:
-    zip_path = zip_path.resolve()
-    if not zip_path.is_file():
-        raise FileNotFoundError(f"{zip_path} does not exist or is not a file")
+  """Fix accessibility issues in HTML files contained within a ZIP archive. This function takes the path to a ZIP file, extracts its contents to a temporary directory, applies accessibility fixes to any HTML files found within the extracted content by calling `fix_accessibility_in_file()`, and then rebuilds the ZIP file with the updated content. This allows for comprehensive application of accessibility fixes to HTML files that are contained within a ZIP archive, such as the full IG output generated by the FHIR IG Publisher. The function includes error handling for cases where the specified ZIP file does not exist or is not a valid file.
+  Args:
+    zip_path: The path to the ZIP file containing HTML files to fix.
+  Usage:
+  - Call the function with the path to the ZIP file to process:
+  ```pythonfix_zip_file_accessibilities(Path('path/to/full-ig.zip'))```
+  """
+  zip_path = zip_path.resolve()
+  if not zip_path.is_file():
+      raise FileNotFoundError(f"{zip_path} does not exist or is not a file")
 
-    with tempfile.TemporaryDirectory() as tmpdir:
-        print(tmpdir)
-        tmpdir = Path(tmpdir)
-        extract_dir = tmpdir / "extract"
-        extract_dir.mkdir()
+  with tempfile.TemporaryDirectory() as tmpdir:
+      print(tmpdir)
+      tmpdir = Path(tmpdir)
+      extract_dir = tmpdir / "extract"
+      extract_dir.mkdir()
 
-        site_dir = extract_dir / "site"
+      site_dir = extract_dir / "site"
 
-        # Extract the original archive
-        with zipfile.ZipFile(zip_path, "r") as src:
-            src.extractall(extract_dir)
-        print(f"Extracted files to {extract_dir}")
+      # Extract the original archive
+      with zipfile.ZipFile(zip_path, "r") as src:
+          src.extractall(extract_dir)
+      print(f"Extracted files to {extract_dir}")
 
-        # Fix accessibilities
-        print(str(site_dir))
-        fix_accessibilities_in_folder(str(site_dir))
-        print("Fixed zip file accessibilities.")
-        
-        # # Update HTML files
-        # for html_file in extract_dir.rglob("*.html"):
-        #     text = html_file.read_text(encoding="utf-8")
-        #     if OLD not in text:
-        #         continue
-        #     html_file.write_text(text.replace(OLD, NEW), encoding="utf-8")
+      # Fix accessibilities
+      print(str(site_dir))
+      fix_accessibilities_in_folder(str(site_dir))
+      print("Fixed zip file accessibilities.")
+      
+      # # Update HTML files
+      # for html_file in extract_dir.rglob("*.html"):
+      #     text = html_file.read_text(encoding="utf-8")
+      #     if OLD not in text:
+      #         continue
+      #     html_file.write_text(text.replace(OLD, NEW), encoding="utf-8")
 
-        # Rebuild archive beside the original, then swap in
-        rebuilt = tmpdir / "rebuilt.zip"
-        
-        with zipfile.ZipFile(rebuilt, "w", compression=zipfile.ZIP_DEFLATED) as dst:
-            for item in extract_dir.rglob("*"):
-                arcname = item.relative_to(extract_dir)
-                if item.is_dir():
-                    continue  # directories are implied
-                dst.write(item, arcname)
-        print("Rebuilt archive.")
-        shutil.move(rebuilt, zip_path)
+      # Rebuild archive beside the original, then swap in
+      rebuilt = tmpdir / "rebuilt.zip"
+      
+      with zipfile.ZipFile(rebuilt, "w", compression=zipfile.ZIP_DEFLATED) as dst:
+          for item in extract_dir.rglob("*"):
+              arcname = item.relative_to(extract_dir)
+              if item.is_dir():
+                  continue  # directories are implied
+              dst.write(item, arcname)
+      print("Rebuilt archive.")
+      shutil.move(rebuilt, zip_path)
 
 def existing_folder_arg(string):
-    if(Path(string).is_dir()):
-      return string
-    else:        
-      print("Folder does not exist: " + string)
+  """
+    Custom argument type for argparse to validate that a provided string is an existing folder path. This function checks if the given string corresponds to an existing directory on the filesystem. If it does, it returns the string; if not, it raises an error indicating that the specified folder does not exist. This is used in the command-line argument parsing to ensure that the user provides a valid folder path for processing.
+    Args:
+      string: The input string to validate as an existing folder path.
+    Returns:
+      The input string if it is a valid existing folder path.
+    Raises:
+      argparse.ArgumentTypeError: If the input string does not correspond to an existing directory.
+  """
+  if(Path(string).is_dir()):
+    return string
+  else:        
+    print("Folder does not exist: " + string)
 
 if __name__ == "__main__":
     main()

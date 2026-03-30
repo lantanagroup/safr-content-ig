@@ -12,7 +12,7 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "args": ["https://github.com/lantanagroup/safr-content-ig", "publication/publish", "-b", "development", "-r", "-a"]
+            "args": ["https://github.com/lantanagroup/safr-content-ig", "publication/publish", "-b", "rc1", "-r", "-a"]
         }
     ]
 }

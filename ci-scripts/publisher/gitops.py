@@ -16,6 +16,8 @@ def _run(cmd: str) -> None:
 
     This thin wrapper centralises subprocess invocation so callers get a
     clear RuntimeError on failure instead of silently continuing.
+    Args:
+        cmd: The command to run, as a single string.
     """
     res = subprocess.run(cmd, shell=True)
     if res.returncode != 0:

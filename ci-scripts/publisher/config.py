@@ -1,3 +1,7 @@
+"""
+This module provides configuration and setup helpers for the publisher CLI. This includes functions to load configuration from the IG repository, initialize the output folder with necessary files and templates, and define constants and templates used throughout the publication process. The `load_configuration()` function reads the `publication-request.json` and `sushi-config.yaml` files from the IG repository to construct a configuration dictionary that is used in subsequent steps. The `initialize_webroot()` function sets up the `webroot` folder with necessary JSON files for the publisher, while the `initialize_templates()` function sets up the `templates` folder with any custom templates from the IG repository as well as default header, postamble, and preamble templates. Constants such as URLs for downloading the publisher and tooling JARs, file patterns for post-processing, and template strings for generating configuration files are also defined in this module for easy maintenance and reuse across the publication process.
+"""
+
 import json
 import yaml
 import configparser
@@ -208,6 +212,12 @@ web_config = '''<?xml version="1.0" encoding="utf-8"?>
 
 
 def load_configuration(ig_repo_path):
+    """
+    Load configuration data from the IG repository.
+    This function reads the `publication-request.json` file from the IG repository to load the initial configuration data. It then reads the `sushi-config.yaml` file to extract additional information such as the canonical URL and publisher name, which are added to the configuration data. Finally, it ensures that any default configuration values are included in the resulting configuration dictionary. This configuration data is used throughout the publication process to customize templates and control build behavior based on the specific IG being published.
+    Args:        ig_repo_path: Path to the cloned IG repository from which to load configuration data.
+    Returns:     A dictionary containing the loaded configuration data, including values from both `publication-request.json` and `sushi-config.yaml`, as well as any default values for missing keys.
+    """
     with open(str(ig_repo_path) + '/publication-request.json', 'r') as file:
         config_data = json.load(file)
 
@@ -227,6 +237,10 @@ def load_configuration(ig_repo_path):
 
 
 def initialize_webroot(config_data):
+    """
+    Initialize the webroot folder with necessary JSON files for the publisher. This function creates the `webroot` directory if it does not exist, then generates the `package-registry.json`, `publish-setup.json`, `package-feed.xml`, and `publication-feed.xml` files in the `webroot` directory based on the provided configuration data and corresponding templates. The configuration data is used to replace placeholders in the templates to customize the generated files for the specific IG being published. This setup is necessary to ensure that the publisher has the required configuration files in place for both the initial and full build processes.
+    Args:        config_data: A dictionary containing configuration values loaded from the IG repository (by the `load_configuration` function), which are used to populate the templates for the JSON and XML files generated in the webroot.
+    """
     directory_path = Path("webroot")
     try:
         directory_path.mkdir()
@@ -268,6 +282,10 @@ def initialize_webroot(config_data):
 
 
 def initialize_templates(ig_repo_path):
+    """
+    Initialize the templates folder with any custom templates from the IG repository as well as default header, postamble, and preamble templates. This function creates the `templates` directory if it does not exist, then copies any custom template files from the IG repository (as specified in the `ig.ini` file) into the `templates` directory. It also ensures that the default `header.template`, `postamble.template`, and `preamble.template` files are created in the `templates` directory if they do not already exist, using predefined template strings. This setup is necessary to ensure that the publisher has access to both custom and default templates for generating the IG output during the build process.
+    Args:        ig_repo_path: Path to the cloned IG repository from which to load any custom templates and configuration for template setup. The presence of an `ig.ini` file in the IG repository is used to determine if there are custom templates to copy, and the paths specified in that file are used to locate and copy those templates into the `templates` directory.
+    """
     directory_path = Path("templates")
     try:
         directory_path.mkdir()
@@ -295,6 +313,10 @@ def initialize_templates(ig_repo_path):
 
 
 def copy_template_files(ig_repo_path):
+    """
+    Copy custom template files from the IG repository to the templates directory. This function checks for the presence of an `ig.ini` file in the IG repository, and if it exists, it reads the specified template ID to locate any custom template files. It then copies these custom template files from the IG repository into the `templates` directory in the output folder. If a custom template file has the same name as a default template (e.g., `history.template`), it is copied to the appropriate location (e.g., `ig-history/history.template`) instead of the `templates` directory to ensure it is used correctly during the build process. This allows for customization of templates on a per-IG basis while still maintaining default templates for use when no custom templates are provided.
+    Args:        ig_repo_path: Path to the cloned IG repository from which to load any custom templates and configuration for template setup. The presence of an `ig.ini` file in the IG repository is used to determine if there are custom templates to copy, and the paths specified in that file are used to locate and copy those templates into the appropriate locations in the output folder.
+    """
     ig_ini_path = Path(str(ig_repo_path) + '/ig.ini')
     if ig_ini_path.exists():
         print("The file exists.")
