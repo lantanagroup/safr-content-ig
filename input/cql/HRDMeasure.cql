@@ -1,164 +1,525 @@
-library HRDMeasureLibrary version '1.0.0'
+library HRDMeasure version '1.0.0'
 
 using FHIR version '4.0.1'
 
 include FHIRHelpers version '4.0.1' called FHIRHelpers
 
 // Terminology definitions
-codesystem "LOINC": 'http://loinc.org'
-codesystem "SNOMED CT": 'http://snomed.info/sct'
-codesystem "ICD-10-CM": 'http://hl7.org/fhir/sid/icd-10-cm'
+codesystem "SNOMEDCT": 'http://snomed.info/sct'
+codesystem "LocationPhysicalType": 'http://terminology.hl7.org/CodeSystem/location-physical-type'
+codesystem "HealthcareCapacity": 'http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes'
+codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category'
+codesystem "Time Period Ranges": 'http://terminology.hl7.org/CodeSystem/time-period-ranges'
 
 // Value sets
-valueset "Respiratory Specimen Collection Devices": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1125'
-valueset "COVID-19 Tests": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1123'
-valueset "Influenza Tests": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.102.12.1012'
-valueset "RSV Tests": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1124'
-valueset "ICU Location Types": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.87'
-valueset "Ventilator Device Types": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.5.1001'
+valueset "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1142'
+valueset "COVID_19 (Tests for SARS_CoV_2 Antigen)": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1158'
+valueset "Influenza (Tests for influenza A or B virus Nucleic Acid)": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.336'
+valueset "Influenza (Tests for influenza A or B virus Antigen)": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.337'
+valueset "RSV (Tests for RSV Antigen)": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1311'
+valueset "RSV (Tests for RSV Nucleic Acid)": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1312'
+
+//Codes
+code "Bed": 'bd' from "LocationPhysicalType" display 'Bed'
+
+code "HOSP": 'HOSP' from "HealthcareCapacity" display 'Hospital'
+code "IRF": 'IRF' from "HealthcareCapacity" display 'Inpatient Rehabilitation'
+code "IPF": 'IPF' from "HealthcareCapacity" display 'Inpatient Psychiatric'
+code "CHLD": 'CHLD' from "HealthcareCapacity" display 'Children\'s or Pediatric'
+code "OTH": 'OTH' from "HealthcareCapacity" display 'Other facility-within-facility or subunit'
+
+code "laboratory": 'laboratory' from "Observation Category" display 'Laboratory'
+
+code "detected": '260373001' from "SNOMEDCT" display 'Detected'
+code "N95 mask": '409533008' from "SNOMEDCT" display 'Air-purifying respirator (physical object)'
+code "Surgical mask": '409528009' from "SNOMEDCT" display 'Surgical face mask (physical object)'
+code "Face shield": '706724001' from "SNOMEDCT" display 'Face shield (physical object)'
+code "Patient gown": '1141676007' from "SNOMEDCT" display 'Patient gown (physical object)'
+code "Surgical glove": '462245005' from "SNOMEDCT" display 'Nitrile surgical glove, powdered (physical object)'
+
+code "0 Days": 'P0D--0D' from "Time Period Ranges" display '0 DAYS'
+code "1-3 Days": 'P1D--3D' from "Time Period Ranges" display '1-3 DAYS'
+code "4-6 Days": 'P4D--6D' from "Time Period Ranges" display '4-6 DAYS'
+code "7-14 Days": 'P7D--14D' from "Time Period Ranges" display '7-14 DAYS'
+code "15-30 Days": 'P15D--30D' from "Time Period Ranges" display '15-30 DAYS'
+code ">30 Days": 'P30D--9999D' from "Time Period Ranges" display '0 DAYS'
 
 // Parameter for measurement period
 parameter "Measurement Period" Interval<Date>
   default Interval[@2025-03-01, @2025-03-07]
 
-context Patient
+context Location
 
-// STRUCTURE MEASURE COMPONENTS
-// For a structure measure, we assess capabilities, resources and organizational structures
-
-// 1. Test for the presence of respiratory testing capabilities
-define "Has COVID-19 Testing Capability":
-  exists (
-    [Device] Device
-      where Device.type.coding in "COVID-19 Tests"
-        and Device.status = 'active'
+//Initial Populations
+define "Inpatient Beds Initial Population":
+  IsBedLocation
+  and LocationIsHOSP
+  and (
+    LocationIsIPF
+    or LocationIsIRF
+    or LocationIsCHLD
   )
 
-define "Has Influenza Testing Capability":
-  exists (
-    [Device] Device
-      where Device.type.coding in "Influenza Tests"
-        and Device.status = 'active'
+define "Occupied Inpatient Beds Initial Population":
+  "Inpatient Beds Initial Population"
+  and EncounterCheck
+  
+define "Adult Inpatient Beds Initial Population":
+  IsBedLocation
+  and LocationIsHOSP
+  and (
+    LocationIsIPF
+    or LocationIsIRF
+  )
+  and not LocationIsCHLD
+
+define "Occupied Adult Inpatient Beds Initial Population":
+  "Adult Inpatient Beds Initial Population"
+  and EncounterCheck
+
+define "Pediatric Inpatient Beds Initial Population":
+  IsBedLocation
+  and LocationIsHOSP
+  and LocationIsCHLD
+  and not (
+    LocationIsIPF
+    or LocationIsIRF
   )
 
-define "Has RSV Testing Capability":
-  exists (
-    [Device] Device
-      where Device.type.coding in "RSV Tests"
-        and Device.status = 'active'
+define "Occupied Pediatric Inpatient Beds Initial Population":
+  "Pediatric Inpatient Beds Initial Population"
+  and EncounterCheck
+
+define "ICU Beds Initial Population":
+  IsBedLocation
+  and (
+    LocationIsHOSP
+    or LocationIsOTH
   )
 
-// 2. Check for specimen collection capabilities
-define "Has Specimen Collection Capabilities":
-  exists (
-    [Device] Device
-      where Device.type.coding in "Respiratory Specimen Collection Devices"
-        and Device.status = 'active'
+define "Occupied ICU Beds Initial Population":
+  "ICU Beds Initial Population"
+  and EncounterCheck
+
+define "Adult ICU Beds Initial Population":
+  IsBedLocation
+  and (
+    LocationIsHOSP
+    or LocationIsOTH
+  )
+  and not LocationIsCHLD
+
+define "Occupied Adult ICU Beds Initial Population":
+  "Adult ICU Beds Initial Population"
+  and EncounterCheck
+
+define "Pediatric ICU Beds Initial Population":
+  IsBedLocation
+  and LocationIsCHLD
+  and (
+    LocationIsHOSP
+    or LocationIsOTH
   )
 
-// 3. Check for ICU capabilities
-define "Has ICU Locations":
-  exists (
-    [Location] Location
-      where Location.type.coding in "ICU Location Types"
-        and Location.status = 'active'
-  )
+define "Occupied Pediatric ICU Beds Initial Population":
+  "Pediatric ICU Beds Initial Population"
+  and EncounterCheck
 
-// 4. Check for ventilator resources
-define "Has Ventilator Resources":
-  exists (
-    [Device] Device
-      where Device.type.coding in "Ventilator Device Types"
-        and Device.status = 'active'
-  )
+//Stratifiers
+//COVID_19
+define "Adult Inpatient COVID_19 Patients Stratifier":
+  if "Adult Inpatient Beds Initial Population" then
+    "Count Confirmed COVID_19 Patients in Bed Location"
+  else 0
 
-// 5. Check for protocol documentation
-define "Has HRD Reporting Protocol":
-  exists (
-    [DocumentReference] D
-      where D.type.coding.code in {'11516-2'} // LOINC for infection control protocol
-        and D.status = 'current'
-        and D.description contains 'NHSN'
-        and D.description contains 'HRD'
-  )
+define "Pediatric Inpatient COVID_19 Patients Stratifier":
+  if "Pediatric Inpatient Beds Initial Population" then
+    "Count Confirmed COVID_19 Patients in Bed Location"
+  else 0
 
-// CONTINUOUS VARIABLE CALCULATIONS
+define "Adult ICU COVID_19 Patients Stratifier":
+  if "Adult ICU Beds Initial Population" then
+    "Count Confirmed COVID_19 Patients in Bed Location"
+  else 0
 
-// Hospital capacity metrics
-define "Total Bed Capacity":
-  Sum(
-    [Location] Location
-      where Location.status = 'active'
-        and Location.physicalType.coding.code = 'bd'
-      return (
-        Location.extension E
-          where E.url = 'http://hl7.org/fhir/StructureDefinition/location-bed-count'
-          return E.valueInteger
-      ).valueInteger
-  )
+define "Pediatric ICU COVID_19 Patients Stratifier":
+  if "Pediatric ICU Beds Initial Population" then
+    "Count Confirmed COVID_19 Patients in Bed Location"
+  else 0
 
-define "ICU Bed Capacity":
-  Sum(
-    [Location] Location
-      where Location.status = 'active'
-        and Location.type.coding in "ICU Location Types"
-        and Location.physicalType.coding.code = 'bd'
-      return (
-        Location.extension E
-          where E.url = 'http://hl7.org/fhir/StructureDefinition/location-bed-count'
-          return E.valueInteger
-      ).valueInteger
-  )
-
-define "Ventilator Count":
+define "New Pediatric COVID_19 Patients Between 0 to 4 Stratifier":
   Count(
-    [Device] Device
-      where Device.type.coding in "Ventilator Device Types"
-        and Device.status = 'active'
+    "Get Confirmed Patient IDs in Bed Location Between Specified Ages"( "Newly Admitted COVID_19 Patient IDs" , 0, 4 )
   )
 
-// Weekly reporting compliance and metrics
-define "Reporting Weeks in Measurement Period":
+define "New Pediatric COVID_19 Patients Between 5 to 17 Stratifier":
   Count(
-    expand{@2025-03-01, @2025-03-07, week}
+    "Get Confirmed Patient IDs in Bed Location Between Specified Ages"( "Newly Admitted COVID_19 Patient IDs", 5, 17 )
   )
 
-define "HRD Reports Submitted During Period":
+define "New Adult COVID_19 Patients Between 18 to 49 Stratifier":
   Count(
-    [Communication] C
-      where C.category.coding.code in {'notification'}
-        and C.topic.text contains 'NHSN'
-        and C.topic.text contains 'HRD'
-        and C.sent during "Measurement Period"
+    "Get Confirmed Patient IDs in Bed Location Between Specified Ages"( "Newly Admitted COVID_19 Patient IDs", 18, 49 )
   )
 
-define "Weekly Reporting Compliance":
-  "HRD Reports Submitted During Period" / "Reporting Weeks in Measurement Period"
+define "New Adult COVID_19 Patients Between 50 to 64 Stratifier":
+  Count(
+    "Get Confirmed Patient IDs in Bed Location Between Specified Ages"( "Newly Admitted COVID_19 Patient IDs", 50, 64 )
+  )
 
-// Structural readiness scores
-define "Has All Testing Capabilities":
-  if ("Has COVID-19 Testing Capability" and "Has Influenza Testing Capability" and "Has RSV Testing Capability")
-    then 1
-    else 0
+define "New Adult COVID_19 Patients Between 65 to 74 Stratifier":
+  Count(
+    "Get Confirmed Patient IDs in Bed Location Between Specified Ages"( "Newly Admitted COVID_19 Patient IDs", 65, 74 )
+  )
 
-define "Has Required Reporting Structure":
-  if ("Has HRD Reporting Protocol") 
-    then 1
-    else 0
+define "New Adult COVID_19 Patients 75 and Above Stratifier":
+  Count(
+    "Get Confirmed Patient IDs in Bed Location Above Specified Age"( "Newly Admitted COVID_19 Patient IDs", 75 )
+  )
 
-// Continuous variable for structural measure assessment
-define "Structural Readiness Score":
-  ("Has COVID-19 Testing Capability" as Integer +
-   "Has Influenza Testing Capability" as Integer +
-   "Has RSV Testing Capability" as Integer +
-   "Has Specimen Collection Capabilities" as Integer +
-   "Has ICU Locations" as Integer +
-   "Has Ventilator Resources" as Integer +
-   "Has HRD Reporting Protocol" as Integer) / 7.0 * 100.0
+define "New COVID_19 Patients with Unknown Age Stratifier":
+  Count(
+    "Get Confirmed Patient IDs in Bed Location and Unknown Age"( "Newly Admitted COVID_19 Patient IDs" )
+  )
+  
+//Influenza
+define "Adult Inpatient Influenza Patients Stratifier":
+  if "Adult Inpatient Beds Initial Population" then
+    "Count Confirmed Influenza Patients in Bed Location"
+  else 0
 
-// Main measure calculation - now focusing on structural components and their ratings
-define "Measure Population":
-  true
+define "Pediatric Inpatient Influenza Patients Stratifier":
+  if "Pediatric Inpatient Beds Initial Population" then
+    "Count Confirmed Influenza Patients in Bed Location"
+  else 0
 
-define "Measure Observation":
-  "Structural Readiness Score"
+define "Adult ICU Influenza Patients Stratifier":
+  if "Adult ICU Beds Initial Population" then
+    "Count Confirmed Influenza Patients in Bed Location"
+  else 0
+
+define "Pediatric ICU Influenza Patients Stratifier":
+  if "Pediatric ICU Beds Initial Population" then
+    "Count Confirmed Influenza Patients in Bed Location"
+  else 0
+
+define "New Pediatric Influenza Patients Between 0 to 4 Stratifier":
+  Count(
+    "Get Confirmed Patient IDs in Bed Location Between Specified Ages"( "Newly Admitted Influenza Patient IDs" , 0, 4 )
+  )
+
+define "New Pediatric Influenza Patients Between 5 to 17 Stratifier":
+  Count(
+    "Get Confirmed Patient IDs in Bed Location Between Specified Ages"( "Newly Admitted Influenza Patient IDs", 5, 17 )
+  )
+
+define "New Adult Influenza Patients Between 18 to 49 Stratifier":
+  Count(
+    "Get Confirmed Patient IDs in Bed Location Between Specified Ages"( "Newly Admitted Influenza Patient IDs", 18, 49 )
+  )
+
+define "New Adult Influenza Patients Between 50 to 64 Stratifier":
+  Count(
+    "Get Confirmed Patient IDs in Bed Location Between Specified Ages"( "Newly Admitted Influenza Patient IDs", 50, 64 )
+  )
+
+define "New Adult Influenza Patients Between 65 to 74 Stratifier":
+  Count(
+    "Get Confirmed Patient IDs in Bed Location Between Specified Ages"( "Newly Admitted Influenza Patient IDs", 65, 74 )
+  )
+
+define "New Adult Influenza Patients 75 and Above Stratifier":
+  Count(
+    "Get Confirmed Patient IDs in Bed Location Above Specified Age"( "Newly Admitted Influenza Patient IDs", 75 )
+  )
+
+define "New Influenza Patients with Unknown Age Stratifier":
+  Count(
+    "Get Confirmed Patient IDs in Bed Location and Unknown Age"( "Newly Admitted Influenza Patient IDs" )
+  )
+
+//RSV
+define "Adult Inpatient RSV Patients Stratifier":
+  if "Adult Inpatient Beds Initial Population" then
+    "Count Confirmed RSV Patients in Bed Location"
+  else 0
+
+define "Pediatric Inpatient RSV Patients Stratifier":
+  if "Pediatric Inpatient Beds Initial Population" then
+    "Count Confirmed RSV Patients in Bed Location"
+  else 0
+
+define "Adult ICU RSV Patients Stratifier":
+  if "Adult ICU Beds Initial Population" then
+    "Count Confirmed RSV Patients in Bed Location"
+  else 0
+
+define "Pediatric ICU RSV Patients Stratifier":
+  if "Pediatric ICU Beds Initial Population" then
+    "Count Confirmed RSV Patients in Bed Location"
+  else 0
+
+define "New Pediatric RSV Patients Between 0 to 4 Stratifier":
+  Count(
+    "Get Confirmed Patient IDs in Bed Location Between Specified Ages"( "Newly Admitted RSV Patient IDs" , 0, 4 )
+  )
+
+define "New Pediatric RSV Patients Between 5 to 17 Stratifier":
+  Count(
+    "Get Confirmed Patient IDs in Bed Location Between Specified Ages"( "Newly Admitted RSV Patient IDs", 5, 17 )
+  )
+
+define "New Adult RSV Patients Between 18 to 49 Stratifier":
+  Count(
+    "Get Confirmed Patient IDs in Bed Location Between Specified Ages"( "Newly Admitted RSV Patient IDs", 18, 49 )
+  )
+
+define "New Adult RSV Patients Between 50 to 64 Stratifier":
+  Count(
+    "Get Confirmed Patient IDs in Bed Location Between Specified Ages"( "Newly Admitted RSV Patient IDs", 50, 64 )
+  )
+
+define "New Adult RSV Patients Between 65 to 74 Stratifier":
+  Count(
+    "Get Confirmed Patient IDs in Bed Location Between Specified Ages"( "Newly Admitted RSV Patient IDs", 65, 74 )
+  )
+
+define "New Adult RSV Patients 75 and Above Stratifier":
+  Count(
+    "Get Confirmed Patient IDs in Bed Location Above Specified Age"( "Newly Admitted RSV Patient IDs", 75 )
+  )
+
+define "New RSV Patients with Unknown Age Stratifier":
+  Count(
+    "Get Confirmed Patient IDs in Bed Location and Unknown Age"( "Newly Admitted RSV Patient IDs" )
+  )
+
+//Devices (Supply is divided by average used per day (estimated))
+define "N95 Mask Supply in Days Stratifier":
+  GetDayCode( "N95 Mask Supply in Days" )
+
+define "N95 Mask Supply in Days":
+  Floor( Count(
+    "Devices" Devices
+    where Devices.type ~ "N95 mask"
+  ) / 10 )
+
+define "N95 Mask 3 Day Supply Stratifier":
+  if "N95 Mask Supply in Days" > 3 then 'y'
+  else 'n'
+
+define "OR Surgical Mask Supply in Days Stratifier":
+  GetDayCode( "OR Surgical Mask Supply in Days" )
+
+define "OR Surgical Mask Supply in Days":
+  Floor( Count(
+    "Devices" Devices
+    where Devices.type ~ "Surgical mask"
+  ) / 10 )
+
+define "OR Surgical Mask 3 Day Supply Stratifier":
+  if "OR Surgical Mask Supply in Days" > 3 then 'y'
+  else 'n'
+
+define "Face Shield Supply in Days Stratifier":
+  GetDayCode( "Face Shield Supply in Days" )
+
+define "Face Shield Supply in Days":
+  Floor( Count(
+    "Devices" Devices
+    where Devices.type ~ "Face shield"
+  ) / 10 )
+
+define "Face Shield 3 Day Supply Stratifier":
+  if "Face Shield Supply in Days" > 3 then 'y'
+  else 'n'
+
+define "Gown Supply in Days Stratifier":
+  GetDayCode( "Gown Supply in Days" )
+
+define "Gown Supply in Days":
+  Floor( Count(
+    "Devices" Devices
+    where Devices.type ~ "Patient gown"
+  ) / 5 )
+
+define "Gown 3 Day Supply Stratifier":
+  if "Gown Supply in Days" > 3 then 'y'
+  else 'n'
+
+define "Glove Supply in Days Stratifier":
+  GetDayCode( "Glove Supply in Days" )
+
+define "Glove Supply in Days":
+  Floor( Count(
+    "Devices" Devices
+    where Devices.type ~ "Surgical glove"
+  ) / 15 )
+
+define "Glove 3 Day Supply Stratifier":
+  if "Glove Supply in Days" > 3 then 'y'
+  else 'n'
+
+//Functions and Helpers
+define "COVID_19 Observations":
+  [Observation: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] 
+    union [Observation: "COVID_19 (Tests for SARS_CoV_2 Antigen)"]
+
+define "Newly Admitted COVID_19 Patient IDs":
+  "Get Confirmed Patient IDs"( "Newly Admitted Encounters", "COVID_19 Observations" )
+
+define "Count Confirmed COVID_19 Patients in Bed Location":
+  Count(
+    "Get Confirmed Patient IDs"( "Encounters", "COVID_19 Observations" )
+  )
+
+define "Influenza Observations":
+  [Observation: "Influenza (Tests for influenza A or B virus Nucleic Acid)"] 
+    union [Observation: "Influenza (Tests for influenza A or B virus Antigen)"]
+
+define "Newly Admitted Influenza Patient IDs":
+  "Get Confirmed Patient IDs"( "Newly Admitted Encounters", "Influenza Observations" )
+
+define "Count Confirmed Influenza Patients in Bed Location":
+  Count(
+    "Get Confirmed Patient IDs"( "Encounters", "Influenza Observations" )
+  )
+
+define "RSV Observations":
+  [Observation: "RSV (Tests for RSV Antigen)"] 
+    union [Observation: "RSV (Tests for RSV Nucleic Acid)"]
+
+define "Newly Admitted RSV Patient IDs":
+  "Get Confirmed Patient IDs"( "Newly Admitted Encounters", "RSV Observations" )
+
+define "Count Confirmed RSV Patients in Bed Location":
+  Count(
+    "Get Confirmed Patient IDs"( "Encounters", "RSV Observations" )
+  )
+
+define "IsBedLocation":
+  Location.physicalType ~ "Bed"
+
+define "Encounters":
+  [Encounter]
+
+define "Devices":
+  [Device]
+
+define "Newly Admitted Encounters":
+  "Encounters" Encounters
+  where Encounters.status in { 'in-progress', 'arrived', 'triaged' }
+
+define "Patients":
+  [Patient]
+
+define function GetDayCode(count Integer):
+  case
+    when count = 0 then "0 Days"
+    when count >= 1 and count <= 3 then "1-3 Days"
+    when count >= 4 and count <= 6 then "4-6 Days"
+    when count >= 7 and count <= 14 then "7-14 Days"
+    when count >= 15 and count <= 30 then "15-30 Days"
+    when count > 30 then ">30 Days"
+    else null
+  end
+
+define function "Get Confirmed Patient IDs"( Encounters List<FHIR.Encounter>, Observations List<FHIR.Observation> ):
+  Distinct(
+    Encounters Encounter
+    where exists(
+      Observations Labs
+      where exists(
+        Labs.category category
+        where category ~ "laboratory"
+      )
+      and Encounter.subject = Labs.subject
+      and Labs.value ~ "detected"
+      and "Normalize Interval"( Labs.effective ) overlaps Encounter.period
+    )
+    return Encounter.subject
+  )
+
+define function "Get Confirmed Patient IDs in Bed Location Between Specified Ages"( PatientIDs List<FHIR.Reference>, low System.Integer, high System.Integer ):
+  PatientIDs PatientID
+  where exists(
+    "Patients" Patients
+    let PatientAge: CalculateAgeInYearsAt( Patients.birthDate, start of "Measurement Period" )
+    where Patients.id = GetId( PatientID.reference )
+    and PatientAge >= low
+    and PatientAge <= high
+  )
+
+define function "Get Confirmed Patient IDs in Bed Location Above Specified Age"( PatientIDs List<FHIR.Reference>, age System.Integer ):
+  PatientIDs PatientID
+  where exists(
+    "Patients" Patients
+    let PatientAge: CalculateAgeInYearsAt( Patients.birthDate, start of "Measurement Period" )
+    where Patients.id = GetId( PatientID.reference )
+    and PatientAge >= age
+  )
+
+define function "Get Confirmed Patient IDs in Bed Location and Unknown Age"( PatientIDs List<FHIR.Reference> ):
+  PatientIDs PatientID
+  where exists(
+    "Patients" Patients
+    where Patients.id = GetId( PatientID.reference )
+    and Patients.birthDate = null
+  )
+
+define function "GetCondition"( reference Reference ):
+  singleton from (
+	[Condition] Conditions
+		where Conditions.id = GetId( reference.reference )
+  )
+
+define function "GetId"( uri String ):
+  Last(Split(uri, '/'))
+
+define function "Normalize Interval"( choice Choice<FHIR.dateTime, FHIR.Period, FHIR.Timing, FHIR.instant> ):
+  case
+	  when choice is FHIR.dateTime then
+    	Interval[FHIRHelpers.ToDateTime(choice as FHIR.dateTime), FHIRHelpers.ToDateTime(choice as FHIR.dateTime)]
+		when choice is FHIR.Period then
+  		FHIRHelpers.ToInterval(choice as FHIR.Period)
+		when choice is FHIR.instant then
+			Interval[FHIRHelpers.ToDateTime(choice as FHIR.instant), FHIRHelpers.ToDateTime(choice as FHIR.instant)]
+		when choice is FHIR.Timing then
+		  Message(null as Interval<DateTime>, true, '1', 'Error', 'Cannot compute a single interval from a Timing type')
+		else
+			null as Interval<DateTime>
+	end
+
+define "EncounterCheck":
+  exists("Encounters" Encounters
+  where Encounters.period overlaps "Measurement Period")
+
+define "LocationIsHOSP":
+  exists(
+    Location.type types
+    where types ~ "HOSP"
+  )
+
+define "LocationIsIPF":
+  exists(
+    Location.type types
+    where types ~ "IPF"
+  )
+
+define "LocationIsIRF":
+  exists(
+    Location.type types
+    where types ~ "IRF"
+  )
+
+define "LocationIsCHLD":
+  exists(
+    Location.type types
+    where types ~ "CHLD"
+  )
+
+define "LocationIsOTH":
+  exists(
+    Location.type types
+    where types ~ "OTH"
+  )
