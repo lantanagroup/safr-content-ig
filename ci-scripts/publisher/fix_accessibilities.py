@@ -91,14 +91,20 @@ def fix_accessibilities_in_folder(folder_path = default_folder):
 
 def fix_accessibility_in_file(file_path):
   print("Updating file for Section 508 compliance: " + file_path)
-  #from lxml import etree
-  tree = html.parse(file_path)
+
+  parser = html.HTMLParser(encoding='utf-8')
+  tree = html.parse(file_path, parser=parser)
+  root = tree.getroot()
+
+  if root is None:
+    # Fallback for malformed HTML where ElementTree has no root
+    raw_html = Path(file_path).read_bytes()
+    root = html.fromstring(raw_html, parser=parser)
+    tree = html.ElementTree(root)
 
   # Replace all opacity of 0.5 with 0.87
   
-  elements_with_style = tree.xpath("//*[@style]")
-
-  for element in elements_with_style:
+  for element in root.xpath("//*[@style]"):
     #style_attr = element.get('style')
     #if style_attr:
 
@@ -242,8 +248,10 @@ def fix_accessibility_in_file(file_path):
             #     parent_td.attrib["style"] = parent_td.attrib["style"].rstrip("; ") + "; color: gray;"
 
 
-  with open(file_path, "wb") as f:
-    f.write(html.tostring(tree, pretty_print=True, encoding='utf-8'))
+  try:
+    tree.write(file_path, encoding='utf-8', method='html', pretty_print=True)
+  except Exception as e:
+    print(f"Error writing updated file {file_path}: {e}")
 
   #exit()
 

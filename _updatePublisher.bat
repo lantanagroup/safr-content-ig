@@ -138,7 +138,12 @@ ECHO.
 ECHO Updating scripts
 IF "%skipPrompts%"=="y" (
 	SET updateScripts=Y
-) 
+)
+REM Removed because scripts are customized for content IG publication and we don't want to overwrite them with the default ones from the repo
+REM ELSE (
+REM	SET /p updateScripts="Update scripts? (Y/N) "
+REM)
+
 IF /I "%updateScripts%"=="Y" (
 	GOTO scripts
 )
