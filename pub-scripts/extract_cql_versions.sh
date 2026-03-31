@@ -1,10 +1,15 @@
 #!/bin/bash
 
+# This script was originally referenced in the Azure Pipeline: https://dev.azure.com/lantanagroup/nhsnlink/_apps/hub/ms.vss-ciworkflow.build-ci-hub?_a=edit-build-definition&id=195
+# It appears this pipeline was created to start working on automating full release publications
+# This script extracts the version numbers from the CQL files in the specified folder and generates a Markdown table. It also retrieves the latest release information from the specified GitHub repository to include in the output. The script checks for the presence of a GitHub Personal Access Token (PAT) in the environment variable GITHUB_PAT, which is necessary for authenticated API calls to GitHub. If the PAT is not set, the script will exit with an error message. The script first attempts to fetch the latest release information using the GitHub API, which is more efficient than cloning the repository. If the API call fails, it falls back to cloning the repository and fetching the tags to determine the latest release. Finally, it generates a Markdown table with the measure names and their corresponding versions, and includes a footnote with a link to the latest release if available. A warning about missing ValueSets is also included in the output. The resulting Markdown table is saved to a file named cql_versions.md and printed to the console for debugging purposes.
+
+
 # Define the folder containing the CQL files
 folder_path="input/cql"
 
 # Define the GitHub repository
-repo="lantanagroup/nhsn-measures"
+repo="lantanagroup/safr-content-ig"
 
 # Check if GitHub PAT is available
 if [[ -z "$PAT" ]]; then
