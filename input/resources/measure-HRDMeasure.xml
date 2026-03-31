@@ -107,6 +107,13 @@
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
             <valueCoding>
                <system value="http://snomed.info/sct"></system>
+               <code value="10828004"></code>
+               <display value="Positive"></display>
+            </valueCoding>
+         </extension>
+         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
+            <valueCoding>
+               <system value="http://snomed.info/sct"></system>
                <code value="462245005"></code>
                <display value="Nitrile surgical glove, powdered (physical object)"></display>
             </valueCoding>
@@ -407,8 +414,9 @@
             <extension url="statement">
                <valueString value="//Functions and Helpers
 define &quot;COVID_19 Observations&quot;:
-  [Observation: &quot;COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)&quot;] 
-    union [Observation: &quot;COVID_19 (Tests for SARS_CoV_2 Antigen)&quot;]"></valueString>
+  ( [Observation: &quot;COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)&quot;] 
+    union [Observation: &quot;COVID_19 (Tests for SARS_CoV_2 Antigen)&quot;] ) Observations
+    where Observations.value ~ &quot;positive&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="15"></valueInteger>
@@ -581,8 +589,9 @@ define &quot;COVID_19 Observations&quot;:
             </extension>
             <extension url="statement">
                <valueString value="define &quot;Influenza Observations&quot;:
-  [Observation: &quot;Influenza (Tests for influenza A or B virus Nucleic Acid)&quot;] 
-    union [Observation: &quot;Influenza (Tests for influenza A or B virus Antigen)&quot;]"></valueString>
+  ( [Observation: &quot;Influenza (Tests for influenza A or B virus Nucleic Acid)&quot;] 
+    union [Observation: &quot;Influenza (Tests for influenza A or B virus Antigen)&quot;] ) Observations
+    where Observations.value ~ &quot;positive&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="25"></valueInteger>
@@ -631,8 +640,9 @@ define &quot;COVID_19 Observations&quot;:
             </extension>
             <extension url="statement">
                <valueString value="define &quot;RSV Observations&quot;:
-  [Observation: &quot;RSV (Tests for RSV Antigen)&quot;] 
-    union [Observation: &quot;RSV (Tests for RSV Nucleic Acid)&quot;]"></valueString>
+  ( [Observation: &quot;RSV (Tests for RSV Antigen)&quot;] 
+    union [Observation: &quot;RSV (Tests for RSV Nucleic Acid)&quot;] ) Observations
+    where Observations.value ~ &quot;positive&quot;"></valueString>
             </extension>
             <extension url="displaySequence">
                <valueInteger value="28"></valueInteger>
@@ -2547,12 +2557,17 @@ define &quot;Inpatient Beds Initial Population&quot;:
    <extension url="http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-effectiveDataRequirements">
       <valueCanonical value="#effective-data-requirements"></valueCanonical>
    </extension>
+   <extension url="http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-softwaresystem">
+      <valueReference>
+         <reference value="Device/cqf-tooling"></reference>
+      </valueReference>
+   </extension>
    <url value="http://hl7.org/fhir/us/safr/Measure/HRDMeasure"></url>
    <version value="1.0.0"></version>
    <name value="HRDMeasure"></name>
    <title value="HRD Measure"></title>
    <experimental value="true"></experimental>
-   <date value="2026-03-30T16:05:59-04:00"></date>
+   <date value="2026-03-31T14:23:46-04:00"></date>
    <description value="Hospital Respiratory Data Measure Example"></description>
    <library value="http://hl7.org/fhir/us/safr/Library/HRDMeasure"></library>
    <scoring>

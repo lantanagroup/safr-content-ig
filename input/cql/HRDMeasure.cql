@@ -44,6 +44,8 @@ code "7-14 Days": 'P7D--14D' from "Time Period Ranges" display '7-14 DAYS'
 code "15-30 Days": 'P15D--30D' from "Time Period Ranges" display '15-30 DAYS'
 code ">30 Days": 'P30D--9999D' from "Time Period Ranges" display '0 DAYS'
 
+code "positive": '10828004' from "SNOMEDCT" display 'Positive'
+
 // Parameter for measurement period
 parameter "Measurement Period" Interval<Date>
   default Interval[@2025-03-01, @2025-03-07]
@@ -362,8 +364,9 @@ define "Glove 3 Day Supply Stratifier":
 
 //Functions and Helpers
 define "COVID_19 Observations":
-  [Observation: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] 
-    union [Observation: "COVID_19 (Tests for SARS_CoV_2 Antigen)"]
+  ( [Observation: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] 
+    union [Observation: "COVID_19 (Tests for SARS_CoV_2 Antigen)"] ) Observations
+    where Observations.value ~ "positive"
 
 define "Newly Admitted COVID_19 Patient IDs":
   "Get Confirmed Patient IDs"( "Newly Admitted Encounters", "COVID_19 Observations" )
@@ -374,8 +377,9 @@ define "Count Confirmed COVID_19 Patients in Bed Location":
   )
 
 define "Influenza Observations":
-  [Observation: "Influenza (Tests for influenza A or B virus Nucleic Acid)"] 
-    union [Observation: "Influenza (Tests for influenza A or B virus Antigen)"]
+  ( [Observation: "Influenza (Tests for influenza A or B virus Nucleic Acid)"] 
+    union [Observation: "Influenza (Tests for influenza A or B virus Antigen)"] ) Observations
+    where Observations.value ~ "positive"
 
 define "Newly Admitted Influenza Patient IDs":
   "Get Confirmed Patient IDs"( "Newly Admitted Encounters", "Influenza Observations" )
@@ -386,8 +390,9 @@ define "Count Confirmed Influenza Patients in Bed Location":
   )
 
 define "RSV Observations":
-  [Observation: "RSV (Tests for RSV Antigen)"] 
-    union [Observation: "RSV (Tests for RSV Nucleic Acid)"]
+  ( [Observation: "RSV (Tests for RSV Antigen)"] 
+    union [Observation: "RSV (Tests for RSV Nucleic Acid)"] ) Observations
+    where Observations.value ~ "positive"
 
 define "Newly Admitted RSV Patient IDs":
   "Get Confirmed Patient IDs"( "Newly Admitted Encounters", "RSV Observations" )
