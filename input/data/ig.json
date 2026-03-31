@@ -285,6 +285,13 @@
       },
       {
         "reference": {
+          "reference": "Observation/observation-example-ed-patient1"
+        },
+        "name": "Observation - Example Emergency Department Visit",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
           "reference": "Location/PEDSBed7"
         },
         "name": "Pediatric Bed 7",

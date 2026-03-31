@@ -15,6 +15,7 @@
 <artifact id="Device/cqf-tooling" key="Device-cqf-tooling" name="Device - CQF Tooling System Example"/>
 <artifact id="Location/EDBed1" key="Location-EDBed1" name="Emergency Dept. Bed 1"/>
 <artifact id="Encounter/encounter-example-ach-ach-pass2-emergency" key="Encounter-encounter-example-ach-ach-pass2-emergency" name="Encounter - Example ACH Pass2 - Emergency"/>
+<artifact id="Observation/observation-example-ed-patient1" key="Observation - Example Emergency Department Visit" name="Observation - Example Emergency Department Visit"/>
 <artifact id="CodeSystem/us-safr-bed-capacity-example-codes" key="CodeSystem-us-safr-bed-capacity-example-codes" name="Healthcare Bed Capacity Reporting Code System"/>
 <artifact id="CodeSystem/us-safr-bed-capacity-group-example-codes" key="CodeSystem-us-safr-bed-capacity-group-example-codes" name="Healthcare Bed Capacity Reporting Group Code System"/>
 <artifact id="Measure/HrdMeasure" key="Measure-HrdMeasure" name="Hospital Respiratory Data Measure for US Situational Awareness Framework for Reporting"/>
