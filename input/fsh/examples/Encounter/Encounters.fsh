@@ -1,7 +1,7 @@
 Instance: encounter-example-ach-ach-pass2-emergency
 InstanceOf: QICoreEncounter
-Title: "Encounter - Example ACH Pass2 - Emergency"
-Description: "Encounter - Example ACH Pass2 - Emergency department visit"
+Title: "Encounter - Example ED Patient 1 - Emergency"
+Description: "Encounter - Example ED Patient 1 - Emergency department visit"
 Usage: #example
 * meta.profile = Canonical(QICoreEncounter|6.0.0)
 * identifier.use = #usual
@@ -12,7 +12,7 @@ Usage: #example
 * type = $sct#4525004 "Emergency department patient visit"
 * type.text = "Emergency department patient visit"
 * subject = Reference(ed-pat-1)
-* subject.display = "Pass2 ACH"
+* subject.display = "Example ED Patient 1"
 * period.start = "2025-01-31T02:35:00-05:00"
 * location[0].location.display = "ACH Emergency Department"
 * location[=].location = Reference(EDBed1)

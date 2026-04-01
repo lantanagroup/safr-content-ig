@@ -4,7 +4,7 @@ Alias: $CRMISoftwareSystemDevice = http://hl7.org/fhir/uv/crmi/StructureDefiniti
 Alias: $measure-scoring = http://terminology.hl7.org/CodeSystem/measure-scoring
 
 Alias: $measure-population = http://terminology.hl7.org/CodeSystem/measure-population
-Alias: $location-physical-type = http://terminology.hl7.org/CodeSystem/location-physical-type|2.0.1
+Alias: $location-physical-type = http://terminology.hl7.org/CodeSystem/location-physical-type
 Alias: $library-type = http://terminology.hl7.org/CodeSystem/library-type
 Alias: $resource-type = http://hl7.org/fhir/resource-types
 
