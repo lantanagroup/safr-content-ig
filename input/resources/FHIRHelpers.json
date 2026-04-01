@@ -54,7 +54,7 @@
       "reference": "#options"
     }
   } ],
-  "url": "http://fhir.org/guides/cqf/common/Library/FHIRHelpers|4.0.1",
+  "url": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/Library/FHIRHelpers",
   "version": "4.0.1",
   "name": "FHIRHelpers",
   "type": {
