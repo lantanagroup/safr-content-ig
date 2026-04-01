@@ -36,7 +36,7 @@ def main():
     args = parser.parse_args()
     if not (args.ig_repo and args.output_path):
         parser.print_help()
-        parser.error('Need a FHIR IG repo and Output folder')
+        parser.error('Need a FHIR IG repo and (not yet existing) Output folder')
 
     start = time.time()
     directory_path = Path(args.output_path)
@@ -82,7 +82,6 @@ def main():
 
     if args.access:
         print(f"Modifying files to be more Section 508 accessibility compliant")
-        #fix_accessibility()
         run_accessibility_fixer_on_webroot()
 
     end = time.time()

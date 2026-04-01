@@ -7,6 +7,7 @@ simple checks and print a message on failure.
 """
 
 from pathlib import Path
+import os
 
 
 class bcolors:

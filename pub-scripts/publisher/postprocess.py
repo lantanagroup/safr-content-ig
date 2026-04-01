@@ -13,15 +13,19 @@ existing script `ci-scripts/fix_accessibilities.py` so that improvements to that
 tool are automatically used.
 
 Usage notes:
-- `fix_accessibility()` will locate `ci-scripts/fix_accessibilities.py` (sibling
-  to this package) and invoke it for every subfolder under `webroot/ig`.
-- The external script is executed with the active Python interpreter (via
-  `sys.executable`) to maintain environment consistency.
+- `run_accessibility_fixer_on_webroot()` will locate `publisher/fix_accessibilities.py` (sibling to this package) 
+    and invoke it for every subfolder under `webroot/ig`. 
+    This ensures that any HTML files in the generated output are processed for accessibility fixes. 
+    The function includes error handling to catch and log any issues encountered when running the external script 
+    on each target folder, allowing the overall post-processing workflow to continue even if there are problems 
+    with the accessibility fixer on specific folders.
 
 Suggested improvements:
 - Add a `--dry-run` option to list target folders before making changes.
 - Add logging (instead of prints) and a `--verbose` flag.
 - Consider running accessibility fixes in parallel (careful with CPU/disk IO).
+- More robust error handling around file operations and external script invocation, with clear logging of any issues encountered.
+- Add a summary report at the end of the post-processing steps, including how many files were removed and how many were modified for accessibility.
 """
 
 """This module provides post-processing helpers for the publisher CLI. These include functions to reduce the output size by removing unneeded files,
@@ -53,6 +57,13 @@ def run_accessibility_fixer_on_webroot():
     if not webroot_ig.exists():
         print(f"webroot/ig not found at expected location: {webroot_ig}")
         return
+
+    # Run the fixer on the webroot/ig folder itself first to catch any HTML files directly under ig, then iterate through subfolders to catch any additional HTML files that may be in subdirectories. This ensures comprehensive coverage of all HTML files in the generated output for accessibility fixes.
+    print(f"Running accessibility fixer on: {webroot_ig}")
+    try:
+        fix_accessibilities_in_folder(str(webroot_ig))
+    except Exception as e:
+        print(f"Failed to run accessibility fixer on {str(webroot_ig)}: {e}")
 
     for entry in sorted(webroot_ig.iterdir()):
         if entry.is_dir():
@@ -103,14 +114,6 @@ def replace_strings_in_file(filepath, old_string, new_string):
         print(f"Error: File '{filepath}' not found.")
     except Exception as e:
         print(f"An error occurred: {e} in file {filepath}")
-
-
-# def fix_accessibility():
-#     for pattern in accessibility_update_file_patterns:
-#         for filepath in glob.glob('./webroot/ig/' + pattern, recursive=True):
-#             print("Updating file for Section 508 compliance: " + filepath)
-#             from .config import accessibility_old_string, accessibility_new_string
-#             replace_strings_in_file(filepath, accessibility_old_string, accessibility_new_string)
 
 
 def write_web_configs(ig_repo_path):

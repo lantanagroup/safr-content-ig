@@ -1,9 +1,43 @@
-.DS_Store
-Thumbs.db
-/fsh-generated
-/input-cache
-/output
-/temp
-/template
-/publication
+# Temporary folders #
+#####################
+temp
+template
+output
+fsh-generated
+publish
+bundles
+
+# Don't commit this because it's so large #
+###########################################
+/input-cache/org.hl7.fhir.publisher.jar
+
+# Windows generated files #
+###########################
+**/Thumbs.db
+
+**/.index.db
+**/.index.json
+
+# VS Code generated files
+.vscode
+
+# OS generated files #
+######################
+**/.DS_Store
+.DS_Store?
+
+# backup files #
+################
+*.bak
 /bundles
+/input-cache
+input/tests/results/
+
+
+# Node files
+node_modules/
+.idea/
+
+#Python bytecode files
+**/*.pyc
+**/*.pyd

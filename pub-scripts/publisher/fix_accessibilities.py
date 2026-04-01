@@ -5,7 +5,6 @@ It can be run through the CLI workflow in `cli.py` or `go_publisher.py` by using
 However, It can be run separately from the CLI workflow for testing and development purposes, and to allow for flexibility in when and how it is applied to the generated output. 
 """
 
-import re
 import os
 from lxml import html
 from lxml import etree
@@ -16,9 +15,11 @@ import time
 import zipfile
 import tempfile
 import shutil
+from datetime import datetime
+
 
 #SAFR Content IG does not utilize the NHSN-MS label
-support_nhsn_ms_tagging = True
+support_nhsn_ms_tagging = False
 
 target_tables = ['tbl-key-inner', 'tbl-diff-inner', 'tbl-snap-inner', 'all-tbl-key-inner', 'all-tbl-diff-inner', 'all-tbl-snap-inner']
 target_table_diff = 'tbl-diff-inner'
@@ -33,7 +34,7 @@ new_opacity = '0.87'
 new_green = '#006600'
 new_red = '#B60000'
 
-accessibility_update_file_patterns = ['**/qa*.html', '**/StructureDefinition-*.html', '**/StructureDefinition-*.xml']
+accessibility_update_file_patterns = ['qa*.html', 'StructureDefinition-*.html', 'StructureDefinition-*.xml']
 
 
 def main():
@@ -60,12 +61,12 @@ def main():
 
   start = time.time()
 
-
   fix_accessibilities_in_folder(target_folder)
 
 
   end = time.time()
   print("Full execution time (in seconds)", end - start)
+
 
 def fix_accessibilities_in_folder(folder_path = default_folder):
   """
@@ -79,6 +80,7 @@ def fix_accessibilities_in_folder(folder_path = default_folder):
     - If no path is provided, it will use the default folder:
     ```python fix_accessibilities.py```
   """
+  folder_path = ensure_trailing_slash_os(folder_path)
   for pattern in accessibility_update_file_patterns:
       for filepath in glob.glob(folder_path + pattern, recursive=True):
           fix_accessibility_in_file(filepath)
@@ -102,6 +104,28 @@ def fix_accessibility_in_file(file_path):
     raw_html = Path(file_path).read_bytes()
     root = html.fromstring(raw_html, parser=parser)
     tree = html.ElementTree(root)
+
+
+  # Check to see if the file has already been processed for accessibility by looking for a meta tag we add to updated files. If the meta tag is found, skip processing to avoid modifying the file multiple times.
+  meta_tags = root.xpath("//meta[@name='data-accessibility-fixed']")
+  if meta_tags:
+      meta = meta_tags[0]
+      print(f"Found accessibility-fixed meta tag in file {file_path} with content: {meta.get('content')}")
+      print(f"File {file_path} already processed for accessibility fixes, skipping.")
+      return
+
+  # Continue with processing the file for accessibility fixes if the meta tag is not found, and add the meta tag to indicate that the file has been processed. This helps prevent multiple modifications to the same file if the script is run multiple times on the same output folder.
+  head = root.find('.//head')
+  if head is None:
+    head = etree.SubElement(root, "head")
+    # Move the head to the beginning of the root element (best practice)
+    root.insert(0, head) 
+  if head is not None:
+    # Create the new meta element with attributes
+    new_meta = etree.Element("meta", name="data-accessibility-fixed", content=datetime.now().isoformat())
+    
+    # Append the element to the head
+    head.append(new_meta)
 
   # Replace all opacity of 0.5 with 0.87
   
@@ -146,8 +170,6 @@ def fix_accessibility_in_file(file_path):
     if target_table_diff in target_id:
       # update the font-weight of every third td in the table within the table with id 'tbl-diff-inner' (The cardinality column of the differential table)
       td_elements = tree.xpath(f"//div[@id='{target_id}']/table[1]/tr/td[3]")
-      bFound = False
-
 
       if td_elements:
 
@@ -188,12 +210,10 @@ def fix_accessibility_in_file(file_path):
     
     # Apply special requirements in the QA file which does a check for a n element tagged as (NR) or (NRT) and gray out the Must Support S and bold the ones that are not
     tr_elements = tree.xpath(f"//div[@id='{target_id}']/table[1]/tr")
-    tr_count = 0
-    bFound = False
+
     for tr in tr_elements:
       ms_element = tr.xpath(f"td[2]/span")
       #print("Len of spans: " + str(len(ms_element)))
-      tr_count = tr_count + 1
 
       desc_element = tr.xpath(f"td[5]")
 
@@ -201,16 +221,6 @@ def fix_accessibility_in_file(file_path):
         desc_element = tr.xpath(f"td[5]/span[1]")
       
       if ms_element and (desc_element and desc_element[0].text):
-        #print(desc_element[0].text)
-        # if nhsn_ms_label in desc_element[0].text:
-        #   # TODO Replace the 
-        #   print(desc_element[0].text)
-        #   exit()
-        if("active | inactive | entered-in-error" in desc_element[0].text):
-          # Found a status element, change the Must Support S to italic
-          print(f'Found the issue status element: {ms_element[0].text} at tr line {tr_count} with description: {desc_element[0].text}')
-          bFound = True
-
         
         if support_nhsn_ms_tagging:
           has_ms_label = False
@@ -218,25 +228,21 @@ def fix_accessibility_in_file(file_path):
             has_ms_label = True
             description_text = etree.tostring(desc_element[0], pretty_print=True, encoding='unicode')
             description_text = description_text.replace(nhsn_ms_label, '<div title="' + nhsn_ms_message + '" style="display: inline-block;">' + nhsn_ms_label + '</div>')
-            #print(description_text)
+
             new_description = html.fromstring(description_text)
-            #print(etree.tostring(new_description, pretty_print=True, encoding='unicode'))
             parent = desc_element[0].getparent()
             parent.replace(desc_element[0], new_description)
           for span in ms_element:
-            #print("Span Text: " + span.text +" ; has label: " + str(has_ms_label) + "; in desc: " + desc_element[0].text)
             if span.text == 'S':
               if has_ms_label:
 
                 # Found a Must Support that is not marked as NR or NRT, change to bold
-                #print("Bold " + ms_element[0].text)
                 span.attrib["title"] = nhsn_ms_message
                 replace_style(span, "font-weight", "400", replace_only_if_exists=False)
                 replace_style(span, "background-color", new_red, replace_only_if_exists=True)
                 
               else:
                 # Found a Must Support that is marked as NR or NRT, change to italic
-                #print("Italic " + ms_element[0].text)
                 span.attrib["title"] = nhsn_not_ms_message
                 if modify_ms_color and target_table_diff in target_id:
                   replace_style(span, "font-style", "italic", replace_only_if_exists=False)
@@ -244,17 +250,6 @@ def fix_accessibility_in_file(file_path):
                 else:
                   replace_style(span, "font-weight", "400", replace_only_if_exists=False)
                   replace_style(span, "background-color", new_red, replace_only_if_exists=True)
-      # try:
-      #   if bFound:
-      #     if Path("publish/temp.html").is_file():
-      #       os.remove("publish/temp.html")
-      #     tree.write("publish/temp.html", encoding='utf-8', method='html', pretty_print=True)
-      #     bFound = False
-      # except Exception as e:
-      #   print(f"Error writing updated file {file_path}: {e}")
-    
-                
-
 
 
               #nhsn_ms_message
@@ -396,6 +391,15 @@ def existing_folder_arg(string):
     return string
   else:        
     print("Folder does not exist: " + string)
+
+def ensure_trailing_slash_os(path_str):
+  """Ensures a string path has a trailing slash using os.path.join."""
+  # os.path.join will add the separator if the path is treated as a directory.
+  # An easy way to force this is to join it with an empty string.
+  # However, a simpler way for general use is checking and appending if needed.
+  if not path_str.endswith(os.sep):
+    return path_str + os.sep
+  return path_str
 
 if __name__ == "__main__":
     main()
