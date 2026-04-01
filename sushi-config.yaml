@@ -31,7 +31,7 @@ publisher:
 #
 dependencies:
   hl7.fhir.us.safr:
-    version: current
+    version: 1.0.0
     id: ussafr
   hl7.fhir.us.core:
     version: 6.1.0
@@ -146,6 +146,9 @@ resources:
   Library/HRDMeasure:
     name: HRDMeasure
     description: "Library for the Hospital Respiratory Data (HRD) Measure."
+  Device/cqf-tooling:
+    name: CQL Testing Tooling
+    description: "This Device resource is used to represent the CQL tooling software. It is referenced by the Library resources to indicate that the CQL tooling used to execute the CQL in those libraries."
 
 
 
