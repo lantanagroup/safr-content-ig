@@ -70,7 +70,7 @@ dependencies:
 #
 pages:
   index.md:
-    title: US Situational Awareness Framework for Reporting Home
+    title: NHSN Situational Awareness Framework for Reporting Home
   actors.md:
     title: actors
   usecases.md:

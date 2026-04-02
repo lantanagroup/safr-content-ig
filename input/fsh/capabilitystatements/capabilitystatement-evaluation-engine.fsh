@@ -1,6 +1,6 @@
 Instance: SafrCapabilityStatementEvaluationEngine
 InstanceOf: CapabilityStatement
-Title: "US SAFR Data Evaluation Engine CapabilityStatement"
+Title: "NHSN SAFR Data Evaluation Engine CapabilityStatement"
 Usage: #definition
 * url = Canonical(SafrCapabilityStatementEvaluationEngine)
 * name = "SafrCapabilityStatementEvaluationEngine"

@@ -1,6 +1,6 @@
 Instance: SafrCapabilityStatementMeasureReportRecipient
 InstanceOf: CapabilityStatement
-Title: "US SAFR MeasureReport Recipient CapabilityStatement"
+Title: "NHSN SAFR MeasureReport Recipient CapabilityStatement"
 Usage: #definition
 * url = Canonical(SafrCapabilityStatementMeasureReportRecipient)
 * name = "SafrCapabilityStatementMeasureReportRecipient"

@@ -1,6 +1,6 @@
 Instance: SafrCapabilityStatementDataAggregator
 InstanceOf: CapabilityStatement
-Title: "US SAFR Data Aggregator CapabilityStatement"
+Title: "NHSN SAFR Data Aggregator CapabilityStatement"
 Usage: #definition
 * url = Canonical(SafrCapabilityStatementDataAggregator)
 * name = "SafrCapabilityStatementDataAggregator"

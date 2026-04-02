@@ -1,4 +1,4 @@
-The US SAFR IG includes example use cases demonstrating its application across various levels of healthcare resource management. These use cases highlight the framework’s ability to address immediate and strategic challenges. For more context, see [Reporting Scenarios](specification.html) where the data exchange methods are detailed. Federal agencies will typically receive data from NHSN.
+The NHSN SAFR IG includes example use cases demonstrating its application across various levels of healthcare resource management. These use cases highlight the framework’s ability to address immediate and strategic challenges. For more context, see [Reporting Scenarios](specification.html) where the data exchange methods are detailed. Federal agencies will typically receive data from NHSN.
 
 Note: the use cases here are **examples only**, and are specific to the example measures included in this IG for Bed Capacity and Hospital Respiratory Data (HRD) reporting. However, the framework that this IG creates can be used for other situational awareness use cases beyond Bed Capacity and HRD.
 
@@ -12,7 +12,7 @@ During a severe flu season, hospitals in a specific jurisdiction experience a hi
 **Facility/Hospital-Level Use**
 
 **1. Bed and Staffing Allocation**
-- Hospitals use US SAFR to report real-time bed occupancy and availability every 15 minutes, categorized by bed type.
+- Hospitals use NHSN SAFR to report real-time bed occupancy and availability every 15 minutes, categorized by bed type.
 - Hospital administrators leverage this data to monitor hospital capacity and prioritize staffing where it is most urgently needed.
 
 **2. Resource Allocation**
@@ -21,7 +21,7 @@ During a severe flu season, hospitals in a specific jurisdiction experience a hi
 **Jurisdiction-Level Use**
 
 **1. Capacity Tracking Across Hospitals**
-- Local health departments use US SAFR to monitor bed and ICU capacity across multiple facilities, identifying hospitals under the greatest strain.
+- Local health departments use NHSN SAFR to monitor bed and ICU capacity across multiple facilities, identifying hospitals under the greatest strain.
 
 **2. Cross-Jurisdictional Resource Support**
 - Capacity data sharing enables neighboring jurisdictions to coordinate patient transfers and resource reallocation, easing pressure on overwhelmed facilities.
@@ -42,7 +42,7 @@ In response to an approaching hurricane on the Texas coastline, local and state 
 **Facility/Hospital-Level Use**
 
 **1. Resource Mobilization and Preparedness**
-- Coastal hospitals report real-time bed availability and anticipated needs using US SAFR to local and state officials, enabling inland hospitals to prepare and allocate resources in advance.
+- Coastal hospitals report real-time bed availability and anticipated needs using NHSN SAFR to local and state officials, enabling inland hospitals to prepare and allocate resources in advance.
 
 **2. Evacuation Logistics**
 - Real-time data supports collaboration with EMS and transport services, identifying available ICU and specialty care beds at inland facilities for safe patient transfers.
@@ -61,7 +61,7 @@ In response to an approaching hurricane on the Texas coastline, local and state 
 - Federal agencies assess regional capacity and deploy FEMA medical personnel or National Guard resources as needed. 
 
 **2.Unified Federal and State Response**
-- US SAFR facilitates coordinated federal-state responses, optimizing resource distribution and avoiding redundancies.
+- NHSN SAFR facilitates coordinated federal-state responses, optimizing resource distribution and avoiding redundancies.
 
 #### Bed Inclusion Criteria
 

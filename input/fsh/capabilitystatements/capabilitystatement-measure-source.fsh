@@ -1,6 +1,6 @@
 Instance: SafrCapabilityStatementmeasurerepository
 InstanceOf: CapabilityStatement
-Title: "US SAFR Measure Source CapabilityStatement"
+Title: "NHSN SAFR Measure Source CapabilityStatement"
 Usage: #definition
 * url = Canonical(SafrCapabilityStatementmeasurerepository)
 * name = "SafrCapabilityStatementmeasurerepository"

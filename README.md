@@ -1,4 +1,4 @@
 # nhsn-safr
 
-US Situational Awareness Framework for Reporting (US SAFR) FHIR Implementation Guide.
+CDC NHSN Situational Awareness Framework for Reporting (NHSN SAFR) FHIR Implementation Guide.
 

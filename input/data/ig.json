@@ -300,7 +300,7 @@
         "reference": {
           "reference": "CapabilityStatement/SafrCapabilityStatementDataAggregator"
         },
-        "name": "US SAFR Data Aggregator CapabilityStatement",
+        "name": "NHSN SAFR Data Aggregator CapabilityStatement",
         "description": "This statement defines the expected capabilities of a system that aggregates data from multiple Data Source actors before measure evaluation and then plays the role of a Data Source once aggregation is complete. An example would be a state public health agency aggregating data from all facilities in the state before using those data to produce a MeasureReport containing bed capacity data for the entire state. When FHIR enabled, a Data Aggregator acts as a [US Core Server](http://hl7.org/fhir/us/core/STU6.1/CapabilityStatement-us-core-server.html) when playing the role of a Data Source after aggregation. During aggregation, the Data Aggregator acts similar to the SANER options for aggregation, but implements its own CapabilityStatement due to the incompatibilities between DEQM and SANER.",
         "exampleBoolean": false
       },
@@ -308,7 +308,7 @@
         "reference": {
           "reference": "CapabilityStatement/SafrCapabilityStatementEvaluationEngine"
         },
-        "name": "US SAFR Data Evaluation Engine CapabilityStatement",
+        "name": "NHSN SAFR Data Evaluation Engine CapabilityStatement",
         "description": "This statement defines the expected capabilities of a system  that retrieves data from the Data Source and evaluates those data against one or more measures \r\nretrieved from the Measure Source. The resulting MeasureReport bundle and related resources are then sent to the MeasureReport recipient. The Measure Evaluation Engine acts as a \r\n[US Core Client](https://www.hl7.org/fhir/us/core/STU6.1/CapabilityStatement-us-core-client.html), \r\na [DEQM Reporter Client](https://www.hl7.org/fhir/us/davinci-deqm/STU4/CapabilityStatement-reporter-client.html), and implements the $evaluation-measure operation.\r\n\r\nNote: FHIR queries are not always required. In the case, an EHR retrieves data from it's own internal data store using non-FHIR methods or imports data from other systems that are not FHIR-enabled.",
         "exampleBoolean": false
       },
@@ -316,7 +316,7 @@
         "reference": {
           "reference": "CapabilityStatement/SafrCapabilityStatementDataSource"
         },
-        "name": "US SAFR Data Source CapabilityStatement",
+        "name": "NHSN SAFR Data Source CapabilityStatement",
         "description": "This statement defines the expected capabilities of a system containing data (typically patient data, but could be situational awareness data) \r\nthat will be evaluated against one or more measures. This may be a FHIR server, an EHR with a FHIR endpoint (facade), an internal data store when the Data Source \r\nand Measure Evaluation Engine actors are played by the same system such as an EHR that does it’s own measure evaluation, or it may be a system containing other data \r\nsuch as situational awareness data that is reporting via CSV or other format. When FHIR enabled, the Data Source acts as a \r\n[US Core Server](https://hl7.org/fhir/us/core/STU6.1/CapabilityStatement-us-core-server.html).\r\n\r\nNote: US Core Server is only needed for external evaluation engines. Examples of where this is not needed, is an EHR querying it's own data source using proprietary data access methods.",
         "exampleBoolean": false
       },
@@ -324,7 +324,7 @@
         "reference": {
           "reference": "CapabilityStatement/SafrCapabilityStatementmeasurerepository"
         },
-        "name": "US SAFR Measure Source CapabilityStatement",
+        "name": "NHSN SAFR Measure Source CapabilityStatement",
         "description": "This statement defines the expected capabilities of a system at NHSN, federal and jurisdictional Public Health Agencies including State, Tribal, Local and Territorial (STLT) Health Departments that stores FHIR resources such as Measure, Library, ValueSet, etc. that are used for \r\nMeasure Reporting. The Measure Evaluation Engine queries the Measure Source for the latest Measure content before querying the Patient Data Source and performing measure evaluation. \r\nThe Measure Source acts as a [CQFM Publishable Measure Repository](https://hl7.org/fhir/us/cqfmeasures/measure-repository-service.html#publishable-measure-repository).",
         "exampleBoolean": false
       },
@@ -332,7 +332,7 @@
         "reference": {
           "reference": "CapabilityStatement/SafrCapabilityStatementMeasureReportRecipient"
         },
-        "name": "US SAFR MeasureReport Recipient CapabilityStatement",
+        "name": "NHSN SAFR MeasureReport Recipient CapabilityStatement",
         "description": "This statement defines the expected capabilities of a system at NHSN, federal and jurisdictional Public Health Agencies including State, Tribal, Local and Territorial (STLT) Health Departments that receives MeasureReport bundles from the Measure Evaluation Engine and validates \r\nthe result against the profiles in this implementation guide, and potentially other measure-specific profiles that are distributed with the measures themselves. The MeasureReport Recipient acts as a \r\n[DEQM Receiver Server](https://www.hl7.org/fhir/us/davinci-deqm/STU4/CapabilityStatement-receiver-server.html), provides write access to Bundle resources containing \r\nMeasureReport and other related resources, and implements the $validate operation.",
         "exampleBoolean": false
       }
@@ -344,7 +344,7 @@
       "page": [
         {
           "nameUrl": "index.html",
-          "title": "US Situational Awareness Framework for Reporting Home",
+          "title": "NHSN Situational Awareness Framework for Reporting Home",
           "generation": "markdown"
         },
         {
