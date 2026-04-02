@@ -59,7 +59,7 @@
       "reference": "Device/cqf-tooling"
     }
   } ],
-  "url": "http://hl7.org/fhir/us/safr/Library/BedCapacityMeasure",
+  "url": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/Library/BedCapacityMeasure",
   "version": "1.0.0",
   "name": "BedCapacityMeasure",
   "type": {

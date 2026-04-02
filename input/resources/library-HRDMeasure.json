@@ -54,7 +54,7 @@
       "reference": "#options"
     }
   } ],
-  "url": "http://hl7.org/fhir/us/safr/Library/HRDMeasure",
+  "url": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/Library/HRDMeasure",
   "version": "1.0.0",
   "name": "HRDMeasure",
   "type": {
