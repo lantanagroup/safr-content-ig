@@ -18,7 +18,7 @@
 <artifact id="Observation/observation-example-ed-patient1" key="Observation - Example Emergency Department Visit" name="Observation - Example Emergency Department Visit"/>
 <artifact id="CodeSystem/us-safr-bed-capacity-example-codes" key="CodeSystem-us-safr-bed-capacity-example-codes" name="Healthcare Bed Capacity Reporting Code System"/>
 <artifact id="CodeSystem/us-safr-bed-capacity-group-example-codes" key="CodeSystem-us-safr-bed-capacity-group-example-codes" name="Healthcare Bed Capacity Reporting Group Code System"/>
-<artifact id="Measure/HrdMeasure" key="Measure-HrdMeasure" name="Hospital Respiratory Data Measure for US Situational Awareness Framework for Reporting"/>
+<artifact id="Measure/HRDMeasureeasure" key="Measure-HRDMeasureeasure" name="Hospital Respiratory Data Measure for US Situational Awareness Framework for Reporting"/>
 <artifact id="CodeSystem/us-safr-hrd-example-codes" key="CodeSystem-us-safr-hrd-example-codes" name="Hospital Respiratory Data Reporting Code System"/>
 <artifact id="CodeSystem/us-safr-hrd-supply-days-example-codes" key="CodeSystem-us-safr-hrd-supply-days-example-codes" name="Hospital Respiratory Data Supply Days Code System"/>
 <artifact id="Location/IPFBed3" key="Location-IPFBed3" name="Inpatient Psychiatric Bed 3"/>
