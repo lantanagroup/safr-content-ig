@@ -52,7 +52,7 @@
     {
       "id": "ussafr",
       "packageId": "hl7.fhir.us.safr",
-      "version": "current",
+      "version": "1.0.0",
       "uri": "http://hl7.org/fhir/us/safr/ImplementationGuide/hl7.fhir.us.safr"
     },
     {
@@ -104,14 +104,15 @@
         "reference": {
           "reference": "Measure/BedCapacityMeasure"
         },
-        "description": "Bed Capacity Measure includes counts of specific bed types within the context of a given healthcare context or setting.",
+        "description": "Bed Capacity Measure Example includes counts of specific bed types within the context of a given healthcare context or setting.",
         "exampleBoolean": false,
-        "name": "Bed Capacity Measure"
+        "name": "Bed Capacity Measure Example"
       },
       {
         "reference": {
           "reference": "Library/BedCapacityMeasure"
         },
+        "description": "Library containing the Bed Capacity Measure.",
         "exampleBoolean": false,
         "name": "BedCapacityMeasure"
       },
@@ -151,9 +152,9 @@
         "reference": {
           "reference": "Device/cqf-tooling"
         },
-        "name": "Device - CQF Tooling System Example",
-        "description": "Example of a Software System Device instance for describing tooling that was used to process artifacts.",
-        "exampleBoolean": true
+        "description": "This Device resource is used to represent the CQL tooling software. It is referenced by the Library resources to indicate that the CQL tooling used to execute the CQL in those libraries.",
+        "exampleBoolean": false,
+        "name": "CQL Testing Tooling"
       },
       {
         "reference": {
@@ -167,16 +168,17 @@
         "reference": {
           "reference": "Encounter/encounter-example-ach-ach-pass2-emergency"
         },
-        "name": "Encounter - Example ACH Pass2 - Emergency",
-        "description": "Encounter - Example ACH Pass2 - Emergency department visit",
+        "name": "Encounter - Example ED Patient 1 - Emergency",
+        "description": "Encounter - Example ED Patient 1 - Emergency department visit",
         "exampleBoolean": true
       },
       {
         "reference": {
           "reference": "Library/FHIRHelpers"
         },
+        "description": "This library defines functions to convert between FHIR data types and CQL system-defined types, as well as functions to support FHIRPath implementation. For more information, the FHIRHelpers wiki page: https://github.com/cqframework/clinical_quality_language/wiki/FHIRHelpers. This locally defined version includes modifications from the original library.",
         "exampleBoolean": false,
-        "name": "FHIRHelpers"
+        "name": "FHIR Helpers"
       },
       {
         "reference": {
@@ -196,17 +198,9 @@
       },
       {
         "reference": {
-          "reference": "CodeSystem/nhsn-safr-hrd-supply-days-codes"
-        },
-        "name": "Hospital Respiratory Data Supply Days Code System",
-        "description": "This CodeSystem defines coded concepts for supply days in Hospital Respiratory Data reporting for NHSN SAFR.",
-        "exampleBoolean": false
-      },
-      {
-        "reference": {
           "reference": "Measure/HRDMeasure"
         },
-        "description": "Hospital Respiratory Data Measure",
+        "description": "Hospital Respiratory Data Measure Example",
         "exampleBoolean": false,
         "name": "HRD Measure"
       },
@@ -214,6 +208,7 @@
         "reference": {
           "reference": "Library/HRDMeasure"
         },
+        "description": "Library for the Hospital Respiratory Data (HRD) Measure.",
         "exampleBoolean": false,
         "name": "HRDMeasure"
       },
@@ -267,37 +262,6 @@
       },
       {
         "reference": {
-          "reference": "Organization/MemorialHospitalOrganization"
-        },
-        "name": "Organization - Submitting Hospital Organization Example",
-        "description": "Organization - Example of a Submitting Hospital Organization",
-        "exampleBoolean": true
-      },
-      {
-        "reference": {
-          "reference": "Location/OTHBed5"
-        },
-        "name": "Other Facility Bed 3",
-        "description": "A bed located in an subunit of the facility.",
-        "exampleBoolean": true
-      },
-      {
-        "reference": {
-          "reference": "Patient/ed-pat-1"
-        },
-        "name": "Patient - Example ED Patient 1",
-        "exampleBoolean": true
-      },
-      {
-        "reference": {
-          "reference": "Location/PEDSBed7"
-        },
-        "name": "Pediatric Bed 7",
-        "description": "A bed located in the Pediatrics Unit of the hospital.",
-        "exampleBoolean": true
-      },
-      {
-        "reference": {
           "reference": "CapabilityStatement/SafrCapabilityStatementDataAggregator"
         },
         "name": "NHSN SAFR Data Aggregator CapabilityStatement",
@@ -322,6 +286,14 @@
       },
       {
         "reference": {
+          "reference": "ValueSet/nhsn-safr-hrd-supply-days-codes"
+        },
+        "name": "NHSN SAFR HRD Supply Day Time Period Ranges Value Set",
+        "description": "HRD Supply Day Time Period Ranges value set using codes from ISO 8601 for expressing time period ranges.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
           "reference": "CapabilityStatement/SafrCapabilityStatementmeasurerepository"
         },
         "name": "NHSN SAFR Measure Source CapabilityStatement",
@@ -335,6 +307,46 @@
         "name": "NHSN SAFR MeasureReport Recipient CapabilityStatement",
         "description": "This statement defines the expected capabilities of a system at NHSN, federal and jurisdictional Public Health Agencies including State, Tribal, Local and Territorial (STLT) Health Departments that receives MeasureReport bundles from the Measure Evaluation Engine and validates \r\nthe result against the profiles in this implementation guide, and potentially other measure-specific profiles that are distributed with the measures themselves. The MeasureReport Recipient acts as a \r\n[DEQM Receiver Server](https://www.hl7.org/fhir/us/davinci-deqm/STU4/CapabilityStatement-receiver-server.html), provides write access to Bundle resources containing \r\nMeasureReport and other related resources, and implements the $validate operation.",
         "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/nhsn-submitting-organization"
+        },
+        "name": "NHSN Submitting Organization",
+        "description": "This profile includes the name and identifier of the organization submitting the report Bundle, and may include other information about the organization.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "Organization/MemorialHospitalOrganization"
+        },
+        "name": "Organization - Submitting Hospital Organization Example",
+        "description": "Organization - Example of a Submitting Hospital Organization",
+        "exampleCanonical": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/StructureDefinition/nhsn-submitting-organization"
+      },
+      {
+        "reference": {
+          "reference": "Location/OTHBed5"
+        },
+        "name": "Other Facility Bed 3",
+        "description": "A bed located in an subunit of the facility.",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Patient/ed-pat-1"
+        },
+        "name": "Patient - Example ED Patient 1",
+        "description": "Example ED Patient 1 is a patient who has been seen in the emergency department.",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Location/PEDSBed7"
+        },
+        "name": "Pediatric Bed 7",
+        "description": "A bed located in the Pediatrics Unit of the hospital.",
+        "exampleBoolean": true
       }
     ],
     "page": {
@@ -365,6 +377,16 @@
         {
           "nameUrl": "security.html",
           "title": "Security",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "ImplementationGuide-gov.cdc.nhsn.safr.html",
+          "title": "NHSN Implementation Guide Resource",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "license.html",
+          "title": "License",
           "generation": "markdown"
         },
         {
