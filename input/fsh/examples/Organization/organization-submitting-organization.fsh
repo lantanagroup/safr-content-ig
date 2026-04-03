@@ -1,6 +1,6 @@
 // Define the reporting organization
 Instance: MemorialHospitalOrganization
-InstanceOf: NHSNSubmittingOrganization
+InstanceOf: USSafrSubmittingOrganization
 Title: "Organization - Submitting Hospital Organization Example"
 Description: "Organization - Example of a Submitting Hospital Organization"
 Usage: #example
