@@ -9,12 +9,6 @@ The <script> containing the javascript '$(document).ready(fu'... is illegal and 
 The <script> containing the javascript 'anchors.options.visi'... is illegal and not allowed on the HL7 ci-build - need to put the script in a  .js file in a trusted template if this IG is to build on the HL7 ci-build (if it is justified and needed)%
 
 
-
-# 03 💭💭💭 INFORMATION: Measure Slice not recognized because of a failure to validate due to unknown LOINC codes that were added in LOINC 2.82. See: https://loinc.org/search/?t=1&s=%3Dclasstype%3AClinical+%3Dversionfirstreleased%3A2.82++%3Dclass%3APUBLICHEALTH 💭💭💭
-INFORMATION: Bundle/HospitalBedCapacityReportBundle: Bundle.entry[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measurereport-bundle|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Bundle/NHSNSAFRMeasureBundleExample: Bundle.entry[0]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measure-bundle|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-
-
 # 04 ⚠️⚠️⚠️ WARNING: No definition for identifier system. This is the system url NHSN is using and a THO request has been initiated UP-710: Add NHSN Org ID to External System Identifier's page - https://jira.hl7.org/browse/UP-710 ⚠️⚠️⚠️
 No definition could be found for URL value 'https://www.cdc.gov/nhsn/OrgID'
 
@@ -25,7 +19,6 @@ INFORMATION: Bundle/HospitalBedCapacityReportBundle: Bundle.entry[3]: This eleme
 INFORMATION: Bundle/HRDMeasureReportBundle: Bundle.entry[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measurereport-bundle|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Bundle/NHSNSAFRMeasureBundleExample: Bundle.entry[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measure-bundle|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Measure/HRDMeasure: Measure.extension[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm|4.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Measure/HRDMeasure: Measure.extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm|4.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
 
 
 # 06 ⚠️⚠️⚠️ WARNING: regarding newer published versions of US Core and QI Core. The versions chosen were done so to meet the current regulatory requirement floor ⚠️⚠️⚠️
@@ -57,81 +50,3 @@ Unknown Code 'P15D--30D' in the CodeSystem 'http://terminology.hl7.org/CodeSyste
 Unknown Code 'P30D--9999D' in the CodeSystem 'http://terminology.hl7.org/CodeSystem/time-period-ranges' version '1.0.0' - note that the code system is labeled as a fragment, so the code may be valid in some other fragment
 %Error: The code system definition for http://terminology.hl7.org/CodeSystem/time-period-ranges has no content, so this expansion cannot be performed
 
-# 11 🚩🚩🚩 ERROR: Unknown LOINC codes that were added in LOINC 2.82. See: https://loinc.org/search/?t=1&s=%3Dclasstype%3AClinical+%3Dversionfirstreleased%3A2.82++%3Dclass%3APUBLICHEALTH 🚩🚩🚩
-Unknown code '112507-9' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112508-7' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112509-5' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112511-1' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112512-9' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112513-7' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112514-5' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112515-2' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112516-0' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112517-8' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112518-6' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112519-4' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112520-2' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112521-0' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112522-8' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112523-6' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112524-4' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112525-1' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112526-9' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112527-7' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112528-5' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112529-3' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112530-1' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112531-9' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112532-7' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112533-5' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112534-3' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112535-0' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112536-8' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112537-6' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112538-4' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112539-2' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112540-0' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112541-8' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112542-6' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112543-4' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112544-2' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112545-9' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112546-7' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112547-5' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112548-3' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112549-1' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112550-9' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112551-7' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112552-5' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112553-3' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112554-1' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112555-8' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112556-6' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112557-4' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112558-2' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112559-0' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112560-8' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112561-6' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112562-4' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112563-2' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112564-0' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112565-7' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112566-5' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112567-3' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112568-1' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112569-9' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112570-7' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112571-5' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112572-3' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112573-1' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112574-9' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112575-6' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112576-4' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112577-2' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112578-0' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112579-8' in the CodeSystem 'http://loinc.org' version '2.81'
-Unknown code '112510-3' in the CodeSystem 'http://loinc.org' version '2.81'
-
-# 12 🚩🚩🚩 ERROR: Measure Slice not recognized because of a failure to validate due to unknown LOINC codes that were added in LOINC 2.82. See: https://loinc.org/search/?t=1&s=%3Dclasstype%3AClinical+%3Dversionfirstreleased%3A2.82++%3Dclass%3APUBLICHEALTH 🚩🚩🚩
-ERROR: Bundle/HospitalBedCapacityReportBundle: Bundle: Slice 'Bundle.entry:measurereport': a matching slice is required, but not found (from http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measurereport-bundle|1.0.0). Note that other slices are allowed in addition to this required slice
-ERROR: Bundle/NHSNSAFRMeasureBundleExample: Bundle: Slice 'Bundle.entry:measure': a matching slice is required, but not found (from http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measure-bundle|1.0.0). Note that other slices are allowed in addition to this required slice

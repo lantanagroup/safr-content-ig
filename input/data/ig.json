@@ -310,19 +310,11 @@
       },
       {
         "reference": {
-          "reference": "StructureDefinition/nhsn-submitting-organization"
-        },
-        "name": "NHSN Submitting Organization",
-        "description": "This profile includes the name and identifier of the organization submitting the report Bundle, and may include other information about the organization.",
-        "exampleBoolean": false
-      },
-      {
-        "reference": {
           "reference": "Organization/MemorialHospitalOrganization"
         },
         "name": "Organization - Submitting Hospital Organization Example",
         "description": "Organization - Example of a Submitting Hospital Organization",
-        "exampleCanonical": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/StructureDefinition/nhsn-submitting-organization"
+        "exampleBoolean": true
       },
       {
         "reference": {
