@@ -9,7 +9,7 @@ Usage: #example
 // Basic metadata
 * status = $measure-report-status#complete
 * type = $measure-report-type#individual
-* measure = "http://www.cdc.gov/nhsn/fhirportal/safr/ig/Measure/BedCapacityMeasure|1.0.0"
+* measure = Canonical(BedCapacityMeasure|1.0.0)
 * date = "2025-03-05T08:15:00-05:00"
 // Reporting period
 * period.start = "2025-03-05T00:00:00-05:00"
