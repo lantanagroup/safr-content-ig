@@ -134,7 +134,8 @@ Usage: #example
 * group[=].code = $loinc#112567-3
 * group[=].population[+].id = "AdultMTMSUnoccupied-initial-population"
 * group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
-* group[=].population[=].count = 0
+* group[=].population[=].count.extension.url = "http://hl7.org/fhir/StructureDefinition/data-absent-reason"
+* group[=].population[=].count.extension.valueCode = #not-applicable
 
 ///////////// Group AdultObsOccupied /////////////
 ///////////// Group Adult observation beds:Num:Pt:Facility:Qn:Occupied /////////////

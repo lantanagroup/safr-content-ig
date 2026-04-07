@@ -25,6 +25,7 @@
     </div>
     <div>
       <p>This page provides a list of the FHIR artifacts defined as part of this implementation guide.</p>
+      <p>An important objective in the NHSN Situational Awareness Framework for Reporting (NHSN SAFR) IG is to avoid unnecessary profile proliferation and to leverage common processes. To this end the IG leverages the profiles, extensions and operations incorporated into the <a href="https://hl7.org/fhir/us/safr/" target="_blank">US Situational Awareness Framework for Reporting (US SAFR) Implementation Guide</a>.</p>
       <xsl:if test="$globals='Y'">
         <a name="globals">
           <xsl:value-of select="' '"/>
