@@ -2567,8 +2567,8 @@ define &quot;Inpatient Beds Initial Population&quot;:
    <name value="HRDMeasure"></name>
    <title value="HRD Measure"></title>
    <experimental value="true"></experimental>
-   <date value="2026-03-31T14:23:46-04:00"></date>
-   <description value="Hospital Respiratory Data Measure Example"></description>
+   <date value="2026-04-03T11:10:35-04:00"></date>
+   <description value="Hospital Respiratory Data Measure"></description>
    <library value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/Library/HRDMeasure"></library>
    <scoring>
       <coding>

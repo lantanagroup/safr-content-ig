@@ -104,9 +104,9 @@
         "reference": {
           "reference": "Measure/BedCapacityMeasure"
         },
-        "description": "Bed Capacity Measure Example includes counts of specific bed types within the context of a given healthcare context or setting.",
+        "description": "Bed Capacity Measure includes counts of specific bed types within the context of a given healthcare context or setting.",
         "exampleBoolean": false,
-        "name": "Bed Capacity Measure Example"
+        "name": "Bed Capacity Measure"
       },
       {
         "reference": {
@@ -200,7 +200,7 @@
         "reference": {
           "reference": "Measure/HRDMeasure"
         },
-        "description": "Hospital Respiratory Data Measure Example",
+        "description": "Hospital Respiratory Data Measure",
         "exampleBoolean": false,
         "name": "HRD Measure"
       },
@@ -259,6 +259,14 @@
         "name": "MeasureReport - HRD MeasureReport Example",
         "description": "This Bundle resource is an example of a Hospital Respiratory Data (HRD) MeasureReport.",
         "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/BedCapacityExampleCodeMap"
+        },
+        "description": "ConceptMap resource that maps the [example bed capacity codes](https://hl7.org/fhir/us/safr/2025May/CodeSystem-us-safr-bed-capacity-example-codes.html) used in the first [HL7 US SAFR IG ballot (1.0.0-ballot)](https://hl7.org/fhir/us/safr/2025May) to LOINC codes.",
+        "exampleBoolean": false,
+        "name": "NHSN SAFR Bed Capacity Codes ConceptMap"
       },
       {
         "reference": {
@@ -374,6 +382,11 @@
         {
           "nameUrl": "ImplementationGuide-gov.cdc.nhsn.safr.html",
           "title": "NHSN Implementation Guide Resource",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "bed-capacity-mapping.html",
+          "title": "Bed Capacity Code Mapping",
           "generation": "markdown"
         },
         {

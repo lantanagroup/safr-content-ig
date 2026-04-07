@@ -1,0 +1,904 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "BedCapacityExampleCodeMap",
+  "url": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/ConceptMap/BedCapacityExampleCodeMap",
+  "version": "0.1.0",
+  "name": "BedCapacityExampleCodeMap",
+  "title": "NHSN SAFR Bed Capacity Codes ConceptMap",
+  "status": "draft",
+  "experimental": false,
+  "date": "2026-04-07",
+  "publisher": "CDC NHSN",
+  "description": "Maps HL7 US SAFR ballot (May 2025) example bed capacity codes to the final LOINC codes adopted for use in the published US SAFR Implementation Guide and the CDC NHSN SAFR Content Implementation Guide.",
+  "purpose": "Supports implementers transitioning from HL7 US SAFR ballot example bed capacity codes to the final LOINC terminology.",
+  "sourceUri": "http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes",
+  "targetUri": "http://loinc.org",
+  "group": [
+    {
+      "source": "http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes",
+      "target": "http://loinc.org",
+      "element": [
+        {
+          "code": "AdultEDAdmittedCensus",
+          "display": "Adult ED Admitted Census",
+          "target": [
+            {
+              "code": "112511-1",
+              "display": "Adult emergency department beds-admitted",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "AdultEDCensus",
+          "display": "Adult ED Total Census",
+          "target": [
+            {
+              "code": "112512-9",
+              "display": "Adult emergency department beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "AdultTotalOccupied",
+          "display": "Adult Total Census",
+          "target": [
+            {
+              "code": "112577-2",
+              "display": "Adult inpatient beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "AdultTotalUnoccupied",
+          "display": "Adult Total Unoccupied",
+          "target": [
+            {
+              "code": "112576-4",
+              "display": "Adult inpatient beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "AdultICULOCOccupied",
+          "display": "Adult ICU-LOC Census",
+          "target": [
+            {
+              "code": "112573-1",
+              "display": "Adult intensive care unit (level of care) beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "AdultICUOccupied",
+          "display": "Adult ICU Census",
+          "target": [
+            {
+              "code": "112575-6",
+              "display": "Adult intensive care unit beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "AdultICUUnoccupied",
+          "display": "Adult ICU Unoccupied",
+          "target": [
+            {
+              "code": "112574-9",
+              "display": "Adult intensive care unit beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "AdultMTMSOccupied",
+          "display": "Adult MT/MS Census",
+          "target": [
+            {
+              "code": "112568-1",
+              "display": "Adult medicine telemetry and general acute care beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "AdultMTMSUnoccupied",
+          "display": "Adult MT/MS Unoccupied",
+          "target": [
+            {
+              "code": "112567-3",
+              "display": "Adult medicine telemetry and general acute care beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "AdultNonICUOccupied",
+          "display": "Adult Non- ICU Census",
+          "target": [
+            {
+              "code": "112572-3",
+              "display": "Adult non-intensive care unit beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "AdultNonICUUnoccupied",
+          "display": "Adult Non- ICU Unoccupied",
+          "target": [
+            {
+              "code": "112571-5",
+              "display": "Adult non-intensive care unit beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "AdultObsOccupied",
+          "display": "Adult OBS Census",
+          "target": [
+            {
+              "code": "112566-5",
+              "display": "Adult observation beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "AdultObsUnoccupied",
+          "display": "Adult OBS Unoccupied",
+          "target": [
+            {
+              "code": "112565-7",
+              "display": "Adult observation beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "AdultPCUOccupied",
+          "display": "Adult PCU Census",
+          "target": [
+            {
+              "code": "112570-7",
+              "display": "Adult progressive care unit beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "AdultPCUUnoccupied",
+          "display": "Adult PCU Unoccupied",
+          "target": [
+            {
+              "code": "112569-9",
+              "display": "Adult progressive care unit beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "AllBedsOccupied",
+          "display": "All Beds Census",
+          "target": [
+            {
+              "code": "112579-8",
+              "display": "All inpatient beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "AllBedsUnoccupied",
+          "display": "All Beds Unoccupied",
+          "target": [
+            {
+              "code": "112578-0",
+              "display": "All inpatient beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "BurnOccupied",
+          "display": "Burn Bed Census",
+          "target": [
+            {
+              "code": "112516-0",
+              "display": "Burn beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "BurnUnoccupied",
+          "display": "Burn Bed Unoccupied",
+          "target": [
+            {
+              "code": "112515-2",
+              "display": "Burn beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "TotalEDAdmittedCensus",
+          "display": "Total ED Admitted Census",
+          "target": [
+            {
+              "code": "112507-9",
+              "display": "Emergency department beds-admitted",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "TotalEDCensus",
+          "display": "Total ED Census",
+          "target": [
+            {
+              "code": "112508-7",
+              "display": "Emergency department beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "NegativePressureOccupied",
+          "display": "Neg Pressure Bed Census",
+          "target": [
+            {
+              "code": "112514-5",
+              "display": "Negative pressure beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "NegativePressureUnoccupied",
+          "display": "Neg Pressure Unoccupied",
+          "target": [
+            {
+              "code": "112513-7",
+              "display": "Negative pressure beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "PedsEDAdmittedCensus",
+          "display": "Peds ED Admitted Census",
+          "target": [
+            {
+              "code": "112509-5",
+              "display": "Pediatric emergency department beds-admitted",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "PedsEDTotalCensus",
+          "display": "Peds ED Total Census",
+          "target": [
+            {
+              "code": "112510-3",
+              "display": "Pediatric emergency department beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "PedsTotalOccupied",
+          "display": "Peds Total Census",
+          "target": [
+            {
+              "code": "112564-0",
+              "display": "Pediatric inpatient beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "PedsTotalUnoccupied",
+          "display": "Peds Total Unoccupied",
+          "target": [
+            {
+              "code": "112563-2",
+              "display": "Pediatric inpatient beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "PedsICULOCOccupied",
+          "display": "Peds ICU- LOC Census",
+          "target": [
+            {
+              "code": "112560-8",
+              "display": "Pediatric intensive care unit (level of care) beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "PedsICUOccupied",
+          "display": "Peds ICU Census",
+          "target": [
+            {
+              "code": "112562-4",
+              "display": "Pediatric intensive care unit beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "PedsICUUnoccupied",
+          "display": "Peds ICU Unoccupied",
+          "target": [
+            {
+              "code": "112561-6",
+              "display": "Pediatric intensive care unit beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "PedsMTMSOccupied",
+          "display": "Peds MT/MS Census",
+          "target": [
+            {
+              "code": "112555-8",
+              "display": "Pediatric medicine telemetry and general acute care beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "PedsMTMSUnoccupied",
+          "display": "Peds MT/MS Unoccupied",
+          "target": [
+            {
+              "code": "112554-1",
+              "display": "Pediatric medicine telemetry and general acute care beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "PedsNonICUOccupied",
+          "display": "Peds Non- ICU Census",
+          "target": [
+            {
+              "code": "112559-0",
+              "display": "Pediatric non-intensive care unit beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "PedsNonICUUnoccupied",
+          "display": "Peds Non- ICU Unoccupied",
+          "target": [
+            {
+              "code": "112558-2",
+              "display": "Pediatric non-intensive care unit beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "PedsObsOccupied",
+          "display": "Peds OBS Census",
+          "target": [
+            {
+              "code": "112553-3",
+              "display": "Pediatric observation beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "PedsObsUnoccupied",
+          "display": "Peds OBS Unoccupied",
+          "target": [
+            {
+              "code": "112552-5",
+              "display": "Pediatric observation beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "PedsPCUOccupied",
+          "display": "Peds PCU Census",
+          "target": [
+            {
+              "code": "112557-4",
+              "display": "Pediatric progressive care unit beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "PedsPCUUnoccupied",
+          "display": "Peds PCU Unoccupied",
+          "target": [
+            {
+              "code": "112556-6",
+              "display": "Pediatric progressive care unit beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "AdultPsychOccupied",
+          "display": "Specialty Adult Psych Census",
+          "target": [
+            {
+              "code": "112531-9",
+              "display": "Specialty adult psychiatric beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "AdultPsychUnoccupied",
+          "display": "Specialty Adult Psych Unoccupied",
+          "target": [
+            {
+              "code": "112530-1",
+              "display": "Specialty adult psychiatric beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "SpecialtyTotalOccupied",
+          "display": "Specialty Total Census",
+          "target": [
+            {
+              "code": "112551-7",
+              "display": "Specialty beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "SpecialtyTotalUnoccupied",
+          "display": "Specialty Total Unoccupied",
+          "target": [
+            {
+              "code": "112550-9",
+              "display": "Specialty beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "NICU1Occupied",
+          "display": "Specialty NICU 1 Census",
+          "target": [
+            {
+              "code": "112533-5",
+              "display": "Specialty neonatal intensive care unit-level 1",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "NICU1Unoccupied",
+          "display": "Specialty NICU 1 Unoccupied",
+          "target": [
+            {
+              "code": "112532-7",
+              "display": "Specialty neonatal intensive care unit-level 1",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "NICU2Occupied",
+          "display": "Specialty NICU 2 Census",
+          "target": [
+            {
+              "code": "112537-6",
+              "display": "Specialty neonatal intensive care unit-level 2",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "NICU2Unoccupied",
+          "display": "Specialty NICU 2 Unoccupied",
+          "target": [
+            {
+              "code": "112536-8",
+              "display": "Specialty neonatal intensive care unit-level 2",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "NICU3PlusOccupied",
+          "display": "Specialty NICU 3 Plus Census",
+          "target": [
+            {
+              "code": "112540-0",
+              "display": "Specialty neonatal intensive care unit-level 3 plus beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "NICU3Unoccupied",
+          "display": "Specialty NICU 3 Plus Unoccupied",
+          "target": [
+            {
+              "code": "112541-8",
+              "display": "Specialty neonatal intensive care unit-level 3 plus beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "NICU3Occupied",
+          "display": "Specialty NICU 3 Census",
+          "target": [
+            {
+              "code": "112538-4",
+              "display": "Specialty neonatal intensive care unit-level 3",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "NICU3PlusUnoccupied",
+          "display": "Specialty NICU 3 Unoccupied",
+          "target": [
+            {
+              "code": "112539-2",
+              "display": "Specialty neonatal intensive care unit-level 3",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "NICU4Occupied",
+          "display": "Specialty NICU 4 Census",
+          "target": [
+            {
+              "code": "112543-4",
+              "display": "Specialty neonatal intensive care unit-level 4 beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "NICU4Unoccupied",
+          "display": "Specialty NICU 4 Unoccupied",
+          "target": [
+            {
+              "code": "112542-6",
+              "display": "Specialty neonatal intensive care unit-level 4 beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "NICUTotalOccupied",
+          "display": "Specialty NICU Total Census",
+          "target": [
+            {
+              "code": "112545-9",
+              "display": "Specialty neonatal intensive care unit beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "NICUTotalUnoccupied",
+          "display": "Specialty NICU Total Unoccupied",
+          "target": [
+            {
+              "code": "112544-2",
+              "display": "Specialty neonatal intensive care unit beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "SpecialtyNonCribOccupied",
+          "display": "Specialty (Non-Crib) Census",
+          "target": [
+            {
+              "code": "112549-1",
+              "display": "Specialty non-crib beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "SpecialtyNonCribUnoccupied",
+          "display": "Specialty (Non-Crib) Unoccupied",
+          "target": [
+            {
+              "code": "112548-3",
+              "display": "Specialty non-crib beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "NurseryOccupied",
+          "display": "Specialty Nursery Census",
+          "target": [
+            {
+              "code": "112535-0",
+              "display": "Specialty nursery beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "NurseryUnoccupied",
+          "display": "Specialty Nursery Unoccupied",
+          "target": [
+            {
+              "code": "112534-3",
+              "display": "Specialty nursery beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "OBOccupied",
+          "display": "Specialty OB Census",
+          "target": [
+            {
+              "code": "112547-5",
+              "display": "Specialty obstetric beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "OBUnoccupied",
+          "display": "Specialty OB Unoccupied",
+          "target": [
+            {
+              "code": "112546-7",
+              "display": "Specialty obstetric beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "PedsPsychOccupied",
+          "display": "Specialty Peds Psych Census",
+          "target": [
+            {
+              "code": "112529-3",
+              "display": "Specialty pediatric psychiatric beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "PedsPsychUnoccupied",
+          "display": "Specialty Peds Psych Unoccupied",
+          "target": [
+            {
+              "code": "112528-5",
+              "display": "Specialty pediatric psychiatric beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "RehabOccupied",
+          "display": "Specialty Rehab Census",
+          "target": [
+            {
+              "code": "112527-7",
+              "display": "Specialty rehabilitation beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "RehabUnoccupied",
+          "display": "Specialty Rehab Unoccupied",
+          "target": [
+            {
+              "code": "112526-9",
+              "display": "Specialty rehabilitation beds",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "SurgeActiveTotalOccupied",
+          "display": "Surge Total Active Census",
+          "target": [
+            {
+              "code": "112525-1",
+              "display": "Surge-active",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "SurgeActiveTotalUnoccupied",
+          "display": "Surge Total Active Unoccupied",
+          "target": [
+            {
+              "code": "112524-4",
+              "display": "Surge-active",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "SurgeInactiveTotalUnoccupied",
+          "display": "Surge Total Inactive Unoccupied",
+          "target": [
+            {
+              "code": "112523-6",
+              "display": "Surge-inactive",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "SurgeActiveICUOccupied",
+          "display": "Surge ICU Active Census",
+          "target": [
+            {
+              "code": "112522-8",
+              "display": "Surge intensive care unit beds-active",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "SurgeActiveICUUnoccupied",
+          "display": "Surge ICU Active Unoccupied",
+          "target": [
+            {
+              "code": "112521-0",
+              "display": "Surge intensive care unit beds-active",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "SurgeInactiveICUUnoccupied",
+          "display": "Surge ICU Inactive Unoccupied",
+          "target": [
+            {
+              "code": "112520-2",
+              "display": "Surge intensive care unit beds-inactive",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "SurgeActiveNonICUOccupied",
+          "display": "Surge Non- ICU Active Census",
+          "target": [
+            {
+              "code": "112519-4",
+              "display": "Surge non-intensive care unit beds-active",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "SurgeActiveNonICUUnoccupied",
+          "display": "Surge Non- ICU Active Unoccupied",
+          "target": [
+            {
+              "code": "112518-6",
+              "display": "Surge non-intensive care unit beds-active",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        },
+        {
+          "code": "SurgeInactiveNonICUUnoccupied",
+          "display": "Surge Non- ICU Inactive Unoccupied",
+          "target": [
+            {
+              "code": "112517-8",
+              "display": "Surge non-intensive care unit beds-inactive",
+              "equivalence": "equivalent",
+              "comment": "Maps the HL7 US SAFR ballot example bed capacity code to the final LOINC code to use."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>This ConceptMap maps HL7 US SAFR ballot example bed capacity codes to final LOINC codes.</p><table><thead><tr><th>HL7 US SAFR ballot code</th><th>Ballot display</th><th>LOINC code</th><th>LOINC display</th></tr></thead><tbody><tr><td>AdultEDAdmittedCensus</td><td>Adult ED Admitted Census</td><td>112511-1</td><td>Adult emergency department beds-admitted</td></tr><tr><td>AdultEDCensus</td><td>Adult ED Total Census</td><td>112512-9</td><td>Adult emergency department beds</td></tr><tr><td>AdultTotalOccupied</td><td>Adult Total Census</td><td>112577-2</td><td>Adult inpatient beds</td></tr><tr><td>AdultTotalUnoccupied</td><td>Adult Total Unoccupied</td><td>112576-4</td><td>Adult inpatient beds</td></tr><tr><td>AdultICULOCOccupied</td><td>Adult ICU-LOC Census</td><td>112573-1</td><td>Adult intensive care unit (level of care) beds</td></tr><tr><td>AdultICUOccupied</td><td>Adult ICU Census</td><td>112575-6</td><td>Adult intensive care unit beds</td></tr><tr><td>AdultICUUnoccupied</td><td>Adult ICU Unoccupied</td><td>112574-9</td><td>Adult intensive care unit beds</td></tr><tr><td>AdultMTMSOccupied</td><td>Adult MT/MS Census</td><td>112568-1</td><td>Adult medicine telemetry and general acute care beds</td></tr><tr><td>AdultMTMSUnoccupied</td><td>Adult MT/MS Unoccupied</td><td>112567-3</td><td>Adult medicine telemetry and general acute care beds</td></tr><tr><td>AdultNonICUOccupied</td><td>Adult Non- ICU Census</td><td>112572-3</td><td>Adult non-intensive care unit beds</td></tr><tr><td>AdultNonICUUnoccupied</td><td>Adult Non- ICU Unoccupied</td><td>112571-5</td><td>Adult non-intensive care unit beds</td></tr><tr><td>AdultObsOccupied</td><td>Adult OBS Census</td><td>112566-5</td><td>Adult observation beds</td></tr><tr><td>AdultObsUnoccupied</td><td>Adult OBS Unoccupied</td><td>112565-7</td><td>Adult observation beds</td></tr><tr><td>AdultPCUOccupied</td><td>Adult PCU Census</td><td>112570-7</td><td>Adult progressive care unit beds</td></tr><tr><td>AdultPCUUnoccupied</td><td>Adult PCU Unoccupied</td><td>112569-9</td><td>Adult progressive care unit beds</td></tr><tr><td>AllBedsOccupied</td><td>All Beds Census</td><td>112579-8</td><td>All inpatient beds</td></tr><tr><td>AllBedsUnoccupied</td><td>All Beds Unoccupied</td><td>112578-0</td><td>All inpatient beds</td></tr><tr><td>BurnOccupied</td><td>Burn Bed Census</td><td>112516-0</td><td>Burn beds</td></tr><tr><td>BurnUnoccupied</td><td>Burn Bed Unoccupied</td><td>112515-2</td><td>Burn beds</td></tr><tr><td>TotalEDAdmittedCensus</td><td>Total ED Admitted Census</td><td>112507-9</td><td>Emergency department beds-admitted</td></tr><tr><td>TotalEDCensus</td><td>Total ED Census</td><td>112508-7</td><td>Emergency department beds</td></tr><tr><td>NegativePressureOccupied</td><td>Neg Pressure Bed Census</td><td>112514-5</td><td>Negative pressure beds</td></tr><tr><td>NegativePressureUnoccupied</td><td>Neg Pressure Unoccupied</td><td>112513-7</td><td>Negative pressure beds</td></tr><tr><td>PedsEDAdmittedCensus</td><td>Peds ED Admitted Census</td><td>112509-5</td><td>Pediatric emergency department beds-admitted</td></tr><tr><td>PedsEDTotalCensus</td><td>Peds ED Total Census</td><td>112510-3</td><td>Pediatric emergency department beds</td></tr><tr><td>PedsTotalOccupied</td><td>Peds Total Census</td><td>112564-0</td><td>Pediatric inpatient beds</td></tr><tr><td>PedsTotalUnoccupied</td><td>Peds Total Unoccupied</td><td>112563-2</td><td>Pediatric inpatient beds</td></tr><tr><td>PedsICULOCOccupied</td><td>Peds ICU- LOC Census</td><td>112560-8</td><td>Pediatric intensive care unit (level of care) beds</td></tr><tr><td>PedsICUOccupied</td><td>Peds ICU Census</td><td>112562-4</td><td>Pediatric intensive care unit beds</td></tr><tr><td>PedsICUUnoccupied</td><td>Peds ICU Unoccupied</td><td>112561-6</td><td>Pediatric intensive care unit beds</td></tr><tr><td>PedsMTMSOccupied</td><td>Peds MT/MS Census</td><td>112555-8</td><td>Pediatric medicine telemetry and general acute care beds</td></tr><tr><td>PedsMTMSUnoccupied</td><td>Peds MT/MS Unoccupied</td><td>112554-1</td><td>Pediatric medicine telemetry and general acute care beds</td></tr><tr><td>PedsNonICUOccupied</td><td>Peds Non- ICU Census</td><td>112559-0</td><td>Pediatric non-intensive care unit beds</td></tr><tr><td>PedsNonICUUnoccupied</td><td>Peds Non- ICU Unoccupied</td><td>112558-2</td><td>Pediatric non-intensive care unit beds</td></tr><tr><td>PedsObsOccupied</td><td>Peds OBS Census</td><td>112553-3</td><td>Pediatric observation beds</td></tr><tr><td>PedsObsUnoccupied</td><td>Peds OBS Unoccupied</td><td>112552-5</td><td>Pediatric observation beds</td></tr><tr><td>PedsPCUOccupied</td><td>Peds PCU Census</td><td>112557-4</td><td>Pediatric progressive care unit beds</td></tr><tr><td>PedsPCUUnoccupied</td><td>Peds PCU Unoccupied</td><td>112556-6</td><td>Pediatric progressive care unit beds</td></tr><tr><td>AdultPsychOccupied</td><td>Specialty Adult Psych Census</td><td>112531-9</td><td>Specialty adult psychiatric beds</td></tr><tr><td>AdultPsychUnoccupied</td><td>Specialty Adult Psych Unoccupied</td><td>112530-1</td><td>Specialty adult psychiatric beds</td></tr><tr><td>SpecialtyTotalOccupied</td><td>Specialty Total Census</td><td>112551-7</td><td>Specialty beds</td></tr><tr><td>SpecialtyTotalUnoccupied</td><td>Specialty Total Unoccupied</td><td>112550-9</td><td>Specialty beds</td></tr><tr><td>NICU1Occupied</td><td>Specialty NICU 1 Census</td><td>112533-5</td><td>Specialty neonatal intensive care unit-level 1</td></tr><tr><td>NICU1Unoccupied</td><td>Specialty NICU 1 Unoccupied</td><td>112532-7</td><td>Specialty neonatal intensive care unit-level 1</td></tr><tr><td>NICU2Occupied</td><td>Specialty NICU 2 Census</td><td>112537-6</td><td>Specialty neonatal intensive care unit-level 2</td></tr><tr><td>NICU2Unoccupied</td><td>Specialty NICU 2 Unoccupied</td><td>112536-8</td><td>Specialty neonatal intensive care unit-level 2</td></tr><tr><td>NICU3PlusOccupied</td><td>Specialty NICU 3 Plus Census</td><td>112540-0</td><td>Specialty neonatal intensive care unit-level 3 plus beds</td></tr><tr><td>NICU3Unoccupied</td><td>Specialty NICU 3 Plus Unoccupied</td><td>112541-8</td><td>Specialty neonatal intensive care unit-level 3 plus beds</td></tr><tr><td>NICU3Occupied</td><td>Specialty NICU 3 Census</td><td>112538-4</td><td>Specialty neonatal intensive care unit-level 3</td></tr><tr><td>NICU3PlusUnoccupied</td><td>Specialty NICU 3 Unoccupied</td><td>112539-2</td><td>Specialty neonatal intensive care unit-level 3</td></tr><tr><td>NICU4Occupied</td><td>Specialty NICU 4 Census</td><td>112543-4</td><td>Specialty neonatal intensive care unit-level 4 beds</td></tr><tr><td>NICU4Unoccupied</td><td>Specialty NICU 4 Unoccupied</td><td>112542-6</td><td>Specialty neonatal intensive care unit-level 4 beds</td></tr><tr><td>NICUTotalOccupied</td><td>Specialty NICU Total Census</td><td>112545-9</td><td>Specialty neonatal intensive care unit beds</td></tr><tr><td>NICUTotalUnoccupied</td><td>Specialty NICU Total Unoccupied</td><td>112544-2</td><td>Specialty neonatal intensive care unit beds</td></tr><tr><td>SpecialtyNonCribOccupied</td><td>Specialty (Non-Crib) Census</td><td>112549-1</td><td>Specialty non-crib beds</td></tr><tr><td>SpecialtyNonCribUnoccupied</td><td>Specialty (Non-Crib) Unoccupied</td><td>112548-3</td><td>Specialty non-crib beds</td></tr><tr><td>NurseryOccupied</td><td>Specialty Nursery Census</td><td>112535-0</td><td>Specialty nursery beds</td></tr><tr><td>NurseryUnoccupied</td><td>Specialty Nursery Unoccupied</td><td>112534-3</td><td>Specialty nursery beds</td></tr><tr><td>OBOccupied</td><td>Specialty OB Census</td><td>112547-5</td><td>Specialty obstetric beds</td></tr><tr><td>OBUnoccupied</td><td>Specialty OB Unoccupied</td><td>112546-7</td><td>Specialty obstetric beds</td></tr><tr><td>PedsPsychOccupied</td><td>Specialty Peds Psych Census</td><td>112529-3</td><td>Specialty pediatric psychiatric beds</td></tr><tr><td>PedsPsychUnoccupied</td><td>Specialty Peds Psych Unoccupied</td><td>112528-5</td><td>Specialty pediatric psychiatric beds</td></tr><tr><td>RehabOccupied</td><td>Specialty Rehab Census</td><td>112527-7</td><td>Specialty rehabilitation beds</td></tr><tr><td>RehabUnoccupied</td><td>Specialty Rehab Unoccupied</td><td>112526-9</td><td>Specialty rehabilitation beds</td></tr><tr><td>SurgeActiveTotalOccupied</td><td>Surge Total Active Census</td><td>112525-1</td><td>Surge-active</td></tr><tr><td>SurgeActiveTotalUnoccupied</td><td>Surge Total Active Unoccupied</td><td>112524-4</td><td>Surge-active</td></tr><tr><td>SurgeInactiveTotalUnoccupied</td><td>Surge Total Inactive Unoccupied</td><td>112523-6</td><td>Surge-inactive</td></tr><tr><td>SurgeActiveICUOccupied</td><td>Surge ICU Active Census</td><td>112522-8</td><td>Surge intensive care unit beds-active</td></tr><tr><td>SurgeActiveICUUnoccupied</td><td>Surge ICU Active Unoccupied</td><td>112521-0</td><td>Surge intensive care unit beds-active</td></tr><tr><td>SurgeInactiveICUUnoccupied</td><td>Surge ICU Inactive Unoccupied</td><td>112520-2</td><td>Surge intensive care unit beds-inactive</td></tr><tr><td>SurgeActiveNonICUOccupied</td><td>Surge Non- ICU Active Census</td><td>112519-4</td><td>Surge non-intensive care unit beds-active</td></tr><tr><td>SurgeActiveNonICUUnoccupied</td><td>Surge Non- ICU Active Unoccupied</td><td>112518-6</td><td>Surge non-intensive care unit beds-active</td></tr><tr><td>SurgeInactiveNonICUUnoccupied</td><td>Surge Non- ICU Inactive Unoccupied</td><td>112517-8</td><td>Surge non-intensive care unit beds-inactive</td></tr></tbody></table></div>"
+  }
+}

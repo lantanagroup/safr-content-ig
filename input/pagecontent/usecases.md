@@ -1,6 +1,4 @@
-The NHSN SAFR IG includes example use cases demonstrating its application across various levels of healthcare resource management. These use cases highlight the framework’s ability to address immediate and strategic challenges. For more context, see [Reporting Scenarios](specification.html) where the data exchange methods are detailed. Federal agencies will typically receive data from NHSN.
-
-Note: the use cases here are **examples only**, and are specific to the example measures included in this IG for Bed Capacity and Hospital Respiratory Data (HRD) reporting. However, the framework that this IG creates can be used for other situational awareness use cases beyond Bed Capacity and HRD.
+The NHSN SAFR IG includes use cases demonstrating its application across various levels of healthcare resource management. These use cases highlight the framework’s ability to address immediate and strategic challenges. For more context, see [Reporting Scenarios](specification.html) where the data exchange methods are detailed. Federal agencies will typically receive data from NHSN.
 
 ### United States Situational Awareness for Facilitation of Response Measure Reporting Use Cases
 
@@ -101,7 +99,7 @@ For all bed censuses and counts, the following bed types should be <u>excluded</
             <a href="Measure-BedCapacityMeasure.html" title="Measure/BedCapacityMeasure">Measure - Bed Capacity Measure</a>
          </td>
          <td>
-            <p>Example of a bed capacity measure for ICU, ED, and Pediatric beds for NHSN reporting.</p>
+            <p>Bed capacity measure for ICU, ED, and Pediatric beds for NHSN reporting.</p>
          </td>
       </tr>
       <tr>

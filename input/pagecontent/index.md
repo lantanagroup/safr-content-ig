@@ -51,11 +51,12 @@ The guide ensures alignment with existing initiatives, such as SANER and DEQM, w
 
 The NHSN SAFR IG harmonizes with and extends the following standards:
 
-1. **[SANER (Universal Realm):](https://hl7.org/fhir/uv/saner/index.html)** Provides the foundation for situational awareness reporting globally. NHSN SAFR adapts SANER for US-specific requirements while maintaining interoperability.
-2. **[DEQM (US Realm):]({{site.data.fhir.ver.deqm}}/index.html)** Ensures alignment with existing US-specific quality measurement standards.
+1. **[US Situational Awareness Framework for Reporting (US SAFR)]({{site.data.fhir.ver.deqm}}/index.html)** Establishes a standardized, FHIR-based approach to support public health decision-making during emergencies and is designed to facilitate seamless data exchange between healthcare facilities and public health authorities (federal and/or jurisdictional),thereby strengthening the nation’s emergency preparedness and response capabilities.
+1. **[Situational Awareness for Novel Epidemic Response (SANER) (Universal Realm):](https://hl7.org/fhir/uv/saner/index.html)** Provides the foundation for situational awareness reporting globally. NHSN SAFR adapts SANER for US-specific requirements while maintaining interoperability.
+2. **[Data Exchange For Quality Measures (DEQM) (US Realm):]({{site.data.fhir.ver.deqm}}/index.html)** Ensures alignment with existing US-specific quality measurement standards.
 3. **[NHSN Bed Connectivity Initiative:](https://www.cdc.gov/nhsn/bed-capacity/index.html)** Standardizes real-time bed capacity reporting across hospitals and jurisdictions.
 4. **[Hospital Respiratory Data Reporting:](https://www.cdc.gov/nhsn/psc/hospital-respiratory-reporting.html)** Establishes reporting standards for COVID-19, influenza, RSV, and related data.
-5. **[NHSN dQM Reporting:](http://hl7.org/fhir/us/nhsn-dqm)** Defines the standard framework for reporting patient line-level clinical data using a digital Quality Measure (dQM). Whereas, NHSN SAFR focuses on situational awareness reporting excluding protected health information.
+5. **[National Healthcare Safety Network (NHSN) Digital Quality Measure (dQM) Reporting:](http://hl7.org/fhir/us/nhsn-dqm)** Defines the standard framework for reporting patient line-level clinical data using a digital Quality Measure (dQM). Whereas, NHSN SAFR focuses on situational awareness reporting excluding protected health information.
 
 By aligning with these standards, NHSN SAFR supports a unified reporting framework for healthcare capacity and situational awareness data.
 

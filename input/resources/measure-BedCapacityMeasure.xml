@@ -1650,7 +1650,7 @@
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Library FHIRHelpers"></display>
-            <resource value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/Library/FHIRHelpers"></resource>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/Library/FHIRHelpers|4.0.1"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -2297,12 +2297,12 @@
    <url value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/Measure/BedCapacityMeasure"></url>
    <version value="1.0.0"></version>
    <name value="BedCapacityMeasure"></name>
-   <title value="Bed Capacity Measure Example"></title>
+   <title value="Bed Capacity Measure"></title>
    <status value="draft"></status>
    <experimental value="true"></experimental>
-   <date value="2026-03-30T16:05:59-04:00"></date>
+   <date value="2026-04-03T11:10:34-04:00"></date>
    <publisher value="HL7 International / Public Health"></publisher>
-   <description value="Bed Capacity Measure Example includes counts of specific bed types within the context of a given healthcare context or setting."></description>
+   <description value="Bed Capacity Measure includes counts of specific bed types within the context of a given healthcare context or setting."></description>
    <library value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/Library/BedCapacityMeasure"></library>
    <scoring>
       <coding>
