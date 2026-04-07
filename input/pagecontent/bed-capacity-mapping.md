@@ -6,11 +6,12 @@ This page provides a mapping from the [HL7 US SAFR ballot (May 2025)](https://hl
 
 The ballot version of the US SAFR IG included temporary/example codes to support early development and review. In the published version, those example codes were replaced with final LOINC codes. This mapping is provided to support implementers transitioning from ballot-based terminology to the final LOINC terminology.
 
-A [FHIR ConceptMap](ConceptMap-BedCapacityExampleCodeMap.html) is provided defining a unidirectional mapping from the set of original HL7 USAFR Bed Capacity example codes to the finally adopted LOINC codes. It facilitates semantic interoperability by linking these temporary example codes, which may have been used in implementations up until the publication of this specification, to the standard terminology (LOINC).
+<!--A [FHIR ConceptMap](ConceptMap-BedCapacityExampleCodeMap.html) is provided defining a unidirectional mapping from the set of original HL7 USAFR Bed Capacity example codes to the finally adopted LOINC codes. It facilitates semantic interoperability by linking these temporary example codes, which may have been used in implementations up until the publication of this specification, to the standard terminology (LOINC).
+-->
 
 ## Mapping Table
 
-|  HL7 Ballot Code  |  Ballot Display  |  LOINC Code  |  LOINC Display  |
+|  HL7 US SAFR 1.0.0-ballot Code  |  HL7 US SAFR 1.0.0-ballot Ballot Display  |  LOINC Code &nbsp; &nbsp;  |  LOINC Display  |
 |---|---|---|---|
 | [AdultEDAdmittedCensus](https://hl7.org/fhir/us/safr/2025May/CodeSystem-us-safr-bed-capacity-example-codes.html#us-safr-bed-capacity-example-codes-AdultEDAdmittedCensus) | Adult ED Admitted Census | [112511-1](https://loinc.org/112511-1/) | Adult emergency department beds-admitted |
 | [AdultEDCensus](https://hl7.org/fhir/us/safr/2025May/CodeSystem-us-safr-bed-capacity-example-codes.html#us-safr-bed-capacity-example-codes-AdultEDCensus) | Adult ED Total Census | [112512-9](https://loinc.org/112512-9/) | Adult emergency department beds |

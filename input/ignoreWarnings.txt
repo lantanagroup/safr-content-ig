@@ -18,12 +18,14 @@ No definition could be found for URL value 'https://www.cdc.gov/nhsn/OrgID'
 INFORMATION: Bundle/HospitalBedCapacityReportBundle: Bundle.entry[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measurereport-bundle|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Bundle/HRDMeasureReportBundle: Bundle.entry[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measurereport-bundle|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Bundle/NHSNSAFRMeasureBundleExample: Bundle.entry[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measure-bundle|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Measure/HRDMeasure: Measure.extension[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm|4.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Measure/HRDMeasure: Measure.extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm|4.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+
 
 
 # 06 ⚠️⚠️⚠️ WARNING: regarding newer published versions of US Core and QI Core. The versions chosen were done so to meet the current regulatory requirement floor ⚠️⚠️⚠️
 The ImplementationGuide uses package hl7.fhir.us.core#6.1.0 released on 2023-06-30, but the most recent appropriate version is 8.0.1. This reference is getting old and the more recent version should be considered
-The ImplementationGuide uses package hl7.fhir.us.qicore#6.0.0 released on 2024-03-01, but the most recent appropriate version is 7.0.1. This reference is getting old and the more recent version should be considered
+WARNING: ImplementationGuide/gov.cdc.nhsn.safr: ImplementationGuide.dependsOn[8]: The ImplementationGuide uses package hl7.fhir.us.qicore#6.0.0 released on 2024-03-01, but the most recent appropriate version is 7.0.2. This reference is getting old and the more recent version should be considered
+
 
 # 07 ⚠️⚠️⚠️ WARNING: Let publisher pin the version during publication. ⚠️⚠️⚠️
 There are multiple different potential matches for the url 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1142'. It might be a good idea to fix to the correct version to reduce the likelihood of a wrong version being selected by an implementation/implementer, or use the [IG Parameter `pin-canonicals`](https://hl7.org/fhir/tools/CodeSystem-ig-parameters.html). Using version '20250218', found versions: 20230125 (from us.nlm.vsac#0.11.0), 20250218 (from us.nlm.vsac#0.22.0). Suggested fix: change the canonical reference from 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1142' to 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1142|20250218'
@@ -39,7 +41,7 @@ There are multiple different potential matches for the url 'http://terminology.h
 Artifact library could not be found so no data requirements were inferred.
 
 # 09 💭💭💭  INFORMATION: String incorrectly identified as html. It is CQL. 💭💭💭 
-INFORMATION: Measure/HRDMeasure: Measure.contained[0]/*Library/effective-data-requirements*/.extension[111].extension[2].value.ofType(string): The string value contains text that looks like embedded HTML tags. If this content is rendered to HTML without appropriate post-processing, it may be a security risk
+INFORMATION: Measure/HRDMeasure: Measure.contained[0]/*Library/effective-data-requirements*/.extension[105].extension[2].value.ofType(string): The string value contains text that looks like embedded HTML tags. If this content is rendered to HTML without appropriate post-processing, it may be a security risk
 
 # 10 ⚠️⚠️⚠️ WARNING: time-period-ranges is not a code system that can be validated as it is a fragment without these codes included ⚠️⚠️⚠️
 Unknown Code 'P0D--0D' in the CodeSystem 'http://terminology.hl7.org/CodeSystem/time-period-ranges' version '1.0.0' - note that the code system is labeled as a fragment, so the code may be valid in some other fragment
@@ -50,3 +52,14 @@ Unknown Code 'P15D--30D' in the CodeSystem 'http://terminology.hl7.org/CodeSyste
 Unknown Code 'P30D--9999D' in the CodeSystem 'http://terminology.hl7.org/CodeSystem/time-period-ranges' version '1.0.0' - note that the code system is labeled as a fragment, so the code may be valid in some other fragment
 %Error: The code system definition for http://terminology.hl7.org/CodeSystem/time-period-ranges has no content, so this expansion cannot be performed
 
+
+# 10 ⚠️⚠️⚠️ WARNING: Duplicate anchors caused by the creation of duplicate logicDefinitions in the Measure contained Library cerated by the CQF Tooling. Issue will be resolved when the following PR is released in a new CQF Tooling version: https://github.com/cqframework/cqf-tooling/pull/594 ⚠️⚠️⚠️
+The html source has duplicate anchor Ids: fhirhelpers-todatetime,fhirhelpers-tostring,hrdmeasure-adult-icu-beds-initial-population,hrdmeasure-adult-inpatient-beds-initial-population,hrdmeasure-icu-beds-initial-population,hrdmeasure-inpatient-beds-initial-population,hrdmeasure-pediatric-icu-beds-initial-population,hrdmeasure-pediatric-inpatient-beds-initial-population
+WARNING: Measure/HRDMeasure: Measure.text.div: The XHTML  the resource contains more than one node for each of the following node ids and anchor names: fhirhelpers-todatetime (2x), fhirhelpers-tostring (2x), hrdmeasure-adult-icu-beds-initial-population (2x), hrdmeasure-adult-inpatient-beds-initial-population (2x), hrdmeasure-icu-beds-initial-population (2x), hrdmeasure-inpatient-beds-initial-population (2x), hrdmeasure-pediatric-icu-beds-initial-population (2x), hrdmeasure-pediatric-inpatient-beds-initial-population (2x)
+WARNING: Measure/HRDMeasure: Measure.text.div: Hyperlink '#hrdmeasure-inpatient-beds-initial-population' at 'div/table/tbody/tr/td/a' for 'Inpatient Beds Initial Population' resolves to multiple targets ($/text/div/table/tbody/tr[261]/th/a/@name, $/text/div/table/tbody/tr[349]/th/a/@name)
+WARNING: Measure/HRDMeasure: Measure.text.div: Hyperlink '#hrdmeasure-adult-inpatient-beds-initial-population' at 'div/table/tbody/tr/td/a' for 'Adult Inpatient Beds Initial Population' resolves to multiple targets ($/text/div/table/tbody/tr[247]/th/a/@name, $/text/div/table/tbody/tr[331]/th/a/@name)
+WARNING: Measure/HRDMeasure: Measure.text.div: Hyperlink '#hrdmeasure-pediatric-inpatient-beds-initial-population' at 'div/table/tbody/tr/td/a' for 'Pediatric Inpatient Beds Initial Population' resolves to multiple targets ($/text/div/table/tbody/tr[233]/th/a/@name, $/text/div/table/tbody/tr[311]/th/a/@name)
+WARNING: Measure/HRDMeasure: Measure.text.div: Hyperlink '#hrdmeasure-icu-beds-initial-population' at 'div/table/tbody/tr/td/a' for 'ICU Beds Initial Population' resolves to multiple targets ($/text/div/table/tbody/tr[303]/th/a/@name, $/text/div/table/tbody/tr[333]/th/a/@name)
+WARNING: Measure/HRDMeasure: Measure.text.div: Hyperlink '#hrdmeasure-adult-icu-beds-initial-population' at 'div/table/tbody/tr/td/a' for 'Adult ICU Beds Initial Population' resolves to multiple targets ($/text/div/table/tbody/tr[207]/th/a/@name, $/text/div/table/tbody/tr[213]/th/a/@name)
+WARNING: Measure/HRDMeasure: Measure.text.div: Hyperlink '#hrdmeasure-pediatric-icu-beds-initial-population' at 'div/table/tbody/tr/td/a' for 'Pediatric ICU Beds Initial Population' resolves to multiple targets ($/text/div/table/tbody/tr[199]/th/a/@name, $/text/div/table/tbody/tr[321]/th/a/@name)
+The string value contains text that looks like embedded HTML tags. If this content is rendered to HTML without appropriate post-processing, it may be a security risk

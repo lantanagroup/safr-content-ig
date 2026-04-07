@@ -152,9 +152,9 @@ resources:
   Device/cqf-tooling:
     name: CQL Testing Tooling
     description: "This Device resource is used to represent the CQL tooling software. It is referenced by the Library resources to indicate that the CQL tooling used to execute the CQL in those libraries."
-  ConceptMap/BedCapacityExampleCodeMap:
-    name: NHSN SAFR Bed Capacity Codes ConceptMap
-    description: "ConceptMap resource that maps the [example bed capacity codes](https://hl7.org/fhir/us/safr/2025May/CodeSystem-us-safr-bed-capacity-example-codes.html) used in the first [HL7 US SAFR IG ballot (1.0.0-ballot)](https://hl7.org/fhir/us/safr/2025May) to LOINC codes."
+#  ConceptMap/BedCapacityExampleCodeMap:
+#    name: NHSN SAFR Bed Capacity Codes ConceptMap
+#    description: "ConceptMap resource that maps the [example bed capacity codes](https://hl7.org/fhir/us/safr/2025May/CodeSystem-us-safr-bed-capacity-example-codes.html) used in the first [HL7 US SAFR IG ballot (1.0.0-ballot)](https://hl7.org/fhir/us/safr/2025May) to LOINC codes."
 
 
 

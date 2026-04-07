@@ -262,14 +262,6 @@
       },
       {
         "reference": {
-          "reference": "ConceptMap/BedCapacityExampleCodeMap"
-        },
-        "description": "ConceptMap resource that maps the [example bed capacity codes](https://hl7.org/fhir/us/safr/2025May/CodeSystem-us-safr-bed-capacity-example-codes.html) used in the first [HL7 US SAFR IG ballot (1.0.0-ballot)](https://hl7.org/fhir/us/safr/2025May) to LOINC codes.",
-        "exampleBoolean": false,
-        "name": "NHSN SAFR Bed Capacity Codes ConceptMap"
-      },
-      {
-        "reference": {
           "reference": "CapabilityStatement/SafrCapabilityStatementDataAggregator"
         },
         "name": "NHSN SAFR Data Aggregator CapabilityStatement",
