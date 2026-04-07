@@ -81,7 +81,7 @@ Lantana Consulting Group, Inc. produced and developed the content in this IG und
 | Co-Editor      | Kristina Betz         | CDC                      | rly7@cdc.gov                        |
 | Co-Editor      | David deRoode         | Lantana Consulting Group | david.deroode@lantanagroup.com      |
 | Co-Editor      | Ming Dunajick         | Lantana Consulting Group | ming.dunajick@lantanagroup.com      |
-
+| Co-Editor      | Aaron Nusstein        | Lantana Consulting Group | aaron.nusstein@lantanagroup.com     |
 
 
 
