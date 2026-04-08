@@ -18,7 +18,7 @@ No definition could be found for URL value 'https://www.cdc.gov/nhsn/OrgID'
 INFORMATION: Bundle/HospitalBedCapacityReportBundle: Bundle.entry[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measurereport-bundle|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Bundle/HRDMeasureReportBundle: Bundle.entry[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measurereport-bundle|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Bundle/NHSNSAFRMeasureBundleExample: Bundle.entry[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measure-bundle|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Measure/HRDMeasure: Measure.extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm|4.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+INFORMATION: Measure/HRDMeasure: Measure.extension[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm|4.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
 
 
 

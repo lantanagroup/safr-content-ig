@@ -134,7 +134,7 @@ menu:
   Artifacts: artifacts.html
   Downloads: downloads.html
   Support:
-    Previous Code Mapping: bed-capacity-mapping.html
+    Bed Capacity Code Mapping: bed-capacity-mapping.html
     FHIR Spec: http://hl7.org/fhir/R4/index.html
     CQL Spec: http://cql.hl7.org/index.html
     FHIR Clinical Guidelines: http://hl7.org/fhir/uv/cpg

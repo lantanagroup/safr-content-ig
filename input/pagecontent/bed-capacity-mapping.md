@@ -1,17 +1,26 @@
-# NHSN SAFR Bed Capacity Code Mapping
+# NHSN SAFR Bed Capacity Concept Mapping
 
-## Purpose
+### Purpose
 
 This page provides a mapping from the [HL7 US SAFR ballot (May 2025)](https://hl7.org/fhir/us/safr/2025May) [example bed capacity codes](https://hl7.org/fhir/us/safr/2025May/CodeSystem-us-safr-bed-capacity-example-codes.html) to the final LOINC codes adopted for use in the published [HL7 US SAFR Implementation Guide]({{site.data.fhir.ver.deqm}}/index.html) and in this CDC NHSN SAFR Content Implementation Guide.
 
 The ballot version of the US SAFR IG included temporary/example codes to support early development and review. In the published version, those example codes were replaced with final LOINC codes. This mapping is provided to support implementers transitioning from ballot-based terminology to the final LOINC terminology.
 
+
+
+This page provides a mapping from the CDC NHSN defined data dictionary bed capacity reporting codes used in the [CDC NHSN non-FHIR reporting program](https://www.cdc.gov/nhsn/bed-capacity/index.html) to the standardized set of LOINC codes adopted for FHIR-based reporting in this CDC NHSN SAFR Content Implementation Guide and the the [HL7 US SAFR Implementation Guide]({{site.data.fhir.ver.ussafr}}).
+
+The NHSN data dictionary defines a set of program-specific codes used in production reporting today. In the [HL7 US SAFR IG ballot (May 2025)](https://hl7.org/fhir/us/safr/2025May/), these NHSN data dictionary concepts were adopted in the  [temporary/example codes](https://hl7.org/fhir/us/safr/2025May/CodeSystem-us-safr-bed-capacity-example-codes.html) to support early FHIR modeling and testing. In the published IG ([STU1.0.0]({{site.data.fhir.ver.ussafr}})), those example codes were replaced with standardized LOINC codes.
+
+Accordingly, this mapping reflects the transition from NHSN data dictionary concepts to the final LOINC codes used for FHIR-based reporting. It is intended to support implementers migrating existing NHSN reporting workflows to interoperable, FHIR-based reporting while preserving the meaning of reported data.
+
+
 <!--A [FHIR ConceptMap](ConceptMap-BedCapacityExampleCodeMap.html) is provided defining a unidirectional mapping from the set of original HL7 USAFR Bed Capacity example codes to the finally adopted LOINC codes. It facilitates semantic interoperability by linking these temporary example codes, which may have been used in implementations up until the publication of this specification, to the standard terminology (LOINC).
 -->
 
-## Mapping Table
+### Mapping Table
 
-|  HL7 US SAFR 1.0.0-ballot Code  |  HL7 US SAFR 1.0.0-ballot Ballot Display  |  LOINC Code &nbsp; &nbsp;  |  LOINC Display  |
+|  Data Dictionary Concept & HL7 US SAFR 1.0.0-ballot Code  |  HL7 US SAFR 1.0.0-ballot Ballot Display  |  LOINC Code &nbsp; &nbsp;  |  LOINC Display  |
 |---|---|---|---|
 | [AdultEDAdmittedCensus](https://hl7.org/fhir/us/safr/2025May/CodeSystem-us-safr-bed-capacity-example-codes.html#us-safr-bed-capacity-example-codes-AdultEDAdmittedCensus) | Adult ED Admitted Census | [112511-1](https://loinc.org/112511-1/) | Adult emergency department beds-admitted |
 | [AdultEDCensus](https://hl7.org/fhir/us/safr/2025May/CodeSystem-us-safr-bed-capacity-example-codes.html#us-safr-bed-capacity-example-codes-AdultEDCensus) | Adult ED Total Census | [112512-9](https://loinc.org/112512-9/) | Adult emergency department beds |
