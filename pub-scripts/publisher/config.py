@@ -7,6 +7,7 @@ import yaml
 import configparser
 from pathlib import Path
 import shutil
+import logging
 
 # Constants and templates moved from original script
 IG_PUBLISHER_URL = "https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar"
@@ -196,7 +197,7 @@ preamble_template = '''<body>
              <div class="inner-wrapper">
 '''
 
-web_config = '''<?xml version="1.0" encoding="utf-8"?>
+web_config = r'''<?xml version="1.0" encoding="utf-8"?>
 <configuration>
     <system.webServer>
         <rewrite>
@@ -241,16 +242,15 @@ def initialize_webroot(config_data):
     Initialize the webroot folder with necessary JSON files for the publisher. This function creates the `webroot` directory if it does not exist, then generates the `package-registry.json`, `publish-setup.json`, `package-feed.xml`, and `publication-feed.xml` files in the `webroot` directory based on the provided configuration data and corresponding templates. The configuration data is used to replace placeholders in the templates to customize the generated files for the specific IG being published. This setup is necessary to ensure that the publisher has the required configuration files in place for both the initial and full build processes.
     Args:        config_data: A dictionary containing configuration values loaded from the IG repository (by the `load_configuration` function), which are used to populate the templates for the JSON and XML files generated in the webroot.
     """
+    logger = logging.getLogger()
     directory_path = Path("webroot")
     try:
-        directory_path.mkdir()
-        print(f"Directory '{directory_path}' created successfully.")
-    except FileExistsError:
-        print(f"Directory '{directory_path}' already exists.")
+        directory_path.mkdir(exist_ok=True)
+        logger.debug(f"Directory '{directory_path}' created or already exists.")
     except PermissionError:
-        print(f"Permission denied: Unable to create '{directory_path}'.")
+        logger.error(f"Permission denied: Unable to create '{directory_path}'.")
     except Exception as e:
-        print(f"An error occurred: {e}")
+        logger.error(f"An error occurred: {e}")
 
     package_registry = package_registry_template
     for key in config_data:
@@ -286,16 +286,15 @@ def initialize_templates(ig_repo_path):
     Initialize the templates folder with any custom templates from the IG repository as well as default header, postamble, and preamble templates. This function creates the `templates` directory if it does not exist, then copies any custom template files from the IG repository (as specified in the `ig.ini` file) into the `templates` directory. It also ensures that the default `header.template`, `postamble.template`, and `preamble.template` files are created in the `templates` directory if they do not already exist, using predefined template strings. This setup is necessary to ensure that the publisher has access to both custom and default templates for generating the IG output during the build process.
     Args:        ig_repo_path: Path to the cloned IG repository from which to load any custom templates and configuration for template setup. The presence of an `ig.ini` file in the IG repository is used to determine if there are custom templates to copy, and the paths specified in that file are used to locate and copy those templates into the `templates` directory.
     """
+    logger = logging.getLogger()
     directory_path = Path("templates")
     try:
-        directory_path.mkdir()
-        print(f"Directory '{directory_path}' created successfully.")
-    except FileExistsError:
-        print(f"Directory '{directory_path}' already exists.")
+        directory_path.mkdir(exist_ok=True)
+        logger.debug(f"Directory '{directory_path}' created or already exists.")
     except PermissionError:
-        print(f"Permission denied: Unable to create '{directory_path}'.")
+        logger.error(f"Permission denied: Unable to create '{directory_path}'.")
     except Exception as e:
-        print(f"An error occurred: {e}")
+        logger.error(f"An error occurred: {e}")
 
     copy_template_files(ig_repo_path=ig_repo_path)
 
@@ -317,16 +316,17 @@ def copy_template_files(ig_repo_path):
     Copy custom template files from the IG repository to the templates directory. This function checks for the presence of an `ig.ini` file in the IG repository, and if it exists, it reads the specified template ID to locate any custom template files. It then copies these custom template files from the IG repository into the `templates` directory in the output folder. If a custom template file has the same name as a default template (e.g., `history.template`), it is copied to the appropriate location (e.g., `ig-history/history.template`) instead of the `templates` directory to ensure it is used correctly during the build process. This allows for customization of templates on a per-IG basis while still maintaining default templates for use when no custom templates are provided.
     Args:        ig_repo_path: Path to the cloned IG repository from which to load any custom templates and configuration for template setup. The presence of an `ig.ini` file in the IG repository is used to determine if there are custom templates to copy, and the paths specified in that file are used to locate and copy those templates into the appropriate locations in the output folder.
     """
+    logger = logging.getLogger()
     ig_ini_path = Path(str(ig_repo_path) + '/ig.ini')
     if ig_ini_path.exists():
-        print("The file exists.")
+        logger.debug("The ig.ini file exists.")
         config = configparser.ConfigParser()
         config.read(str(ig_ini_path))
         template_id = config['IG']['template']
-        print(template_id)
+        logger.debug(f"Template ID: {template_id}")
         template_assets_path = Path(str(ig_repo_path) + '/' + template_id + '/content/assets')
         if template_assets_path.is_dir():
-            print("Custom template folder exists: " + str(template_assets_path))
+            logger.info("Custom template folder exists: " + str(template_assets_path))
             for folder in template_assets_path.glob('*'):
                 if folder.is_dir():
                     for file in folder.glob('*'):
@@ -334,16 +334,20 @@ def copy_template_files(ig_repo_path):
                             dest = Path('ig-history/assets-hist/' + folder.name + '/' + file.name)
                             if dest.exists():
                                 dest.unlink()
+                            dest.parent.mkdir(parents=True, exist_ok=True)
                             shutil.copy(str(file), str(dest))
 
         templates_path = Path(str(ig_repo_path) + '/' + template_id + '/templates')
         if templates_path.is_dir():
-            print("Custom template exists: " + str(templates_path))
+            logger.info("Custom template exists: " + str(templates_path))
             for file in templates_path.glob('*template*'):
                 if file.name == 'history.template':
                     dest = Path('ig-history/' + file.name)
                     if dest.exists():
                         dest.unlink()
+                    dest.parent.mkdir(parents=True, exist_ok=True)
                     shutil.copy(str(file), str(dest))
                 else:
-                    shutil.copy(str(file), 'templates/' + file.name)
+                    target_dir = Path('templates')
+                    target_dir.mkdir(parents=True, exist_ok=True)
+                    shutil.copy(str(file), str(target_dir / file.name))

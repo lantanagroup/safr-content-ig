@@ -1,104 +1,169 @@
 import os
 import shutil
+import subprocess
+import logging
 from pathlib import Path
 from .downloader import get_latest_cqf_tooling_url
 from .config import CQF_TOOLING_JAR, load_configuration, initialize_webroot
+from .utils import log_command
 
 
-def run_ig_build(ig_repo_path):
-    """Run the IG build process on the cloned IG repository. THis is the initial publication run which is needed as a precursor to the full build. The initial run is needed to generate the JSON files from SUSHI and to get the ImplementationGuide.json file into the input folder for the tooling build. The tooling build then generates the full output including the HTML pages. Finally, we run the standard IG Publisher build to ensure we have all the expected output files in place for post processing steps.
-    This function first runs the SUSHI build to generate the initial JSON files from FSH. It then checks for the presence of CQL files in the IG repository. If CQL files are found, it runs the CQF Tooling build using the latest `tooling-cli.jar` to process the CQL and generate the full IG output. If no CQL files are present, it falls back to running the standard IG Publisher build using `publisher.jar` without invoking the tooling. This approach ensures that we get the benefits of the latest tooling for CQL processing when needed, while still supporting non-CQL IGs without forcing them to use the tooling.
-    Args:
-        ig_repo_path: Path to the cloned IG repository on which to run the build.
-    """
+def run_command(cmd_list, cwd=None, dry_run=False):
+    """Local helper to run commands and safely stream and log their output."""
+    logger = logging.getLogger()
+    cmd_str = " ".join(cmd_list) if isinstance(cmd_list, list) else cmd_list
+    log_command(logger, cmd_str)
 
-    os.chdir(ig_repo_path)
-    print("Pre building with sushi")
-    os.system("sushi .")
+    if dry_run:
+        logger.info("[DRY RUN] Skipping command execution.")
+        return
+
+    use_shell = isinstance(cmd_list, str)
+    try:
+        process = subprocess.Popen(
+            cmd_list,
+            shell=use_shell,
+            cwd=cwd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            bufsize=1
+        )
+        
+        for line in iter(process.stdout.readline, ''):
+            if line.strip():
+                # Streaming out as INFO so it persists in publish.log
+                logger.info(line.strip('\n'))
+                
+        process.stdout.close()
+        return_code = process.wait()
+        
+        if return_code != 0:
+            raise subprocess.CalledProcessError(return_code, cmd_list)
+            
+    except subprocess.CalledProcessError as e:
+        logger.error(f"Command failed with exit code {e.returncode}: {cmd_str}")
+        raise RuntimeError(f"Command failed with exit code {e.returncode}: {cmd_str}")
+
+
+def run_ig_build(ig_repo_path, dry_run: bool = False):
+    """Run the IG build process on the cloned IG repository."""
+    logger = logging.getLogger()
     
-    cwd = os.getcwd()
+    # sushi relies on knowing the current directory.
+    logger.info("Pre building with sushi")
+    run_command("sushi .", cwd=str(ig_repo_path), dry_run=dry_run)
+    
+    cwd = Path(ig_repo_path).resolve()
+    logger.debug(f"Current Working Directory: {cwd}")
 
-    # Print the current working directory
-    print("Current Working Directory:", cwd)
+    # Copy ImplementationGuide json
+    fsh_generated_resources = cwd.joinpath('fsh-generated/resources')
+    
+    if not dry_run and fsh_generated_resources.exists():
+        ig_json_files = list(fsh_generated_resources.glob('ImplementationGuide-*.json'))  
+        if ig_json_files:
+            latest_ig_json = max(ig_json_files, key=os.path.getctime)
+            target = cwd.joinpath('input/data/ig.json')
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy(latest_ig_json, target)
+            logger.info(f"Copied {latest_ig_json.name} to {target}")
+        else:
+            logger.warning("No ImplementationGuide-*.json files found in fsh-generated/resources.")
+    elif not dry_run:
+        logger.warning(f"{fsh_generated_resources} does not exist. Skipping copy.")
 
-    # TODO Copy Implementation Guide to input/data/ig.json, 
-# copy .\fsh-generated\resources\ImplementationGuide-gov.cdc.nhsn.safr.json .\input\data\ig.json
-    # Find ImplementationGuide.*.json in ig_repo_path\fsh-generated\resources and copy to ig_repo_path\input\data\ig.json
-    fsh_generated_resources = Path(cwd).joinpath('fsh-generated/resources')
-
-    ig_json_files = list(fsh_generated_resources.glob('ImplementationGuide-*.json'))  
-    if ig_json_files:
-        latest_ig_json = max(ig_json_files, key=os.path.getctime)  # Get the most recently created IG JSON file
-        shutil.copy(latest_ig_json, Path(cwd).joinpath('input/data/ig.json'))
-        print(f"Copied {latest_ig_json} to {Path(cwd).joinpath('input/data/ig.json')}")
+    # Build with CQF Tooling if CQL files are present
+    cqf_jar_path = cwd.parent.joinpath(CQF_TOOLING_JAR)
+    if cqf_jar_path.is_file():
+        logger.info("Running CQF Tooling")
+        if not dry_run:
+            shutil.copy(str(cqf_jar_path), str(cwd.joinpath(CQF_TOOLING_JAR)))
+        
+        cqf_build_cmd = [
+            "java", "-Dfile.encoding=UTF-8", "-jar", CQF_TOOLING_JAR,
+            "-RefreshIG", f"-ini=./ig.ini", "-t", "-d", "-ss=false", "-timestamp=true"
+        ]
+        run_command(cqf_build_cmd, cwd=str(cwd), dry_run=dry_run)
     else:
-        print("No ImplementationGuide-*.json files found in fsh-generated/resources. Skipping copy to input/data/ig.json")
+        logger.info("CQF Tooling jar DOES NOT Exist, skipping CQF tooling")
 
-    # Build with CQF Tooling if CQL files are present, otherwise run standard IG build. This is to ensure we get the benefits of the latest tooling for CQL processing without forcing it on non-CQL IGs.   
-    if os.path.isfile(f"../{CQF_TOOLING_JAR}"):
-        print("Running CQF Tooling")
-        shutil.copy('../' + CQF_TOOLING_JAR, './' + CQF_TOOLING_JAR)
-        cqf_build_command = f"java \"-Dfile.encoding=UTF-8\" -jar {CQF_TOOLING_JAR} -RefreshIG -ini=\"./ig.ini\" -t -d -ss=false -timestamp=true"
-        print(cqf_build_command)
-        os.system(cqf_build_command)
-    else:
-        print("CQF Tooling DOES NOT Exist")
-
-    # Run the standard IG Publisher build to generate the HTML output. This is necessary to get the full output including the HTML pages.
-    print("Running individual IG build")
-    ig_build_command = f"java \"-Dfile.encoding=UTF-8\" -jar ../publisher.jar -no-sushi -ig ."
-    print(ig_build_command)
-    os.system(ig_build_command)
-
-    os.chdir('..')
+    # Run the standard IG Publisher build
+    logger.info("Running individual IG build")
+    publisher_jar_path = cwd.parent.joinpath("publisher.jar")
+    ig_build_cmd = [
+        "java", "-Dfile.encoding=UTF-8", "-jar", str(publisher_jar_path.resolve()), 
+        "-no-sushi", "-ig", "."
+    ]
+    run_command(ig_build_cmd, cwd=str(cwd), dry_run=dry_run)
 
 
-def run_full_build(publish_path, ig_repo_path):
-    """Run the full IG build process using the publisher and CQF tooling. This is needed to generate the full output including the HTML pages. The full build is run after the initial build and post-processing steps to ensure we have all the expected output files in place for post processing steps.
-    This function runs the full IG build using the latest `publisher.jar` to generate the complete IG output, including HTML pages. It constructs the command with appropriate arguments for source, web output, registry, history, and templates based on the provided paths. 
-    After running the build, it copies the generated version from the build output (located in `input/data/ig.json`) into the `webroot/ig` folder which will act as the default/canonical version of the IG.
-    Args:
-        publish_path: Path to the publish directory.
-        ig_repo_path: Path to the cloned IG repository.
-    """
-    print("Running full versioned IG build")
-    full_build_command = f"java \"-Dfile.encoding=UTF-8\" -jar publisher.jar -go-publish -source {str(Path(ig_repo_path).resolve())} -web {str(Path(publish_path + '/webroot').resolve())} -registry {str(Path(publish_path + '/ig-registry/fhir-ig-list.json').resolve())} -history {str(Path(publish_path + '/ig-history').resolve())} -templates {str(Path(publish_path + '/templates').resolve())}"
-    print(full_build_command)
-    os.system(full_build_command)
-    # TODO After full build copy the generated version into the webroot/ig folder for post processing steps to work on the correct files.
-    generated_version = str(Path(ig_repo_path).resolve().joinpath('input/data/ig.json'))
-    if os.path.isfile(generated_version):
-        with open(generated_version, 'r', encoding='utf-8', errors='ignore') as f:
+def run_full_build(publish_path, ig_repo_path, dry_run: bool = False):
+    """Run the full IG build process using the publisher and CQF tooling."""
+    logger = logging.getLogger()
+    logger.info("Running full versioned IG build")
+    
+    base_path = Path(publish_path).resolve()
+    
+    # Ensure temp dir exists for -temp
+    temp_dir = base_path.joinpath('temp')
+    if not dry_run:
+        temp_dir.mkdir(exist_ok=True)
+
+    full_build_cmd = [
+        "java", "-Dfile.encoding=UTF-8", "-jar", "publisher.jar", "-go-publish",
+        "-source", str(Path(ig_repo_path).resolve()),
+        "-web", str(base_path.joinpath('webroot')),
+        "-registry", str(base_path.joinpath('ig-registry/fhir-ig-list.json')),
+        "-history", str(base_path.joinpath('ig-history')),
+        "-templates", str(base_path.joinpath('templates')),
+        "-temp", str(temp_dir)
+    ]
+    
+    run_command(full_build_cmd, cwd=str(base_path), dry_run=dry_run)
+
+    # After full build, copy the generated version into the webroot/ig folder
+    generated_version = Path(ig_repo_path).resolve().joinpath('input/data/ig.json')
+    if not dry_run and generated_version.is_file():
+        try:
             import json
-            ig_data = json.load(f)
-            version = ig_data.get('version', 'unknown')
-            print(f"Copying generated version {version} into webroot/ig for post processing steps")
-            print(f'Copying {str(Path(publish_path).resolve().joinpath('webroot/ig/' + version))} to {str(Path(publish_path).resolve().joinpath('webroot/ig/'))}')
-            #shutil.copy(str(Path(publish_path).resolve().joinpath('webroot/ig/' + version)), str(Path(publish_path).resolve().joinpath('webroot/ig/')))
-            shutil.copytree(str(Path(publish_path).resolve().joinpath('webroot/ig/' + version)), str(Path(publish_path).resolve().joinpath('webroot/ig/')), dirs_exist_ok=True)
+            with open(generated_version, 'r', encoding='utf-8', errors='ignore') as f:
+                ig_data = json.load(f)
+                version = ig_data.get('version', 'unknown')
+                
+                source_dir = base_path.joinpath(f'webroot/ig/{version}')
+                target_dir = base_path.joinpath('webroot/ig/')
+                
+                logger.info(f"Copying generated version {version} into {target_dir} for post processing")
+                if source_dir.exists():
+                    shutil.copytree(str(source_dir), str(target_dir), dirs_exist_ok=True)
+                else:
+                    logger.warning(f"Source version directory {source_dir} not found.")
+        except Exception as e:
+            logger.error(f"Failed to copy generated version: {e}")
     else:
-        print("Generated version file not found, skipping copy to webroot/ig")
+        logger.info("Generated version file not found or dry-run active, skipping copy to webroot/ig")
 
 
-def initialize_output_folder(ig_repo_path, IG_PUBLISHER_URL):
-    """Initialize the output folder by downloading the latest publisher.jar and running the initial IG build to generate the necessary JSON files for the full build. This function is a precursor to the full build and is needed to set up the output folder with the initial generated files from SUSHI and the IG Publisher. It first downloads the latest `publisher.jar` from the specified URL, then runs the initial IG build using the `run_ig_build()` function.
-    It checks for the presence of CQL files in the IG repository. If CQL files are found, it also downloads the latest `tooling-cli.jar` to enable the CQF Tooling build during the IG build process. This ensures that if the IG contains CQL, we have the necessary tooling to process it correctly.
-    Args:
-        ig_repo_path: Path to the cloned IG repository.
-        IG_PUBLISHER_URL: URL to download the latest publisher.jar.
-    """
-    print("Retrieving the latest build jar files (publisher.jar tooling-cli.jar).")
-    os.system(f"curl -L {IG_PUBLISHER_URL} -o ./publisher.jar")
+def initialize_output_folder(ig_repo_path, ig_publisher_url, dry_run: bool = False):
+    """Initialize the output folder by downloading the latest publisher.jar."""
+    logger = logging.getLogger()
+    logger.info("Retrieving the latest build jar files (publisher.jar)")
+    
+    run_command(["curl", "-L", ig_publisher_url, "-o", "./publisher.jar"], dry_run=dry_run)
 
-    dir = Path.cwd()
-    files = dir.glob(f'{str(ig_repo_path)}/input/cql/*.cql')
-    if len(list(files)) > 0:
+    cql_dir = Path(ig_repo_path).resolve().joinpath('input/cql')
+    files = list(cql_dir.glob('*.cql')) if cql_dir.exists() else []
+    
+    if len(files) > 0:
         tooling_url = get_latest_cqf_tooling_url()
-        print("CQL Files found. Retrieving the latest tooling-cli.jar IG Publisher file and will run tooling.")
-        os.system(f"curl -L {tooling_url} -o ./tooling-cli.jar")
+        logger.info("CQL Files found. Retrieving the latest tooling-cli.jar")
+        run_command(["curl", "-L", tooling_url, "-o", "./tooling-cli.jar"], dry_run=dry_run)
     else:
-        print("No CQL Files found. Will not download and run CQF Tooling")
+        logger.info("No CQL Files found. Will not download CQF Tooling")
 
-    config_data = load_configuration(str(ig_repo_path))
-
-    initialize_webroot(config_data=config_data)
+    if not dry_run:
+        config_data = load_configuration(str(Path(ig_repo_path).resolve()))
+        initialize_webroot(config_data=config_data)
+    else:
+        logger.info("[DRY RUN] Skipping load_configuration and initialize_webroot")

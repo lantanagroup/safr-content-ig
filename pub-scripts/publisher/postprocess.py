@@ -1,45 +1,14 @@
 import glob
 import os
+import logging
 from pathlib import Path
 from .config import reduce_file_patterns, accessibility_update_file_patterns, web_config
 from .fix_accessibilities import fix_accessibilities_in_folder
 import json
 
-"""Post-processing helpers for publisher.
-
-Provides functionality for reducing build size, fixing accessibility issues,
-and writing web.config files. The accessibility fixes are delegated to the
-existing script `ci-scripts/fix_accessibilities.py` so that improvements to that
-tool are automatically used.
-
-Usage notes:
-- `run_accessibility_fixer_on_webroot()` will locate `publisher/fix_accessibilities.py` (sibling to this package) 
-    and invoke it for every subfolder under `webroot/ig`. 
-    This ensures that any HTML files in the generated output are processed for accessibility fixes. 
-    The function includes error handling to catch and log any issues encountered when running the external script 
-    on each target folder, allowing the overall post-processing workflow to continue even if there are problems 
-    with the accessibility fixer on specific folders.
-
-Suggested improvements:
-- Add a `--dry-run` option to list target folders before making changes.
-- Add logging (instead of prints) and a `--verbose` flag.
-- Consider running accessibility fixes in parallel (careful with CPU/disk IO).
-- More robust error handling around file operations and external script invocation, with clear logging of any issues encountered.
-- Add a summary report at the end of the post-processing steps, including how many files were removed and how many were modified for accessibility.
-"""
-
-"""This module provides post-processing helpers for the publisher CLI. These include functions to reduce the output size by removing unneeded files,
-fix accessibility issues in the generated HTML, and write web.config files for the generated output. The accessibility fixes are delegated to the existing script `ci-scripts/fix_accessibilities.py` so that improvements to that tool are automatically used. The `fix_accessibility()` function will locate `ci-scripts/fix_accessibilities.py` (sibling to this package) and invoke it for every subfolder under `webroot/ig`. The external script is executed with the active Python interpreter (via `sys.executable`) to maintain environment consistency."""
 
 def format_file_size(size_in_bytes: int) -> str:
-    """Format a byte count into a human-readable string.
-
-    Args:
-        size_in_bytes: File size in bytes.
-
-    Returns:
-        A string like '123.45 KB', '1.50 MB', etc.
-    """
+    """Format a byte count into a human-readable string."""
     if size_in_bytes < 1024:
         return f"{size_in_bytes} B"
     elif size_in_bytes < 1024**2:
@@ -51,51 +20,63 @@ def format_file_size(size_in_bytes: int) -> str:
     else:
         return f"{size_in_bytes / (1024**4):.2f} TB"
 
-def run_accessibility_fixer_on_webroot():
-    """Run `fix_accessibilities.fix_accessibilities_in_folder()` on each subfolder in webroot/ig."""
+def run_accessibility_fixer_on_webroot(dry_run: bool = False):
+    """Run accessibility fixer on each subfolder in webroot/ig."""
+    logger = logging.getLogger()
     webroot_ig = Path.cwd() / 'webroot' / 'ig'
     if not webroot_ig.exists():
-        print(f"webroot/ig not found at expected location: {webroot_ig}")
+        logger.error(f"webroot/ig not found at expected location: {webroot_ig.resolve()}")
         return
 
-    # Run the fixer on the webroot/ig folder itself first to catch any HTML files directly under ig, then iterate through subfolders to catch any additional HTML files that may be in subdirectories. This ensures comprehensive coverage of all HTML files in the generated output for accessibility fixes.
-    print(f"Running accessibility fixer on: {webroot_ig}")
+    logger.info(f"Running accessibility fixer on: {webroot_ig}")
+    if dry_run:
+        logger.info("[DRY RUN] Skipping accessibility fixer.")
+        return
+
     try:
         fix_accessibilities_in_folder(str(webroot_ig))
     except Exception as e:
-        print(f"Failed to run accessibility fixer on {str(webroot_ig)}: {e}")
+        logger.error(f"Failed to run accessibility fixer on {webroot_ig}: {e}")
 
     for entry in sorted(webroot_ig.iterdir()):
         if entry.is_dir():
             target_folder = str(entry.resolve())
-            print(f"Running accessibility fixer on: {target_folder}")
+            logger.info(f"Running accessibility fixer on: {target_folder}")
             try:
                 fix_accessibilities_in_folder(target_folder)
             except Exception as e:
-                print(f"Failed to run accessibility fixer on {target_folder}: {e}")
+                logger.error(f"Failed to run accessibility fixer on {target_folder}: {e}")
 
 
-def reduce_files():
-    """Remove unneeded files from the generated output to reduce size.
-    The list of file patterns to remove is defined in `reduce_file_patterns` in the config module. This function iterates through those patterns, finds matching files under `webroot/ig`, and deletes them while keeping a running total of the file size removed. At the end, it prints the total size of files removed in a human-readable format."""
-
+def reduce_files(dry_run: bool = False):
+    """Remove unneeded files from the generated output to reduce size."""
+    logger = logging.getLogger()
     file_size_bytes = 0
+    removed_count = 0
+
     for pattern in reduce_file_patterns:
         for filepath in glob.glob('./webroot/ig/' + pattern, recursive=True):
-            print("Removing file: " + filepath)
-            file_size_bytes = file_size_bytes + os.path.getsize(filepath)
-            os.remove(filepath)
+            try:
+                size = os.path.getsize(filepath)
+                if not dry_run:
+                    os.remove(filepath)
+                logger.debug(f"Removed file: {filepath} ({format_file_size(size)})")
+                file_size_bytes += size
+                removed_count += 1
+            except FileNotFoundError:
+                pass
+            except Exception as e:
+                logger.error(f"Failed to remove {filepath}: {e}")
 
-    print("Total File Size Removed: " + str(format_file_size(file_size_bytes)))
+    if dry_run:
+        logger.info(f"[DRY RUN] Would remove {removed_count} files totaling {format_file_size(file_size_bytes)}.")
+    else:
+        logger.info(f"Reduced output by {format_file_size(file_size_bytes)} across {removed_count} files.")
 
 
 def replace_strings_in_file(filepath, old_string, new_string):
-    """Replace occurrences of old_string with new_string in the specified file.
-    Args:       filepath: Path to the file to modify.
-                old_string: A string or list of strings to be replaced.
-                new_string: A string or list of strings to replace with (must correspond in length to old_string if it's a list).
-    This function reads the content of the specified file, replaces all occurrences of old_string with new_string, and writes the modified content back to the file. It includes error handling for file not found and other exceptions, and prints out any errors encountered during the process."""
-    
+    """Replace occurrences of old_string with new_string in the specified file."""
+    logger = logging.getLogger()
     modified = False
     try:
         with open(filepath, 'r', encoding="utf8") as file:
@@ -111,29 +92,51 @@ def replace_strings_in_file(filepath, old_string, new_string):
                 file.write(file_content)
 
     except FileNotFoundError:
-        print(f"Error: File '{filepath}' not found.")
+        logger.error(f"Error: File '{filepath}' not found.")
     except Exception as e:
-        print(f"An error occurred: {e} in file {filepath}")
+        logger.error(f"An error occurred: {e} in file {filepath}")
 
 
-def write_web_configs(ig_repo_path):
-    base_web_config = str(Path('./webroot/ig/web.config').resolve())
-    print(base_web_config)
+def write_web_configs(ig_repo_path, dry_run: bool = False):
+    """Generate web.config files for the IG and root version."""
+    logger = logging.getLogger()
+    base_web_config = Path('./webroot/ig/web.config').resolve()
+    logger.debug(f"Targeting web config: {base_web_config}")
 
-    with open(str(ig_repo_path) + '/publication-request.json', 'r') as file:
-        config_data = json.load(file)
+    pub_req_path = Path(ig_repo_path) / 'publication-request.json'
+    
+    try:
+        with open(pub_req_path, 'r') as file:
+            config_data = json.load(file)
+    except Exception as e:
+        logger.error(f"Failed to read {pub_req_path}: {e}")
+        return
 
-    version_web_config = str(Path('./webroot/ig/' + config_data['version'] + "/web.config").resolve())
-    print(version_web_config)
+    version_web_config = Path(f'./webroot/ig/{config_data["version"]}/web.config').resolve()
+    logger.debug(f"Targeting version web config: {version_web_config}")
 
-    if Path(base_web_config).is_file():
-        os.remove(base_web_config)
+    if dry_run:
+        logger.info("[DRY RUN] Skipping write of web.config files.")
+        return
 
-    with open(base_web_config, "w+") as web_config_file:
-        web_config_file.write(web_config)
+    try:
+        if base_web_config.is_file():
+            base_web_config.unlink()
+        
+        # Ensure parent exists
+        base_web_config.parent.mkdir(parents=True, exist_ok=True)
+        with open(base_web_config, "w+", encoding='utf-8') as web_config_file:
+            web_config_file.write(web_config)
+    except Exception as e:
+        logger.error(f"Failed to write root web.config: {e}")
 
-    if Path(version_web_config).is_file():
-        os.remove(version_web_config)
+    try:
+        if version_web_config.is_file():
+            version_web_config.unlink()
+            
+        version_web_config.parent.mkdir(parents=True, exist_ok=True)
+        with open(version_web_config, "w+", encoding='utf-8') as web_config_file:
+            web_config_file.write(web_config)
+    except Exception as e:
+        logger.error(f"Failed to write version web.config: {e}")
 
-    with open(version_web_config, "w+") as web_config_file:
-        web_config_file.write(web_config)

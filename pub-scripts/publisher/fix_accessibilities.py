@@ -19,7 +19,7 @@ from datetime import datetime
 
 
 #SAFR Content IG does not utilize the NHSN-MS label
-support_nhsn_ms_tagging = False
+support_nhsn_ms_tagging = True
 
 target_tables = ['tbl-key-inner', 'tbl-diff-inner', 'tbl-snap-inner', 'all-tbl-key-inner', 'all-tbl-diff-inner', 'all-tbl-snap-inner']
 target_table_diff = 'tbl-diff-inner'
