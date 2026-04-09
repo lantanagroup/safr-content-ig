@@ -20,7 +20,7 @@ Accordingly, this mapping reflects the transition from NHSN data dictionary conc
 
 ### Mapping Table
 
-|  Data Dictionary Concept & HL7 US SAFR 1.0.0-ballot Code  |  HL7 US SAFR 1.0.0-ballot Ballot Display  |  LOINC Code &nbsp; &nbsp;  |  LOINC Display  |
+|  Data Dictionary Concept  |  Concept description  |  LOINC Code &nbsp; &nbsp;  |  LOINC Display  |
 |---|---|---|---|
 | [AdultEDAdmittedCensus](https://hl7.org/fhir/us/safr/2025May/CodeSystem-us-safr-bed-capacity-example-codes.html#us-safr-bed-capacity-example-codes-AdultEDAdmittedCensus) | Adult ED Admitted Census | [112511-1](https://loinc.org/112511-1/) | Adult emergency department beds-admitted |
 | [AdultEDCensus](https://hl7.org/fhir/us/safr/2025May/CodeSystem-us-safr-bed-capacity-example-codes.html#us-safr-bed-capacity-example-codes-AdultEDCensus) | Adult ED Total Census | [112512-9](https://loinc.org/112512-9/) | Adult emergency department beds |
