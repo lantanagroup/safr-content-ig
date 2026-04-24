@@ -8,6 +8,7 @@ import configparser
 from pathlib import Path
 import shutil
 import logging
+import requests
 
 # Constants and templates moved from original script
 IG_PUBLISHER_URL = "https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar"
@@ -22,13 +23,23 @@ CQF_TOOLING_JAR_PREFIX = "tooling-cli-"
 
 pub_repos = {'ig-history': 'https://github.com/HL7/fhir-ig-history-template.git', 'ig-registry': 'https://github.com/FHIR/ig-registry.git'}
 
+# This is used to retrieve the package lists to build out the publication-feed.json and package-feed.json files
+ig_suite_package_list = {'gov.cdc.nhsn': 'https://github.com/lantanagroup/nhsn-measures/refs/heads/development/package.json', 'gov.cdc.nhsn.safr-content-ig': 'https://raw.githubusercontent.com/lantanagroup/safr-content-ig/refs/heads/development/package.json'}
+
 reduce_file_patterns = ['**/*.ttl*', '**/*.r4b.tgz', '**/*.db', '**/qa-tx.html', '**/*.json1', '**/*.json2', '**/*.xml1', '**/*.xml2', '**/excels.zip']
 
 accessibility_update_file_patterns = ['**/qa*.html', '**/StructureDefinition-*.html', '**/StructureDefinition-*.xml']
 accessibility_old_string = ['<span style="opacity: 0.5">', '<span style=\\"opacity: 0.5\\">', '&lt;span style=\\&quot;opacity: 0.5\\&quot;&gt;', '<a style="opacity: 0.5; opacity: 0.5', '<a style=\\"opacity: 0.5; opacity: 0.5', '&lt;a style=\\&quot;opacity: 0.5; opacity: 0.5', 'background-color: red', 'background-color: green']
 accessibility_new_string = ['<span style="opacity: 0.87; font-style: italic;">', '<span style=\\"opacity: 0.87; font-style: italic;\\">', '&lt;span style=\\&quot;opacity: 0.87; font-style: italic;\\&quot;&gt;', '<a style="opacity: 0.87; opacity: 0.87; font-style: italic;', '<a style=\\"opacity: 0.5; opacity: 0.5', '&lt;a style=\\&quot;opacity: 0.87; opacity: 0.87; font-style: italic', 'background-color: #B60000', 'background-color: #006600']
 
-default_config = {'server-type': 'asp-new'}
+default_config = {  'server-type': 'asp-new', 
+                    'package-id-pattern': 'gov.cdc.nhsn.*', 
+                    'ig_suite_url': 'http://www.cdc.gov/nhsn/fhirportal', 
+                    'ig_suite_title': 'The CDC NHSN Public Health Reporting FHIR Implementation Guides', 
+                    'ig_suite_description': 'This IG suite contains FHIR implementation guides developed by the CDC National Healthcare Safety Network (NHSN) to support public health reporting.',
+                    'package_suite_title': 'The CDC NHSN Public Health Reporting FHIR IG Packages', 
+                    'package_suite_description': 'This suite contains FHIR packages developed by the Centers for Disease Control and Prevention (CDC) National Healthcare Safety Network (NHSN) to support public health reporting.',
+                    'publish-path': '/ig'}
 
 canonical_patterns = ['ImplementationGuide-', 'StructureDefinition-', 'CodeSystem', 'ValueSet', 'SearchParameter', 'OperationDefinition', 'Library', 'Measure', 'ActivityDefinition', 'DeviceDefinition', 'EventDefinition', 'ObservationDefinition', 'PlanDefinition', 'Questionnaire', 'SpecimenDefinition']
 
@@ -46,62 +57,61 @@ package_registry_template = '''{
   ]
 }'''
 
-
+# Base template for publish-setup.json, contains information that is relevant for the IG publisher, so it knows how that publication is laid out and what web server is in use. 
+#Documentation: https://confluence.hl7.org/spaces/FHIR/pages/81027536/Maintaining+a+FHIR+IG+Publication#MaintainingaFHIRIGPublication-Documentationforpublish-setup.json
 publish_setup_template = '''
 {
     "website": {
         "style": "fhir.layout",
-        "url": "{canonical}",
+        "url": "{ig_suite_url}",
         "server": "{server-type}",
         "org": "{publisher.name}",
         "index-template": "index.template",
         "clone-xml-json": true
     },
+    "feeds": {
+      "package": "package-feed.xml",
+      "publication": "publication-feed.xml"
+    },
     "layout-rules": [
         {
-            "npm": "{package-id}",
-            "canonical": "{canonical}",
-            "destination": "{canonical-end}"
+            "npm": "{package-id-pattern}",
+            "canonical": "{ig_suite_url}/{4}/ig",
+            "destination": "/{4}/ig"
         }
-    ],
-    "layout": {
-        "id": "{package-id}",
-        "canonical": "{canonical}"
-    }
+    ]
 }'''
 
 package_feed_template = '''<?xml version="1.0" encoding="UTF-8"?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:fhir="http://hl7.org/fhir/feed" version="2.0">
     <channel>
-        <title>{title}</title>
-        <description>{description}</description>
-        <link>{canonical}/package-feed.xml</link>
+        <title>{package_suite_title}</title>
+        <description>{package_suite_description}</description>
+        <link>{ig_suite_url}</link>
         <generator>HL7, Inc FHIR Publication tooling - Lantana Consulting Group Variant</generator>
         <lastBuildDate></lastBuildDate>
-        <atom:link href="{canonical}/package-feed.xml" rel="self" type="application/rss+xml"/>
+        <atom:link href="{ig_suite_url}/package-feed.xml" rel="self" type="application/rss+xml"/>
         <pubDate></pubDate>
         <language>en</language>
         <ttl>600</ttl>
+        <item></item>
     </channel>
 </rss>'''
 
 publication_feed_template = '''<?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/"
-      xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:fhir="http://hl7.org/fhir/feed"
-      xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-   <channel>
-        <title>{title}</title>
-        <description>{description}</description>
-        <link>{canonical}</link>
-      <generator>HL7, Inc FHIR Publication tooling - Lantana Consulting Group Variant</generator>
-      <lastBuildDate>{current-date}</lastBuildDate>
-      <atom:link href="{canonical}/package-feed.xml" rel="self" type="application/rss+xml"/>
-      <pubDate>{current-date}</pubDate>
-      <language>en</language>
-      <ttl>600</ttl>
-      <item>
-      </item>
-   </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:fhir="http://hl7.org/fhir/feed" version="2.0">
+    <channel>
+        <title>{ig_suite_title}</title>
+        <description>{ig_suite_description}</description>
+        <link>{ig_suite_url}</link>
+        <generator>HL7, Inc FHIR Publication tooling - Lantana Consulting Group Variant</generator>
+        <lastBuildDate></lastBuildDate>
+        <atom:link href="{ig_suite_url}/publication-feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate></pubDate>
+        <language>en</language>
+        <ttl>600</ttl>
+        <item></item>
+    </channel>
 </rss>'''
 
 header_template = '''  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets-hist/ico/apple-touch-icon-144-precomposed.png"/>
@@ -228,20 +238,40 @@ def load_configuration(ig_repo_path):
         sushi_config = yaml.safe_load(file)
         config_data['canonical'] = sushi_config['canonical']
         config_data['publisher.name'] = sushi_config['publisher']['name']
-        config_data['canonical-end'] = '/' + sushi_config['canonical'].rsplit('/', 1)[1]
+        #config_data['canonical-end'] = '/' + sushi_config['canonical'].rsplit('/', 1)[1] # being replaced due to supporting multiple IGs
+
+    # Add 
 
     for key in default_config:
         if key not in config_data:
             config_data[key] = default_config[key]
 
+
+    # Get publish path from publish_setup.json (using layout-rules.destination and package id) if it exists, otherwise default to 'webroot/ig'
+    publish_path = default_config['publish-path']
+    publish_setup_path = Path("webroot/publish-setup.json")
+    if publish_setup_path.exists():
+        with open(publish_setup_path, 'r') as file:
+            publish_setup = json.load(file)
+            if 'layout-rules' in publish_setup and 'destination' in publish_setup['layout-rules'][0]:
+                publish_path = publish_setup['layout-rules'][0]['destination']
+                # TODO Replace placeholders in the publish path with actual values from the config data (e.g. {4} with the appropriate value from the package id or canonical url)
+                publish_path = publish_setup['layout-rules'][0]['destination'].format('',*config_data['package-id'].split('.'))
+
+    config_data['publish-path'] = publish_path
+
+
     return config_data
 
 
-def initialize_webroot(config_data):
+def initialize_webroot(config_data, ig_repo_path):
     """
     Initialize the webroot folder with necessary JSON files for the publisher. This function creates the `webroot` directory if it does not exist, then generates the `package-registry.json`, `publish-setup.json`, `package-feed.xml`, and `publication-feed.xml` files in the `webroot` directory based on the provided configuration data and corresponding templates. The configuration data is used to replace placeholders in the templates to customize the generated files for the specific IG being published. This setup is necessary to ensure that the publisher has the required configuration files in place for both the initial and full build processes.
     Args:        config_data: A dictionary containing configuration values loaded from the IG repository (by the `load_configuration` function), which are used to populate the templates for the JSON and XML files generated in the webroot.
     """
+
+    # TODO Need to address package-list updates. Update to include the latest publication version (need to first check if the package already exists and update it if so, otherwise add a new entry for the new package version) and ensure that the package registry is updated to point to the correct package list file for the latest version. This will likely involve updating the package-list.json file with the new version information and ensuring that the webroot/package-registry.json file is updated accordingly to reflect the changes in the package list. This may need to be done in a different function that has access to the version (in the publication request or sushi-config.yaml)
+
     logger = logging.getLogger()
     directory_path = Path("webroot")
     try:
@@ -266,19 +296,97 @@ def initialize_webroot(config_data):
     with open("webroot/publish-setup.json", "w") as template_file:
         template_file.write(publish_setup)
 
-    package_feed = package_feed_template
-    for key in config_data:
-       package_feed = package_feed.replace("{"+key+"}", str(config_data[key]))
+    # TODO, need to verify this works once the file is published on the 
+    # If the package-feed.xml does not exist then initialize
+    if not Path("webroot/package-feed.xml").exists():
+        package_feed_url = default_config['ig_suite_url'] + '/package-feed.xml'
+        # Attempt to retrieve the package-feed.xml and publication-feed.xml files from the ig suite base URL, and if they do not exist, then see if they are in the repository; and if not, then use the default templates defined in this script. 
+        response = requests.get(package_feed_url)
+        if response.status_code == 200:
+            # Write the retrieved package-feed.xml content to the webroot
+            try:
+                with open("webroot/package-feed.xml", "w") as template_file:
+                    template_file.write(response.text) 
+                    logger.info(f"Successfully retrieved package-feed.xml from {package_feed_url} and wrote to webroot.")
+            except Exception as e:
+                logger.error(f"Failed to write retrieved package-feed.xml to webroot: {e}")
 
-    with open("webroot/package-feed.xml", "w") as template_file:
-        template_file.write(package_feed)
+        else:
+            logger.warning(f"Failed to retrieve package-feed.xml from {package_feed_url}: HTTP {response.status_code}")
+            # Since the package-feed.xml is not available at the ig suite base URL, check if it is available in the repository
+            if ig_repo_path.joinpath('package-feed.xml').exists():
+                try:
+                    # Copy the package-feed.xml from the IG repository to the webroot
+                    shutil.copy(ig_repo_path.joinpath('package-feed.xml'), "webroot/package-feed.xml")
+                    logger.info(f"Successfully copied package-feed.xml from IG repository to webroot.")
 
-    publication_feed = publication_feed_template
-    for key in config_data:
-       publication_feed = publication_feed.replace("{"+key+"}", str(config_data[key]))
+                    # if base_web_config = Path('./webroot/ig/web.config').resolve()
+                    # with open(str(ig_repo_path) + '/package-feed.xml', 'r') as file:
+                    #     package_feed_content = file.read()
+                    #     with open("webroot/package-feed.xml", "w") as template_file:
+                    #         template_file.write(package_feed_content)
+                    #         logger.info(f"Successfully retrieved package-feed.xml from IG repository and wrote to webroot.")
+                except Exception as e:
+                    logger.warning(f"Failed to write package-feed.xml from IG repository to webroot: {e}")
 
-    with open("webroot/publication-feed.xml", "w") as template_file:
-        template_file.write(publication_feed)
+        # If the package-feed.xml does not exist (was not available at the ig suite base URL and was not in the IG repository), then use the default template to create a package-feed.xml file in the webroot with the appropriate values filled in from the configuration data. The same process is applied for the publication-feed.xml file, where it first attempts to retrieve it from the ig suite base URL, then checks the IG repository, and if it is not found in either location, it uses the default template to create the publication-feed.xml file in the webroot with values filled in from the configuration data.
+        if not Path("webroot/package-feed.xml").exists():
+            logger.warning("package-feed.xml not found at IG suite base URL or in IG repository. Using default template to create package-feed.xml in webroot.")
+            package_feed = package_feed_template
+            for key in config_data:
+                package_feed = package_feed.replace("{"+key+"}", str(config_data[key]))
+
+            with open("webroot/package-feed.xml", "w") as template_file:
+                template_file.write(package_feed)
+
+
+    # TODO, need to verify this works once the file is published on the 
+    # If the publication-feed.xml does not exist then initialize
+    if not Path("webroot/publication-feed.xml").exists():
+        publication_feed_url = default_config['ig_suite_url'] + '/publication-feed.xml'
+        # Attempt to retrieve the package-feed.xml and publication-feed.xml files from the ig suite base URL, and if they do not exist, then see if they are in the repository; and if not, then use the default templates defined in this script. 
+        response = requests.get(publication_feed_url)
+        if response.status_code == 200:
+            # Write the retrieved publication-feed.xml content to the webroot
+            try:
+                with open("webroot/publication-feed.xml", "w") as template_file:
+                    template_file.write(response.text) 
+                    logger.info(f"Successfully retrieved publication-feed.xml from {publication_feed_url} and wrote to webroot.")
+            except Exception as e:
+                logger.warning(f"Failed to write retrieved publication-feed.xml to webroot: {e}")
+
+        else:
+            logger.warning(f"Failed to retrieve publication-feed.xml from {publication_feed_url}: HTTP {response.status_code}")
+            # Since the publication-feed.xml is not available at the ig suite base URL, check if it is available in the repository
+            if ig_repo_path.joinpath('publication-feed.xml').exists():
+                try:
+                    # Copy the publication-feed.xml from the IG repository to the webroot
+                    shutil.copy(ig_repo_path.joinpath('publication-feed.xml'), "webroot/publication-feed.xml")
+                    logger.info(f"Successfully copied publication-feed.xml from IG repository to webroot.")
+
+                    # if base_web_config = Path('./webroot/ig/web.config').resolve()
+                    # with open(str(ig_repo_path) + '/package-feed.xml', 'r') as file:
+                    #     package_feed_content = file.read()
+                    #     with open("webroot/package-feed.xml", "w") as template_file:
+                    #         template_file.write(package_feed_content)
+                    #         logger.info(f"Successfully retrieved package-feed.xml from IG repository and wrote to webroot.")
+                except Exception as e:
+                    logger.warning(f"Failed to write publication-feed.xml from IG repository to webroot: {e}")
+
+        # If the package-feed.xml does not exist (was not available at the ig suite base URL and was not in the IG repository), then use the default template to create a package-feed.xml file in the webroot with the appropriate values filled in from the configuration data. The same process is applied for the publication-feed.xml file, where it first attempts to retrieve it from the ig suite base URL, then checks the IG repository, and if it is not found in either location, it uses the default template to create the publication-feed.xml file in the webroot with values filled in from the configuration data.
+        if not Path("webroot/publication-feed.xml").exists():
+            logger.warning("publication-feed.xml not found at IG suite base URL or in IG repository. Using default template to create publication-feed.xml in webroot.")
+            publication_feed = publication_feed_template
+            for key in config_data:
+                publication_feed = publication_feed.replace("{"+key+"}", str(config_data[key]))
+
+            with open("webroot/publication-feed.xml", "w") as template_file:
+                template_file.write(publication_feed)
+
+
+
+    
+
 
 
 def initialize_templates(ig_repo_path):

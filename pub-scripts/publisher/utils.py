@@ -5,10 +5,11 @@ ANSI color escape codes used for terminal output, and logging configuration.
 """
 
 from pathlib import Path
-import os
+import threading
 import logging
+import shutil
 import sys
-
+import os
 
 class bcolors:
     """Terminal color escape codes for lightweight status messages."""
@@ -81,10 +82,51 @@ def repo_url_arg(string):
 
 
 def output_folder_arg(string):
-    """Argparse `type=` helper: ensure the output folder does not already exist."""
+    """Argparse `type=` helper: ensure the output folder does not already exist.
+    
+    If folder exists, prompts user to delete it with a 5-second timeout.
+    Returns the string if successful, otherwise implicitly returns None.
+    """
     p = Path(string)
     if p.is_dir():
-        logging.getLogger().error("Folder already exists: " + string)
+        logger = logging.getLogger()
+        user_response = []
+        
+        def prompt_user():
+            try:
+                response = input(f"\nFolder '{string}' already exists. Delete it and all contents? [5 seconds to approve and continue] (yes/no): ").strip().lower()
+                user_response.append(response in ('yes', 'y'))
+            except:
+                pass  # Empty response list means timeout
+        
+        # Start prompt in a thread with 5-second timeout
+        thread = threading.Thread(target=prompt_user, daemon=True)
+        thread.start()
+        thread.join(timeout=5.0)
+        
+        # Check if user approved deletion
+        if user_response and user_response[0]:
+            try:
+                def handle_remove_readonly(func, path, exc):
+                    """Error handler for read-only files on Windows."""
+                    import stat
+                    os.chmod(path, stat.S_IWRITE)
+                    func(path)
+                
+                shutil.rmtree(p, onerror=handle_remove_readonly)
+                # Verify deletion
+                if not p.exists():
+                    logger.info(f"Successfully deleted folder: {string}")
+                    return string
+                else:
+                    logger.error(f"Failed to verify deletion of folder: {string}")
+            except Exception as e:
+                logger.error(f"Error deleting folder '{string}': {e}")
+        else:
+            if not user_response:
+                logger.error(f"Folder already exists (prompt timed out after 5 seconds): {string}")
+            else:
+                logger.error("Folder already exists: " + string)
     else:
         return string
 

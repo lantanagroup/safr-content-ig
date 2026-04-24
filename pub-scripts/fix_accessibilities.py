@@ -49,7 +49,8 @@ def main():
 
     fix_zip_file_accessibilities(Path(target_folder + "/full-ig.zip"))
     end = time.time()
-    print("Full execution time (in seconds)", end - start)
+    print(f"Fix accessibilities execution time: {end - start:.2f} seconds; {(end - start)/60:.2f} minutes")
+    
 
 def fix_accessibilities_in_folder(folder_path = default_folder):
 
