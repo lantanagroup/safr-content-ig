@@ -72,21 +72,22 @@ pages:
   index.md:
     title: NHSN Situational Awareness Framework for Reporting Home
   actors.md:
-    title: actors
+    title: Actors
   usecases.md:
     title: Use Cases
   specification.md:
     title: Specification
   security.md:
-    title: Security
-  ImplementationGuide-gov.cdc.nhsn.safr.md:
-    title: NHSN Implementation Guide Resource
+    title: Privacy and Security Considerations
   bed-capacity-mapping.md:
     title: Bed Capacity Code Mapping  
-  license.md:
-    title: License
   downloads.md:
     title: Downloads
+  ImplementationGuide-gov.cdc.nhsn.safr.md:
+    title: NHSN Implementation Guide Resource
+  license.md:
+    title: License
+
 #
 #
 # The parameters property represents IG.definition.parameter. Rather
@@ -126,7 +127,7 @@ parameters:
 menu:
   Home: index.html
   Table of Contents: toc.html
-  Actors And Usecases: 
+  Actors And Use Cases: 
     Actors: actors.html
     Use Cases: usecases.html
   Specification: specification.html

@@ -77,17 +77,20 @@ Lantana Consulting Group, Inc. produced and developed the content in this IG und
 | Primary Editor | Shanai Thornton       | Lantana Consulting Group | shanai.thornton@lantanagroup.com    |
 | Primary Editor | Rick Geimer           | Lantana Consulting Group | rick.geimer@lantanagroup.com        |
 | Primary Editor | Corey Spears          | Lantana Consulting Group | corey.spears@lantanagroup.com       |
-| Co-Editor      | Arvind Jagannathan    | Lantana Consulting Group | arvind.jagannathan@lantanagroup.com |
 | Co-Editor      | Andrea Benin          | CDC                      | aqb4@cdc.gov                        |
 | Co-Editor      | Kristina Betz         | CDC                      | rly7@cdc.gov                        |
+| Co-Editor      | Arvind Jagannathan    | Lantana Consulting Group | arvind.jagannathan@lantanagroup.com |
+| Co-Editor      | Beth Golshir          | CDC                      | kqo9@cdc.gov                        |
+| Co-Editor      | Ally Binder           | CDC                      | wpq5@cdc.gov                        |
+| Co-Editor      | Joey Sach             | CDC                      | squ7@cdc.gov                        |
+| Co-Editor      | Jeenal Patel          | CDC                      | ujo2@cdc.gov                        |
+| Co-Editor      | Matt Heym             | CDC                      | twz0.cdc.gov                        |
+| Co-Editor      | Christopher Uga       | CDC                      | uto2@cdc.gov                        |
+| Co-Editor      | Tami Funk             | Lantana                  | tami.funk@lantanagroup.com          |
+| Co-Editor      | Maggie Dudeck         | CDC                      | xzd7@cdc.gov                        |
+| Co-Editor      | Bass Toure            | Leidos                   | mamadou.b.toure@leidos.com          |
+| Co-Editor      | Karthick Seshadri     | CDC                      | qax2@cdc.gov                        |
+| Co-Editor      | Heath Dinkins         | CDC                      | ldx6@cdc.gov                        |
 | Co-Editor      | David deRoode         | Lantana Consulting Group | david.deroode@lantanagroup.com      |
 | Co-Editor      | Ming Dunajick         | Lantana Consulting Group | ming.dunajick@lantanagroup.com      |
 | Co-Editor      | Aaron Nusstein        | Lantana Consulting Group | aaron.nusstein@lantanagroup.com     |
-
-
-
-
-
-
-
-

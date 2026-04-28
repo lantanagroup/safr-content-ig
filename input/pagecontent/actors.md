@@ -1,6 +1,4 @@
 
-### Actors ###
-
 This implementation guide defines the following actors. Note, it is possible for a given system to play the role of multiple actors. For example, an EHR could be both the Data Source and digital Quality Measure (Measure), Evaluation Engine when calculating a measure internally. Likewise a system residing at NHSN that queries the Data Source remotely, evaluates those data, produces MeasureReport bundles, and validates the result may be both the Measure Evaluation Engine and MeasureReport Recipient. For more context, see [Reporting Scenarios](specification.html).
 
 * **Measure Evaluation Engine** A system that retrieves data from the Data Source and evaluates those data against one or more measures retrieved from the Measure Source. The resulting MeasureReport bundle and related resources are then sent to the MeasureReport recipient The Measure Evaluation Engine acts as a [US Core Client]({{site.data.fhir.ver.uscore}}/CapabilityStatement-us-core-client.html), a [DEQM Reporter Client]({{site.data.fhir.ver.deqm}}/CapabilityStatement-reporter-client.html), and implements the $evaluation-measure operation

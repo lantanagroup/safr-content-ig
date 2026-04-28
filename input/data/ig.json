@@ -353,7 +353,7 @@
         },
         {
           "nameUrl": "actors.html",
-          "title": "actors",
+          "title": "Actors",
           "generation": "markdown"
         },
         {
@@ -368,12 +368,7 @@
         },
         {
           "nameUrl": "security.html",
-          "title": "Security",
-          "generation": "markdown"
-        },
-        {
-          "nameUrl": "ImplementationGuide-gov.cdc.nhsn.safr.html",
-          "title": "NHSN Implementation Guide Resource",
+          "title": "Privacy and Security Considerations",
           "generation": "markdown"
         },
         {
@@ -382,13 +377,18 @@
           "generation": "markdown"
         },
         {
-          "nameUrl": "license.html",
-          "title": "License",
+          "nameUrl": "downloads.html",
+          "title": "Downloads",
           "generation": "markdown"
         },
         {
-          "nameUrl": "downloads.html",
-          "title": "Downloads",
+          "nameUrl": "ImplementationGuide-gov.cdc.nhsn.safr.html",
+          "title": "NHSN Implementation Guide Resource",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "license.html",
+          "title": "License",
           "generation": "markdown"
         }
       ]
