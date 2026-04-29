@@ -2300,7 +2300,7 @@
    <title value="Bed Capacity Measure"></title>
    <status value="draft"></status>
    <experimental value="true"></experimental>
-   <date value="2026-04-03T11:10:34-04:00"></date>
+   <date value="2026-04-28T22:51:43-04:00"></date>
    <publisher value="HL7 International / Public Health"></publisher>
    <description value="Bed Capacity Measure includes counts of specific bed types within the context of a given healthcare context or setting."></description>
    <library value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/Library/BedCapacityMeasure"></library>

@@ -6,9 +6,10 @@ include FHIRHelpers version '4.0.1' called FHIRHelpers
 
 // Terminology definitions
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
-codesystem "LocationPhysicalType": 'http://terminology.hl7.org/CodeSystem/location-physical-type|2.0.1'
-codesystem "HealthcareCapacity": 'http://hl7.org/fhir/us/safr/CodeSystem/us-safr-bed-capacity-example-codes'
-codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category|2.0.0'
+codesystem "LocationPhysicalType": 'http://terminology.hl7.org/CodeSystem/location-physical-type'
+codesystem "HealthcareCapacity": 'http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-bed-capacity-codes'
+codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category'
+codesystem "Time Period Ranges": 'http://terminology.hl7.org/CodeSystem/time-period-ranges'
 
 // Value sets
 valueset "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1146.1142'
@@ -35,6 +36,15 @@ code "Surgical mask": '409528009' from "SNOMEDCT" display 'Surgical face mask (p
 code "Face shield": '706724001' from "SNOMEDCT" display 'Face shield (physical object)'
 code "Patient gown": '1141676007' from "SNOMEDCT" display 'Patient gown (physical object)'
 code "Surgical glove": '462245005' from "SNOMEDCT" display 'Nitrile surgical glove, powdered (physical object)'
+
+code "0 Days": 'P0D--0D' from "Time Period Ranges" display '0 DAYS'
+code "1-3 Days": 'P1D--3D' from "Time Period Ranges" display '1-3 DAYS'
+code "4-6 Days": 'P4D--6D' from "Time Period Ranges" display '4-6 DAYS'
+code "7-14 Days": 'P7D--14D' from "Time Period Ranges" display '7-14 DAYS'
+code "15-30 Days": 'P15D--30D' from "Time Period Ranges" display '15-30 DAYS'
+code ">30 Days": 'P30D--9999D' from "Time Period Ranges" display '0 DAYS'
+
+code "positive": '10828004' from "SNOMEDCT" display 'Positive'
 
 // Parameter for measurement period
 parameter "Measurement Period" Interval<Date>
@@ -288,59 +298,75 @@ define "New RSV Patients with Unknown Age Stratifier":
 
 //Devices (Supply is divided by average used per day (estimated))
 define "N95 Mask Supply in Days Stratifier":
+  GetDayCode( "N95 Mask Supply in Days" )
+
+define "N95 Mask Supply in Days":
   Floor( Count(
     "Devices" Devices
     where Devices.type ~ "N95 mask"
   ) / 10 )
 
 define "N95 Mask 3 Day Supply Stratifier":
-  if "N95 Mask Supply in Days Stratifier" > 3 then 'y'
+  if "N95 Mask Supply in Days" > 3 then 'y'
   else 'n'
 
 define "OR Surgical Mask Supply in Days Stratifier":
+  GetDayCode( "OR Surgical Mask Supply in Days" )
+
+define "OR Surgical Mask Supply in Days":
   Floor( Count(
     "Devices" Devices
     where Devices.type ~ "Surgical mask"
   ) / 10 )
 
 define "OR Surgical Mask 3 Day Supply Stratifier":
-  if "OR Surgical Mask Supply in Days Stratifier" > 3 then 'y'
+  if "OR Surgical Mask Supply in Days" > 3 then 'y'
   else 'n'
 
 define "Face Shield Supply in Days Stratifier":
+  GetDayCode( "Face Shield Supply in Days" )
+
+define "Face Shield Supply in Days":
   Floor( Count(
     "Devices" Devices
     where Devices.type ~ "Face shield"
   ) / 10 )
 
 define "Face Shield 3 Day Supply Stratifier":
-  if "Face Shield Supply in Days Stratifier" > 3 then 'y'
+  if "Face Shield Supply in Days" > 3 then 'y'
   else 'n'
 
 define "Gown Supply in Days Stratifier":
+  GetDayCode( "Gown Supply in Days" )
+
+define "Gown Supply in Days":
   Floor( Count(
     "Devices" Devices
     where Devices.type ~ "Patient gown"
   ) / 5 )
 
 define "Gown 3 Day Supply Stratifier":
-  if "Gown Supply in Days Stratifier" > 3 then 'y'
+  if "Gown Supply in Days" > 3 then 'y'
   else 'n'
 
 define "Glove Supply in Days Stratifier":
+  GetDayCode( "Glove Supply in Days" )
+
+define "Glove Supply in Days":
   Floor( Count(
     "Devices" Devices
     where Devices.type ~ "Surgical glove"
   ) / 15 )
 
 define "Glove 3 Day Supply Stratifier":
-  if "Glove Supply in Days Stratifier" > 3 then 'y'
+  if "Glove Supply in Days" > 3 then 'y'
   else 'n'
 
 //Functions and Helpers
 define "COVID_19 Observations":
-  [Observation: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] 
-    union [Observation: "COVID_19 (Tests for SARS_CoV_2 Antigen)"]
+  ( [Observation: "COVID_19 (Tests for SARS_CoV_2 Nucleic Acid)"] 
+    union [Observation: "COVID_19 (Tests for SARS_CoV_2 Antigen)"] ) Observations
+    where Observations.value ~ "positive"
 
 define "Newly Admitted COVID_19 Patient IDs":
   "Get Confirmed Patient IDs"( "Newly Admitted Encounters", "COVID_19 Observations" )
@@ -351,8 +377,9 @@ define "Count Confirmed COVID_19 Patients in Bed Location":
   )
 
 define "Influenza Observations":
-  [Observation: "Influenza (Tests for influenza A or B virus Nucleic Acid)"] 
-    union [Observation: "Influenza (Tests for influenza A or B virus Antigen)"]
+  ( [Observation: "Influenza (Tests for influenza A or B virus Nucleic Acid)"] 
+    union [Observation: "Influenza (Tests for influenza A or B virus Antigen)"] ) Observations
+    where Observations.value ~ "positive"
 
 define "Newly Admitted Influenza Patient IDs":
   "Get Confirmed Patient IDs"( "Newly Admitted Encounters", "Influenza Observations" )
@@ -363,8 +390,9 @@ define "Count Confirmed Influenza Patients in Bed Location":
   )
 
 define "RSV Observations":
-  [Observation: "RSV (Tests for RSV Antigen)"] 
-    union [Observation: "RSV (Tests for RSV Nucleic Acid)"]
+  ( [Observation: "RSV (Tests for RSV Antigen)"] 
+    union [Observation: "RSV (Tests for RSV Nucleic Acid)"] ) Observations
+    where Observations.value ~ "positive"
 
 define "Newly Admitted RSV Patient IDs":
   "Get Confirmed Patient IDs"( "Newly Admitted Encounters", "RSV Observations" )
@@ -389,6 +417,17 @@ define "Newly Admitted Encounters":
 
 define "Patients":
   [Patient]
+
+define function GetDayCode(count Integer):
+  case
+    when count = 0 then "0 Days"
+    when count >= 1 and count <= 3 then "1-3 Days"
+    when count >= 4 and count <= 6 then "4-6 Days"
+    when count >= 7 and count <= 14 then "7-14 Days"
+    when count >= 15 and count <= 30 then "15-30 Days"
+    when count > 30 then ">30 Days"
+    else null
+  end
 
 define function "Get Confirmed Patient IDs"( Encounters List<FHIR.Encounter>, Observations List<FHIR.Observation> ):
   Distinct(

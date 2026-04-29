@@ -71,6 +71,15 @@ Subscriptions is not covered in this IG currently, but future versions will plan
 
 Lantana Consulting Group, Inc. produced and developed the content in this IG under contract to the Division of Healthcare Quality Promotion (DHQP) in the National Center for Emerging and Zoonotic Infectious Diseases (NCEZID) at the Centers for Disease Control and Prevention (CDC).
 
+<style>
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 10px;
+  }
+</style>
 
 | Role           | Name                  | Organization             | Email Address                       |
 |----------------|-----------------------|--------------------------|-------------------------------------|

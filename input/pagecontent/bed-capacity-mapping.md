@@ -20,6 +20,16 @@ Accordingly, this mapping reflects the transition from NHSN data dictionary conc
 
 ### Mapping Table
 
+<style>
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 10px;
+  }
+</style>
+
 |  Data Dictionary Concept  |  Concept description  |  LOINC Code &nbsp; &nbsp;  |  LOINC Display  |
 |---|---|---|---|
 | [AdultEDAdmittedCensus](https://hl7.org/fhir/us/safr/2025May/CodeSystem-us-safr-bed-capacity-example-codes.html#us-safr-bed-capacity-example-codes-AdultEDAdmittedCensus) | Adult ED Admitted Census | [112511-1](https://loinc.org/112511-1/) | Adult emergency department beds-admitted |

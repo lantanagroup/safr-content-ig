@@ -18,9 +18,7 @@ No definition could be found for URL value 'https://www.cdc.gov/nhsn/OrgID'
 INFORMATION: Bundle/HospitalBedCapacityReportBundle: Bundle.entry[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measurereport-bundle|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Bundle/HRDMeasureReportBundle: Bundle.entry[3]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measurereport-bundle|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
 INFORMATION: Bundle/NHSNSAFRMeasureBundleExample: Bundle.entry[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/safr/StructureDefinition/us-safr-measure-bundle|1.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Measure/HRDMeasure: Measure.extension[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm|4.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-INFORMATION: Measure/BedCapacityMeasure: Measure.extension[2]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm|4.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
-
+INFORMATION: Measure/HRDMeasure: Measure.extension[1]: This element does not match any known slice defined in the profile http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm|4.0.0 (this may not be a problem, but you should check that it's not intended to match a slice)
 
 
 # 06 ⚠️⚠️⚠️ WARNING: regarding newer published versions of US Core and QI Core. The versions chosen were done so to meet the current regulatory requirement floor ⚠️⚠️⚠️
@@ -41,10 +39,9 @@ There are multiple different potential matches for the url 'http://terminology.h
 # 08 ⚠️⚠️⚠️ WARNING: CQL and Measure processing is performed prior to the publisher, so this warning does not apply ⚠️⚠️⚠️
 Artifact library could not be found so no data requirements were inferred.
 
-# 09 💭💭💭  INFORMATION: String incorrectly identified as html. It is CQL. 💭💭💭 
-INFORMATION: Measure/HRDMeasure: Measure.contained[0]/*Library/effective-data-requirements*/.extension[105].extension[2].value.ofType(string): The string value contains text that looks like embedded HTML tags. If this content is rendered to HTML without appropriate post-processing, it may be a security risk
 
-# 10 ⚠️⚠️⚠️ WARNING: time-period-ranges is not a code system that can be validated as it is a fragment without these codes included ⚠️⚠️⚠️
+
+# 09 ⚠️⚠️⚠️ WARNING: time-period-ranges is not a code system that can be validated as it is a fragment without these codes included ⚠️⚠️⚠️
 Unknown Code 'P0D--0D' in the CodeSystem 'http://terminology.hl7.org/CodeSystem/time-period-ranges' version '1.0.0' - note that the code system is labeled as a fragment, so the code may be valid in some other fragment
 Unknown Code 'P1D--3D' in the CodeSystem 'http://terminology.hl7.org/CodeSystem/time-period-ranges' version '1.0.0' - note that the code system is labeled as a fragment, so the code may be valid in some other fragment
 Unknown Code 'P4D--6D' in the CodeSystem 'http://terminology.hl7.org/CodeSystem/time-period-ranges' version '1.0.0' - note that the code system is labeled as a fragment, so the code may be valid in some other fragment

@@ -21,7 +21,7 @@ done
 r=snapshots
 g=org.opencds.cqf
 a=tooling-cli
-v=3.10.0
+v=3.11.0
 
 dlurl='https://repo1.maven.org/maven2/org/opencds/cqf/'${a}'/'${v}'/'${a}'-'${v}'.jar'
 #dlurl='https://oss.sonatype.org/service/local/artifact/maven/redirect?r='${r}'&g='${g}'&a='${a}'&v='${v}''
