@@ -55,7 +55,7 @@
     }
   } ],
   "url": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/Library/HRDMeasure",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "HRDMeasure",
   "type": {
     "coding": [ {

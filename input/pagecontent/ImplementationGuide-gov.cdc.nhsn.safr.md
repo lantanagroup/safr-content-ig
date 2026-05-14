@@ -1,7 +1,7 @@
 
 
 |---|---|
-|*Official URL*: http://www.cdc.gov/nhsn/fhirportal/safr/ig/ImplementationGuide/gov.cdc.nhsn.safr|*Version*: 1.0.0|
+|*Official URL*: http://www.cdc.gov/nhsn/fhirportal/safr/ig/ImplementationGuide/gov.cdc.nhsn.safr|*Version*: 1.0.1|
 |*NPM package name*: gov.cdc.nhsn.safr|*ComputableName*: NHSNSAFR|
 |*Copyright/Legal*: [License](license.html)|
 {:.grid}

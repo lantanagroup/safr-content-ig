@@ -2295,7 +2295,7 @@
       <valueCanonical value="#effective-data-requirements"></valueCanonical>
    </extension>
    <url value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/Measure/BedCapacityMeasure"></url>
-   <version value="1.0.0"></version>
+   <version value="1.0.1"></version>
    <name value="BedCapacityMeasure"></name>
    <title value="Bed Capacity Measure"></title>
    <status value="draft"></status>

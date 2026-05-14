@@ -12,7 +12,7 @@
     }
   ],
   "url": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/ImplementationGuide/gov.cdc.nhsn.safr",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "NHSNSAFR",
   "title": "CDC NHSN Situational Awareness Framework for Reporting (NHSN SAFR) Content Implementation Guide",
   "status": "active",
@@ -100,6 +100,14 @@
   ],
   "definition": {
     "resource": [
+      {
+        "reference": {
+          "reference": "ValueSet/nhsn-safr-bed-capacity-codes"
+        },
+        "name": "Bed Capacity Codes ValueSet",
+        "description": "Codes for bed capacity reporting",
+        "exampleBoolean": false
+      },
       {
         "reference": {
           "reference": "Measure/BedCapacityMeasure"
@@ -390,6 +398,11 @@
           "nameUrl": "license.html",
           "title": "License",
           "generation": "markdown"
+        },
+        {
+          "nameUrl": "changes.html",
+          "title": "IG Change History",
+          "generation": "html"
         }
       ]
     },
@@ -400,7 +413,7 @@
       },
       {
         "code": "releaselabel",
-        "value": "STU 1.0.0"
+        "value": "STU 1.0.1"
       },
       {
         "code": "path-expansion-params",

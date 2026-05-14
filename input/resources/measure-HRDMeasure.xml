@@ -2563,7 +2563,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
       <valueCanonical value="#effective-data-requirements"></valueCanonical>
    </extension>
    <url value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/Measure/HRDMeasure"></url>
-   <version value="1.0.0"></version>
+   <version value="1.0.1"></version>
    <name value="HRDMeasure"></name>
    <title value="HRD Measure"></title>
    <experimental value="true"></experimental>

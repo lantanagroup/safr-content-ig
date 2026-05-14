@@ -2,7 +2,7 @@ Instance: BedCapacityExampleCodeMap
 InstanceOf: ConceptMap
 Usage: #definition
 * url = "http://www.cdc.gov/nhsn/fhirportal/safr/ig/ConceptMap/BedCapacityExampleCodeMap"
-* version = "1.0.0"
+* version = "1.0.1"
 * name = "BedCapacityExampleCodeMap"
 * title = "NHSN SAFR Bed Capacity Codes ConceptMap"
 * status = #draft

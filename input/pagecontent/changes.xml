@@ -1,0 +1,15 @@
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../input-cache/schemas/R5/fhir-single.xsd">
+	<p>
+    This provides a list of changes to the CDC NHSN Situational Awareness Framework for Reporting (NHSN SAFR) Content Implementation Guide
+  </p>
+  <a name="1.0.1="> </a>
+  <h3>Release 1.0.1 (Technical Correction of 1.0.0)</h3>
+  <ul>
+    <li>Created the <a href="ValueSet-nhsn-safr-bed-capacity-codes.html">Bed Capacity Codes ValueSet</a></li>
+  </ul>
+  <a name="1.0.0"> </a>
+  <h3>Release 1.0.0</h3>
+  <ul>
+    <li>Initial version</li>
+  </ul>
+</div>
