@@ -29,7 +29,7 @@ Usage: #example
 * identifier.value = "001"
 * status = #active
 * name = "ED Bed at Memorial Hospital"
-* type = BedCapacityCS#ED "Emergency Department"
+* type = FacilityTypeCS#ED "Emergency Department"
 * physicalType = http://terminology.hl7.org/CodeSystem/location-physical-type#bd
 
 Instance: IRFBed2
@@ -42,7 +42,7 @@ Usage: #example
 * identifier.value = "002"
 * status = #active
 * name = "Inpatient Rehabilitation Bed at Memorial Hospital"
-* type = BedCapacityCS#IRF "Inpatient Rehabilitation"
+* type = FacilityTypeCS#IRF "Inpatient Rehabilitation"
 * physicalType = http://terminology.hl7.org/CodeSystem/location-physical-type#bd
 
 Instance: IPFBed3
@@ -55,7 +55,7 @@ Usage: #example
 * identifier.value = "003"
 * status = #active
 * name = "Inpatient Psych at Memorial Hospital"
-* type = BedCapacityCS#IPF "Inpatient Psychiatric"
+* type = FacilityTypeCS#IPF "Inpatient Psychiatric"
 * physicalType = http://terminology.hl7.org/CodeSystem/location-physical-type#bd
 
 Instance: CHLDBed4
@@ -68,7 +68,7 @@ Usage: #example
 * identifier.value = "004"
 * status = #active
 * name = "Children's at Memorial Hospital"
-* type = BedCapacityCS#CHLD "Children's or Pediatric"
+* type = FacilityTypeCS#CHLD "Children's or Pediatric"
 * physicalType = http://terminology.hl7.org/CodeSystem/location-physical-type#bd
 
 Instance: OTHBed5
@@ -81,7 +81,7 @@ Usage: #example
 * identifier.value = "004"
 * status = #active
 * name = "Other Facility Within Facility Bed"
-* type = BedCapacityCS#OTH "Other facility-within-facility or subunit"
+* type = FacilityTypeCS#OTH "Other facility-within-facility or subunit"
 * physicalType = http://terminology.hl7.org/CodeSystem/location-physical-type#bd
 
 Instance: ICUBed6
@@ -94,7 +94,7 @@ Usage: #example
 * identifier.value = "006"
 * status = #active
 * name = "Intensive Care Unit at Memorial Hospital"
-* type = BedCapacityCS#ICU "Intensive Care Unit"
+* type = FacilityTypeCS#ICU "Intensive Care Unit"
 * physicalType = http://terminology.hl7.org/CodeSystem/location-physical-type#bd
 
 Instance: PEDSBed7
@@ -107,5 +107,5 @@ Usage: #example
 * identifier.value = "007"
 * status = #active
 * name = "Pediatric at Memorial Hospital"
-* type = BedCapacityCS#PEDS "Pediatric"
+* type = FacilityTypeCS#PEDS "Pediatric"
 * physicalType = http://terminology.hl7.org/CodeSystem/location-physical-type#bd
