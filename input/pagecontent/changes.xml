@@ -5,6 +5,8 @@
   <a name="1.0.1="> </a>
   <h3>Release 1.0.1 (Technical Correction of 1.0.0)</h3>
   <ul>
+    <li>Removed the Bed Capacity Codes CodeSystem and moved the facility type codes to the <a href="CodeSystem-nhsn-safr-facility-type-codes.html">Facility Type Codes CodeSystem</a> and changed the CQL, <a href="Measure-BedCapacityMeasure.html">Bed Capacity Measure</a>, and <a href="Measure-HRDMeasure.html">HRD Measure</a> along with respective Library resources and examples.</li>
+    <li>Created the <a href="ValueSet-nhsn-safr-facility-type-codes.html">Facility Type Codes ValueSet</a></li>
     <li>Created the <a href="ValueSet-nhsn-safr-bed-capacity-codes.html">Bed Capacity Codes ValueSet</a></li>
   </ul>
   <a name="1.0.0"> </a>

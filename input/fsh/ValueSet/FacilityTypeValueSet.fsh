@@ -1,5 +1,5 @@
 ValueSet: FacilityTypeVS
-Id: nhsn-safr-facility-type--codes
+Id: nhsn-safr-facility-type-codes
 Title: "Facility Type Codes ValueSet"
 Description: "Codes for facility tpes reporting"
 * ^experimental = false

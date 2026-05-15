@@ -31,6 +31,11 @@ Usage: #example
 * improvementNotation = $MeasureImprovementNotation#increase "Increased score indicates improvement"
 
 
+* group[+].id = "EntireFacility-bed-capacity-group"
+* group[=].code = $loinc#112506-1
+* group[=].population[+].id = "Facility-context-entire-or-subunit"
+* group[=].population[=].code = http://terminology.hl7.org/CodeSystem/measure-population#initial-population "Initial Population"
+* group[=].population[=].count = 0
 
 ///////////// Group AllBedsOccupied /////////////
 ///////////// Group All inpatient beds:Num:Pt:Facility:Qn:Occupied /////////////

@@ -5,13 +5,9 @@
     "mode": "milestone",
     "status": "release",
     "sequence": "R 1",
-    "first": true,
+    "first": false,
     "desc": "CDC National Healthcare Safety Network Situational Awareness Framework for Reporting (NHSN SAFR) Implementation Guide, 1.0.1 - US Realm",
     "registry-description" : "CDC National Healthcare Safety Network Situational Awareness Framework for Reporting (NHSN SAFR) Implementation Guide",
     "registry-country": "US",
-    "registry-authority": "CDC National Healthcare Safety Network",
-	"category": "Public Health",
-	"title": "NHSN Situational Awareness Framework for Reporting (NHSN SAFR) Implementation Guide",
-	"ci-build": "https://safr-ci.nhsnlink.org/",
-	"introduction": "The NHSN Situational Awareness Framework for Reporting (NHSN SAFR) Implementation Guide (IG) establishes a standardized, FHIR-based approach to support public health decision-making during emergencies."
+    "registry-authority": "CDC National Healthcare Safety Network"
 }

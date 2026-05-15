@@ -61,7 +61,7 @@ The file contains the information required to release a new implementation guide
 
   - `package-id` (string): Unique identifier for the package. Should be the same value as found in the `sushi-config.yaml` in the `id` property.
   - `version` (string): Semver version of the new publication being built.
-  - `path` (string): Semver versioned path of published version. Must be  {canonical}/{semver} (e.g. `http://www.cdc.gov/nhsn/fhirportal/safr/ig/1.0.0`).
+  - `path` (string): Semver versioned path of published version. Must be  {canonical}/{semver} (e.g. `http://www.cdc.gov/nhsn/fhirportal/safr/ig/1.0.1`).
   - `mode` (string): Publication mode. For latest version publications (to the CDC website) this will always be `milestone`. the IG will also be published to {canonical} as the 'current' approved version. 
   - `status` (string): the status of this release. For a CDC Website publication, this will always be `release`.
   - `sequence` (string): Sequence or milestone grouping for the version (e.g., `R 1`, for Release 1 sequence). Sequence numbers will be generally contain the single major version portion of the semver version number.
