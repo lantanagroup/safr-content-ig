@@ -64,21 +64,21 @@
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
             <valueCoding>
-               <system value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-bed-capacity-codes"></system>
+               <system value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-facility-type-codes"></system>
                <code value="CHLD"></code>
                <display value="Children's or Pediatric"></display>
             </valueCoding>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
             <valueCoding>
-               <system value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-bed-capacity-codes"></system>
+               <system value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-facility-type-codes"></system>
                <code value="HOSP"></code>
                <display value="Hospital"></display>
             </valueCoding>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
             <valueCoding>
-               <system value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-bed-capacity-codes"></system>
+               <system value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-facility-type-codes"></system>
                <code value="OTH"></code>
                <display value="Other facility-within-facility or subunit"></display>
             </valueCoding>
@@ -127,14 +127,14 @@
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
             <valueCoding>
-               <system value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-bed-capacity-codes"></system>
+               <system value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-facility-type-codes"></system>
                <code value="IPF"></code>
                <display value="Inpatient Psychiatric"></display>
             </valueCoding>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-directReferenceCode">
             <valueCoding>
-               <system value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-bed-capacity-codes"></system>
+               <system value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-facility-type-codes"></system>
                <code value="IRF"></code>
                <display value="Inpatient Rehabilitation"></display>
             </valueCoding>
@@ -382,26 +382,6 @@
             </extension>
             <extension url="displaySequence">
                <valueInteger value="13"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="HRDMeasure"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="Adult ICU Beds Initial Population"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;Adult ICU Beds Initial Population&quot;:
-  IsBedLocation
-  and (
-    LocationIsHOSP
-    or LocationIsOTH
-  )
-  and not LocationIsCHLD"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="14"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1229,27 +1209,6 @@ define &quot;N95 Mask Supply in Days Stratifier&quot;:
                <valueString value="HRDMeasure"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="Pediatric Inpatient Beds Initial Population"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;Pediatric Inpatient Beds Initial Population&quot;:
-  IsBedLocation
-  and LocationIsHOSP
-  and LocationIsCHLD
-  and not (
-    LocationIsIPF
-    or LocationIsIRF
-  )"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="63"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="HRDMeasure"></valueString>
-            </extension>
-            <extension url="name">
                <valueString value="New Adult Influenza Patients Between 50 to 64 Stratifier"></valueString>
             </extension>
             <extension url="statement">
@@ -1318,26 +1277,6 @@ define &quot;Adult Inpatient RSV Patients Stratifier&quot;:
                <valueString value="HRDMeasure"></valueString>
             </extension>
             <extension url="name">
-               <valueString value="Pediatric ICU Beds Initial Population"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;Pediatric ICU Beds Initial Population&quot;:
-  IsBedLocation
-  and LocationIsCHLD
-  and (
-    LocationIsHOSP
-    or LocationIsOTH
-  )"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="68"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="HRDMeasure"></valueString>
-            </extension>
-            <extension url="name">
                <valueString value="New Adult RSV Patients Between 18 to 49 Stratifier"></valueString>
             </extension>
             <extension url="statement">
@@ -1397,46 +1336,6 @@ define &quot;Adult Inpatient RSV Patients Stratifier&quot;:
             </extension>
             <extension url="displaySequence">
                <valueInteger value="72"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="HRDMeasure"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="Adult Inpatient Beds Initial Population"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;Adult Inpatient Beds Initial Population&quot;:
-  IsBedLocation
-  and LocationIsHOSP
-  and (
-    LocationIsIPF
-    or LocationIsIRF
-  )
-  and not LocationIsCHLD"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="73"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="HRDMeasure"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="ICU Beds Initial Population"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define &quot;ICU Beds Initial Population&quot;:
-  IsBedLocation
-  and (
-    LocationIsHOSP
-    or LocationIsOTH
-  )"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="74"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1554,28 +1453,6 @@ define &quot;Adult Inpatient RSV Patients Stratifier&quot;:
             </extension>
             <extension url="displaySequence">
                <valueInteger value="81"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="HRDMeasure"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="Inpatient Beds Initial Population"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="//Initial Populations
-define &quot;Inpatient Beds Initial Population&quot;:
-  IsBedLocation
-  and LocationIsHOSP
-  and (
-    LocationIsIPF
-    or LocationIsIRF
-    or LocationIsCHLD
-  )"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="82"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1787,20 +1664,6 @@ define &quot;Inpatient Beds Initial Population&quot;:
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
             <extension url="libraryName">
-               <valueString value="FHIRHelpers"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="ToDateTime"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define function ToDateTime(value instant): value.value"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="93"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
-            <extension url="libraryName">
                <valueString value="HRDMeasure"></valueString>
             </extension>
             <extension url="name">
@@ -1846,20 +1709,6 @@ define &quot;Inpatient Beds Initial Population&quot;:
             </extension>
             <extension url="displaySequence">
                <valueInteger value="96"></valueInteger>
-            </extension>
-         </extension>
-         <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
-            <extension url="libraryName">
-               <valueString value="FHIRHelpers"></valueString>
-            </extension>
-            <extension url="name">
-               <valueString value="ToString"></valueString>
-            </extension>
-            <extension url="statement">
-               <valueString value="define function ToString(value EncounterStatus): value.value"></valueString>
-            </extension>
-            <extension url="displaySequence">
-               <valueInteger value="97"></valueInteger>
             </extension>
          </extension>
          <extension url="http://hl7.org/fhir/StructureDefinition/cqf-logicDefinition">
@@ -1950,7 +1799,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
          <relatedArtifact>
             <type value="depends-on"></type>
             <display value="Code system HealthcareCapacity"></display>
-            <resource value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-bed-capacity-codes"></resource>
+            <resource value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-facility-type-codes"></resource>
          </relatedArtifact>
          <relatedArtifact>
             <type value="depends-on"></type>
@@ -2554,11 +2403,6 @@ define &quot;Inpatient Beds Initial Population&quot;:
    <extension url="http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-populationBasis">
       <valueCode value="boolean"></valueCode>
    </extension>
-   <extension url="http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-softwaresystem">
-      <valueReference>
-         <reference value="Device/cqf-tooling"></reference>
-      </valueReference>
-   </extension>
    <extension url="http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-effectiveDataRequirements">
       <valueCanonical value="#effective-data-requirements"></valueCanonical>
    </extension>
@@ -2567,7 +2411,7 @@ define &quot;Inpatient Beds Initial Population&quot;:
    <name value="HRDMeasure"></name>
    <title value="HRD Measure"></title>
    <experimental value="true"></experimental>
-   <date value="2026-04-28T22:51:44-04:00"></date>
+   <date value="2026-05-14T21:17:58-04:00"></date>
    <description value="Hospital Respiratory Data Measure"></description>
    <library value="http://www.cdc.gov/nhsn/fhirportal/safr/ig/Library/HRDMeasure"></library>
    <scoring>

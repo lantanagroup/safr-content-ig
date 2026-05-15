@@ -60,7 +60,7 @@
     }
   } ],
   "url": "http://www.cdc.gov/nhsn/fhirportal/safr/ig/Library/BedCapacityMeasure",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "BedCapacityMeasure",
   "type": {
     "coding": [ {

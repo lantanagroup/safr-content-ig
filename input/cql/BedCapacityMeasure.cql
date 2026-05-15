@@ -5,7 +5,7 @@ using FHIR version '4.0.1'
 include FHIRHelpers version '4.0.1' called FHIRHelpers
 
 codesystem "LocationPhysicalType": 'http://terminology.hl7.org/CodeSystem/location-physical-type'
-codesystem "HealthcareCapacity": 'http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-bed-capacity-codes'
+codesystem "HealthcareCapacity": 'http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-facility-type-codes'
 
 valueset "Emergency Department Visit": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.117.1.7.1.292'
 
@@ -24,6 +24,9 @@ context Location
 
 define "IsBedLocation":
   Location.physicalType ~ "Bed"
+
+define "All Beds Initial Population":
+ IsBedLocation
 
 define "All Beds Occupied Initial Population":
   IsBedLocation
