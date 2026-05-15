@@ -7,7 +7,7 @@ include FHIRHelpers version '4.0.1' called FHIRHelpers
 // Terminology definitions
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
 codesystem "LocationPhysicalType": 'http://terminology.hl7.org/CodeSystem/location-physical-type'
-codesystem "HealthcareCapacity": 'http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-bed-capacity-codes'
+codesystem "HealthcareCapacity": 'http://www.cdc.gov/nhsn/fhirportal/safr/ig/CodeSystem/nhsn-safr-facility-type-codes'
 codesystem "Observation Category": 'http://terminology.hl7.org/CodeSystem/observation-category'
 codesystem "Time Period Ranges": 'http://terminology.hl7.org/CodeSystem/time-period-ranges'
 
