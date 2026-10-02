@@ -115,7 +115,7 @@ parameters:
     - input/pagecontent
     - input/intro-notes
     - fsh-generated/includes
-#  auto-oid-root: 2.16.840.1.113883.4.642.40.53
+  auto-oid-root: 2.16.840.1.113883.4.642.40.1003
 # validation: [allow-any-extensions, no-broken-links]
 #
 # ╭────────────────────────────────────────────menu.xml────────────────────────────────────────────╮
